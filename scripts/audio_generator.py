@@ -4,6 +4,9 @@ import time
 import math
 import wave
 import struct
+import asyncio
+import subprocess
+import edge_tts
 from google import genai
 from google.genai import types
 
@@ -15,8 +18,6 @@ def get_api_clients():
         k = os.getenv(var)
         if k and k.strip() and k.strip() not in keys:
             keys.append(k.strip())
-    if not keys:
-        raise ValueError("At least one GEMINI_API_KEY environment variable is required")
     return [genai.Client(api_key=k) for k in keys]
 
 SCRIPT_FILE = "current_episode.json"
@@ -33,6 +34,34 @@ def create_silent_wav(file_path, duration=3.0, sample_rate=24000):
         wav.writeframes(b'\x00' * (total_samples * 2))
     print(f"  -> Created silent placeholder audio {file_path}")
 
+async def synthesize_native_malayalam(text, speaker, out_wav):
+    """Synthesizes high quality native Kerala Malayalam neural voice."""
+    if speaker == "Sachin":
+        voice, pitch, rate = "ml-IN-MidhunNeural", "-3Hz", "-2%"
+    elif speaker == "Amal":
+        voice, pitch, rate = "ml-IN-MidhunNeural", "+4Hz", "+6%"
+    elif speaker == "Reenu":
+        voice, pitch, rate = "ml-IN-SobhanaNeural", "+3Hz", "+2%"
+    else:
+        # Narrator
+        voice, pitch, rate = "ml-IN-SobhanaNeural", "-1Hz", "-3%"
+        
+    temp_mp3 = out_wav.replace(".wav", ".mp3")
+    comm = edge_tts.Communicate(text, voice, pitch=pitch, rate=rate)
+    await comm.save(temp_mp3)
+    
+    cmd = [
+        "ffmpeg", "-y",
+        "-i", temp_mp3,
+        "-ar", "24000",
+        "-ac", "1",
+        "-c:a", "pcm_s16le",
+        out_wav
+    ]
+    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if os.path.exists(temp_mp3):
+        os.remove(temp_mp3)
+
 def generate_voices():
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
         ep_data = json.load(f)
@@ -40,12 +69,9 @@ def generate_voices():
     scenes = ep_data.get("scenes", [])
     print(f"Generating {len(scenes)} voice lines for Episode {ep_data.get('episode_number')}...")
     
-    clients = get_api_clients()
-    client_idx = 0
-    
     for sc in scenes:
         idx = sc["scene_index"]
-        voice = sc.get("voice", "Kore")
+        speaker = sc.get("speaker", "Reenu")
         text = sc["dialogue_malayalam"]
         out_wav = os.path.join(AUDIO_DIR, f"speech_{idx}.wav")
         
@@ -53,56 +79,52 @@ def generate_voices():
             print(f"Skipping speech_{idx}.wav (already generated).")
             continue
             
-        print(f"Synthesizing speech_{idx}.wav ({sc['speaker']} - {voice})...")
+        print(f"Synthesizing speech_{idx}.wav ({speaker} - Native Malayalam Neural)...")
         synthesized = False
         
-        # Try across available keys with backoff
-        for attempt in range(len(clients) * 3):
-            curr_client = clients[client_idx % len(clients)]
-            active_key_idx = (client_idx % len(clients)) + 1
-            try:
-                config = types.GenerateContentConfig(
-                    response_modalities=["AUDIO"],
-                    speech_config=types.SpeechConfig(
-                        voice_config=types.VoiceConfig(
-                            prebuilt_voice_config=types.PrebuiltVoiceConfig(
-                                voice_name=voice
+        # Primary: Edge-TTS Native Malayalam (0 rate limits, 100% free, authentic Kerala accent)
+        try:
+            asyncio.run(synthesize_native_malayalam(text, speaker, out_wav))
+            if os.path.exists(out_wav) and os.path.getsize(out_wav) > 1000:
+                print(f"  -> Saved native Malayalam speech_{idx}.wav ({os.path.getsize(out_wav)} bytes)")
+                synthesized = True
+        except Exception as e:
+            print(f"  -> Edge-TTS note: {e}. Trying Gemini TTS...")
+            
+        # Secondary fallback: Gemini TTS
+        if not synthesized:
+            clients = get_api_clients()
+            for client in clients:
+                try:
+                    voice = sc.get("voice", "Kore")
+                    config = types.GenerateContentConfig(
+                        response_modalities=["AUDIO"],
+                        speech_config=types.SpeechConfig(
+                            voice_config=types.VoiceConfig(
+                                prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=voice)
                             )
                         )
                     )
-                )
-                res = curr_client.models.generate_content(
-                    model="gemini-3.8-flash-tts",
-                    contents=text,
-                    config=config
-                )
-                audio_bytes = res.candidates[0].content.parts[0].inline_data.data
-                with open(out_wav, "wb") as f:
-                    f.write(audio_bytes)
-                print(f"  -> Saved speech_{idx}.wav ({len(audio_bytes)} bytes) using key #{active_key_idx}")
-                synthesized = True
-                # Pacing between calls
-                time.sleep(5.0)
-                # Rotate key for load balancing
-                client_idx += 1
-                break
-            except Exception as e:
-                err_str = str(e)
-                print(f"  -> Attempt {attempt+1} note on key #{active_key_idx}: {err_str[:120]}")
-                # Rotate to next client immediately
-                client_idx += 1
-                if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
-                    print("     Rate limited on current key. Pausing 15s and rotating key...")
-                    time.sleep(15.0)
-                else:
-                    time.sleep(4.0)
+                    res = client.models.generate_content(
+                        model="gemini-3.8-flash-tts",
+                        contents=text,
+                        config=config
+                    )
+                    audio_bytes = res.candidates[0].content.parts[0].inline_data.data
+                    with open(out_wav, "wb") as f:
+                        f.write(audio_bytes)
+                    print(f"  -> Saved Gemini speech_{idx}.wav ({len(audio_bytes)} bytes)")
+                    synthesized = True
+                    break
+                except Exception as ex:
+                    print(f"  -> Gemini TTS note: {ex}")
                     
+        # Tertiary fallback: Silent WAV so assembly never fails
         if not synthesized:
-            print(f"  -> Warning: Falling back to silent WAV for speech_{idx}.wav to guarantee pipeline continuity.")
+            print(f"  -> Fallback to silent WAV for speech_{idx}.wav")
             create_silent_wav(out_wav, duration=3.5)
 
 def generate_foley_and_score(duration=130, sample_rate=24000):
-    # Ambient soundscape
     amb_path = os.path.join(AUDIO_DIR, "ambient.wav")
     if not os.path.exists(amb_path):
         import random
@@ -114,7 +136,6 @@ def generate_foley_and_score(duration=130, sample_rate=24000):
             noise = (random.random() * 2.0 - 1.0) * 0.025
             samples[i] = hum + noise
         
-        # Lowpass filter
         val = 0.0
         filtered = [0.0] * total_samples
         for i in range(total_samples):
@@ -129,7 +150,6 @@ def generate_foley_and_score(duration=130, sample_rate=24000):
             wav.writeframes(raw)
         print("Generated ambient soundscape.")
 
-    # Romance Score
     bgm_path = os.path.join(AUDIO_DIR, "romance_score.wav")
     if not os.path.exists(bgm_path):
         total_samples = int(sample_rate * duration)
