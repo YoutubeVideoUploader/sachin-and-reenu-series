@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 2,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "age": 26,
@@ -54,6 +54,17 @@
         "Amal",
         "Reenu",
         "Sachin"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "മൗനത്തിന്റെ ദൂരം (The Distance of Silence)",
+      "summary": "Directly continuing from the tension at the airport parking lot, Sachin, Reenu, and Amal drive through the rain-slicked streets of Kochi. Reenu is troubled by the mysterious UK phone call and the velvet box she spotted in Sachin's bag. As Amal tries to break the heavy silence with his typical humor, Sachin's nervous behavior and another silent phone notification push Reenu to her emotional limit, threatening to turn their long-awaited reunion into a heartbreaking distance.",
+      "cliffhanger": "When Sachin tries to reach for Reenu's hand to comfort her, she quietly pulls away, leaving a silent, painful void between them as the car drives into the Kochi night.",
+      "characters_present": [
+        "Amal",
+        "Sachin",
+        "Reenu"
       ]
     }
   ]
