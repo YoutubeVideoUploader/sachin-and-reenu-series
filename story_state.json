@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 2,
   "characters": {
     "Sachin": {
       "age": 26,
@@ -39,7 +39,22 @@
       "title": "6 വർഷങ്ങൾക്ക് ശേഷം (After 6 Long Years)",
       "summary": "Reenu and Sachin's best friend Amal wait anxiously at Cochin International Airport (CIAL) International Arrivals. Flight BA-354 arrives from London. Reenu spots Sachin pulling his silver luggage trolley. Their eyes lock across the crowd, dissolving 6 years of waiting. Sachin smiles radiantly, Amal cheers wildly over the railing, and Sachin and Reenu rush to embrace each other.",
       "cliffhanger": "As they embrace, the narrator reveals that unspoken truths and secrets accumulated over the 6-year distance are waiting to unfold.",
-      "characters_present": ["Sachin", "Reenu", "Amal"]
+      "characters_present": [
+        "Sachin",
+        "Reenu",
+        "Amal"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "മറച്ചുവെച്ച നിമിഷങ്ങൾ (Hidden Moments) (Hidden Moments)",
+      "summary": "Directly continuing from the emotional embrace at Cochin Airport, Sachin, Reenu, and Amal walk to the parking lot. While placing the luggage in the car, Reenu notices a mysterious velvet ring box in Sachin's backpack. Suddenly, Sachin receives an anxious call from a UK number, igniting a silent tension between the reunited lovers.",
+      "cliffhanger": "As Sachin nervously hides his phone and makes an excuse, Reenu looks out of the car window, wondering if the man who returned from London is still the same Sachin she loved.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
+      ]
     }
   ]
 }
