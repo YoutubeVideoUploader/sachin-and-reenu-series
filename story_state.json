@@ -1,0 +1,45 @@
+{
+  "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
+  "language": "Malayalam",
+  "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
+  "total_episodes_produced": 1,
+  "characters": {
+    "Sachin": {
+      "age": 26,
+      "gender": "male",
+      "voice": "Fenrir",
+      "hair": "Tousled thick wavy dark-brown hair",
+      "face": "Warm hazel-brown expressive eyes, clean-shaven, radiant charming smile",
+      "attire": "Rust-orange terracotta crew neck t-shirt with subtle pineapple logo, black joggers, white sneakers, black sports watch",
+      "personality": "Warm, emotional, romantic, returning from UK after 6 years"
+    },
+    "Reenu": {
+      "age": 24,
+      "gender": "female",
+      "voice": "Kore",
+      "hair": "Shoulder-length layered chestnut-brown hair with side-swept fringe bangs and soft curled tips",
+      "face": "Large sparkling dark-brown doe eyes, expressive emotions, glowing smile",
+      "attire": "Pastel yellow and light-blue cloud camouflage short-sleeved crop t-shirt, baby-blue denim mini-skirt with side slit, white sneakers, off-white canvas tote bag",
+      "personality": "Bubbly, deeply emotional, faithful, waited 6 long years in Kochi"
+    },
+    "Amal": {
+      "age": 26,
+      "gender": "male",
+      "voice": "Puck",
+      "hair": "Cropped textured curly black hair",
+      "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
+      "attire": "Olive-green crew neck t-shirt with subtle horizontal lines, blue denim jeans, white sneakers",
+      "personality": "Sachin's best friend, supportive, humorous, teases Reenu to keep her calm"
+    }
+  },
+  "current_arc": "The Airport Reunion & The Unspoken Past",
+  "history": [
+    {
+      "episode": 1,
+      "title": "6 വർഷങ്ങൾക്ക് ശേഷം (After 6 Long Years)",
+      "summary": "Reenu and Sachin's best friend Amal wait anxiously at Cochin International Airport (CIAL) International Arrivals. Flight BA-354 arrives from London. Reenu spots Sachin pulling his silver luggage trolley. Their eyes lock across the crowd, dissolving 6 years of waiting. Sachin smiles radiantly, Amal cheers wildly over the railing, and Sachin and Reenu rush to embrace each other.",
+      "cliffhanger": "As they embrace, the narrator reveals that unspoken truths and secrets accumulated over the 6-year distance are waiting to unfold.",
+      "characters_present": ["Sachin", "Reenu", "Amal"]
+    }
+  ]
+}

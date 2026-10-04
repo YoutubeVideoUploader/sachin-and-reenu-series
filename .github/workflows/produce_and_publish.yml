@@ -1,0 +1,80 @@
+name: "Autonomous Episode Studio: Produce & Publish to Instagram"
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without posting to Instagram"
+        type: boolean
+        default: false
+  # Runs automatically every 3 days at 12:30 UTC (18:00 IST)
+  # schedule:
+  #   - cron: "30 12 */3 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  produce_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install System Dependencies (FFmpeg)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python Packages
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 1. Generate Next Episode Screenplay (Gemini 3.8 Flash)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/story_engine.py
+
+      - name: 2. Synthesize Malayalam Voice Acting (Gemini TTS) & Foley
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/audio_generator.py
+
+      - name: 3. Render 9:16 Visual Frames with Turnaround Anchors
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/image_generator.py
+
+      - name: 4. Assemble Master 9:16 Video (Dynamic Non-Overlapping Alignment)
+        run: |
+          python scripts/video_compiler.py
+
+      - name: 5. Publish to Instagram Reels & Update Story Memory
+        if: ${{ !inputs.dry_run }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python scripts/instagram_publisher.py
+
+      - name: 6. Commit Updated Story State Back to GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add story_state.json
+          git diff-index --quiet HEAD || git commit -m "Auto-update story memory after Episode release [skip ci]"
+          git push
