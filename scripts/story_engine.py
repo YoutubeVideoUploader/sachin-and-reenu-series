@@ -4,11 +4,15 @@ import time
 from google import genai
 from google.genai import types
 
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise ValueError("GEMINI_API_KEY environment variable is required")
-
-client = genai.Client(api_key=api_key)
+def get_api_clients():
+    keys = []
+    for var in ["GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"]:
+        k = os.getenv(var)
+        if k and k.strip() and k.strip() not in keys:
+            keys.append(k.strip())
+    if not keys:
+        raise ValueError("At least one GEMINI_API_KEY environment variable is required")
+    return [genai.Client(api_key=k) for k in keys]
 
 STATE_FILE = "story_state.json"
 OUTPUT_FILE = "current_episode.json"
@@ -75,30 +79,32 @@ OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
 """
 
     models_to_try = [
+        "gemini-3.8-flash",
         "gemini-3.5-flash",
-        "gemini-3.7-flash",
-        "gemini-flash-latest",
-        "gemini-3.1-flash-lite",
-        "gemini-3.8-flash"
+        "gemini-flash-latest"
     ]
     script_text = None
+    clients = get_api_clients()
     
-    for model_name in models_to_try:
-        print(f"Calling Gemini ({model_name}) to script Episode {next_ep_num}...")
-        try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json"
+    for client_idx, client in enumerate(clients):
+        for model_name in models_to_try:
+            print(f"Calling Gemini ({model_name}) with client key #{client_idx+1} to script Episode {next_ep_num}...")
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json"
+                    )
                 )
-            )
-            script_text = response.text.strip()
-            print(f"  -> Successfully generated screenplay using {model_name}!")
+                script_text = response.text.strip()
+                print(f"  -> Successfully generated screenplay using {model_name}!")
+                break
+            except Exception as e:
+                print(f"  -> Note on {model_name} (key #{client_idx+1}): {e}. Trying next...")
+                time.sleep(2.0)
+        if script_text:
             break
-        except Exception as e:
-            print(f"  -> Note on {model_name}: {e}. Trying next model...")
-            time.sleep(1.0)
             
     if not script_text:
         raise RuntimeError("Failed to generate screenplay after trying all active models.")

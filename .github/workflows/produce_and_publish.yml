@@ -41,18 +41,24 @@ jobs:
       - name: 1. Generate Next Episode Screenplay (Gemini 3.8 Flash)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
         run: |
           python scripts/story_engine.py
 
       - name: 2. Synthesize Malayalam Voice Acting (Gemini TTS) & Foley
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
         run: |
           python scripts/audio_generator.py
 
       - name: 3. Render 9:16 Visual Frames with Turnaround Anchors
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
         run: |
           python scripts/image_generator.py
 

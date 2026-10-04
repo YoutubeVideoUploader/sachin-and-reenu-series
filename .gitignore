@@ -1,0 +1,11 @@
+generated_audio/
+generated_images/
+*.mp4
+*.wav
+clips_concat.txt
+clip_*.mp4
+video_sequence.mp4
+current_episode.json
+__pycache__/
+*.pyc
+.env

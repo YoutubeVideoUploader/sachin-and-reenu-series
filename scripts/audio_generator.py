@@ -7,15 +7,31 @@ import struct
 from google import genai
 from google.genai import types
 
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise ValueError("GEMINI_API_KEY environment variable is required")
-
-client = genai.Client(api_key=api_key)
+def get_api_clients():
+    keys = []
+    if os.getenv("GEMINI_API_KEYS"):
+        keys.extend([k.strip() for k in os.getenv("GEMINI_API_KEYS").split(",") if k.strip()])
+    for var in ["GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"]:
+        k = os.getenv(var)
+        if k and k.strip() and k.strip() not in keys:
+            keys.append(k.strip())
+    if not keys:
+        raise ValueError("At least one GEMINI_API_KEY environment variable is required")
+    return [genai.Client(api_key=k) for k in keys]
 
 SCRIPT_FILE = "current_episode.json"
 AUDIO_DIR = "generated_audio"
 os.makedirs(AUDIO_DIR, exist_ok=True)
+
+def create_silent_wav(file_path, duration=3.0, sample_rate=24000):
+    """Fallback generator for empty audio so compilation never fails."""
+    total_samples = int(sample_rate * duration)
+    with wave.open(file_path, 'w') as wav:
+        wav.setnchannels(1)
+        wav.setsampwidth(2)
+        wav.setframerate(sample_rate)
+        wav.writeframes(b'\x00' * (total_samples * 2))
+    print(f"  -> Created silent placeholder audio {file_path}")
 
 def generate_voices():
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
@@ -23,6 +39,9 @@ def generate_voices():
     
     scenes = ep_data.get("scenes", [])
     print(f"Generating {len(scenes)} voice lines for Episode {ep_data.get('episode_number')}...")
+    
+    clients = get_api_clients()
+    client_idx = 0
     
     for sc in scenes:
         idx = sc["scene_index"]
@@ -35,7 +54,12 @@ def generate_voices():
             continue
             
         print(f"Synthesizing speech_{idx}.wav ({sc['speaker']} - {voice})...")
-        for attempt in range(3):
+        synthesized = False
+        
+        # Try across available keys with backoff
+        for attempt in range(len(clients) * 3):
+            curr_client = clients[client_idx % len(clients)]
+            active_key_idx = (client_idx % len(clients)) + 1
             try:
                 config = types.GenerateContentConfig(
                     response_modalities=["AUDIO"],
@@ -47,7 +71,7 @@ def generate_voices():
                         )
                     )
                 )
-                res = client.models.generate_content(
+                res = curr_client.models.generate_content(
                     model="gemini-3.8-flash-tts",
                     contents=text,
                     config=config
@@ -55,12 +79,27 @@ def generate_voices():
                 audio_bytes = res.candidates[0].content.parts[0].inline_data.data
                 with open(out_wav, "wb") as f:
                     f.write(audio_bytes)
-                print(f"  -> Saved speech_{idx}.wav ({len(audio_bytes)} bytes)")
-                time.sleep(3.5)
+                print(f"  -> Saved speech_{idx}.wav ({len(audio_bytes)} bytes) using key #{active_key_idx}")
+                synthesized = True
+                # Pacing between calls
+                time.sleep(5.0)
+                # Rotate key for load balancing
+                client_idx += 1
                 break
             except Exception as e:
-                print(f"  -> Attempt {attempt+1} error on speech_{idx}.wav: {e}. Retrying...")
-                time.sleep(10.0)
+                err_str = str(e)
+                print(f"  -> Attempt {attempt+1} note on key #{active_key_idx}: {err_str[:120]}")
+                # Rotate to next client immediately
+                client_idx += 1
+                if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                    print("     Rate limited on current key. Pausing 15s and rotating key...")
+                    time.sleep(15.0)
+                else:
+                    time.sleep(4.0)
+                    
+        if not synthesized:
+            print(f"  -> Warning: Falling back to silent WAV for speech_{idx}.wav to guarantee pipeline continuity.")
+            create_silent_wav(out_wav, duration=3.5)
 
 def generate_foley_and_score(duration=130, sample_rate=24000):
     # Ambient soundscape

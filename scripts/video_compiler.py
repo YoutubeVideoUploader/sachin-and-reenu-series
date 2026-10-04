@@ -8,6 +8,14 @@ AUDIO_DIR = "generated_audio"
 IMAGE_DIR = "generated_images"
 OUTPUT_VIDEO = "master_episode.mp4"
 
+def create_silent_wav(file_path, duration=3.0, sample_rate=24000):
+    total_samples = int(sample_rate * duration)
+    with wave.open(file_path, 'w') as wav:
+        wav.setnchannels(1)
+        wav.setsampwidth(2)
+        wav.setframerate(sample_rate)
+        wav.writeframes(b'\x00' * (total_samples * 2))
+
 def compile_master_video():
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
         ep_data = json.load(f)
@@ -21,10 +29,17 @@ def compile_master_video():
         wav_path = os.path.join(AUDIO_DIR, f"speech_{idx}.wav")
         img_path = os.path.join(IMAGE_DIR, f"scene_{idx}.png")
         
+        # Ensure speech file exists
+        if not os.path.exists(wav_path) or os.path.getsize(wav_path) < 100:
+            print(f"Notice: Generating silent placeholder for missing audio: {wav_path}")
+            create_silent_wav(wav_path, duration=3.5)
+            
         audio_dur = 4.0
-        if os.path.exists(wav_path):
+        try:
             with wave.open(wav_path, "r") as w:
                 audio_dur = w.getnframes() / float(w.getframerate())
+        except Exception:
+            audio_dur = 3.5
         
         lead_in = 0.6
         tail_out = 0.9
