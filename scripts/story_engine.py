@@ -1,6 +1,6 @@
 import os
 import json
-import re
+import time
 from google import genai
 from google.genai import types
 
@@ -45,13 +45,13 @@ CURRENT STORY ARC: {state.get("current_arc")}
 
 TASK FOR EPISODE {next_ep_num}:
 Write the complete script for Episode {next_ep_num}.
-Directly continue from the Episode 1 cliffhanger (Sachin and Reenu have just embraced at Cochin Airport; now they walk to the parking lot or tea shop with Amal, but Sachin receives a mysterious UK phone call or Reenu notices a ring / letter in his bag, creating deep romantic tension and suspense!).
+Directly continue from the Episode 1 cliffhanger (Sachin and Reenu have just embraced at Cochin Airport; now they walk to the parking lot with Amal, but Sachin receives a mysterious UK phone call or Reenu notices a ring / letter in his bag, creating deep romantic tension and suspense!).
 
 STRICT REQUIREMENTS:
 1. Dialogues must be authentic, natural spoken colloquial Malayalam (സംഭാഷണ മലയാളം).
 2. Third-person narration must be emotional and connect with the audience.
 3. Every scene visual prompt must strictly adhere to the character anchors (Sachin in rust-orange tee, Reenu in cloud camo tee & skirt, Amal in olive tee). DO NOT CHANGE THEIR OUTFITS.
-4. DO NOT include any written text or letters inside the visual prompts (no signs with gibberish).
+4. DO NOT include any written text or letters inside the visual prompts.
 5. Exactly 12 to 14 scenes.
 
 OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
@@ -74,16 +74,35 @@ OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
 }}
 """
 
-    print(f"Calling Gemini to conceive and script Episode {next_ep_num}...")
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json"
-        )
-    )
+    models_to_try = [
+        "gemini-3.5-flash",
+        "gemini-3.7-flash",
+        "gemini-flash-latest",
+        "gemini-3.1-flash-lite",
+        "gemini-3.8-flash"
+    ]
+    script_text = None
     
-    script_text = response.text.strip()
+    for model_name in models_to_try:
+        print(f"Calling Gemini ({model_name}) to script Episode {next_ep_num}...")
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json"
+                )
+            )
+            script_text = response.text.strip()
+            print(f"  -> Successfully generated screenplay using {model_name}!")
+            break
+        except Exception as e:
+            print(f"  -> Note on {model_name}: {e}. Trying next model...")
+            time.sleep(1.0)
+            
+    if not script_text:
+        raise RuntimeError("Failed to generate screenplay after trying all active models.")
+    
     # Clean json formatting if wrapped in codeblocks
     if script_text.startswith("```json"):
         script_text = script_text[7:]
@@ -95,8 +114,9 @@ OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(episode_data, f, ensure_ascii=False, indent=2)
     
-    print(f"Successfully wrote script for Episode {next_ep_num}: {episode_data['title_malayalam']} ({episode_data['title_english']})")
-    print(f"Total scenes: {len(episode_data['scenes'])}")
+    title_en = episode_data.get('title_english', 'Untitled')
+    print(f"Successfully saved Episode {next_ep_num}: {title_en}")
+    print(f"Total scenes generated: {len(episode_data.get('scenes', []))}")
 
 if __name__ == "__main__":
     generate_next_episode()
