@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 4,
   "characters": {
     "Sachin": {
       "age": 26,
@@ -65,6 +65,17 @@
         "Amal",
         "Sachin",
         "Reenu"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "ഉത്തരം കിട്ടാത്ത ചോദ്യങ്ങൾ (Unanswered Questions)",
+      "summary": "Directly continuing from the heavy silence in the car, Sachin, Reenu, and Amal arrive at Reenu's apartment in Kochi. The distance between Sachin and Reenu widens as a mysterious phone message from the UK flashes on his phone again. Reenu confronts Sachin about his sudden secrets, leading to a heartbreaking confrontation in the rain.",
+      "cliffhanger": "As Reenu walks away into her apartment building, tears in her eyes, Sachin is left standing alone in the rain, holding a secret he cannot yet reveal, leaving their 6-year love hanging by a thread.",
+      "characters_present": [
+        "Reenu",
+        "Sachin",
+        "Amal"
       ]
     }
   ]
