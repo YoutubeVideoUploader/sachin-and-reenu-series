@@ -25,6 +25,12 @@ def generate_next_episode():
     state = load_story_state()
     next_ep_num = state.get("total_episodes_produced", 1) + 1
     
+
+    history = state.get("history", [])
+    last_ep = history[-1] if history else {}
+    last_cliffhanger = last_ep.get("cliffhanger", "The emotional reunion begins to unfold.")
+    last_title = last_ep.get("title", "Previous Episode")
+
     prompt = f"""
 You are the Lead Showrunner and Screenwriter for the hit 3D animated romantic drama series: "SACHIN & REENU" (സച്ചിൻ & റീനു).
 Language: Malayalam (മലയാളം).
@@ -43,20 +49,21 @@ SERIES BIBLE & CHARACTERS:
 - Narrator: Voice Kore. Poetic third-person storyteller explaining emotional depths.
 
 PREVIOUS EPISODE HISTORY:
-{json.dumps(state.get("history", []), ensure_ascii=False, indent=2)}
+{json.dumps(history, ensure_ascii=False, indent=2)}
 
 CURRENT STORY ARC: {state.get("current_arc")}
 
 TASK FOR EPISODE {next_ep_num}:
-Write the complete script for Episode {next_ep_num}.
-Directly continue from the Episode 1 cliffhanger (Sachin and Reenu have just embraced at Cochin Airport; now they walk to the parking lot with Amal, but Sachin receives a mysterious UK phone call or Reenu notices a ring / letter in his bag, creating deep romantic tension and suspense!).
+Write the complete screenplay for Episode {next_ep_num}.
+Directly continue from Episode {next_ep_num - 1} ({last_title}) cliffhanger:
+"{last_cliffhanger}"
 
-STRICT REQUIREMENTS:
-1. Dialogues must be authentic, natural spoken colloquial Malayalam (സംഭാഷണ മലയാളം).
-2. Third-person narration must be emotional and connect with the audience.
-3. Every scene visual prompt must strictly adhere to the character anchors (Sachin in rust-orange tee, Reenu in cloud camo tee & skirt, Amal in olive tee). DO NOT CHANGE THEIR OUTFITS.
-4. DO NOT include any written text or letters inside the visual prompts.
-5. Exactly 12 to 14 scenes.
+STRICT VISUAL, CHARACTER & LOCATION CONSISTENCY RULES:
+1. UNIFIED LOCATION & ATMOSPHERE: The entire episode must maintain strict environment consistency. If inside a car driving through Kochi in the rain, or arriving at Reenu's apartment, EVERY scene's `setting_description` and `visual_prompt` must share the exact same background architecture, lighting color palette (e.g. warm amber sodium streetlights against deep blue rainy night), and weather.
+2. CHARACTER CONTINUITY: Every single prompt MUST mention their exact canonical attire and physical traits (Sachin in rust-orange tee & joggers; Reenu in cloud camo crop tee & denim skirt; Amal in olive-green tee). NEVER change their clothes.
+3. COLLOQUIAL SPOKEN MALAYALAM: Dialogues must be authentic, natural spoken Kerala colloquial Malayalam (സംഭാഷണ മലയാളം).
+4. Exactly 12 to 14 scenes.
+5. NO WRITTEN TEXT inside the visual prompts.
 
 OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
 {{
