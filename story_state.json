@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 2,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -43,6 +43,17 @@
         "Amal",
         "Sachin",
         "Reenu"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "രഹസ്യങ്ങളുടെ നിഴൽ (The Shadow of Secrets)",
+      "summary": "Directly continuing from their emotional airport reunion, Reenu senses Sachin's hesitation. When she questions his sudden, unexpected return from the UK, Sachin tries to brush it off with Amal's witty intervention, but his underlying anxiety is hard to hide. Just as they prepare to leave, a mysterious phone call threatens to shatter the fragile peace.",
+      "cliffhanger": "Sachin's phone abruptly vibrates with an incoming call from an unknown UK number. He frantically declines it and hides the screen, but Reenu catches his panicked expression, her heart sinking with immediate suspicion.",
+      "characters_present": [
+        "Sachin",
+        "Reenu",
+        "Amal"
       ]
     }
   ]
