@@ -618,10 +618,9 @@
     // Embedded Active Episode Shot Prompts
     let episodeData = {
   "episode_number": 3,
-  "title_malayalam": "കനത്ത മഴയും കാത്തിരുന്ന യാത്രയും",
-  "title_english": "The Heavy Rain and the Long-Awaited Ride",
-  "synopsis": "As a sudden monsoon shower drenches Kochi, Sachin and Reenu are forced to share a single umbrella and a cozy back-seat ride. Amid Amal's playful teasing, the rain-slicked journey rekindles their unspoken romantic spark.",
-  "target_duration_seconds": 128,
+  "title_malayalam": "മഴയും പ്രണയവും",
+  "title_english": "Rain and Romance",
+  "synopsis": "Sachin and Reenu share a quiet moment under an umbrella as the monsoon hits Kochi, while Amal navigates them through the rain-slicked city. The atmosphere is thick with unspoken feelings as they head home.",
   "total_shots": 22,
   "shots": [
     {
@@ -629,220 +628,575 @@
       "duration": "4s",
       "duration_seconds": 4,
       "character": "Reenu",
-      "camera": "Slow tilt-down from airport canopy",
       "dialogue_malayalam": "",
-      "action_summary": "Reenu pauses by the curb as rain starts drumming against the awning",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Outside CIAL airport terminal, sparkling monsoon rain begins drumming against sleek glass awnings. Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length wavy dark-brown hair and soft curtain bangs, wearing a pastel cloud camouflage baby-blue and yellow t-shirt with sky-blue skirt, pauses at the curb, holding her hands out playfully to feel the cool raindrops. No spoken dialogue; pure ambient atmospheric beat. Slow cinematic tilt-down, centered framing in middle 55%, volumetric amber bokeh, cinematic rain physics, 4k 60fps render."
+      "action_summary": "Reenu looking at the rain at CIAL terminal",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "CIAL airport arrival terminal canopy, wet asphalt reflecting golden amber streetlamps, monsoon rain drizzling.",
+        "camera_direction": "Slow cinematic dolly-in on Reenu's face, centered in middle 55% of vertical 9:16 frame.",
+        "action_details": "Reenu stands under the canopy, looking out at the heavy rain with a soft, dreamy smile.",
+        "dialogue": {
+          "speaker": "None",
+          "language": "Malayalam",
+          "line": ""
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean Malayalam voice dialogue and natural ambient foley sound effects only (rain drizzle).",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, wearing baby-blue and soft yellow cloud t-shirt. Location: CIAL airport terminal, wet asphalt, amber lights. Action: Reenu watches the rain with a dreamy smile. Camera: Slow dolly-in, centered 55%. AUDIO: NO MUSIC, ambient rain only."
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal",
-      "camera": "Dynamic low-angle tracking shot",
-      "dialogue_malayalam": "ഡാ സച്ചിൻ, വേഗം വാടാ! മഴ കനക്കാൻ തുടങ്ങി!",
-      "action_summary": "Amal pops open an umbrella and calls them urgently with a grin",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat mustache, wearing a sage olive-green crewneck t-shirt, pops open a wide black umbrella with a snap and turns backward, waving his arm. Character Amal speaks in Malayalam: \"ഡാ സച്ചിൻ, വേഗം വാടാ! മഴ കനക്കാൻ തുടങ്ങി!\" Dynamic low-angle tracking shot, centered subject framing, splashing puddle droplets in slow motion, golden airport exterior lighting, natural mouth animation, 4k 60fps render."
+      "character": "Sachin",
+      "dialogue_malayalam": "മഴ തുടങ്ങിക്കഴിഞ്ഞു റീനു.",
+      "action_summary": "Sachin walks up behind Reenu holding an umbrella",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt.",
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+        ],
+        "location_details": "CIAL airport canopy.",
+        "camera_direction": "Tracking shot following Sachin as he approaches Reenu, centered framing.",
+        "action_details": "Sachin approaches Reenu, opening a large black umbrella over both of them.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "മഴ തുടങ്ങിക്കഴിഞ്ഞു റീനു."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean Malayalam voice dialogue and natural ambient foley sound effects only (umbrella opening sound, rain).",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin: Handsome 22yo South Indian Malayali man in terracotta rust-orange tee. Reenu: 22yo girl in blue camouflage tee. Location: CIAL airport terminal. Sachin opens an umbrella over Reenu. Dialogue: 'മഴ തുടങ്ങിക്കഴിഞ്ഞു റീനു.' (The rain has started, Reenu). AUDIO: NO MUSIC, umbrella pop, rain."
     },
     {
       "shot_number": 3,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "camera": "Medium over-the-shoulder push-in",
-      "dialogue_malayalam": "നീ വണ്ടി എടുക്ക്, ഞങ്ങൾ ഇപ്പൊ വരാം.",
-      "action_summary": "Sachin takes the umbrella from Amal and looks back towards Reenu",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair, wearing a terracotta rust-orange crewneck t-shirt, takes the large umbrella handle from Amal's hand. Character Sachin speaks in Malayalam: \"നീ വണ്ടി എടുക്ക്, ഞങ്ങൾ ഇപ്പൊ വരാം.\" Medium over-the-shoulder shot, warm golden glow from the terminal, heavy rain pouring in the background, cinematic 3D lighting, centered composition, 4k 60fps render."
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Reenu",
+      "dialogue_malayalam": "എനിക്കിതൊരുപാട് ഇഷ്ടമാ സച്ചിൻ, ഈ മഴയും പിന്നെ ഈ തണുപ്പും.",
+      "action_summary": "Reenu looks up at Sachin while under the umbrella",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt.",
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+        ],
+        "location_details": "Under the umbrella, CIAL sidewalk.",
+        "camera_direction": "Close-up, focusing on their proximity, centered 55%.",
+        "action_details": "Reenu looks up at Sachin, her eyes reflecting the warm glow of the terminal lights.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "എനിക്കിതൊരുപാട് ഇഷ്ടമാ സച്ചിൻ, ഈ മഴയും പിന്നെ ഈ തണുപ്പും."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean Malayalam voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin and Reenu sharing an umbrella. Reenu: 22yo girl, hazel eyes, blue camouflage tee. Sachin: 22yo man, terracotta tee. Dialogue: 'എനിക്കിതൊരുപാട് ഇഷ്ടമാ സച്ചിൻ, ഈ മഴയും പിന്നെ ഈ തണുപ്പും.' (I love this, Sachin, this rain and this chill). AUDIO: NO MUSIC, rain sounds only."
     },
     {
       "shot_number": 4,
-      "duration": "8s",
-      "duration_seconds": 8,
-      "character": "Sachin",
-      "camera": "Slow close-up dolly-in",
-      "dialogue_malayalam": "റീനൂ, കുറച്ചുകൂടി അടുത്തേക്ക് നിൽക്ക്... നനയും.",
-      "action_summary": "Sachin holds the umbrella over Reenu, gently urging her closer",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Underneath the dark umbrella, Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair and a terracotta crewneck, looks down protectively at Reenu. Character Sachin speaks in Malayalam: \"റീനൂ, കുറച്ചുകൂടി അടുത്തേക്ക് നിൽക്ക്... നനയും.\" Slow close-up dolly-in, soft warm light reflecting off rain droplets on the umbrella's edge, intimate atmosphere, centered in middle 55%, 4k 60fps render."
+      "duration": "4s",
+      "duration_seconds": 4,
+      "character": "Amal",
+      "dialogue_malayalam": "വേഗം കയറ്!",
+      "action_summary": "Amal pops his head out of the car window",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Wet curb at CIAL, car interior view through window.",
+        "camera_direction": "Medium shot on Amal from inside the car, centered.",
+        "action_details": "Amal leans across the passenger seat, waving his hand impatiently with a grin.",
+        "dialogue": {
+          "speaker": "Amal",
+          "language": "Malayalam",
+          "line": "വേഗം കയറ്!"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean Malayalam voice dialogue and car idling sound.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Amal: 22yo man with curly hair and sage olive-green tee, in a car. Action: Amal leans out, waving. Dialogue: 'വേഗം കയറ്!' (Get in fast!). AUDIO: NO MUSIC, car idling sound."
     },
     {
       "shot_number": 5,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Reenu",
-      "camera": "Extremely close up on face",
-      "dialogue_malayalam": "",
-      "action_summary": "Reenu blushes and steps closer to him under the umbrella",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length wavy dark-brown hair, blushes deeply, her hazel-brown eyes sparkling as she steps closer, almost touching Sachin's shoulder. No spoken dialogue; she smiles shyly with quiet affection. Extremely close up, glowing honey complexion, soft lens blur of the rainy background, warm neon bokeh, centered framing, 4k 60fps render."
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ദാ വരുന്നു, അമലേ!",
+      "action_summary": "Sachin and Reenu walking towards the car",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt.",
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+        ],
+        "location_details": "Rain-soaked CIAL parking area.",
+        "camera_direction": "Tracking pan moving with Sachin and Reenu as they walk.",
+        "action_details": "Sachin guides Reenu carefully under the umbrella toward the waiting car.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "ദാ വരുന്നു, അമലേ!"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Footsteps in puddles, rain sounds.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin and Reenu walking to car. Reenu in blue camo tee, Sachin in terracotta tee. Dialogue: 'ദാ വരുന്നു, അമലേ!' (Coming, Amal!). AUDIO: NO MUSIC, footsteps, rain."
     },
     {
       "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "camera": "Low-angle medium shot looking up",
-      "dialogue_malayalam": "സച്ചിൻ... നീ ഇപ്പോഴും ആ പഴയ ആളാണ്!",
-      "action_summary": "Reenu looks up at Sachin with a nostalgic, warm smile",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Under the umbrella, Reenu, wearing a classic pastel camouflage t-shirt, looks up into Sachin's eyes with a gentle, teasing smile. Character Reenu speaks in Malayalam: \"സച്ചിൻ... നീ ഇപ്പോഴും ആ പഴയ ആളാണ്!\" Low-angle medium shot, heavy rain falling around their private sanctuary, beautiful soft key lighting on her face, centered 9:16 composition, 4k 60fps render."
+      "duration": "4s",
+      "duration_seconds": 4,
+      "character": "None",
+      "dialogue_malayalam": "",
+      "action_summary": "The car doors closing shut",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [],
+        "location_details": "Cozy car interior, rain streaks on window.",
+        "camera_direction": "Interior static close-up on car door frame.",
+        "action_details": "Door closes, cutting off the loud rain noise outside.",
+        "dialogue": {
+          "speaker": "None",
+          "language": "Malayalam",
+          "line": ""
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Sharp car door thud, transition to quiet interior.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Car door closing. Location: Inside car, rain outside. AUDIO: NO MUSIC, loud thud, silence."
     },
     {
       "shot_number": 7,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Sachin",
-      "camera": "Tight profile shot",
-      "dialogue_malayalam": "",
-      "action_summary": "Sachin smiles warmly, appreciating her presence close to him",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair, looks down at Reenu, his boyish smile spreading across his handsome jawline. No spoken dialogue; his eyes are filled with pure warmth and unspoken love. Tight profile shot, beautiful soft golden lighting, raindrops glittering like diamonds, centered, 4k 60fps render."
-    },
-    {
-      "shot_number": 8,
       "duration": "8s",
       "duration_seconds": 8,
       "character": "Amal",
-      "camera": "Medium shot from driver's side window",
-      "dialogue_malayalam": "എടാ പ്രണയ ജോഡികളേ! വണ്ടിയിൽ കയറാൻ വല്ല ഉദ്ദേശവുമുണ്ടോ?",
-      "action_summary": "Amal leans out of the car window, waving them in playfully",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair and a neat mustache, wearing a sage olive-green t-shirt, leans out of the open car window into the rain, wearing a big mischievous grin. Character Amal speaks in Malayalam: \"എടാ പ്രണയ ജോഡികളേ! വണ്ടിയിൽ കയറാൻ വല്ല ഉദ്ദേശവുമുണ്ടോ?\" Medium shot, rain splashing on the car roof, yellow streetlights casting warm reflections, 4k 60fps render."
+      "dialogue_malayalam": "എന്തൊരു മഴയാ അല്ലേ? കൊച്ചിയിലെ ട്രാഫിക് ബ്ലോക്കിൽ കിടക്കാൻ പോവാ ഇന്ന്.",
+      "action_summary": "Amal driving, checking the rearview mirror",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Car interior, city lights blurred outside.",
+        "camera_direction": "Over-the-shoulder from back seat looking at Amal.",
+        "action_details": "Amal turns steering wheel, smiling at the mirror as he talks.",
+        "dialogue": {
+          "speaker": "Amal",
+          "language": "Malayalam",
+          "line": "എന്തൊരു മഴയാ അല്ലേ? കൊച്ചിയിലെ ട്രാഫിക് ബ്ലോക്കിൽ കിടക്കാൻ പോവാ ഇന്ന്."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Car engine hum, wipers, voice.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Amal in driver seat, olive-green tee. Dialogue: 'എന്തൊരു മഴയാ അല്ലേ? കൊച്ചിയിലെ ട്രാഫിക് ബ്ലോക്കിൽ കിടക്കാൻ പോവാ ഇന്ന്.' (What a rain, right? We're going to be stuck in Kochi traffic today). AUDIO: NO MUSIC, wipers, engine."
+    },
+    {
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "സാരമില്ല, ഈ മഴ നമുക്ക് ആസ്വദിക്കാം.",
+      "action_summary": "Sachin smiling at Reenu in the back seat",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt.",
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+        ],
+        "location_details": "Back seat of the car.",
+        "camera_direction": "Medium close-up of Sachin and Reenu side-by-side.",
+        "action_details": "Sachin looks at Reenu and smiles, leaning in slightly.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "സാരമില്ല, ഈ മഴ നമുക്ക് ആസ്വദിക്കാം."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin and Reenu sitting together in car. Sachin in terracotta tee, Reenu in blue camo tee. Dialogue: 'സാരമില്ല, ഈ മഴ നമുക്ക് ആസ്വദിക്കാം.' (It's okay, let's enjoy the rain). AUDIO: NO MUSIC, rain on roof."
     },
     {
       "shot_number": 9,
       "duration": "4s",
       "duration_seconds": 4,
       "character": "Reenu",
-      "camera": "Medium tracking shot",
-      "dialogue_malayalam": "",
-      "action_summary": "Reenu and Sachin laugh and run together towards the car doors",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu and Sachin, sharing the black umbrella, laugh joyfully together, running in synchronization through the rain-slicked asphalt toward the car. No spoken dialogue; happy and energetic movement. Medium tracking shot, glowing wet road reflections, vertical composition, cinematic rain effects, 4k 60fps render."
+      "dialogue_malayalam": "ശരിയാ.",
+      "action_summary": "Reenu looking out the rain-streaked window",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Car window, rain drops sliding down.",
+        "camera_direction": "Extreme close-up on Reenu's profile.",
+        "action_details": "Reenu rests her chin on her hand, looking out at the passing neon city lights.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "ശരിയാ."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu looking out rainy car window. Dialogue: 'ശരിയാ.' (Right/True). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "camera": "Interior cozy car shot",
-      "dialogue_malayalam": "ഹാവൂ! ഈ മഴയിൽ കാറിലിരിക്കാൻ എന്ത് സുഖമാണ്.",
-      "action_summary": "Reenu settles into the cozy back seat, shaking off a few raindrops",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Inside the cozy car interior, Reenu sits in the back seat, brushing a few stray raindrops from her pastel blue and yellow camouflage t-shirt. Character Reenu speaks in Malayalam: \"ഹാവൂ! ഈ മഴയിൽ കാറിലിരിക്കാൻ എന്ത് സുഖമാണ്.\" Warm golden dome light illuminating the interior, rainy windows with out-of-focus neon lights, centered framing, 4k 60fps render."
+      "character": "Amal",
+      "dialogue_malayalam": "നിങ്ങൾ രണ്ടാളും എന്തിനാ ഇങ്ങനെ മെല്ലെ സംസാരിക്കുന്നത്?",
+      "action_summary": "Amal looking in the rearview mirror",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Driver's view in the car.",
+        "camera_direction": "Low angle from dashboard, looking at Amal's face.",
+        "action_details": "Amal glances back playfully, teasing them.",
+        "dialogue": {
+          "speaker": "Amal",
+          "language": "Malayalam",
+          "line": "നിങ്ങൾ രണ്ടാളും എന്തിനാ ഇങ്ങനെ മെല്ലെ സംസാരിക്കുന്നത്?"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Amal driving, teasing. Dialogue: 'നിങ്ങൾ രണ്ടാളും എന്തിനാ ഇങ്ങനെ മെല്ലെ സംസാരിക്കുന്നത്?' (Why are you both talking so softly?). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 11,
       "duration": "8s",
       "duration_seconds": 8,
       "character": "Sachin",
-      "camera": "Two-shot in back seat",
-      "dialogue_malayalam": "അതെ, കൊച്ചിയിലെ ഈ മഴ നമ്മൾ ഒരുമിച്ച് കാണുന്നത് എത്ര കാലത്തിന് ശേഷമാണ്.",
-      "action_summary": "Sachin slides in beside her, looking at the rain-streaked window",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Inside the warm car, Sachin sits close to Reenu in the back seat, his terracotta crewneck slightly damp. He turns his head to look at her with a gentle gaze. Character Sachin speaks in Malayalam: \"അതെ, കൊച്ചിയിലെ ഈ മഴ നമ്മൾ ഒരുമിച്ച് കാണുന്നത് എത്ര കാലത്തിന് ശേഷമാണ്.\" Cozy medium two-shot, warm ambient dashboard lighting, rain dripping down the window panes, centered 55%, 4k 60fps render."
+      "dialogue_malayalam": "അതൊക്കെ പോട്ടെ അമലേ, നിനക്ക് എന്താ ഇങ്ങനെ മഴയത്ത് വണ്ടി ഓടിക്കാൻ പേടിയാണോ?",
+      "action_summary": "Sachin teasing Amal back",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch.",
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Focusing on Sachin's playful face.",
+        "action_details": "Sachin leans forward toward the front seat, laughing at Amal.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "അതൊക്കെ പോട്ടെ അമലേ, നിനക്ക് എന്താ ഇങ്ങനെ മഴയത്ത് വണ്ടി ഓടിക്കാൻ പേടിയാണോ?"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin leaning forward, teasing Amal. Dialogue: 'അതൊക്കെ പോട്ടെ അമലേ, നിനക്ക് എന്താ ഇങ്ങനെ മഴയത്ത് വണ്ടി ഓടിക്കാൻ പേടിയാണോ?' (Never mind that Amal, are you scared of driving in the rain?). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 12,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Amal",
-      "camera": "Rearview mirror reflection close-up",
-      "dialogue_malayalam": "പിന്നല്ലാതെ! പ്രണയിക്കാൻ പറ്റിയ സമയം!",
-      "action_summary": "Amal adjusts the rearview mirror with a cheeky wink",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Close-up on the car's rearview mirror. Amal's expressive brown eyes and neat mustache are visible as he winks playfully, his hands on the steering wheel. Character Amal speaks in Malayalam: \"പിന്നല്ലാതെ! പ്രണയിക്കാൻ പറ്റിയ സമയം!\" Warm dashboard glow, dark rain-slicked highway visible through the front windshield, natural lip-sync, cozy cinematic color grading, 4k 60fps render."
+      "dialogue_malayalam": "എനിക്ക് പേടിയോ? ഞാൻ ഒരു പ്രൊഫഷണൽ ഡ്രൈവറാ!",
+      "action_summary": "Amal driving confidently",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Dynamic pan capturing the steering wheel and Amal's face.",
+        "action_details": "Amal turns the wheel with exaggerated confidence.",
+        "dialogue": {
+          "speaker": "Amal",
+          "language": "Malayalam",
+          "line": "എനിക്ക് പേടിയോ? ഞാൻ ഒരു പ്രൊഫഷണൽ ഡ്രൈവറാ!"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Amal driving, confident. Dialogue: 'എനിക്ക് പേടിയോ? ഞാൻ ഒരു പ്രൊഫഷണൽ ഡ്രൈവറാ!' (Me, scared? I'm a professional driver!). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 13,
       "duration": "4s",
       "duration_seconds": 4,
       "character": "Reenu",
-      "camera": "Medium reaction shot",
-      "dialogue_malayalam": "",
-      "action_summary": "Reenu playfully glares at Amal in the mirror and blushes",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu, in the cozy back seat, looks up toward the rearview mirror, pretending to be annoyed but unable to hide her glowing, happy blush. No spoken dialogue; she smiles softly and looks down. Medium reaction shot, golden interior dome light, cozy atmosphere, centered 55% in vertical frame, 4k 60fps render."
+      "dialogue_malayalam": "സാരമില്ല വിട്.",
+      "action_summary": "Reenu laughing softly",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Soft portrait shot of Reenu.",
+        "action_details": "Reenu covers her mouth as she giggles at the boys' banter.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "സാരമില്ല വിട്."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu giggling. Dialogue: 'സാരമില്ല വിട്.' (It's okay, leave it). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 14,
-      "duration": "6s",
-      "duration_seconds": 6,
+      "duration": "8s",
+      "duration_seconds": 8,
       "character": "Sachin",
-      "camera": "Tight close-up of hands",
-      "dialogue_malayalam": "ദാ, തലയിലെ വെള്ളം ഒപ്പിക്ക്...",
-      "action_summary": "Sachin hands Reenu a soft white tissue pack with a caring look",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin's hands, wearing a black digital watch, gently extend a soft white pocket tissue pack toward Reenu. Character Sachin speaks in Malayalam: \"ദാ, തലയിലെ വെള്ളം ഒപ്പിക്ക്...\" Tight close-up, warm amber car lighting, cinematic depth of field, soft details on the terracotta fabric of his sleeve, 4k 60fps render."
+      "dialogue_malayalam": "അതൊക്കെ പോട്ടെ, നാളെ നമുക്ക് ആ പഴയ ചായക്കടയിൽ പോയാലോ?",
+      "action_summary": "Sachin looking at Reenu, suggesting plans",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch.",
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Intimate two-shot, soft lighting.",
+        "action_details": "Sachin gently taps Reenu's arm to catch her attention, smiling.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "അതൊക്കെ പോട്ടെ, നാളെ നമുക്ക് ആ പഴയ ചായക്കടയിൽ പോയാലോ?"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin and Reenu together. Dialogue: 'അതൊക്കെ പോട്ടെ, നാളെ നമുക്ക് ആ പഴയ ചായക്കടയിൽ പോയാലോ?' (Never mind, shall we go to that old tea shop tomorrow?). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 15,
-      "duration": "8s",
-      "duration_seconds": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
       "character": "Reenu",
-      "camera": "Medium over-the-shoulder push-in",
-      "dialogue_malayalam": "നന്ദി സച്ചിൻ. നീ യുകെയിൽ പോയപ്പോൾ എന്നെ ഓർക്കാറുണ്ടായിരുന്നോ?",
-      "action_summary": "Reenu takes the tissues and asks him softly, her eyes searching his",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu takes the tissues, brushing her shoulder-length wavy dark-brown hair back to dry her temples. She looks directly into Sachin's eyes with a vulnerable, sweet expression. Character Reenu speaks in Malayalam: \"നന്ദി സച്ചിൻ. നീ യുകെയിൽ പോയപ്പോൾ എന്നെ ഓർക്കാറുണ്ടായിരുന്നോ?\" Medium over-the-shoulder shot, soft warm key light, cinematic 9:16 crop, 4k 60fps render."
+      "dialogue_malayalam": "നല്ല ഐഡിയ! നല്ല ചൂട് ചായയും കടിയും.",
+      "action_summary": "Reenu excitedly agreeing",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Medium shot on Reenu.",
+        "action_details": "Reenu nods enthusiastically, her face lighting up with excitement.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "നല്ല ഐഡിയ! നല്ല ചൂട് ചായയും കടിയും."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu excited. Dialogue: 'നല്ല ഐഡിയ! നല്ല ചൂട് ചായയും കടിയും.' (Great idea! Good hot tea and snacks). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 16,
       "duration": "4s",
       "duration_seconds": 4,
-      "character": "Sachin",
-      "camera": "Extreme close-up on eyes",
-      "dialogue_malayalam": "",
-      "action_summary": "Sachin is momentarily stunned, his gaze softening intensely",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Extreme close-up on Sachin's warm dark-brown eyes. His expression softens completely, filled with deep nostalgia and unspoken love. No spoken dialogue; a quiet, emotionally charged beat. Beautiful golden reflections from the car dashboard, high fidelity textures, centered vertical framing, 4k 60fps render."
+      "character": "Amal",
+      "dialogue_malayalam": "ഞാനും വരുന്നുണ്ട്!",
+      "action_summary": "Amal joining the conversation",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Driver's seat.",
+        "camera_direction": "Close-up on Amal's profile.",
+        "action_details": "Amal smiles broadly while keeping eyes on the road.",
+        "dialogue": {
+          "speaker": "Amal",
+          "language": "Malayalam",
+          "line": "ഞാനും വരുന്നുണ്ട്!"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Amal driving. Dialogue: 'ഞാനും വരുന്നുണ്ട്!' (I'm coming too!). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 17,
       "duration": "8s",
       "duration_seconds": 8,
       "character": "Sachin",
-      "camera": "Cozy side profile shot",
-      "dialogue_malayalam": "ഓരോ നിമിഷവും... ഞാൻ അവിടെ തനിച്ചായിരുന്നപ്പോഴൊക്കെ നിന്നെ ഓർത്തു.",
-      "action_summary": "Sachin speaks with absolute sincerity, looking directly at her",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair, leans slightly closer to Reenu, his voice filled with genuine emotion. Character Sachin speaks in Malayalam: \"ഓരോ നിമിഷവും... ഞാൻ അവിടെ തനിച്ചായിരുന്നപ്പോഴൊക്കെ നിന്നെ ഓർത്തു.\" Cozy side profile, warm interior car glow, rain droplets running down the glass behind them, 4k 60fps render."
+      "dialogue_malayalam": "അയ്യോ വേണ്ട, നീ വന്നാൽ മൊത്തം ചായയും നീ തന്നെ കുടിക്കും.",
+      "action_summary": "Sachin playful banter with Amal",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch.",
+          "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+        ],
+        "location_details": "Car interior.",
+        "camera_direction": "Quick switch focus between Sachin and Amal.",
+        "action_details": "Sachin leans toward the front to joke with Amal.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "അയ്യോ വേണ്ട, നീ വന്നാൽ മൊത്തം ചായയും നീ തന്നെ കുടിക്കും."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin teasing Amal. Dialogue: 'അയ്യോ വേണ്ട, നീ വന്നാൽ മൊത്തം ചായയും നീ തന്നെ കുടിക്കും.' (No, if you come, you'll drink all the tea). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 18,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "camera": "Tight reaction close-up",
-      "dialogue_malayalam": "സത്യമാണോ അതോ എന്നെ കളിപ്പിക്കുകയാണോ?",
-      "action_summary": "Reenu asks softly, a tender smile playing on her lips",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu's hazel-brown eyes widen slightly, a beautiful mixture of surprise and happiness on her face. Character Reenu speaks in Malayalam: \"സത്യമാണോ അതോ എന്നെ കളിപ്പിക്കുകയാണോ?\" Tight reaction close-up, soft golden dome light, flawless honey complexion, wet window bokeh in background, vertical 9:16, 4k 60fps render."
+      "character": "None",
+      "dialogue_malayalam": "",
+      "action_summary": "View of the city through the rain-slicked windshield",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [],
+        "location_details": "Rain-streaked city street, blurred colorful lights.",
+        "camera_direction": "Wide static shot from dashboard perspective.",
+        "action_details": "Wipers sweep across, clearing rain, city lights blur in the bokeh.",
+        "dialogue": {
+          "speaker": "None",
+          "language": "Malayalam",
+          "line": ""
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Wipers, rain on roof, soft city traffic noise.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. View of Kochi streets through rainy windshield. Wipers working. AUDIO: NO MUSIC, rain and traffic sounds."
     },
     {
       "shot_number": 19,
       "duration": "4s",
       "duration_seconds": 4,
-      "character": "Sachin",
-      "camera": "Slow forward dolly",
-      "dialogue_malayalam": "",
-      "action_summary": "Sachin shakes his head gently, offering a small, reassuring smile",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin shakes his head gently with a warm, honest, and reassuring boyish smile, his eyes speaking volumes of truth. No spoken dialogue; quiet reassurance. Slow forward dolly shot, warm amber tones, crisp Pixar animation, centered in middle 55%, 4k 60fps render."
+      "character": "Reenu",
+      "dialogue_malayalam": "എത്ര നല്ല മഴ!",
+      "action_summary": "Reenu relaxed, eyes closed listening to rain",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Inside car.",
+        "camera_direction": "Close-up on Reenu, soft light.",
+        "action_details": "Reenu leans her head against the headrest, closing her eyes, serene.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "എത്ര നല്ല മഴ!"
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu serene. Dialogue: 'എത്ര നല്ല മഴ!' (What nice rain!). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 20,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "camera": "Whip-pan to front seat dashboard",
-      "dialogue_malayalam": "ഒരു നല്ല പാട്ട് കൂടി ആയാൽ സീൻ കംപ്ലീറ്റ്!",
-      "action_summary": "Amal turns a knob on the dashboard, playing a soft melody",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, in his sage olive-green crewneck, reaches out to turn the glowing dial of the car's media console. Character Amal speaks in Malayalam: \"ഒരു നല്ല പാട്ട് കൂടി ആയാൽ സീൻ കംപ്ലീറ്റ്!\" Whip-pan to the front seat, colorful digital dashboard lights, warm rain aesthetic, 4k 60fps render."
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഇതുപോലെ എന്നും നമുക്ക് ഒരുമിച്ച് മഴ കൊള്ളണം റീനു.",
+      "action_summary": "Sachin whispering to Reenu",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "8s",
+        "characters_present": [
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch.",
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+        ],
+        "location_details": "Car back seat, cozy, dim lighting.",
+        "camera_direction": "Macro close-up on their faces, intimate, soft bokeh background.",
+        "action_details": "Sachin leans in and whispers quietly, his hand near hers.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "language": "Malayalam",
+          "line": "ഇതുപോലെ എന്നും നമുക്ക് ഒരുമിച്ച് മഴ കൊള്ളണം റീനു."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Sachin and Reenu intimate moment. Dialogue: 'ഇതുപോലെ എന്നും നമുക്ക് ഒരുമിച്ച് മഴ കൊള്ളണം റീനു.' (I want us to get wet in the rain together like this every day, Reenu). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 21,
-      "duration": "8s",
-      "duration_seconds": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
       "character": "Reenu",
-      "camera": "Slow tracking shot from outside the window",
-      "dialogue_malayalam": "ഈ യാത്ര ഒരിക്കലും അവസാനിക്കാതിരുന്നെങ്കിൽ...",
-      "action_summary": "Reenu looks out at the glowing neon lights of Kochi, whispering",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Slow tracking shot from outside the car window looking in. Reenu's face is partially reflected in the rain-streaked glass, glowing in the warm yellow light. Character Reenu speaks in Malayalam: \"ഈ യാത്ര ഒരിക്കലും അവസാനിക്കാതിരുന്നെങ്കിൽ...\" Out-of-focus Kochi city neon lights forming beautiful creamy bokeh, high-fidelity rain physics, 4k 60fps render."
+      "dialogue_malayalam": "തീർച്ചയായും, അത് എനിക്ക് ഒരുപാട് ഇഷ്ടമാ.",
+      "action_summary": "Reenu looking deep into Sachin's eyes",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "6s",
+        "characters_present": [
+          "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt.",
+          "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+        ],
+        "location_details": "Car back seat.",
+        "camera_direction": "Intimate close-up, soft focus.",
+        "action_details": "Reenu smiles deeply, looking into Sachin's eyes with warmth.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "language": "Malayalam",
+          "line": "തീർച്ചയായും, അത് എനിക്ക് ഒരുപാട് ഇഷ്ടമാ."
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Reenu looking at Sachin. Dialogue: 'തീർച്ചയായും, അത് എനിക്ക് ഒരുപാട് ഇഷ്ടമാ.' (Definitely, I would love that). AUDIO: NO MUSIC."
     },
     {
       "shot_number": 22,
       "duration": "4s",
       "duration_seconds": 4,
-      "character": "Sachin",
-      "camera": "Extreme close-up on seat space",
+      "character": "None",
       "dialogue_malayalam": "",
-      "action_summary": "Sachin's hand moves slightly closer to Reenu's on the car seat",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. In the soft shadow of the back seat, Sachin's hand resting on the dark fabric slowly shifts, his fingers brushing near Reenu's hand in a subtle gesture of unspoken affection. No spoken dialogue; pure romantic tension. Extreme close-up on seat space, warm golden and cool blue neon reflections, cinematic depth of field, 4k 60fps render."
+      "action_summary": "Car driving away into the rainy dark street",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps.",
+        "duration": "4s",
+        "characters_present": [],
+        "location_details": "Rainy street at night, car tail lights fading into distance.",
+        "camera_direction": "Static long shot of the street.",
+        "action_details": "The car drives away, its red tail lights glowing in the rain-filled dark.",
+        "dialogue": {
+          "speaker": "None",
+          "language": "Malayalam",
+          "line": ""
+        },
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Fading car engine sound, heavy rain ambient.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      },
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 format. Car driving away, red tail lights in rain. AUDIO: NO MUSIC, fading engine and rain."
     }
   ],
   "calculated_total_seconds": 128,
@@ -875,6 +1229,10 @@
           </div>
         `;
 
+        const jsonPromptStr = JSON.stringify(shot.json_prompt || {}, null, 2);
+        const locDetails = (shot.json_prompt && shot.json_prompt.location_details) ? shot.json_prompt.location_details : 'Kochi, Kerala (Monsoon atmosphere)';
+        const camDetails = (shot.json_prompt && shot.json_prompt.camera_direction) ? shot.json_prompt.camera_direction : (shot.camera || 'Cinematic vertical framing');
+
         // 1. Render Shot Card
         const card = document.createElement('div');
         card.className = 'shot-card';
@@ -884,19 +1242,33 @@
               <span class="shot-badge">Shot #${shot.shot_number}</span>
               <span class="dur-badge ${durClass}">⏱️ ${shot.duration}</span>
               <span class="char-badge">👤 ${shot.character}</span>
-              <span class="camera-badge">🎥 ${shot.camera}</span>
+              <span style="font-size: 12px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+                🔇 NO BGM
+              </span>
             </div>
-            <button class="copy-btn" onclick="copyPrompt(${shot.shot_number}, this)">
-              📋 Copy Flow Prompt
-            </button>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="copy-btn" style="background: #1e293b; border-color: var(--accent-blue); color: var(--accent-blue);" onclick="copyJsonPrompt(${shot.shot_number}, this)">
+                📋 Copy JSON Prompt
+              </button>
+              <button class="copy-btn" onclick="copyPrompt(${shot.shot_number}, this)">
+                📋 Copy Text Prompt
+              </button>
+            </div>
           </div>
           ${dialogueHtml}
-          <p style="font-size: 14px; margin-bottom: 8px;"><b>Action:</b> ${shot.action_summary}</p>
+          <div style="font-size: 13.5px; color: #cbd5e1; margin-bottom: 8px; line-height: 1.6;">
+            <p><b>📍 Location:</b> ${locDetails}</p>
+            <p><b>🎥 Camera:</b> ${camDetails}</p>
+            <p><b>🎬 Action:</b> ${shot.action_summary}</p>
+          </div>
           <div class="prompt-box">
+            <span style="font-size: 11px; text-transform: uppercase; color: var(--primary); font-weight: 700; display: block; margin-bottom: 4px;">Google Flow Prompt:</span>
             <span class="prompt-text" id="promptText_${shot.shot_number}">${shot.flow_prompt}</span>
           </div>
+          <div style="display: none;" id="jsonPromptRaw_${shot.shot_number}">${jsonPromptStr}</div>
         `;
         container.appendChild(card);
+
 
         // 2. Render Upload Item
         const upItem = document.createElement('div');
@@ -918,7 +1290,7 @@
       const text = document.getElementById(`promptText_${shotNum}`).innerText;
       navigator.clipboard.writeText(text).then(() => {
         const originalText = btn.innerHTML;
-        btn.innerHTML = '✓ Copied!';
+        btn.innerHTML = '✓ Copied Text!';
         btn.classList.add('copied');
         setTimeout(() => {
           btn.innerHTML = originalText;
@@ -926,6 +1298,20 @@
         }, 2000);
       });
     }
+
+    function copyJsonPrompt(shotNum, btn) {
+      const jsonText = document.getElementById(`jsonPromptRaw_${shotNum}`).innerText;
+      navigator.clipboard.writeText(jsonText).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✓ Copied JSON!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');

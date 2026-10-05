@@ -31,23 +31,23 @@ if os.path.exists(".env"):
 STATE_FILE = "story_state.json"
 OUTPUT_SHOTS_FILE = "current_episode_shots.json"
 
-# CANONICAL CHARACTER DNA FOR GOOGLE FLOW VIDEO GENERATION
+# CANONICAL CHARACTER DNA FOR COMPLETE CONSISTENCY
 REENU_DNA = (
-    "Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair "
-    "and soft curtain bangs, warm sparkling hazel-brown eyes, glowing honey complexion. "
-    "Attire: classic pastel camouflage t-shirt in baby-blue and soft yellow patches with sky-blue denim skirt."
+    "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair "
+    "and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. "
+    "Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
 )
 
 SACHIN_DNA = (
-    "Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair styled with casual volume, "
-    "warm dark-brown eyes, handsome clean jawline, charming boyish smile. "
-    "Attire: terracotta rust-orange crewneck t-shirt with subtle chest pocket, dark-gray joggers, black digital watch."
+    "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, "
+    "warm dark-brown expressive eyes, clean defined jawline, charming boyish smile. "
+    "Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
 )
 
 AMAL_DNA = (
-    "Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair, "
-    "subtle neat mustache, warm humorous brown eyes, and an energetic cheerful smile. "
-    "Attire: sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+    "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, "
+    "neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. "
+    "Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
 )
 
 def get_gemini_client():
@@ -63,8 +63,7 @@ def get_gemini_client():
         raise ValueError("No GEMINI_API_KEY found in environment.")
     return genai.Client(api_key=keys[0])
 
-def generate_flow_prompts(custom_outline=None, episode_num=None):
-    # Load story state
+def generate_flow_prompts(custom_outline=None, episode_num=3):
     state = {}
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r", encoding="utf-8") as f:
@@ -72,10 +71,9 @@ def generate_flow_prompts(custom_outline=None, episode_num=None):
             
     current_ep = episode_num or (state.get("total_episodes_produced", 0) + 1)
     
-    # Prompt with Malayalam dialogue constraints and dynamic 4s/6s/8s durations
     prompt = f"""
-You are the Lead Cinematographer, Screenwriter & Director for the 3D Disney/Pixar animated vertical Malayalam web series 'SACHIN & REENU (സച്ചിൻ & റീനു)'.
-We are producing Episode {current_ep}.
+You are the Lead Cinematographer, Technical AI Director & Screenwriter for the 3D Disney/Pixar animated vertical Malayalam web series 'SACHIN & REENU (സച്ചിൻ & റീനു)'.
+We are directing Episode {current_ep}.
 
 SERIES CONTEXT:
 Sachin (22, returned from UK) and Reenu (22, waiting in Kochi) are deeply in love. Amal is Sachin's witty, loyal best friend.
@@ -84,33 +82,33 @@ Setting: Kochi, Kerala (CIAL airport, monsoon highway, cozy car interior, rain-s
 EPISODE PREMISE:
 {custom_outline or f"Episode {current_ep}: Stepping out into the sudden Kochi monsoon, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets."}
 
-CRITICAL DURATION & LENGTH REQUIREMENTS:
-1. TARGET TOTAL REEL DURATION: Exactly between 2.0 minutes and 2.5 minutes (120 seconds to 150 seconds).
+CRITICAL PRODUCTION CONSTRAINTS:
+1. TOTAL RUNTIME: Between 2.0 minutes and 2.5 minutes (120 to 150 seconds).
 2. DYNAMIC SHOT DURATION RULE:
-   - '4s' (4 seconds): Establishing shot, silent emotional gaze, ambient background, OR very short dialogue (1 to 3 words, e.g. "സച്ചിൻ!", "എന്താടാ?").
+   - '4s' (4 seconds): Establishing shot, silent emotional gaze, ambient background, OR very short dialogue (1 to 3 words).
    - '6s' (6 seconds): Medium dialogue sentence (4 to 8 words).
    - '8s' (8 seconds): Extended dialogue sentence, emotional speech, or two-line exchange (9 to 16 words).
-3. NUMBER OF SHOTS: Generate 20 to 24 discrete sequential shots so the sum of durations strictly totals between 120s and 150s.
+3. NUMBER OF SHOTS: Generate 20 to 24 sequential shots totaling between 120s and 150s.
 
-DIALOGUE REQUIREMENTS (VERY IMPORTANT):
-- Every shot featuring character speech MUST include the FULL Malayalam dialogue in authentic Malayalam script (മലയാളം ലിപി).
-- All visual, cinematic, lighting, and camera instructions must be in English.
-- Inside the 'flow_prompt', clearly state the character speaking and quote the full Malayalam dialogue:
-  Example:
-  Character Sachin speaks in Malayalam: "റീനൂ, നിന്നെ കാണുമ്പോൾ ഈ മഴ പോലും എത്ര മനോഹരമായി തോന്നുന്നു..."
-- If the shot is a silent reaction or visual beat, specify:
-  "No spoken dialogue; character gazes with quiet affection."
+MANDATORY JSON PROMPT STRUCTURE FOR EVERY SHOT:
+For every shot, you must produce a detailed JSON prompt object ('json_prompt') containing:
+- 'style': "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps."
+- 'duration': "4s", "6s", or "8s"
+- 'characters_present': Array of detailed character descriptions. If a shot contains Sachin and Reenu, you MUST include the FULL detailed description for BOTH characters so the AI maintains 100% visual consistency.
+   - Reenu DNA: "{REENU_DNA}"
+   - Sachin DNA: "{SACHIN_DNA}"
+   - Amal DNA: "{AMAL_DNA}"
+- 'location_details': Specific, vivid description of the environment (e.g., CIAL airport terminal curb with wet asphalt reflecting amber streetlamps, or inside the cozy sedan back seat with monsoon rain streaming down the glass).
+- 'camera_direction': Camera angle, framing (centered in middle 55% of vertical 9:16 frame), and movement (slow dolly, tracking pan, intimate close-up).
+- 'action_details': Exact physical motion and facial emotion.
+- 'dialogue': 
+   - 'speaker': Character name or "None"
+   - 'language': "Malayalam"
+   - 'line': Full spoken sentence in Malayalam script (മലയാളം ലിപി), or "" if silent.
+- 'audio_directive': "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean Malayalam voice dialogue and natural ambient foley sound effects only (rain drizzle, car engine, cloth rustle)."
+- 'negative_prompt': "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
 
-REQUIREMENTS FOR EACH GOOGLE FLOW PROMPT:
-1. Always start with: "Disney Pixar 3D animated film, vertical 9:16 video."
-2. Character visual DNA consistency:
-   - Reenu: {REENU_DNA}
-   - Sachin: {SACHIN_DNA}
-   - Amal: {AMAL_DNA}
-3. Character kinetics and facial emotion (smiling shyly, widening eyes, natural mouth movement matching Malayalam speech).
-4. Cinematic camera movement (slow tracking shot, gentle forward dolly, low-angle pan, over-the-shoulder push-in).
-5. Atmospheric lighting: Kochi monsoon rain droplets, glistening asphalt reflections, warm golden amber vehicle interior dome light, creamy neon bokeh, 4k 60fps render.
-6. Center composition: keep characters centered in the middle 55% of the 9:16 frame.
+Also provide a compiled text 'flow_prompt' that combines all of these into a single copy-pasteable prompt string for Google Flow, explicitly including the NO-MUSIC directive and full Malayalam dialogue.
 
 OUTPUT FORMAT:
 Return ONLY valid JSON (no markdown fences, no code blocks):
@@ -119,7 +117,6 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
   "title_malayalam": "മലയാളം ശീർഷകം",
   "title_english": "English Title",
   "synopsis": "Comprehensive 2-sentence synopsis",
-  "target_duration_seconds": 132,
   "total_shots": 22,
   "shots": [
     {{
@@ -127,33 +124,41 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
       "duration": "4s",
       "duration_seconds": 4,
       "character": "Reenu",
-      "camera": "Slow tilt-down from airport canopy",
       "dialogue_malayalam": "",
-      "action_summary": "Reenu pauses by the curb as rain starts drumming against the awning",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Outside CIAL airport terminal, sparkling monsoon rain begins drumming against sleek glass awnings. Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length wavy dark-brown hair and soft curtain bangs, wearing a pastel cloud camouflage baby-blue and yellow t-shirt with sky-blue skirt, pauses at the curb, holding her hands out playfully to feel the cool raindrops. No spoken dialogue; pure ambient atmospheric beat. Slow cinematic tilt-down, centered framing in middle 55%, volumetric amber bokeh, cinematic rain physics, 4k 60fps render."
-    }},
-    {{
-      "shot_number": 2,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "camera": "Dynamic low-angle tracking shot",
-      "dialogue_malayalam": "ഡാ സച്ചിൻ, വേഗം വാടാ! മഴ കനക്കാൻ തുടങ്ങി!",
-      "action_summary": "Amal pops open an umbrella and calls them urgently with a grin",
-      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat mustache, wearing a sage olive-green crewneck t-shirt, pops open a wide black umbrella with a snap and turns backward, waving his arm. Character Amal speaks in Malayalam: \\\"ഡാ സച്ചിൻ, വേഗം വാടാ! മഴ കനക്കാൻ തുടങ്ങി!\\\" Dynamic low-angle tracking shot, centered subject framing, splashing puddle droplets in slow motion, golden airport exterior lighting, natural mouth animation, 4k 60fps render."
+      "action_summary": "Reenu pauses by the curb feeling the raindrops",
+      "json_prompt": {{
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "4s",
+        "characters_present": [
+          {{
+            "name": "Reenu",
+            "description": "{REENU_DNA}"
+          }}
+        ],
+        "location_details": "Outside CIAL airport arrival terminal canopy, glistening wet asphalt reflecting golden amber streetlights, monsoon rain drizzling onto glass awnings.",
+        "camera_direction": "Slow cinematic tilt-down, centered framing in middle 55% of vertical 9:16 frame.",
+        "action_details": "Reenu pauses at the curb, raising her hand gently with a playful curious smile to catch falling raindrops.",
+        "dialogue": {{
+          "speaker": "None",
+          "language": "Malayalam",
+          "line": ""
+        }},
+        "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean ambient rain foley only.",
+        "negative_prompt": "background music, musical score, low resolution, wide aspect ratio"
+      }},
+      "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Outside CIAL airport terminal, sparkling monsoon rain begins drumming against sleek glass awnings. Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, wearing classic pastel camouflage baby-blue and yellow t-shirt with sky-blue skirt, pauses at the curb, holding her hands out playfully. No spoken dialogue. AUDIO DIRECTIVE: STRICTLY NO BACKGROUND MUSIC, clean ambient rain foley only. Slow cinematic tilt-down, centered framing in middle 55%, volumetric amber bokeh, 4k 60fps render."
     }}
   ]
 }}
 """
 
-    # Generate content with model fallback and key rotation
     models_to_try = [
-        "gemini-3.5-flash", 
-        "gemini-3.7-flash", 
-        "gemini-3.8-flash", 
-        "gemini-flash-latest", 
-        "gemini-3.5-flash-lite"
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-flash-latest"
     ]
+
 
     keys = []
     if os.getenv("GEMINI_API_KEYS"):
@@ -168,7 +173,7 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
     for m in models_to_try:
         for ak in keys:
             try:
-                print(f"Directing Episode {current_ep} Google Flow shots using {m} (key ...{ak[-6:]})...")
+                print(f"Directing Episode {current_ep} detailed JSON prompts using {m} (key ...{ak[-6:]})...")
                 c = genai.Client(api_key=ak)
                 res = c.models.generate_content(
                     model=m,
@@ -193,7 +198,6 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
         
     ep_shots = json.loads(text)
     
-    # Calculate actual runtime
     total_sec = sum(int(s.get("duration", "4s").replace("s", "")) for s in ep_shots.get("shots", []))
     ep_shots["calculated_total_seconds"] = total_sec
     ep_shots["calculated_runtime_display"] = f"{int(total_sec // 60)}m {int(total_sec % 60):02d}s"
@@ -203,7 +207,7 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
         json.dump(ep_shots, f, ensure_ascii=False, indent=2)
         
     print(f"✓ Generated {ep_shots['total_shots']} shots totaling {ep_shots['calculated_runtime_display']} (~{total_sec}s)!")
-    print(f"✓ All prompts formatted with Malayalam dialogues & dynamic 4s/6s/8s durations.")
+    print(f"✓ Formatted with detailed JSON prompt structure, character DNAs, location, camera, Malayalam dialogues & NO-BGM directive.")
     print(f"Saved to: {OUTPUT_SHOTS_FILE}")
     return ep_shots
 
@@ -218,4 +222,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
