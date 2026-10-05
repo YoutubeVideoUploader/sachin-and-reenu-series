@@ -27,55 +27,66 @@ os.makedirs(IMAGE_DIR, exist_ok=True)
 
 # STRICT DETERMINISTIC CHARACTER VISUAL DNA (PIXAR 3D CANONICAL)
 REENU_DNA = (
-    "Disney Pixar 3D animated film still, 8k masterpiece. "
+    "Disney Pixar 3D animated film still, 8k masterpiece CGI render. "
     "Reenu, an attractive 22-year-old South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair "
     "and soft wispy curtain bangs framing her cheerful face, warm sparkling hazel-brown eyes, glowing honey complexion. "
-    "Attire: fitted short-sleeved t-shirt featuring a pastel camouflage pattern in baby-blue, soft light-yellow, and off-white patches, "
-    "paired with a sky-blue denim skirt and white sneakers."
+    "Attire: classic short-sleeved cotton t-shirt featuring a pastel camouflage pattern in baby-blue, soft light-yellow, and off-white patches, "
+    "paired with a sky-blue denim skirt and white sneakers. "
+    "Authentic Disney Pixar 3D CGI character model, subsurface skin scattering, realistic natural facial anatomy, not 2D, not flat, not a caricature."
 )
 
 SACHIN_DNA = (
-    "Disney Pixar 3D animated film still, 8k masterpiece. "
+    "Disney Pixar 3D animated film still, 8k masterpiece CGI render. "
     "Sachin, a handsome 22-year-old South Indian Malayali young man with thick messy wavy textured dark hair styled with casual volume, "
-    "thick expressive natural eyebrows, warm dark-brown eyes, handsome defined jawline, boyish charming smile. "
-    "Attire: oversized terracotta rust-orange cotton t-shirt with subtle pocket design on left chest, relaxed dark-gray joggers, "
-    "and a black digital sports watch."
+    "natural neat eyebrows, warm dark-brown eyes, handsome defined clean jawline, boyish charming smile. "
+    "Attire: terracotta rust-orange cotton t-shirt with subtle pocket design on left chest, relaxed dark-gray joggers, "
+    "and a black digital sports watch. "
+    "Authentic Disney Pixar 3D CGI character model, subsurface skin scattering, realistic natural facial anatomy, not a caricature."
 )
 
 AMAL_DNA = (
-    "Disney Pixar 3D animated film still, 8k masterpiece. "
-    "Amal, a witty 22-year-old South Indian Malayali young man with tight curly textured black hair styled with volume on top, "
-    "neat mustache and small chin soul patch, expressive humorous brown eyes, and an energetic cheerful smile. "
-    "Attire: sage olive-green crewneck t-shirt with subtle thin horizontal lines on the chest, blue denim jeans, and a black wristwatch."
+    "Disney Pixar 3D animated film still, 8k masterpiece CGI render. "
+    "Amal, a witty 22-year-old South Indian Malayali young man with cropped soft curly black hair, "
+    "subtle natural neat 3D mustache, clean jawline, warm humorous brown eyes, and an energetic cheerful smile. "
+    "Attire: sage olive-green crewneck t-shirt with subtle thin horizontal lines on the chest, blue denim jeans, and a black wristwatch. "
+    "Authentic Disney Pixar 3D CGI character model, realistic natural facial proportions, not a caricature."
 )
 
 AMAL_AND_REENU_DNA = (
-    "Disney Pixar 3D animated film still, 8k masterpiece. "
-    "Two young adult South Indian friends standing together side by side. "
-    "On the left, Amal (22, tight curly black hair, neat mustache, energetic smile, sage olive-green t-shirt, blue jeans). "
-    "On the right, Reenu (22, shoulder-length wavy dark-brown hair with curtain bangs, joyful smile, pastel baby-blue and yellow camouflage t-shirt, sky-blue denim skirt)."
+    "Disney Pixar 3D animated film still, 8k masterpiece CGI render. "
+    "Vertical 9:16 portrait composition, close-up two-shot tightly centered in the middle of frame with wide background buffers on left and right borders. "
+    "Two young South Indian friends standing close together in the center. "
+    "Left: Amal (22, cropped soft curly black hair, subtle natural mustache, sage olive-green t-shirt). "
+    "Right: Reenu (22, shoulder-length wavy dark-brown hair with curtain bangs, joyful smile, pastel baby-blue and yellow camouflage t-shirt, sky-blue denim skirt). "
+    "Both faces fully visible and centered inside the vertical frame, authentic Pixar character models, octane render."
 )
 
 SACHIN_AND_REENU_DNA = (
-    "Disney Pixar 3D animated romantic movie still, cinematic render, 8k masterpiece. "
-    "Two young adult characters interacting together closely. "
-    "On the left, Sachin (handsome 22-year-old South Indian young man, messy wavy dark hair, boyish smile, oversized rust-orange t-shirt, dark joggers). "
-    "On the right, Reenu (gorgeous 22-year-old South Indian girl, shoulder-length layered wavy dark-brown hair with curtain bangs, warm hazel eyes, pastel baby-blue and yellow camouflage t-shirt, sky-blue denim skirt)."
+    "Disney Pixar 3D animated romantic movie still, cinematic render, 8k masterpiece CGI. "
+    "Vertical 9:16 portrait composition, close-up two-shot tightly centered in the middle of frame with wide background buffers on left and right borders. "
+    "Two young adult characters interacting together closely in the center. "
+    "Left: Sachin (handsome 22yo South Indian young man, messy wavy dark hair, boyish smile, rust-orange t-shirt, dark joggers). "
+    "Right: Reenu (attractive 22yo South Indian girl, shoulder-length layered wavy dark-brown hair with curtain bangs, warm hazel eyes, pastel baby-blue and yellow camouflage t-shirt). "
+    "Both faces fully visible and centered inside the vertical frame, authentic Pixar 3D character models."
 )
 
 SACHIN_AND_AMAL_DNA = (
-    "Disney Pixar 3D animated movie still, 8k masterpiece. "
-    "Two young adult South Indian best friends reuniting excitedly. "
-    "On the left, Sachin (22, messy wavy dark hair, charming boyish grin, oversized rust-orange t-shirt). "
-    "On the right, Amal (22, curly black hair, neat mustache, laughing cheerfully, olive-green t-shirt with thin stripes)."
+    "Disney Pixar 3D animated movie still, 8k masterpiece CGI render. "
+    "Vertical 9:16 portrait composition, close-up two-shot tightly centered in the middle of frame with wide background buffers on left and right borders. "
+    "Two young South Indian best friends reuniting excitedly side by side in the center. "
+    "Left: Sachin (22, messy wavy dark hair, charming boyish grin, rust-orange t-shirt). "
+    "Right: Amal (22, cropped curly black hair, subtle natural mustache, laughing cheerfully, olive-green t-shirt). "
+    "Both faces fully visible and centered inside the vertical frame, authentic Pixar character models."
 )
 
 TRIO_DNA = (
-    "Disney Pixar 3D animated film still, 8k masterpiece. "
-    "Three young adult South Indian friends together. "
-    "In the center, Sachin (22, messy wavy hair, rust-orange pocket t-shirt). "
-    "On his right, Reenu (22, layered wavy hair with bangs, joyful radiant smile, pastel cloud camouflage t-shirt, denim skirt). "
-    "On his left, Amal (22, curly hair, neat mustache, grinning widely, olive-green t-shirt)."
+    "Disney Pixar 3D animated film still, 8k masterpiece CGI render. "
+    "Vertical 9:16 portrait composition, tight medium three-shot grouped in the center of frame with wide background buffers on left and right borders. "
+    "Three young South Indian friends posing happily side by side for a photo. "
+    "Center: Reenu (22, cheerful smiling girl with shoulder-length wavy dark-brown hair, curtain bangs, pastel cloud camouflage t-shirt, denim skirt). "
+    "Left: Sachin (22, handsome boyish smile, messy wavy dark hair, terracotta rust-orange t-shirt). "
+    "Right: Amal (22, energetic smiling friend, cropped curly black hair, subtle natural mustache, olive-green t-shirt). "
+    "All three faces close together centered in the middle 55% of the frame, fully visible without cutoff, authentic Pixar 3D character models."
 )
 
 def build_scene_prompt(scene, location_palette, primary_location):
@@ -103,7 +114,6 @@ def build_scene_prompt(scene, location_palette, primary_location):
     elif speaker == "Sachin" or ("Sachin" in chars and len(chars) == 1):
         char_base = SACHIN_DNA
     else:
-        # Default narrator shot
         if "amal" in action.lower():
             char_base = AMAL_DNA
         elif "sachin" in action.lower():
@@ -111,9 +121,14 @@ def build_scene_prompt(scene, location_palette, primary_location):
         else:
             char_base = REENU_DNA
 
-    # 2. Combine with emotion, action, and location lighting
+    # 2. Combine with emotion, action, framing buffer, and location lighting
+    framing_rule = (
+        "Vertical 9:16 framing, subjects positioned strictly within central 55% horizontal zone with wide background clearance on left and right borders so heads are never cut off. "
+        "Headroom above heads, full shoulders visible."
+    )
     prompt = (
         f"{char_base} "
+        f"{framing_rule} "
         f"Expression: {emotion}. "
         f"Action: {action}. "
         f"Environment: {primary_location}, {location_palette}. "
@@ -122,14 +137,31 @@ def build_scene_prompt(scene, location_palette, primary_location):
     return prompt
 
 def make_full_bleed_9_16(pil_img, out_path):
-    """Crops & scales 1:1 image to 1080x1920 Full-Bleed (zero blurred borders, zero black bars)."""
+    """Smart subject-centering crop & scale from 1:1 image to 1080x1920 Full-Bleed (zero blurred borders, zero cutoffs)."""
     target_w, target_h = 1080, 1920
     scale = target_h / pil_img.height
     new_w = int(pil_img.width * scale)
     new_h = target_h
     im_scaled = pil_img.resize((new_w, new_h), Image.Resampling.LANCZOS)
     
-    left = (new_w - target_w) // 2
+    # Calculate horizontal centroid of subjects in upper 65% of the frame
+    try:
+        import numpy as np
+        gray = np.array(im_scaled.convert("L"))
+        h_sample = gray[int(new_h * 0.1):int(new_h * 0.7), :]
+        dx = np.abs(np.diff(h_sample.astype(float), axis=1))
+        profile = np.sum(dx, axis=0)
+        total_p = np.sum(profile)
+        if total_p > 0:
+            x_coords = np.arange(len(profile))
+            centroid_x = int(np.sum(x_coords * profile) / total_p)
+            # Center the 1080 crop window on subject centroid
+            left = max(0, min(new_w - target_w, centroid_x - target_w // 2))
+        else:
+            left = (new_w - target_w) // 2
+    except Exception:
+        left = (new_w - target_w) // 2
+        
     im_cropped = im_scaled.crop((left, 0, left + target_w, target_h))
     im_cropped.save(out_path, format="PNG", quality=95)
 
