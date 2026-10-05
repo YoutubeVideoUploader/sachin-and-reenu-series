@@ -1,28 +1,18 @@
 /**
  * ==============================================================================
- * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE (V3 ROBUST)
+ * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE (3-TAB MASTER)
  * ==============================================================================
- * Features:
- * 1. 2-Column Episode Checklist in Google Sheet:
- *    - Column A: Shot Name (Shot 1, Shot 2, ..., Shot 22)
+ * Dedicated 3-Sheet Architecture:
+ * 1. TAB 1: [Episode_Story]
+ *    - Base of current and next episode's story, synopsis, and cliffhangers.
+ * 2. TAB 2: [Current_JSON_Prompts]
+ *    - The exact Google Flow JSON prompts for each shot of the ACTIVE episode.
+ *    - Automatically clears previous episode prompts and overwrites with next episode prompts!
+ * 3. TAB 3: [Video_Checklist]
+ *    - Column A: Shot Number (Shot 1..N)
  *    - Column B: Video Status (Present / Pending)
- * 2. Automatic Google Drive detection:
- *    - Automatically scans Episode Drive folder and updates Column B to "Present".
- * 3. Strict Pre-Check API:
- *    - Only triggers/allows production if ALL shots (e.g. 22/22) are "Present".
- * 4. Post-Publish Auto-Cleanup:
- *    - Automatically deletes all uploaded clips from Google Drive.
- *    - Automatically blanks/resets the Google Sheet checklist for the next episode.
- * 5. 2x Daily Automated Triggers at 12:00 PM IST & 6:00 PM IST.
- * 
- * Setup Instructions:
- * 1. Open Google Sheet: https://docs.google.com/spreadsheets/d/1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI/edit
- * 2. Click "Extensions" -> "Apps Script".
- * 3. Replace all code in Code.gs with this file.
- * 4. Replace `YOUR_GITHUB_PAT_HERE` with your GitHub Personal Access Token.
- * 5. Run `setupStudioSpreadsheet()` once to create/format the Ledger & Checklist sheets.
- * 6. Run `setupDailyTriggers()` once to schedule 12:00 PM & 6:00 PM IST runs.
- * 7. Deploy as Web App ("Execute as: Me", "Who has access: Anyone").
+ *    - Used by GitHub Actions to strictly verify 100% video presence before merge & publish.
+ *    - After publish: Trashes raw clips from Drive and resets checklist for next episode.
  * ==============================================================================
  */
 
@@ -33,70 +23,125 @@ const GITHUB_WORKFLOW = "produce_and_publish.yml";
 const GITHUB_PAT = "YOUR_GITHUB_PAT_HERE"; // Insert your GitHub PAT (Repo/Workflow scope)
 const DRIVE_ROOT_FOLDER = "Sachin_And_Reenu_Studio";
 
-const TAB_LEDGER = "Episode_Ledger";
-const TAB_CHECKLIST = "Production_Checklist";
+const TAB_STORY = "Episode_Story";
+const TAB_PROMPTS = "Current_JSON_Prompts";
+const TAB_CHECKLIST = "Video_Checklist";
 
 /**
- * Initializes and formats both sheets: Episode_Ledger and Production_Checklist.
+ * Initializes and formats all 3 tabs in Google Sheet.
  */
 function setupStudioSpreadsheet() {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   
-  // 1. Setup Episode_Ledger
-  let ledgerSheet = ss.getSheetByName(TAB_LEDGER);
-  if (!ledgerSheet) {
-    ledgerSheet = ss.insertSheet(TAB_LEDGER, 0);
+  // -------------------------------------------------------------
+  // 1. SETUP TAB 1: Episode_Story
+  // -------------------------------------------------------------
+  let storySheet = ss.getSheetByName(TAB_STORY);
+  if (!storySheet) {
+    storySheet = ss.insertSheet(TAB_STORY, 0);
   }
   
-  const ledgerHeaders = [
+  const storyHeaders = [
     "Episode", 
     "Title", 
     "Status", 
     "Total Shots", 
-    "Drive Folder URL", 
+    "Story Arc / Synopsis", 
+    "Cliffhanger", 
     "Instagram URL", 
-    "Story Outline / Synopsis", 
     "Published At (IST)"
   ];
   
-  if (ledgerSheet.getLastRow() === 0) {
-    ledgerSheet.appendRow(ledgerHeaders);
-    ledgerSheet.getRange(1, 1, 1, ledgerHeaders.length)
+  if (storySheet.getLastRow() === 0) {
+    storySheet.appendRow(storyHeaders);
+    storySheet.getRange(1, 1, 1, storyHeaders.length)
       .setBackground("#0f172a")
       .setFontColor("#f8fafc")
       .setFontWeight("bold")
       .setHorizontalAlignment("center");
-    ledgerSheet.setFrozenRows(1);
+    storySheet.setFrozenRows(1);
     
-    // Episode 1 (Current Active Production: 22 Shots)
-    ledgerSheet.appendRow([
+    // Episode 1 (Current Active Production)
+    storySheet.appendRow([
       1,
       "തിരിച്ചുവരവ് (The Homecoming)",
-      "Queued",
+      "Active",
       22,
+      "After two long years apart, Sachin touches down at Kochi CIAL from the UK. Reenu and Amal wait anxiously by the arrival barriers, leading to an overwhelming, heartfelt reunion.",
+      "As Sachin holds Reenu close, his mysterious glance toward his travel pouch hints at a hidden secret from London.",
       "",
+      ""
+    ]);
+
+    // Episode 2 (Next Upcoming Story)
+    storySheet.appendRow([
+      2,
+      "കൊച്ചിയിലെ മഴയും ഒരു രഹസ്യവും (Kochi Rain & A Secret)",
+      "Upcoming",
+      22,
+      "Stepping outside Kochi airport into the sudden monsoon rain, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.",
+      "Amal glances in the rear-view mirror as Sachin's fingers brush against Reenu's hand.",
       "",
-      "After two long years of separation, Sachin returns from the UK to a nervous Reenu waiting with Amal at Kochi CIAL airport. Amidst the tearful reunion, a secret from London awaits.",
       ""
     ]);
   }
-  
-  // 2. Setup Production_Checklist
-  let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
-  if (!checkSheet) {
-    checkSheet = ss.insertSheet(TAB_CHECKLIST, 1);
+
+  // -------------------------------------------------------------
+  // 2. SETUP TAB 2: Current_JSON_Prompts
+  // -------------------------------------------------------------
+  let promptSheet = ss.getSheetByName(TAB_PROMPTS);
+  if (!promptSheet) {
+    promptSheet = ss.insertSheet(TAB_PROMPTS, 1);
   }
   
-  initChecklist(1, 22, "തിരിച്ചുവരവ് (The Homecoming)");
-  Logger.log("Studio Spreadsheet setup successfully initialized!");
+  const promptHeaders = [
+    "Shot #",
+    "Duration",
+    "Character",
+    "Malayalam Dialogue",
+    "Action Summary",
+    "Google Flow JSON Prompt (Direct Copy)"
+  ];
+  
+  if (promptSheet.getLastRow() === 0) {
+    promptSheet.appendRow(promptHeaders);
+    promptSheet.getRange(1, 1, 1, promptHeaders.length)
+      .setBackground("#1e1b4b")
+      .setFontColor("#e0e7ff")
+      .setFontWeight("bold")
+      .setHorizontalAlignment("center");
+    promptSheet.setFrozenRows(1);
+  }
+
+  // Auto-populate Tab 2 with Episode 1 prompts from GitHub
+  try {
+    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/current_episode_shots.json`;
+    const res = UrlFetchApp.fetch(rawUrl);
+    if (res.getResponseCode() === 200) {
+      const epData = JSON.parse(res.getContentText());
+      updateJsonPromptsSheet(epData.episode_number || 1, epData.shots || []);
+      Logger.log("Tab 2 auto-populated with Episode 1 JSON prompts from GitHub!");
+    }
+  } catch (err) {
+    Logger.log("Notice: Could not auto-fetch prompts from GitHub: " + err);
+  }
+
+  // -------------------------------------------------------------
+  // 3. SETUP TAB 3: Video_Checklist
+  // -------------------------------------------------------------
+  let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (!checkSheet) {
+    checkSheet = ss.insertSheet(TAB_CHECKLIST, 2);
+  }
+  
+  initVideoChecklist(1, 22, "തിരിച്ചുവരവ് (The Homecoming)");
+  Logger.log("All 3 Google Sheet tabs initialized successfully!");
 }
 
 /**
- * Populates or resets the 2-Column Checklist for a specific episode.
- * Column 1: Shot Number (Shot 1..N)
- * Column 2: Video Status (Pending / Present)
+ * Initializes or resets Tab 3: Video_Checklist for an episode.
  */
-function initChecklist(episodeNum, totalShots, episodeTitle) {
+function initVideoChecklist(episodeNum, totalShots, episodeTitle) {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   let sheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!sheet) {
@@ -108,14 +153,14 @@ function initChecklist(episodeNum, totalShots, episodeTitle) {
   // Header Meta
   sheet.getRange(1, 1).setValue(`EPISODE ${episodeNum}: ${episodeTitle || ''}`).setFontWeight("bold").setFontSize(12);
   sheet.getRange(1, 2).setValue(`TARGET SHOTS: ${totalShots}`).setFontWeight("bold");
-  sheet.getRange(1, 1, 1, 2).setBackground("#3b82f6").setFontColor("#ffffff");
+  sheet.getRange(1, 1, 1, 2).setBackground("#2563eb").setFontColor("#ffffff");
   
-  // Column Headers (Strict 2-Column specification)
-  sheet.getRange(2, 1).setValue("Shot Number (Column 1)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
-  sheet.getRange(2, 2).setValue("Video Status (Column 2)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
-  sheet.getRange(2, 3).setValue("Drive File Name").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
-  sheet.getRange(2, 4).setValue("Drive File ID").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
-  sheet.getRange(2, 5).setValue("Last Updated (IST)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  // Column Headers (Strict 2-Column specification for GitHub Actions)
+  sheet.getRange(2, 1).setValue("Shot Number (Column 1)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
+  sheet.getRange(2, 2).setValue("Video Status (Column 2)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
+  sheet.getRange(2, 3).setValue("Drive File Name").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
+  sheet.getRange(2, 4).setValue("Drive File ID").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
+  sheet.getRange(2, 5).setValue("Last Updated (IST)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
   
   const rows = [];
   for (let s = 1; s <= totalShots; s++) {
@@ -124,7 +169,6 @@ function initChecklist(episodeNum, totalShots, episodeTitle) {
   
   if (rows.length > 0) {
     sheet.getRange(3, 1, rows.length, 5).setValues(rows);
-    // Format Pending in light amber
     sheet.getRange(3, 2, rows.length, 1)
       .setBackground("#fef3c7")
       .setFontColor("#92400e")
@@ -133,22 +177,7 @@ function initChecklist(episodeNum, totalShots, episodeTitle) {
   }
   
   sheet.setFrozenRows(2);
-  Logger.log(`Checklist initialized for Episode ${episodeNum} with ${totalShots} shots.`);
-}
-
-/**
- * Completely blanks the Production_Checklist sheet after publishing.
- */
-function makeChecklistBlank() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheet = ss.getSheetByName(TAB_CHECKLIST);
-  if (sheet) {
-    sheet.clear();
-    sheet.getRange(1, 1).setValue("CHECKLIST BLANK — Awaiting Next Episode Configuration")
-      .setFontWeight("bold")
-      .setFontColor("#64748b");
-    Logger.log("Production_Checklist successfully cleared and made blank.");
-  }
+  Logger.log(`Video_Checklist initialized for Episode ${episodeNum} with ${totalShots} shots.`);
 }
 
 /**
@@ -166,14 +195,14 @@ function getEpisodeDriveFolder(episodeNum) {
 }
 
 /**
- * Scans Google Drive and syncs with the Production_Checklist in Google Sheets.
- * Matches files like "shot_1.mp4", "shot 1", "shot_01", or files uploaded into Drive.
+ * Scans Google Drive and syncs with Tab 3 (Video_Checklist).
+ * Sets Column B to "Present" for uploaded clips.
  */
 function syncDriveToChecklist(episodeNum) {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   const sheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!sheet || sheet.getLastRow() < 3) {
-    Logger.log("Checklist sheet is blank or uninitialized.");
+    Logger.log("Video_Checklist sheet is blank or uninitialized.");
     return { ready: false, total_shots: 0, present_shots: 0, files: [] };
   }
   
@@ -201,21 +230,18 @@ function syncDriveToChecklist(episodeNum) {
   const matchedFiles = [];
   
   for (let i = 0; i < shotData.length; i++) {
-    const shotNum = i + 1; // 1-indexed
-    
-    // Find matching file in driveFiles
+    const shotNum = i + 1;
     let match = null;
+    
     for (const f of driveFiles) {
       const lower = f.name.toLowerCase();
-      // Match patterns: shot_1, shot 1, shot01, shot_01, or shot-1
       const patterns = [
         `shot_${shotNum}.`,
         `shot_${shotNum < 10 ? '0' + shotNum : shotNum}.`,
         `shot ${shotNum}.`,
         `shot${shotNum}.`,
         `shot-${shotNum}.`,
-        `shot_${shotNum}_`,
-        `shot${shotNum < 10 ? '0' + shotNum : shotNum}.`
+        `shot_${shotNum}_`
       ];
       if (patterns.some(p => lower.includes(p))) {
         match = f;
@@ -223,7 +249,6 @@ function syncDriveToChecklist(episodeNum) {
       }
     }
     
-    // If exact name didn't match and there is a 1-to-1 match by sorted position when total files match
     if (!match && driveFiles.length === totalShots) {
       match = driveFiles[i];
     }
@@ -247,10 +272,8 @@ function syncDriveToChecklist(episodeNum) {
     }
   }
   
-  // Write back updated checklist
   sheet.getRange(3, 1, totalShots, 5).setValues(shotData);
   
-  // Apply formatting: Green for Present, Amber for Pending
   for (let i = 0; i < totalShots; i++) {
     const row = 3 + i;
     if (shotData[i][1] === "Present") {
@@ -261,7 +284,7 @@ function syncDriveToChecklist(episodeNum) {
   }
   
   const allPresent = (presentCount === totalShots && totalShots > 0);
-  Logger.log(`Episode ${episodeNum} Checklist Sync: ${presentCount}/${totalShots} shots Present. All Present: ${allPresent}`);
+  Logger.log(`Episode ${episodeNum} Checklist: ${presentCount}/${totalShots} shots Present. All Present: ${allPresent}`);
   
   return {
     episode_number: episodeNum,
@@ -291,42 +314,110 @@ function cleanEpisodeDrive(episodeNum) {
 }
 
 /**
- * Post-publish cleanup:
- * 1. Deletes videos from Google Drive.
- * 2. Blanks the Google Sheet checklist so future runs won't duplicate.
- * 3. Marks Episode as "Published" in Episode_Ledger.
+ * Overwrites Tab 2: Current_JSON_Prompts with the new episode's prompts.
+ * Deletes all previous prompts completely!
  */
-function cleanupAfterPublish(episodeNum, instagramUrl) {
-  Logger.log(`Starting post-publish cleanup for Episode ${episodeNum}...`);
-  
-  // 1. Delete videos from Google Drive
-  const deletedFiles = cleanEpisodeDrive(episodeNum);
-  
-  // 2. Blank the Google Sheet checklist
-  makeChecklistBlank();
-  
-  // 3. Update Episode_Ledger status to Published
+function updateJsonPromptsSheet(episodeNum, shots) {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const ledger = ss.getSheetByName(TAB_LEDGER);
-  if (ledger) {
-    const data = ledger.getDataRange().getValues();
+  let sheet = ss.getSheetByName(TAB_PROMPTS);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_PROMPTS);
+  }
+  
+  // Wipe all existing prompts
+  sheet.clear();
+  
+  // Header Meta
+  sheet.getRange(1, 1).setValue(`CURRENT EPISODE PROMPTS: EPISODE ${episodeNum}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(`TOTAL SHOTS: ${shots.length}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#4338ca").setFontColor("#ffffff");
+
+  // Headers
+  const headers = [
+    "Shot #",
+    "Duration",
+    "Character",
+    "Malayalam Dialogue",
+    "Action Summary",
+    "Google Flow JSON Prompt (Direct Copy)"
+  ];
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#1e1b4b")
+    .setFontColor("#e0e7ff")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+
+  const rows = [];
+  for (const s of shots) {
+    rows.push([
+      `Shot #${s.shot_number}`,
+      s.duration || "4s",
+      s.character || "Reenu",
+      s.dialogue_malayalam || "",
+      s.action_summary || "",
+      typeof s.json_prompt === 'string' ? s.json_prompt : JSON.stringify(s.json_prompt, null, 2)
+    ]);
+  }
+
+  if (rows.length > 0) {
+    sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
+    sheet.getRange(3, 6, rows.length, 1).setFontFamily("Consolas").setFontSize(9);
+  }
+  
+  Logger.log(`Tab 2 [Current_JSON_Prompts] updated for Episode ${episodeNum} with ${shots.length} shots.`);
+}
+
+/**
+ * Full Next-Episode Transition:
+ * 1. Cleans Drive clips of published episode.
+ * 2. Marks published episode as "Published" in Tab 1 (Episode_Story).
+ * 3. Appends/updates next episode in Tab 1 as "Active".
+ * 4. Wipes and writes new prompts into Tab 2 (Current_JSON_Prompts).
+ * 5. Resets Tab 3 (Video_Checklist) for Shot 1..N with "Pending".
+ */
+function handleNextEpisodeFullUpdate(body) {
+  const epNum = body.episode_number; // e.g. Episode 2
+  const prevEp = epNum - 1;          // e.g. Episode 1
+  
+  Logger.log(`Handling full transition: Episode ${prevEp} -> Episode ${epNum}`);
+  
+  // 1. Delete previous clips from Google Drive
+  cleanEpisodeDrive(prevEp);
+  
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  
+  // 2. Update Tab 1 (Episode_Story)
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  if (storySheet) {
+    const data = storySheet.getDataRange().getValues();
     const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    
+    // Mark previous as Published
     for (let i = 1; i < data.length; i++) {
-      if (data[i][0] == episodeNum) {
-        ledger.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-        if (instagramUrl) {
-          ledger.getRange(i + 1, 6).setValue(instagramUrl);
-        }
-        ledger.getRange(i + 1, 8).setValue(nowIst);
-        break;
+      if (data[i][0] == prevEp) {
+        storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+        if (body.instagram_url) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
+        storySheet.getRange(i + 1, 8).setValue(nowIst);
+      }
+      if (data[i][0] == epNum) {
+        storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
       }
     }
   }
+
+  // 3. Overwrite Tab 2 (Current_JSON_Prompts) with new prompts
+  if (body.shots && body.shots.length > 0) {
+    updateJsonPromptsSheet(epNum, body.shots);
+  }
+
+  // 4. Reset Tab 3 (Video_Checklist)
+  initVideoChecklist(epNum, body.total_shots || body.shots.length, body.title_malayalam || `Episode ${epNum}`);
   
   return {
     success: true,
-    deleted_files: deletedFiles,
-    checklist_blanked: true
+    active_episode: epNum,
+    message: `Episode ${prevEp} archived and Episode ${epNum} activated across all 3 sheets!`
   };
 }
 
@@ -373,56 +464,35 @@ function dispatchGitHubWorkflow(episodeNum) {
 }
 
 /**
- * Scheduled cron handler: Runs at 12:00 PM IST & 6:00 PM IST.
- * Reads Google Sheet checklist:
- * - If checklist is blank or missing shots -> stops cleanly.
- * - If ALL shots are present -> dispatches GitHub Actions!
+ * Scheduled cron: 12:00 PM IST & 6:00 PM IST.
+ * Inspects Tab 3 (Video_Checklist). If all shots present -> dispatches GitHub Actions!
  */
 function scheduledEpisodeCheckAndTrigger() {
   Logger.log("--- Scheduled 12:00 PM / 6:00 PM Trigger Started ---");
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const ledger = ss.getSheetByName(TAB_LEDGER);
+  const storySheet = ss.getSheetByName(TAB_STORY);
   
-  if (!ledger) {
-    Logger.log("Episode_Ledger sheet not found. Exiting.");
-    return;
-  }
-  
-  const data = ledger.getDataRange().getValues();
-  let queuedEp = null;
-  let queuedRow = -1;
-  
-  for (let i = 1; i < data.length; i++) {
-    const status = (data[i][2] || "").toString().trim().toLowerCase();
-    if (status === "queued" || status === "pending") {
-      queuedEp = {
-        episode: data[i][0],
-        title: data[i][1],
-        total_shots: data[i][3] || 22
-      };
-      queuedRow = i + 1;
-      break;
+  let activeEp = 1;
+  if (storySheet) {
+    const data = storySheet.getDataRange().getValues();
+    for (let i = 1; i < data.length; i++) {
+      const status = (data[i][2] || "").toString().trim().toLowerCase();
+      if (status === "active" || status === "queued") {
+        activeEp = data[i][0];
+        break;
+      }
     }
   }
 
-  if (!queuedEp) {
-    Logger.log("No queued episode in Episode_Ledger. Checking checklist...");
-  }
-  
-  const currentEp = queuedEp ? queuedEp.episode : 1;
-  const status = syncDriveToChecklist(currentEp);
-  
+  const status = syncDriveToChecklist(activeEp);
   if (!status || status.total_shots === 0) {
-    Logger.log("Checklist is blank. No video processing needed. Clean exit.");
+    Logger.log("Tab 3 (Video_Checklist) has 0 shots or is empty. Clean exit.");
     return;
   }
   
   if (status.ready) {
-    Logger.log(`🎯 ALL ${status.total_shots}/${status.total_shots} shots are PRESENT! Dispatching GitHub Actions...`);
-    if (queuedRow > 0) {
-      ledger.getRange(queuedRow, 3).setValue("Processing").setBackground("#dbeafe").setFontColor("#1d4ed8");
-    }
-    dispatchGitHubWorkflow(currentEp);
+    Logger.log(`🎯 ALL ${status.total_shots}/${status.total_shots} shots are PRESENT in Drive! Dispatching GitHub Actions...`);
+    dispatchGitHubWorkflow(activeEp);
   } else {
     Logger.log(`⏳ Incomplete: Only ${status.present_shots} of ${status.total_shots} shots present in Google Drive. Stopping cleanly without running.`);
   }
@@ -466,6 +536,7 @@ function doGet(e) {
   const action = params.action || "check_status";
   const epNum = parseInt(params.episode || "1", 10);
 
+  // Tab 3: Checklist status
   if (action === "check_status" || action === "get_checklist") {
     const status = syncDriveToChecklist(epNum);
     return ContentService.createTextOutput(JSON.stringify({
@@ -474,17 +545,32 @@ function doGet(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  if (action === "init_episode") {
-    const totalShots = parseInt(params.total_shots || "22", 10);
-    const title = params.title || "Episode " + epNum;
-    initChecklist(epNum, totalShots, title);
+  // Tab 2: Get Current JSON Prompts
+  if (action === "get_prompts") {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(TAB_PROMPTS);
+    const prompts = [];
+    if (sheet && sheet.getLastRow() > 2) {
+      const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 6).getValues();
+      for (const row of data) {
+        prompts.push({
+          shot: row[0],
+          duration: row[1],
+          character: row[2],
+          dialogue: row[3],
+          action: row[4],
+          json_prompt: row[5]
+        });
+      }
+    }
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
-      message: `Initialized Episode ${epNum} with ${totalShots} shots`
+      episode: epNum,
+      prompts: prompts
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  return ContentService.createTextOutput(JSON.stringify({ status: "running", app: "Sachin & Reenu Studio Engine" }))
+  return ContentService.createTextOutput(JSON.stringify({ status: "running", app: "Sachin & Reenu 3-Tab Studio Engine" }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -514,7 +600,7 @@ function doPost(e) {
       const file = folder.createFile(blob);
       file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
       
-      // Update checklist
+      // Update Tab 3
       syncDriveToChecklist(epNum);
 
       return ContentService.createTextOutput(JSON.stringify({
@@ -525,23 +611,16 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 2. Post-Publish Cleanup (Delete from Drive & Blank the Sheet)
-    if (action === "cleanup_after_publish") {
-      const res = cleanupAfterPublish(epNum, body.instagram_url);
+    // 2. Full Next-Episode Transition (Update Tab 1, Overwrite Tab 2, Reset Tab 3, Clean Drive)
+    if (action === "update_next_episode_full" || action === "cleanup_after_publish") {
+      const res = handleNextEpisodeFullUpdate(body);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 3. Sync checklist
+    // 3. Sync Tab 3 checklist
     if (action === "sync_checklist") {
       const res = syncDriveToChecklist(epNum);
-      return ContentService.createTextOutput(JSON.stringify(res))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-
-    // 4. Manual workflow trigger
-    if (action === "trigger_workflow") {
-      const res = dispatchGitHubWorkflow(epNum);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }

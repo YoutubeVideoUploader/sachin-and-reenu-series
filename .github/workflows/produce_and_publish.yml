@@ -1,4 +1,4 @@
-name: "Autonomous Episode Studio: Produce & Publish to Instagram"
+name: "Autonomous Episode Studio: Produce, Publish & Generate Next Episode"
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Dry run (Skip Instagram upload & cleanup)"
+        description: "Dry run (Skip Instagram upload & Drive cleanup)"
         type: boolean
         default: false
       force_run:
@@ -43,27 +43,26 @@ jobs:
           pip install -r requirements.txt
 
       # -------------------------------------------------------------
-      # STEP 5: GOOGLE SHEET & DRIVE PRE-CHECK
-      # Reads Column 1 (Shots) & Column 2 (Status).
+      # STEP 5: GOOGLE SHEET TAB 3 (Video_Checklist) PRE-CHECK
+      # Checks if ALL shots (e.g. 22/22) are PRESENT in Drive.
       # If sheet is blank or any shot is missing -> STOP cleanly.
-      # Only proceeds if ALL shots (e.g. 22/22) are PRESENT.
       # -------------------------------------------------------------
-      - name: 5. Verify Google Sheet Checklist & Download Clips from Drive
+      - name: 5. Verify Video Checklist (Tab 3) & Download Clips from Drive
         id: drive_check
         env:
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
-          echo "Checking Google Sheet checklist & Google Drive videos..."
+          echo "Checking Google Sheet Tab 3 (Video_Checklist)..."
           python scripts/drive_sync_and_check.py --target_dir uploaded_shots
 
       # -------------------------------------------------------------
       # STEP 6: SEAMLESS GEMINI WATERMARK REMOVAL
-      # Removes 4-pointed Gemini sparkle watermark from all clips
+      # Inpainting removal on all clips before concatenation
       # -------------------------------------------------------------
       - name: 6. Remove Gemini Watermarks from All Video Clips
         if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
-          echo "Removing Gemini sparkle watermarks using mathematical astroid inpainting..."
+          echo "Removing Gemini sparkle watermarks from all clips..."
           python scripts/watermark_remover.py --input_dir uploaded_shots --output_dir clean_shots
 
       # -------------------------------------------------------------
@@ -73,14 +72,13 @@ jobs:
       - name: 7. Master Video & Audio Merge
         if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
-          echo "Merging de-watermarked clips with preserved Malayalam dialogue audio & romantic BGM..."
+          echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4
 
       # -------------------------------------------------------------
-      # STEP 8: INSTAGRAM PUBLISHING & DRIVE / SHEET CLEANUP
-      # Deletes video clips from Google Drive & blanks Google Sheet checklist
+      # STEP 8: INSTAGRAM PUBLISHING
       # -------------------------------------------------------------
-      - name: 8. Publish to Instagram Reels & Execute Post-Publish Cleanup
+      - name: 8. Publish to Instagram Reels
         if: ${{ (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -94,13 +92,28 @@ jobs:
           python scripts/instagram_publisher.py
 
       # -------------------------------------------------------------
-      # STEP 9: UPDATE EPISODE LEDGER IN GITHUB
+      # STEP 9: AUTONOMOUS NEXT EPISODE GENERATION (GEMINI)
+      # Writes next story, 20-22 JSON prompts, updates 3-tab Sheet & website!
       # -------------------------------------------------------------
-      - name: 9. Commit Updated Story State Back to GitHub
+      - name: 9. Generate Next Episode Screenplay & Update Google Sheets + Website
+        if: ${{ (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
+        run: |
+          echo "Gemini generating next episode screenplay and Google Flow JSON prompts..."
+          python scripts/story_and_prompt_engine.py
+
+      # -------------------------------------------------------------
+      # STEP 10: COMMIT UPDATED STORY & WEBSITE PROMPTS TO GITHUB
+      # -------------------------------------------------------------
+      - name: 10. Commit Updated Episode State & Website to GitHub
         if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add story_state.json current_episode_shots.json 2>/dev/null || true
-          git diff-index --quiet HEAD || git commit -m "Auto-update episode state after publishing [skip ci]"
+          git add story_state.json current_episode_shots.json portal.html 2>/dev/null || true
+          git diff-index --quiet HEAD || git commit -m "Advance to next episode: new screenplay, JSON prompts & portal [skip ci]"
           git push || true
