@@ -1,25 +1,28 @@
 /**
  * ==============================================================================
- * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE
+ * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE (V3 ROBUST)
  * ==============================================================================
  * Features:
- * 1. 2x Daily precision triggers: 12:00 PM IST & 6:00 PM IST
- * 2. Story Ledger & Memory tracking in Google Sheet
- * 3. Video upload dropzone receiver -> Saves directly to Google Drive
- * 4. GitHub Actions Automated Dispatcher with PAT
- * 5. Serves Portal Web App or JSON API
+ * 1. 2-Column Episode Checklist in Google Sheet:
+ *    - Column A: Shot Name (Shot 1, Shot 2, ..., Shot 22)
+ *    - Column B: Video Status (Present / Pending)
+ * 2. Automatic Google Drive detection:
+ *    - Automatically scans Episode Drive folder and updates Column B to "Present".
+ * 3. Strict Pre-Check API:
+ *    - Only triggers/allows production if ALL shots (e.g. 22/22) are "Present".
+ * 4. Post-Publish Auto-Cleanup:
+ *    - Automatically deletes all uploaded clips from Google Drive.
+ *    - Automatically blanks/resets the Google Sheet checklist for the next episode.
+ * 5. 2x Daily Automated Triggers at 12:00 PM IST & 6:00 PM IST.
  * 
  * Setup Instructions:
  * 1. Open Google Sheet: https://docs.google.com/spreadsheets/d/1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI/edit
  * 2. Click "Extensions" -> "Apps Script".
  * 3. Replace all code in Code.gs with this file.
  * 4. Replace `YOUR_GITHUB_PAT_HERE` with your GitHub Personal Access Token.
- * 5. Run `initSpreadsheetHeader()` once to initialize columns and starter episodes.
+ * 5. Run `setupStudioSpreadsheet()` once to create/format the Ledger & Checklist sheets.
  * 6. Run `setupDailyTriggers()` once to schedule 12:00 PM & 6:00 PM IST runs.
- * 7. Click "Deploy" -> "New deployment" -> Select type "Web app":
- *    - Execute as: "Me"
- *    - Who has access: "Anyone"
- *    - Copy the Web App URL and paste it into portal.html!
+ * 7. Deploy as Web App ("Execute as: Me", "Who has access: Anyone").
  * ==============================================================================
  */
 
@@ -30,72 +33,121 @@ const GITHUB_WORKFLOW = "produce_and_publish.yml";
 const GITHUB_PAT = "YOUR_GITHUB_PAT_HERE"; // Insert your GitHub PAT (Repo/Workflow scope)
 const DRIVE_ROOT_FOLDER = "Sachin_And_Reenu_Studio";
 
+const TAB_LEDGER = "Episode_Ledger";
+const TAB_CHECKLIST = "Production_Checklist";
+
 /**
- * Formats the header row and initial ledger rows in Google Sheet.
+ * Initializes and formats both sheets: Episode_Ledger and Production_Checklist.
  */
-function initSpreadsheetHeader() {
+function setupStudioSpreadsheet() {
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheet = ss.getActiveSheet();
   
-  const headers = [
+  // 1. Setup Episode_Ledger
+  let ledgerSheet = ss.getSheetByName(TAB_LEDGER);
+  if (!ledgerSheet) {
+    ledgerSheet = ss.insertSheet(TAB_LEDGER, 0);
+  }
+  
+  const ledgerHeaders = [
     "Episode", 
     "Title", 
     "Status", 
-    "Story Outline / Synopsis", 
+    "Total Shots", 
     "Drive Folder URL", 
     "Instagram URL", 
-    "Next Cliffhanger", 
+    "Story Outline / Synopsis", 
     "Published At (IST)"
   ];
   
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length)
-      .setBackground("#1a1a2e")
+  if (ledgerSheet.getLastRow() === 0) {
+    ledgerSheet.appendRow(ledgerHeaders);
+    ledgerSheet.getRange(1, 1, 1, ledgerHeaders.length)
+      .setBackground("#0f172a")
       .setFontColor("#f8fafc")
       .setFontWeight("bold")
       .setHorizontalAlignment("center");
-    sheet.setFrozenRows(1);
+    ledgerSheet.setFrozenRows(1);
     
-    // Episode 1 (Published)
-    sheet.appendRow([
+    // Episode 1 (Current Active Production: 22 Shots)
+    ledgerSheet.appendRow([
       1,
       "തിരിച്ചുവരവ് (The Homecoming)",
-      "Published",
-      "After two long years apart, Sachin finally touches down at Kochi CIAL from the UK. Reenu and Amal eagerly wait by the arrival barriers, leading to an overwhelming, heartfelt reunion.",
-      "",
-      "https://www.instagram.com/reel/18115173056519806/",
-      "As Sachin holds Reenu close, his mysterious glance toward his travel pouch hints at a secret from London.",
-      new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
-    ]);
-    
-    // Episode 2 (Published / In Production)
-    sheet.appendRow([
-      2,
-      "കൊച്ചിയിലെ മഴയും ഒരു രഹസ്യവും (Kochi Rain & A Secret)",
-      "Published",
-      "Sachin, Reenu, and Amal drive through sudden Kochi monsoon rain. While stopping for hot tea, Sachin reveals a small velvet box inside his bag, but hesitates to open it.",
-      "",
-      "",
-      "Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry.",
-      ""
-    ]);
-
-    // Episode 3 (Active Production)
-    sheet.appendRow([
-      3,
-      "മഴ തോരാത്ത വഴികൾ (Rain-Drenched Roads)",
       "Queued",
-      "Stepping out into the sudden Kochi monsoon, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.",
+      22,
       "",
       "",
-      "Amal glances in the rear-view mirror as Sachin's fingers brush against Reenu's hand.",
+      "After two long years of separation, Sachin returns from the UK to a nervous Reenu waiting with Amal at Kochi CIAL airport. Amidst the tearful reunion, a secret from London awaits.",
       ""
     ]);
+  }
+  
+  // 2. Setup Production_Checklist
+  let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (!checkSheet) {
+    checkSheet = ss.insertSheet(TAB_CHECKLIST, 1);
+  }
+  
+  initChecklist(1, 22, "തിരിച്ചുവരവ് (The Homecoming)");
+  Logger.log("Studio Spreadsheet setup successfully initialized!");
+}
 
-    Logger.log("Google Sheet initialized with starter episodes!");
-  } else {
-    Logger.log("Sheet already contains data.");
+/**
+ * Populates or resets the 2-Column Checklist for a specific episode.
+ * Column 1: Shot Number (Shot 1..N)
+ * Column 2: Video Status (Pending / Present)
+ */
+function initChecklist(episodeNum, totalShots, episodeTitle) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_CHECKLIST);
+  }
+  
+  sheet.clear();
+  
+  // Header Meta
+  sheet.getRange(1, 1).setValue(`EPISODE ${episodeNum}: ${episodeTitle || ''}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(`TARGET SHOTS: ${totalShots}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#3b82f6").setFontColor("#ffffff");
+  
+  // Column Headers (Strict 2-Column specification)
+  sheet.getRange(2, 1).setValue("Shot Number (Column 1)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  sheet.getRange(2, 2).setValue("Video Status (Column 2)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  sheet.getRange(2, 3).setValue("Drive File Name").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  sheet.getRange(2, 4).setValue("Drive File ID").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  sheet.getRange(2, 5).setValue("Last Updated (IST)").setFontWeight("bold").setBackground("#1e293b").setFontColor("#ffffff");
+  
+  const rows = [];
+  for (let s = 1; s <= totalShots; s++) {
+    rows.push([`Shot ${s}`, "Pending", "", "", ""]);
+  }
+  
+  if (rows.length > 0) {
+    sheet.getRange(3, 1, rows.length, 5).setValues(rows);
+    // Format Pending in light amber
+    sheet.getRange(3, 2, rows.length, 1)
+      .setBackground("#fef3c7")
+      .setFontColor("#92400e")
+      .setHorizontalAlignment("center");
+    sheet.getRange(3, 1, rows.length, 1).setHorizontalAlignment("center").setFontWeight("bold");
+  }
+  
+  sheet.setFrozenRows(2);
+  Logger.log(`Checklist initialized for Episode ${episodeNum} with ${totalShots} shots.`);
+}
+
+/**
+ * Completely blanks the Production_Checklist sheet after publishing.
+ */
+function makeChecklistBlank() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (sheet) {
+    sheet.clear();
+    sheet.getRange(1, 1).setValue("CHECKLIST BLANK — Awaiting Next Episode Configuration")
+      .setFontWeight("bold")
+      .setFontColor("#64748b");
+    Logger.log("Production_Checklist successfully cleared and made blank.");
   }
 }
 
@@ -114,34 +166,174 @@ function getEpisodeDriveFolder(episodeNum) {
 }
 
 /**
- * Checks which video clips are already uploaded in Google Drive for an episode.
+ * Scans Google Drive and syncs with the Production_Checklist in Google Sheets.
+ * Matches files like "shot_1.mp4", "shot 1", "shot_01", or files uploaded into Drive.
  */
-function checkUploadedShots(episodeNum) {
-  const folder = getEpisodeDriveFolder(episodeNum);
-  const files = folder.getFiles();
-  const uploaded = [];
+function syncDriveToChecklist(episodeNum) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (!sheet || sheet.getLastRow() < 3) {
+    Logger.log("Checklist sheet is blank or uninitialized.");
+    return { ready: false, total_shots: 0, present_shots: 0, files: [] };
+  }
   
-  while (files.hasNext()) {
-    const f = files.next();
-    uploaded.push({
+  const folder = getEpisodeDriveFolder(episodeNum);
+  const filesIter = folder.getFiles();
+  const driveFiles = [];
+  
+  while (filesIter.hasNext()) {
+    const f = filesIter.next();
+    driveFiles.push({
       name: f.getName(),
       id: f.getId(),
       url: f.getUrl(),
       downloadUrl: f.getDownloadUrl(),
-      sizeBytes: f.getSize()
+      size: f.getSize()
     });
   }
+  
+  const lastRow = sheet.getLastRow();
+  const totalShots = lastRow - 2;
+  const shotData = sheet.getRange(3, 1, totalShots, 5).getValues();
+  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  
+  let presentCount = 0;
+  const matchedFiles = [];
+  
+  for (let i = 0; i < shotData.length; i++) {
+    const shotNum = i + 1; // 1-indexed
+    
+    // Find matching file in driveFiles
+    let match = null;
+    for (const f of driveFiles) {
+      const lower = f.name.toLowerCase();
+      // Match patterns: shot_1, shot 1, shot01, shot_01, or shot-1
+      const patterns = [
+        `shot_${shotNum}.`,
+        `shot_${shotNum < 10 ? '0' + shotNum : shotNum}.`,
+        `shot ${shotNum}.`,
+        `shot${shotNum}.`,
+        `shot-${shotNum}.`,
+        `shot_${shotNum}_`,
+        `shot${shotNum < 10 ? '0' + shotNum : shotNum}.`
+      ];
+      if (patterns.some(p => lower.includes(p))) {
+        match = f;
+        break;
+      }
+    }
+    
+    // If exact name didn't match and there is a 1-to-1 match by sorted position when total files match
+    if (!match && driveFiles.length === totalShots) {
+      match = driveFiles[i];
+    }
+    
+    if (match) {
+      shotData[i][1] = "Present";
+      shotData[i][2] = match.name;
+      shotData[i][3] = match.id;
+      shotData[i][4] = nowIst;
+      presentCount++;
+      matchedFiles.push({
+        shot_number: shotNum,
+        filename: match.name,
+        file_id: match.id,
+        download_url: match.downloadUrl
+      });
+    } else {
+      shotData[i][1] = "Pending";
+      shotData[i][2] = "";
+      shotData[i][3] = "";
+    }
+  }
+  
+  // Write back updated checklist
+  sheet.getRange(3, 1, totalShots, 5).setValues(shotData);
+  
+  // Apply formatting: Green for Present, Amber for Pending
+  for (let i = 0; i < totalShots; i++) {
+    const row = 3 + i;
+    if (shotData[i][1] === "Present") {
+      sheet.getRange(row, 2).setBackground("#dcfce7").setFontColor("#15803d");
+    } else {
+      sheet.getRange(row, 2).setBackground("#fef3c7").setFontColor("#92400e");
+    }
+  }
+  
+  const allPresent = (presentCount === totalShots && totalShots > 0);
+  Logger.log(`Episode ${episodeNum} Checklist Sync: ${presentCount}/${totalShots} shots Present. All Present: ${allPresent}`);
+  
   return {
-    folderId: folder.getId(),
-    folderUrl: folder.getUrl(),
-    files: uploaded
+    episode_number: episodeNum,
+    ready: allPresent,
+    total_shots: totalShots,
+    present_shots: presentCount,
+    files: matchedFiles,
+    folder_url: folder.getUrl()
   };
 }
 
 /**
- * Triggers the GitHub Actions Workflow via API.
+ * Trashes/deletes all video files from the Episode Google Drive folder.
  */
-function dispatchGitHubWorkflow(episodeNum, driveFolderId) {
+function cleanEpisodeDrive(episodeNum) {
+  const folder = getEpisodeDriveFolder(episodeNum);
+  const filesIter = folder.getFiles();
+  let deletedCount = 0;
+  
+  while (filesIter.hasNext()) {
+    const f = filesIter.next();
+    f.setTrashed(true);
+    deletedCount++;
+  }
+  Logger.log(`Cleaned Google Drive: Trashed ${deletedCount} files from Episode ${episodeNum} folder.`);
+  return deletedCount;
+}
+
+/**
+ * Post-publish cleanup:
+ * 1. Deletes videos from Google Drive.
+ * 2. Blanks the Google Sheet checklist so future runs won't duplicate.
+ * 3. Marks Episode as "Published" in Episode_Ledger.
+ */
+function cleanupAfterPublish(episodeNum, instagramUrl) {
+  Logger.log(`Starting post-publish cleanup for Episode ${episodeNum}...`);
+  
+  // 1. Delete videos from Google Drive
+  const deletedFiles = cleanEpisodeDrive(episodeNum);
+  
+  // 2. Blank the Google Sheet checklist
+  makeChecklistBlank();
+  
+  // 3. Update Episode_Ledger status to Published
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ledger = ss.getSheetByName(TAB_LEDGER);
+  if (ledger) {
+    const data = ledger.getDataRange().getValues();
+    const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][0] == episodeNum) {
+        ledger.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+        if (instagramUrl) {
+          ledger.getRange(i + 1, 6).setValue(instagramUrl);
+        }
+        ledger.getRange(i + 1, 8).setValue(nowIst);
+        break;
+      }
+    }
+  }
+  
+  return {
+    success: true,
+    deleted_files: deletedFiles,
+    checklist_blanked: true
+  };
+}
+
+/**
+ * Dispatches GitHub Actions workflow when ALL videos are ready.
+ */
+function dispatchGitHubWorkflow(episodeNum) {
   if (!GITHUB_PAT || GITHUB_PAT === "YOUR_GITHUB_PAT_HERE") {
     Logger.log("ERROR: GITHUB_PAT is not set! Please insert your PAT in Apps Script.");
     return { success: false, message: "GITHUB_PAT missing in Apps Script" };
@@ -151,6 +343,7 @@ function dispatchGitHubWorkflow(episodeNum, driveFolderId) {
   const payload = {
     ref: "main",
     inputs: {
+      mode: "hybrid_flow",
       dry_run: false
     }
   };
@@ -180,14 +373,22 @@ function dispatchGitHubWorkflow(episodeNum, driveFolderId) {
 }
 
 /**
- * Scheduled check: runs at 12:00 PM IST and 6:00 PM IST.
- * If video clips for the queued episode are uploaded in Google Drive, triggers GitHub Actions.
+ * Scheduled cron handler: Runs at 12:00 PM IST & 6:00 PM IST.
+ * Reads Google Sheet checklist:
+ * - If checklist is blank or missing shots -> stops cleanly.
+ * - If ALL shots are present -> dispatches GitHub Actions!
  */
 function scheduledEpisodeCheckAndTrigger() {
+  Logger.log("--- Scheduled 12:00 PM / 6:00 PM Trigger Started ---");
   const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheet = ss.getActiveSheet();
-  const data = sheet.getDataRange().getValues();
+  const ledger = ss.getSheetByName(TAB_LEDGER);
   
+  if (!ledger) {
+    Logger.log("Episode_Ledger sheet not found. Exiting.");
+    return;
+  }
+  
+  const data = ledger.getDataRange().getValues();
   let queuedEp = null;
   let queuedRow = -1;
   
@@ -197,7 +398,7 @@ function scheduledEpisodeCheckAndTrigger() {
       queuedEp = {
         episode: data[i][0],
         title: data[i][1],
-        outline: data[i][3]
+        total_shots: data[i][3] || 22
       };
       queuedRow = i + 1;
       break;
@@ -205,30 +406,30 @@ function scheduledEpisodeCheckAndTrigger() {
   }
 
   if (!queuedEp) {
-    Logger.log("No queued episode found to trigger.");
+    Logger.log("No queued episode in Episode_Ledger. Checking checklist...");
+  }
+  
+  const currentEp = queuedEp ? queuedEp.episode : 1;
+  const status = syncDriveToChecklist(currentEp);
+  
+  if (!status || status.total_shots === 0) {
+    Logger.log("Checklist is blank. No video processing needed. Clean exit.");
     return;
   }
-
-  Logger.log(`Scheduled check running for Episode ${queuedEp.episode}: "${queuedEp.title}"`);
   
-  // Check Drive folder for uploaded shots
-  const driveInfo = checkUploadedShots(queuedEp.episode);
-  sheet.getRange(queuedRow, 5).setValue(driveInfo.folderUrl);
-
-  // If clips exist (at least 1 shot uploaded), dispatch GitHub
-  if (driveInfo.files.length > 0) {
-    Logger.log(`Found ${driveInfo.files.length} uploaded shots in Drive. Dispatching GitHub Actions!`);
-    sheet.getRange(queuedRow, 3).setValue("Processing");
-    dispatchGitHubWorkflow(queuedEp.episode, driveInfo.folderId);
+  if (status.ready) {
+    Logger.log(`🎯 ALL ${status.total_shots}/${status.total_shots} shots are PRESENT! Dispatching GitHub Actions...`);
+    if (queuedRow > 0) {
+      ledger.getRange(queuedRow, 3).setValue("Processing").setBackground("#dbeafe").setFontColor("#1d4ed8");
+    }
+    dispatchGitHubWorkflow(currentEp);
   } else {
-    Logger.log(`Episode ${queuedEp.episode} has no uploaded clips in Drive yet. Waiting for creator upload.`);
+    Logger.log(`⏳ Incomplete: Only ${status.present_shots} of ${status.total_shots} shots present in Google Drive. Stopping cleanly without running.`);
   }
 }
 
 /**
- * Sets up 2 daily triggers:
- * 1. 12:00 PM IST (noon)
- * 2. 6:00 PM IST (18:00)
+ * Sets up 2 daily triggers: 12:00 PM IST and 6:00 PM IST.
  */
 function setupDailyTriggers() {
   const existingTriggers = ScriptApp.getProjectTriggers();
@@ -236,7 +437,7 @@ function setupDailyTriggers() {
     ScriptApp.deleteTrigger(existingTriggers[i]);
   }
 
-  // 12:00 PM IST
+  // 12:00 PM IST (noon)
   ScriptApp.newTrigger("scheduledEpisodeCheckAndTrigger")
     .timeBased()
     .atHour(12)
@@ -258,74 +459,46 @@ function setupDailyTriggers() {
 }
 
 /**
- * Web App GET endpoint: Provides status, queued episodes, or Drive clips.
+ * Web App GET endpoint.
  */
 function doGet(e) {
   const params = e ? e.parameter : {};
-  const action = params.action || "status";
-  
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  const sheet = ss.getActiveSheet();
-  const data = sheet.getDataRange().getValues();
+  const action = params.action || "check_status";
+  const epNum = parseInt(params.episode || "1", 10);
 
-  if (action === "status" || action === "current_episode") {
-    let queuedEp = null;
-    let publishedCount = 0;
-    
-    for (let i = 1; i < data.length; i++) {
-      const status = (data[i][2] || "").toString().trim().toLowerCase();
-      if (status === "published") {
-        publishedCount++;
-      } else if (!queuedEp && (status === "queued" || status === "pending" || status === "processing")) {
-        queuedEp = {
-          row: i + 1,
-          episode_number: data[i][0],
-          title: data[i][1],
-          status: data[i][2],
-          outline: data[i][3],
-          drive_url: data[i][4] || ""
-        };
-      }
-    }
-
-    let driveFiles = [];
-    if (queuedEp) {
-      const driveInfo = checkUploadedShots(queuedEp.episode_number);
-      driveFiles = driveInfo.files;
-      queuedEp.drive_folder_url = driveInfo.folderUrl;
-    }
-
-    const response = {
+  if (action === "check_status" || action === "get_checklist") {
+    const status = syncDriveToChecklist(epNum);
+    return ContentService.createTextOutput(JSON.stringify({
       success: true,
-      current_episode: queuedEp,
-      total_published: publishedCount,
-      drive_shots: driveFiles
-    };
-
-    return ContentService.createTextOutput(JSON.stringify(response))
-      .setMimeType(ContentService.MimeType.JSON);
+      data: status
+    })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  return ContentService.createTextOutput(JSON.stringify({ status: "running", app: "Sachin & Reenu Creator Studio" }))
+  if (action === "init_episode") {
+    const totalShots = parseInt(params.total_shots || "22", 10);
+    const title = params.title || "Episode " + epNum;
+    initChecklist(epNum, totalShots, title);
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: `Initialized Episode ${epNum} with ${totalShots} shots`
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({ status: "running", app: "Sachin & Reenu Studio Engine" }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
- * Web App POST endpoint:
- * 1. Receives video uploads from Portal and saves directly to Google Drive.
- * 2. Receives GitHub Actions completion webhooks.
- * 3. Triggers manual workflow dispatch.
+ * Web App POST endpoint.
  */
 function doPost(e) {
   try {
     const body = JSON.parse(e.postData.contents);
-    const action = body.action || "complete_episode";
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    const sheet = ss.getActiveSheet();
+    const action = body.action;
+    const epNum = parseInt(body.episode_number || "1", 10);
 
-    // ACTION 1: Video Shot Upload from Portal
+    // 1. Direct upload from Portal
     if (action === "upload_shot") {
-      const epNum = body.episode_number || 3;
       const fileName = body.filename || `shot_${Date.now()}.mp4`;
       const base64Data = body.base64_data;
       
@@ -333,7 +506,6 @@ function doPost(e) {
       const decodedBytes = Utilities.base64Decode(base64Data);
       const blob = Utilities.newBlob(decodedBytes, "video/mp4", fileName);
       
-      // Overwrite if file already exists with same name
       const existing = folder.getFilesByName(fileName);
       while (existing.hasNext()) {
         existing.next().setTrashed(true);
@@ -341,57 +513,36 @@ function doPost(e) {
       
       const file = folder.createFile(blob);
       file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+      
+      // Update checklist
+      syncDriveToChecklist(epNum);
 
       return ContentService.createTextOutput(JSON.stringify({
         success: true,
         filename: fileName,
         file_id: file.getId(),
-        file_url: file.getUrl(),
         download_url: file.getDownloadUrl()
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // ACTION 2: Trigger GitHub Workflow Manually from Portal
-    if (action === "trigger_workflow") {
-      const epNum = body.episode_number || 3;
-      const folder = getEpisodeDriveFolder(epNum);
-      const res = dispatchGitHubWorkflow(epNum, folder.getId());
+    // 2. Post-Publish Cleanup (Delete from Drive & Blank the Sheet)
+    if (action === "cleanup_after_publish") {
+      const res = cleanupAfterPublish(epNum, body.instagram_url);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // ACTION 3: GitHub Actions marks Episode Complete & creates Next Episode
-    if (action === "complete_episode") {
-      const epNum = body.episode_number;
-      const data = sheet.getDataRange().getValues();
-      const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-      
-      for (let i = 1; i < data.length; i++) {
-        if (data[i][0] == epNum) {
-          sheet.getRange(i + 1, 3).setValue("Published");
-          sheet.getRange(i + 1, 6).setValue(body.instagram_url || "");
-          sheet.getRange(i + 1, 7).setValue(body.cliffhanger || "");
-          sheet.getRange(i + 1, 8).setValue(nowIst);
-          break;
-        }
-      }
+    // 3. Sync checklist
+    if (action === "sync_checklist") {
+      const res = syncDriveToChecklist(epNum);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
 
-      // Append next episode
-      if (body.next_episode_story) {
-        const nextEp = epNum + 1;
-        sheet.appendRow([
-          nextEp,
-          body.next_episode_title || `ഭാഗം ${nextEp}`,
-          "Queued",
-          body.next_episode_story,
-          "",
-          "",
-          "",
-          ""
-        ]);
-      }
-
-      return ContentService.createTextOutput(JSON.stringify({ success: true }))
+    // 4. Manual workflow trigger
+    if (action === "trigger_workflow") {
+      const res = dispatchGitHubWorkflow(epNum);
+      return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
 

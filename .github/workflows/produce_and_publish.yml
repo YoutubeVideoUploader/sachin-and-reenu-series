@@ -1,21 +1,17 @@
 name: "Autonomous Episode Studio: Produce & Publish to Instagram"
 
 on:
+  schedule:
+    # 12:00 PM IST (06:30 UTC) & 6:00 PM IST (12:30 UTC) daily
+    - cron: '30 6,12 * * *'
   workflow_dispatch:
     inputs:
-      mode:
-        description: "Production Mode ('hybrid_flow' or 'autonomous_flux')"
-        type: choice
-        options:
-          - hybrid_flow
-          - autonomous_flux
-        default: hybrid_flow
-      shots_dir:
-        description: "Directory containing Google Flow shot clips (for hybrid_flow)"
-        type: string
-        default: "uploaded_shots"
       dry_run:
-        description: "Run without posting to Instagram"
+        description: "Dry run (Skip Instagram upload & cleanup)"
+        type: boolean
+        default: false
+      force_run:
+        description: "Force run even if shots are pending in Sheet"
         type: boolean
         default: false
 
@@ -26,95 +22,66 @@ jobs:
   produce_and_publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code Repository
+      - name: 1. Checkout Code Repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Set up Python 3.12
+      - name: 2. Set up Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install System Dependencies (FFmpeg & Fonts)
+      - name: 3. Install System Dependencies (FFmpeg & Fonts)
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto-core fonts-dejavu-core
 
-      - name: Install Python Packages
+      - name: 4. Install Python Packages
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
       # -------------------------------------------------------------
-      # MODE 1: HYBRID STUDIO (Google Flow 3D Motion Clips + Merger)
+      # STEP 5: GOOGLE SHEET & DRIVE PRE-CHECK
+      # Reads Column 1 (Shots) & Column 2 (Status).
+      # If sheet is blank or any shot is missing -> STOP cleanly.
+      # Only proceeds if ALL shots (e.g. 22/22) are PRESENT.
       # -------------------------------------------------------------
-      - name: 1A. Prepare Google Flow Prompts if Shots Missing
-        if: ${{ inputs.mode == 'hybrid_flow' }}
+      - name: 5. Verify Google Sheet Checklist & Download Clips from Drive
+        id: drive_check
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
-          if [ ! -d "${{ inputs.shots_dir }}" ] || [ -z "$(ls -A ${{ inputs.shots_dir }} 2>/dev/null)" ]; then
-            echo "Notice: No clips found in ${{ inputs.shots_dir }}. Generating fresh Google Flow prompts for creator..."
-            python scripts/flow_prompt_generator.py
-          fi
-
-      - name: 1B. Merge Google Flow 9:16 Clips with Romantic BGM & Title
-        if: ${{ inputs.mode == 'hybrid_flow' }}
-        run: |
-          if [ -d "${{ inputs.shots_dir }}" ] && [ "$(ls -A ${{ inputs.shots_dir }} 2>/dev/null)" ]; then
-            echo "Merging uploaded Google Flow clips into master 9:16 Reel..."
-            python scripts/video_merger.py --shots_dir "${{ inputs.shots_dir }}" --output master_episode.mp4
-          else
-            echo "No video clips provided yet. Skipping merge step."
-          fi
+          echo "Checking Google Sheet checklist & Google Drive videos..."
+          python scripts/drive_sync_and_check.py --target_dir uploaded_shots
 
       # -------------------------------------------------------------
-      # MODE 2: AUTONOMOUS FLUX (Fallback Pure AI Image Animation)
+      # STEP 6: SEAMLESS GEMINI WATERMARK REMOVAL
+      # Removes 4-pointed Gemini sparkle watermark from all clips
       # -------------------------------------------------------------
-      - name: 2A. Generate Screenplay (Autonomous FLUX Mode)
-        if: ${{ inputs.mode == 'autonomous_flux' }}
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+      - name: 6. Remove Gemini Watermarks from All Video Clips
+        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
-          python scripts/story_engine.py
-
-      - name: 2B. Synthesize Malayalam Voice Acting (Gemini TTS / Edge-TTS)
-        if: ${{ inputs.mode == 'autonomous_flux' }}
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-        run: |
-          python scripts/audio_generator.py
-
-      - name: 2C. Render FLUX.1 Consistent Frames
-        if: ${{ inputs.mode == 'autonomous_flux' }}
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID_2: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_2 }}
-          CLOUDFLARE_API_TOKEN_2: ${{ secrets.CLOUDFLARE_API_TOKEN_2 }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-        run: |
-          python scripts/image_generator.py
-
-      - name: 2D. Compile Static Frames to Master Video
-        if: ${{ inputs.mode == 'autonomous_flux' }}
-        run: |
-          python scripts/video_compiler.py
+          echo "Removing Gemini sparkle watermarks using mathematical astroid inpainting..."
+          python scripts/watermark_remover.py --input_dir uploaded_shots --output_dir clean_shots
 
       # -------------------------------------------------------------
-      # PUBLISHING: Instagram Reels & Story State Sync
+      # STEP 7: MASTER 9:16 MERGE WITH DIALOGUE + ROMANTIC BGM
+      # Preserves Malayalam voice dialogue, mixes romantic BGM @ vol 0.18
       # -------------------------------------------------------------
-      - name: Publish to Instagram Reels & Attach Poster Thumbnail
-        if: ${{ !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
+      - name: 7. Master Video & Audio Merge
+        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        run: |
+          echo "Merging de-watermarked clips with preserved Malayalam dialogue audio & romantic BGM..."
+          python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4
+
+      # -------------------------------------------------------------
+      # STEP 8: INSTAGRAM PUBLISHING & DRIVE / SHEET CLEANUP
+      # Deletes video clips from Google Drive & blanks Google Sheet checklist
+      # -------------------------------------------------------------
+      - name: 8. Publish to Instagram Reels & Execute Post-Publish Cleanup
+        if: ${{ (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
@@ -123,12 +90,17 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
+          echo "Publishing master episode to Instagram Reels..."
           python scripts/instagram_publisher.py
 
-      - name: Commit Updated Story State Back to GitHub
+      # -------------------------------------------------------------
+      # STEP 9: UPDATE EPISODE LEDGER IN GITHUB
+      # -------------------------------------------------------------
+      - name: 9. Commit Updated Story State Back to GitHub
+        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add story_state.json current_episode_shots.json 2>/dev/null || true
-          git diff-index --quiet HEAD || git commit -m "Auto-update episode state [skip ci]"
-          git push
+          git diff-index --quiet HEAD || git commit -m "Auto-update episode state after publishing [skip ci]"
+          git push || true

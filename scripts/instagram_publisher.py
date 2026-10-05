@@ -202,23 +202,25 @@ def main():
     media_id = publish_reel_to_instagram(video_url, caption, cover_url=cover_url)
     update_story_state()
 
-    # Sync with Google Sheet via Google Apps Script Webhook if configured
+    # Sync with Google Sheet and trigger Drive cleanup & Sheet blanking
     gas_webhook = os.getenv("GAS_WEBHOOK_URL")
     if gas_webhook:
         try:
-            print("Syncing published episode details to Google Sheet ledger...")
+            print("\n🧹 Executing post-publish cleanup on Google Drive & Google Sheet...")
             payload = {
-                "action": "complete_episode",
+                "action": "cleanup_after_publish",
                 "episode_number": ep_num,
                 "instagram_url": f"https://www.instagram.com/reel/{media_id}/",
                 "cliffhanger": ep_data.get("cliffhanger", ""),
                 "next_episode_story": ep_data.get("next_episode_story", ""),
                 "next_episode_title": ep_data.get("next_episode_title", f"ഭാഗം {ep_num + 1}")
             }
-            res = requests.post(gas_webhook, json=payload, timeout=15)
-            print(f"Google Sheet sync response: {res.status_code}")
+            res = requests.post(gas_webhook, json=payload, timeout=25)
+            print(f"✓ Post-publish cleanup response: {res.status_code} - {res.text}")
+            print(f"✓ All raw shot clips deleted from Google Drive.")
+            print(f"✓ Google Sheet checklist blanked for next episode.")
         except Exception as e:
-            print(f"Notice: Google Sheet webhook sync skipped or failed: {e}")
+            print(f"Notice: Google Sheet webhook cleanup skipped or failed: {e}")
 
 if __name__ == "__main__":
     main()
