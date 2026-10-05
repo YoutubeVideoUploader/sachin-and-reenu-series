@@ -1,183 +1,188 @@
 import os
 import json
 import time
+import base64
+import requests
 from PIL import Image, ImageFilter
-from gradio_client import Client, handle_file
 
-HF_TOKEN = os.getenv("HF_TOKEN")
+# Load local .env if present
+if os.path.exists(".env"):
+    try:
+        with open(".env", "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+    except Exception:
+        pass
+
+CLOUDFLARE_ACCOUNT_ID = os.getenv("CLOUDFLARE_ACCOUNT_ID", "").strip()
+CLOUDFLARE_API_TOKEN = os.getenv("CLOUDFLARE_API_TOKEN", "").strip()
+
 SCRIPT_FILE = "current_episode.json"
 IMAGE_DIR = "generated_images"
 ASSETS_DIR = "assets"
 os.makedirs(IMAGE_DIR, exist_ok=True)
 
-def get_character_reference(speaker, prompt=""):
-    """Selects the precise turnaround character sheet for zero-shot identity cloning."""
-    if speaker == "Sachin" or ("sachin" in prompt.lower() and "reenu" not in prompt.lower()):
-        return os.path.join(ASSETS_DIR, "sachin_reference.jpg"), "Sachin"
-    elif speaker == "Amal" or ("amal" in prompt.lower() and "reenu" not in prompt.lower() and "sachin" not in prompt.lower()):
-        return os.path.join(ASSETS_DIR, "amal_reference.jpg"), "Amal"
-    else:
-        return os.path.join(ASSETS_DIR, "reenu_reference.jpg"), "Reenu"
+# IMMUTABLE CHARACTER VISUAL DNA ANCHORS (PIXAR 3D CANONICAL)
+REENU_DNA = (
+    "Disney Pixar 3D animated film still, 8k masterpiece. "
+    "Reenu, a charming 22-year-old South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair "
+    "and soft wispy curtain bangs framing her cheerful face, warm sparkling hazel-brown eyes, glowing honey complexion. "
+    "Attire: fitted pastel camouflage t-shirt in baby blue, soft yellow, and white patches, paired with a light-blue denim A-line mini skirt and white sneakers."
+)
 
-def create_fallback_frame(speaker, out_png, scene_idx):
-    """Creates a high quality 1080x1920 vertical fallback frame from character turnaround sheets."""
-    canvas = Image.new("RGB", (1080, 1920), color=(25, 20, 28))
-    ref_file, _ = get_character_reference(speaker)
+SACHIN_DNA = (
+    "Disney Pixar 3D animated film still, 8k masterpiece. "
+    "Sachin, a handsome 22-year-old South Indian Malayali young man with thick messy wavy textured dark hair styled with casual volume, "
+    "thick expressive natural eyebrows, warm dark-brown eyes, handsome defined jawline, boyish charming smile. "
+    "Attire: oversized terracotta rust-orange cotton t-shirt with subtle pocket design, relaxed dark-gray joggers, and black digital sports watch."
+)
+
+AMAL_DNA = (
+    "Disney Pixar 3D animated film still, 8k masterpiece. "
+    "Amal, a friendly 22-year-old South Indian young man with short neat textured black hair, neat mustache and trim goatee beard, "
+    "expressive humorous eyes. Attire: olive-green crewneck t-shirt and blue denim jeans."
+)
+
+DUO_DNA = (
+    "Disney Pixar 3D animated romantic movie still, cinematic render, 8k masterpiece. "
+    "Two young adult characters interacting together. "
+    "On the left, Sachin, a cute 22-year-old South Indian young man with messy wavy dark hair, boyish smile, wearing an oversized rust-orange t-shirt and dark joggers. "
+    "On the right, Reenu, a gorgeous 22-year-old South Indian girl with shoulder-length layered wavy dark-brown hair and soft curtain bangs, warm hazel eyes, wearing a pastel camouflage t-shirt and light blue denim skirt."
+)
+
+def build_scene_prompt(scene, location_palette, primary_location):
+    chars = scene.get("characters_present", [])
+    speaker = scene.get("speaker", "")
+    emotion = scene.get("character_emotion", "expressive emotional gaze")
+    action = scene.get("action_description", "")
+    
+    # 1. Select Character DNA
+    if "Sachin" in chars and "Reenu" in chars:
+        char_base = DUO_DNA
+    elif "Reenu" in chars or speaker == "Reenu":
+        char_base = REENU_DNA
+    elif "Sachin" in chars or speaker == "Sachin":
+        char_base = SACHIN_DNA
+    elif "Amal" in chars or speaker == "Amal":
+        char_base = AMAL_DNA
+    else:
+        # Default narrator shot
+        if "reenu" in action.lower():
+            char_base = REENU_DNA
+        else:
+            char_base = SACHIN_DNA
+            
+    # 2. Combine with action, emotion, location and camera lighting
+    prompt = (
+        f"{char_base} "
+        f"Expression: {emotion}. "
+        f"Action: {action}. "
+        f"Environment: {primary_location}, {location_palette}. "
+        f"Cinematic composition, Pixar character render, octane render, volumetric lighting, depth of field, 8k."
+    )
+    return prompt
+
+def make_vertical_reel_frame(pil_img, out_path):
+    """Composes image into 1080x1920 vertical canvas with blurred ambient background fill."""
+    target_w, target_h = 1080, 1920
+    
+    # 1. Background layer: cover 1080x1920 and heavily blur
+    scale = max(target_w / pil_img.width, target_h / pil_img.height)
+    bg_w, bg_h = int(pil_img.width * scale), int(pil_img.height * scale)
+    bg = pil_img.resize((bg_w, bg_h), Image.Resampling.LANCZOS)
+    left = (bg_w - target_w) // 2
+    top = (bg_h - target_h) // 2
+    bg = bg.crop((left, top, left + target_w, top + target_h))
+    bg = bg.filter(ImageFilter.GaussianBlur(radius=32))
+    
+    # Subtle darkening for contrast and focus
+    dimmer = Image.new("RGB", (target_w, target_h), (0, 0, 0))
+    bg = Image.blend(bg, dimmer, 0.22)
+    
+    # 2. Foreground hero layer: centered 1080x1080 sharp
+    fg = pil_img.resize((1080, 1080), Image.Resampling.LANCZOS)
+    y_pos = (target_h - 1080) // 2
+    bg.paste(fg, (0, y_pos))
+    
+    bg.save(out_path, format="PNG", quality=95)
+
+def call_cloudflare_flux(prompt):
+    """Calls Cloudflare Workers AI FLUX.1-schnell model."""
+    if not CLOUDFLARE_ACCOUNT_ID or not CLOUDFLARE_API_TOKEN:
+        print("  -> Notice: CLOUDFLARE credentials not configured.")
+        return None
+        
+    url = f"https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/black-forest-labs/flux-1-schnell"
+    headers = {"Authorization": f"Bearer {CLOUDFLARE_API_TOKEN}"}
+    payload = {"prompt": prompt, "steps": 4}
+    
+    for attempt in range(3):
+        try:
+            resp = requests.post(url, headers=headers, json=payload, timeout=40)
+            if resp.status_code == 200:
+                if "image" in resp.headers.get("content-type", ""):
+                    from io import BytesIO
+                    return Image.open(BytesIO(resp.content)).convert("RGB")
+                data = resp.json()
+                img_b64 = data.get("result", {}).get("image")
+                if img_b64:
+                    from io import BytesIO
+                    img_data = base64.b64decode(img_b64)
+                    return Image.open(BytesIO(img_data)).convert("RGB")
+            else:
+                print(f"  -> Cloudflare API note (attempt {attempt+1}): {resp.status_code} {resp.text[:120]}")
+        except Exception as e:
+            print(f"  -> Cloudflare connection note (attempt {attempt+1}): {e}")
+        time.sleep(3.0)
+    return None
+
+def create_fallback_frame(speaker, out_png):
+    """Fallback if API is unreachable."""
+    ref_file = os.path.join(ASSETS_DIR, "reenu_reference.jpg" if speaker == "Reenu" else "sachin_reference.jpg")
     if os.path.exists(ref_file):
-        ref = Image.open(ref_file)
+        ref = Image.open(ref_file).convert("RGB")
         w, h = ref.size
         hero_crop = ref.crop((0, 0, int(w * 0.22), int(h * 0.45)))
-        bg = hero_crop.resize((1080, 1920)).filter(ImageFilter.GaussianBlur(35))
-        canvas.paste(bg, (0, 0))
-        overlay = Image.new("RGBA", (1080, 1920), (0, 0, 0, 100))
-        canvas.paste(overlay, (0, 0), overlay)
-        
-        target_w = 920
-        target_h = int(hero_crop.height * (target_w / hero_crop.width))
-        hero_resized = hero_crop.resize((target_w, target_h), Image.Resampling.LANCZOS)
-        y_pos = (1920 - target_h) // 2
-        canvas.paste(hero_resized, (80, y_pos))
-    
-    canvas.save(out_png, quality=95)
-    print(f"  -> Created character model fallback frame {out_png} for {speaker}")
-
-def get_clients():
-    if not HF_TOKEN:
-        print("HF_TOKEN not found in environment.")
-        return None, None
-        
-    instantid_client = None
-    flux_client = None
-    
-    try:
-        print("Connecting to InstantID (Zero-Shot Character Face Cloning Space)...")
-        instantid_client = Client("InstantX/InstantID", token=HF_TOKEN)
-        print("Connected to InstantID successfully!")
-    except Exception as e:
-        print(f"InstantID connection note: {e}")
-
-    try:
-        print("Connecting to FLUX.1-schnell space...")
-        flux_client = Client("black-forest-labs/FLUX.1-schnell", token=HF_TOKEN)
-        print("Connected to FLUX space successfully!")
-    except Exception as e:
-        print(f"FLUX connection note: {e}")
-        
-    return instantid_client, flux_client
+        make_vertical_reel_frame(hero_crop, out_png)
+    else:
+        blank = Image.new("RGB", (1080, 1920), (20, 20, 25))
+        blank.save(out_png)
 
 def generate_scene_images():
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
         ep_data = json.load(f)
-    
+        
     scenes = ep_data.get("scenes", [])
-    ep_num = ep_data.get('episode_number')
-    print(f"Generating {len(scenes)} character-consistent visual frames for Episode {ep_num}...")
+    ep_num = ep_data.get("episode_number", 1)
+    primary_location = ep_data.get("primary_location", "Kochi CIAL Airport Arrivals Terminal")
+    location_palette = ep_data.get("location_palette", "Modern glass architecture, golden morning sunlight, volumetric atmospheric rays")
     
-    instantid_client, flux_client = get_clients()
+    print(f"Generating {len(scenes)} character-consistent visual frames for Episode {ep_num}...")
+    print(f"Location anchor: {primary_location}")
     
     for sc in scenes:
         idx = sc["scene_index"]
         speaker = sc.get("speaker", "Reenu")
-        setting = sc.get("setting_description", "Kochi")
         out_png = os.path.join(IMAGE_DIR, f"scene_{idx}.png")
         
         if os.path.exists(out_png) and os.path.getsize(out_png) > 10000:
             print(f"Skipping scene_{idx}.png (already generated).")
             continue
             
-        print(f"Rendering scene_{idx}.png ({speaker} - {setting[:35]}...)...")
-        raw_prompt = sc["visual_prompt"]
-        ref_file, char_name = get_character_reference(speaker, raw_prompt)
+        prompt = build_scene_prompt(sc, location_palette, primary_location)
+        print(f"Rendering scene_{idx}.png ({speaker} - {sc.get('characters_present', [])})...")
         
-        # Enforce strict 9:16 vertical Pixar 3D + Location consistency prompt
-        consistent_prompt = (
-            f"Pixar 3D animated masterpiece, 9:16 vertical Instagram format. "
-            f"Setting and Location: {setting}. "
-            f"{raw_prompt}. "
-            f"8k Octane render, cinematic film lighting, volumetric atmosphere, detailed textures."
-        )
-        
-        success = False
-        
-        # Tier 1: InstantID Reference Face & Character Cloning
-        if instantid_client and os.path.exists(ref_file):
-            for attempt in range(2):
-                try:
-                    print(f"  -> Cloning character identity from {os.path.basename(ref_file)} via InstantID...")
-                    res = instantid_client.predict(
-                        face_image_path=handle_file(ref_file),
-                        pose_image_path=None,
-                        prompt=consistent_prompt,
-                        negative_prompt="photorealistic, 2D, sketch, anime, deformed eyes, extra limbs, blurry, low resolution, watermark, text",
-                        style_name="(No style)",
-                        num_steps=15,
-                        identitynet_strength_ratio=0.82,
-                        adapter_strength_ratio=0.82,
-                        canny_strength=0.4,
-                        depth_strength=0.4,
-                        controlnet_selection=['depth'],
-                        guidance_scale=5.0,
-                        seed=42 + idx,
-                        scheduler='EulerDiscreteScheduler',
-                        enable_LCM=True,
-                        enhance_face_region=True,
-                        api_name='/generate_image'
-                    )
-                    temp_img_path = res[0]
-                    if os.path.exists(temp_img_path):
-                        im = Image.open(temp_img_path)
-                        # Crop / resize to 1080x1920 vertical Full HD
-                        target_w, target_h = 1080, 1920
-                        im_ratio = im.width / im.height
-                        target_ratio = target_w / target_h
-                        if im_ratio > target_ratio:
-                            new_w = int(im.height * target_ratio)
-                            left = (im.width - new_w) // 2
-                            im = im.crop((left, 0, left + new_w, im.height))
-                        else:
-                            new_h = int(im.width / target_ratio)
-                            top = (im.height - new_h) // 2
-                            im = im.crop((0, top, im.width, top + new_h))
-                        im_resized = im.resize((1080, 1920), Image.Resampling.LANCZOS)
-                        im_resized.save(out_png, format="PNG", quality=95)
-                        print(f"  -> Saved InstantID character-consistent scene_{idx}.png ({char_name})!")
-                        success = True
-                        time.sleep(2.0)
-                        break
-                except Exception as e:
-                    print(f"  -> InstantID note (attempt {attempt+1}): {e}")
-                    time.sleep(3.0)
-                    
-        # Tier 2: FLUX.1-schnell Fallback with Detailed Turnaround Embeddings
-        if not success and flux_client:
-            print(f"  -> Falling back to FLUX.1 with character turnaround descriptors...")
-            for attempt in range(2):
-                try:
-                    res = flux_client.predict(
-                        prompt=consistent_prompt,
-                        seed=42 + idx,
-                        randomize_seed=False,
-                        width=576,
-                        height=1024,
-                        num_inference_steps=4,
-                        api_name="/infer"
-                    )
-                    temp_img_path = res[0]
-                    if os.path.exists(temp_img_path):
-                        im = Image.open(temp_img_path)
-                        im_resized = im.resize((1080, 1920), Image.Resampling.LANCZOS)
-                        im_resized.save(out_png, format="PNG", quality=95)
-                        print(f"  -> Saved FLUX rendered scene_{idx}.png!")
-                        success = True
-                        time.sleep(2.0)
-                        break
-                except Exception as e:
-                    print(f"  -> FLUX attempt {attempt+1} note: {e}")
-                    time.sleep(2.0)
-                    
-        # Tier 3: Model Sheet Turnaround Framing
-        if not success:
-            create_fallback_frame(speaker, out_png, idx)
+        pil_img = call_cloudflare_flux(prompt)
+        if pil_img:
+            make_vertical_reel_frame(pil_img, out_png)
+            print(f"  -> Successfully generated & framed scene_{idx}.png!")
+        else:
+            print(f"  -> Warning: Falling back to reference sheet frame for scene_{idx}.png")
+            create_fallback_frame(speaker, out_png)
+        time.sleep(1.0)
 
 if __name__ == "__main__":
     generate_scene_images()

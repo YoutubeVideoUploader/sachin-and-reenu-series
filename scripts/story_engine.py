@@ -23,13 +23,16 @@ def load_story_state():
 
 def generate_next_episode():
     state = load_story_state()
-    next_ep_num = state.get("total_episodes_produced", 1) + 1
-    
+    next_ep_num = state.get("total_episodes_produced", 0) + 1
 
     history = state.get("history", [])
-    last_ep = history[-1] if history else {}
-    last_cliffhanger = last_ep.get("cliffhanger", "The emotional reunion begins to unfold.")
-    last_title = last_ep.get("title", "Previous Episode")
+    if history:
+        last_ep = history[-1]
+        last_cliffhanger = last_ep.get("cliffhanger", "The emotional reunion begins to unfold.")
+        last_title = last_ep.get("title", f"Episode {next_ep_num - 1}")
+    else:
+        last_cliffhanger = "Sachin is returning from the UK after 6 long years. Reenu and Amal are waiting at Kochi CIAL airport international arrivals."
+        last_title = "Series Premiere"
 
     prompt = f"""
 You are the Lead Showrunner and Screenwriter for the hit 3D animated romantic drama series: "SACHIN & REENU" (സച്ചിൻ & റീനു).
@@ -37,33 +40,33 @@ Language: Malayalam (മലയാളം).
 Format: Instagram Reels 9:16 vertical video (~2 minutes duration, exactly 12-14 scenes).
 
 SERIES BIBLE & CHARACTERS:
-- Sachin (Age 26): Tousled thick wavy dark-brown hair, warm hazel eyes, clean-shaven, radiant charming smile.
-  Costume: Rust-orange crew neck tee with subtle pineapple crest, black joggers, white sneakers, black sport watch.
-  Voice: Fenrir. Back from UK after 6 long years.
-- Reenu (Age 24): Shoulder-length layered chestnut-brown hair with side-swept fringe bangs and soft curled tips, large sparkling dark-brown doe eyes.
-  Costume: Pastel yellow and light-blue cloud camouflage short-sleeved crop t-shirt, baby-blue denim mini-skirt with side slit, white sneakers.
-  Voice: Kore. Bubbly, emotional, deeply in love, waited 6 years in Kochi.
-- Amal (Age 26): Sachin's witty best friend. Cropped curly textured black hair, trim mustache and goatee beard.
-  Costume: Olive-green crew neck tee with subtle horizontal graphic lines, blue denim jeans, white sneakers.
-  Voice: Puck. Humorous Malayali friend banter.
+- Sachin (Age 22): Tousled thick wavy textured dark hair, warm hazel eyes, handsome defined jawline, boyish charming smile.
+  Costume: Terracotta rust-orange oversized cotton crewneck t-shirt with subtle pocket design, relaxed dark-gray joggers, white sneakers, black sports watch.
+  Voice: Fenrir. Returning from UK after years away.
+- Reenu (Age 22): Shoulder-length voluminous layered wavy dark brown hair with soft curtain bangs, large sparkling hazel-brown doe eyes, radiant warm smile.
+  Costume: Fitted pastel camouflage t-shirt in baby blue, soft yellow, and white patches, paired with a light blue denim A-line mini skirt, white sneakers.
+  Voice: Kore. Bubbly, emotional, deeply in love, waited faithfully in Kochi.
+- Amal (Age 22): Sachin's loyal witty best friend. Cropped curly textured black hair, neat mustache and trim goatee beard.
+  Costume: Olive-green crew neck tee, blue denim jeans, white sneakers.
+  Voice: Puck. Humorous Malayali banter.
 - Narrator: Voice Kore. Poetic third-person storyteller explaining emotional depths.
 
 PREVIOUS EPISODE HISTORY:
 {json.dumps(history, ensure_ascii=False, indent=2)}
 
-CURRENT STORY ARC: {state.get("current_arc")}
+CURRENT STORY ARC: {state.get("current_arc", "The Airport Reunion")}
 
 TASK FOR EPISODE {next_ep_num}:
 Write the complete screenplay for Episode {next_ep_num}.
-Directly continue from Episode {next_ep_num - 1} ({last_title}) cliffhanger:
-"{last_cliffhanger}"
+{"Directly continue from: " + last_cliffhanger if history else "Episode 1: The Airport Reunion at Kochi CIAL. Sachin arrives with his trolley; Reenu and Amal spot him."}
 
 STRICT VISUAL, CHARACTER & LOCATION CONSISTENCY RULES:
-1. UNIFIED LOCATION & ATMOSPHERE: The entire episode must maintain strict environment consistency. If inside a car driving through Kochi in the rain, or arriving at Reenu's apartment, EVERY scene's `setting_description` and `visual_prompt` must share the exact same background architecture, lighting color palette (e.g. warm amber sodium streetlights against deep blue rainy night), and weather.
-2. CHARACTER CONTINUITY: Every single prompt MUST mention their exact canonical attire and physical traits (Sachin in rust-orange tee & joggers; Reenu in cloud camo crop tee & denim skirt; Amal in olive-green tee). NEVER change their clothes.
-3. COLLOQUIAL SPOKEN MALAYALAM: Dialogues must be authentic, natural spoken Kerala colloquial Malayalam (സംഭാഷണ മലയാളം).
-4. Exactly 12 to 14 scenes.
-5. NO WRITTEN TEXT inside the visual prompts.
+1. UNIFIED LOCATION & ATMOSPHERE: The entire episode must maintain strict environment consistency (e.g. Cochin Airport CIAL Terminal Arrivals, morning golden sunbeams streaming through massive glass walls).
+2. CHARACTER CONTINUITY: Every scene must specify `characters_present` as a JSON array containing ["Reenu"], ["Sachin"], ["Sachin", "Reenu"], or ["Amal"].
+3. EMOTION & ACTION: Specify `character_emotion` (e.g. "joyful teary smile", "playful surprise", "affectionate gaze") and `action_description` (e.g. "waving enthusiastically", "pulling luggage trolley").
+4. COLLOQUIAL SPOKEN MALAYALAM: Dialogues must be authentic, natural spoken Kerala colloquial Malayalam (സംഭാഷണ മലയാളം).
+5. Exactly 12 to 14 scenes.
+6. NO WRITTEN TEXT inside the visual prompts.
 
 OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
 {{
@@ -72,13 +75,16 @@ OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
   "title_english": "...",
   "synopsis": "...",
   "cliffhanger": "...",
+  "primary_location": "Kochi CIAL Airport Arrivals Terminal",
+  "location_palette": "Modern glass architecture, golden morning sunbeams streaming through high windows, blue sky outside, volumetric cinematic lighting",
   "scenes": [
     {{
       "scene_index": 1,
-      "setting_description": "...",
-      "visual_prompt": "Pixar 3D animated style, 9:16 vertical Instagram format. [Detailed scene with character appearance & lighting, no text]...",
-      "speaker": "Narrator" | "Reenu" | "Sachin" | "Amal",
-      "voice": "Kore" | "Fenrir" | "Puck",
+      "characters_present": ["Reenu"],
+      "character_emotion": "anxious hopeful smile, eyes scanning the crowd",
+      "action_description": "standing on tiptoes looking eagerly toward the glass arrival gates",
+      "speaker": "Reenu",
+      "voice": "Kore",
       "dialogue_malayalam": "..."
     }}
   ]
@@ -116,7 +122,6 @@ OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
     if not script_text:
         raise RuntimeError("Failed to generate screenplay after trying all active models.")
     
-    # Clean json formatting if wrapped in codeblocks
     if script_text.startswith("```json"):
         script_text = script_text[7:]
     if script_text.endswith("```"):

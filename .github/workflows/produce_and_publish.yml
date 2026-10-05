@@ -46,7 +46,7 @@ jobs:
         run: |
           python scripts/story_engine.py
 
-      - name: 2. Synthesize Malayalam Voice Acting (Gemini TTS) & Foley
+      - name: 2. Synthesize Malayalam Voice Acting (Gemini TTS / Edge-TTS) & Foley
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -54,12 +54,13 @@ jobs:
         run: |
           python scripts/audio_generator.py
 
-      - name: 3. Render 9:16 Visual Frames with Turnaround Anchors
+      - name: 3. Render Character & Location Consistent 9:16 Frames (Cloudflare FLUX.1)
         env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python scripts/image_generator.py
 

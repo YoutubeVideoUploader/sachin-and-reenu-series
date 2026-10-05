@@ -2,81 +2,36 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 4,
+  "total_episodes_produced": 0,
   "characters": {
     "Sachin": {
-      "age": 26,
+      "age": 22,
       "gender": "male",
       "voice": "Fenrir",
-      "hair": "Tousled thick wavy dark-brown hair",
-      "face": "Warm hazel-brown expressive eyes, clean-shaven, radiant charming smile",
-      "attire": "Rust-orange terracotta crew neck t-shirt with subtle pineapple logo, black joggers, white sneakers, black sports watch",
-      "personality": "Warm, emotional, romantic, returning from UK after 6 years"
+      "hair": "Tousled thick wavy textured dark-brown hair with volume",
+      "face": "Warm hazel-brown expressive eyes, defined jawline, boyish charming grin",
+      "attire": "Terracotta rust-orange crew neck t-shirt with subtle pocket design, relaxed dark-gray joggers, white sneakers, black sports watch",
+      "personality": "Warm, emotional, charming, returning from UK after years away"
     },
     "Reenu": {
-      "age": 24,
+      "age": 22,
       "gender": "female",
       "voice": "Kore",
-      "hair": "Shoulder-length layered chestnut-brown hair with side-swept fringe bangs and soft curled tips",
-      "face": "Large sparkling dark-brown doe eyes, expressive emotions, glowing smile",
-      "attire": "Pastel yellow and light-blue cloud camouflage short-sleeved crop t-shirt, baby-blue denim mini-skirt with side slit, white sneakers, off-white canvas tote bag",
-      "personality": "Bubbly, deeply emotional, faithful, waited 6 long years in Kochi"
+      "hair": "Shoulder-length voluminous layered wavy dark-brown hair with soft curtain bangs",
+      "face": "Large sparkling hazel-brown doe eyes, expressive emotions, glowing radiant smile",
+      "attire": "Pastel yellow and baby-blue cloud camouflage short-sleeved t-shirt, light-blue denim A-line mini-skirt, white sneakers",
+      "personality": "Bubbly, deeply emotional, faithful, waiting at Kochi CIAL airport"
     },
     "Amal": {
-      "age": 26,
+      "age": 22,
       "gender": "male",
       "voice": "Puck",
       "hair": "Cropped textured curly black hair",
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
-      "attire": "Olive-green crew neck t-shirt with subtle horizontal lines, blue denim jeans, white sneakers",
+      "attire": "Olive-green crew neck t-shirt, blue denim jeans, white sneakers",
       "personality": "Sachin's best friend, supportive, humorous, teases Reenu to keep her calm"
     }
   },
-  "current_arc": "The Airport Reunion & The Unspoken Past",
-  "history": [
-    {
-      "episode": 1,
-      "title": "6 വർഷങ്ങൾക്ക് ശേഷം (After 6 Long Years)",
-      "summary": "Reenu and Sachin's best friend Amal wait anxiously at Cochin International Airport (CIAL) International Arrivals. Flight BA-354 arrives from London. Reenu spots Sachin pulling his silver luggage trolley. Their eyes lock across the crowd, dissolving 6 years of waiting. Sachin smiles radiantly, Amal cheers wildly over the railing, and Sachin and Reenu rush to embrace each other.",
-      "cliffhanger": "As they embrace, the narrator reveals that unspoken truths and secrets accumulated over the 6-year distance are waiting to unfold.",
-      "characters_present": [
-        "Sachin",
-        "Reenu",
-        "Amal"
-      ]
-    },
-    {
-      "episode": 2,
-      "title": "മറച്ചുവെച്ച നിമിഷങ്ങൾ (Hidden Moments) (Hidden Moments)",
-      "summary": "Directly continuing from the emotional embrace at Cochin Airport, Sachin, Reenu, and Amal walk to the parking lot. While placing the luggage in the car, Reenu notices a mysterious velvet ring box in Sachin's backpack. Suddenly, Sachin receives an anxious call from a UK number, igniting a silent tension between the reunited lovers.",
-      "cliffhanger": "As Sachin nervously hides his phone and makes an excuse, Reenu looks out of the car window, wondering if the man who returned from London is still the same Sachin she loved.",
-      "characters_present": [
-        "Amal",
-        "Reenu",
-        "Sachin"
-      ]
-    },
-    {
-      "episode": 3,
-      "title": "മൗനത്തിന്റെ ദൂരം (The Distance of Silence)",
-      "summary": "Directly continuing from the tension at the airport parking lot, Sachin, Reenu, and Amal drive through the rain-slicked streets of Kochi. Reenu is troubled by the mysterious UK phone call and the velvet box she spotted in Sachin's bag. As Amal tries to break the heavy silence with his typical humor, Sachin's nervous behavior and another silent phone notification push Reenu to her emotional limit, threatening to turn their long-awaited reunion into a heartbreaking distance.",
-      "cliffhanger": "When Sachin tries to reach for Reenu's hand to comfort her, she quietly pulls away, leaving a silent, painful void between them as the car drives into the Kochi night.",
-      "characters_present": [
-        "Amal",
-        "Sachin",
-        "Reenu"
-      ]
-    },
-    {
-      "episode": 4,
-      "title": "ഉത്തരം കിട്ടാത്ത ചോദ്യങ്ങൾ (Unanswered Questions)",
-      "summary": "Directly continuing from the heavy silence in the car, Sachin, Reenu, and Amal arrive at Reenu's apartment in Kochi. The distance between Sachin and Reenu widens as a mysterious phone message from the UK flashes on his phone again. Reenu confronts Sachin about his sudden secrets, leading to a heartbreaking confrontation in the rain.",
-      "cliffhanger": "As Reenu walks away into her apartment building, tears in her eyes, Sachin is left standing alone in the rain, holding a secret he cannot yet reveal, leaving their 6-year love hanging by a thread.",
-      "characters_present": [
-        "Reenu",
-        "Sachin",
-        "Amal"
-      ]
-    }
-  ]
+  "current_arc": "The Airport Reunion",
+  "history": []
 }
