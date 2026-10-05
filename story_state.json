@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 0,
+  "total_episodes_produced": 1,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -33,5 +33,17 @@
     }
   },
   "current_arc": "The Airport Reunion",
-  "history": []
+  "history": [
+    {
+      "episode": 1,
+      "title": "കാത്തിരിപ്പിനൊടുവിൽ (The Long-Awaited Reunion)",
+      "summary": "After years of emotional long-distance separation, Reenu and her best friend Amal wait anxiously at Kochi CIAL Airport arrivals. When Sachin finally emerges with his luggage trolley, emotions overflow as they lock eyes and reunite.",
+      "cliffhanger": "Just as they embrace, Sachin's warm smile fades slightly as he hints at a mysterious secret regarding his sudden departure from the UK.",
+      "characters_present": [
+        "Amal",
+        "Sachin",
+        "Reenu"
+      ]
+    }
+  ]
 }
