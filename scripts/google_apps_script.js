@@ -286,14 +286,18 @@ function syncDriveToChecklist(episodeNum) {
   
   sheet.getRange(3, 1, totalShots, 5).setValues(shotData);
   
+  const bgColors = [];
+  const fontColors = [];
   for (let i = 0; i < totalShots; i++) {
-    const row = 3 + i;
     if (shotData[i][1] === "Present") {
-      sheet.getRange(row, 2).setBackground("#dcfce7").setFontColor("#15803d");
+      bgColors.push(["#dcfce7"]);
+      fontColors.push(["#15803d"]);
     } else {
-      sheet.getRange(row, 2).setBackground("#fef3c7").setFontColor("#92400e");
+      bgColors.push(["#fef3c7"]);
+      fontColors.push(["#92400e"]);
     }
   }
+  sheet.getRange(3, 2, totalShots, 1).setBackgrounds(bgColors).setFontColors(fontColors);
   
   const allPresent = (presentCount === totalShots && totalShots > 0);
   Logger.log(`Episode ${episodeNum} Checklist: ${presentCount}/${totalShots} shots Present. All Present: ${allPresent}`);

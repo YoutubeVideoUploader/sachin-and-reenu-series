@@ -196,6 +196,12 @@
       box-shadow: 0 6px 18px rgba(249, 115, 22, 0.45);
     }
 
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .btn-secondary {
       background: #1e2947;
       color: #fff;
@@ -307,7 +313,7 @@
     .dropzone {
       border: 2px dashed #334155;
       border-radius: var(--radius);
-      padding: 48px 24px;
+      padding: 40px 24px;
       text-align: center;
       background: rgba(18, 23, 39, 0.5);
       cursor: pointer;
@@ -330,18 +336,23 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .status-pill {
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 20px;
       font-size: 12px;
       font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .status-pending { background: rgba(234, 179, 8, 0.15); color: #facc15; }
-    .status-ready { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .status-pending { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+    .status-staged { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .status-ready { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-uploading { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
 
     footer {
       margin-top: auto;
@@ -424,22 +435,31 @@
         <div style="font-size: 40px; margin-bottom: 10px;" id="dropzoneIcon">📁</div>
         <h3 id="dropzoneTitle">Click or Drag & Drop Video Clips Here</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
-          Select any MP4 video clips downloaded from Google Flow. Matches automatically by name or order.
+          Select or drop MP4 video clips downloaded from Google Flow. Matches filenames automatically and preserves order!
         </p>
-        <div id="dropzoneLoadedCount" style="margin-top: 10px; font-weight: 700; color: #34d399; font-size: 14px;"></div>
+        <div id="dropzoneLoadedCount" style="margin-top: 12px; font-weight: 700; color: #38bdf8; font-size: 14px;"></div>
         <input type="file" id="videoFileInput" multiple accept="video/mp4,video/*" style="display: none;" onchange="handleFileSelect(event)">
       </div>
 
-      <h3 style="margin-bottom: 14px; font-size: 16px;">Episode Shot Upload Checklist</h3>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+        <h3 style="font-size: 16px;">Episode Shot Upload Checklist</h3>
+        <div style="font-size: 13px; color: var(--text-muted);" id="driveSyncSummary">
+          Checking Google Drive status...
+        </div>
+      </div>
+
       <div class="upload-list" id="uploadList">
         <!-- Rendered dynamically -->
       </div>
 
       <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
-        <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px;" onclick="uploadFilesToDrive()">
-          ☁️ Upload & Sync to Google Drive
+        <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px;" onclick="syncDriveStatus()">
+          🔄 Refresh Drive Status
         </button>
-        <button class="btn btn-primary" style="padding: 14px 28px; font-size: 15px;" onclick="triggerAssembly()">
+        <button class="btn btn-primary" id="bulkUploadBtn" style="padding: 14px 28px; font-size: 15px;" onclick="uploadFilesToDrive()">
+          ☁️ Upload All Staged Clips to Google Drive
+        </button>
+        <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px; background: #164e63; border-color: #0891b2;" onclick="triggerAssembly()">
           ⚡ Trigger Instagram Assembly Now
         </button>
       </div>
@@ -1694,7 +1714,11 @@
     }
   ]
 };
-    let selectedFiles = {};
+    
+    // Tracks current state of Google Drive: shotNum -> { present: bool, filename: string }
+    let driveStatus = {};
+    // Tracks staged local files awaiting upload: shotNum -> { file: File, uploaded: bool }
+    let stagedFiles = {};
 
     function normalizeEpisodeData(raw) {
       if (!raw) return null;
@@ -1781,7 +1805,7 @@
       document.getElementById('shotCountBadge').innerText = `${shots.length} Shots • ⏱️ ${runtimeStr}`;
 
       shots.forEach((shot) => {
-        // 1. Render Shot Card
+        // 1. Render Shot Card (Director Tab)
         const card = document.createElement('div');
         card.className = 'shot-card';
 
@@ -1829,19 +1853,36 @@
         `;
         container.appendChild(card);
 
-        // 2. Render Upload Item
+        // 2. Render Upload Item (Vault Tab)
+        const isPresent = driveStatus[shot.shot_number] && driveStatus[shot.shot_number].present;
+        const isStaged = stagedFiles[shot.shot_number] && stagedFiles[shot.shot_number].file && !stagedFiles[shot.shot_number].uploaded;
+
+        let pillClass = 'status-pill status-pending';
+        let pillText = '⏳ Awaiting Video';
+
+        if (isStaged) {
+          pillClass = 'status-pill status-staged';
+          pillText = `⏳ Staged: ${stagedFiles[shot.shot_number].file.name}`;
+        } else if (isPresent) {
+          pillClass = 'status-pill status-ready';
+          pillText = `✓ In Drive (${driveStatus[shot.shot_number].filename || 'Present'})`;
+        }
+
         const upItem = document.createElement('div');
         upItem.className = 'upload-item';
         upItem.id = `upItem_${shot.shot_number}`;
         upItem.innerHTML = `
-          <div>
+          <div style="flex: 1; min-width: 250px;">
             <b>Shot #${shot.shot_number}</b> (<span style="color: #34d399;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
             ${dialogueText ? `<div style="font-size: 13px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px; font-weight: 600;">💬 "${dialogueText}"</div>` : ''}
           </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <span class="${pillClass}" id="statusPill_${shot.shot_number}">${pillText}</span>
             <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="selectSingleShotFile(${shot.shot_number})">
-              📁 Choose Video
+              📁 Choose File
+            </button>
+            <button class="btn btn-primary" id="uploadBtn_${shot.shot_number}" style="padding: 6px 12px; font-size: 12px; ${isStaged ? 'display: inline-flex;' : 'display: none;'}" onclick="uploadSingleShot(${shot.shot_number})">
+              ☁️ Upload Shot #${shot.shot_number}
             </button>
           </div>
         `;
@@ -1871,7 +1912,10 @@
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById(tabId).style.display = 'block';
       if (tabId === 'shotsTab') document.getElementById('tabBtnShots').classList.add('active');
-      if (tabId === 'uploadTab') document.getElementById('tabBtnUpload').classList.add('active');
+      if (tabId === 'uploadTab') {
+        document.getElementById('tabBtnUpload').classList.add('active');
+        syncDriveStatus();
+      }
       if (tabId === 'musicTab') document.getElementById('tabBtnMusic').classList.add('active');
       if (tabId === 'scheduleTab') document.getElementById('tabBtnSchedule').classList.add('active');
     }
@@ -1904,6 +1948,7 @@
           if (normalized && normalized.shots && normalized.shots.length > 0) {
             episodeData = normalized;
             renderShots();
+            await syncDriveStatus();
             if (btn) btn.innerText = "✓ Synced (" + normalized.shots.length + " Shots)!";
             setTimeout(() => { if (btn) btn.innerText = "🔄 Sync Google Sheet"; }, 2500);
             return;
@@ -1915,13 +1960,79 @@
       if (btn) btn.innerText = "🔄 Sync Google Sheet";
     }
 
+    async function syncDriveStatus() {
+      const summaryEl = document.getElementById('driveSyncSummary');
+      if (summaryEl) summaryEl.innerText = "Checking Google Drive...";
+
+      try {
+        const ep = episodeData.episode_number || 1;
+        const res = await fetch(FIXED_GAS_URL + "?action=check_status&episode=" + ep);
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          const info = json.data;
+          const files = info.files || [];
+          const totalShots = episodeData.shots ? episodeData.shots.length : 22;
+          let presentCount = 0;
+
+          for (let s = 1; s <= totalShots; s++) {
+            const patterns = [
+              `shot_${s}.`,
+              `shot_${s < 10 ? '0' + s : s}.`,
+              `shot ${s}.`,
+              `shot${s}.`,
+              `shot-${s}.`,
+              `shot_${s}_`
+            ];
+
+            const match = files.find(f => {
+              const lower = f.name.toLowerCase();
+              return patterns.some(p => lower.includes(p));
+            });
+
+            if (match) {
+              driveStatus[s] = { present: true, filename: match.name, id: match.id };
+              presentCount++;
+              // If not currently staged with a fresh file, update UI pill
+              if (!stagedFiles[s] || stagedFiles[s].uploaded) {
+                const pill = document.getElementById(`statusPill_${s}`);
+                if (pill) {
+                  pill.className = 'status-pill status-ready';
+                  pill.innerText = `✓ In Drive (${match.name})`;
+                }
+                const upBtn = document.getElementById(`uploadBtn_${s}`);
+                if (upBtn) upBtn.style.display = 'none';
+              }
+            } else {
+              driveStatus[s] = { present: false };
+              if (!stagedFiles[s] || stagedFiles[s].uploaded) {
+                const pill = document.getElementById(`statusPill_${s}`);
+                if (pill) {
+                  pill.className = 'status-pill status-pending';
+                  pill.innerText = '⏳ Awaiting Video';
+                }
+              }
+            }
+          }
+
+          if (summaryEl) {
+            summaryEl.innerHTML = `<b style="color: #34d399;">${presentCount} of ${totalShots} shots Present</b> in Google Drive`;
+          }
+          updateDropzoneSummary();
+        }
+      } catch (e) {
+        console.warn("Drive status check error:", e);
+        if (summaryEl) summaryEl.innerText = "Drive status sync offline";
+      }
+    }
+
     function handleDragOver(e) {
       e.preventDefault();
       const dz = document.getElementById('dropzone');
       dz.style.borderColor = 'var(--primary)';
       dz.style.background = 'rgba(249, 115, 22, 0.12)';
       document.getElementById('dropzoneIcon').innerText = '📥';
-      document.getElementById('dropzoneTitle').innerText = 'Drop Clips Here to Load!';
+      document.getElementById('dropzoneTitle').innerText = 'Drop Clips Here to Stage!';
     }
 
     function handleDragLeave(e) {
@@ -1948,45 +2059,73 @@
     }
 
     function processFiles(files) {
+      if (!files || files.length === 0) return;
+      const fileList = Array.from(files);
       const unassigned = [];
-      for (let i = 0; i < files.length; i++) {
-        const f = files[i];
-        let match = f.name.match(/shot[_-]?(\d+)/i);
-        if (!match) match = f.name.match(/(?:^|\D)(\d+)(?:\D|$)/);
+      const totalShots = episodeData.shots ? episodeData.shots.length : 22;
 
-        if (match) {
-          const shotNum = parseInt(match[1], 10);
-          if (shotNum >= 1 && shotNum <= episodeData.shots.length) {
-            assignFileToShot(shotNum, f);
-            continue;
-          }
+      // Pass 1: Match files that explicitly contain a shot number in their name
+      fileList.forEach(file => {
+        let shotNum = null;
+
+        // Matches shot_5, shot-05, shot5, scene_5, shot 5
+        let m = file.name.match(/(?:shot|scene|take|part)[_\s-]*0*(\d+)/i);
+        if (m) {
+          shotNum = parseInt(m[1], 10);
+        } else {
+          // Matches 5.mp4, 05.mp4, 5_clip.mp4
+          let m2 = file.name.match(/^0*(\d+)[._\s-]/);
+          if (m2) shotNum = parseInt(m2[1], 10);
         }
-        unassigned.push(f);
-      }
 
+        if (shotNum && shotNum >= 1 && shotNum <= totalShots) {
+          stageFile(shotNum, file);
+        } else {
+          unassigned.push(file);
+        }
+      });
+
+      // Pass 2: For unassigned files (e.g. Google Flow timestamp filenames),
+      // assign in order to shots that:
+      // (a) are NOT already in Drive, AND
+      // (b) do NOT already have a staged file
       if (unassigned.length > 0) {
         let uIdx = 0;
-        for (let s = 1; s <= episodeData.shots.length; s++) {
-          if (!selectedFiles[s] && uIdx < unassigned.length) {
-            assignFileToShot(s, unassigned[uIdx]);
+        for (let s = 1; s <= totalShots; s++) {
+          const isAlreadyInDrive = driveStatus[s] && driveStatus[s].present;
+          const isAlreadyStaged = stagedFiles[s] && stagedFiles[s].file && !stagedFiles[s].uploaded;
+
+          if (!isAlreadyInDrive && !isAlreadyStaged && uIdx < unassigned.length) {
+            stageFile(s, unassigned[uIdx]);
             uIdx++;
           }
         }
+
+        if (uIdx < unassigned.length) {
+          alert(`${unassigned.length - uIdx} file(s) could not be automatically assigned because all remaining shots are already present in Google Drive or staged! You can click "📁 Choose File" on any individual shot to set it directly.`);
+        }
       }
 
-      const totalLoaded = Object.keys(selectedFiles).length;
-      const countEl = document.getElementById('dropzoneLoadedCount');
-      if (countEl) {
-        countEl.innerText = `✓ ${totalLoaded} of ${episodeData.shots.length} Shot(s) Ready to Upload!`;
-      }
+      updateDropzoneSummary();
     }
 
-    function assignFileToShot(shotNum, file) {
-      selectedFiles[shotNum] = file;
+    function stageFile(shotNum, file) {
+      stagedFiles[shotNum] = {
+        file: file,
+        uploaded: false
+      };
+
       const pill = document.getElementById(`statusPill_${shotNum}`);
       if (pill) {
-        pill.className = 'status-pill status-ready';
-        pill.innerText = `✓ Ready: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
+        pill.className = 'status-pill status-staged';
+        pill.innerText = `⏳ Staged: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
+      }
+
+      const uploadBtn = document.getElementById(`uploadBtn_${shotNum}`);
+      if (uploadBtn) {
+        uploadBtn.style.display = 'inline-flex';
+        uploadBtn.innerText = `☁️ Upload Shot #${shotNum}`;
+        uploadBtn.disabled = false;
       }
     }
 
@@ -1996,56 +2135,137 @@
       input.accept = 'video/mp4,video/*';
       input.onchange = (e) => {
         if (e.target.files && e.target.files[0]) {
-          assignFileToShot(shotNum, e.target.files[0]);
-          const countEl = document.getElementById('dropzoneLoadedCount');
-          if (countEl) {
-            countEl.innerText = `✓ ${Object.keys(selectedFiles).length} of ${episodeData.shots.length} Shot(s) Ready to Upload!`;
-          }
+          stageFile(shotNum, e.target.files[0]);
+          updateDropzoneSummary();
         }
       };
       input.click();
     }
 
+    function updateDropzoneSummary() {
+      const totalShots = episodeData.shots ? episodeData.shots.length : 22;
+      const stagedCount = Object.keys(stagedFiles).filter(num => stagedFiles[num] && stagedFiles[num].file && !stagedFiles[num].uploaded).length;
+      const countEl = document.getElementById('dropzoneLoadedCount');
+
+      if (countEl) {
+        if (stagedCount > 0) {
+          countEl.innerHTML = `✓ <span style="color:#fde047;">${stagedCount} New Clip(s) Staged</span> and ready to upload! (Clips already in Drive are kept safe)`;
+        } else {
+          countEl.innerHTML = '';
+        }
+      }
+
+      const bulkBtn = document.getElementById('bulkUploadBtn');
+      if (bulkBtn) {
+        if (stagedCount > 0) {
+          bulkBtn.innerText = `☁️ Upload ${stagedCount} Staged Clip(s) to Google Drive`;
+        } else {
+          bulkBtn.innerText = `☁️ Upload All Staged Clips to Google Drive`;
+        }
+      }
+    }
+
+    async function uploadSingleShot(shotNum) {
+      if (!stagedFiles[shotNum] || !stagedFiles[shotNum].file) {
+        alert(`No video file staged for Shot #${shotNum}!`);
+        return false;
+      }
+
+      const file = stagedFiles[shotNum].file;
+      const pill = document.getElementById(`statusPill_${shotNum}`);
+      const uploadBtn = document.getElementById(`uploadBtn_${shotNum}`);
+
+      if (pill) {
+        pill.className = 'status-pill status-uploading';
+        pill.innerText = `⏳ Uploading Shot #${shotNum}...`;
+      }
+      if (uploadBtn) {
+        uploadBtn.disabled = true;
+        uploadBtn.innerText = `⏳ Uploading...`;
+      }
+
+      try {
+        const base64Data = await readFileAsBase64(file);
+        const targetFilename = `shot_${parseInt(shotNum, 10).toString().padStart(2, '0')}.mp4`;
+        const payload = {
+          action: "upload_shot",
+          episode_number: episodeData.episode_number || 1,
+          filename: targetFilename,
+          base64_data: base64Data
+        };
+
+        const res = await fetch(FIXED_GAS_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload)
+        });
+
+        const resJson = await res.json();
+        if (resJson.success) {
+          // Mark uploaded & update Drive status
+          stagedFiles[shotNum].uploaded = true;
+          driveStatus[shotNum] = { present: true, filename: targetFilename };
+
+          if (pill) {
+            pill.className = 'status-pill status-ready';
+            pill.innerText = `✓ In Drive (${targetFilename})`;
+          }
+          if (uploadBtn) {
+            uploadBtn.style.display = 'none';
+          }
+          updateDropzoneSummary();
+          return true;
+        } else {
+          throw new Error(resJson.message || "Upload error");
+        }
+      } catch (e) {
+        console.error("Upload error on Shot", shotNum, e);
+        if (pill) {
+          pill.className = 'status-pill status-pending';
+          pill.innerText = `⚠️ Upload Failed (Click to retry)`;
+        }
+        if (uploadBtn) {
+          uploadBtn.disabled = false;
+          uploadBtn.innerText = `🔄 Retry Shot #${shotNum}`;
+        }
+        return false;
+      }
+    }
+
     async function uploadFilesToDrive() {
-      const keys = Object.keys(selectedFiles);
-      if (keys.length === 0) {
-        alert("Please select or drop at least one video file first!");
+      // Get ONLY shots that are staged and NOT YET uploaded, in strict ascending numerical order!
+      const pendingShotNums = Object.keys(stagedFiles)
+        .map(Number)
+        .filter(num => stagedFiles[num] && stagedFiles[num].file && !stagedFiles[num].uploaded)
+        .sort((a, b) => a - b);
+
+      if (pendingShotNums.length === 0) {
+        alert("No new video clips are staged for upload! (Shots already in Google Drive are preserved and skipped).");
         return;
       }
 
-      for (const shotNum of keys) {
-        const file = selectedFiles[shotNum];
-        const pill = document.getElementById(`statusPill_${shotNum}`);
-        if (pill) pill.innerText = "⏳ Uploading to Drive...";
-
-        try {
-          const base64Data = await readFileAsBase64(file);
-          const payload = {
-            action: "upload_shot",
-            episode_number: episodeData.episode_number,
-            filename: `shot_${parseInt(shotNum, 10).toString().padStart(2, '0')}.mp4`,
-            base64_data: base64Data
-          };
-
-          const res = await fetch(FIXED_GAS_URL, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify(payload)
-          });
-
-          const resJson = await res.json();
-          if (resJson.success) {
-            if (pill) {
-              pill.className = 'status-pill status-ready';
-              pill.innerText = "✓ In Drive (Present)";
-            }
-          }
-        } catch (e) {
-          console.error("Upload error:", e);
-          if (pill) pill.innerText = `⚠️ Upload Error`;
-        }
+      const bulkBtn = document.getElementById('bulkUploadBtn');
+      if (bulkBtn) {
+        bulkBtn.disabled = true;
       }
-      alert("Selected video clips uploaded to Google Drive & synced to Google Sheet!");
+
+      let successCount = 0;
+      for (let i = 0; i < pendingShotNums.length; i++) {
+        const shotNum = pendingShotNums[i];
+        if (bulkBtn) {
+          bulkBtn.innerText = `⏳ Uploading Shot #${shotNum} (${i + 1}/${pendingShotNums.length})...`;
+        }
+
+        const ok = await uploadSingleShot(shotNum);
+        if (ok) successCount++;
+      }
+
+      if (bulkBtn) {
+        bulkBtn.disabled = false;
+        bulkBtn.innerText = `☁️ Upload All Staged Clips to Google Drive`;
+      }
+
+      alert(`✓ Upload Complete! ${successCount} of ${pendingShotNums.length} clip(s) successfully uploaded to Google Drive & synced to Google Sheet.`);
     }
 
     function readFileAsBase64(file) {
@@ -2065,7 +2285,7 @@
         await fetch(FIXED_GAS_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number })
+          body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number || 1 })
         });
         alert("Trigger request sent to Google Apps Script -> GitHub Actions!");
       } catch (e) {
@@ -2073,9 +2293,10 @@
       }
     }
 
-    window.onload = () => {
+    window.onload = async () => {
       renderShots();
-      syncLiveFromGoogleSheet();
+      await syncLiveFromGoogleSheet();
+      await syncDriveStatus();
     };
   </script>
 </body>
