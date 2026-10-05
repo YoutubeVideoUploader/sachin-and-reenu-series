@@ -28,10 +28,22 @@ const TAB_PROMPTS = "Current_JSON_Prompts";
 const TAB_CHECKLIST = "Video_Checklist";
 
 /**
+ * Automatically gets the active spreadsheet (when opened via Extensions -> Apps Script)
+ * or falls back to openById.
+ */
+function getStudioSpreadsheet() {
+  try {
+    const active = SpreadsheetApp.getActiveSpreadsheet();
+    if (active) return active;
+  } catch (e) {}
+  return SpreadsheetApp.openById(SPREADSHEET_ID);
+}
+
+/**
  * Initializes and formats all 3 tabs in Google Sheet.
  */
 function setupStudioSpreadsheet() {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   
   // -------------------------------------------------------------
   // 1. SETUP TAB 1: Episode_Story
@@ -142,7 +154,7 @@ function setupStudioSpreadsheet() {
  * Initializes or resets Tab 3: Video_Checklist for an episode.
  */
 function initVideoChecklist(episodeNum, totalShots, episodeTitle) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_CHECKLIST);
@@ -199,7 +211,7 @@ function getEpisodeDriveFolder(episodeNum) {
  * Sets Column B to "Present" for uploaded clips.
  */
 function syncDriveToChecklist(episodeNum) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   const sheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!sheet || sheet.getLastRow() < 3) {
     Logger.log("Video_Checklist sheet is blank or uninitialized.");
@@ -318,7 +330,7 @@ function cleanEpisodeDrive(episodeNum) {
  * Deletes all previous prompts completely!
  */
 function updateJsonPromptsSheet(episodeNum, shots) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_PROMPTS);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_PROMPTS);
@@ -385,7 +397,7 @@ function handleNextEpisodeFullUpdate(body) {
   // 1. Delete previous clips from Google Drive
   cleanEpisodeDrive(prevEp);
   
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   
   // 2. Update Tab 1 (Episode_Story)
   const storySheet = ss.getSheetByName(TAB_STORY);
@@ -469,7 +481,7 @@ function dispatchGitHubWorkflow(episodeNum) {
  */
 function scheduledEpisodeCheckAndTrigger() {
   Logger.log("--- Scheduled 12:00 PM / 6:00 PM Trigger Started ---");
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getStudioSpreadsheet();
   const storySheet = ss.getSheetByName(TAB_STORY);
   
   let activeEp = 1;
@@ -547,7 +559,7 @@ function doGet(e) {
 
   // Tab 2: Get Current JSON Prompts
   if (action === "get_prompts") {
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const ss = getStudioSpreadsheet();
     const sheet = ss.getSheetByName(TAB_PROMPTS);
     const prompts = [];
     if (sheet && sheet.getLastRow() > 2) {
