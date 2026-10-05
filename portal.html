@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sachin & Reenu — AI Creator Studio</title>
+  <title>Sachin & Reenu — 3D Animation Creator Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0d0f17;
-      --bg-card: #161a29;
-      --bg-hover: #1e2438;
+      --bg-dark: #090c15;
+      --bg-card: #121727;
+      --bg-hover: #1b233a;
       --primary: #f97316;
       --primary-hover: #ea580c;
       --accent-pink: #ec4899;
@@ -19,7 +19,7 @@
       --accent-green: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --border-color: #262e45;
+      --border-color: #212c48;
       --radius: 14px;
     }
 
@@ -45,11 +45,10 @@
       width: 100%;
     }
 
-    /* Header */
     header {
-      background: linear-gradient(180deg, #181d2e 0%, var(--bg-dark) 100%);
+      background: linear-gradient(180deg, #131a30 0%, var(--bg-dark) 100%);
       border-bottom: 1px solid var(--border-color);
-      padding: 24px 0;
+      padding: 20px 0;
     }
 
     .header-content {
@@ -67,8 +66,8 @@
     }
 
     .brand-logo {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(135deg, var(--primary), var(--accent-pink));
       border-radius: 12px;
       display: flex;
@@ -79,7 +78,7 @@
     }
 
     .brand-titles h1 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       letter-spacing: -0.5px;
       background: linear-gradient(90deg, #ffffff, #fcd34d);
@@ -91,18 +90,19 @@
       font-family: 'Noto Sans Malayalam', sans-serif;
       color: var(--accent-pink);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
+      margin-top: 2px;
     }
 
     .badge-status {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
       color: #34d399;
       padding: 6px 14px;
-      border-radius: 30px;
+      border-radius: 20px;
       font-size: 13px;
       font-weight: 600;
     }
@@ -110,86 +110,45 @@
     .pulse {
       width: 8px;
       height: 8px;
-      background-color: #34d399;
+      background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 10px #34d399;
+      box-shadow: 0 0 10px #10b981;
       animation: pulseAnim 2s infinite;
     }
 
     @keyframes pulseAnim {
-      0% { transform: scale(0.95); opacity: 0.7; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.7; }
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
     }
 
-    /* Nav Tabs */
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin: 28px 0;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
-      overflow-x: auto;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 15px;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn:hover {
-      color: var(--text-main);
-      background: var(--bg-card);
-    }
-
-    .tab-btn.active {
-      color: #ffffff;
-      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
-    }
-
-    /* Episode Banner */
     .ep-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      background: linear-gradient(135deg, #131a30 0%, #1c1538 100%);
+      border: 1px solid #2d3858;
       border-radius: var(--radius);
       padding: 24px;
-      margin-bottom: 28px;
+      margin-top: 24px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    .ep-info {
-      flex: 1;
-      min-width: 280px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .ep-tag {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--primary);
-      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+      color: var(--accent-pink);
       margin-bottom: 6px;
     }
 
     .ep-title {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
@@ -197,60 +156,82 @@
       font-family: 'Noto Sans Malayalam', sans-serif;
       color: #fde047;
       margin-left: 8px;
+      font-size: 20px;
     }
 
     .ep-synopsis {
-      font-size: 14px;
       color: var(--text-muted);
+      font-size: 14px;
       line-height: 1.5;
-      max-width: 750px;
+      max-width: 800px;
     }
 
     .ep-actions {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .btn {
       padding: 10px 18px;
-      font-size: 14px;
-      font-weight: 600;
       border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      border: none;
       transition: all 0.2s ease;
-      text-decoration: none;
-      border: 1px solid transparent;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
     }
 
     .btn-primary:hover {
-      background: var(--primary-hover);
-      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.45);
     }
 
     .btn-secondary {
-      background: var(--bg-hover);
-      color: var(--text-main);
-      border-color: var(--border-color);
+      background: #1e2947;
+      color: #fff;
+      border: 1px solid var(--border-color);
     }
 
     .btn-secondary:hover {
-      background: #2a334d;
+      background: #28375e;
     }
 
-    /* Shot Grid */
-    .shots-container {
+    .tabs {
       display: flex;
-      flex-direction: column;
-      gap: 18px;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 12px 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
     }
 
     .shot-card {
@@ -258,11 +239,12 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
       padding: 20px;
+      margin-bottom: 16px;
       transition: border-color 0.2s ease;
     }
 
     .shot-card:hover {
-      border-color: #3b476b;
+      border-color: #3b4d79;
     }
 
     .shot-header {
@@ -271,145 +253,63 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .shot-meta {
+    .shot-badges {
       display: flex;
+      gap: 8px;
       align-items: center;
-      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .shot-badge {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--accent-blue);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      font-weight: 700;
-      font-size: 13px;
+    .badge {
       padding: 4px 10px;
       border-radius: 6px;
-    }
-
-    .dur-badge {
+      font-size: 12px;
       font-weight: 700;
-      font-size: 13px;
-      padding: 4px 10px;
-      border-radius: 6px;
     }
 
-    .dur-4s {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .dur-6s {
-      background: rgba(249, 115, 22, 0.15);
-      color: #fb923c;
-      border: 1px solid rgba(249, 115, 22, 0.3);
-    }
-
-    .dur-8s {
-      background: rgba(168, 85, 247, 0.18);
-      color: #c084fc;
-      border: 1px solid rgba(168, 85, 247, 0.35);
-    }
+    .badge-shot { background: #2563eb; color: #fff; }
+    .badge-dur { background: #059669; color: #fff; }
+    .badge-char { background: #7c3aed; color: #fff; }
+    .badge-nobgm { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
 
     .dialogue-box {
-      background: rgba(249, 115, 22, 0.08);
-      border-left: 3px solid var(--primary);
-      padding: 10px 14px;
-      margin: 10px 0;
-      border-radius: 4px 8px 8px 4px;
-      font-size: 15px;
-      color: #fef08a;
-      font-family: 'Noto Sans Malayalam', sans-serif;
-      line-height: 1.6;
-    }
-
-    .dialogue-box b {
-      color: #fb923c;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-right: 6px;
-    }
-
-    .dialogue-box-silent {
-      background: rgba(15, 23, 42, 0.4);
-      border-left: 3px solid #475569;
-      padding: 8px 12px;
-      margin: 10px 0;
-      border-radius: 4px 8px 8px 4px;
-    }
-
-
-    .char-badge {
-      background: rgba(236, 72, 153, 0.15);
-      color: #f472b6;
-      font-weight: 600;
-      font-size: 13px;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    .camera-badge {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-style: italic;
+      background: #1b2033;
+      border-left: 4px solid #fde047;
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .prompt-box {
-      background: #090b12;
-      border: 1px solid #1a2033;
+      background: #080a12;
+      border: 1px solid #1a2238;
       border-radius: 8px;
-      padding: 14px 16px;
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: #e2e8f0;
-      position: relative;
-      margin-top: 10px;
+      padding: 14px;
     }
 
-    .prompt-text {
+    .prompt-box pre {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #a5f3fc;
+      white-space: pre-wrap;
       word-break: break-word;
+      max-height: 240px;
+      overflow-y: auto;
     }
 
-    .copy-btn {
-      background: var(--bg-hover);
-      color: #ffffff;
-      border: 1px solid var(--border-color);
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .copy-btn:hover {
-      background: #2b3552;
-      border-color: #475569;
-    }
-
-    .copy-btn.copied {
-      background: #065f46;
-      border-color: #059669;
-      color: #34d399;
-    }
-
-    /* Uploader Tab */
     .dropzone {
-      border: 2px dashed var(--border-color);
+      border: 2px dashed #334155;
       border-radius: var(--radius);
       padding: 48px 24px;
       text-align: center;
-      background: rgba(22, 26, 41, 0.5);
+      background: rgba(18, 23, 39, 0.5);
       cursor: pointer;
       transition: all 0.2s ease;
       margin-bottom: 24px;
@@ -420,52 +320,36 @@
       background: rgba(249, 115, 22, 0.05);
     }
 
-    .dropzone-icon {
-      font-size: 48px;
-      margin-bottom: 12px;
-    }
-
-    .upload-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     .upload-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px 18px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .status-pill {
-      font-size: 12px;
-      font-weight: 700;
       padding: 4px 10px;
       border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    .status-ready {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-    }
+    .status-pending { background: rgba(234, 179, 8, 0.15); color: #facc15; }
+    .status-ready { background: rgba(16, 185, 129, 0.2); color: #34d399; }
 
-    .status-pending {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
-    }
-
-    /* Footer */
     footer {
       margin-top: auto;
       border-top: 1px solid var(--border-color);
-      padding: 24px 0;
+      padding: 20px 0;
       text-align: center;
-      font-size: 13px;
       color: var(--text-muted);
+      font-size: 13px;
     }
   </style>
 </head>
@@ -480,9 +364,14 @@
           <p>സച്ചിൻ & റീനു — 3D Pixar Animation Web Series</p>
         </div>
       </div>
-      <div class="badge-status">
-        <div class="pulse"></div>
-        Studio Active (2x Daily Schedule)
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button class="btn btn-secondary" onclick="syncLiveFromGoogleSheet()" style="padding: 7px 14px; font-size: 12px;">
+          🔄 Sync Google Sheet
+        </button>
+        <div class="badge-status">
+          <div class="pulse"></div>
+          Studio Active (2x Daily Schedule)
+        </div>
       </div>
     </div>
   </header>
@@ -492,30 +381,28 @@
     <!-- Episode Headline Banner -->
     <div class="ep-card" id="epCard">
       <div class="ep-info">
-        <div class="ep-tag" id="epNumberTag">CURRENT PRODUCTION • EPISODE 3</div>
-        <h2 class="ep-title" id="epTitle">Rain-Drenched Roads <span>മഴ തോരാത്ത വഴികൾ</span></h2>
-        <p class="ep-synopsis" id="epSynopsis">
-          Stepping out into the sudden Kochi monsoon, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.
-        </p>
+        <div class="ep-tag" id="epNumberTag">CURRENT PRODUCTION • EPISODE 1</div>
+        <h2 class="ep-title" id="epTitle">The Homecoming <span>തിരിച്ചുവരവ്</span></h2>
+        <p class="ep-synopsis" id="epSynopsis"></p>
       </div>
       <div class="ep-actions">
         <button class="btn btn-secondary" onclick="exportJSON()">💾 Export JSON</button>
-        <button class="btn btn-primary" onclick="refreshPrompts()">✨ Re-Generate with Gemini</button>
+        <button class="btn btn-primary" onclick="syncLiveFromGoogleSheet()">🔄 Refresh from Sheet</button>
       </div>
     </div>
 
     <!-- Navigation Tabs -->
     <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('shotsTab')">
-        🎬 Google Flow Shot Director (<span id="shotCountBadge">10 Shots</span>)
+      <button class="tab-btn active" id="tabBtnShots" onclick="switchTab('shotsTab')">
+        🎬 Google Flow Shot Director (<span id="shotCountBadge">22 Shots • ⏱️ 2m 04s</span>)
       </button>
-      <button class="tab-btn" onclick="switchTab('uploadTab')">
+      <button class="tab-btn" id="tabBtnUpload" onclick="switchTab('uploadTab')">
         ☁️ Video Vault Uploader & Drive Sync
       </button>
-      <button class="tab-btn" onclick="switchTab('musicTab')">
+      <button class="tab-btn" id="tabBtnMusic" onclick="switchTab('musicTab')">
         🎵 10-Track BGM Soundtracks
       </button>
-      <button class="tab-btn" onclick="switchTab('scheduleTab')">
+      <button class="tab-btn" id="tabBtnSchedule" onclick="switchTab('scheduleTab')">
         ⏰ Schedule & Cloud Ledger
       </button>
     </div>
@@ -529,71 +416,74 @@
 
     <!-- TAB 2: Video Uploader & Drive Sync -->
     <div id="uploadTab" class="tab-pane" style="display: none;">
-            <div class="dropzone" id="dropzone" 
+      <div class="dropzone" id="dropzone" 
            onclick="document.getElementById('videoFileInput').click()"
            ondragover="handleDragOver(event)"
            ondragleave="handleDragLeave(event)"
-           ondrop="handleDrop(event)"
-           style="cursor: pointer; transition: all 0.2s ease;">
-        <div class="dropzone-icon" id="dropzoneIcon">📁</div>
+           ondrop="handleDrop(event)">
+        <div style="font-size: 40px; margin-bottom: 10px;" id="dropzoneIcon">📁</div>
         <h3 id="dropzoneTitle">Click or Drag & Drop Video Clips Here</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
-          Select any MP4 video from Google Flow. Clips will auto-match by name (e.g. <code>shot_1</code>, <code>1.mp4</code>) or order.
+          Select any MP4 video clips downloaded from Google Flow. Matches automatically by name or order.
         </p>
         <div id="dropzoneLoadedCount" style="margin-top: 10px; font-weight: 700; color: #34d399; font-size: 14px;"></div>
         <input type="file" id="videoFileInput" multiple accept="video/mp4,video/*" style="display: none;" onchange="handleFileSelect(event)">
       </div>
+
+      <h3 style="margin-bottom: 14px; font-size: 16px;">Episode Shot Upload Checklist</h3>
+      <div class="upload-list" id="uploadList">
+        <!-- Rendered dynamically -->
       </div>
+
+      <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
+        <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px;" onclick="uploadFilesToDrive()">
+          ☁️ Upload & Sync to Google Drive
+        </button>
+        <button class="btn btn-primary" style="padding: 14px 28px; font-size: 15px;" onclick="triggerAssembly()">
+          ⚡ Trigger Instagram Assembly Now
+        </button>
+      </div>
+    </div>
 
     <!-- TAB 3: BGM Tracks -->
     <div id="musicTab" class="tab-pane" style="display: none;">
-      <div class="shots-container">
-        <div class="shot-card">
-          <h3>🎵 Active 10-Track Romantic Piano & Acoustic Library</h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin: 8px 0 16px;">
-            The GitHub Assembler automatically rotates through these royalty-free classical and acoustic scores for every episode:
-          </p>
-          <ul style="padding-left: 20px; line-height: 2; font-size: 14px; color: #cbd5e1;">
-            <li><b>Track 1:</b> Erik Satie — Gymnopédie No. 1 (Lento et douloureux)</li>
-            <li><b>Track 2:</b> Erik Satie — Gnossienne No. 2</li>
-            <li><b>Track 3:</b> Erik Satie — Gnossienne No. 3</li>
-            <li><b>Track 4:</b> Claude Debussy — Clair de Lune (Suite bergamasque)</li>
-            <li><b>Track 5:</b> Frédéric Chopin — Waltz in A-flat major, Op. 69, No. 1 ("Farewell Waltz")</li>
-            <li><b>Track 6:</b> Frédéric Chopin — Waltz in B minor, Op. 69, No. 2</li>
-            <li><b>Track 7:</b> Frédéric Chopin — Waltz in A minor, B 150</li>
-            <li><b>Track 8:</b> Frédéric Chopin — Waltz in A-flat major, Op. 64, No. 3</li>
-            <li><b>Track 9:</b> Ludwig van Beethoven — Moonlight Sonata (2nd Movement)</li>
-            <li><b>Track 10:</b> Robert Schumann — Scenes from Childhood (A Tale of Distant Lands)</li>
-          </ul>
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px;">
+        <h3 style="font-size: 18px; margin-bottom: 8px;">🎼 10 Rotating Romantic BGM Soundtracks</h3>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+          The system rotates across 10 studio BGM tracks (mixed subtly at volume 0.18) ensuring original dialogue clarity and high Instagram audio engagement without copyright strikes.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+          <div style="background: #0d1220; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px;">
+            <b style="color: #38bdf8;">Track 1 (Active Ep 1):</b><br>
+            <span style="font-size: 13px; color: var(--text-muted);">Acoustic Guitar & Soft Piano Warmth (Love Reunion)</span>
+          </div>
+          <div style="background: #0d1220; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px;">
+            <b style="color: #ec4899;">Track 2 (Active Ep 2):</b><br>
+            <span style="font-size: 13px; color: var(--text-muted);">Gentle Flute & Monsoon Rain Strings (Kochi Rain Walk)</span>
+          </div>
+          <div style="background: #0d1220; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px;">
+            <b style="color: #facc15;">Tracks 3 to 10:</b><br>
+            <span style="font-size: 13px; color: var(--text-muted);">Cafe Jazz, Sunset Beats, Piano Waltz, Ukulele Nostalgia & Romantic Strings</span>
+          </div>
         </div>
       </div>
     </div>
 
-
-    <!-- TAB 4: Automation Schedule & Google Sheet Sync -->
+    <!-- TAB 4: Schedule & Cloud Ledger -->
     <div id="scheduleTab" class="tab-pane" style="display: none;">
-      <div class="shots-container">
-        <div class="shot-card">
-          <h3>⏱️ Autonomous Schedule & Cloud Ledger (Google Sheet)</h3>
-          <p style="color: var(--text-muted); font-size: 14px; margin: 8px 0 16px;">
-            The studio operates on a scheduled 2x daily cadence powered by Google Apps Script and GitHub Actions:
-          </p>
-          <div style="background: rgba(15, 23, 42, 0.6); padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 16px;">
-            <p style="margin-bottom: 8px;"><b>⏰ Morning Cycle:</b> 12:00 PM (Noon) IST — Checks Google Drive for clips, merges with BGM, publishes Episode.</p>
-            <p style="margin-bottom: 8px;"><b>⏰ Evening Cycle:</b> 6:00 PM (18:00) IST — Checks Google Drive for clips, merges with BGM, publishes Episode.</p>
-            <p style="margin-bottom: 8px;"><b>📊 Google Sheet Ledger:</b> <a href="https://docs.google.com/spreadsheets/d/1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI/edit" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">Open Google Sheet Ledger</a></p>
-            <p><b>📁 Google Drive Folder:</b> <code>Sachin_And_Reenu_Studio/Episode_{N}/</code></p>
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px;">
+        <h3 style="font-size: 18px; margin-bottom: 12px;">⏰ Production Schedule & Strict 22-Shot Pre-Check</h3>
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+          <div style="background: #0d1220; padding: 14px; border-radius: 8px; border-left: 4px solid #10b981;">
+            <b style="color: #fff;">12:00 PM IST (Noon Trigger):</b> Runs strict pre-check. If all 22 clips are in Drive, begins watermark removal, dialogue mix & Instagram publication!
           </div>
-          
-          <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary);">⚙️ Google Apps Script Web App Connection</h4>
-          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 10px;">
-            Deploy <code>scripts/google_apps_script.js</code> as a Web App in Google Apps Script and paste the deployment URL below for direct cloud upload to Google Drive:
-          </p>
-          <div style="display: flex; gap: 10px; max-width: 700px;">
-            <input type="text" id="gasUrlInput" value="https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec" style="flex: 1; padding: 10px 14px; background: #0f172a; border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 13px;">
-            <button class="btn btn-primary" onclick="saveGasUrl()">Save Web App URL</button>
+          <div style="background: #0d1220; padding: 14px; border-radius: 8px; border-left: 4px solid #38bdf8;">
+            <b style="color: #fff;">6:00 PM IST (Evening Trigger):</b> Second daily checkpoint. Same strict check. If even 1 clip is missing (e.g. 21/22), aborts with 0 action taken!
           </div>
-          <span id="gasSaveStatus" style="display: inline-block; margin-top: 8px; font-size: 13px; color: #34d399;"></span>
+          <div style="background: #0d1220; padding: 14px; border-radius: 8px; border-left: 4px solid #f97316;">
+            <b style="color: #fff;">Autonomous Post-Publish Pipeline:</b>
+            Once published, GitHub Actions deletes uploaded clips from Drive, blanks Tab 3 checklist, and triggers Gemini to write the next episode screenplay and update Tab 1, Tab 2, and the portal!
+          </div>
         </div>
       </div>
     </div>
@@ -602,12 +492,12 @@
 
   <footer>
     <div class="container">
-      Sachin & Reenu Creator Studio • Built with Gemini 3.8 Flash, Google Flow & GitHub Actions
+      Sachin & Reenu Creator Studio • Built with Gemini 2.5 Flash, Google Flow & GitHub Actions
     </div>
   </footer>
 
   <script>
-    // Embedded Active Episode Shot Prompts
+    const FIXED_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec";
     let episodeData = {
   "episode_number": 1,
   "title_malayalam": "തിരിച്ചുവരവ്",
@@ -1804,69 +1694,137 @@
     }
   ]
 };
-
     let selectedFiles = {};
 
-    const FIXED_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec";
-    try { localStorage.setItem('gas_web_app_url', FIXED_GAS_URL); } catch(e) {}
-    
+    function normalizeEpisodeData(raw) {
+      if (!raw) return null;
+      let rawShots = raw.shots || raw.prompts || (raw.data && (raw.data.shots || raw.data.prompts)) || [];
+      if (!Array.isArray(rawShots) || rawShots.length === 0) return null;
 
-    
-    
-    
+      const normalizedShots = rawShots.map((s, idx) => {
+        let shotNum = s.shot_number;
+        if (!shotNum && s.shot) {
+          const m = s.shot.toString().match(/\d+/);
+          shotNum = m ? parseInt(m[0], 10) : idx + 1;
+        }
+        if (!shotNum) shotNum = idx + 1;
+
+        let jp = s.json_prompt;
+        if (typeof jp === 'string') {
+          try { jp = JSON.parse(jp); } catch(e) {}
+        }
+
+        // Dialogue extraction
+        let dialogue = s.dialogue_malayalam || s.dialogue || "";
+        if (!dialogue && jp && jp.dialogue && jp.dialogue.line) {
+          dialogue = jp.dialogue.line;
+        }
+
+        // Action summary extraction
+        let action = s.action_summary || s.action || "";
+        if (!action && jp && jp.action) {
+          action = jp.action;
+        }
+
+        // Character extraction
+        let character = s.character || "";
+        if (!character && jp) {
+          if (jp.perspective) character = jp.perspective;
+          else if (jp.characters_present && jp.characters_present[0]) character = jp.characters_present[0].name;
+        }
+        if (!character) character = "Reenu";
+
+        // Duration extraction
+        let duration = s.duration || (jp && jp.duration) || "4s";
+
+        return {
+          shot_number: shotNum,
+          duration: duration,
+          character: character,
+          dialogue_malayalam: dialogue,
+          dialogue: dialogue,
+          action_summary: action,
+          action: action,
+          json_prompt: jp || s.json_prompt
+        };
+      });
+
+      return {
+        episode_number: raw.episode_number || raw.episode || 1,
+        title_english: raw.title_english || 'The Homecoming',
+        title_malayalam: raw.title_malayalam || 'തിരിച്ചുവരവ്',
+        synopsis: raw.synopsis || episodeData.synopsis || '',
+        calculated_runtime_display: raw.calculated_runtime_display || (Math.floor(normalizedShots.length * 5.6 / 60) + 'm ' + Math.floor((normalizedShots.length * 5.6) % 60) + 's'),
+        shots: normalizedShots,
+        prompts: normalizedShots
+      };
+    }
+
     function renderShots() {
       const container = document.getElementById('shotsContainer');
       const uploadList = document.getElementById('uploadList');
+      if (!container || !uploadList) return;
+
       container.innerHTML = '';
       uploadList.innerHTML = '';
 
-      const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
-      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${episodeData.episode_number}`;
-      document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
-      document.getElementById('epSynopsis').innerText = episodeData.synopsis;
-      document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
+      const epNum = episodeData.episode_number || 1;
+      const titleEn = episodeData.title_english || 'The Homecoming';
+      const titleMl = episodeData.title_malayalam || 'തിരിച്ചുവരവ്';
+      const synopsis = episodeData.synopsis || '';
+      const runtimeStr = episodeData.calculated_runtime_display || '2m 04s';
+      const shots = episodeData.shots || [];
 
-      episodeData.shots.forEach((shot) => {
-        const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
-        const dialogueHtml = shot.dialogue_malayalam ? `
-          <div class="dialogue-box">
-            <b>💬 സംഭാഷണം (Malayalam Dialogue):</b> "${shot.dialogue_malayalam}"
-          </div>
-        ` : `
-          <div class="dialogue-box-silent">
-            <span style="color: var(--text-muted); font-size: 13px;">🤫 <i>No spoken dialogue (Silent emotional gaze / ambient beat)</i></span>
-          </div>
-        `;
+      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${epNum}`;
+      document.getElementById('epTitle').innerHTML = `${titleEn} <span>${titleMl}</span>`;
+      document.getElementById('epSynopsis').innerText = synopsis;
+      document.getElementById('shotCountBadge').innerText = `${shots.length} Shots • ⏱️ ${runtimeStr}`;
 
-        const jsonPromptFormatted = JSON.stringify(shot.json_prompt, null, 2);
-
+      shots.forEach((shot) => {
         // 1. Render Shot Card
         const card = document.createElement('div');
         card.className = 'shot-card';
+
+        const jsonPromptStr = typeof shot.json_prompt === 'string' ? shot.json_prompt : JSON.stringify(shot.json_prompt, null, 2);
+        const dialogueText = shot.dialogue_malayalam || shot.dialogue || '';
+
+        const dialogueHtml = dialogueText ? `
+          <div class="dialogue-box">
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 4px;">
+              💬 സംഭാഷണം (Malayalam Dialogue — ${shot.character}):
+            </div>
+            <div style="font-size: 16px; font-weight: 600; line-height: 1.5; color: #fde047; font-family: 'Noto Sans Malayalam', sans-serif;">
+              "${dialogueText}"
+            </div>
+          </div>
+        ` : `
+          <div style="background: #141a2e; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; color: var(--text-muted); font-size: 13px;">
+            🤫 <i>No spoken character dialogue (Silent emotional gaze / ambient scene)</i>
+          </div>
+        `;
+
         card.innerHTML = `
           <div class="shot-header">
-            <div class="shot-meta">
-              <span class="shot-badge">Shot #${shot.shot_number}</span>
-              <span class="dur-badge ${durClass}">⏱️ ${shot.duration}</span>
-              <span class="char-badge">👤 ${shot.character}</span>
-              <span style="font-size: 12px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
-                🔇 NO BGM
-              </span>
+            <div class="shot-badges">
+              <span class="badge badge-shot">Shot #${shot.shot_number}</span>
+              <span class="badge badge-dur">⏱️ ${shot.duration}</span>
+              <span class="badge badge-char">👤 ${shot.character}</span>
+              <span class="badge badge-nobgm">🔇 NO BGM</span>
             </div>
-            <button class="copy-btn" style="background: linear-gradient(135deg, #f97316, #ea580c); font-weight: 700; border: none; padding: 10px 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);" onclick="copyJsonPrompt(${shot.shot_number}, this)">
+            <button class="btn btn-primary" onclick="copyJsonPrompt(${shot.shot_number}, this)">
               📋 Copy JSON Prompt
             </button>
           </div>
           ${dialogueHtml}
-          <p style="font-size: 14px; margin-bottom: 8px;"><b>Action:</b> ${shot.action_summary}</p>
-          <div class="prompt-box" style="background: #080a10; border: 1px solid #1e2640; border-radius: 8px; padding: 14px 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1a2238; padding-bottom: 6px;">
-              <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-blue); font-weight: 700;">
-                📦 GOOGLE FLOW JSON PROMPT (Character DNA • Location • Camera • Dialogue • No-BGM):
+          <p style="font-size: 14px; margin-bottom: 10px;"><b>Action:</b> ${shot.action_summary || shot.action || ''}</p>
+          <div class="prompt-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 11px; text-transform: uppercase; color: var(--accent-blue); font-weight: 700;">
+                GOOGLE FLOW JSON PROMPT (Disney Pixar 3D • Character DNA • Location • Dialogue):
               </span>
               <span style="font-size: 11px; color: var(--text-muted);">JSON Format</span>
             </div>
-            <pre style="margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; line-height: 1.5; color: #a5f3fc; white-space: pre-wrap; word-break: break-word;" id="promptJson_${shot.shot_number}">${escapeHtml(jsonPromptFormatted)}</pre>
+            <pre id="promptJson_${shot.shot_number}">${escapeHtml(jsonPromptStr)}</pre>
           </div>
         `;
         container.appendChild(card);
@@ -1877,10 +1835,15 @@
         upItem.id = `upItem_${shot.shot_number}`;
         upItem.innerHTML = `
           <div>
-            <b>Shot #${shot.shot_number}</b> (<span class="dur-badge ${durClass}" style="padding: 2px 6px; font-size: 11px;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
-            ${shot.dialogue_malayalam ? `<div style="font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px;">"${shot.dialogue_malayalam}"</div>` : ''}
+            <b>Shot #${shot.shot_number}</b> (<span style="color: #34d399;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
+            ${dialogueText ? `<div style="font-size: 13px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px; font-weight: 600;">💬 "${dialogueText}"</div>` : ''}
           </div>
-          <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
+            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="selectSingleShotFile(${shot.shot_number})">
+              📁 Choose Video
+            </button>
+          </div>
         `;
         uploadList.appendChild(upItem);
       });
@@ -1893,22 +1856,24 @@
     function copyJsonPrompt(shotNum, btn) {
       const text = document.getElementById(`promptJson_${shotNum}`).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '✓ Copied JSON Prompt!';
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copied!';
         btn.style.background = '#059669';
         setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
+          btn.innerHTML = orig;
+          btn.style.background = '';
         }, 2000);
       });
     }
-
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById(tabId).style.display = 'block';
-      event.currentTarget.classList.add('active');
+      if (tabId === 'shotsTab') document.getElementById('tabBtnShots').classList.add('active');
+      if (tabId === 'uploadTab') document.getElementById('tabBtnUpload').classList.add('active');
+      if (tabId === 'musicTab') document.getElementById('tabBtnMusic').classList.add('active');
+      if (tabId === 'scheduleTab') document.getElementById('tabBtnSchedule').classList.add('active');
     }
 
     function exportJSON() {
@@ -1921,9 +1886,37 @@
       dlAnchor.remove();
     }
 
+    async function syncLiveFromGoogleSheet() {
+      const btn = document.querySelector('header .btn-secondary');
+      if (btn) btn.innerText = "⏳ Syncing...";
+      
+      const endpoints = [
+        FIXED_GAS_URL + "?action=get_prompts",
+        FIXED_GAS_URL + "?action=get_live_episode_data",
+        FIXED_GAS_URL
+      ];
+
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          const normalized = normalizeEpisodeData(data);
+          if (normalized && normalized.shots && normalized.shots.length > 0) {
+            episodeData = normalized;
+            renderShots();
+            if (btn) btn.innerText = "✓ Synced (" + normalized.shots.length + " Shots)!";
+            setTimeout(() => { if (btn) btn.innerText = "🔄 Sync Google Sheet"; }, 2500);
+            return;
+          }
+        } catch (err) {
+          console.warn("Attempt failed for", url, err);
+        }
+      }
+      if (btn) btn.innerText = "🔄 Sync Google Sheet";
+    }
+
     function handleDragOver(e) {
       e.preventDefault();
-      e.stopPropagation();
       const dz = document.getElementById('dropzone');
       dz.style.borderColor = 'var(--primary)';
       dz.style.background = 'rgba(249, 115, 22, 0.12)';
@@ -1933,9 +1926,8 @@
 
     function handleDragLeave(e) {
       e.preventDefault();
-      e.stopPropagation();
       const dz = document.getElementById('dropzone');
-      dz.style.borderColor = 'var(--border-color)';
+      dz.style.borderColor = '#334155';
       dz.style.background = '';
       document.getElementById('dropzoneIcon').innerText = '📁';
       document.getElementById('dropzoneTitle').innerText = 'Click or Drag & Drop Video Clips Here';
@@ -1943,54 +1935,40 @@
 
     function handleDrop(e) {
       e.preventDefault();
-      e.stopPropagation();
       handleDragLeave(e);
-      const files = e.dataTransfer.files;
-      if (files && files.length > 0) {
-        processFiles(files);
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        processFiles(e.dataTransfer.files);
       }
     }
 
     function handleFileSelect(evt) {
-      const files = evt.target.files;
-      if (files && files.length > 0) {
-        processFiles(files);
+      if (evt.target.files && evt.target.files.length > 0) {
+        processFiles(evt.target.files);
       }
     }
 
     function processFiles(files) {
-      let matchedCount = 0;
       const unassigned = [];
-
       for (let i = 0; i < files.length; i++) {
         const f = files[i];
-        
-        // 1. Try matching shot_1, shot01, shot-1, shot 1
         let match = f.name.match(/shot[_-]?(\d+)/i);
-        
-        // 2. Try matching leading or trailing number like "1.mp4" or "clip_1.mp4"
-        if (!match) {
-          match = f.name.match(/(?:^|\D)(\d+)(?:\D|$)/);
-        }
+        if (!match) match = f.name.match(/(?:^|\D)(\d+)(?:\D|$)/);
 
         if (match) {
           const shotNum = parseInt(match[1], 10);
           if (shotNum >= 1 && shotNum <= episodeData.shots.length) {
             assignFileToShot(shotNum, f);
-            matchedCount++;
             continue;
           }
         }
         unassigned.push(f);
       }
 
-      // If any files had no numbers, assign sequentially to empty shots
       if (unassigned.length > 0) {
         let uIdx = 0;
         for (let s = 1; s <= episodeData.shots.length; s++) {
           if (!selectedFiles[s] && uIdx < unassigned.length) {
             assignFileToShot(s, unassigned[uIdx]);
-            matchedCount++;
             uIdx++;
           }
         }
@@ -2008,8 +1986,6 @@
       const pill = document.getElementById(`statusPill_${shotNum}`);
       if (pill) {
         pill.className = 'status-pill status-ready';
-        pill.style.background = '#065f46';
-        pill.style.color = '#34d399';
         pill.innerText = `✓ Ready: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
       }
     }
@@ -2030,64 +2006,46 @@
       input.click();
     }
 
-    function saveGasUrl() {
-      const url = document.getElementById('gasUrlInput').value.trim();
-      localStorage.setItem('gas_web_app_url', url);
-      const status = document.getElementById('gasSaveStatus');
-      status.innerText = "✓ Google Apps Script Web App URL saved!";
-      setTimeout(() => status.innerText = "", 3000);
-    }
-
     async function uploadFilesToDrive() {
-      const gasUrl = FIXED_GAS_URL;
-      if (!gasUrl) {
-        alert("Please set your Google Apps Script Web App URL under the 'Schedule & Cloud Ledger' tab first!");
-        switchTab('scheduleTab');
-        return;
-      }
-
       const keys = Object.keys(selectedFiles);
       if (keys.length === 0) {
-        alert("Please drop or select your shot_*.mp4 files first!");
+        alert("Please select or drop at least one video file first!");
         return;
       }
 
-      for (const k of keys) {
-        const file = selectedFiles[k];
-        const pill = document.getElementById(`statusPill_${k}`);
-        if (pill) {
-          pill.innerText = `📤 Uploading to Drive...`;
-        }
-
-        const base64Data = await readFileAsBase64(file);
-        const payload = {
-          action: "upload_shot",
-          episode_number: episodeData.episode_number,
-          filename: file.name,
-          base64_data: base64Data
-        };
+      for (const shotNum of keys) {
+        const file = selectedFiles[shotNum];
+        const pill = document.getElementById(`statusPill_${shotNum}`);
+        if (pill) pill.innerText = "⏳ Uploading to Drive...";
 
         try {
-          const res = await fetch(gasUrl, {
+          const base64Data = await readFileAsBase64(file);
+          const payload = {
+            action: "upload_shot",
+            episode_number: episodeData.episode_number,
+            filename: `shot_${parseInt(shotNum, 10).toString().padStart(2, '0')}.mp4`,
+            base64_data: base64Data
+          };
+
+          const res = await fetch(FIXED_GAS_URL, {
             method: "POST",
             headers: { "Content-Type": "text/plain" },
             body: JSON.stringify(payload)
           });
+
           const resJson = await res.json();
           if (resJson.success) {
             if (pill) {
               pill.className = 'status-pill status-ready';
-              pill.innerText = `✅ In Drive`;
+              pill.innerText = "✓ In Drive (Present)";
             }
           }
         } catch (e) {
           console.error("Upload error:", e);
-          if (pill) {
-            pill.innerText = `❌ Error: ${e.message}`;
-          }
+          if (pill) pill.innerText = `⚠️ Upload Error`;
         }
       }
-      alert("Uploaded video clips to Google Drive!");
+      alert("Selected video clips uploaded to Google Drive & synced to Google Sheet!");
     }
 
     function readFileAsBase64(file) {
@@ -2095,8 +2053,7 @@
         const reader = new FileReader();
         reader.onload = () => {
           const result = reader.result;
-          const base64 = result.split(',')[1];
-          resolve(base64);
+          resolve(result.split(',')[1]);
         };
         reader.onerror = reject;
         reader.readAsDataURL(file);
@@ -2104,35 +2061,22 @@
     }
 
     async function triggerAssembly() {
-      const gasUrl = FIXED_GAS_URL;
-      if (gasUrl) {
-        try {
-          const res = await fetch(gasUrl, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number })
-          });
-          alert("Trigger request sent to Google Apps Script -> GitHub Actions!");
-          return;
-        } catch (e) {
-          console.log("GAS trigger failed, falling back to info message:", e);
-        }
+      try {
+        await fetch(FIXED_GAS_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number })
+        });
+        alert("Trigger request sent to Google Apps Script -> GitHub Actions!");
+      } catch (e) {
+        alert("Triggering GitHub Actions Video Merger & Instagram Reel Assembly!");
       }
-      alert("Triggering GitHub Actions Video Merger & Instagram Reel Assembly! (Automated 12:00 PM & 6:00 PM IST triggers are also active)");
-    }
-
-    function refreshPrompts() {
-      alert("Gemini 3.8 Flash is ready to generate next chapter prompts. Run 'python scripts/flow_prompt_generator.py' or let the automated trigger run.");
     }
 
     window.onload = () => {
       renderShots();
-      const savedGas = localStorage.getItem('gas_web_app_url');
-      if (savedGas && document.getElementById('gasUrlInput')) {
-        document.getElementById('gasUrlInput').value = savedGas;
-      }
+      syncLiveFromGoogleSheet();
     };
   </script>
 </body>
 </html>
-

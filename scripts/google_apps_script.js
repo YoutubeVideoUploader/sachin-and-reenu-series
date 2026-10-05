@@ -542,13 +542,16 @@ function setupDailyTriggers() {
 
 /**
  * Web App GET endpoint.
+ * Returns the current active episode's Malayalam dialogues, Disney Pixar 3D prompts,
+ * and shot details directly from Google Sheet Tab 2 (Current_JSON_Prompts).
  */
 function doGet(e) {
   const params = e ? e.parameter : {};
-  const action = params.action || "check_status";
+  const action = (params.action || "get_prompts").toLowerCase();
   const epNum = parseInt(params.episode || "1", 10);
+  const format = (params.format || "").toLowerCase();
 
-  // Tab 3: Checklist status
+  // Tab 3 Checklist (used by GitHub Actions)
   if (action === "check_status" || action === "get_checklist") {
     const status = syncDriveToChecklist(epNum);
     return ContentService.createTextOutput(JSON.stringify({
@@ -557,32 +560,148 @@ function doGet(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  // Tab 2: Get Current JSON Prompts
-  if (action === "get_prompts") {
-    const ss = getStudioSpreadsheet();
-    const sheet = ss.getSheetByName(TAB_PROMPTS);
-    const prompts = [];
-    if (sheet && sheet.getLastRow() > 2) {
-      const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 6).getValues();
-      for (const row of data) {
-        prompts.push({
-          shot: row[0],
-          duration: row[1],
-          character: row[2],
-          dialogue: row[3],
-          action: row[4],
-          json_prompt: row[5]
-        });
-      }
-    }
-    return ContentService.createTextOutput(JSON.stringify({
-      success: true,
-      episode: epNum,
-      prompts: prompts
-    })).setMimeType(ContentService.MimeType.JSON);
+  // DEFAULT & LIVE SYNC: Return Active Episode Story (Tab 1) + Dialogues & Prompts (Tab 2)
+  const ss = getStudioSpreadsheet();
+  let storySheet = ss.getSheetByName(TAB_STORY);
+  let promptSheet = ss.getSheetByName(TAB_PROMPTS);
+
+  // Auto-initialize if sheets don't exist yet
+  if (!storySheet || !promptSheet || promptSheet.getLastRow() <= 2) {
+    try {
+      setupStudioSpreadsheet();
+      storySheet = ss.getSheetByName(TAB_STORY);
+      promptSheet = ss.getSheetByName(TAB_PROMPTS);
+    } catch (err) {}
   }
 
-  return ContentService.createTextOutput(JSON.stringify({ status: "running", app: "Sachin & Reenu 3-Tab Studio Engine" }))
+  let activeEp = 1;
+  let epTitleEn = "The Homecoming";
+  let epTitleMl = "തിരിച്ചുവരവ്";
+  let epSynopsis = "After two long years of separation, Sachin returns from the UK to a nervous Reenu waiting with Amal at Kochi CIAL airport. Amidst the tearful, tender joy of their reunion, Sachin's subtle glance toward his travel pouch hints at a hidden secret brought from London.";
+
+  if (storySheet && storySheet.getLastRow() > 1) {
+    const storyData = storySheet.getDataRange().getValues();
+    for (let i = 1; i < storyData.length; i++) {
+      const st = (storyData[i][2] || "").toString().trim().toLowerCase();
+      if (st === "active" || st === "queued") {
+        activeEp = storyData[i][0];
+        const fullTitle = storyData[i][1] || "";
+        if (fullTitle.includes("(")) {
+          epTitleMl = fullTitle.split("(")[0].trim();
+          epTitleEn = fullTitle.split("(")[1].replace(")", "").trim();
+        } else {
+          epTitleMl = fullTitle;
+        }
+        epSynopsis = storyData[i][4] || epSynopsis;
+        break;
+      }
+    }
+  }
+
+  const shots = [];
+  const prompts = [];
+
+  if (promptSheet && promptSheet.getLastRow() > 2) {
+    const pData = promptSheet.getRange(3, 1, promptSheet.getLastRow() - 2, 6).getValues();
+    for (let i = 0; i < pData.length; i++) {
+      const row = pData[i];
+      let parsedJson = null;
+      try {
+        parsedJson = typeof row[5] === 'string' ? JSON.parse(row[5]) : row[5];
+      } catch(e) {
+        parsedJson = row[5];
+      }
+      
+      const shotItem = {
+        shot_number: i + 1,
+        shot: `Shot #${i + 1}`,
+        duration: row[1] || "4s",
+        character: row[2] || "Reenu",
+        dialogue_malayalam: row[3] || "",
+        dialogue: row[3] || "",
+        action_summary: row[4] || "",
+        action: row[4] || "",
+        json_prompt: parsedJson
+      };
+
+      shots.push(shotItem);
+      prompts.push(shotItem);
+    }
+  }
+
+  const response = {
+    success: true,
+    episode: activeEp,
+    episode_number: activeEp,
+    title_english: epTitleEn,
+    title_malayalam: epTitleMl,
+    synopsis: epSynopsis,
+    total_shots: shots.length,
+    calculated_runtime_display: Math.floor(shots.length * 5.6 / 60) + "m " + Math.floor((shots.length * 5.6) % 60) + "s",
+    shots: shots,
+    prompts: prompts
+  };
+
+  // If viewed directly in browser (and user didn't request raw JSON), show a beautiful visual webpage with all Malayalam dialogues!
+  if (format !== "json" && !params.action) {
+    let shotsHtml = shots.map(function(s) {
+      return '<div style="background:#121727; border:1px solid #212c48; border-radius:12px; padding:16px; margin-bottom:14px;">' +
+        '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">' +
+          '<div>' +
+            '<span style="background:#2563eb; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px;">Shot #' + s.shot_number + '</span>' +
+            '<span style="background:#059669; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px; margin-left:6px;">⏱️ ' + s.duration + '</span>' +
+            '<span style="background:#7c3aed; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px; margin-left:6px;">👤 ' + s.character + '</span>' +
+          '</div>' +
+          '<span style="color:#94a3b8; font-size:12px;">Active in Google Sheet</span>' +
+        '</div>' +
+        (s.dialogue_malayalam ? 
+          '<div style="background:#1b2033; border-left:4px solid #fde047; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:10px;">' +
+            '<div style="font-size:11px; text-transform:uppercase; color:#f97316; font-weight:700; margin-bottom:4px;">💬 സംഭാഷണം (Malayalam Dialogue):</div>' +
+            '<div style="font-size:16px; font-weight:600; color:#fef08a; line-height:1.5;">"' + s.dialogue_malayalam + '"</div>' +
+          '</div>' : 
+          '<div style="background:#141a2e; padding:8px 12px; border-radius:6px; margin-bottom:10px; color:#94a3b8; font-size:12px;">🤫 <i>No spoken dialogue (Silent emotional scene)</i></div>'
+        ) +
+        '<div style="font-size:13px; color:#cbd5e1; margin-bottom:8px;"><b>Action:</b> ' + s.action_summary + '</div>' +
+      '</div>';
+    }).join("");
+
+    const pageHtml = '<!DOCTYPE html>' +
+'<html>' +
+'<head>' +
+'  <meta charset="UTF-8">' +
+'  <title>Sachin & Reenu — Episode ' + activeEp + ' Dialogues</title>' +
+'  <meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+'  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">' +
+'  <style>' +
+'    body { background:#090c15; color:#f8fafc; font-family:\'Plus Jakarta Sans\', sans-serif; padding:20px; max-width:900px; margin:0 auto; }' +
+'    h1 { color:#f97316; font-size:22px; margin-bottom:4px; }' +
+'    .badge { background:#1e2947; color:#38bdf8; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; display:inline-block; }' +
+'  </style>' +
+'</head>' +
+'<body>' +
+'  <div style="border-bottom:1px solid #212c48; padding-bottom:16px; margin-bottom:20px;">' +
+'    <div class="badge">Google Apps Script Live Web App</div>' +
+'    <h1 style="margin-top:10px;">സച്ചിൻ & റീനു — Episode ' + activeEp + ': ' + epTitleEn + ' (' + epTitleMl + ')</h1>' +
+'    <p style="color:#94a3b8; font-size:14px; margin-top:6px;">' + epSynopsis + '</p>' +
+'    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">' +
+'      <span class="badge" style="background:#10b981; color:#fff;">✓ ' + shots.length + ' Shots Active</span>' +
+'      <a href="?action=get_prompts&format=json" style="background:#3b82f6; color:#fff; text-decoration:none; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700;">View Raw JSON</a>' +
+'    </div>' +
+'  </div>' +
+'  <div>' +
+'    <h2 style="font-size:16px; margin-bottom:14px; color:#fde047;">🎬 Live Malayalam Dialogues from Google Sheet (Tab 2: Current_JSON_Prompts)</h2>' +
+'    ' + shotsHtml +
+'  </div>' +
+'</body>' +
+'</html>';
+
+    return HtmlService.createHtmlOutput(pageHtml)
+      .setTitle("Sachin & Reenu - Episode " + activeEp + " Dialogues")
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+
+  // Return formatted JSON for API calls and Portal sync
+  return ContentService.createTextOutput(JSON.stringify(response, null, 2))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
