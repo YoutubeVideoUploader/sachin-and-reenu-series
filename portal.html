@@ -376,7 +376,7 @@
         </div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
-        <button class="btn btn-secondary" onclick="syncLiveFromGoogleSheet()" style="padding: 7px 14px; font-size: 12px;">
+        <button class="btn btn-secondary" onclick="syncAllWithSheet()" style="padding: 7px 14px; font-size: 12px;">
           🔄 Sync Google Sheet
         </button>
         <div class="badge-status">
@@ -398,7 +398,7 @@
       </div>
       <div class="ep-actions">
         <button class="btn btn-secondary" onclick="exportJSON()">💾 Export JSON</button>
-        <button class="btn btn-primary" onclick="syncLiveFromGoogleSheet()">🔄 Refresh from Sheet</button>
+        <button class="btn btn-primary" onclick="syncAllWithSheet()">🔄 Refresh from Sheet</button>
       </div>
     </div>
 
@@ -1930,49 +1930,67 @@
       dlAnchor.remove();
     }
 
-    async function syncLiveFromGoogleSheet() {
+    async function syncAllWithSheet() {
       const btn = document.querySelector('header .btn-secondary');
+      const actionBtn = document.querySelector('.ep-actions .btn-primary');
       if (btn) btn.innerText = "⏳ Syncing...";
-      
+      if (actionBtn) actionBtn.innerText = "⏳ Syncing...";
+
+      await syncDriveStatus();
+      await syncLiveFromGoogleSheet();
+
+      if (btn) {
+        btn.innerText = "✓ Synced!";
+        setTimeout(() => { btn.innerText = "🔄 Sync Google Sheet"; }, 2500);
+      }
+      if (actionBtn) {
+        actionBtn.innerText = "✓ Synced!";
+        setTimeout(() => { actionBtn.innerText = "🔄 Refresh from Sheet"; }, 2500);
+      }
+    }
+
+    async function syncLiveFromGoogleSheet() {
       const endpoints = [
         FIXED_GAS_URL + "?action=get_prompts",
-        FIXED_GAS_URL + "?action=get_live_episode_data",
-        FIXED_GAS_URL
+        FIXED_GAS_URL + "?action=get_live_episode_data"
       ];
 
       for (const url of endpoints) {
         try {
           const res = await fetch(url);
-          const data = await res.json();
+          if (!res.ok) continue;
+          const text = await res.text();
+          if (!text.trim().startsWith('{')) continue;
+          const data = JSON.parse(text);
           const normalized = normalizeEpisodeData(data);
           if (normalized && normalized.shots && normalized.shots.length > 0) {
             episodeData = normalized;
             renderShots();
             await syncDriveStatus();
-            if (btn) btn.innerText = "✓ Synced (" + normalized.shots.length + " Shots)!";
-            setTimeout(() => { if (btn) btn.innerText = "🔄 Sync Google Sheet"; }, 2500);
             return;
           }
         } catch (err) {
-          console.warn("Attempt failed for", url, err);
+          console.warn("Episode sync attempt failed for", url, err);
         }
       }
-      if (btn) btn.innerText = "🔄 Sync Google Sheet";
     }
 
     async function syncDriveStatus() {
       const summaryEl = document.getElementById('driveSyncSummary');
-      if (summaryEl) summaryEl.innerText = "Checking Google Drive...";
+      if (summaryEl) summaryEl.innerText = "Checking Google Drive & Sheet status...";
 
       try {
         const ep = episodeData.episode_number || 1;
         const res = await fetch(FIXED_GAS_URL + "?action=check_status&episode=" + ep);
-        const json = await res.json();
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const text = await res.text();
+        if (!text.trim().startsWith('{')) throw new Error("Non-JSON response from server");
+        const json = JSON.parse(text);
 
         if (json.success && json.data) {
           const info = json.data;
           const files = info.files || [];
-          const totalShots = episodeData.shots ? episodeData.shots.length : 22;
+          const totalShots = (episodeData.shots && episodeData.shots.length) ? episodeData.shots.length : (info.total_shots || 22);
           let presentCount = 0;
 
           for (let s = 1; s <= totalShots; s++) {
@@ -1986,19 +2004,22 @@
             ];
 
             const match = files.find(f => {
-              const lower = f.name.toLowerCase();
-              return patterns.some(p => lower.includes(p));
+              if (f.shot_number === s) return true;
+              const fname = (f.filename || f.name || "").toLowerCase();
+              return patterns.some(p => fname.includes(p));
             });
 
             if (match) {
-              driveStatus[s] = { present: true, filename: match.name, id: match.id };
+              const fname = match.filename || match.name || `shot_${s < 10 ? '0' + s : s}.mp4`;
+              driveStatus[s] = { present: true, filename: fname, id: match.file_id || match.id };
               presentCount++;
+
               // If not currently staged with a fresh file, update UI pill
               if (!stagedFiles[s] || stagedFiles[s].uploaded) {
                 const pill = document.getElementById(`statusPill_${s}`);
                 if (pill) {
                   pill.className = 'status-pill status-ready';
-                  pill.innerText = `✓ In Drive (${match.name})`;
+                  pill.innerText = `✓ In Drive (${fname})`;
                 }
                 const upBtn = document.getElementById(`uploadBtn_${s}`);
                 if (upBtn) upBtn.style.display = 'none';
@@ -2016,9 +2037,11 @@
           }
 
           if (summaryEl) {
-            summaryEl.innerHTML = `<b style="color: #34d399;">${presentCount} of ${totalShots} shots Present</b> in Google Drive`;
+            summaryEl.innerHTML = `<b style="color: #34d399;">✓ ${presentCount} of ${totalShots} shots Present</b> in Google Drive & Sheet`;
           }
           updateDropzoneSummary();
+        } else {
+          if (summaryEl) summaryEl.innerText = "Checklist check: no files data";
         }
       } catch (e) {
         console.warn("Drive status check error:", e);
@@ -2293,10 +2316,10 @@
       }
     }
 
-    window.onload = async () => {
+    window.onload = () => {
       renderShots();
-      await syncLiveFromGoogleSheet();
-      await syncDriveStatus();
+      syncDriveStatus();
+      syncLiveFromGoogleSheet();
     };
   </script>
 </body>
