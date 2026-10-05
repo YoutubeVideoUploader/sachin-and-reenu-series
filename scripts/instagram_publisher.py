@@ -3,14 +3,14 @@ import json
 import time
 import requests
 
-IG_ACCESS_TOKEN = os.getenv("INSTAGRAM_ACCESS_TOKEN")
-IG_ACCOUNT_ID = os.getenv("INSTAGRAM_ACCOUNT_ID")
-GH_PAT = os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN")
-GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY", "YoutubeVideoUploader/sachin-and-reenu-series")
-
+VIDEO_FILE = "master_episode.mp4"
 SCRIPT_FILE = "current_episode.json"
 STATE_FILE = "story_state.json"
-VIDEO_FILE = "master_episode.mp4"
+
+IG_ACCESS_TOKEN = os.getenv("INSTAGRAM_ACCESS_TOKEN")
+IG_ACCOUNT_ID = os.getenv("INSTAGRAM_ACCOUNT_ID")
+GH_PAT = os.getenv("GH_PAT")
+GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY", "YoutubeVideoUploader/sachin-and-reenu-series")
 
 def upload_release_asset(video_path, tag_name):
     print(f"Creating GitHub Release {tag_name} to host video for Instagram...")
@@ -41,6 +41,15 @@ def upload_release_asset(video_path, tag_name):
         
     upload_url = rel_data["upload_url"].split("{")[0]
     file_name = os.path.basename(video_path)
+    
+    # Delete existing asset if it exists
+    for existing_asset in rel_data.get("assets", []):
+        if existing_asset.get("name") == file_name:
+            del_url = f"https://api.github.com/repos/{GITHUB_REPOSITORY}/releases/assets/{existing_asset['id']}"
+            requests.delete(del_url, headers=headers)
+            print(f"Deleted existing release asset {existing_asset['id']}")
+            time.sleep(1.0)
+            break
     
     # 2. Upload asset
     print(f"Uploading {file_name} ({os.path.getsize(video_path)} bytes) to release...")
@@ -75,66 +84,80 @@ def publish_reel_to_instagram(video_url, caption):
         "share_to_feed": "true",
         "access_token": IG_ACCESS_TOKEN
     }
-    
-    res = requests.post(create_url, data=payload)
-    if res.status_code != 200:
-        raise Exception(f"Failed to create Instagram container: {res.status_code} {res.text}")
+    create_res = requests.post(create_url, data=payload)
+    if create_res.status_code != 200:
+        raise Exception(f"Failed to create Reel container: {create_res.status_code} {create_res.text}")
         
-    container_id = res.json().get("id")
+    container_id = create_res.json().get("id")
     print(f"Container created with ID: {container_id}. Waiting for processing...")
     
-    # Poll status
-    status_url = f"https://graph.facebook.com/v20.0/{container_id}"
-    for attempt in range(40):
-        time.sleep(10)
-        status_res = requests.get(status_url, params={"fields": "status_code,status", "access_token": IG_ACCESS_TOKEN})
-        if status_res.status_code == 200:
-            st = status_res.json().get("status_code")
-            print(f"Processing status [{attempt+1}/40]: {st}")
-            if st == "FINISHED":
+    # Poll container status until FINISHED
+    status_url = f"https://graph.facebook.com/v20.0/{container_id}?fields=status_code&access_token={IG_ACCESS_TOKEN}"
+    for _ in range(30):
+        time.sleep(5)
+        st_res = requests.get(status_url)
+        if st_res.status_code == 200:
+            status_code = st_res.json().get("status_code")
+            if status_code == "FINISHED":
                 print("Video successfully processed by Instagram!")
                 break
-            elif st in ["ERROR", "EXPIRED"]:
-                raise Exception(f"Instagram video processing failed: {status_res.text}")
+            elif status_code == "ERROR":
+                raise Exception("Instagram video processing failed.")
+            else:
+                print(f"Status: {status_code}...")
         else:
-            print(f"Error checking status: {status_res.text}")
-    else:
-        raise TimeoutError("Timed out waiting for Instagram to process video.")
-        
+            print(f"Status check note: {st_res.status_code}")
+            
     # Publish container
     print(f"Publishing container {container_id} to Instagram feed...")
     publish_url = f"https://graph.facebook.com/v20.0/{IG_ACCOUNT_ID}/media_publish"
-    pub_res = requests.post(publish_url, data={"creation_id": container_id, "access_token": IG_ACCESS_TOKEN})
+    pub_res = requests.post(publish_url, data={
+        "creation_id": container_id,
+        "access_token": IG_ACCESS_TOKEN
+    })
     if pub_res.status_code != 200:
-        raise Exception(f"Failed to publish reel: {pub_res.status_code} {pub_res.text}")
+        raise Exception(f"Failed to publish Reel: {pub_res.status_code} {pub_res.text}")
         
-    published_id = pub_res.json().get("id")
-    print(f"SUCCESS! Published to Instagram Reels with Post ID: {published_id}")
-    return published_id
+    media_id = pub_res.json().get("id")
+    print(f"SUCCESS! Published to Instagram Reels with Post ID: {media_id}")
+    return media_id
 
 def update_story_state():
+    if not os.path.exists(SCRIPT_FILE) or not os.path.exists(STATE_FILE):
+        return
+        
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
         ep_data = json.load(f)
     with open(STATE_FILE, "r", encoding="utf-8") as f:
-        state = load_state = json.load(f)
+        state = json.load(f)
         
     ep_num = ep_data.get("episode_number")
+    state["total_episodes_produced"] = ep_num
+    
+    # Collect all unique characters present across scenes
+    all_chars = set()
+    for sc in ep_data.get("scenes", []):
+        all_chars.update(sc.get("characters_present", [sc.get("speaker", "Reenu")]))
+        
     history_entry = {
         "episode": ep_num,
         "title": f"{ep_data.get('title_malayalam')} ({ep_data.get('title_english')})",
         "summary": ep_data.get("synopsis"),
         "cliffhanger": ep_data.get("cliffhanger"),
-        "characters_present": list(set(s.get("speaker") for s in ep_data.get("scenes", []) if s.get("speaker") != "Narrator"))
+        "characters_present": list(all_chars)
     }
-    
-    state["total_episodes_produced"] = ep_num
-    state.setdefault("history", []).append(history_entry)
+    state["history"].append(history_entry)
     
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
-    print(f"Updated story_state.json with Episode {ep_num} summary.")
+    print(f"Updated story state for Episode {ep_num}!")
 
 def main():
+    if not os.path.exists(VIDEO_FILE):
+        raise FileNotFoundError(f"Missing master video {VIDEO_FILE}")
+    if not os.path.exists(SCRIPT_FILE):
+        raise FileNotFoundError(f"Missing episode script {SCRIPT_FILE}")
+        
     with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
         ep_data = json.load(f)
         
@@ -146,7 +169,7 @@ def main():
         f"#SachinAndReenu #MalayalamWebSeries #KeralaRomance #MalayalamAnime #InstaReels #MalluAnimation #KeralaLovers #CIAL"
     )
     
-    tag_name = f"v1.{ep_num}"
+    tag_name = f"v{ep_num}.{int(time.time())}"
     public_url = upload_release_asset(VIDEO_FILE, tag_name)
     publish_reel_to_instagram(public_url, caption)
     update_story_state()
