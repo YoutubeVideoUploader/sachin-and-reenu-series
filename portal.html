@@ -598,7 +598,7 @@
             Deploy <code>scripts/google_apps_script.js</code> as a Web App in Google Apps Script and paste the deployment URL below for direct cloud upload to Google Drive:
           </p>
           <div style="display: flex; gap: 10px; max-width: 700px;">
-            <input type="text" id="gasUrlInput" placeholder="https://script.google.com/macros/s/.../exec" style="flex: 1; padding: 10px 14px; background: #0f172a; border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 13px;">
+            <input type="text" id="gasUrlInput" value="https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec" style="flex: 1; padding: 10px 14px; background: #0f172a; border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 13px;">
             <button class="btn btn-primary" onclick="saveGasUrl()">Save Web App URL</button>
           </div>
           <span id="gasSaveStatus" style="display: inline-block; margin-top: 8px; font-size: 13px; color: #34d399;"></span>
@@ -1815,6 +1815,10 @@
 
     let selectedFiles = {};
 
+    const FIXED_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec";
+    try { localStorage.setItem('gas_web_app_url', FIXED_GAS_URL); } catch(e) {}
+    
+
     
     
     
@@ -1952,7 +1956,7 @@
     }
 
     async function uploadFilesToDrive() {
-      const gasUrl = localStorage.getItem('gas_web_app_url') || document.getElementById('gasUrlInput').value.trim();
+      const gasUrl = FIXED_GAS_URL;
       if (!gasUrl) {
         alert("Please set your Google Apps Script Web App URL under the 'Schedule & Cloud Ledger' tab first!");
         switchTab('scheduleTab');
@@ -2017,7 +2021,7 @@
     }
 
     async function triggerAssembly() {
-      const gasUrl = localStorage.getItem('gas_web_app_url');
+      const gasUrl = FIXED_GAS_URL;
       if (gasUrl) {
         try {
           const res = await fetch(gasUrl, {
