@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 0,
+  "total_episodes_produced": 1,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -33,5 +33,17 @@
     }
   },
   "current_arc": "The Airport Reunion",
-  "history": []
+  "history": [
+    {
+      "episode": 1,
+      "title": "തിരിച്ചുവരവ് (The Homecoming)",
+      "summary": "After two long years apart, Sachin finally touches down at Kochi CIAL from the UK. Reenu and Amal eagerly wait by the arrival barriers, leading to an overwhelming, heartfelt reunion.",
+      "cliffhanger": "As Sachin holds Reenu close, his mysterious, lingering glance toward his travel pouch hints at a life-changing secret he carried all the way from London.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "Reenu"
+      ]
+    }
+  ]
 }
