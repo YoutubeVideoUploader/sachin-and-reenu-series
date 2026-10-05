@@ -71,9 +71,9 @@ def upload_release_asset(video_path, tag_name):
     print(f"Public video URL for Instagram: {public_url}")
     return public_url
 
-def publish_reel_to_instagram(video_url, caption):
+def publish_reel_to_instagram(video_url, caption, cover_url=None):
     if not IG_ACCESS_TOKEN or not IG_ACCOUNT_ID:
-        raise ValueError("INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_ACCOUNT_ID are required")
+        raise ValueError("INSTAGRAM_ACCESS_TOKEN and IG_ACCOUNT_ID are required")
         
     print(f"Creating Instagram Reel container on account {IG_ACCOUNT_ID}...")
     create_url = f"https://graph.facebook.com/v20.0/{IG_ACCOUNT_ID}/media"
@@ -84,6 +84,10 @@ def publish_reel_to_instagram(video_url, caption):
         "share_to_feed": "true",
         "access_token": IG_ACCESS_TOKEN
     }
+    if cover_url:
+        print(f"Attaching custom Reel cover thumbnail: {cover_url}")
+        payload["cover_url"] = cover_url
+        
     create_res = requests.post(create_url, data=payload)
     if create_res.status_code != 200:
         raise Exception(f"Failed to create Reel container: {create_res.status_code} {create_res.text}")
@@ -170,8 +174,25 @@ def main():
     )
     
     tag_name = f"v{ep_num}.{int(time.time())}"
-    public_url = upload_release_asset(VIDEO_FILE, tag_name)
-    publish_reel_to_instagram(public_url, caption)
+    video_url = upload_release_asset(VIDEO_FILE, tag_name)
+    
+    # Check for custom thumbnail image
+    cover_url = None
+    thumb_candidates = [
+        os.path.join("assets", f"thumbnail_ep{ep_num}.jpg"),
+        os.path.join("assets", "thumbnail.jpg"),
+        os.path.join("assets", "thumbnail.png")
+    ]
+    for tc in thumb_candidates:
+        if os.path.exists(tc) and os.path.getsize(tc) > 1000:
+            try:
+                print(f"Uploading custom Reel thumbnail '{tc}' to release...")
+                cover_url = upload_release_asset(tc, tag_name)
+                break
+            except Exception as e:
+                print(f"Notice: Failed to upload thumbnail asset: {e}")
+                
+    publish_reel_to_instagram(video_url, caption, cover_url=cover_url)
     update_story_state()
 
 if __name__ == "__main__":

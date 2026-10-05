@@ -164,34 +164,37 @@ def generate_foley_and_score(duration=130, sample_rate=24000):
 
     bgm_path = os.path.join(AUDIO_DIR, "romance_score.wav")
     if not os.path.exists(bgm_path):
-        total_samples = int(sample_rate * duration)
-        samples = [0.0] * total_samples
-        c_maj = [261.63, 329.63, 392.00, 523.25]
-        a_min = [220.00, 261.63, 329.63, 440.00]
-        f_maj = [174.61, 220.00, 261.63, 349.23]
-        g_maj = [196.00, 246.94, 293.66, 392.00]
-        prog = [c_maj, a_min, f_maj, g_maj]
-        
-        chord_dur = 4.0
-        for i in range(total_samples):
-            t = i / sample_rate
-            chord_idx = int((t // chord_dur) % len(prog))
-            chord = prog[chord_idx]
-            val = 0.0
-            for note in chord:
-                val += 0.05 * math.sin(2 * math.pi * note * t)
-            samples[i] = val
+        # Pick romantic BGM from curated 10-track soft acoustic/piano library
+        music_dir = os.path.join("assets", "music")
+        ep_num = 1
+        if os.path.exists(SCRIPT_FILE):
+            try:
+                with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
+                    ep_num = json.load(f).get("episode_number", 1)
+            except Exception:
+                pass
+                
+        tracks = sorted([f for f in os.listdir(music_dir) if f.endswith(".mp3")]) if os.path.exists(music_dir) else []
+        if tracks:
+            selected_track = tracks[(ep_num - 1) % len(tracks)]
+            track_path = os.path.join(music_dir, selected_track)
+            print(f"Loading soft romantic piano BGM '{selected_track}' for Episode {ep_num}...")
             
-        with wave.open(bgm_path, 'w') as wav:
-            wav.setnchannels(1)
-            wav.setsampwidth(2)
-            wav.setframerate(sample_rate)
-            raw = bytearray()
-            for s in samples:
-                ival = max(-32767, min(32767, int(s * 32767)))
-                raw.extend(struct.pack('<h', ival))
-            wav.writeframes(raw)
-        print("Generated romance score.")
+            # Loop and fade BGM gently to fit exact episode duration
+            cmd = [
+                "ffmpeg", "-y",
+                "-stream_loop", "-1",
+                "-i", track_path,
+                "-t", str(duration),
+                "-ar", str(sample_rate),
+                "-ac", "1",
+                "-af", f"volume=0.25,afade=t=in:ss=0:d=2.0,afade=t=out:st={duration-3.0}:d=3.0",
+                bgm_path
+            ]
+            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            print(f"Successfully processed cinematic BGM: {bgm_path}")
+        else:
+            create_silent_wav(bgm_path, duration=duration)
 
 if __name__ == "__main__":
     generate_voices()
