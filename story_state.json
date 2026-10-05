@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 0,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -28,22 +28,10 @@
       "voice": "Puck",
       "hair": "Cropped textured curly black hair",
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
-      "attire": "Olive-green crew neck t-shirt, blue denim jeans, white sneakers",
+      "attire": "Olive-green crew neck t-shirt with subtle horizontal lines, blue denim jeans, white sneakers",
       "personality": "Sachin's best friend, supportive, humorous, teases Reenu to keep her calm"
     }
   },
   "current_arc": "The Airport Reunion",
-  "history": [
-    {
-      "episode": 1,
-      "title": "തിരിച്ചുവരവ് (The Homecoming)",
-      "summary": "After three long years of waiting, Reenu and Amal eagerly await Sachin's return from the UK at Kochi CIAL Airport. When the sliding doors finally open, emotions run high as Sachin and Reenu's eyes meet after years of distance.",
-      "cliffhanger": "As Sachin and Reenu share a deep, emotional hug, Sachin's phone buzzes with an international call that causes his warm smile to momentarily fade into worry.",
-      "characters_present": [
-        "Amal",
-        "Sachin",
-        "Reenu"
-      ]
-    }
-  ]
+  "history": []
 }

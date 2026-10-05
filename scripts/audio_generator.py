@@ -34,8 +34,8 @@ def create_silent_wav(file_path, duration=3.0, sample_rate=24000):
         wav.writeframes(b'\x00' * (total_samples * 2))
     print(f"  -> Created silent placeholder audio {file_path}")
 
-async def synthesize_native_malayalam(text, speaker, out_wav):
-    """Synthesizes high quality native Kerala Malayalam neural voice."""
+async def synthesize_edge_tts(text, speaker, out_wav):
+    """Fallback high quality native Kerala Malayalam neural voice."""
     if speaker == "Sachin":
         voice, pitch, rate = "ml-IN-MidhunNeural", "-3Hz", "-2%"
     elif speaker == "Amal":
@@ -69,34 +69,29 @@ def generate_voices():
     scenes = ep_data.get("scenes", [])
     print(f"Generating {len(scenes)} voice lines for Episode {ep_data.get('episode_number')}...")
     
+    clients = get_api_clients()
+    client_count = len(clients)
+    current_key_idx = 0
+    
     for sc in scenes:
         idx = sc["scene_index"]
         speaker = sc.get("speaker", "Reenu")
         text = sc["dialogue_malayalam"]
+        voice = sc.get("voice", "Kore" if speaker in ["Reenu", "Narrator"] else ("Fenrir" if speaker == "Sachin" else "Puck"))
         out_wav = os.path.join(AUDIO_DIR, f"speech_{idx}.wav")
         
         if os.path.exists(out_wav) and os.path.getsize(out_wav) > 1000:
             print(f"Skipping speech_{idx}.wav (already generated).")
             continue
             
-        print(f"Synthesizing speech_{idx}.wav ({speaker} - Native Malayalam Neural)...")
+        print(f"Synthesizing speech_{idx}.wav ({speaker} - Gemini Voice '{voice}')...")
         synthesized = False
         
-        # Primary: Edge-TTS Native Malayalam (0 rate limits, 100% free, authentic Kerala accent)
-        try:
-            asyncio.run(synthesize_native_malayalam(text, speaker, out_wav))
-            if os.path.exists(out_wav) and os.path.getsize(out_wav) > 1000:
-                print(f"  -> Saved native Malayalam speech_{idx}.wav ({os.path.getsize(out_wav)} bytes)")
-                synthesized = True
-        except Exception as e:
-            print(f"  -> Edge-TTS note: {e}. Trying Gemini TTS...")
-            
-        # Secondary fallback: Gemini TTS
-        if not synthesized:
-            clients = get_api_clients()
-            for client in clients:
+        # Primary: Gemini TTS with Multi-Key Rotation
+        if clients:
+            for attempt in range(client_count):
+                active_client = clients[(current_key_idx + attempt) % client_count]
                 try:
-                    voice = sc.get("voice", "Kore")
                     config = types.GenerateContentConfig(
                         response_modalities=["AUDIO"],
                         speech_config=types.SpeechConfig(
@@ -105,7 +100,7 @@ def generate_voices():
                             )
                         )
                     )
-                    res = client.models.generate_content(
+                    res = active_client.models.generate_content(
                         model="gemini-3.8-flash-tts",
                         contents=text,
                         config=config
@@ -113,13 +108,27 @@ def generate_voices():
                     audio_bytes = res.candidates[0].content.parts[0].inline_data.data
                     with open(out_wav, "wb") as f:
                         f.write(audio_bytes)
-                    print(f"  -> Saved Gemini speech_{idx}.wav ({len(audio_bytes)} bytes)")
+                    print(f"  -> Saved Gemini speech_{idx}.wav ({len(audio_bytes)} bytes) using key #{((current_key_idx + attempt) % client_count) + 1}")
                     synthesized = True
+                    current_key_idx = (current_key_idx + attempt + 1) % client_count
+                    time.sleep(3.5) # Polite pacing to prevent 429 burst limits
                     break
                 except Exception as ex:
-                    print(f"  -> Gemini TTS note: {ex}")
+                    print(f"  -> Gemini TTS note on key #{((current_key_idx + attempt) % client_count) + 1}: {ex}")
+                    time.sleep(2.0)
                     
-        # Tertiary fallback: Silent WAV so assembly never fails
+        # Secondary Fallback: Edge-TTS Neural Voice
+        if not synthesized:
+            print(f"  -> Falling back to Edge-TTS neural voice for speech_{idx}.wav...")
+            try:
+                asyncio.run(synthesize_edge_tts(text, speaker, out_wav))
+                if os.path.exists(out_wav) and os.path.getsize(out_wav) > 1000:
+                    print(f"  -> Saved Edge-TTS fallback speech_{idx}.wav ({os.path.getsize(out_wav)} bytes)")
+                    synthesized = True
+            except Exception as e:
+                print(f"  -> Edge-TTS note: {e}")
+
+        # Tertiary Fallback: Silent WAV
         if not synthesized:
             print(f"  -> Fallback to silent WAV for speech_{idx}.wav")
             create_silent_wav(out_wav, duration=3.5)
@@ -139,14 +148,17 @@ def generate_foley_and_score(duration=130, sample_rate=24000):
         val = 0.0
         filtered = [0.0] * total_samples
         for i in range(total_samples):
-            val = val + 0.08 * (samples[i] - val)
-            filtered[i] = val * 0.5
+            val += 0.15 * (samples[i] - val)
+            filtered[i] = val
             
         with wave.open(amb_path, 'w') as wav:
             wav.setnchannels(1)
             wav.setsampwidth(2)
             wav.setframerate(sample_rate)
-            raw = b"".join(struct.pack('<h', int(max(-1.0, min(1.0, s)) * 32767)) for s in filtered)
+            raw = bytearray()
+            for s in filtered:
+                ival = max(-32767, min(32767, int(s * 32767)))
+                raw.extend(struct.pack('<h', ival))
             wav.writeframes(raw)
         print("Generated ambient soundscape.")
 
@@ -154,40 +166,30 @@ def generate_foley_and_score(duration=130, sample_rate=24000):
     if not os.path.exists(bgm_path):
         total_samples = int(sample_rate * duration)
         samples = [0.0] * total_samples
-        chords = [
-            [146.83, 220.0, 293.66, 369.99, 440.0],
-            [110.0, 164.81, 220.0, 277.18, 440.0],
-            [123.47, 185.0, 246.94, 293.66, 369.99],
-            [98.0, 146.83, 196.0, 246.94, 293.66]
-        ]
-        chord_len = 4.0
-        num_chords = int(duration / chord_len) + 1
-        for c_idx in range(num_chords):
-            chord = chords[c_idx % len(chords)]
-            c_start = int(c_idx * chord_len * sample_rate)
-            for note in chord[:3]:
-                for s in range(int(chord_len * sample_rate)):
-                    idx = c_start + s
-                    if idx < total_samples:
-                        t = s / sample_rate
-                        env = math.sin(math.pi * (s / (chord_len * sample_rate)))
-                        samples[idx] += 0.07 * math.sin(2 * math.pi * note * t) * env
-            sub_beat = chord_len / len(chord)
-            for n_i, note in enumerate(chord):
-                n_start = c_start + int(n_i * sub_beat * sample_rate)
-                for s in range(int(1.8 * sample_rate)):
-                    idx = n_start + s
-                    if idx < total_samples:
-                        t = s / sample_rate
-                        env = math.exp(-t * 2.2)
-                        samples[idx] += (0.16 * math.sin(2 * math.pi * note * t) + 0.05 * math.sin(2 * math.pi * note * 2 * t)) * env
-
-        max_val = max(abs(s) for s in samples) or 1.0
+        c_maj = [261.63, 329.63, 392.00, 523.25]
+        a_min = [220.00, 261.63, 329.63, 440.00]
+        f_maj = [174.61, 220.00, 261.63, 349.23]
+        g_maj = [196.00, 246.94, 293.66, 392.00]
+        prog = [c_maj, a_min, f_maj, g_maj]
+        
+        chord_dur = 4.0
+        for i in range(total_samples):
+            t = i / sample_rate
+            chord_idx = int((t // chord_dur) % len(prog))
+            chord = prog[chord_idx]
+            val = 0.0
+            for note in chord:
+                val += 0.05 * math.sin(2 * math.pi * note * t)
+            samples[i] = val
+            
         with wave.open(bgm_path, 'w') as wav:
             wav.setnchannels(1)
             wav.setsampwidth(2)
             wav.setframerate(sample_rate)
-            raw = b"".join(struct.pack('<h', int(max(-1.0, min(1.0, s / max_val * 0.40)) * 32767)) for s in samples)
+            raw = bytearray()
+            for s in samples:
+                ival = max(-32767, min(32767, int(s * 32767)))
+                raw.extend(struct.pack('<h', ival))
             wav.writeframes(raw)
         print("Generated romance score.")
 
