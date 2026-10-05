@@ -212,6 +212,17 @@
       background: #28375e;
     }
 
+    .btn-preview {
+      background: #0f2b48;
+      color: #38bdf8;
+      border: 1px solid #0284c7;
+    }
+
+    .btn-preview:hover {
+      background: #0369a1;
+      color: #fff;
+    }
+
     .tabs {
       display: flex;
       gap: 8px;
@@ -354,6 +365,38 @@
     .status-ready { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .status-uploading { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
 
+    /* Video Preview Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 16, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #121727;
+      border: 1px solid #2d3858;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      animation: modalPop 0.2s ease-out;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     footer {
       margin-top: auto;
       border-top: 1px solid var(--border-color);
@@ -435,7 +478,7 @@
         <div style="font-size: 40px; margin-bottom: 10px;" id="dropzoneIcon">📁</div>
         <h3 id="dropzoneTitle">Click or Drag & Drop Video Clips Here</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
-          Select or drop MP4 video clips downloaded from Google Flow. Matches filenames automatically and preserves order!
+          Select or drop MP4 video clips downloaded from Google Flow. Matches filenames automatically, preserves order, and lets you preview instantly!
         </p>
         <div id="dropzoneLoadedCount" style="margin-top: 12px; font-weight: 700; color: #38bdf8; font-size: 14px;"></div>
         <input type="file" id="videoFileInput" multiple accept="video/mp4,video/*" style="display: none;" onchange="handleFileSelect(event)">
@@ -509,6 +552,44 @@
     </div>
 
   </main>
+
+  <!-- Video Preview Modal (Vertical 9:16 Cinema Player) -->
+  <div class="modal-backdrop" id="videoPreviewModal" onclick="handleModalBackdropClick(event)">
+    <div class="modal-card">
+      <!-- Modal Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid #212c48;">
+        <div>
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--accent-blue); font-weight: 800;" id="modalShotBadge">SHOT PREVIEW</div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-top: 2px;" id="modalTitle">Video Preview</h3>
+        </div>
+        <button onclick="closeVideoPreviewModal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+      </div>
+
+      <!-- Dialogue Banner -->
+      <div id="modalDialogueBox" style="background: #1a2238; border-left: 3px solid #fde047; padding: 10px 14px; margin: 12px 18px 0; border-radius: 0 6px 6px 0; font-size: 13px; color: #fef08a; font-family: 'Noto Sans Malayalam', sans-serif;">
+      </div>
+
+      <!-- Video Player Viewport (9:16 aspect ratio) -->
+      <div style="padding: 14px 18px; display: flex; justify-content: center; align-items: center; flex: 1; overflow: hidden;">
+        <div id="modalVideoPlayerContainer" style="width: 100%; aspect-ratio: 9/16; max-height: 480px; background: #000; border-radius: 12px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 1px solid #28375e;">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="padding: 12px 18px 16px; border-top: 1px solid #212c48; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="font-size: 12px; color: var(--text-muted);" id="modalFileStatus">Google Drive Cloud Video</span>
+        <div style="display: flex; gap: 8px;">
+          <a id="modalDriveLink" href="#" target="_blank" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px; text-decoration: none;">
+            🔗 Open in Drive
+          </a>
+          <button onclick="closeVideoPreviewModal()" class="btn btn-secondary" style="padding: 6px 14px; font-size: 12px;">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -1715,7 +1796,7 @@
   ]
 };
     
-    // Tracks current state of Google Drive: shotNum -> { present: bool, filename: string }
+    // Tracks current state of Google Drive: shotNum -> { present: bool, filename: string, id: string }
     let driveStatus = {};
     // Tracks staged local files awaiting upload: shotNum -> { file: File, uploaded: bool }
     let stagedFiles = {};
@@ -1805,6 +1886,9 @@
       document.getElementById('shotCountBadge').innerText = `${shots.length} Shots • ⏱️ ${runtimeStr}`;
 
       shots.forEach((shot) => {
+        const isPresent = driveStatus[shot.shot_number] && driveStatus[shot.shot_number].present;
+        const isStaged = stagedFiles[shot.shot_number] && stagedFiles[shot.shot_number].file && !stagedFiles[shot.shot_number].uploaded;
+
         // 1. Render Shot Card (Director Tab)
         const card = document.createElement('div');
         card.className = 'shot-card';
@@ -1834,10 +1918,16 @@
               <span class="badge badge-dur">⏱️ ${shot.duration}</span>
               <span class="badge badge-char">👤 ${shot.character}</span>
               <span class="badge badge-nobgm">🔇 NO BGM</span>
+              <span id="directorDriveBadge_${shot.shot_number}" class="badge" style="${isPresent ? 'display: inline-flex;' : 'display: none;'} background: #059669; color: #fff;">✓ Video in Drive</span>
             </div>
-            <button class="btn btn-primary" onclick="copyJsonPrompt(${shot.shot_number}, this)">
-              📋 Copy JSON Prompt
-            </button>
+            <div style="display: flex; gap: 8px;">
+              <button id="directorPreviewBtn_${shot.shot_number}" class="btn btn-preview" style="${isPresent || isStaged ? 'display: inline-flex;' : 'display: none;'}; padding: 6px 14px; font-size: 12px;" onclick="openDriveVideoPreview(${shot.shot_number})">
+                👁️ Preview Video
+              </button>
+              <button class="btn btn-primary" onclick="copyJsonPrompt(${shot.shot_number}, this)">
+                📋 Copy JSON Prompt
+              </button>
+            </div>
           </div>
           ${dialogueHtml}
           <p style="font-size: 14px; margin-bottom: 10px;"><b>Action:</b> ${shot.action_summary || shot.action || ''}</p>
@@ -1854,9 +1944,6 @@
         container.appendChild(card);
 
         // 2. Render Upload Item (Vault Tab)
-        const isPresent = driveStatus[shot.shot_number] && driveStatus[shot.shot_number].present;
-        const isStaged = stagedFiles[shot.shot_number] && stagedFiles[shot.shot_number].file && !stagedFiles[shot.shot_number].uploaded;
-
         let pillClass = 'status-pill status-pending';
         let pillText = '⏳ Awaiting Video';
 
@@ -1880,6 +1967,9 @@
             <span class="${pillClass}" id="statusPill_${shot.shot_number}">${pillText}</span>
             <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="selectSingleShotFile(${shot.shot_number})">
               📁 Choose File
+            </button>
+            <button class="btn btn-preview" id="previewBtn_${shot.shot_number}" style="padding: 6px 12px; font-size: 12px; ${isPresent || isStaged ? 'display: inline-flex;' : 'display: none;'}" onclick="openDriveVideoPreview(${shot.shot_number})">
+              👁️ Preview Video
             </button>
             <button class="btn btn-primary" id="uploadBtn_${shot.shot_number}" style="padding: 6px 12px; font-size: 12px; ${isStaged ? 'display: inline-flex;' : 'display: none;'}" onclick="uploadSingleShot(${shot.shot_number})">
               ☁️ Upload Shot #${shot.shot_number}
@@ -2014,7 +2104,7 @@
               driveStatus[s] = { present: true, filename: fname, id: match.file_id || match.id };
               presentCount++;
 
-              // If not currently staged with a fresh file, update UI pill
+              // Update UI pill if not currently staged with a fresh file
               if (!stagedFiles[s] || stagedFiles[s].uploaded) {
                 const pill = document.getElementById(`statusPill_${s}`);
                 if (pill) {
@@ -2024,6 +2114,15 @@
                 const upBtn = document.getElementById(`uploadBtn_${s}`);
                 if (upBtn) upBtn.style.display = 'none';
               }
+
+              // Show Preview buttons on both tabs
+              const prevBtn = document.getElementById(`previewBtn_${s}`);
+              if (prevBtn) prevBtn.style.display = 'inline-flex';
+              const dirBadge = document.getElementById(`directorDriveBadge_${s}`);
+              if (dirBadge) dirBadge.style.display = 'inline-flex';
+              const dirPrevBtn = document.getElementById(`directorPreviewBtn_${s}`);
+              if (dirPrevBtn) dirPrevBtn.style.display = 'inline-flex';
+
             } else {
               driveStatus[s] = { present: false };
               if (!stagedFiles[s] || stagedFiles[s].uploaded) {
@@ -2032,6 +2131,12 @@
                   pill.className = 'status-pill status-pending';
                   pill.innerText = '⏳ Awaiting Video';
                 }
+                const prevBtn = document.getElementById(`previewBtn_${s}`);
+                if (prevBtn) prevBtn.style.display = 'none';
+                const dirBadge = document.getElementById(`directorDriveBadge_${s}`);
+                if (dirBadge) dirBadge.style.display = 'none';
+                const dirPrevBtn = document.getElementById(`directorPreviewBtn_${s}`);
+                if (dirPrevBtn) dirPrevBtn.style.display = 'none';
               }
             }
           }
@@ -2048,6 +2153,75 @@
         if (summaryEl) summaryEl.innerText = "Drive status sync offline";
       }
     }
+
+    // Modal Video Preview Handler
+    function openDriveVideoPreview(shotNum) {
+      const status = driveStatus[shotNum];
+      const isStaged = stagedFiles[shotNum] && stagedFiles[shotNum].file && !stagedFiles[shotNum].uploaded;
+      const shot = (episodeData.shots || []).find(s => s.shot_number === shotNum) || {};
+      const dialogueText = shot.dialogue_malayalam || shot.dialogue || '';
+
+      const modal = document.getElementById('videoPreviewModal');
+      const badge = document.getElementById('modalShotBadge');
+      const title = document.getElementById('modalTitle');
+      const dBox = document.getElementById('modalDialogueBox');
+      const container = document.getElementById('modalVideoPlayerContainer');
+      const driveLink = document.getElementById('modalDriveLink');
+      const statusText = document.getElementById('modalFileStatus');
+
+      badge.innerText = `SHOT #${shotNum} (${shot.duration || '4s'}) • ${shot.character || 'Character'}`;
+      title.innerText = isStaged ? stagedFiles[shotNum].file.name : (status && status.filename ? status.filename : `Shot #${shotNum} Video`);
+
+      if (dialogueText) {
+        dBox.style.display = 'block';
+        dBox.innerHTML = `<b>💬 സംഭാഷണം:</b> "${dialogueText}"`;
+      } else {
+        dBox.style.display = 'none';
+      }
+
+      if (isStaged) {
+        const file = stagedFiles[shotNum].file;
+        const blobUrl = URL.createObjectURL(file);
+        container.innerHTML = `
+          <video src="${blobUrl}" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 10px;">
+            Your browser does not support video playback.
+          </video>
+        `;
+        statusText.innerText = `Local Staged File: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
+        driveLink.style.display = 'none';
+      } else if (status && status.id) {
+        const previewUrl = `https://drive.google.com/file/d/${status.id}/preview`;
+        const viewUrl = `https://drive.google.com/file/d/${status.id}/view?usp=sharing`;
+        container.innerHTML = `
+          <iframe src="${previewUrl}" width="100%" height="100%" allow="autoplay" allowfullscreen frameborder="0" style="border: none; background: #000; border-radius: 10px;"></iframe>
+        `;
+        statusText.innerText = `Google Drive Cloud File: ${status.filename || 'shot_' + shotNum + '.mp4'}`;
+        driveLink.style.display = 'inline-flex';
+        driveLink.href = viewUrl;
+      } else {
+        container.innerHTML = `<div style="color: var(--text-muted); padding: 20px; text-align: center;">No video available for Shot #${shotNum}.</div>`;
+        driveLink.style.display = 'none';
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function closeVideoPreviewModal() {
+      const modal = document.getElementById('videoPreviewModal');
+      const container = document.getElementById('modalVideoPlayerContainer');
+      if (container) container.innerHTML = '';
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target && e.target.id === 'videoPreviewModal') {
+        closeVideoPreviewModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeVideoPreviewModal();
+    });
 
     function handleDragOver(e) {
       e.preventDefault();
@@ -2144,6 +2318,17 @@
         pill.innerText = `⏳ Staged: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
       }
 
+      const prevBtn = document.getElementById(`previewBtn_${shotNum}`);
+      if (prevBtn) {
+        prevBtn.style.display = 'inline-flex';
+        prevBtn.innerText = '👁️ Preview Staged';
+      }
+
+      const dirPrevBtn = document.getElementById(`directorPreviewBtn_${shotNum}`);
+      if (dirPrevBtn) {
+        dirPrevBtn.style.display = 'inline-flex';
+      }
+
       const uploadBtn = document.getElementById(`uploadBtn_${shotNum}`);
       if (uploadBtn) {
         uploadBtn.style.display = 'inline-flex';
@@ -2225,9 +2410,8 @@
 
         const resJson = await res.json();
         if (resJson.success) {
-          // Mark uploaded & update Drive status
           stagedFiles[shotNum].uploaded = true;
-          driveStatus[shotNum] = { present: true, filename: targetFilename };
+          driveStatus[shotNum] = { present: true, filename: targetFilename, id: resJson.file_id };
 
           if (pill) {
             pill.className = 'status-pill status-ready';
@@ -2236,6 +2420,19 @@
           if (uploadBtn) {
             uploadBtn.style.display = 'none';
           }
+
+          const prevBtn = document.getElementById(`previewBtn_${shotNum}`);
+          if (prevBtn) {
+            prevBtn.style.display = 'inline-flex';
+            prevBtn.innerText = '👁️ Preview Video';
+          }
+
+          const dirBadge = document.getElementById(`directorDriveBadge_${shotNum}`);
+          if (dirBadge) dirBadge.style.display = 'inline-flex';
+
+          const dirPrevBtn = document.getElementById(`directorPreviewBtn_${shotNum}`);
+          if (dirPrevBtn) dirPrevBtn.style.display = 'inline-flex';
+
           updateDropzoneSummary();
           return true;
         } else {
