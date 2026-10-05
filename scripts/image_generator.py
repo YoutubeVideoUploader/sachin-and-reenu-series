@@ -133,38 +133,57 @@ def make_full_bleed_9_16(pil_img, out_path):
     im_cropped = im_scaled.crop((left, 0, left + target_w, target_h))
     im_cropped.save(out_path, format="PNG", quality=95)
 
+def get_cloudflare_accounts():
+    accounts = []
+    for acc_var, tok_var in [
+        ("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"),
+        ("CLOUDFLARE_ACCOUNT_ID_2", "CLOUDFLARE_API_TOKEN_2")
+    ]:
+        acc = os.getenv(acc_var, "").strip()
+        tok = os.getenv(tok_var, "").strip()
+        if acc and tok and (acc, tok) not in accounts:
+            accounts.append((acc, tok))
+    return accounts
+
 def call_cloudflare_flux(prompt):
-    """Calls Cloudflare Workers AI FLUX.1-schnell model."""
-    if not CLOUDFLARE_ACCOUNT_ID or not CLOUDFLARE_API_TOKEN:
+    """Calls Cloudflare Workers AI FLUX.1-schnell model with multi-account failover."""
+    accounts = get_cloudflare_accounts()
+    if not accounts:
         print("  -> Notice: CLOUDFLARE credentials not configured.")
         return None
         
-    url = f"https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/black-forest-labs/flux-1-schnell"
-    headers = {"Authorization": f"Bearer {CLOUDFLARE_API_TOKEN}"}
-    payload = {"prompt": prompt, "steps": 4}
+    payload = {"prompt": prompt}
     
-    for attempt in range(3):
-        try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=40)
-            if resp.status_code == 200:
-                if "image" in resp.headers.get("content-type", ""):
-                    from io import BytesIO
-                    return Image.open(BytesIO(resp.content)).convert("RGB")
-                data = resp.json()
-                img_b64 = data.get("result", {}).get("image")
-                if img_b64:
-                    from io import BytesIO
-                    img_data = base64.b64decode(img_b64)
-                    return Image.open(BytesIO(img_data)).convert("RGB")
-            else:
-                print(f"  -> Cloudflare API note (attempt {attempt+1}): {resp.status_code} {resp.text[:120]}")
-        except Exception as e:
-            print(f"  -> Cloudflare connection note (attempt {attempt+1}): {e}")
-        time.sleep(2.0)
+    for acc_idx, (acc_id, api_token) in enumerate(accounts, 1):
+        url = f"https://api.cloudflare.com/client/v4/accounts/{acc_id}/ai/run/@cf/black-forest-labs/flux-1-schnell"
+        headers = {"Authorization": f"Bearer {api_token}"}
+        
+        for attempt in range(2):
+            try:
+                resp = requests.post(url, headers=headers, json=payload, timeout=40)
+                if resp.status_code == 200:
+                    if "image" in resp.headers.get("content-type", ""):
+                        from io import BytesIO
+                        return Image.open(BytesIO(resp.content)).convert("RGB")
+                    data = resp.json()
+                    img_b64 = data.get("result", {}).get("image")
+                    if img_b64:
+                        from io import BytesIO
+                        img_data = base64.b64decode(img_b64)
+                        return Image.open(BytesIO(img_data)).convert("RGB")
+                else:
+                    print(f"  -> Cloudflare Acct #{acc_idx} note (attempt {attempt+1}): {resp.status_code} {resp.text[:120]}")
+                    if resp.status_code == 429:
+                        print(f"  -> Acct #{acc_idx} quota reached. Failing over to next account...")
+                        break
+            except Exception as e:
+                print(f"  -> Cloudflare Acct #{acc_idx} connection note (attempt {attempt+1}): {e}")
+            time.sleep(1.5)
+            
     return None
 
 def create_fallback_frame(speaker, out_png):
-    """Fallback if API is unreachable."""
+    """Fallback if API is unreachable: crops character portrait cleanly without sheet borders or text."""
     if speaker == "Amal":
         ref_name = "amal_reference.jpg"
     elif speaker == "Reenu":
@@ -176,7 +195,8 @@ def create_fallback_frame(speaker, out_png):
     if os.path.exists(ref_file):
         ref = Image.open(ref_file).convert("RGB")
         w, h = ref.size
-        hero_crop = ref.crop((0, 0, int(w * 0.22), int(h * 0.45)))
+        # Crop inner character figure, avoiding top-left title banner ('Reference')
+        hero_crop = ref.crop((int(w * 0.05), int(h * 0.15), int(w * 0.35), int(h * 0.75)))
         make_full_bleed_9_16(hero_crop, out_png)
     else:
         blank = Image.new("RGB", (1080, 1920), (20, 20, 25))
