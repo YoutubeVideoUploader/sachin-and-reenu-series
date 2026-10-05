@@ -529,29 +529,21 @@
 
     <!-- TAB 2: Video Uploader & Drive Sync -->
     <div id="uploadTab" class="tab-pane" style="display: none;">
-      <div class="dropzone" id="dropzone" onclick="document.getElementById('videoFileInput').click()">
-        <div class="dropzone-icon">📁</div>
-        <h3>Drag & Drop your Google Flow MP4 Clips here</h3>
+            <div class="dropzone" id="dropzone" 
+           onclick="document.getElementById('videoFileInput').click()"
+           ondragover="handleDragOver(event)"
+           ondragleave="handleDragLeave(event)"
+           ondrop="handleDrop(event)"
+           style="cursor: pointer; transition: all 0.2s ease;">
+        <div class="dropzone-icon" id="dropzoneIcon">📁</div>
+        <h3 id="dropzoneTitle">Click or Drag & Drop Video Clips Here</h3>
         <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
-          Name clips: <code>shot_1.mp4</code>, <code>shot_2.mp4</code> ... or select all clips at once.
+          Select any MP4 video from Google Flow. Clips will auto-match by name (e.g. <code>shot_1</code>, <code>1.mp4</code>) or order.
         </p>
-        <input type="file" id="videoFileInput" multiple accept="video/mp4" style="display: none;" onchange="handleFileSelect(event)">
+        <div id="dropzoneLoadedCount" style="margin-top: 10px; font-weight: 700; color: #34d399; font-size: 14px;"></div>
+        <input type="file" id="videoFileInput" multiple accept="video/mp4,video/*" style="display: none;" onchange="handleFileSelect(event)">
       </div>
-
-      <h3 style="margin-bottom: 14px; font-size: 16px;">Episode Shot Upload Checklist</h3>
-      <div class="upload-list" id="uploadList">
-        <!-- Rendered dynamically -->
       </div>
-
-      <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
-        <button class="btn btn-secondary" style="padding: 14px 20px; font-size: 15px;" onclick="uploadFilesToDrive()">
-          ☁️ Upload & Sync to Google Drive
-        </button>
-        <button class="btn btn-primary" style="padding: 14px 28px; font-size: 16px;" onclick="triggerAssembly()">
-          ⚡ Trigger Instagram Assembly Now
-        </button>
-      </div>
-    </div>
 
     <!-- TAB 3: BGM Tracks -->
     <div id="musicTab" class="tab-pane" style="display: none;">
@@ -1929,22 +1921,113 @@
       dlAnchor.remove();
     }
 
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dz = document.getElementById('dropzone');
+      dz.style.borderColor = 'var(--primary)';
+      dz.style.background = 'rgba(249, 115, 22, 0.12)';
+      document.getElementById('dropzoneIcon').innerText = '📥';
+      document.getElementById('dropzoneTitle').innerText = 'Drop Clips Here to Load!';
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const dz = document.getElementById('dropzone');
+      dz.style.borderColor = 'var(--border-color)';
+      dz.style.background = '';
+      document.getElementById('dropzoneIcon').innerText = '📁';
+      document.getElementById('dropzoneTitle').innerText = 'Click or Drag & Drop Video Clips Here';
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleDragLeave(e);
+      const files = e.dataTransfer.files;
+      if (files && files.length > 0) {
+        processFiles(files);
+      }
+    }
+
     function handleFileSelect(evt) {
       const files = evt.target.files;
+      if (files && files.length > 0) {
+        processFiles(files);
+      }
+    }
+
+    function processFiles(files) {
+      let matchedCount = 0;
+      const unassigned = [];
+
       for (let i = 0; i < files.length; i++) {
         const f = files[i];
-        const match = f.name.match(/shot[_-]?(\d+)/i);
+        
+        // 1. Try matching shot_1, shot01, shot-1, shot 1
+        let match = f.name.match(/shot[_-]?(\d+)/i);
+        
+        // 2. Try matching leading or trailing number like "1.mp4" or "clip_1.mp4"
+        if (!match) {
+          match = f.name.match(/(?:^|\D)(\d+)(?:\D|$)/);
+        }
+
         if (match) {
-          const shotNum = parseInt(match[1]);
-          selectedFiles[shotNum] = f;
-          const pill = document.getElementById(`statusPill_${shotNum}`);
-          if (pill) {
-            pill.className = 'status-pill status-ready';
-            pill.innerText = `📁 ${f.name} (Ready to Sync)`;
+          const shotNum = parseInt(match[1], 10);
+          if (shotNum >= 1 && shotNum <= episodeData.shots.length) {
+            assignFileToShot(shotNum, f);
+            matchedCount++;
+            continue;
+          }
+        }
+        unassigned.push(f);
+      }
+
+      // If any files had no numbers, assign sequentially to empty shots
+      if (unassigned.length > 0) {
+        let uIdx = 0;
+        for (let s = 1; s <= episodeData.shots.length; s++) {
+          if (!selectedFiles[s] && uIdx < unassigned.length) {
+            assignFileToShot(s, unassigned[uIdx]);
+            matchedCount++;
+            uIdx++;
           }
         }
       }
-      alert(`Loaded ${Object.keys(selectedFiles).length} shot file(s). Click "Upload & Sync to Google Drive" to store in Drive!`);
+
+      const totalLoaded = Object.keys(selectedFiles).length;
+      const countEl = document.getElementById('dropzoneLoadedCount');
+      if (countEl) {
+        countEl.innerText = `✓ ${totalLoaded} of ${episodeData.shots.length} Shot(s) Ready to Upload!`;
+      }
+    }
+
+    function assignFileToShot(shotNum, file) {
+      selectedFiles[shotNum] = file;
+      const pill = document.getElementById(`statusPill_${shotNum}`);
+      if (pill) {
+        pill.className = 'status-pill status-ready';
+        pill.style.background = '#065f46';
+        pill.style.color = '#34d399';
+        pill.innerText = `✓ Ready: ${file.name} (${(file.size / (1024*1024)).toFixed(1)} MB)`;
+      }
+    }
+
+    function selectSingleShotFile(shotNum) {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'video/mp4,video/*';
+      input.onchange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+          assignFileToShot(shotNum, e.target.files[0]);
+          const countEl = document.getElementById('dropzoneLoadedCount');
+          if (countEl) {
+            countEl.innerText = `✓ ${Object.keys(selectedFiles).length} of ${episodeData.shots.length} Shot(s) Ready to Upload!`;
+          }
+        }
+      };
+      input.click();
     }
 
     function saveGasUrl() {
