@@ -42,10 +42,8 @@ for s in data['shots']:
 
     loc = s.get('json_prompt', {}).get('location_details', '')
     if not loc or len(loc) < 15:
-        if s['shot_number'] <= 9:
-            loc = "Outside CIAL airport arrival terminal pickup curb under heavy Kochi monsoon rain. Wet glistening asphalt reflecting warm amber streetlights and neon lights, rain pouring from glass canopy."
-        else:
-            loc = "Inside Amal's cozy sedan car traveling on the rain-slicked Kochi highway. Heavy raindrops streaming across car side windows, warm golden cabin dome light, blurred neon city bokeh outside."
+        loc = "Inside Kochi CIAL Airport international arrival terminal hall. Polished reflective marble floor, modern glass sliding doors with green exit signage, chrome metal arrival barrier railings, warm overhead ambient terminal lighting, subtle crowd bokeh."
+
 
     cam = s.get('json_prompt', {}).get('camera_direction', '')
     if not cam or len(cam) < 10:
