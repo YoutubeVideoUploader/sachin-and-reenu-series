@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 2,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -54,6 +54,17 @@
         "Sachin",
         "Reenu",
         "Amal"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "സംശയത്തിന്റെ നിഴലുകൾ (Shadows of Doubt)",
+      "summary": "Directly continuing from the tense moment at the airport, Reenu confronts Sachin about the mysterious UK phone call. Though Sachin tries to brush it off as a spam marketing call with Amal's playful support, his intense anxiety only deepens her suspicions. Just as they walk towards the exit, the phone rings again, forcing Sachin to reveal a name that raises even more shocking questions.",
+      "cliffhanger": "Reenu grabs Sachin's hand as his phone rings a second time, pulling it out of his pocket to reveal the caller ID: 'Dr. Elizabeth (UK Hospital)', leaving Reenu frozen in shock and fear.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
       ]
     }
   ]
