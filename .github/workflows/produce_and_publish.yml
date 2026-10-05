@@ -3,13 +3,21 @@ name: "Autonomous Episode Studio: Produce & Publish to Instagram"
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "Production Mode ('hybrid_flow' or 'autonomous_flux')"
+        type: choice
+        options:
+          - hybrid_flow
+          - autonomous_flux
+        default: hybrid_flow
+      shots_dir:
+        description: "Directory containing Google Flow shot clips (for hybrid_flow)"
+        type: string
+        default: "uploaded_shots"
       dry_run:
         description: "Run without posting to Instagram"
         type: boolean
         default: false
-  # Runs automatically every 3 days at 12:30 UTC (18:00 IST)
-  # schedule:
-  #   - cron: "30 12 */3 * *"
 
 permissions:
   contents: write
@@ -28,17 +36,46 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install System Dependencies (FFmpeg)
+      - name: Install System Dependencies (FFmpeg & Fonts)
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg fonts-noto-core fonts-dejavu-core
 
       - name: Install Python Packages
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 1. Generate Next Episode Screenplay (Gemini 3.8 Flash)
+      # -------------------------------------------------------------
+      # MODE 1: HYBRID STUDIO (Google Flow 3D Motion Clips + Merger)
+      # -------------------------------------------------------------
+      - name: 1A. Prepare Google Flow Prompts if Shots Missing
+        if: ${{ inputs.mode == 'hybrid_flow' }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+        run: |
+          if [ ! -d "${{ inputs.shots_dir }}" ] || [ -z "$(ls -A ${{ inputs.shots_dir }} 2>/dev/null)" ]; then
+            echo "Notice: No clips found in ${{ inputs.shots_dir }}. Generating fresh Google Flow prompts for creator..."
+            python scripts/flow_prompt_generator.py
+          fi
+
+      - name: 1B. Merge Google Flow 9:16 Clips with Romantic BGM & Title
+        if: ${{ inputs.mode == 'hybrid_flow' }}
+        run: |
+          if [ -d "${{ inputs.shots_dir }}" ] && [ "$(ls -A ${{ inputs.shots_dir }} 2>/dev/null)" ]; then
+            echo "Merging uploaded Google Flow clips into master 9:16 Reel..."
+            python scripts/video_merger.py --shots_dir "${{ inputs.shots_dir }}" --output master_episode.mp4
+          else
+            echo "No video clips provided yet. Skipping merge step."
+          fi
+
+      # -------------------------------------------------------------
+      # MODE 2: AUTONOMOUS FLUX (Fallback Pure AI Image Animation)
+      # -------------------------------------------------------------
+      - name: 2A. Generate Screenplay (Autonomous FLUX Mode)
+        if: ${{ inputs.mode == 'autonomous_flux' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -46,7 +83,8 @@ jobs:
         run: |
           python scripts/story_engine.py
 
-      - name: 2. Synthesize Malayalam Voice Acting (Gemini TTS / Edge-TTS) & Foley
+      - name: 2B. Synthesize Malayalam Voice Acting (Gemini TTS / Edge-TTS)
+        if: ${{ inputs.mode == 'autonomous_flux' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -54,7 +92,8 @@ jobs:
         run: |
           python scripts/audio_generator.py
 
-      - name: 3. Render Character & Location Consistent 9:16 Frames (Cloudflare FLUX.1)
+      - name: 2C. Render FLUX.1 Consistent Frames
+        if: ${{ inputs.mode == 'autonomous_flux' }}
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -66,25 +105,30 @@ jobs:
         run: |
           python scripts/image_generator.py
 
-      - name: 4. Assemble Master 9:16 Video (Dynamic Non-Overlapping Alignment)
+      - name: 2D. Compile Static Frames to Master Video
+        if: ${{ inputs.mode == 'autonomous_flux' }}
         run: |
           python scripts/video_compiler.py
 
-      - name: 5. Publish to Instagram Reels & Update Story Memory
-        if: ${{ !inputs.dry_run }}
+      # -------------------------------------------------------------
+      # PUBLISHING: Instagram Reels & Story State Sync
+      # -------------------------------------------------------------
+      - name: Publish to Instagram Reels & Attach Poster Thumbnail
+        if: ${{ !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
           GH_PAT: ${{ secrets.GH_PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
           python scripts/instagram_publisher.py
 
-      - name: 6. Commit Updated Story State Back to GitHub
+      - name: Commit Updated Story State Back to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add story_state.json
-          git diff-index --quiet HEAD || git commit -m "Auto-update story memory after Episode release [skip ci]"
+          git add story_state.json current_episode_shots.json 2>/dev/null || true
+          git diff-index --quiet HEAD || git commit -m "Auto-update episode state [skip ci]"
           git push

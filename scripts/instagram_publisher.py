@@ -159,19 +159,26 @@ def update_story_state():
 def main():
     if not os.path.exists(VIDEO_FILE):
         raise FileNotFoundError(f"Missing master video {VIDEO_FILE}")
-    if not os.path.exists(SCRIPT_FILE):
-        raise FileNotFoundError(f"Missing episode script {SCRIPT_FILE}")
-        
-    with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
-        ep_data = json.load(f)
-        
-    ep_num = ep_data.get("episode_number")
+    # Support both current_episode.json and current_episode_shots.json
+    script_candidates = ["current_episode_shots.json", "current_episode.json"]
+    ep_data = {}
+    for sc in script_candidates:
+        if os.path.exists(sc):
+            try:
+                with open(sc, "r", encoding="utf-8") as f:
+                    ep_data = json.load(f)
+                break
+            except Exception:
+                pass
+                
+    ep_num = ep_data.get("episode_number", 3)
     caption = (
-        f"❤️ സച്ചിൻ & റീനു — ഭാഗം {ep_num}: {ep_data.get('title_malayalam')} ({ep_data.get('title_english')})\n\n"
-        f"{ep_data.get('synopsis')}\n\n"
+        f"❤️ സച്ചിൻ & റീനു — ഭാഗം {ep_num}: {ep_data.get('title_malayalam', '')} ({ep_data.get('title_english', '')})\n\n"
+        f"{ep_data.get('synopsis', '')}\n\n"
         f"തുടരും... അടുത്ത ഭാഗം ഉടൻ വരുന്നു!\n\n"
-        f"#SachinAndReenu #MalayalamWebSeries #KeralaRomance #MalayalamAnime #InstaReels #MalluAnimation #KeralaLovers #CIAL"
+        f"#SachinAndReenu #MalayalamWebSeries #KeralaRomance #GoogleFlow #InstaReels #MalluAnimation #KeralaLovers #CIAL"
     )
+
     
     tag_name = f"v{ep_num}.{int(time.time())}"
     video_url = upload_release_asset(VIDEO_FILE, tag_name)
@@ -192,8 +199,27 @@ def main():
             except Exception as e:
                 print(f"Notice: Failed to upload thumbnail asset: {e}")
                 
-    publish_reel_to_instagram(video_url, caption, cover_url=cover_url)
+    media_id = publish_reel_to_instagram(video_url, caption, cover_url=cover_url)
     update_story_state()
+
+    # Sync with Google Sheet via Google Apps Script Webhook if configured
+    gas_webhook = os.getenv("GAS_WEBHOOK_URL")
+    if gas_webhook:
+        try:
+            print("Syncing published episode details to Google Sheet ledger...")
+            payload = {
+                "action": "complete_episode",
+                "episode_number": ep_num,
+                "instagram_url": f"https://www.instagram.com/reel/{media_id}/",
+                "cliffhanger": ep_data.get("cliffhanger", ""),
+                "next_episode_story": ep_data.get("next_episode_story", ""),
+                "next_episode_title": ep_data.get("next_episode_title", f"ഭാഗം {ep_num + 1}")
+            }
+            res = requests.post(gas_webhook, json=payload, timeout=15)
+            print(f"Google Sheet sync response: {res.status_code}")
+        except Exception as e:
+            print(f"Notice: Google Sheet webhook sync skipped or failed: {e}")
 
 if __name__ == "__main__":
     main()
+

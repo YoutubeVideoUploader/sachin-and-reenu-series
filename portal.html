@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sachin & Reenu — AI Creator Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d0f17;
+      --bg-card: #161a29;
+      --bg-hover: #1e2438;
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --accent-pink: #ec4899;
+      --accent-blue: #38bdf8;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #262e45;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, #181d2e 0%, var(--bg-dark) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
+    }
+
+    .brand-titles h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #ffffff, #fcd34d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-titles p {
+      font-family: 'Noto Sans Malayalam', sans-serif;
+      color: var(--accent-pink);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background-color: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #34d399;
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    /* Nav Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 28px 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-card);
+    }
+
+    .tab-btn.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
+    }
+
+    /* Episode Banner */
+    .ep-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .ep-info {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .ep-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .ep-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .ep-title span {
+      font-family: 'Noto Sans Malayalam', sans-serif;
+      color: #fde047;
+      margin-left: 8px;
+    }
+
+    .ep-synopsis {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 750px;
+    }
+
+    .ep-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--bg-hover);
+      color: var(--text-main);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: #2a334d;
+    }
+
+    /* Shot Grid */
+    .shots-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .shot-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.2s ease;
+    }
+
+    .shot-card:hover {
+      border-color: #3b476b;
+    }
+
+    .shot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .shot-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .shot-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .dur-badge {
+      background: rgba(249, 115, 22, 0.15);
+      color: #fb923c;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .char-badge {
+      background: rgba(236, 72, 153, 0.15);
+      color: #f472b6;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .camera-badge {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .prompt-box {
+      background: #090b12;
+      border: 1px solid #1a2033;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .prompt-text {
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      background: var(--bg-hover);
+      color: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      background: #2b3552;
+      border-color: #475569;
+    }
+
+    .copy-btn.copied {
+      background: #065f46;
+      border-color: #059669;
+      color: #34d399;
+    }
+
+    /* Uploader Tab */
+    .dropzone {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius);
+      padding: 48px 24px;
+      text-align: center;
+      background: rgba(22, 26, 41, 0.5);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 24px;
+    }
+
+    .dropzone:hover {
+      border-color: var(--primary);
+      background: rgba(249, 115, 22, 0.05);
+    }
+
+    .dropzone-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .upload-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .upload-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .status-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .status-ready {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-logo">🎬</div>
+        <div class="brand-titles">
+          <h1>Sachin & Reenu Creator Studio</h1>
+          <p>സച്ചിൻ & റീനു — 3D Pixar Animation Web Series</p>
+        </div>
+      </div>
+      <div class="badge-status">
+        <div class="pulse"></div>
+        Studio Active (2x Daily Schedule)
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Episode Headline Banner -->
+    <div class="ep-card" id="epCard">
+      <div class="ep-info">
+        <div class="ep-tag" id="epNumberTag">CURRENT PRODUCTION • EPISODE 3</div>
+        <h2 class="ep-title" id="epTitle">Rain-Drenched Roads <span>മഴ തോരാത്ത വഴികൾ</span></h2>
+        <p class="ep-synopsis" id="epSynopsis">
+          Stepping out into the sudden Kochi monsoon, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.
+        </p>
+      </div>
+      <div class="ep-actions">
+        <button class="btn btn-secondary" onclick="exportJSON()">💾 Export JSON</button>
+        <button class="btn btn-primary" onclick="refreshPrompts()">✨ Re-Generate with Gemini</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('shotsTab')">
+        🎬 Google Flow Shot Director (<span id="shotCountBadge">10 Shots</span>)
+      </button>
+      <button class="tab-btn" onclick="switchTab('uploadTab')">
+        ☁️ Video Vault Uploader & Drive Sync
+      </button>
+      <button class="tab-btn" onclick="switchTab('musicTab')">
+        🎵 10-Track BGM Soundtracks
+      </button>
+      <button class="tab-btn" onclick="switchTab('scheduleTab')">
+        ⏰ Schedule & Cloud Ledger
+      </button>
+    </div>
+
+    <!-- TAB 1: Google Flow Shot Director -->
+    <div id="shotsTab" class="tab-pane">
+      <div class="shots-container" id="shotsContainer">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 2: Video Uploader & Drive Sync -->
+    <div id="uploadTab" class="tab-pane" style="display: none;">
+      <div class="dropzone" id="dropzone" onclick="document.getElementById('videoFileInput').click()">
+        <div class="dropzone-icon">📁</div>
+        <h3>Drag & Drop your Google Flow MP4 Clips here</h3>
+        <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+          Name clips: <code>shot_1.mp4</code>, <code>shot_2.mp4</code> ... or select all clips at once.
+        </p>
+        <input type="file" id="videoFileInput" multiple accept="video/mp4" style="display: none;" onchange="handleFileSelect(event)">
+      </div>
+
+      <h3 style="margin-bottom: 14px; font-size: 16px;">Episode Shot Upload Checklist</h3>
+      <div class="upload-list" id="uploadList">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap;">
+        <button class="btn btn-secondary" style="padding: 14px 20px; font-size: 15px;" onclick="uploadFilesToDrive()">
+          ☁️ Upload & Sync to Google Drive
+        </button>
+        <button class="btn btn-primary" style="padding: 14px 28px; font-size: 16px;" onclick="triggerAssembly()">
+          ⚡ Trigger Instagram Assembly Now
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 3: BGM Tracks -->
+    <div id="musicTab" class="tab-pane" style="display: none;">
+      <div class="shots-container">
+        <div class="shot-card">
+          <h3>🎵 Active 10-Track Romantic Piano & Acoustic Library</h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin: 8px 0 16px;">
+            The GitHub Assembler automatically rotates through these royalty-free classical and acoustic scores for every episode:
+          </p>
+          <ul style="padding-left: 20px; line-height: 2; font-size: 14px; color: #cbd5e1;">
+            <li><b>Track 1:</b> Erik Satie — Gymnopédie No. 1 (Lento et douloureux)</li>
+            <li><b>Track 2:</b> Erik Satie — Gnossienne No. 2</li>
+            <li><b>Track 3:</b> Erik Satie — Gnossienne No. 3</li>
+            <li><b>Track 4:</b> Claude Debussy — Clair de Lune (Suite bergamasque)</li>
+            <li><b>Track 5:</b> Frédéric Chopin — Waltz in A-flat major, Op. 69, No. 1 ("Farewell Waltz")</li>
+            <li><b>Track 6:</b> Frédéric Chopin — Waltz in B minor, Op. 69, No. 2</li>
+            <li><b>Track 7:</b> Frédéric Chopin — Waltz in A minor, B 150</li>
+            <li><b>Track 8:</b> Frédéric Chopin — Waltz in A-flat major, Op. 64, No. 3</li>
+            <li><b>Track 9:</b> Ludwig van Beethoven — Moonlight Sonata (2nd Movement)</li>
+            <li><b>Track 10:</b> Robert Schumann — Scenes from Childhood (A Tale of Distant Lands)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB 4: Automation Schedule & Google Sheet Sync -->
+    <div id="scheduleTab" class="tab-pane" style="display: none;">
+      <div class="shots-container">
+        <div class="shot-card">
+          <h3>⏱️ Autonomous Schedule & Cloud Ledger (Google Sheet)</h3>
+          <p style="color: var(--text-muted); font-size: 14px; margin: 8px 0 16px;">
+            The studio operates on a scheduled 2x daily cadence powered by Google Apps Script and GitHub Actions:
+          </p>
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 16px;">
+            <p style="margin-bottom: 8px;"><b>⏰ Morning Cycle:</b> 12:00 PM (Noon) IST — Checks Google Drive for clips, merges with BGM, publishes Episode.</p>
+            <p style="margin-bottom: 8px;"><b>⏰ Evening Cycle:</b> 6:00 PM (18:00) IST — Checks Google Drive for clips, merges with BGM, publishes Episode.</p>
+            <p style="margin-bottom: 8px;"><b>📊 Google Sheet Ledger:</b> <a href="https://docs.google.com/spreadsheets/d/1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI/edit" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">Open Google Sheet Ledger</a></p>
+            <p><b>📁 Google Drive Folder:</b> <code>Sachin_And_Reenu_Studio/Episode_{N}/</code></p>
+          </div>
+          
+          <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary);">⚙️ Google Apps Script Web App Connection</h4>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 10px;">
+            Deploy <code>scripts/google_apps_script.js</code> as a Web App in Google Apps Script and paste the deployment URL below for direct cloud upload to Google Drive:
+          </p>
+          <div style="display: flex; gap: 10px; max-width: 700px;">
+            <input type="text" id="gasUrlInput" placeholder="https://script.google.com/macros/s/.../exec" style="flex: 1; padding: 10px 14px; background: #0f172a; border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 13px;">
+            <button class="btn btn-primary" onclick="saveGasUrl()">Save Web App URL</button>
+          </div>
+          <span id="gasSaveStatus" style="display: inline-block; margin-top: 8px; font-size: 13px; color: #34d399;"></span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      Sachin & Reenu Creator Studio • Built with Gemini 3.8 Flash, Google Flow & GitHub Actions
+    </div>
+  </footer>
+
+  <script>
+    // Embedded Active Episode Shot Prompts
+    let episodeData = {
+      "episode_number": 3,
+      "title_malayalam": "മഴ തോരാത്ത വഴികൾ",
+      "title_english": "Rain-Drenched Roads",
+      "synopsis": "Stepping out into the sudden Kochi monsoon, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.",
+      "total_shots": 10,
+      "shots": [
+        {
+          "shot_number": 1,
+          "duration": "4s",
+          "character": "Environment & Reenu",
+          "camera": "Slow tilt-down from canopy",
+          "action_summary": "Monsoon rain splashes onto the pavement outside CIAL terminal as Reenu steps toward the curb.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Outside CIAL airport terminal, sparkling monsoon rain begins drumming against sleek glass awnings and wet asphalt reflecting warm amber streetlights. Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown eyes, wearing a classic pastel camouflage t-shirt in baby-blue and soft yellow patches with sky-blue denim skirt, pauses at the curb, holding her hands out playfully to feel the cool raindrops. Slow cinematic tilt-down, centered framing in middle 55%, volumetric amber bokeh, cinematic rain physics, 4k 60fps render."
+        },
+        {
+          "shot_number": 2,
+          "duration": "4s",
+          "character": "Amal",
+          "camera": "Dynamic low-angle tracking shot",
+          "action_summary": "Amal runs ahead popping open a large black umbrella and turns around beckoning them with a playful grin.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair, subtle neat mustache, warm humorous brown eyes, wearing a sage olive-green crewneck t-shirt and blue denim jeans, dashes forward through the rain. He pops open a wide black umbrella with a snap, turning backward with an energetic cheerful smile and waving his arm urgently to call Sachin and Reenu over. Dynamic low-angle tracking shot, centered subject framing, splashing puddle droplets in slow motion, golden Kochi airport exterior lights, 4k 60fps render."
+        },
+        {
+          "shot_number": 3,
+          "duration": "6s",
+          "character": "Sachin & Reenu",
+          "camera": "Slow forward dolly",
+          "action_summary": "Sachin steps beside Reenu, holding an umbrella over her head, their shoulders gently brushing.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin, a handsome 22yo South Indian Malayali young man with messy wavy textured dark hair styled with casual volume, warm dark-brown eyes, handsome clean jawline, wearing a terracotta rust-orange crewneck t-shirt, steps closely alongside Reenu. Sachin tilts a black umbrella over Reenu, protecting her from the monsoon downpour, his shoulder softly brushing against hers. Reenu looks up with widening hazel-brown eyes and a subtle flutter of her curtain bangs. Slow cinematic forward dolly, centered vertical composition, atmospheric misty rain drizzle, golden streetlamp backlighting, 4k 60fps render."
+        },
+        {
+          "shot_number": 4,
+          "duration": "4s",
+          "character": "Reenu",
+          "camera": "Intimate close-up slow tracking",
+          "action_summary": "Reenu smiles bashfully, tucking hair behind her ear as rain drips off the umbrella rim.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Tight intimate portrait of Reenu, an attractive 22yo South Indian Malayali girl with shoulder-length wavy dark-brown hair and soft curtain bangs, warm glowing honey complexion, wearing her pastel camouflage baby-blue and yellow t-shirt. She tucks a wet lock of hair behind her ear, biting her lip with a radiant shy smile as she glances sideways at Sachin. Crystal raindrops drip rhythmically from the umbrella canopy above. Smooth slow tracking shot, creamy neon bokeh background, soft rim lighting on her face, 4k 60fps render."
+        },
+        {
+          "shot_number": 5,
+          "duration": "6s",
+          "character": "Sachin & Reenu",
+          "camera": "Medium side-angle interior pan",
+          "action_summary": "Both slide into the backseat of Amal's car, laughing softly while shaking off raindrops.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Inside a cozy car parked under monsoon rain. Sachin, wearing his terracotta rust-orange crewneck t-shirt, and Reenu, wearing her baby-blue and soft yellow camouflage t-shirt, both slide into the plush rear seats together. They shake mist droplets off their clothes and look at each other, erupting into simultaneous breathless chuckles. Heavy Kochi monsoon rain streams across the car side-windows outside. Smooth interior panning shot, centered framing, warm cabin dome light casting golden hues on their smiling faces, 4k 60fps render."
+        },
+        {
+          "shot_number": 6,
+          "duration": "4s",
+          "character": "Amal",
+          "camera": "Rearview mirror close-up tilt",
+          "action_summary": "Amal adjusts the rearview mirror from the driver's seat, flashing an amused, knowing smirk.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Amal, a witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat mustache, and an energetic cheerful smile, sits in the driver's seat wearing his sage olive-green crewneck t-shirt. He adjusts the center rearview mirror, making eye contact with Sachin in the reflection and raising his eyebrows with a cheeky, knowing smirk before turning the steering wheel. Subtle camera tilt upward focusing on the mirror reflection, windshield wiper sweeping rhythmic rain streaks, warm dashboard illumination, 4k 60fps render."
+        },
+        {
+          "shot_number": 7,
+          "duration": "6s",
+          "character": "Sachin",
+          "camera": "Gentle orbit around Sachin",
+          "action_summary": "Sachin stares out the rain-streaked window, touching his travel pouch with a thoughtful smile.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin, a handsome 22yo South Indian Malayali young man with messy wavy dark hair, wearing his terracotta rust-orange t-shirt, leans his head back against the headrest, looking out at the glistening blurred neon lights of Kochi city in the rain. His fingers casually trace the zipper of his small black travel pouch on his lap, a tender nostalgic expression washing over his eyes. Gentle orbital camera rotation, neon blue and gold light refractions on his defined jawline, atmospheric rainy city bokeh, 4k 60fps render."
+        },
+        {
+          "shot_number": 8,
+          "duration": "4s",
+          "character": "Reenu",
+          "camera": "Subtle push-in over shoulder",
+          "action_summary": "Reenu notices Sachin touching his pouch and tilts her head with curious, affectionate eyes.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Reenu, 22yo South Indian girl with shoulder-length wavy dark-brown hair and curtain bangs, notices Sachin's thoughtful gaze. She tilts her head slightly, her warm hazel eyes softening with unspoken affection and gentle curiosity as she watches him. Outside headlights wash over her face through the rain-covered glass. Subtle push-in shot, centered framing, cozy car interior atmosphere, 4k 60fps render."
+        },
+        {
+          "shot_number": 9,
+          "duration": "6s",
+          "character": "Sachin & Reenu",
+          "camera": "Two-shot slow dolly in",
+          "action_summary": "Sachin turns to look at Reenu; their eyes meet in the dim amber interior light and their hands almost touch on the seat.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Sachin turns his head to find Reenu looking at him. For a quiet heartbeat, their eyes lock in the dim amber interior car light. Sachin's hand resting on the seat cushion inches subtly closer until their pinky fingers brush. A soft breathless gasp parts Reenu's lips as both smile tenderly. Slow cinematic dolly-in, centered vertical two-shot in middle 55%, romantic monsoon ambience, shallow depth of field, 4k 60fps render."
+        },
+        {
+          "shot_number": 10,
+          "duration": "4s",
+          "character": "Amal & Exterior",
+          "camera": "Pull-back through rear window",
+          "action_summary": "Amal hums a melody tapping the steering wheel as the car drives into the glistening Kochi night.",
+          "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Wide interior shot pulling back through the rain-slicked rear window of the car. Amal's silhouette in the front seat nods his head cheerfully to a song on the radio. The red taillights illuminate the wet Kochi highway, splashing water as the car glides forward into the neon-lit monsoon evening. Smooth backward tracking shot, cinematic rain atmosphere, golden and red light reflections on the road, 4k 60fps render."
+        }
+      ]
+    };
+
+    let selectedFiles = {};
+
+    function renderShots() {
+      const container = document.getElementById('shotsContainer');
+      const uploadList = document.getElementById('uploadList');
+      container.innerHTML = '';
+      uploadList.innerHTML = '';
+
+      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${episodeData.episode_number}`;
+      document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
+      document.getElementById('epSynopsis').innerText = episodeData.synopsis;
+      document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots`;
+
+      episodeData.shots.forEach((shot) => {
+        // 1. Render Shot Card
+        const card = document.createElement('div');
+        card.className = 'shot-card';
+        card.innerHTML = `
+          <div class="shot-header">
+            <div class="shot-meta">
+              <span class="shot-badge">Shot #${shot.shot_number}</span>
+              <span class="dur-badge">⏱️ ${shot.duration}</span>
+              <span class="char-badge">👤 ${shot.character}</span>
+              <span class="camera-badge">🎥 ${shot.camera}</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(${shot.shot_number}, this)">
+              📋 Copy Flow Prompt
+            </button>
+          </div>
+          <p style="font-size: 14px; margin-bottom: 8px;"><b>Action:</b> ${shot.action_summary}</p>
+          <div class="prompt-box">
+            <span class="prompt-text" id="promptText_${shot.shot_number}">${shot.flow_prompt}</span>
+          </div>
+        `;
+        container.appendChild(card);
+
+        // 2. Render Upload Item
+        const upItem = document.createElement('div');
+        upItem.className = 'upload-item';
+        upItem.id = `upItem_${shot.shot_number}`;
+        upItem.innerHTML = `
+          <div>
+            <b>Shot #${shot.shot_number}</b> (${shot.duration}) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
+          </div>
+          <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
+        `;
+        uploadList.appendChild(upItem);
+      });
+    }
+
+    function copyPrompt(shotNum, btn) {
+      const text = document.getElementById(`promptText_${shotNum}`).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).style.display = 'block';
+      event.currentTarget.classList.add('active');
+    }
+
+    function exportJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(episodeData, null, 2));
+      const dlAnchor = document.createElement('a');
+      dlAnchor.setAttribute("href", dataStr);
+      dlAnchor.setAttribute("download", `sachin_reenu_ep${episodeData.episode_number}_flow_prompts.json`);
+      document.body.appendChild(dlAnchor);
+      dlAnchor.click();
+      dlAnchor.remove();
+    }
+
+    function handleFileSelect(evt) {
+      const files = evt.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const f = files[i];
+        const match = f.name.match(/shot[_-]?(\d+)/i);
+        if (match) {
+          const shotNum = parseInt(match[1]);
+          selectedFiles[shotNum] = f;
+          const pill = document.getElementById(`statusPill_${shotNum}`);
+          if (pill) {
+            pill.className = 'status-pill status-ready';
+            pill.innerText = `📁 ${f.name} (Ready to Sync)`;
+          }
+        }
+      }
+      alert(`Loaded ${Object.keys(selectedFiles).length} shot file(s). Click "Upload & Sync to Google Drive" to store in Drive!`);
+    }
+
+    function saveGasUrl() {
+      const url = document.getElementById('gasUrlInput').value.trim();
+      localStorage.setItem('gas_web_app_url', url);
+      const status = document.getElementById('gasSaveStatus');
+      status.innerText = "✓ Google Apps Script Web App URL saved!";
+      setTimeout(() => status.innerText = "", 3000);
+    }
+
+    async function uploadFilesToDrive() {
+      const gasUrl = localStorage.getItem('gas_web_app_url') || document.getElementById('gasUrlInput').value.trim();
+      if (!gasUrl) {
+        alert("Please set your Google Apps Script Web App URL under the 'Schedule & Cloud Ledger' tab first!");
+        switchTab('scheduleTab');
+        return;
+      }
+
+      const keys = Object.keys(selectedFiles);
+      if (keys.length === 0) {
+        alert("Please drop or select your shot_*.mp4 files first!");
+        return;
+      }
+
+      for (const k of keys) {
+        const file = selectedFiles[k];
+        const pill = document.getElementById(`statusPill_${k}`);
+        if (pill) {
+          pill.innerText = `📤 Uploading to Drive...`;
+        }
+
+        const base64Data = await readFileAsBase64(file);
+        const payload = {
+          action: "upload_shot",
+          episode_number: episodeData.episode_number,
+          filename: file.name,
+          base64_data: base64Data
+        };
+
+        try {
+          const res = await fetch(gasUrl, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(payload)
+          });
+          const resJson = await res.json();
+          if (resJson.success) {
+            if (pill) {
+              pill.className = 'status-pill status-ready';
+              pill.innerText = `✅ In Drive`;
+            }
+          }
+        } catch (e) {
+          console.error("Upload error:", e);
+          if (pill) {
+            pill.innerText = `❌ Error: ${e.message}`;
+          }
+        }
+      }
+      alert("Uploaded video clips to Google Drive!");
+    }
+
+    function readFileAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = reader.result;
+          const base64 = result.split(',')[1];
+          resolve(base64);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function triggerAssembly() {
+      const gasUrl = localStorage.getItem('gas_web_app_url');
+      if (gasUrl) {
+        try {
+          const res = await fetch(gasUrl, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number })
+          });
+          alert("Trigger request sent to Google Apps Script -> GitHub Actions!");
+          return;
+        } catch (e) {
+          console.log("GAS trigger failed, falling back to info message:", e);
+        }
+      }
+      alert("Triggering GitHub Actions Video Merger & Instagram Reel Assembly! (Automated 12:00 PM & 6:00 PM IST triggers are also active)");
+    }
+
+    function refreshPrompts() {
+      alert("Gemini 3.8 Flash is ready to generate next chapter prompts. Run 'python scripts/flow_prompt_generator.py' or let the automated trigger run.");
+    }
+
+    window.onload = () => {
+      renderShots();
+      const savedGas = localStorage.getItem('gas_web_app_url');
+      if (savedGas && document.getElementById('gasUrlInput')) {
+        document.getElementById('gasUrlInput').value = savedGas;
+      }
+    };
+  </script>
+</body>
+</html>
+

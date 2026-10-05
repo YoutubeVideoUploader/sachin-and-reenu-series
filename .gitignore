@@ -9,3 +9,10 @@ current_episode.json
 __pycache__/
 *.pyc
 .env
+uploaded_shots/
+temp_merger/
+test_*.mp3
+voice_*.mp3
+flux_test_sample.png
+instantid_reenu_test.png
+
