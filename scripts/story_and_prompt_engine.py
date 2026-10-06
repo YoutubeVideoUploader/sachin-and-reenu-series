@@ -34,7 +34,7 @@ DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo So
 DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
 DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Mustard yellow polo t-shirt with beige chinos."
 
-NARRATOR_VOICE = "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity"
+NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
 
 def get_gemini_client():
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY_2") or os.getenv("GEMINI_API_KEY_3")
@@ -44,13 +44,14 @@ def get_gemini_client():
 
 def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger, next_ep_premise=""):
     """
-    Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots) with strictly animated cartoon characters.
+    Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
+    with female narrator and authentic Kochi slang character conversations.
     """
     next_ep_num = current_ep_num + 1
     client = get_gemini_client()
     
     print(f"\n=======================================================")
-    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL)")
+    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL - KOCHI SLANG)")
     print(f"=======================================================")
     print(f"Previous Episode Summary: {previous_story[:100]}...")
     print(f"Cliffhanger: {cliffhanger}")
@@ -59,8 +60,9 @@ def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger
         "You are an acclaimed Malayalam romantic film director and 3D animated series showrunner. "
         "You write punchy, fast-paced, emotionally rich 1-MINUTE vertical episodes (Reels format) for the 3D animated cartoon series 'Sachin & Reenu'. "
         "Characters are strictly stylized 3D cartoon animation characters in high-end Disney Pixar / DreamWorks style. Real or human-like figures are strictly prohibited! "
-        "Characters: Sachin (just returned from UK after 2 years), Reenu (deeply in love, nervous, overwhelmed), and Amal (Sachin's witty loyal best friend). "
-        "Every episode must feel deeply emotional, charming, culturally authentic to Kerala/Kochi, and end on an irresistible cliffhanger. "
+        "DIALOGUE DIALECT: All spoken conversations between Sachin, Reenu, and Amal MUST be in authentic, casual, youthful KOCHI SLANG (കൊച്ചിൻ സ്ലാങ്ങ് / Kochi youth dialect like in 'Premalu' and 'Kumbalangi Nights'). Use natural Kochi expressions like 'മച്ചാനെ', 'എന്തൂട്ടാടാ', 'സീനാടാ', 'അളിയാ', 'എന്റെ കൊച്ചേ', 'പിന്നല്ലാതെ', 'സെറ്റ്', 'പൊളി', 'ഒന്ന് നിർത്തെടാ' etc. "
+        "NARRATOR VOICE: The third-person narrator is a young, expressive female narrator with a melodic, charming Malayalam storytelling voice. "
+        "Every episode must feel deeply emotional, charming, culturally authentic to Kochi, and end on an irresistible cliffhanger. "
         "You will output ONLY valid JSON according to the specified schema."
     )
 
@@ -86,9 +88,9 @@ CRITICAL RULES:
      • Reenu Visual DNA: "{DNA_REENU}"
      • Sachin Visual DNA: "{DNA_SACHIN}"
      • Amal Visual DNA: "{DNA_AMAL}"
-5. AUDIO DIRECTIVE:
-   - Dialogue must be in pure, natural, conversational Malayalam written in Malayalam script (മലയാളം ലിപി).
-   - If a shot has no dialogue between characters, use the Third-Person Narrator voice to give lively emotional narration.
+5. KOCHI SLANG & FEMALE NARRATOR (MANDATORY):
+   - All dialogue between Sachin, Reenu, and Amal MUST be in authentic, lively KOCHI SLANG (കൊച്ചിൻ സ്ലാങ്ങ്) written in Malayalam script (മലയാളം ലിപി).
+   - The Third-Person Narrator voice MUST strictly be a young female narrator ('{NARRATOR_VOICE}').
    - For every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
 6. NEGATIVE PROMPT:
    - Must strictly include: "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
