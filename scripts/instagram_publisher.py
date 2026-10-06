@@ -126,32 +126,68 @@ def publish_reel_to_instagram(video_url, caption, cover_url=None):
     print(f"SUCCESS! Published to Instagram Reels with Post ID: {media_id}")
     return media_id
 
-def update_story_state():
-    if not os.path.exists(SCRIPT_FILE) or not os.path.exists(STATE_FILE):
+def update_story_state(ep_data=None):
+    if not ep_data:
+        script_candidates = ["current_episode_shots.json", "current_episode.json"]
+        for sc in script_candidates:
+            if os.path.exists(sc):
+                try:
+                    with open(sc, "r", encoding="utf-8") as f:
+                        ep_data = json.load(f)
+                    break
+                except Exception:
+                    pass
+    if not ep_data:
+        print("Notice: No episode script found to update story state.")
         return
-        
-    with open(SCRIPT_FILE, "r", encoding="utf-8") as f:
-        ep_data = json.load(f)
-    with open(STATE_FILE, "r", encoding="utf-8") as f:
-        state = json.load(f)
-        
-    ep_num = ep_data.get("episode_number")
-    state["total_episodes_produced"] = ep_num
+
+    state = {}
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, "r", encoding="utf-8") as f:
+                state = json.load(f)
+        except Exception:
+            state = {}
+
+    ep_num = ep_data.get("episode_number", 1)
+    state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
+    state["episode_number"] = ep_num
     
-    # Collect all unique characters present across scenes
-    all_chars = set()
-    for sc in ep_data.get("scenes", []):
-        all_chars.update(sc.get("characters_present", [sc.get("speaker", "Reenu")]))
-        
-    history_entry = {
-        "episode": ep_num,
-        "title": f"{ep_data.get('title_malayalam')} ({ep_data.get('title_english')})",
-        "summary": ep_data.get("synopsis"),
-        "cliffhanger": ep_data.get("cliffhanger"),
-        "characters_present": list(all_chars)
-    }
-    state["history"].append(history_entry)
+    if "history" not in state:
+        state["history"] = []
     
+    # Check if this episode is already in history
+    exists = False
+    for h in state["history"]:
+        if h.get("episode") == ep_num:
+            exists = True
+            break
+            
+    if not exists:
+        all_chars = set()
+        for sc in ep_data.get("scenes", ep_data.get("shots", [])):
+            if isinstance(sc, dict):
+                chars_list = sc.get("characters_present", [])
+                if isinstance(chars_list, list):
+                    for c in chars_list:
+                        if isinstance(c, dict) and "name" in c:
+                            all_chars.add(c["name"])
+                        elif isinstance(c, str):
+                            all_chars.add(c)
+                if "character" in sc:
+                    all_chars.add(sc["character"])
+                elif "speaker" in sc:
+                    all_chars.add(sc["speaker"])
+
+        history_entry = {
+            "episode": ep_num,
+            "title": f"{ep_data.get('title_malayalam', '')} ({ep_data.get('title_english', '')})".strip(),
+            "summary": ep_data.get("synopsis", ""),
+            "cliffhanger": ep_data.get("cliffhanger", ""),
+            "characters_present": list(all_chars)
+        }
+        state["history"].append(history_entry)
+
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
     print(f"Updated story state for Episode {ep_num}!")
@@ -171,19 +207,53 @@ def main():
             except Exception:
                 pass
                 
-    ep_num = ep_data.get("episode_number", 3)
+    ep_num = ep_data.get("episode_number", 2)
+    season_num = 1
+
+    # Strip any Malayalam characters to guarantee 100% English description
+    import re
+    def to_english(s):
+        if not s:
+            return ""
+        s = re.sub(r'[\u0D00-\u0D7F]+', '', str(s))
+        s = re.sub(r' +', ' ', s).strip()
+        return s
+
+    title_en = to_english(ep_data.get("title_english")) or f"Episode {ep_num}"
+    synopsis_en = to_english(ep_data.get("synopsis", ""))
+    cliffhanger_en = to_english(ep_data.get("cliffhanger", ""))
+
     caption = (
-        f"❤️ സച്ചിൻ & റീനു — ഭാഗം {ep_num}: {ep_data.get('title_malayalam', '')} ({ep_data.get('title_english', '')})\n\n"
-        f"{ep_data.get('synopsis', '')}\n\n"
-        f"തുടരും... അടുത്ത ഭാഗം ഉടൻ വരുന്നു!\n\n"
-        f"#SachinAndReenu #MalayalamWebSeries #KeralaRomance #GoogleFlow #InstaReels #MalluAnimation #KeralaLovers #CIAL"
+        f"SACHIN & REENU (Season {season_num} • Episode {ep_num})\n"
+        f"Title: {title_en}\n\n"
+        f"{synopsis_en}\n\n"
+        f"{cliffhanger_en}\n\n"
+        f"Stay tuned for the next episode! Follow @sachin_and_reenu for more episodes!\n\n"
+        f"#SachinAndReenu #Season{season_num} #Episode{ep_num} #3DAnimation #PixarStyle #KeralaLoveStory #AnimatedSeries #Reels #Animation"
     )
 
-    
     tag_name = f"v{ep_num}.{int(time.time())}"
     video_url = upload_release_asset(VIDEO_FILE, tag_name)
     
-    # Check for custom thumbnail image
+    # Ensure custom thumbnail image exists with Season and Episode stamped
+    try:
+        import sys
+        sys.path.append(os.path.dirname(__file__))
+        from generate_thumbnail import generate_thumbnail
+        generate_thumbnail(season_num=season_num, episode_num=ep_num)
+    except Exception:
+        try:
+            import subprocess
+            import sys
+            subprocess.run([
+                sys.executable,
+                os.path.join(os.path.dirname(__file__), "generate_thumbnail.py"),
+                "--season", str(season_num),
+                "--episode", str(ep_num)
+            ], check=False)
+        except Exception as e:
+            print(f"Notice auto-generating thumbnail: {e}")
+
     cover_url = None
     thumb_candidates = [
         os.path.join("assets", f"thumbnail_ep{ep_num}.jpg"),
@@ -200,7 +270,7 @@ def main():
                 print(f"Notice: Failed to upload thumbnail asset: {e}")
                 
     media_id = publish_reel_to_instagram(video_url, caption, cover_url=cover_url)
-    update_story_state()
+    update_story_state(ep_data)
 
     # Sync with Google Sheet and trigger Drive cleanup & Sheet blanking
     gas_webhook = os.getenv("GAS_WEBHOOK_URL")
@@ -213,12 +283,12 @@ def main():
                 "instagram_url": f"https://www.instagram.com/reel/{media_id}/",
                 "cliffhanger": ep_data.get("cliffhanger", ""),
                 "next_episode_story": ep_data.get("next_episode_story", ""),
-                "next_episode_title": ep_data.get("next_episode_title", f"ഭാഗം {ep_num + 1}")
+                "next_episode_title": ep_data.get("next_episode_title", f"Episode {ep_num + 1}")
             }
             res = requests.post(gas_webhook, json=payload, timeout=25)
             print(f"✓ Post-publish cleanup response: {res.status_code} - {res.text}")
+            print(f"✓ Episode {ep_num} marked Published in Google Sheet.")
             print(f"✓ All raw shot clips deleted from Google Drive.")
-            print(f"✓ Google Sheet checklist blanked for next episode.")
         except Exception as e:
             print(f"Notice: Google Sheet webhook cleanup skipped or failed: {e}")
 

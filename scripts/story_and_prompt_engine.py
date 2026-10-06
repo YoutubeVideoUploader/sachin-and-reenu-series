@@ -404,6 +404,7 @@ def update_creator_portal(episode_data):
                 state = json.load(f)
             ep_num = episode_data.get("episode_number", 1)
             state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
+            state["episode_number"] = ep_num
             
             # Record organic new characters if introduced
             new_chars = episode_data.get("new_characters_introduced", [])
@@ -459,17 +460,37 @@ def update_creator_portal(episode_data):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Next Episode Screenplay & Prompts")
-    parser.add_argument("--current_ep", type=int, default=1, help="Completed episode number")
+    parser.add_argument("--current_ep", type=int, default=None, help="Completed episode number")
     parser.add_argument("--target_ep", type=int, default=None, help="Explicit target episode number to generate")
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     args = parser.parse_args()
+
+    # Automatically resolve what episode is currently active / produced if not explicitly provided
+    detected_ep = None
+    for fn in ["current_episode_shots.json", "current_episode.json", "story_state.json"]:
+        if os.path.exists(fn):
+            try:
+                with open(fn, "r", encoding="utf-8") as f:
+                    d = json.load(f)
+                    val = d.get("episode_number") or d.get("total_episodes_produced")
+                    if val:
+                        detected_ep = int(val)
+                        break
+            except Exception:
+                pass
+    if detected_ep is None:
+        detected_ep = 1
 
     # Determine target episode and previous episode
     if args.target_ep is not None:
         target_ep = args.target_ep
         effective_current_ep = target_ep - 1
-    else:
+    elif args.current_ep is not None:
         effective_current_ep = args.current_ep
+        target_ep = effective_current_ep + 1
+    else:
+        # Default run: advance from current detected episode to the next one
+        effective_current_ep = detected_ep
         target_ep = effective_current_ep + 1
 
     # Load context for effective_current_ep from roadmap

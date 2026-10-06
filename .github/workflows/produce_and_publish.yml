@@ -88,14 +88,7 @@ jobs:
         if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) }}
         run: |
           echo "Stamping Season & Episode numbers onto cover thumbnail..."
-          python -c "
-          import json, os
-          ep = 1
-          if os.path.exists('story_state.json'):
-              with open('story_state.json', 'r', encoding='utf-8') as f:
-                  ep = json.load(f).get('episode_number', 1)
-          os.system(f'python scripts/generate_thumbnail.py --season 1 --episode {ep}')
-          "
+          python scripts/generate_thumbnail.py --season 1
 
       # -------------------------------------------------------------
       # STEP 8: INSTAGRAM PUBLISHING

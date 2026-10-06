@@ -8,7 +8,7 @@ OUTPUT_PATH = Path("assets/thumbnail.jpg")
 
 def generate_thumbnail(season_num=1, episode_num=1, output_file=None):
     if not TEMPLATE_PATH.exists():
-        print(f"Warning: Template {TEMLATE_PATH} not found.")
+        print(f"Warning: Template {TEMPLATE_PATH} not found.")
         return None
 
     if output_file is None:
@@ -62,11 +62,26 @@ def generate_thumbnail(season_num=1, episode_num=1, output_file=None):
     im.save(specific_thumb, "JPEG", quality=95)
     return output_path
 
+def resolve_episode_num():
+    import json
+    for fn in ["current_episode_shots.json", "current_episode.json", "story_state.json"]:
+        if os.path.exists(fn):
+            try:
+                with open(fn, "r", encoding="utf-8") as f:
+                    d = json.load(f)
+                    val = d.get("episode_number") or d.get("total_episodes_produced")
+                    if val:
+                        return int(val)
+            except Exception:
+                pass
+    return 1
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate episode thumbnail cover")
     parser.add_argument("--season", type=int, default=1, help="Season number")
-    parser.add_argument("--episode", type=int, default=1, help="Episode number")
+    parser.add_argument("--episode", type=int, default=None, help="Episode number")
     parser.add_argument("--output", type=str, default=None, help="Output image path")
     args = parser.parse_args()
 
-    generate_thumbnail(season_num=args.season, episode_num=args.episode, output_file=args.output)
+    ep_num = args.episode if args.episode is not None else resolve_episode_num()
+    generate_thumbnail(season_num=args.season, episode_num=ep_num, output_file=args.output)

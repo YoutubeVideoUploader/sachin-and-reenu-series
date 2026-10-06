@@ -570,6 +570,70 @@ function cleanEpisodeDrive(episodeNum) {
 }
 
 /**
+ * Marks an episode as Published in Tab 1 (Episode_Story) and Tab 4 (Season_Story_Arc),
+ * sets its Instagram URL and published timestamp, and activates the next episode.
+ */
+function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
+  const ss = getStudioSpreadsheet();
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+  if (storySheet && storySheet.getLastRow() > 1) {
+    const data = storySheet.getDataRange().getValues();
+    let publishedFound = false;
+    let nextEpFound = false;
+
+    for (let i = 1; i < data.length; i++) {
+      const rowEp = parseInt(data[i][0], 10);
+      if (rowEp === epNum) {
+        storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+        if (instagramUrl) {
+          storySheet.getRange(i + 1, 7).setValue(instagramUrl);
+        }
+        storySheet.getRange(i + 1, 8).setValue(nowIst);
+        publishedFound = true;
+      } else if (rowEp === epNum + 1) {
+        storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+        nextEpFound = true;
+      }
+    }
+
+    if (!nextEpFound) {
+      storySheet.appendRow([
+        epNum + 1,
+        `Episode ${epNum + 1}`,
+        "Active",
+        10,
+        "",
+        "",
+        "",
+        ""
+      ]);
+      const newRow = storySheet.getLastRow();
+      storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
+    }
+  }
+
+  // Also update Tab 4 (Season_Story_Arc)
+  try {
+    const seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
+    if (seasonSheet && seasonSheet.getLastRow() >= 3) {
+      const sData = seasonSheet.getRange(3, 1, seasonSheet.getLastRow() - 2, 8).getValues();
+      for (let r = 0; r < sData.length; r++) {
+        const rowEp = parseInt(sData[r][1], 10);
+        if (rowEp === epNum) {
+          seasonSheet.getRange(r + 3, 5).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+        } else if (rowEp === epNum + 1) {
+          seasonSheet.getRange(r + 3, 5).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+        }
+      }
+    }
+  } catch (err) {
+    Logger.log("Notice updating Tab 4 on publish: " + err.toString());
+  }
+}
+
+/**
  * Overwrites Tab 2: Current_JSON_Prompts with the new episode prompts.
  */
 function updateJsonPromptsSheet(episodeNum, shots) {
@@ -735,19 +799,43 @@ function handleNextEpisodeFullUpdate(body) {
   if (storySheet) {
     const data = storySheet.getDataRange().getValues();
     const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+    let epRowFound = false;
     
     for (let i = 1; i < data.length; i++) {
-      if (prevEp > 0 && data[i][0] == prevEp) {
+      const rowEp = parseInt(data[i][0], 10);
+      if (prevEp > 0 && rowEp <= prevEp) {
         storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-        if (body.instagram_url) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
-        storySheet.getRange(i + 1, 8).setValue(nowIst);
+        if (body.instagram_url && rowEp === prevEp) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
+        if (!data[i][7] && rowEp === prevEp) storySheet.getRange(i + 1, 8).setValue(nowIst);
       }
-      if (data[i][0] == epNum) {
+      if (rowEp === epNum) {
         storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+        const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim();
+        if (fullTitle) storySheet.getRange(i + 1, 2).setValue(fullTitle);
+        if (body.total_shots) storySheet.getRange(i + 1, 4).setValue(body.total_shots);
+        if (body.synopsis) storySheet.getRange(i + 1, 5).setValue(body.synopsis);
+        if (body.cliffhanger) storySheet.getRange(i + 1, 6).setValue(body.cliffhanger);
+        epRowFound = true;
       }
-      if (epNum === 1 && data[i][0] > 1) {
+      if (epNum === 1 && rowEp > 1) {
         storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
       }
+    }
+
+    if (!epRowFound) {
+      const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || `Episode ${epNum}`;
+      storySheet.appendRow([
+        epNum,
+        fullTitle,
+        "Active",
+        body.total_shots || (body.shots ? body.shots.length : 10),
+        body.synopsis || "",
+        body.cliffhanger || "",
+        "",
+        ""
+      ]);
+      const newRow = storySheet.getLastRow();
+      storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
     }
   }
 
@@ -909,9 +997,10 @@ function doGet(e) {
   // Cleanup after Instagram publish via GET
   if (action === "cleanup_after_publish") {
     cleanEpisodeDrive(epNum);
+    markEpisodePublishedInStorySheet(epNum, params.instagram_url || "");
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
-      message: `Episode ${epNum} Drive files trashed.`
+      message: `Episode ${epNum} Drive files trashed and marked Published in Sheet.`
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
@@ -1049,9 +1138,10 @@ function doPost(e) {
     // 4. Cleanup after publish
     if (action === "cleanup_after_publish") {
       cleanEpisodeDrive(epNum);
+      markEpisodePublishedInStorySheet(epNum, body.instagram_url || "");
       return ContentService.createTextOutput(JSON.stringify({
         success: true,
-        message: `Episode ${epNum} raw clips cleaned from Drive.`
+        message: `Episode ${epNum} raw clips cleaned from Drive and marked Published in Sheet.`
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
