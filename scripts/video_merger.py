@@ -85,6 +85,25 @@ def standardize_clip_with_audio(input_path, output_path, target_w=1080, target_h
         
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+def generate_outro_clip(image_path, output_path, duration=3.0, target_w=1080, target_h=1920, fps=30):
+    """
+    Renders the outro poster as a 3-second vertical 9:16 video clip with silent audio,
+    ready to concatenate seamlessly to the end of the episode.
+    """
+    cmd = [
+        "ffmpeg", "-y",
+        "-loop", "1",
+        "-i", str(image_path),
+        "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo",
+        "-t", str(duration),
+        "-vf", f"scale={target_w}:{target_h}:force_original_aspect_ratio=decrease,pad={target_w}:{target_h}:(ow-iw)/2:(oh-ih)/2,fps={fps},format=yuv420p",
+        "-c:v", "libx264", "-preset", "fast", "-crf", "18",
+        "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "192k",
+        "-shortest",
+        str(output_path)
+    ]
+    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", title_ml="", bgm_num=None):
     """
     Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
@@ -131,7 +150,22 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
         total_video_duration += info["duration"]
         standardized_clips.append(std_name)
 
-    print(f"✓ All {len(standardized_clips)} clips standardized! Total runtime: {total_video_duration:.2f}s (~{int(total_video_duration//60)}m {int(total_video_duration%60):02d}s)")
+    print(f"✓ All {len(standardized_clips)} clips standardized! Total story runtime: {total_video_duration:.2f}s (~{int(total_video_duration//60)}m {int(total_video_duration%60):02d}s)")
+
+    # Append 3-second Outro Card Poster ('Wait for Next Episode • Follow for More')
+    outro_candidates = [
+        Path("assets/outro_card.jpg"),
+        Path("assets/outro_poster.jpg"),
+        Path("assets/outro_raw.jpg")
+    ]
+    outro_img = next((p for p in outro_candidates if p.exists()), None)
+    if outro_img:
+        print(f"\n   Adding 3-second Outro Card: {outro_img.name} (Wait for Next Episode • Follow for More)...")
+        std_outro = temp_dir / "std_outro.mp4"
+        generate_outro_clip(outro_img, std_outro, duration=3.0)
+        standardized_clips.append(std_outro)
+        total_video_duration += 3.0
+        print(f"   ✓ Outro Card appended! New total runtime: {total_video_duration:.2f}s")
 
     # Concat manifest
     concat_manifest = temp_dir / "concat_list.txt"
