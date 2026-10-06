@@ -409,15 +409,18 @@ function handleNextEpisodeFullUpdate(body) {
     const data = storySheet.getDataRange().getValues();
     const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
     
-    // Mark previous as Published
+    // Mark previous as Published (or reset subsequent if restarting at Ep 1)
     for (let i = 1; i < data.length; i++) {
-      if (data[i][0] == prevEp) {
+      if (prevEp > 0 && data[i][0] == prevEp) {
         storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
         if (body.instagram_url) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
         storySheet.getRange(i + 1, 8).setValue(nowIst);
       }
       if (data[i][0] == epNum) {
         storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+      }
+      if (epNum === 1 && data[i][0] > 1) {
+        storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
       }
     }
   }

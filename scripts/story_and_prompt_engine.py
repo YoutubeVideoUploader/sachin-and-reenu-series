@@ -262,13 +262,16 @@ def main():
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     args = parser.parse_args()
 
-    # Base context from Episode 1
-    previous_story = "After two years apart, Sachin returns from London to Kochi CIAL and reunites emotionally with Reenu and Amal."
-    cliffhanger = "Sachin holds Reenu close, but nervously clutches a secret pouch brought from London."
-    
-    if args.target_ep is not None:
+    if args.target_ep == 1:
+        effective_current_ep = 0
+        previous_story = "Series Pilot: Sachin has been away in the UK for two long years, while Reenu waited for him in Kerala. Today is Sachin's return flight arriving at Kochi CIAL airport."
+        cliffhanger = "Reenu waits with trembling hands behind the arrival barrier, not having seen Sachin in person for 730 days."
+        premise = "Episode 1 Pilot ('തിരിച്ചുവരവ്' / 'The Homecoming'): Reenu and Amal wait anxiously at Kochi CIAL international arrival terminal. Amal teases Reenu in playful Kochi slang to break her tension. Sachin finally emerges through the glass doors, resulting in an emotional, tender, tearful reunion. Cliffhanger: As they embrace, Sachin clutches a secret leather pouch from London with a nervous look."
+    elif args.target_ep is not None:
         effective_current_ep = args.target_ep - 1
+        premise = ""
     else:
+        premise = ""
         if os.path.exists("current_episode_shots.json"):
             try:
                 with open("current_episode_shots.json", "r", encoding="utf-8") as f:
@@ -284,7 +287,8 @@ def main():
     ep_data = generate_next_episode_screenplay(
         current_ep_num=effective_current_ep,
         previous_story=previous_story,
-        cliffhanger=cliffhanger
+        cliffhanger=cliffhanger,
+        next_ep_premise=premise
     )
 
     # 2. Update local files & portal website
