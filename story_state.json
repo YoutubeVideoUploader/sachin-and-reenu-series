@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 2,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -10,7 +10,7 @@
       "voice": "Fenrir",
       "hair": "Tousled thick wavy textured dark-brown hair with volume",
       "face": "Warm hazel-brown expressive eyes, defined jawline, boyish charming grin",
-      "attire": "Terracotta rust-orange crew neck t-shirt with subtle pocket design, relaxed dark-gray joggers, white sneakers, black sports watch",
+      "attire": "Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest",
       "personality": "Warm, emotional, charming, returning from UK after years away"
     },
     "Reenu": {
@@ -19,8 +19,8 @@
       "voice": "Kore",
       "hair": "Shoulder-length voluminous layered wavy dark-brown hair with soft curtain bangs",
       "face": "Large sparkling hazel-brown doe eyes, expressive emotions, glowing radiant smile",
-      "attire": "Pastel yellow and baby-blue cloud camouflage short-sleeved t-shirt, light-blue denim A-line mini-skirt, white sneakers",
-      "personality": "Bubbly, deeply emotional, faithful, waiting at Kochi CIAL airport"
+      "attire": "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch",
+      "personality": "Bubbly, deeply emotional, faithful, reunited with Sachin at Kochi CIAL"
     },
     "Amal": {
       "age": 22,
@@ -28,39 +28,28 @@
       "voice": "Puck",
       "hair": "Cropped textured curly black hair",
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
-      "attire": "Olive-green crew neck t-shirt with subtle horizontal lines, blue denim jeans, white sneakers",
-      "personality": "Sachin's best friend, supportive, humorous, teases Reenu to keep her calm"
+      "attire": "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos",
+      "personality": "Sachin's best friend, supportive, humorous, driving the car"
     }
   },
-  "current_arc": "The Airport Reunion",
+  "current_arc": "The Monsoon Car Ride & Secret Pouch",
   "history": [
     {
       "episode": 1,
-      "title": "കാത്തിരിപ്പിനൊടുവിൽ (The Long-Awaited Reunion)",
-      "summary": "After years of emotional long-distance separation, Reenu and her best friend Amal wait anxiously at Kochi CIAL Airport arrivals. When Sachin finally emerges with his luggage trolley, emotions overflow as they lock eyes and reunite.",
-      "cliffhanger": "Just as they embrace, Sachin's warm smile fades slightly as he hints at a mysterious secret regarding his sudden departure from the UK.",
+      "title": "തിരിച്ചുവരവ് (The Homecoming)",
+      "summary": "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
+      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
       "characters_present": [
-        "Amal",
-        "Sachin",
-        "Reenu"
-      ]
-    },
-    {
-      "episode": 2,
-      "title": "രഹസ്യങ്ങളുടെ നിഴൽ (The Shadow of Secrets)",
-      "summary": "Directly continuing from their emotional airport reunion, Reenu senses Sachin's hesitation. When she questions his sudden, unexpected return from the UK, Sachin tries to brush it off with Amal's witty intervention, but his underlying anxiety is hard to hide. Just as they prepare to leave, a mysterious phone call threatens to shatter the fragile peace.",
-      "cliffhanger": "Sachin's phone abruptly vibrates with an incoming call from an unknown UK number. He frantically declines it and hides the screen, but Reenu catches his panicked expression, her heart sinking with immediate suspicion.",
-      "characters_present": [
-        "Sachin",
         "Reenu",
+        "Sachin",
         "Amal"
       ]
     },
     {
-      "episode": 3,
-      "title": "സംശയത്തിന്റെ നിഴലുകൾ (Shadows of Doubt)",
-      "summary": "Directly continuing from the tense moment at the airport, Reenu confronts Sachin about the mysterious UK phone call. Though Sachin tries to brush it off as a spam marketing call with Amal's playful support, his intense anxiety only deepens her suspicions. Just as they walk towards the exit, the phone rings again, forcing Sachin to reveal a name that raises even more shocking questions.",
-      "cliffhanger": "Reenu grabs Sachin's hand as his phone rings a second time, pulling it out of his pocket to reveal the caller ID: 'Dr. Elizabeth (UK Hospital)', leaving Reenu frozen in shock and fear.",
+      "episode": 2,
+      "title": "മഴയും ചില രഹസ്യങ്ങളും (Rain and Some Secrets)",
+      "summary": "Stepping outside Kochi CIAL airport into a sudden heavy monsoon shower, Sachin, Reenu, and Amal rush through the rain with their luggage to Amal's car. As they drive through the rain-drenched Kochi streets with wipers swishing, Reenu notices Sachin's nervous protectiveness over his London leather pouch. Sachin tries to speak, but a sudden braking causes the pouch to slip and slide deep under the car seat, leading to a tense and suspicious moment.",
+      "cliffhanger": "The mysterious London leather pouch slips from Sachin's hand and slides deep under the front passenger seat. As Sachin frantically reaches down trying to hide it, Reenu looks at him with growing suspicion, asking what he is hiding.",
       "characters_present": [
         "Amal",
         "Reenu",

@@ -29,13 +29,81 @@ except ImportError:
     pass
 from google import genai
 from google.genai import types
+try:
+    from json_repair import repair_json
+except ImportError:
+    repair_json = None
 
 # Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like, 100% LOCKED ATTIRE)
 DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
 DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
 DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
 
-NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
+NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
+
+# Master Season 1 Story Roadmap (10 Episodes)
+SEASON_1_ROADMAP = {
+    1: {
+        "title_english": "The Homecoming",
+        "title_malayalam": "തിരിച്ചുവരവ്",
+        "synopsis": "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
+        "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch."
+    },
+    2: {
+        "title_english": "Rain and Some Secrets",
+        "title_malayalam": "മഴയും ചില രഹസ്യങ്ങളും",
+        "synopsis": "Stepping outside Kochi CIAL airport into a sudden heavy monsoon shower, Sachin, Reenu, and Amal rush through the rain with their luggage to Amal's car. As they drive through the rain-drenched Kochi streets with wipers swishing, Reenu notices Sachin's nervous protectiveness over his London leather pouch. Sachin tries to speak, but a sudden braking causes the pouch to slip and slide deep under the car seat!",
+        "cliffhanger": "The mysterious London leather pouch slips from Sachin's hand and slides deep under the front passenger seat. As Sachin frantically reaches down trying to hide it, Reenu looks at him with growing suspicion, asking what he is hiding."
+    },
+    3: {
+        "title_english": "A Roadside Chai & Unspoken Glances",
+        "title_malayalam": "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും",
+        "synopsis": "Amal stops the car at a misty tea stall by the backwaters. Under a shared umbrella, Sachin and Reenu share an intimate moment over hot tea, but Sachin hesitates to speak.",
+        "cliffhanger": "Amal spots the London leather pouch lying on the car floor and picks it up curiously."
+    },
+    4: {
+        "title_english": "Forgotten Memories",
+        "title_malayalam": "മറന്നുപോയ ഓർമ്മകൾ",
+        "synopsis": "Continuing their ride into Kochi city, Sachin and Reenu reminisce about their college days, but Sachin feels guilty about being away in the UK for 730 days.",
+        "cliffhanger": "Reenu asks Sachin directly: 'Why didn't you tell me the real reason you booked your flight so suddenly?'"
+    },
+    5: {
+        "title_english": "The Secret Slips",
+        "title_malayalam": "രഹസ്യം പുറത്തേക്ക്",
+        "synopsis": "Amal hands the pouch back to Sachin, asking what is inside. Sachin stammers and tries to divert the topic, raising Reenu's suspicion.",
+        "cliffhanger": "Reenu reaches for the pouch playfully, but Sachin instinctively pulls it back, creating an awkward silence."
+    },
+    6: {
+        "title_english": "Amal's Wit & Heavy Silence",
+        "title_malayalam": "അമലിന്റെ തമാശയും മൗനവും",
+        "synopsis": "Amal uses humor and teasing to diffuse the tension. Sachin feels deeply torn between confessing his life-changing London decision and the fear of overwhelming Reenu.",
+        "cliffhanger": "Sachin promises Reenu: 'Before tonight ends, I will tell you everything.'"
+    },
+    7: {
+        "title_english": "The Rain Settles",
+        "title_malayalam": "മഴ തോർന്ന രാത്രി",
+        "synopsis": "The car arrives outside Reenu's house. In the quiet, rain-washed night, Sachin walks Reenu to the front gate. A tender, lingering goodbye.",
+        "cliffhanger": "Sachin gently holds Reenu's hand, asking her to meet him at Marine Drive walkway at midnight."
+    },
+    8: {
+        "title_english": "Reenu's Suspicion & Worry",
+        "title_malayalam": "റീനുവിന്റെ മനസ്സ്",
+        "synopsis": "Reenu sits in her room by the window, watching the rain mist. She wonders whether Sachin's secret means he has to go back to the UK permanently.",
+        "cliffhanger": "Reenu makes a heartfelt decision to profess her true love and ask Sachin never to leave again."
+    },
+    9: {
+        "title_english": "A Midnight Message",
+        "title_malayalam": "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും",
+        "synopsis": "Sachin and Amal prepare at Marine Drive. Amal gives Sachin emotional courage. Reenu arrives in the dim golden lights of Kochi backwaters.",
+        "cliffhanger": "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu."
+    },
+    10: {
+        "title_english": "The Grand Climax: The Revelation",
+        "title_malayalam": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ",
+        "synopsis": "SEASON 1 CLIMAX: Sachin reveals what was inside the pouch—his officially cancelled London visa documents and a permanent contract in Kochi, choosing to stay by Reenu's side forever. Tears of joy, a breathtaking embrace, and a sweet tease for Season 2!",
+        "cliffhanger": "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!"
+    }
+}
 
 def get_gemini_client():
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY_2") or os.getenv("GEMINI_API_KEY_3")
@@ -43,19 +111,37 @@ def get_gemini_client():
         raise ValueError("GEMINI_API_KEY environment variable is required")
     return genai.Client(api_key=api_key)
 
-def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger, next_ep_premise=""):
+def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhanger="", next_ep_premise=""):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
     with locked character dress, strict lip-movement rules, female narrator, and pure Malayalam dialogue.
+    Dynamically adheres to the Master Season 1 Roadmap.
     """
     next_ep_num = current_ep_num + 1
     client = get_gemini_client()
+
+    roadmap_target = SEASON_1_ROADMAP.get(next_ep_num, {})
+    planned_title_en = roadmap_target.get("title_english", f"Episode {next_ep_num}")
+    planned_title_ml = roadmap_target.get("title_malayalam", "")
+    planned_synopsis = roadmap_target.get("synopsis", "")
+    planned_cliffhanger = roadmap_target.get("cliffhanger", "")
+
+    # Resolve previous episode context
+    if not previous_story and current_ep_num in SEASON_1_ROADMAP:
+        previous_story = SEASON_1_ROADMAP[current_ep_num]["synopsis"]
+        cliffhanger = cliffhanger or SEASON_1_ROADMAP[current_ep_num]["cliffhanger"]
+
+    # Target premise: use explicitly passed next_ep_premise or planned roadmap synopsis
+    effective_premise = next_ep_premise or planned_synopsis or f"Episode {next_ep_num} story continuation."
+    target_cliffhanger_guide = planned_cliffhanger or cliffhanger or "Tense romantic cliffhanger."
     
     print(f"\n=======================================================")
     print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL)")
     print(f"=======================================================")
-    print(f"Previous Episode Summary: {previous_story[:100]}...")
-    print(f"Cliffhanger: {cliffhanger}")
+    print(f"Target Title: {planned_title_ml} ({planned_title_en})")
+    print(f"Previous Episode {current_ep_num} Summary: {previous_story[:100]}...")
+    print(f"Target Narrative Beat: {effective_premise[:100]}...")
+    print(f"Target Cliffhanger: {target_cliffhanger_guide[:100]}...")
 
     system_instruction = (
         "You are an acclaimed Malayalam romantic film director and 3D animated series showrunner. "
@@ -74,10 +160,15 @@ def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger
     prompt = f"""
 Write the full screenplay and shot-by-shot Google Flow JSON prompts for Episode {next_ep_num} of 'Sachin & Reenu'.
 
+MASTER ROADMAP GUIDANCE:
+- Expected Episode Title: {planned_title_ml} ({planned_title_en})
+- Target Premise / Narrative Beat: {effective_premise}
+- Target Climax / Cliffhanger: {target_cliffhanger_guide}
+
 CONTEXT FROM PREVIOUS EPISODE {current_ep_num}:
 Story: {previous_story}
 Cliffhanger: {cliffhanger}
-Premise/Hook for Episode {next_ep_num}: {next_ep_premise or 'Reenu and Amal wait at Kochi CIAL airport arrival gates. An emotional reunion as Sachin arrives, but he clutches a secret London pouch.'}
+Premise/Hook for Episode {next_ep_num}: {effective_premise}
 
 CRITICAL PRODUCTION RULES:
 1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
@@ -177,7 +268,7 @@ Output JSON structure:
 }}
 """
 
-    candidate_models = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-flash-latest"]
+    candidate_models = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-flash-latest"]
     parsed_data = None
     last_err = None
 
@@ -186,6 +277,12 @@ Output JSON structure:
         if text.startswith("```"):
             text = re.sub(r"^```(?:json)?\s*", "", text)
             text = re.sub(r"\s*```$", "", text)
+        if repair_json:
+            try:
+                repaired = repair_json(text)
+                return repaired
+            except Exception:
+                pass
         # Remove trailing commas
         text = re.sub(r',\s*([\]\}])', r'\1', text)
         return text
@@ -200,7 +297,8 @@ Output JSON structure:
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
                         response_mime_type="application/json",
-                        temperature=0.7
+                        temperature=0.7,
+                        max_output_tokens=8192
                     )
                 )
                 if response and response.text:
@@ -327,19 +425,25 @@ def update_creator_portal(episode_data):
 
             history = state.get("history", [])
             existing_eps = [h.get("episode") for h in history]
-            if ep_num not in existing_eps:
-                chars = list(set([
-                    s.get("character") for s in episode_data.get("shots", [])
-                    if s.get("character") and s.get("character") != "Third-Person Narrator"
-                ]))
-                history.append({
-                    "episode": ep_num,
-                    "title": f"{episode_data.get('title_malayalam', '')} ({episode_data.get('title_english', '')})",
-                    "summary": episode_data.get("synopsis", ""),
-                    "cliffhanger": episode_data.get("cliffhanger", ""),
-                    "characters_present": chars
-                })
-                state["history"] = history
+            chars = list(set([
+                s.get("character") for s in episode_data.get("shots", [])
+                if s.get("character") and s.get("character") != "Third-Person Narrator"
+            ]))
+            new_entry = {
+                "episode": ep_num,
+                "title": f"{episode_data.get('title_malayalam', '')} ({episode_data.get('title_english', '')})",
+                "summary": episode_data.get("synopsis", ""),
+                "cliffhanger": episode_data.get("cliffhanger", ""),
+                "characters_present": chars
+            }
+            if ep_num in existing_eps:
+                for idx, h in enumerate(history):
+                    if h.get("episode") == ep_num:
+                        history[idx] = new_entry
+                        break
+            else:
+                history.append(new_entry)
+            state["history"] = history
             with open(state_path, "w", encoding="utf-8") as f:
                 json.dump(state, f, ensure_ascii=False, indent=2)
             print("✓ Updated story_state.json with new episode progression!")
@@ -360,34 +464,47 @@ def main():
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     args = parser.parse_args()
 
-    # Robust default context
-    previous_story = (
+    # Determine target episode and previous episode
+    if args.target_ep is not None:
+        target_ep = args.target_ep
+        effective_current_ep = target_ep - 1
+    else:
+        effective_current_ep = args.current_ep
+        target_ep = effective_current_ep + 1
+
+    # Load context for effective_current_ep from roadmap
+    prev_entry = SEASON_1_ROADMAP.get(effective_current_ep, {})
+    previous_story = prev_entry.get("synopsis", (
         "Episode 1: After two long years of waiting, Reenu and Amal wait at Kochi CIAL airport arrivals. "
         "Sachin emerges through the doors resulting in an emotional reunion, but Sachin secretly clutches an anxious London leather pouch."
-    )
-    cliffhanger = "As Sachin hugs Reenu, an anxious look crosses his face while holding the mysterious pouch."
-    premise = ""
-    effective_current_ep = args.current_ep
+    ))
+    cliffhanger = prev_entry.get("cliffhanger", "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.")
 
-    # Check local current_episode_shots.json if present for context
-    if os.path.exists("current_episode_shots.json"):
+    # Check story_state.json if it has memory for effective_current_ep
+    if os.path.exists("story_state.json"):
         try:
-            with open("current_episode_shots.json", "r", encoding="utf-8") as f:
-                cur = json.load(f)
-                previous_story = cur.get("synopsis") or previous_story
-                cliffhanger = cur.get("cliffhanger") or cliffhanger
-                effective_current_ep = cur.get("episode_number", args.current_ep)
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                sstate = json.load(f)
+                for h in sstate.get("history", []):
+                    if h.get("episode") == effective_current_ep:
+                        previous_story = h.get("summary") or previous_story
+                        cliffhanger = h.get("cliffhanger") or cliffhanger
         except Exception as e:
-            print(f"Notice reading current_episode_shots.json: {e}")
+            print(f"Notice reading story_state.json: {e}")
 
-    if args.target_ep == 1:
+    # Load premise for target_ep from master roadmap
+    target_entry = SEASON_1_ROADMAP.get(target_ep, {})
+    premise = target_entry.get("synopsis", "")
+
+    if target_ep == 1:
         effective_current_ep = 0
         previous_story = "Series Pilot: Sachin has been away in the UK for two long years, while Reenu waited for him in Kerala. Today is Sachin's return flight arriving at Kochi CIAL airport."
         cliffhanger = "Reenu waits with trembling hands behind the arrival barrier, not having seen Sachin in person for 730 days."
         premise = "Episode 1 Pilot ('തിരിച്ചുവരവ്' / 'The Homecoming'): Reenu and Amal wait anxiously at Kochi CIAL international arrival terminal. Amal teases Reenu in playful Kochi slang to break her tension. Sachin finally emerges through the glass doors, resulting in an emotional, tender, tearful reunion. Cliffhanger: As they embrace, Sachin clutches a secret leather pouch from London with a nervous look."
-    elif args.target_ep is not None:
-        effective_current_ep = args.target_ep - 1
-        premise = ""
+
+    print(f"Directing Episode {target_ep} from Master Season Roadmap:")
+    print(f"  Target: {target_entry.get('title_malayalam', '')} ({target_entry.get('title_english', '')})")
+    print(f"  Premise: {premise}")
 
     # 1. Generate Next Episode with Gemini
     ep_data = generate_next_episode_screenplay(
