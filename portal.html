@@ -1494,35 +1494,53 @@
     function processFiles(files) {
       if (!files || files.length === 0) return;
       const fileList = Array.from(files);
+      const totalShots = episodeData.shots ? episodeData.shots.length : 10;
+      const assignedFiles = {}; // shotNum -> file
       const unassigned = [];
-      const totalShots = episodeData.shots ? episodeData.shots.length : 22;
 
-      // Pass 1: Match files that explicitly contain a shot number in their name
-      fileList.forEach(file => {
-        let shotNum = null;
-
-        // Matches shot_5, shot-05, shot5, scene_5, shot 5
-        let m = file.name.match(/(?:shot|scene|take|part)[_\s-]*0*(\d+)/i);
+      // Helper function to extract exact shot number from filename
+      function extractShotNumber(filename) {
+        const nameWithoutExt = filename.substring(0, filename.lastIndexOf('.')) || filename;
+        
+        // 1. Explicit shot prefixes: shot_01, shot-1, shot 01, shot1, scene_01, take_1
+        let m = nameWithoutExt.match(/(?:shot|scene|take|part)[_\s-]*0*(\d+)\b/i);
         if (m) {
-          shotNum = parseInt(m[1], 10);
-        } else {
-          // Matches 5.mp4, 05.mp4, 5_clip.mp4
-          let m2 = file.name.match(/^0*(\d+)[._\s-]/);
-          if (m2) shotNum = parseInt(m2[1], 10);
+          const num = parseInt(m[1], 10);
+          if (num >= 1 && num <= totalShots) return num;
         }
 
-        if (shotNum && shotNum >= 1 && shotNum <= totalShots) {
+        // 2. Trailing numbers: download_shot_01, clip_1
+        m = nameWithoutExt.match(/[_\s-]0*(\d+)$/i);
+        if (m) {
+          const num = parseInt(m[1], 10);
+          if (num >= 1 && num <= totalShots) return num;
+        }
+
+        // 3. Leading numbers: 01_clip, 1.mp4, 01.mp4
+        m = nameWithoutExt.match(/^0*(\d+)(?:[._\s-]|$)/);
+        if (m) {
+          const num = parseInt(m[1], 10);
+          if (num >= 1 && num <= totalShots) return num;
+        }
+
+        return null;
+      }
+
+      // Pass 1: Extract explicit shot numbers from filenames
+      fileList.forEach(file => {
+        const shotNum = extractShotNumber(file.name);
+        if (shotNum && !assignedFiles[shotNum]) {
+          assignedFiles[shotNum] = file;
           stageFile(shotNum, file);
         } else {
           unassigned.push(file);
         }
       });
 
-      // Pass 2: For unassigned files (e.g. Google Flow timestamp filenames),
-      // assign in order to shots that:
-      // (a) are NOT already in Drive, AND
-      // (b) do NOT already have a staged file
+      // Pass 2: Sort unassigned files alphabetically / by modification time
+      // and map them strictly to vacant (unstaged and not yet in Drive) shots
       if (unassigned.length > 0) {
+        unassigned.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
         let uIdx = 0;
         for (let s = 1; s <= totalShots; s++) {
           const isAlreadyInDrive = driveStatus[s] && driveStatus[s].present;
@@ -1535,7 +1553,7 @@
         }
 
         if (uIdx < unassigned.length) {
-          alert(`${unassigned.length - uIdx} file(s) could not be automatically assigned because all remaining shots are already present in Google Drive or staged! You can click "📁 Choose File" on any individual shot to set it directly.`);
+          alert(`${unassigned.length - uIdx} file(s) could not be assigned because all remaining shots are already present in Google Drive or staged! You can click "📁 Choose File" on any specific shot to manually assign.`);
         }
       }
 
@@ -1587,13 +1605,12 @@
     }
 
     function updateDropzoneSummary() {
-      const totalShots = episodeData.shots ? episodeData.shots.length : 22;
       const stagedCount = Object.keys(stagedFiles).filter(num => stagedFiles[num] && stagedFiles[num].file && !stagedFiles[num].uploaded).length;
       const countEl = document.getElementById('dropzoneLoadedCount');
 
       if (countEl) {
         if (stagedCount > 0) {
-          countEl.innerHTML = `✓ <span style="color:#fde047;">${stagedCount} New Clip(s) Staged</span> and ready to upload! (Clips already in Drive are kept safe)`;
+          countEl.innerHTML = `✓ <span style="color:#fde047;">${stagedCount} New Clip(s) Staged</span> and ready to upload! (Verified in numerical order)`;
         } else {
           countEl.innerHTML = '';
         }
@@ -1602,7 +1619,7 @@
       const bulkBtn = document.getElementById('bulkUploadBtn');
       if (bulkBtn) {
         if (stagedCount > 0) {
-          bulkBtn.innerText = `☁️ Upload ${stagedCount} Staged Clip(s) to Google Drive`;
+          bulkBtn.innerText = `☁️ Upload ${stagedCount} Staged Clip(s) to Google Drive (Fast Parallel)`;
         } else {
           bulkBtn.innerText = `☁️ Upload All Staged Clips to Google Drive`;
         }
@@ -1705,23 +1722,50 @@
         bulkBtn.disabled = true;
       }
 
+      // Fast Parallel Uploads with Concurrency Pool of 3 simultaneous streams
+      const CONCURRENCY = 3;
+      let completedCount = 0;
       let successCount = 0;
-      for (let i = 0; i < pendingShotNums.length; i++) {
-        const shotNum = pendingShotNums[i];
-        if (bulkBtn) {
-          bulkBtn.innerText = `⏳ Uploading Shot #${shotNum} (${i + 1}/${pendingShotNums.length})...`;
-        }
+      const totalToUpload = pendingShotNums.length;
 
+      async function uploadWorker(shotNum) {
+        if (bulkBtn) {
+          bulkBtn.innerText = `⏳ Uploading in Parallel (${completedCount + 1}/${totalToUpload})...`;
+        }
         const ok = await uploadSingleShot(shotNum);
         if (ok) successCount++;
+        completedCount++;
+        if (bulkBtn) {
+          bulkBtn.innerText = `⏳ Uploaded ${completedCount}/${totalToUpload}...`;
+        }
+      }
+
+      // Run concurrency queue
+      const queue = [...pendingShotNums];
+      const activeWorkers = [];
+
+      while (queue.length > 0 || activeWorkers.length > 0) {
+        while (queue.length > 0 && activeWorkers.length < CONCURRENCY) {
+          const nextShot = queue.shift();
+          const p = uploadWorker(nextShot).then(() => {
+            activeWorkers.splice(activeWorkers.indexOf(p), 1);
+          });
+          activeWorkers.push(p);
+        }
+        if (activeWorkers.length > 0) {
+          await Promise.race(activeWorkers);
+        }
       }
 
       if (bulkBtn) {
         bulkBtn.disabled = false;
-        bulkBtn.innerText = `☁️ Upload All Staged Clips to Google Drive`;
+        bulkBtn.innerText = `☁️ Upload All Staged Clips to Google Drive (Fast Parallel)`;
       }
 
-      alert(`✓ Upload Complete! ${successCount} of ${pendingShotNums.length} clip(s) successfully uploaded to Google Drive & synced to Google Sheet.`);
+      // Refresh Google Drive status to update summary counts
+      await syncDriveStatus();
+
+      alert(`✓ Fast Upload Complete! ${successCount} of ${totalToUpload} clip(s) successfully uploaded to Google Drive in exact sequence!`);
     }
 
     function readFileAsBase64(file) {

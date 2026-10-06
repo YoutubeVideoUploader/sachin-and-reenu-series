@@ -8,6 +8,7 @@ sheet is blank, execution exits cleanly with no error and prevents video generat
 
 import os
 import sys
+import re
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 import json
@@ -90,14 +91,23 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
             set_github_output("ready", "false")
             return False
 
-    # Call Google Apps Script Web App GET endpoint
+    # Call Google Apps Script Web App GET endpoint with retry
     check_url = f"{gas_url}?action=check_status&episode={episode_num}"
     print(f"Checking Google Sheet checklist via: {check_url[:45]}...")
     
     try:
-        res = requests.get(check_url, timeout=30)
-        if res.status_code != 200:
-            print(f"Error fetching checklist: HTTP {res.status_code}")
+        res = None
+        for attempt in range(1, 4):
+            try:
+                res = requests.get(check_url, timeout=60)
+                if res.status_code == 200:
+                    break
+            except requests.exceptions.RequestException as re_err:
+                print(f"Attempt {attempt}/3 failed: {re_err}. Retrying in 3s...")
+                time.sleep(3)
+
+        if not res or res.status_code != 200:
+            print(f"Error fetching checklist: HTTP {res.status_code if res else 'Timeout'}")
             set_github_output("should_run", "false")
             set_github_output("ready", "false")
             return False
@@ -138,19 +148,32 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
         target_path = Path(target_dir)
         target_path.mkdir(parents=True, exist_ok=True)
         
-        for f in files:
-            shot_num = f.get("shot_number", 1)
-            file_id = f.get("file_id")
-            dl_url = f.get("download_url")
-            filename = f.get("filename") or f"shot_{shot_num:02d}.mp4"
+        # Sort files in numerical order by shot number
+        def get_shot_idx(file_obj):
+            fname = file_obj.get("filename") or file_obj.get("name") or ""
+            m = re.search(r'(?:shot|scene|take|part)[_\s-]*0*(\d+)', fname, re.IGNORECASE)
+            if m:
+                return int(m.group(1))
+            return file_obj.get("shot_number", 0)
+
+        sorted_files = sorted(files, key=get_shot_idx)
+
+        for f in sorted_files:
+            filename = f.get("filename") or f.get("name") or "shot.mp4"
+            shot_num = get_shot_idx(f) or 1
+            file_id = f.get("file_id") or f.get("id")
+            dl_url = f.get("download_url") or f.get("downloadUrl") or f.get("url")
             
+            if not file_id:
+                raise ValueError(f"No valid Google Drive file ID found in object: {f}")
+
             # Standardize destination filename: shot_01.mp4, shot_02.mp4...
             dest_file = target_path / f"shot_{shot_num:02d}.mp4"
-            print(f"  ⬇️  Downloading Shot {shot_num:02d} ({filename})...")
+            print(f"  ⬇️  Downloading Shot {shot_num:02d} ({filename}) [Drive ID: {file_id}]...")
             download_file_from_drive(file_id, dl_url, dest_file)
             print(f"     ✓ Saved to {dest_file.name} ({dest_file.stat().st_size} bytes)")
             
-        print(f"\n✓ All {len(files)} clips downloaded successfully!")
+        print(f"\n✓ All {len(sorted_files)} clips downloaded successfully!")
         set_github_output("should_run", "true")
         set_github_output("ready", "true")
         return True
