@@ -104,10 +104,12 @@ new_render_shots = """
 """
 
 # Replace episodeData in base_html
-updated_html = re.sub(r'let episodeData = \{.*?\};\n\n    let selectedFiles', f'let episodeData = {shots_json_str};\n\n    let selectedFiles', base_html, flags=re.DOTALL)
-
-# Replace renderShots function
-updated_html = re.sub(r'function renderShots\(\) \{.*?function switchTab', new_render_shots + "\n\n    function switchTab", updated_html, flags=re.DOTALL)
+updated_html = re.sub(
+    r'let episodeData = \{.*?\};\s+// Tracks current state',
+    f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
+    base_html,
+    flags=re.DOTALL
+)
 
 # Write to all 3 paths
 paths = [
