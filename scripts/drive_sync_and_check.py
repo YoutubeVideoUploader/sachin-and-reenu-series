@@ -18,7 +18,7 @@ import requests
 from pathlib import Path
 
 def download_file_from_drive(file_id, download_url, destination_path):
-    """Downloads a file from Google Drive using direct URL or export link."""
+    """Downloads a file from Google Drive using direct export link or download URL."""
     dest = Path(destination_path)
     dest.parent.mkdir(parents=True, exist_ok=True)
     
@@ -26,45 +26,45 @@ def download_file_from_drive(file_id, download_url, destination_path):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     }
     
-    # 1. Try provided direct download_url if available
-    if download_url:
-        try:
-            r = requests.get(download_url, headers=headers, stream=True, timeout=60)
-            if r.status_code == 200 and int(r.headers.get('content-length', 1000)) > 500:
-                with open(dest, 'wb') as f:
-                    for chunk in r.iter_content(chunk_size=1024*1024):
-                        if chunk:
-                            f.write(chunk)
-                if dest.stat().st_size > 5000:
-                    return True
-        except Exception as e:
-            print(f"Direct download attempt failed: {e}")
-
-    # 2. Fallback to Google Drive uc export link
-    drive_url = f"https://drive.google.com/uc?export=download&id={file_id}"
     session = requests.Session()
-    res = session.get(drive_url, headers=headers, stream=True, timeout=60)
     
-    # Check for virus scan confirmation token for larger files
-    token = None
-    for k, v in res.cookies.items():
-        if k.startswith('download_warning'):
-            token = v
-            break
-            
-    if token:
-        confirm_url = f"https://drive.google.com/uc?export=download&confirm={token}&id={file_id}"
-        res = session.get(confirm_url, headers=headers, stream=True, timeout=60)
-        
-    with open(dest, 'wb') as f:
+    # Priority 1: Google Drive export link (https://drive.google.com/uc?export=download&id=FILE_ID)
+    export_url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    res = session.get(export_url, headers=headers, stream=True, timeout=60)
+    
+    # Handle Google Drive virus scan warning for large files
+    if "text/html" in res.headers.get("Content-Type", ""):
+        token = None
+        for k, v in session.cookies.items():
+            if k.startswith("download_warning"):
+                token = v
+                break
+        if token:
+            confirm_url = f"https://drive.google.com/uc?export=download&confirm={token}&id={file_id}"
+            res = session.get(confirm_url, headers=headers, stream=True, timeout=60)
+
+    # Priority 2: Fallback to download_url if export link fails
+    if ("text/html" in res.headers.get("Content-Type", "") or res.status_code != 200) and download_url and "view" not in download_url:
+        try:
+            res = session.get(download_url, headers=headers, stream=True, timeout=60)
+        except Exception:
+            pass
+
+    with open(dest, "wb") as f:
         for chunk in res.iter_content(chunk_size=1024*1024):
             if chunk:
                 f.write(chunk)
                 
-    if dest.exists() and dest.stat().st_size > 5000:
+    # Verify file is a valid non-empty video file (> 50KB) and not an HTML error page
+    if dest.exists() and dest.stat().st_size > 50000:
+        with open(dest, "rb") as check_f:
+            header = check_f.read(16)
+            if b"html" in header.lower() or b"<!doctype" in header.lower():
+                raise RuntimeError(f"Downloaded file for ID {file_id} is an HTML error page, not a video!")
         return True
     else:
-        raise RuntimeError(f"Downloaded file for ID {file_id} is corrupt or empty ({dest.stat().st_size if dest.exists() else 0} bytes).")
+        file_size = dest.stat().st_size if dest.exists() else 0
+        raise RuntimeError(f"Downloaded file for ID {file_id} is corrupt or too small ({file_size} bytes).")
 
 def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
     """
