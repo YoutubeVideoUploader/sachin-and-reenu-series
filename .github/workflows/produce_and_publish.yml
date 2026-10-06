@@ -14,6 +14,10 @@ on:
         description: "Force run even if shots are pending in Sheet"
         type: boolean
         default: false
+      advance_to_next:
+        description: "Advance episode: generate new screenplay & Google Flow prompts now"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,6 +52,7 @@ jobs:
       # If sheet is blank or any shot is missing -> STOP cleanly.
       # -------------------------------------------------------------
       - name: 5. Verify Video Checklist (Tab 3) & Download Clips from Drive
+        if: ${{ !inputs.advance_to_next }}
         id: drive_check
         env:
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
@@ -60,7 +65,7 @@ jobs:
       # Inpainting removal on all clips before concatenation
       # -------------------------------------------------------------
       - name: 6. Remove Gemini Watermarks from All Video Clips
-        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) }}
         run: |
           echo "Removing Gemini sparkle watermarks from all clips..."
           python scripts/watermark_remover.py --input_dir uploaded_shots --output_dir clean_shots
@@ -70,7 +75,7 @@ jobs:
       # Preserves Malayalam voice dialogue, mixes romantic BGM @ vol 0.32
       # -------------------------------------------------------------
       - name: 7. Master Video & Audio Merge
-        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) }}
         run: |
           echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4
@@ -80,7 +85,7 @@ jobs:
       # Stamps exact Season & Episode numbers into the tape boxes
       # -------------------------------------------------------------
       - name: 7b. Generate Dynamic Reel Cover Thumbnail
-        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) }}
         run: |
           echo "Stamping Season & Episode numbers onto cover thumbnail..."
           python -c "
@@ -96,7 +101,7 @@ jobs:
       # STEP 8: INSTAGRAM PUBLISHING
       # -------------------------------------------------------------
       - name: 8. Publish to Instagram Reels
-        if: ${{ (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
+        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
@@ -113,7 +118,7 @@ jobs:
       # Writes next story, 20-22 JSON prompts, updates 3-tab Sheet & website!
       # -------------------------------------------------------------
       - name: 9. Generate Next Episode Screenplay & Update Google Sheets + Website
-        if: ${{ (steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run }}
+        if: ${{ inputs.advance_to_next || ((steps.drive_check.outputs.should_run == 'true' || inputs.force_run) && !inputs.dry_run) }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
@@ -127,7 +132,7 @@ jobs:
       # STEP 10: COMMIT UPDATED STORY & WEBSITE PROMPTS TO GITHUB
       # -------------------------------------------------------------
       - name: 10. Commit Updated Episode State & Website to GitHub
-        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        if: ${{ inputs.advance_to_next || steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
