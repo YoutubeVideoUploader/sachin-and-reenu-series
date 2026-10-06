@@ -2,8 +2,8 @@
   "episode_number": 1,
   "title_malayalam": "തിരിച്ചുവരവ്",
   "title_english": "The Homecoming",
-  "synopsis": "After two long years of waiting, Reenu stands anxiously at the Kochi CIAL international arrival terminal accompanied by her close friend Amal. As her anxiety peaks, Amal breaks the tension with some playful Kochi slang. Suddenly, the automatic glass doors slide open and Sachin steps out, leading to an incredibly tender, tearful, and emotional reunion. However, as they embrace, Sachin's expression shifts to subtle anxiety as he tightly clutches a mysterious leather pouch from London.",
-  "cliffhanger": "What is inside the secret London leather pouch, and why does Sachin look so nervous while holding Reenu?",
+  "synopsis": "After two long years of waiting, Reenu stands anxiously with her friend Amal at the Kochi CIAL international arrival terminal. As her heart races with nervous anticipation, Amal playfully tries to calm her down. Suddenly, the automatic glass doors slide open, and Sachin steps out. Spotting Reenu, he drops everything to embrace her in a deeply emotional, tearful reunion. However, as they hold each other tight, a nervous look crosses Sachin's face as he tightly grips a mysterious leather pouch from London.",
+  "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -13,8 +13,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "രണ്ട് വർഷത്തെ കാത്തിരിപ്പ്... കൊച്ചി എയർപോർട്ടിലെ ആ തിരക്കിനിടയിൽ റീനുവിന്റെ നെഞ്ചിടിപ്പ് കൂടുകയാണ്.",
-      "action_summary": "Close-up of Reenu standing behind the arrival barrier, her fingers nervously fidgeting. The background shows a bustling Kochi CIAL terminal with warm, glowing lights.",
+      "dialogue_malayalam": "രണ്ടു നീണ്ട വർഷത്തെ കാത്തിരിപ്പ്. കൊച്ചി എയർപോർട്ടിൽ റീനുവിന്റെ നെഞ്ചിടിപ്പ് കൂടുകയാണ്.",
+      "action_summary": "Reenu stands behind the steel arrival barrier at Kochi Airport, looking anxiously at the exit doors with trembling hands.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -22,21 +22,21 @@
         "characters_present": [
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport international arrival terminal lobby, bright warm modern interior with stylized glass panels and steel barriers.",
-        "camera": "Close-up shot focusing on Reenu's expressive face, shallow depth of field, soft bokeh background of airport lights.",
-        "action": "Reenu looks around anxiously, biting her lower lip slightly, her fingers nervously twisting the edge of her pastel camouflage t-shirt.",
+        "location": "Kochi CIAL airport international arrival terminal, bustling crowd behind the silver barrier, bright warm indoor lighting, modern airport architecture",
+        "camera": "Medium close-up shot, eye-level, tracking slightly as she nervously fiddles with her silver wrist watch",
+        "action": "Reenu looks around with trembling anticipation, her eyes shimmering with nervous excitement. Reenu's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Reenu. This is an external voiceover narration.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "രണ്ട് വർഷത്തെ കാത്തിരിപ്പ്... കൊച്ചി എയർപോർട്ടിലെ ആ തിരക്കിനിടയിൽ റീനുവിന്റെ നെഞ്ചിടിപ്പ് കൂടുകയാണ്."
+          "line": "രണ്ടു നീണ്ട വർഷത്തെ കാത്തിരിപ്പ്. കൊച്ചി എയർപോർട്ടിൽ റീനുവിന്റെ നെഞ്ചിടിപ്പ് കൂടുകയാണ്."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient airport foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -44,8 +44,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Amal",
-      "dialogue_malayalam": "എന്റെ കൊച്ചേ, നീ ഇങ്ങനെ പതറാതെ! നമ്മടെ ചെക്കൻ ദാ ഇപ്പൊ വരും, നീ ഒന്ന് കൂളാവ്!",
-      "action_summary": "Over-the-shoulder shot of Amal turning to Reenu with a reassuring, playful smile, gesturing with his hands in classic Kochi style.",
+      "dialogue_malayalam": "എടീ റീനു, ഇങ്ങനെ വിറയ്ക്കാതെ. അവൻ ദാ ഇപ്പോ വരും.",
+      "action_summary": "Amal stands next to Reenu, smiling warmly and gesturing with his hand to calm her down.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -53,25 +53,25 @@
         "characters_present": [
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           },
           {
             "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Mustard yellow polo t-shirt with beige chinos."
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport international arrival terminal lobby, steel barriers.",
-        "camera": "Over-the-shoulder medium shot from behind Reenu's shoulder, focusing on Amal's friendly, animated face.",
-        "action": "Amal smiles warmly, patting Reenu on her shoulder playfully to comfort her, his expression full of cheerful Kochi energy.",
+        "location": "Kochi CIAL airport international arrival terminal, crowd and barrier in background",
+        "camera": "Medium over-the-shoulder shot looking from behind Reenu's shoulder towards Amal",
+        "action": "Amal talks to Reenu with a reassuring, friendly smile, his mouth moving in perfect sync with his words. Reenu listens silently with a nervous half-smile, her mouth strictly closed.",
         "dialogue": {
           "speaker": "Amal",
-          "voice_persona": "Youthful energetic Kochi male voice, friendly, casual, slightly teasing tone, natural Kochi slang cadence",
+          "voice_persona": "Amal: 24yo friendly Malayali boy, warm, energetic, lighthearted tone, clear and supportive",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "എന്റെ കൊച്ചേ, നീ ഇങ്ങനെ പതറാതെ! നമ്മടെ ചെക്കൻ ദാ ഇപ്പൊ വരും, നീ ഒന്ന് കൂളാവ്!"
+          "line": "എടീ റീനു, ഇങ്ങനെ വിറയ്ക്കാതെ. അവൻ ദാ ഇപ്പോ വരും."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Only Amal's mouth moves. Reenu's mouth remains closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient airport hubbub foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -79,8 +79,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "എടാ അമലാ, എനിക്ക് കൈയും കാലും വിറയ്ക്കുന്നു... രണ്ട് കൊല്ലത്തിന് ശേഷം നേരിട്ട് കാണുമ്പോഴുള്ള ഒരു ഇതാണ്!",
-      "action_summary": "Medium close-up of Reenu looking at Amal with wide, expressive eyes full of anticipation and sweet vulnerability.",
+      "dialogue_malayalam": "രണ്ടു വർഷമായി അമൽ ഞാൻ അവനെ നേരിട്ട് കണ്ടിട്ട്. എനിക്ക് ശ്വാസം മുട്ടുന്ന പോലെ തോന്നുന്നു.",
+      "action_summary": "Reenu looks at Amal with wide, emotional eyes, clutching her chest slightly in nervous excitement.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -88,78 +88,91 @@
         "characters_present": [
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport international arrival terminal lobby.",
-        "camera": "Medium close-up, tracking slightly as Reenu shakes her hands in a cute, cartoonish gesture of nervousness.",
-        "action": "Reenu looks at Amal, her face expressive, showcasing a mix of intense happiness and cute anxiety, her eyes shimmering.",
+        "location": "Kochi CIAL airport international arrival terminal",
+        "camera": "Medium close-up shot on Reenu, Amal partially visible in the frame",
+        "action": "Reenu speaks with a trembling, emotionally vulnerable expression, her mouth moving in sync with her dialogue. Amal listens silently with a caring look, his mouth strictly closed.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Sweet, expressive 22yo South Indian female voice, warm, slightly high-pitched with nervous excitement, natural Kochi slang cadence",
+          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet, gentle, emotionally vulnerable, slightly trembling with nervous excitement",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "എടാ അമലാ, എനിക്ക് കൈയും കാലും വിറയ്ക്കുന്നു... രണ്ട് കൊല്ലത്തിന് ശേഷം നേരിട്ട് കാണുമ്പോഴുള്ള ഒരു ഇതാണ്!"
+          "line": "രണ്ടു വർഷമായി അമൽ ഞാൻ അവനെ നേരിട്ട് കണ്ടിട്ട്. എനിക്ക് ശ്വാസം മുട്ടുന്ന പോലെ തോന്നുന്നു."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Only Reenu's mouth moves. Amal's mouth remains closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
       "shot_number": 4,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ഒടുവിൽ, ആ കാത്തിരിപ്പിന് അറുതി വരുത്തിക്കൊണ്ട് ആ ഗ്ലാസ്സ് വാതിലുകൾ തുറക്കപ്പെട്ടു.",
-      "action_summary": "Wide shot of the automatic glass sliding doors of the international arrivals gate opening, glowing with bright warm light from inside.",
+      "character": "Amal",
+      "dialogue_malayalam": "ദാ നോക്ക്! ആ ഗ്ലാസ്സ് ഡോർ തുറക്കുന്നുണ്ട്. നിന്റെ ആളാണോന്ന് നോക്ക്!",
+      "action_summary": "Amal points excitedly over the barrier towards the sliding automatic doors.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [],
-        "location": "Kochi CIAL airport international arrival sliding glass doors, sleek modern architecture.",
-        "camera": "Wide cinematic shot, low angle looking up at the sliding glass doors as they smoothly open.",
-        "action": "The large frosted glass doors with green accents slide open, revealing a bright corridor with silhouettes of returning passengers.",
+        "perspective": "Amal",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
+          }
+        ],
+        "location": "Kochi CIAL airport international arrival terminal",
+        "camera": "Medium shot, capturing both Amal pointing and Reenu quickly turning her head to look",
+        "action": "Amal speaks excitedly while pointing, his mouth moving in sync. Reenu instantly turns her head with wide eyes, her mouth closed in suspense.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Amal",
+          "voice_persona": "Amal: 24yo friendly Malayali boy, warm, energetic, lighthearted tone, clear and supportive",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ഒടുവിൽ, ആ കാത്തിരിപ്പിന് അറുതി വരുത്തിക്കൊണ്ട് ആ ഗ്ലാസ്സ് വാതിലുകൾ തുറക്കപ്പെട്ടു."
+          "line": "ദാ നോക്ക്! ആ ഗ്ലാസ്സ് ഡോർ തുറക്കുന്നുണ്ട്. നിന്റെ ആളാണോന്ന് നോക്ക്!"
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Only Amal's mouth moves. Reenu's mouth remains closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
       "shot_number": 5,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "റീനൂട്ടീ... ദാ വന്നെടാ നിന്റെ സച്ചിൻ!",
-      "action_summary": "Medium shot of Sachin stepping through the doors, holding a trolley handle, his eyes widening in pure joy as he spots Reenu in the crowd.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "ഒടുവിൽ ആ നിമിഷം എത്തിച്ചേർന്നു. ആ ഗ്ലാസ്സ് വാതിലുകൾക്കിടയിലൂടെ അവൻ നടന്നു വന്നു.",
+      "action_summary": "The large frosted-glass automatic doors slide open, and Sachin walks through, pushing a silver luggage trolley.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Sachin",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
             "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport arrival gates corridor.",
-        "camera": "Tracking shot moving backward as Sachin steps forward, capturing his energetic and joyous facial expression.",
-        "action": "Sachin stops, lets go of his trolley, his face lighting up with an incredibly warm, boyish cartoon smile, waving his hand enthusiastically.",
+        "location": "Kochi CIAL airport international arrival terminal, glass automatic doors sliding open",
+        "camera": "Wide cinematic tracking shot, low angle, showing Sachin stepping through the sliding doors with his trolley",
+        "action": "Sachin walks out, looking around the crowded hall. His lips remain completely closed. Absolutely NO mouth movement or speaking animation on Sachin. This is an external voiceover narration.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Boyish, warm, deeply affectionate 24yo South Indian male voice, filled with emotional excitement, authentic Kochi dialect",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "റീനൂട്ടീ... ദാ വന്നെടാ നിന്റെ സച്ചിൻ!"
+          "line": "ഒടുവിൽ ആ നിമിഷം എത്തിച്ചേർന്നു. ആ ഗ്ലാസ്സ് വാതിലുകൾക്കിടയിലൂടെ അവൻ നടന്നു വന്നു."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. Sachin does NOT speak. His lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and foley sound of sliding doors and airport chatter only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -167,8 +180,39 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "730 ദിവസത്തെ വിരഹമാണ് ഒറ്റ നിമിഷം കൊണ്ട് ഇല്ലാതായത്.",
-      "action_summary": "Extreme close-up of Reenu's eyes glistening with happy tears, reflecting the warm airport lights and Sachin's distant figure.",
+      "dialogue_malayalam": "ആയിരക്കണക്കിന് മുഖങ്ങൾക്കിടയിൽ നിന്നും സച്ചിന്റെ കണ്ണുകൾ അവളെ മാത്രം തിരഞ്ഞു.",
+      "action_summary": "Sachin stops walking, scanning the crowd, and his eyes suddenly lock onto Reenu.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "location": "Kochi CIAL airport international arrival terminal",
+        "camera": "Tight close-up shot on Sachin's face, shallow depth of field, background blurred",
+        "action": "Sachin's eyes widen with joy and a soft, beautiful, emotional smile spreads across his face as he spots Reenu. His lips remain completely closed. Absolutely NO mouth movement or speaking animation.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "ആയിരക്കണക്കിന് മുഖങ്ങൾക്കിടയിൽ നിന്നും സച്ചിന്റെ കണ്ണുകൾ അവളെ മാത്രം തിരഞ്ഞു."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. Sachin does NOT speak. His lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+      }
+    },
+    {
+      "shot_number": 7,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "അവനെ കണ്ടതും റീനുവിന്റെ കണ്ണുകൾ നിറഞ്ഞൊഴുകി.",
+      "action_summary": "Reenu gasps as her eyes fill with tears of joy, her hand flying to her mouth in pure emotion.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -176,52 +220,21 @@
         "characters_present": [
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport arrival lobby.",
-        "camera": "Extreme close-up on Reenu's big hazel-brown cartoon eyes, capturing the subtle tear welling up, beautiful cinematic lighting.",
-        "action": "Reenu's eyes widen, gasping softly, her expression transitioning from nervous anxiety to overwhelming joy and relief.",
+        "location": "Kochi CIAL airport international arrival terminal behind the metal barrier",
+        "camera": "Extreme close-up on Reenu's eyes, glistening with tears, slowly panning down to her emotional expression",
+        "action": "Reenu's eyes fill with tears, a tear rolling down her soft cartoon cheek. Her lips remain completely closed beneath her hand. Absolutely NO mouth movement or speaking animation.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "730 ദിവസത്തെ വിരഹമാണ് ഒറ്റ നിമിഷം കൊണ്ട് ഇല്ലാതായത്."
+          "line": "അവനെ കണ്ടതും റീനുവിന്റെ കണ്ണുകൾ നിറഞ്ഞൊഴുകി."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
-      }
-    },
-    {
-      "shot_number": 7,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ... നീ വന്നോടാ!",
-      "action_summary": "Medium shot of Reenu pushing past the barrier and running forward with pure joy, her wavy hair bouncing dynamically.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Reenu",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Kochi CIAL airport arrival lobby near barriers.",
-        "camera": "Medium tracking shot keeping pace with Reenu as she runs forward, background motion blur.",
-        "action": "Reenu runs forward with a radiant smile, tears of happiness spilling over her soft cartoon cheeks, her arms open.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Sweet, expressive 22yo South Indian female voice, choked with happy tears, highly emotional, authentic Kochi dialect",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ... നീ വന്നോടാ!"
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. Reenu does NOT speak. Her lips remain completely closed. Sound of a soft emotional gasp foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -229,69 +242,69 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ആലിംഗനത്തിന്റെ ആ ചൂടിൽ അവർ ലോകം മറന്നു.",
-      "action_summary": "Slow-motion medium shot of Reenu leaping into Sachin's arms. He catches her, spinning slightly as they embrace tightly in the middle of the terminal.",
+      "dialogue_malayalam": "പിന്നീട് ഒന്നും ചിന്തിക്കാൻ ഉണ്ടായിരുന്നില്ല. കാലങ്ങൾ അകറ്റി നിർത്തിയ ദൂരം നിമിഷങ്ങൾ കൊണ്ട് ഇല്ലാതായി.",
+      "action_summary": "Sachin lets go of his luggage trolley and runs forward past the barrier towards Reenu.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport arrival terminal lobby, beautiful cinematic lighting.",
-        "camera": "Medium shot panning slowly around them in a full circle, dramatic slow-motion effect.",
-        "action": "Sachin lifts Reenu slightly as they embrace tightly, both closing their eyes in pure relief and joy. Reenu's hands are wrapped around his neck.",
+        "location": "Kochi CIAL airport international arrival terminal, near the exit barrier",
+        "camera": "Medium wide dynamic tracking shot, following Sachin as he runs towards Reenu",
+        "action": "Sachin runs forward with an open-armed gesture, eyes locked on Reenu. Reenu steps forward past the barrier to meet him. Both characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ആലിംഗനത്തിന്റെ ആ ചൂടിൽ അവർ ലോകം മറന്നു."
+          "line": "പിന്നീട് ഒന്നും ചിന്തിക്കാൻ ഉണ്ടായിരുന്നില്ല. കാലങ്ങൾ അകറ്റി നിർത്തിയ ദൂരം നിമിഷങ്ങൾ കൊണ്ട് ഇല്ലാതായി."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. No character speaks. Lips are closed. Foley sound of running footsteps and airport environment. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
       "shot_number": 9,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "എന്റെ കൊച്ചേ, ഇനി നമ്മൾ ഒപ്പമുണ്ടാകും. സെറ്റല്ലേ?",
-      "action_summary": "Close-up of Sachin resting his chin on Reenu's shoulder during the embrace, his eyes soft and filled with love, whispering to her.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "ആ കെട്ടിപ്പിടുത്തത്തിൽ അവരുടെ രണ്ടു വർഷത്തെ സങ്കടങ്ങളും സന്തോഷമായി മാറി.",
+      "action_summary": "Sachin and Reenu embrace tightly in the middle of the terminal, Reenu burying her face into his shoulder.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Sachin",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport arrival terminal lobby.",
-        "camera": "Tight close-up shot over Reenu's shoulder, focusing on Sachin's tender, emotional face.",
-        "action": "Sachin hugs Reenu tightly, a gentle, emotional tear tracing down his cheek as he whispers into her ear.",
+        "location": "Kochi CIAL airport international arrival terminal",
+        "camera": "Medium close circular tracking shot, rotating slowly around the embracing couple",
+        "action": "Sachin holds Reenu tightly, his eyes closed in deep relief. Reenu clings to him, crying tears of happiness on his shoulder. Both characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Boyish, warm, deeply affectionate 24yo South Indian male voice, filled with emotional excitement, authentic Kochi dialect",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "എന്റെ കൊച്ചേ, ഇനി നമ്മൾ ഒപ്പമുണ്ടാകും. സെറ്റല്ലേ?"
+          "line": "ആ കെട്ടിപ്പിടുത്തത്തിൽ അവരുടെ രണ്ടു വർഷത്തെ സങ്കടങ്ങളും സന്തോഷമായി മാറി."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. No character speaks. Lips are closed. Clean voiceover audio and natural ambient foley of a quiet emotional sigh. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -299,34 +312,34 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പക്ഷേ, ആ സന്തോഷത്തിനിടയിലും സച്ചിന്റെ കൈകൾ ആ ലണ്ടൻ പൗച്ചിലേക്ക് നീണ്ടു... എന്താണ് അവൻ ഒളിപ്പിക്കുന്നത്?",
-      "action_summary": "Over-the-shoulder close-up behind Reenu's back. Sachin's right hand, which is around her waist, is tightly clutching a small, mysterious vintage leather pouch protruding from his flannel pocket. His eyes turn slightly anxious.",
+      "dialogue_malayalam": "പക്ഷേ, ആ സന്തോഷത്തിനിടയിലും സച്ചിന്റെ കയ്യിലെ ആ രഹസ്യ ലെതർ പൗച്ച് ഒരു ചോദ്യചിഹ്നമായി മാറി.",
+      "action_summary": "Close-up over Reenu's shoulder. Sachin embraces her, but his hand behind her back tightly clutches a mysterious, vintage dark leather pouch. His expression turns subtly nervous and anxious.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
-        "location": "Kochi CIAL airport arrival terminal lobby.",
-        "camera": "Close-up focusing on Sachin's hand clutching a small brown vintage leather pouch with a mysterious seal, while the other hand holds Reenu. Slowly pan up to Sachin's face, revealing a sudden tense, nervous expression in his eyes.",
-        "action": "While holding Reenu close, Sachin's fingers nervously squeeze the leather pouch hidden behind her back. His warm smile fades into a look of quiet apprehension.",
+        "location": "Kochi CIAL airport international arrival terminal",
+        "camera": "Over-the-shoulder medium close-up, focusing on Sachin's hand clutching the dark leather pouch behind Reenu's back, then tilting up slightly to show his nervous, worried eyes looking away",
+        "action": "While Reenu holds him tightly, Sachin's fingers squeeze the mysterious leather pouch. His eyes shift nervously with a secret worry. Both characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "പക്ഷേ, ആ സന്തോഷത്തിനിടയിലും സച്ചിന്റെ കൈകൾ ആ ലണ്ടൻ പൗച്ചിലേക്ക് നീണ്ടു... എന്താണ് അവൻ ഒളിപ്പിക്കുന്നത്?"
+          "line": "പക്ഷേ, ആ സന്തോഷത്തിനിടയിലും സച്ചിന്റെ കയ്യിലെ ആ രഹസ്യ ലെതർ പൗച്ച് ഒരു ചോദ്യചിഹ്നമായി മാറി."
         },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. No character speaks. Lips are closed. Sound of leather creaking slightly under his grip foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and foley only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     }
   ]

@@ -17,6 +17,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 import json
+import re
 import time
 import argparse
 import requests
@@ -29,10 +30,10 @@ except ImportError:
 from google import genai
 from google.genai import types
 
-# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like)
-DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
-DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
-DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Mustard yellow polo t-shirt with beige chinos."
+# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like, 100% LOCKED ATTIRE)
+DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
 
 NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayali female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
 
@@ -45,13 +46,13 @@ def get_gemini_client():
 def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger, next_ep_premise=""):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
-    with female narrator and authentic Kochi slang character conversations.
+    with locked character dress, strict lip-movement rules, female narrator, and pure Malayalam dialogue.
     """
     next_ep_num = current_ep_num + 1
     client = get_gemini_client()
     
     print(f"\n=======================================================")
-    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL - KOCHI SLANG)")
+    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL)")
     print(f"=======================================================")
     print(f"Previous Episode Summary: {previous_story[:100]}...")
     print(f"Cliffhanger: {cliffhanger}")
@@ -60,9 +61,13 @@ def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger
         "You are an acclaimed Malayalam romantic film director and 3D animated series showrunner. "
         "You write punchy, fast-paced, emotionally rich 1-MINUTE vertical episodes (Reels format) for the 3D animated cartoon series 'Sachin & Reenu'. "
         "Characters are strictly stylized 3D cartoon animation characters in high-end Disney Pixar / DreamWorks style. Real or human-like figures are strictly prohibited! "
-        "DIALOGUE DIALECT: All spoken conversations between Sachin, Reenu, and Amal MUST be in authentic, casual, youthful KOCHI SLANG (കൊച്ചിൻ സ്ലാങ്ങ് / Kochi youth dialect like in 'Premalu' and 'Kumbalangi Nights'). Use natural Kochi expressions like 'മച്ചാനെ', 'എന്തൂട്ടാടാ', 'സീനാടാ', 'അളിയാ', 'എന്റെ കൊച്ചേ', 'പിന്നല്ലാതെ', 'സെറ്റ്', 'പൊളി', 'ഒന്ന് നിർത്തെടാ' etc. "
+        "LOCKED ATTIRE: Character clothing must be 100% consistent across every shot without exception. "
+        "LIP SYNC & NARRATION RULES (CRITICAL): "
+        "1. When the Third-Person Narrator is speaking (voice-over), NO CHARACTER'S MOUTH OR LIPS MUST MOVE. Characters' lips must be strictly closed with natural subtle emotional reactions. Characters must NOT speak the narrator's line! "
+        "2. When characters converse, ONLY the speaking character's mouth moves in lip sync. The listening character's mouth remains closed. "
+        "DIALOGUE STYLE: Use natural, standard, emotionally genuine conversational Malayalam (ശുദ്ധമായ സ്വാഭാവിക മലയാളം). Do NOT force slang. Focus on genuine romantic warmth, emotional vulnerability, and touching expressions. "
         "NARRATOR VOICE: The third-person narrator is a young, expressive female narrator with a melodic, charming Malayalam storytelling voice. "
-        "Every episode must feel deeply emotional, charming, culturally authentic to Kochi, and end on an irresistible cliffhanger. "
+        "AUDIO RESTRICTION: STRICTLY NO BACKGROUND MUSIC, NO INSTRUMENTAL BGM, NO MUSIC SCORE. Clean voice audio and natural ambient foley effects only. "
         "You will output ONLY valid JSON according to the specified schema."
     )
 
@@ -72,29 +77,33 @@ Write the full screenplay and shot-by-shot Google Flow JSON prompts for Episode 
 CONTEXT FROM PREVIOUS EPISODE {current_ep_num}:
 Story: {previous_story}
 Cliffhanger: {cliffhanger}
-Premise/Hook for Episode {next_ep_num}: {next_ep_premise or 'Stepping outside Kochi airport into the sudden monsoon rain. An intimate car ride with Amal driving, while Sachin hesitates to reveal his UK secret.'}
+Premise/Hook for Episode {next_ep_num}: {next_ep_premise or 'Reenu and Amal wait at Kochi CIAL airport arrival gates. An emotional reunion as Sachin arrives, but he clutches a secret London pouch.'}
 
-CRITICAL RULES:
+CRITICAL PRODUCTION RULES:
 1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
 2. NUMBER OF SHOTS: STRICTLY 10 TO 11 SHOTS (No more than 11 shots, no fewer than 10 shots).
 3. DURATION LOGIC PER SHOT:
    - Fast reaction / cut: "5s" (5 seconds)
    - Dialogue exchange / scenic moment: "6s" (6 seconds)
    - Total sum of shot durations MUST be between 55s and 65s (~1 minute).
-4. STRICT ANIMATION CHARACTER REQUIREMENT:
+4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED ATTIRE:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
-   - Character visual DNA must be strictly followed:
+   - Character visual DNA and locked clothing must be followed 100% identically:
      • Reenu Visual DNA: "{DNA_REENU}"
      • Sachin Visual DNA: "{DNA_SACHIN}"
      • Amal Visual DNA: "{DNA_AMAL}"
-5. KOCHI SLANG & FEMALE NARRATOR (MANDATORY):
-   - All dialogue between Sachin, Reenu, and Amal MUST be in authentic, lively KOCHI SLANG (കൊച്ചിൻ സ്ലാങ്ങ്) written in Malayalam script (മലയാളം ലിപി).
-   - The Third-Person Narrator voice MUST strictly be a young female narrator ('{NARRATOR_VOICE}').
-   - For every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-6. NEGATIVE PROMPT:
-   - Must strictly include: "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
-7. STYLE STRING:
+5. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
+   - NARRATION SHOTS: If the Third-Person Narrator is speaking, character lips MUST BE COMPLETELY CLOSED. In the 'action' and 'audio_directive', explicitly state: "Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration."
+   - CONVERSATION SHOTS: Only the designated speaking character moves their mouth. The listening character's mouth remains closed.
+6. EMOTIONAL INTENSITY & STANDARD MALAYALAM:
+   - Dialogue must be in natural, heartfelt, conversational Malayalam written in Malayalam script (മലയാളം ലിപി). Do NOT include forced slang.
+   - Emphasize authentic romantic and emotional expressions: trembling hands, shimmering eyes, radiant smiles, hesitant nervous glances.
+7. ABSOLUTELY NO BACKGROUND MUSIC (BGM):
+   - In every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+8. NEGATIVE PROMPT:
+   - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+9. STYLE STRING:
    - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
 Output JSON structure:
@@ -127,7 +136,7 @@ Output JSON structure:
         ],
         "location": "...",
         "camera": "...",
-        "action": "...",
+        "action": "Reenu looks around with trembling anticipation. Reenu's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Reenu. This is an external voiceover narration.",
         "dialogue": {{
           "speaker": "Third-Person Narrator",
           "voice_persona": "{NARRATOR_VOICE}",
@@ -135,8 +144,8 @@ Output JSON structure:
           "script": "മലയാളം ലിപി",
           "line": "..."
         }},
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }}
     }}
   ]
@@ -144,8 +153,17 @@ Output JSON structure:
 """
 
     candidate_models = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-flash-latest"]
-    response = None
+    parsed_data = None
     last_err = None
+
+    def clean_json_text(raw_text):
+        text = raw_text.strip()
+        if text.startswith("```"):
+            text = re.sub(r"^```(?:json)?\s*", "", text)
+            text = re.sub(r"\s*```$", "", text)
+        # Remove trailing commas
+        text = re.sub(r',\s*([\]\}])', r'\1', text)
+        return text
 
     for model_name in candidate_models:
         print(f"Generating episode with {model_name}...")
@@ -157,25 +175,31 @@ Output JSON structure:
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
                         response_mime_type="application/json",
-                        temperature=0.8
+                        temperature=0.7
                     )
                 )
                 if response and response.text:
-                    break
+                    try:
+                        clean_text = clean_json_text(response.text)
+                        parsed_data = json.loads(clean_text)
+                        if "shots" in parsed_data and len(parsed_data["shots"]) > 0:
+                            break
+                    except Exception as je:
+                        print(f"  Attempt {attempt + 1} JSON parse error: {je}")
             except Exception as e:
                 last_err = e
                 print(f"  Attempt {attempt + 1} with {model_name} failed: {e}")
-                time.sleep(2)
-        if response and response.text:
+                time.sleep(3)
+        if parsed_data:
             break
 
-    if not response or not response.text:
-        raise RuntimeError(f"All Gemini models failed to generate screenplay. Last error: {last_err}")
+    if not parsed_data:
+        raise RuntimeError(f"All Gemini models failed to generate valid screenplay JSON. Last error: {last_err}")
 
-    data = json.loads(response.text)
+    data = parsed_data
     
     # Calculate exact total runtime
-    total_sec = sum(s.get("duration_seconds", 4) for s in data["shots"])
+    total_sec = sum(s.get("duration_seconds", 6) for s in data["shots"])
     data["calculated_total_seconds"] = total_sec
     data["calculated_runtime_display"] = f"{total_sec // 60}m {total_sec % 60:02d}s"
     data["total_shots"] = len(data["shots"])
