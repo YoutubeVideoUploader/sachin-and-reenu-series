@@ -26,6 +26,45 @@ const TAB_SEASON_ARC = "Season_Story_Arc";
 const TAB_CHARACTERS = "Character_Registry";
 
 /**
+ * Creates custom studio menu when Google Spreadsheet is opened.
+ */
+function onOpen() {
+  try {
+    SpreadsheetApp.getUi()
+      .createMenu("🎬 Studio Controls")
+      .addItem("🔄 Sync Drive Uploads Now", "menuSyncDrive")
+      .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
+      .addToUi();
+  } catch (e) {}
+}
+
+/**
+ * One-click menu sync for current active episode.
+ */
+function menuSyncDrive() {
+  const ss = getStudioSpreadsheet();
+  let epNum = 1;
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  if (storySheet) {
+    const data = storySheet.getDataRange().getValues();
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][2] === "Active") {
+        epNum = parseInt(data[i][0], 10);
+        break;
+      }
+    }
+  }
+  const result = syncDriveToChecklist(epNum);
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      `Drive Synced: ${result.present_shots} / ${result.total_shots} shots found in 'Episode' folder!`,
+      "Sync Complete",
+      5
+    );
+  } catch (e) {}
+}
+
+/**
  * Gets the active spreadsheet or falls back to openById.
  */
 function getStudioSpreadsheet() {
@@ -379,21 +418,39 @@ function initVideoChecklist(episodeNum, totalShots, episodeTitle) {
 }
 
 /**
- * Gets or creates the Google Drive folder for an episode.
+ * Gets the single Google Drive folder 'Episode' for all video uploads.
+ * All episode clips are stored in this ONE folder ('Episode').
+ * No separate folders are created for each episode.
  */
 function getEpisodeDriveFolder(episodeNum) {
+  // 1. Search for existing folder named "Episode" anywhere in Drive
+  let iter = DriveApp.getFoldersByName("Episode");
+  if (iter.hasNext()) {
+    return iter.next();
+  }
+  
+  // 2. Check inside DRIVE_ROOT_FOLDER if present
   let rootIter = DriveApp.getFoldersByName(DRIVE_ROOT_FOLDER);
-  let rootFolder = rootIter.hasNext() ? rootIter.next() : DriveApp.createFolder(DRIVE_ROOT_FOLDER);
+  if (rootIter.hasNext()) {
+    let rootFolder = rootIter.next();
+    let subIter = rootFolder.getFoldersByName("Episode");
+    if (subIter.hasNext()) return subIter.next();
+    
+    // Fallback: check if legacy Episode_N folder contains files
+    if (episodeNum) {
+      let legIter = rootFolder.getFoldersByName(`Episode_${episodeNum}`);
+      if (legIter.hasNext()) return legIter.next();
+    }
+    return rootFolder.createFolder("Episode");
+  }
   
-  const subFolderName = `Episode_${episodeNum}`;
-  let subIter = rootFolder.getFoldersByName(subFolderName);
-  let subFolder = subIter.hasNext() ? subIter.next() : rootFolder.createFolder(subFolderName);
-  
-  return subFolder;
+  // 3. Otherwise create the single "Episode" folder directly in Drive root
+  return DriveApp.createFolder("Episode");
 }
 
 /**
- * Scans Google Drive and syncs with Tab 3 (Video_Checklist).
+ * Scans Google Drive 'Episode' folder and syncs with Tab 3 (Video_Checklist).
+ * Dynamically detects column headers to support both 5-col and 6-col layouts.
  */
 function syncDriveToChecklist(episodeNum) {
   const ss = getStudioSpreadsheet();
@@ -413,20 +470,36 @@ function syncDriveToChecklist(episodeNum) {
       id: f.getId(),
       url: f.getUrl(),
       downloadUrl: f.getDownloadUrl(),
-      size: f.getSize()
+      size: (f.getSize() / (1024 * 1024)).toFixed(2)
     });
   }
   
   const lastRow = sheet.getLastRow();
   const totalShots = lastRow - 2;
-  const shotData = sheet.getRange(3, 1, totalShots, 5).getValues();
-  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  const headerCols = sheet.getLastColumn();
+  const headerRow = sheet.getRange(2, 1, 1, headerCols).getValues()[0];
   
+  // Dynamic column detection based on header names
+  let colStatus = 2; // Default column 2
+  let colFileId = 4;
+  let colSize = 5;
+  let colTime = 6;
+  
+  for (let c = 0; c < headerRow.length; c++) {
+    const h = String(headerRow[c]).toLowerCase();
+    if (h.includes("status")) colStatus = c + 1;
+    else if (h.includes("id")) colFileId = c + 1;
+    else if (h.includes("size")) colSize = c + 1;
+    else if (h.includes("time") || h.includes("updated") || h.includes("date")) colTime = c + 1;
+  }
+  
+  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
   let presentCount = 0;
   const matchedFiles = [];
   
-  for (let i = 0; i < shotData.length; i++) {
+  for (let i = 0; i < totalShots; i++) {
     const shotNum = i + 1;
+    const rowIdx = i + 3;
     let match = null;
     
     for (const f of driveFiles) {
@@ -450,38 +523,25 @@ function syncDriveToChecklist(episodeNum) {
     }
     
     if (match) {
-      shotData[i][1] = "Present";
-      shotData[i][2] = match.name;
-      shotData[i][3] = match.id;
-      shotData[i][4] = nowIst;
+      sheet.getRange(rowIdx, colStatus).setValue("Present").setBackground("#dcfce7").setFontColor("#15803d").setHorizontalAlignment("center").setFontWeight("bold");
+      if (colFileId <= headerCols) sheet.getRange(rowIdx, colFileId).setValue(match.id);
+      if (colSize <= headerCols) sheet.getRange(rowIdx, colSize).setValue(match.size);
+      if (colTime <= headerCols) sheet.getRange(rowIdx, colTime).setValue(nowIst);
       presentCount++;
       matchedFiles.push({
         shot_number: shotNum,
         filename: match.name,
         file_id: match.id,
+        size: match.size,
         download_url: match.downloadUrl
       });
     } else {
-      shotData[i][1] = "Pending";
-      shotData[i][2] = "";
-      shotData[i][3] = "";
+      sheet.getRange(rowIdx, colStatus).setValue("Missing").setBackground("#fee2e2").setFontColor("#991b1b").setHorizontalAlignment("center");
+      if (colFileId <= headerCols) sheet.getRange(rowIdx, colFileId).setValue("");
+      if (colSize <= headerCols) sheet.getRange(rowIdx, colSize).setValue("");
+      if (colTime <= headerCols) sheet.getRange(rowIdx, colTime).setValue("");
     }
   }
-  
-  sheet.getRange(3, 1, totalShots, 5).setValues(shotData);
-  
-  const bgColors = [];
-  const fontColors = [];
-  for (let i = 0; i < totalShots; i++) {
-    if (shotData[i][1] === "Present") {
-      bgColors.push(["#dcfce7"]);
-      fontColors.push(["#15803d"]);
-    } else {
-      bgColors.push(["#fef3c7"]);
-      fontColors.push(["#92400e"]);
-    }
-  }
-  sheet.getRange(3, 2, totalShots, 1).setBackgrounds(bgColors).setFontColors(fontColors);
   
   const allPresent = (presentCount === totalShots && totalShots > 0);
   return {
@@ -490,6 +550,7 @@ function syncDriveToChecklist(episodeNum) {
     total_shots: totalShots,
     present_shots: presentCount,
     files: matchedFiles,
+    folder_name: "Episode",
     folder_url: folder.getUrl()
   };
 }
@@ -669,8 +730,6 @@ function handleNextEpisodeFullUpdate(body) {
   const epNum = body.episode_number || 1;
   const prevEp = epNum - 1;
   
-  if (prevEp > 0) cleanEpisodeDrive(prevEp);
-  
   const ss = getStudioSpreadsheet();
   const storySheet = ss.getSheetByName(TAB_STORY);
   if (storySheet) {
@@ -771,6 +830,13 @@ function handleNextEpisodeFullUpdate(body) {
     }
   } catch (charErr) {
     Logger.log("Error updating Character_Registry: " + charErr.toString());
+  }
+
+  // Auto-scan single 'Episode' Drive folder immediately
+  try {
+    syncDriveToChecklist(epNum);
+  } catch (syncErr) {
+    Logger.log("Notice auto-syncing Drive: " + syncErr.toString());
   }
 
   return {
