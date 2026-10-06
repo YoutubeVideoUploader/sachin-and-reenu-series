@@ -67,13 +67,30 @@ jobs:
 
       # -------------------------------------------------------------
       # STEP 7: MASTER 9:16 MERGE WITH DIALOGUE + ROMANTIC BGM
-      # Preserves Malayalam voice dialogue, mixes romantic BGM @ vol 0.18
+      # Preserves Malayalam voice dialogue, mixes romantic BGM @ vol 0.32
       # -------------------------------------------------------------
       - name: 7. Master Video & Audio Merge
         if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
         run: |
           echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4
+
+      # -------------------------------------------------------------
+      # STEP 7b: DYNAMIC EPISODE THUMBNAIL COVER GENERATION
+      # Stamps exact Season & Episode numbers into the tape boxes
+      # -------------------------------------------------------------
+      - name: 7b. Generate Dynamic Reel Cover Thumbnail
+        if: ${{ steps.drive_check.outputs.should_run == 'true' || inputs.force_run }}
+        run: |
+          echo "Stamping Season & Episode numbers onto cover thumbnail..."
+          python -c "
+          import json, os
+          ep = 1
+          if os.path.exists('story_state.json'):
+              with open('story_state.json', 'r', encoding='utf-8') as f:
+                  ep = json.load(f).get('episode_number', 1)
+          os.system(f'python scripts/generate_thumbnail.py --season 1 --episode {ep}')
+          "
 
       # -------------------------------------------------------------
       # STEP 8: INSTAGRAM PUBLISHING

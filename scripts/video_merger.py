@@ -158,8 +158,9 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
         bgm_num = ((int(episode_num) - 1) % 10) + 1
     
     bgm_candidates = [
+        Path("assets/music/bgm_main_theme.mp3"),
         Path(f"assets/music/bgm_{bgm_num}.mp3"),
-        Path(f"assets/music/bgm_1.mp3")
+        Path("assets/music/bgm_1.mp3")
     ]
     selected_bgm = None
     for cand in bgm_candidates:
@@ -172,7 +173,7 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     else:
         print(f"🎵 Selected Romantic BGM: {selected_bgm.name} (Track #{bgm_num})")
 
-    # Step 4: Final Mix — Spoken Dialogue (Loud & Clear) + Ambient BGM Underlay (Vol 0.18) + Cinematic Title
+    # Step 4: Final Mix — Spoken Dialogue (Loud & Clear) + Ambient BGM Underlay (Vol 0.32 boosted) + Cinematic Title
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM) & Title Overlay...")
     
     output_path = Path(output_file)
@@ -192,10 +193,10 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     if selected_bgm and selected_bgm.exists():
         # Audio filter graph:
         # [0:a] Dialogue audio kept at volume 1.1 (crystal clear speech)
-        # [1:a] BGM looped, volume lowered to 0.18 (romantic ambient underlay), subtle fade-in and fade-out
+        # [1:a] BGM looped, volume boosted to 0.32 with gentle fade in/out
         # amix merges both audio streams
         complex_filter = (
-            f"[1:a]aloop=loop=-1:size=2e+09,volume=0.18,"
+            f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
             f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
             f"[0:a]volume=1.1[voice];"
             f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
