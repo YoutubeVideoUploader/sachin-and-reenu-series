@@ -2,11 +2,11 @@
   "episode_number": 2,
   "title_malayalam": "മഴയും ചില രഹസ്യങ്ങളും",
   "title_english": "Rain and Some Secrets",
-  "synopsis": "Stepping outside Kochi CIAL airport into a sudden heavy monsoon shower, Sachin, Reenu, and Amal rush through the rain with their luggage to Amal's car. As they drive through the rain-drenched Kochi streets with wipers swishing, Reenu notices Sachin's nervous protectiveness over his London leather pouch. Sachin tries to speak, but a sudden braking causes the pouch to slip and slide deep under the car seat, leading to a tense and suspicious moment.",
-  "cliffhanger": "The mysterious London leather pouch slips from Sachin's hand and slides deep under the front passenger seat. As Sachin frantically reaches down trying to hide it, Reenu looks at him with growing suspicion, asking what he is hiding.",
+  "synopsis": "Sachin, Reenu, and Amal exit the Kochi airport into a torrential downpour. As they navigate the rain-soaked streets in Amal's car, Reenu grows suspicious of Sachin's intense, nervous attachment to his leather pouch. A sudden jolt causes the pouch to disappear under the seat, sparking a moment of intense confrontation.",
+  "cliffhanger": "As the pouch slides away, Reenu confronts Sachin about his strange behavior, leaving the secret of the bag hanging in the air.",
   "total_shots": 10,
-  "calculated_total_seconds": 57,
-  "calculated_runtime_display": "0m 57s",
+  "calculated_total_seconds": 60,
+  "calculated_runtime_display": "1m 00s",
   "new_characters_introduced": [],
   "shots": [
     {
@@ -14,353 +14,285 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "കൊച്ചി വിമാനത്താവളത്തിന്റെ വാതിലുകൾക്ക് പുറത്തേക്ക് അവർ എത്തുമ്പോൾ, ആകാശത്ത് കറുത്ത കാർമേഘങ്ങൾ ഇടിച്ചു പെയ്യാൻ തുടങ്ങിയിരുന്നു.",
-      "action_summary": "Reenu, Sachin, and Amal step outside Kochi CIAL terminal as sudden heavy monsoon rain starts pouring down around them. Characters' lips remain completely closed.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ മഴയ്ക്ക് എപ്പോഴും ഒരു പ്രത്യേകതയുണ്ട്. അതൊരുപക്ഷേ ചില രഹസ്യങ്ങൾ ഒളിപ്പിച്ചുവെക്കാൻ ഇഷ്ടപ്പെടുന്നതുപോലെ.",
+      "action_summary": "Wide shot of Reenu, Sachin, and Amal running through the heavy rain outside the airport exit, shielding themselves with bags. Characters' lips remain completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Wide tracking shot",
         "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          }
+          "Sachin",
+          "Reenu",
+          "Amal"
         ],
-        "location": "Kochi CIAL Airport Exit Canopy, Heavy Monsoon Rain",
-        "camera": "Medium wide establishing shot, vertical 9:16, slow downward crane movement capturing falling raindrops",
-        "action": "Reenu, Sachin, and Amal step outside under the airport arrival canopy as heavy monsoon rain suddenly pours down. Reenu, Sachin, and Amal's lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration.",
+        "location": "Kochi CIAL Airport exterior, heavy rain",
+        "camera": "Low angle tracking",
+        "action": "Sachin, Reenu, and Amal running through heavy rain, shielding heads with luggage. Characters' lips remain completely closed. Absolutely NO mouth movement.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "voice_persona": "Young expressive female narrator, melodic Malayalam",
           "language": "Malayalam",
-          "script": "കൊച്ചി വിമാനത്താവളത്തിന്റെ വാതിലുകൾക്ക് പുറത്തേക്ക് അവർ എത്തുമ്പോൾ, ആകാശത്ത് കറുത്ത കാർമേഘങ്ങൾ ഇടിച്ചു പെയ്യാൻ തുടങ്ങിയിരുന്നു.",
-          "line": "Kochi vimanathavalaminte vaathilukalku purathekku avar ethumpol, aakasathathu karutha kaarmegangal idichu peyyan thudangiyirunnu."
+          "script": "കൊച്ചിയിലെ മഴയ്ക്ക് എപ്പോഴും ഒരു പ്രത്യേകതയുണ്ട്. അതൊരുപക്ഷേ ചില രഹസ്യങ്ങൾ ഒളിപ്പിച്ചുവെക്കാൻ ഇഷ്ടപ്പെടുന്നതുപോലെ.",
+          "line": "കൊച്ചിയിലെ മഴയ്ക്ക് എപ്പോഴും ഒരു പ്രത്യേകതയുണ്ട്. അതൊരുപക്ഷേ ചില രഹസ്യങ്ങൾ ഒളിപ്പിച്ചുവെക്കാൻ ഇഷ്ടപ്പെടുന്നതുപോലെ."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects of heavy monsoon rain and splashing puddles only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. Character lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voiceover audio and natural heavy rain foley effects only.",
+        "negative_prompt": "character mouth moving during voiceover, real human, realistic human, photorealistic, background music, musical score"
       }
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പെട്ടെന്നുള്ള മഴയിൽ നനയാതിരിക്കാൻ അവർ ബാഗുകളുമായി കാറിലേക്ക് വേഗത്തിൽ ഓടി.",
-      "action_summary": "Sachin, Reenu, and Amal rush through the rain holding bags over their heads towards Amal's parked car. Characters' lips remain completely closed.",
+      "character": "Amal",
+      "dialogue_malayalam": "പെട്ടെന്ന് കേറിക്കോ! വണ്ടി നനയണ്ട.",
+      "action_summary": "Amal opens the car door for Reenu and Sachin. Amal's mouth moves in lip sync as he speaks.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Medium shot",
         "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          }
+          "Amal"
         ],
-        "location": "Airport Parking Bay, Wet Asphalt",
-        "camera": "Dynamic tracking shot running alongside the characters, vertical 9:16, raindrops splashing on lens",
-        "action": "Sachin, Reenu, and Amal laugh and playfully run through heavy rain towards a parked car. Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration.",
+        "location": "Amal's car exterior",
+        "camera": "Handheld style",
+        "action": "Amal gestures to the car, mouth moving in natural lip sync as he speaks. Reenu and Sachin are visible behind him.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Amal",
+          "voice_persona": "Cheerful, energetic 24yo male Malayalam voice",
           "language": "Malayalam",
-          "script": "പെട്ടെന്നുള്ള മഴയിൽ നനയാതിരിക്കാൻ അവർ ബാഗുകളുമായി കാറിലേക്ക് വേഗത്തിൽ ഓടി.",
-          "line": "Pettennulla mazhayil nanayathirikkan avar bagukalumaayi karilekku vegathil odi."
+          "script": "പെട്ടെന്ന് കേറിക്കോ! വണ്ടി നനയണ്ട.",
+          "line": "പെട്ടെന്ന് കേറിക്കോ! വണ്ടി നനയണ്ട."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects of heavy splashing rain and footsteps only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Clean character voice audio only. NO BACKGROUND MUSIC. Natural rain foley.",
+        "negative_prompt": "background music, musical score, real human"
       }
     },
     {
       "shot_number": 3,
-      "duration": "5s",
-      "duration_seconds": 5,
-      "character": "Amal",
-      "dialogue_malayalam": "രക്ഷപെട്ടു! കൃത്യസമയത്ത് കാറിലെത്തി.",
-      "action_summary": "Amal sits in the driver seat, shaking off rain from his hair and smiling cheerfully at Sachin and Reenu. Only Amal's mouth moves in lip sync.",
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "യാത്ര തുടങ്ങി. കാറിന്റെ വൈപ്പറുകൾ മഴയെ തുടച്ചുനീക്കുമ്പോൾ, സച്ചിന്റെ ശ്രദ്ധ മുഴുവൻ ആ ചെറിയ ബാഗിലായിരുന്നു.",
+      "action_summary": "Interior car shot. Sachin is clutching the leather bag on his lap, looking nervous. Reenu is watching him. Characters' lips closed.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "5s",
-        "perspective": "Amal",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
+        "duration": "6s",
+        "perspective": "Close up",
         "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
+          "Sachin",
+          "Reenu"
         ],
-        "location": "Car Interior, Front Cabin",
-        "camera": "Close-up on Amal in driver's seat, vertical 9:16, warm interior cabin lighting",
-        "action": "Amal laughs and speaks to Sachin and Reenu while wiping rain off his forehead. ONLY Amal's mouth moves in lip sync. Sachin and Reenu's mouths remain completely closed.",
+        "location": "Inside Amal's car",
+        "camera": "Static interior",
+        "action": "Sachin clutching leather bag, looking tense. Reenu glances at him. Lips closed.",
         "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal: 24yo energetic South Indian male voice, friendly warm cheerful tone with natural Malayali inflections",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Young expressive female narrator",
           "language": "Malayalam",
-          "script": "രക്ഷപെട്ടു! കൃത്യസമയത്ത് കാറിലെത്തി.",
-          "line": "Rakshapettu! Kruthyasamathyathu kaarilethi."
+          "script": "യാത്ര തുടങ്ങി. കാറിന്റെ വൈപ്പറുകൾ മഴയെ തുടച്ചുനീക്കുമ്പോൾ, സച്ചിന്റെ ശ്രദ്ധ മുഴുവൻ ആ ചെറിയ ബാഗിലായിരുന്നു.",
+          "line": "യാത്ര തുടങ്ങി. കാറിന്റെ വൈപ്പറുകൾ മഴയെ തുടച്ചുനീക്കുമ്പോൾ, സച്ചിന്റെ ശ്രദ്ധ മുഴുവൻ ആ ചെറിയ ബാഗിലായിരുന്നു."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Amal speaks in clear Malayalam. Sachin and Reenu remain completely silent with closed mouths. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects of rain tapping on car roof only.",
-        "negative_prompt": "character mouth moving during voiceover, listener mouth moving, open mouth talking incorrectly, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "External voiceover only. NO BACKGROUND MUSIC. Rain hitting car roof foley.",
+        "negative_prompt": "background music, musical score, lip sync"
       }
     },
     {
       "shot_number": 4,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "കാറിന്റെ വൈപ്പറുകൾ വേഗത്തിൽ ചലിച്ചുതുടങ്ങി. നഗരവീഥികൾ മഴവെള്ളത്തിൽ കുതിർന്നു കിടന്നു.",
-      "action_summary": "Car wipers swish back and forth across the windshield as the car drives through rain-drenched Kochi streets. Characters' lips remain closed.",
+      "character": "Reenu",
+      "dialogue_malayalam": "എന്താ സച്ചിൻ, നീ എന്തിനാ ബാഗ് ഇത്ര മുറുകെ പിടിച്ചിരിക്കുന്നത്?",
+      "action_summary": "Reenu looking at Sachin with concern. Her mouth moves in lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Two-shot",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
+          "Reenu",
+          "Sachin"
         ],
-        "location": "Car Interior POV looking through Windshield, Kochi Streets",
-        "camera": "POV shot from inside car looking out through windshield, vertical 9:16, windshield wipers swishing rhythmically",
-        "action": "Windshield wipers swipe across rain-streaked glass, revealing blurred city street lights glowing in the evening rain. Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration.",
+        "location": "Inside Amal's car",
+        "camera": "Close up",
+        "action": "Reenu tilts head, asks question, mouth moving in sync. Sachin looks away nervously.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Reenu",
+          "voice_persona": "Soft, sweet 22yo female Malayalam voice",
           "language": "Malayalam",
-          "script": "കാറിന്റെ വൈപ്പറുകൾ വേഗത്തിൽ ചലിച്ചുതുടങ്ങി. നഗരവീഥികൾ മഴവെള്ളത്തിൽ കുതിർന്നു കിടന്നു.",
-          "line": "Kaarinte wipers vegathil chalichuthudangi. Nagaraveethikal mazhavellathil kuthirnnu kidannu."
+          "script": "എന്താ സച്ചിൻ, നീ എന്തിനാ ബാഗ് ഇത്ര മുറുകെ പിടിച്ചിരിക്കുന്നത്?",
+          "line": "എന്താ സച്ചിൻ, നീ എന്തിനാ ബാഗ് ഇത്ര മുറുകെ പിടിച്ചിരിക്കുന്നത്?"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and rhythmic foley sound of windshield wipers swishing and rain falling on car roof only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Clean voice audio. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
       "shot_number": 5,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ, എന്താ ആ ബാഗ് ഇത്രയും സൂക്ഷിച്ച് പിടിച്ചിരിക്കുന്നത്? അതിൽ എന്താ ഉള്ളേ?",
-      "action_summary": "Reenu sits in the passenger seat, looking curiously at Sachin who nervously adjusts his London leather pouch. Only Reenu's mouth moves in lip sync.",
+      "character": "Sachin",
+      "dialogue_malayalam": "ഒന്നുമില്ല രേണൂ... ലണ്ടനിലെ ചില പഴയ ഓർമ്മകളാണ്.",
+      "action_summary": "Sachin smiles weakly, trying to hide his nerves. Mouth moving in sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Reenu",
+        "perspective": "Close up",
         "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
+          "Sachin"
         ],
-        "location": "Car Interior, Back Seat & Passenger Seat",
-        "camera": "Medium shot focused on Reenu leaning slightly towards Sachin, vertical 9:16",
-        "action": "Reenu tilts her head with playful curiosity, looking at Sachin's bag and asking a question. ONLY Reenu's mouth moves in lip sync. Sachin's mouth remains completely closed as he looks away nervously.",
+        "location": "Inside Amal's car",
+        "camera": "Close up",
+        "action": "Sachin offers a forced smile, mouth moving in sync.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo sweet South Indian female voice, warm, affectionate, curious, melodic tone",
+          "speaker": "Sachin",
+          "voice_persona": "Gentle, slightly anxious 24yo male Malayalam voice",
           "language": "Malayalam",
-          "script": "സച്ചിൻ, എന്താ ആ ബാഗ് ഇത്രയും സൂക്ഷിച്ച് പിടിച്ചിരിക്കുന്നത്? അതിൽ എന്താ ഉള്ളേ?",
-          "line": "Sachin, entha aa bag ithrayum sookshichu pidichirikkunathu? Athil entha ulle?"
+          "script": "ഒന്നുമില്ല രേണൂ... ലണ്ടനിലെ ചില പഴയ ഓർമ്മകളാണ്.",
+          "line": "ഒന്നുമില്ല രേണൂ... ലണ്ടനിലെ ചില പഴയ ഓർമ്മകളാണ്."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu speaks in warm conversational Malayalam. Sachin remains completely silent with a closed mouth. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, listener mouth moving, open mouth talking incorrectly, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Clean voice audio. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
       "shot_number": 6,
       "duration": "5s",
       "duration_seconds": 5,
-      "character": "Sachin",
-      "dialogue_malayalam": "അത്... അതൊന്നുമില്ല റേണു, വെറുതെ ചില... പ്രധാനപ്പെട്ട സാധനങ്ങൾ.",
-      "action_summary": "Sachin stutters nervously, clutching the leather pouch tighter against his chest. Only Sachin's mouth moves in lip sync.",
+      "character": "Amal",
+      "dialogue_malayalam": "അയ്യോ!",
+      "action_summary": "Amal slams the brakes suddenly. The camera shakes.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "5s",
-        "perspective": "Sachin",
+        "perspective": "Interior shot",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
+          "Amal",
+          "Sachin",
+          "Reenu"
         ],
-        "location": "Car Interior, Back Seat",
-        "camera": "Close-up on Sachin's flustered face and nervous expression, vertical 9:16",
-        "action": "Sachin blinks rapidly, smiling awkwardly while gripping his London leather pouch tightly. ONLY Sachin's mouth moves in lip sync. Reenu's mouth remains completely closed.",
+        "location": "Inside Amal's car",
+        "camera": "Shaky cam",
+        "action": "Amal hits brakes, mouth shouting. Sachin and Reenu jerk forward.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo warm youthful South Indian male voice, slightly nervous, affectionate, gentle tone",
+          "speaker": "Amal",
+          "voice_persona": "Startled male Malayalam voice",
           "language": "Malayalam",
-          "script": "അത്... അതൊന്നുമില്ല റേണു, വെറുതെ ചില... പ്രധാനപ്പെട്ട സാധനങ്ങൾ.",
-          "line": "Athu... athonnumilla Renu, veruthe chila... pradhanappetta sadhanangal."
+          "script": "അയ്യോ!",
+          "line": "അയ്യോ!"
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks in hesitant Malayalam. Reenu remains completely silent with a closed mouth. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, listener mouth moving, open mouth talking incorrectly, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Screeching tire sound foley. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
-      "shot_number": 7,
+      "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പെട്ടെന്ന് മുന്നിൽ ഒരു വാഹനം പെട്ടെന്ന് ബ്രേക്ക് ഇട്ടപ്പോൾ അമൽ കാർ ഒന്നു വെട്ടിച്ചു നിർത്തി.",
-      "action_summary": "Amal slams on the car brakes abruptly as brake lights flash ahead. Characters' lips remain completely closed.",
+      "character": "None",
+      "dialogue_malayalam": "",
+      "action_summary": "The leather pouch slips from Sachin's hand and slides under the seat.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "location": "Car Interior, Sudden Braking Motion",
-        "camera": "Dynamic push-in on front dashboard as car jolts forward, vertical 9:16",
-        "action": "Amal sharply steps on the brake pedal, causing the car to jolt forward with a sudden jerk. Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration.",
+        "perspective": "Low angle floor shot",
+        "characters_present": [],
+        "location": "Car floor",
+        "camera": "Close up",
+        "action": "Leather pouch sliding under the seat.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "പെട്ടെന്ന് മുന്നിൽ ഒരു വാഹനം പെട്ടെന്ന് ബ്രേക്ക് ഇട്ടപ്പോൾ അമൽ കാർ ഒന്നു വെട്ടിച്ചു നിർത്തി.",
-          "line": "Pettennu munnil oru vahanam pettennu brake ittappol Amal car onnu vettichu nirthi."
+          "speaker": "None",
+          "voice_persona": "",
+          "language": "",
+          "script": "",
+          "line": ""
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and sharp foley sound of screeching tires and sudden vehicle braking only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Sound of leather sliding on floor. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
       "shot_number": 8,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ആ പെട്ടെന്നുള്ള ഇടിപ്പിൽ സച്ചിന്റെ കയ്യിൽ നിന്നും ആ രഹസ്യ ലെതർ പൗച്ച് തെന്നിമാറി.",
-      "action_summary": "The London leather pouch slips from Sachin's grip during the sudden jolt and slides toward the floor. Characters' lips remain completely closed.",
+      "character": "Sachin",
+      "dialogue_malayalam": "അയ്യോ, എന്റെ ബാഗ്!",
+      "action_summary": "Sachin reaches frantically under the seat. Mouth moving in sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Close up",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
+          "Sachin"
         ],
-        "location": "Car Interior Floorboard",
-        "camera": "Low angle tracking shot on the car floor as the leather pouch slides away, vertical 9:16",
-        "action": "The leather pouch slips from Sachin's hands and slides swiftly across the rubber car floor mat deep underneath the front passenger seat. Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration.",
+        "location": "Inside car",
+        "camera": "Close up",
+        "action": "Sachin panics, reaches down, mouth moving in sync.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Sachin",
+          "voice_persona": "Panicked male Malayalam voice",
           "language": "Malayalam",
-          "script": "ആ പെട്ടെന്നുള്ള ഇടിപ്പിൽ സച്ചിന്റെ കയ്യിൽ നിന്നും ആ രഹസ്യ ലെതർ പൗച്ച് തെന്നിമാറി.",
-          "line": "Aa pettennulla idippil Sachin_te kayyil ninnum aa rahasya leather pouch thennimaari."
+          "script": "അയ്യോ, എന്റെ ബാഗ്!",
+          "line": "അയ്യോ, എന്റെ ബാഗ്!"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and subtle sliding sound effect of leather on car floor only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Clean voice audio. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
       "shot_number": 9,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അയ്യോ! എന്റെ പൗച്ച്...!",
-      "action_summary": "Sachin gasps in sudden panic, bending down awkwardly between the seats, his fingers frantically searching under the passenger seat to grab the leather pouch. Only Sachin's mouth moves in lip sync.",
+      "character": "Reenu",
+      "dialogue_malayalam": "എന്താ അതിൽ? എന്തിനാ നീ ഇത്ര പരിഭ്രമിക്കുന്നത്?",
+      "action_summary": "Reenu stares at Sachin with suspicion. Mouth moving in sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
         "duration": "6s",
-        "perspective": "Character Close-up",
+        "perspective": "Close up",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
+          "Reenu",
+          "Sachin"
         ],
-        "location": "Car Interior, Passenger Floorboard",
-        "camera": "Close-up angled down towards car floor, vertical 9:16, tracking Sachin's outstretched hand",
-        "action": "Sachin leans forward anxiously, reaching his arm deep under the front passenger seat trying to grab the leather pouch. ONLY Sachin's mouth moves in lip sync as he gasps. Reenu and Amal remain completely silent.",
+        "location": "Inside car",
+        "camera": "Close up",
+        "action": "Reenu looking suspicious, mouth moving in sync.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo warm youthful South Indian male voice, panicked breathless tone",
+          "speaker": "Reenu",
+          "voice_persona": "Suspicious female Malayalam voice",
           "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "അയ്യോ! എന്റെ പൗച്ച്...!"
+          "script": "എന്താ അതിൽ? എന്തിനാ നീ ഇത്ര പരിഭ്രമിക്കുന്നത്?",
+          "line": "എന്താ അതിൽ? എന്തിനാ നീ ഇത്ര പരിഭ്രമിക്കുന്നത്?"
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks in a startled gasp. Character lips move only for Sachin. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural car cabin foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, listener mouth moving, open mouth talking incorrectly, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "Clean voice audio. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score"
       }
     },
     {
       "shot_number": 10,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ, എന്താ അത്...? എന്തിനാ നീയിത്ര വെപ്രാളപ്പെടുന്നത്?",
-      "action_summary": "Reenu turns in her seat, staring at Sachin's flustered state with sharp curiosity and rising suspicion as rain lashes against the window. Cliffhanger freeze frame.",
+      "duration": "7s",
+      "duration_seconds": 7,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "മഴയ്‌ക്കൊപ്പം സച്ചിന്റെ രഹസ്യങ്ങളും കാറിനുള്ളിൽ പെയ്യാൻ തുടങ്ങുകയായിരുന്നു.",
+      "action_summary": "Sachin frozen, looking at Reenu. Reenu waiting for an answer. Close up on both. Characters' lips closed.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Close-up",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format",
+        "duration": "7s",
+        "perspective": "Close up",
         "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
+          "Sachin",
+          "Reenu"
         ],
-        "location": "Car Interior, Rain Splattering on Passenger Window",
-        "camera": "Intense over-the-shoulder medium close-up from Sachin's perspective looking at Reenu's questioning, suspicious doe eyes, vertical 9:16",
-        "action": "Reenu looks intensely at Sachin with arched eyebrows and suspicious, questioning eyes as Sachin freezes mid-reach under the seat. ONLY Reenu's mouth moves in lip sync. Sachin's mouth remains closed in stunned silence.",
+        "location": "Inside car",
+        "camera": "Static",
+        "action": "Sachin and Reenu looking at each other, tense expressions. Lips closed.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo sweet South Indian female voice, questioning, suspicious, deeply curious tone",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Melodic female Malayalam narrator",
           "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ, എന്താ അത്...? എന്തിനാ നീയിത്ര വെപ്രാളപ്പെടുന്നത്?"
+          "script": "മഴയ്‌ക്കൊപ്പം സച്ചിന്റെ രഹസ്യങ്ങളും കാറിനുള്ളിൽ പെയ്യാൻ തുടങ്ങുകയായിരുന്നു.",
+          "line": "മഴയ്‌ക്കൊപ്പം സച്ചിന്റെ രഹസ്യങ്ങളും കാറിനുള്ളിൽ പെയ്യാൻ തുടങ്ങുകയായിരുന്നു."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu speaks in a clear questioning Malayalam tone. Sachin remains completely silent with mouth closed in stunned hesitation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and ambient rain tapping against car window only.",
-        "negative_prompt": "character mouth moving during voiceover, listener mouth moving, open mouth talking incorrectly, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "External voiceover only. NO BACKGROUND MUSIC.",
+        "negative_prompt": "background music, musical score, lip sync"
       }
     }
   ]
