@@ -1,18 +1,13 @@
 /**
  * ==============================================================================
- * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE (3-TAB MASTER)
+ * SACHIN & REENU CREATOR STUDIO — GOOGLE APPS SCRIPT ENGINE (5-TAB MASTER)
  * ==============================================================================
- * Dedicated 3-Sheet Architecture:
- * 1. TAB 1: [Episode_Story]
- *    - Base of current and next episode's story, synopsis, and cliffhangers.
- * 2. TAB 2: [Current_JSON_Prompts]
- *    - The exact Google Flow JSON prompts for each shot of the ACTIVE episode.
- *    - Automatically clears previous episode prompts and overwrites with next episode prompts!
- * 3. TAB 3: [Video_Checklist]
- *    - Column A: Shot Number (Shot 1..N)
- *    - Column B: Video Status (Present / Pending)
- *    - Used by GitHub Actions to strictly verify 100% video presence before merge & publish.
- *    - After publish: Trashes raw clips from Drive and resets checklist for next episode.
+ * Complete 5-Sheet Architecture:
+ * 1. TAB 1: [Episode_Story]       -> Active & Upcoming episode story outline & publication history
+ * 2. TAB 2: [Current_JSON_Prompts]-> Exact Google Flow JSON prompts for the active episode
+ * 3. TAB 3: [Video_Checklist]     -> Drive upload sync & strict pre-check for GitHub Actions
+ * 4. TAB 4: [Season_Story_Arc]    -> Overall Season 1..N story arc & 10-episode narrative summaries
+ * 5. TAB 5: [Character_Registry]  -> Permanent cast database (Stylized 3D DNA, locked attire, voice)
  * ==============================================================================
  */
 
@@ -20,16 +15,18 @@
 const SPREADSHEET_ID = "1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI";
 const GITHUB_REPO = "YoutubeVideoUploader/sachin-and-reenu-series";
 const GITHUB_WORKFLOW = "produce_and_publish.yml";
-const GITHUB_PAT = "YOUR_GITHUB_PAT_HERE"; // Insert your GitHub PAT (Repo/Workflow scope)
+const GITHUB_PAT = "YOUR_GITHUB_PAT_HERE"; // Optional: GitHub PAT for automatic remote dispatch
 const DRIVE_ROOT_FOLDER = "Sachin_And_Reenu_Studio";
 
+// TAB NAMES
 const TAB_STORY = "Episode_Story";
 const TAB_PROMPTS = "Current_JSON_Prompts";
 const TAB_CHECKLIST = "Video_Checklist";
+const TAB_SEASON_ARC = "Season_Story_Arc";
+const TAB_CHARACTERS = "Character_Registry";
 
 /**
- * Automatically gets the active spreadsheet (when opened via Extensions -> Apps Script)
- * or falls back to openById.
+ * Gets the active spreadsheet or falls back to openById.
  */
 function getStudioSpreadsheet() {
   try {
@@ -40,13 +37,13 @@ function getStudioSpreadsheet() {
 }
 
 /**
- * Initializes and formats all 3 tabs in Google Sheet.
+ * Initializes and formats all 5 tabs in the Google Spreadsheet.
  */
 function setupStudioSpreadsheet() {
   const ss = getStudioSpreadsheet();
   
   // -------------------------------------------------------------
-  // 1. SETUP TAB 1: Episode_Story
+  // 1. TAB 1: Episode_Story
   // -------------------------------------------------------------
   let storySheet = ss.getSheetByName(TAB_STORY);
   if (!storySheet) {
@@ -73,33 +70,33 @@ function setupStudioSpreadsheet() {
       .setHorizontalAlignment("center");
     storySheet.setFrozenRows(1);
     
-    // Episode 1 (Current Active Production)
+    // Episode 1 (Active)
     storySheet.appendRow([
       1,
       "തിരിച്ചുവരവ് (The Homecoming)",
       "Active",
-      22,
-      "After two long years apart, Sachin touches down at Kochi CIAL from the UK. Reenu and Amal wait anxiously by the arrival barriers, leading to an overwhelming, heartfelt reunion.",
-      "As Sachin holds Reenu close, his mysterious glance toward his travel pouch hints at a hidden secret from London.",
+      10,
+      "After two long years of waiting, Reenu stands anxiously with her friend Amal at the Kochi CIAL arrival terminal. Sachin emerges through the glass doors, leading to a tearful, tender reunion, but he nervously clutches a secret leather pouch from London.",
+      "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
       "",
       ""
     ]);
 
-    // Episode 2 (Next Upcoming Story)
+    // Episode 2 (Upcoming)
     storySheet.appendRow([
       2,
-      "കൊച്ചിയിലെ മഴയും ഒരു രഹസ്യവും (Kochi Rain & A Secret)",
+      "മഴയും ചില രഹസ്യങ്ങളും (Rain and Some Secrets)",
       "Upcoming",
-      22,
-      "Stepping outside Kochi airport into the sudden monsoon rain, Sachin and Reenu share an umbrella and an intimate car ride, rekindling their unspoken chemistry while Amal playfully navigates the rain-swept streets.",
-      "Amal glances in the rear-view mirror as Sachin's fingers brush against Reenu's hand.",
+      10,
+      "Stepping outside into a sudden Kochi monsoon shower, Sachin, Reenu, and Amal rush to the car. As they drive through the rain, Reenu notices Sachin's nervous protectiveness over his bag.",
+      "The pouch slips from Sachin's hand and slides deep under the car seat just as he is about to confess.",
       "",
       ""
     ]);
   }
 
   // -------------------------------------------------------------
-  // 2. SETUP TAB 2: Current_JSON_Prompts
+  // 2. TAB 2: Current_JSON_Prompts
   // -------------------------------------------------------------
   let promptSheet = ss.getSheetByName(TAB_PROMPTS);
   if (!promptSheet) {
@@ -125,29 +122,220 @@ function setupStudioSpreadsheet() {
     promptSheet.setFrozenRows(1);
   }
 
-  // Auto-populate Tab 2 with Episode 1 prompts from GitHub
+  // Auto-populate Tab 2 with Episode 1 prompts from GitHub if available
   try {
     const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/current_episode_shots.json`;
     const res = UrlFetchApp.fetch(rawUrl);
     if (res.getResponseCode() === 200) {
       const epData = JSON.parse(res.getContentText());
       updateJsonPromptsSheet(epData.episode_number || 1, epData.shots || []);
-      Logger.log("Tab 2 auto-populated with Episode 1 JSON prompts from GitHub!");
     }
-  } catch (err) {
-    Logger.log("Notice: Could not auto-fetch prompts from GitHub: " + err);
-  }
+  } catch (err) {}
 
   // -------------------------------------------------------------
-  // 3. SETUP TAB 3: Video_Checklist
+  // 3. TAB 3: Video_Checklist
   // -------------------------------------------------------------
   let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!checkSheet) {
     checkSheet = ss.insertSheet(TAB_CHECKLIST, 2);
   }
+  if (checkSheet.getLastRow() === 0) {
+    initVideoChecklist(1, 10, "തിരിച്ചുവരവ് (The Homecoming)");
+  }
+
+  // -------------------------------------------------------------
+  // 4. TAB 4: Season_Story_Arc (Master Season Story & 10 Summaries)
+  // -------------------------------------------------------------
+  setupSeasonStoryArcSheet(1);
+
+  // -------------------------------------------------------------
+  // 5. TAB 5: Character_Registry (Persistent Cast & Locked DNA)
+  // -------------------------------------------------------------
+  setupCharacterRegistrySheet();
+
+  Logger.log("All 5 Google Sheet tabs initialized successfully!");
+}
+
+/**
+ * Initializes Tab 4: Season_Story_Arc with 10-episode narrative roadmap.
+ */
+function setupSeasonStoryArcSheet(seasonNum) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_SEASON_ARC, 3);
+  }
+
+  if (sheet.getLastRow() > 0) return; // Already initialized
+
+  // Meta Banner
+  sheet.getRange(1, 1).setValue(`SEASON ${seasonNum}: THE HOMECOMING & THE LONDON SECRET (തിരിച്ചുവരവ്)`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue("CLIMAX TARGET: EPISODE 10").setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#4f46e5").setFontColor("#ffffff");
+
+  const headers = [
+    "Season #",
+    "Episode #",
+    "Title (English)",
+    "Title (Malayalam)",
+    "Status",
+    "Episode Story Summary / Synopsis",
+    "Episode Climax / Cliffhanger",
+    "Creator Story Suggestion / Notes"
+  ];
+
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#1e1b4b")
+    .setFontColor("#e0e7ff")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+
+  const season1Episodes = [
+    [
+      1, 1, "The Homecoming", "തിരിച്ചുവരവ്", "Active",
+      "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
+      "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
+      ""
+    ],
+    [
+      1, 2, "Rain and Some Secrets", "മഴയും ചില രഹസ്യങ്ങളും", "Upcoming",
+      "Stepping outside into a sudden Kochi monsoon shower, Sachin, Reenu, and Amal rush to the car. As they drive through the rain-drenched streets, Reenu notices Sachin's nervous protectiveness over his bag.",
+      "The pouch slips from Sachin's hand and slides deep under the car seat just as he is about to confess.",
+      ""
+    ],
+    [
+      1, 3, "A Roadside Chai & Unspoken Glances", "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും", "Upcoming",
+      "Amal stops the car at a misty tea stall by the backwaters. Under a shared umbrella, Sachin and Reenu share an intimate moment over hot tea, but Sachin hesitates to speak.",
+      "Amal spots the London leather pouch lying on the car floor and picks it up curiously.",
+      ""
+    ],
+    [
+      1, 4, "Forgotten Memories", "മറന്നുപോയ ഓർമ്മകൾ", "Upcoming",
+      "Continuing their ride into Kochi city, Sachin and Reenu reminisce about their college days, but Sachin feels guilty about being away in the UK for 730 days.",
+      "Reenu asks Sachin directly: 'Why didn't you tell me the real reason you booked your flight so suddenly?'",
+      ""
+    ],
+    [
+      1, 5, "The Secret Slips", "രഹസ്യം പുറത്തേക്ക്", "Upcoming",
+      "Amal hands the pouch back to Sachin, asking what is inside. Sachin stammers and tries to divert the topic, raising Reenu's suspicion.",
+      "Reenu reaches for the pouch playfully, but Sachin instinctively pulls it back, creating an awkward silence.",
+      ""
+    ],
+    [
+      1, 6, "Amal's Wit & Heavy Silence", "അമലിന്റെ തമാശയും മൗനവും", "Upcoming",
+      "Amal uses humor and teasing to diffuse the tension. Sachin feels deeply torn between confessing his life-changing London decision and the fear of overwhelming Reenu.",
+      "Sachin promises Reenu: 'Before tonight ends, I will tell you everything.'",
+      ""
+    ],
+    [
+      1, 7, "The Rain Settles", "മഴ തോർന്ന രാത്രി", "Upcoming",
+      "The car arrives outside Reenu's house. In the quiet, rain-washed night, Sachin walks Reenu to the front gate. A tender, lingering goodbye.",
+      "Sachin gently holds Reenu's hand, asking her to meet him at Marine Drive walkway at midnight.",
+      ""
+    ],
+    [
+      1, 8, "Reenu's Suspicion & Worry", "റീനുവിന്റെ മനസ്സ്", "Upcoming",
+      "Reenu sits in her room by the window, watching the rain mist. She wonders whether Sachin's secret means he has to go back to the UK permanently.",
+      "Reenu makes a heartfelt decision to profess her true love and ask Sachin never to leave again.",
+      ""
+    ],
+    [
+      1, 9, "A Midnight Message", "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും", "Upcoming",
+      "Sachin and Amal prepare at Marine Drive. Amal gives Sachin emotional courage. Reenu arrives in the dim golden lights of Kochi backwaters.",
+      "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu.",
+      ""
+    ],
+    [
+      1, 10, "The Grand Climax: The Revelation", "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ", "Upcoming",
+      "SEASON 1 CLIMAX: Sachin reveals what was inside the pouch—his officially cancelled London visa documents and a permanent contract in Kochi, choosing to stay by Reenu's side forever. Tears of joy, a breathtaking embrace, and a sweet tease for Season 2!",
+      "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
+      ""
+    ]
+  ];
+
+  sheet.getRange(3, 1, season1Episodes.length, headers.length).setValues(season1Episodes);
   
-  initVideoChecklist(1, 22, "തിരിച്ചുവരവ് (The Homecoming)");
-  Logger.log("All 3 Google Sheet tabs initialized successfully!");
+  // Format Status Column (Col 5)
+  sheet.getRange(3, 5).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold"); // Ep 1 Active
+  sheet.getRange(4, 5, 9, 1).setBackground("#fef3c7").setFontColor("#92400e"); // Upcoming
+
+  sheet.setColumnWidth(6, 400); // Story summary width
+  sheet.setColumnWidth(7, 300); // Cliffhanger width
+  Logger.log("Season_Story_Arc sheet populated with Season 1 (10 Episodes) roadmap.");
+}
+
+/**
+ * Initializes Tab 5: Character_Registry with permanent cast database.
+ */
+function setupCharacterRegistrySheet() {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_CHARACTERS);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_CHARACTERS, 4);
+  }
+
+  if (sheet.getLastRow() > 0) return; // Already initialized
+
+  // Meta Banner
+  sheet.getRange(1, 1).setValue("SACHIN & REENU: CHARACTER CAST REGISTRY (CHARACTER BIBLE)").setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue("PERSISTENT 3D CARTOON DNA").setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#059669").setFontColor("#ffffff");
+
+  const headers = [
+    "Character Name",
+    "Role in Story",
+    "First Appearance",
+    "Status",
+    "Stylized 3D Pixar Visual DNA (Non-Human)",
+    "Locked Signature Attire (100% Unchanging)",
+    "Voice Persona & Cadence"
+  ];
+
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#064e3b")
+    .setFontColor("#ecfdf5")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+
+  const initialCharacters = [
+    [
+      "Reenu",
+      "Lead Female",
+      "Season 1 • Ep 1",
+      "Active",
+      "Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).",
+      "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.",
+      "Sweet, expressive 22yo South Indian Malayali female voice, warm, gentle, emotionally vulnerable, clear acoustic studio warmth."
+    ],
+    [
+      "Sachin",
+      "Lead Male",
+      "Season 1 • Ep 1",
+      "Active",
+      "Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).",
+      "Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.",
+      "Endearing, slightly nervous young Malayali male voice, warm, playful, sincere, clear studio cadence."
+    ],
+    [
+      "Amal",
+      "Best Friend / Comic Anchor",
+      "Season 1 • Ep 1",
+      "Active",
+      "Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).",
+      "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers. Absolutely zero costume variations.",
+      "Youthful energetic Malayali male voice, friendly, casual, slightly teasing tone, natural cheerful energy."
+    ]
+  ];
+
+  sheet.getRange(3, 1, initialCharacters.length, headers.length).setValues(initialCharacters);
+  sheet.getRange(3, 4, 3, 1).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold");
+
+  sheet.setColumnWidth(5, 450); // Visual DNA
+  sheet.setColumnWidth(6, 350); // Locked Attire
+  sheet.setColumnWidth(7, 300); // Voice
+  Logger.log("Character_Registry sheet initialized with Reenu, Sachin, and Amal.");
 }
 
 /**
@@ -162,12 +350,10 @@ function initVideoChecklist(episodeNum, totalShots, episodeTitle) {
   
   sheet.clear();
   
-  // Header Meta
   sheet.getRange(1, 1).setValue(`EPISODE ${episodeNum}: ${episodeTitle || ''}`).setFontWeight("bold").setFontSize(12);
   sheet.getRange(1, 2).setValue(`TARGET SHOTS: ${totalShots}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#2563eb").setFontColor("#ffffff");
   
-  // Column Headers (Strict 2-Column specification for GitHub Actions)
   sheet.getRange(2, 1).setValue("Shot Number (Column 1)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
   sheet.getRange(2, 2).setValue("Video Status (Column 2)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
   sheet.getRange(2, 3).setValue("Drive File Name").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
@@ -208,13 +394,11 @@ function getEpisodeDriveFolder(episodeNum) {
 
 /**
  * Scans Google Drive and syncs with Tab 3 (Video_Checklist).
- * Sets Column B to "Present" for uploaded clips.
  */
 function syncDriveToChecklist(episodeNum) {
   const ss = getStudioSpreadsheet();
   const sheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!sheet || sheet.getLastRow() < 3) {
-    Logger.log("Video_Checklist sheet is blank or uninitialized.");
     return { ready: false, total_shots: 0, present_shots: 0, files: [] };
   }
   
@@ -300,8 +484,6 @@ function syncDriveToChecklist(episodeNum) {
   sheet.getRange(3, 2, totalShots, 1).setBackgrounds(bgColors).setFontColors(fontColors);
   
   const allPresent = (presentCount === totalShots && totalShots > 0);
-  Logger.log(`Episode ${episodeNum} Checklist: ${presentCount}/${totalShots} shots Present. All Present: ${allPresent}`);
-  
   return {
     episode_number: episodeNum,
     ready: allPresent,
@@ -313,25 +495,21 @@ function syncDriveToChecklist(episodeNum) {
 }
 
 /**
- * Trashes/deletes all video files from the Episode Google Drive folder.
+ * Trashes all video files from an episode Drive folder.
  */
 function cleanEpisodeDrive(episodeNum) {
   const folder = getEpisodeDriveFolder(episodeNum);
   const filesIter = folder.getFiles();
   let deletedCount = 0;
-  
   while (filesIter.hasNext()) {
-    const f = filesIter.next();
-    f.setTrashed(true);
+    filesIter.next().setTrashed(true);
     deletedCount++;
   }
-  Logger.log(`Cleaned Google Drive: Trashed ${deletedCount} files from Episode ${episodeNum} folder.`);
   return deletedCount;
 }
 
 /**
- * Overwrites Tab 2: Current_JSON_Prompts with the new episode's prompts.
- * Deletes all previous prompts completely!
+ * Overwrites Tab 2: Current_JSON_Prompts with the new episode prompts.
  */
 function updateJsonPromptsSheet(episodeNum, shots) {
   const ss = getStudioSpreadsheet();
@@ -340,15 +518,11 @@ function updateJsonPromptsSheet(episodeNum, shots) {
     sheet = ss.insertSheet(TAB_PROMPTS);
   }
   
-  // Wipe all existing prompts
   sheet.clear();
-  
-  // Header Meta
   sheet.getRange(1, 1).setValue(`CURRENT EPISODE PROMPTS: EPISODE ${episodeNum}`).setFontWeight("bold").setFontSize(12);
   sheet.getRange(1, 2).setValue(`TOTAL SHOTS: ${shots.length}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#4338ca").setFontColor("#ffffff");
 
-  // Headers
   const headers = [
     "Shot #",
     "Duration",
@@ -368,7 +542,7 @@ function updateJsonPromptsSheet(episodeNum, shots) {
   for (const s of shots) {
     rows.push([
       `Shot #${s.shot_number}`,
-      s.duration || "4s",
+      s.duration || "6s",
       s.character || "Reenu",
       s.dialogue_malayalam || "",
       s.action_summary || "",
@@ -380,36 +554,129 @@ function updateJsonPromptsSheet(episodeNum, shots) {
     sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
     sheet.getRange(3, 6, rows.length, 1).setFontFamily("Consolas").setFontSize(9);
   }
-  
-  Logger.log(`Tab 2 [Current_JSON_Prompts] updated for Episode ${episodeNum} with ${shots.length} shots.`);
 }
 
 /**
- * Full Next-Episode Transition:
- * 1. Cleans Drive clips of published episode.
- * 2. Marks published episode as "Published" in Tab 1 (Episode_Story).
- * 3. Appends/updates next episode in Tab 1 as "Active".
- * 4. Wipes and writes new prompts into Tab 2 (Current_JSON_Prompts).
- * 5. Resets Tab 3 (Video_Checklist) for Shot 1..N with "Pending".
+ * Reads Tab 4: Season_Story_Arc and returns structured JSON.
+ */
+function getSeasonStoryArcData() {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  if (!sheet || sheet.getLastRow() < 3) {
+    setupSeasonStoryArcSheet(1);
+    sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  }
+
+  const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 8).getValues();
+  const episodes = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    episodes.push({
+      season_number: row[0] || 1,
+      episode_number: row[1] || (i + 1),
+      title_english: row[2] || `Episode ${i + 1}`,
+      title_malayalam: row[3] || "",
+      status: row[4] || "Upcoming",
+      synopsis: row[5] || "",
+      cliffhanger: row[6] || "",
+      creator_notes: row[7] || ""
+    });
+  }
+
+  return {
+    success: true,
+    season_number: 1,
+    season_title: "The Homecoming & The London Secret (തിരിച്ചുവരവ്)",
+    total_episodes: 10,
+    climax_target_episode: 10,
+    episodes: episodes
+  };
+}
+
+/**
+ * Reads Tab 5: Character_Registry and returns structured JSON.
+ */
+function getCharacterRegistryData() {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_CHARACTERS);
+  if (!sheet || sheet.getLastRow() < 3) {
+    setupCharacterRegistrySheet();
+    sheet = ss.getSheetByName(TAB_CHARACTERS);
+  }
+
+  const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 7).getValues();
+  const characters = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    characters.push({
+      name: row[0],
+      role: row[1],
+      first_appearance: row[2],
+      status: row[3],
+      visual_dna: row[4],
+      locked_attire: row[5],
+      voice_persona: row[6]
+    });
+  }
+
+  return {
+    success: true,
+    total_characters: characters.length,
+    characters: characters
+  };
+}
+
+/**
+ * Records a creator story pitch / suggestion into Tab 4.
+ */
+function recordCreatorStoryIdea(epNum, idea) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  if (!sheet) {
+    setupSeasonStoryArcSheet(1);
+    sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  }
+
+  const lastRow = sheet.getLastRow();
+  let found = false;
+
+  for (let r = 3; r <= lastRow; r++) {
+    const rowEp = sheet.getRange(r, 2).getValue();
+    if (rowEp == epNum) {
+      sheet.getRange(r, 8).setValue(idea);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    // Append as a general season note
+    sheet.appendRow([1, epNum || 0, "Creator Idea", "", "Pending Review", "", "", idea]);
+  }
+
+  return {
+    success: true,
+    message: `Story idea recorded for Episode ${epNum || 'General'} in Tab 4 [Season_Story_Arc]!`
+  };
+}
+
+/**
+ * Full Next-Episode Transition.
  */
 function handleNextEpisodeFullUpdate(body) {
-  const epNum = body.episode_number; // e.g. Episode 2
-  const prevEp = epNum - 1;          // e.g. Episode 1
+  const epNum = body.episode_number || 1;
+  const prevEp = epNum - 1;
   
-  Logger.log(`Handling full transition: Episode ${prevEp} -> Episode ${epNum}`);
-  
-  // 1. Delete previous clips from Google Drive
-  cleanEpisodeDrive(prevEp);
+  if (prevEp > 0) cleanEpisodeDrive(prevEp);
   
   const ss = getStudioSpreadsheet();
-  
-  // 2. Update Tab 1 (Episode_Story)
   const storySheet = ss.getSheetByName(TAB_STORY);
   if (storySheet) {
     const data = storySheet.getDataRange().getValues();
     const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
     
-    // Mark previous as Published (or reset subsequent if restarting at Ep 1)
     for (let i = 1; i < data.length; i++) {
       if (prevEp > 0 && data[i][0] == prevEp) {
         storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
@@ -425,139 +692,27 @@ function handleNextEpisodeFullUpdate(body) {
     }
   }
 
-  // 3. Overwrite Tab 2 (Current_JSON_Prompts) with new prompts
   if (body.shots && Array.isArray(body.shots) && body.shots.length > 0) {
     updateJsonPromptsSheet(epNum, body.shots);
   }
 
-  // 4. Reset Tab 3 (Video_Checklist)
-  const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 22);
+  const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 10);
   initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
   
   return {
     success: true,
     active_episode: epNum,
-    message: `Episode ${prevEp} archived and Episode ${epNum} activated across all 3 sheets!`
+    message: `Episode ${epNum} activated across all sheets!`
   };
-}
-
-/**
- * Dispatches GitHub Actions workflow when ALL videos are ready.
- */
-function dispatchGitHubWorkflow(episodeNum) {
-  if (!GITHUB_PAT || GITHUB_PAT === "YOUR_GITHUB_PAT_HERE") {
-    Logger.log("ERROR: GITHUB_PAT is not set! Please insert your PAT in Apps Script.");
-    return { success: false, message: "GITHUB_PAT missing in Apps Script" };
-  }
-
-  const url = `https://api.github.com/repos/${GITHUB_REPO}/actions/workflows/${GITHUB_WORKFLOW}/dispatches`;
-  const payload = {
-    ref: "main",
-    inputs: {
-      mode: "hybrid_flow",
-      dry_run: false
-    }
-  };
-
-  const options = {
-    method: "post",
-    headers: {
-      "Authorization": `Bearer ${GITHUB_PAT}`,
-      "Accept": "application/vnd.github+json",
-      "User-Agent": "SachinAndReenu-Studio"
-    },
-    contentType: "application/json",
-    payload: JSON.stringify(payload),
-    muteHttpExceptions: true
-  };
-
-  const response = UrlFetchApp.fetch(url, options);
-  const code = response.getResponseCode();
-  
-  if (code === 204) {
-    Logger.log(`Successfully dispatched GitHub workflow for Episode ${episodeNum}!`);
-    return { success: true };
-  } else {
-    Logger.log(`GitHub API error ${code}: ${response.getContentText()}`);
-    return { success: false, code: code, details: response.getContentText() };
-  }
-}
-
-/**
- * Scheduled cron: 12:00 PM IST & 6:00 PM IST.
- * Inspects Tab 3 (Video_Checklist). If all shots present -> dispatches GitHub Actions!
- */
-function scheduledEpisodeCheckAndTrigger() {
-  Logger.log("--- Scheduled 12:00 PM / 6:00 PM Trigger Started ---");
-  const ss = getStudioSpreadsheet();
-  const storySheet = ss.getSheetByName(TAB_STORY);
-  
-  let activeEp = 1;
-  if (storySheet) {
-    const data = storySheet.getDataRange().getValues();
-    for (let i = 1; i < data.length; i++) {
-      const status = (data[i][2] || "").toString().trim().toLowerCase();
-      if (status === "active" || status === "queued") {
-        activeEp = data[i][0];
-        break;
-      }
-    }
-  }
-
-  const status = syncDriveToChecklist(activeEp);
-  if (!status || status.total_shots === 0) {
-    Logger.log("Tab 3 (Video_Checklist) has 0 shots or is empty. Clean exit.");
-    return;
-  }
-  
-  if (status.ready) {
-    Logger.log(`🎯 ALL ${status.total_shots}/${status.total_shots} shots are PRESENT in Drive! Dispatching GitHub Actions...`);
-    dispatchGitHubWorkflow(activeEp);
-  } else {
-    Logger.log(`⏳ Incomplete: Only ${status.present_shots} of ${status.total_shots} shots present in Google Drive. Stopping cleanly without running.`);
-  }
-}
-
-/**
- * Sets up 2 daily triggers: 12:00 PM IST and 6:00 PM IST.
- */
-function setupDailyTriggers() {
-  const existingTriggers = ScriptApp.getProjectTriggers();
-  for (let i = 0; i < existingTriggers.length; i++) {
-    ScriptApp.deleteTrigger(existingTriggers[i]);
-  }
-
-  // 12:00 PM IST (noon)
-  ScriptApp.newTrigger("scheduledEpisodeCheckAndTrigger")
-    .timeBased()
-    .atHour(12)
-    .nearMinute(0)
-    .everyDays(1)
-    .inTimezone("Asia/Kolkata")
-    .create();
-
-  // 6:00 PM (18:00) IST
-  ScriptApp.newTrigger("scheduledEpisodeCheckAndTrigger")
-    .timeBased()
-    .atHour(18)
-    .nearMinute(0)
-    .everyDays(1)
-    .inTimezone("Asia/Kolkata")
-    .create();
-
-  Logger.log("Configured 2 daily triggers: 12:00 PM IST and 6:00 PM IST!");
 }
 
 /**
  * Web App GET endpoint.
- * Returns the current active episode's Malayalam dialogues, Disney Pixar 3D prompts,
- * and shot details directly from Google Sheet Tab 2 (Current_JSON_Prompts).
  */
 function doGet(e) {
-  const params = e ? e.parameter : {};
+  const params = (e && e.parameter) || {};
   const action = (params.action || "get_prompts").toLowerCase();
   const epNum = parseInt(params.episode || "1", 10);
-  const format = (params.format || "").toLowerCase();
 
   // Tab 3 Checklist (used by GitHub Actions)
   if (action === "check_status" || action === "get_checklist") {
@@ -568,8 +723,31 @@ function doGet(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  // Pull new episode screenplay and prompts from GitHub
-  if (action === "sync_from_github" || action === "pull_current_episode") {
+  // Tab 4: Season Story Arc
+  if (action === "get_season_story" || action === "season_story") {
+    const data = getSeasonStoryArcData();
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Tab 5: Character Registry
+  if (action === "get_characters" || action === "characters") {
+    const data = getCharacterRegistryData();
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Creator Story Idea Submission via GET
+  if (action === "suggest_story_idea") {
+    const idea = params.idea || "";
+    const targetEp = parseInt(params.target_episode || "0", 10);
+    const result = recordCreatorStoryIdea(targetEp, idea);
+    return ContentService.createTextOutput(JSON.stringify(result))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Pull episode from GitHub
+  if (action === "sync_from_github") {
     try {
       const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/current_episode_shots.json?_t=${Date.now()}`;
       const res = UrlFetchApp.fetch(rawUrl);
@@ -583,40 +761,25 @@ function doGet(e) {
         })).setMimeType(ContentService.MimeType.JSON);
       }
     } catch (err) {
-      return ContentService.createTextOutput(JSON.stringify({
-        success: false,
-        error: err.toString()
-      })).setMimeType(ContentService.MimeType.JSON);
+      return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
   }
 
   // Cleanup after Instagram publish via GET
   if (action === "cleanup_after_publish") {
     cleanEpisodeDrive(epNum);
-    const ss = getStudioSpreadsheet();
-    const storySheet = ss.getSheetByName(TAB_STORY);
-    if (storySheet) {
-      const data = storySheet.getDataRange().getValues();
-      const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-      for (let i = 1; i < data.length; i++) {
-        if (data[i][0] == epNum) {
-          storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-          storySheet.getRange(i + 1, 8).setValue(nowIst);
-        }
-      }
-    }
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
-      message: `Episode ${epNum} Drive files trashed and marked Published in Tab 1.`
+      message: `Episode ${epNum} Drive files trashed.`
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  // DEFAULT & LIVE SYNC: Return Active Episode Story (Tab 1) + Dialogues & Prompts (Tab 2)
+  // DEFAULT MASTER CALL: Returns Active Episode Prompts + Season Arc + Character Registry
   const ss = getStudioSpreadsheet();
   let storySheet = ss.getSheetByName(TAB_STORY);
   let promptSheet = ss.getSheetByName(TAB_PROMPTS);
 
-  // Auto-initialize if sheets don't exist yet
   if (!storySheet || !promptSheet || promptSheet.getLastRow() <= 2) {
     try {
       setupStudioSpreadsheet();
@@ -628,13 +791,13 @@ function doGet(e) {
   let activeEp = 1;
   let epTitleEn = "The Homecoming";
   let epTitleMl = "തിരിച്ചുവരവ്";
-  let epSynopsis = "After two long years of separation, Sachin returns from the UK to a nervous Reenu waiting with Amal at Kochi CIAL airport. Amidst the tearful, tender joy of their reunion, Sachin's subtle glance toward his travel pouch hints at a hidden secret brought from London.";
+  let epSynopsis = "After two long years of waiting, Reenu stands anxiously with her friend Amal at the Kochi CIAL arrival terminal...";
 
   if (storySheet && storySheet.getLastRow() > 1) {
     const storyData = storySheet.getDataRange().getValues();
     for (let i = 1; i < storyData.length; i++) {
       const st = (storyData[i][2] || "").toString().trim().toLowerCase();
-      if (st === "active" || st === "queued") {
+      if (st === "active") {
         activeEp = storyData[i][0];
         const fullTitle = storyData[i][1] || "";
         if (fullTitle.includes("(")) {
@@ -650,8 +813,6 @@ function doGet(e) {
   }
 
   const shots = [];
-  const prompts = [];
-
   if (promptSheet && promptSheet.getLastRow() > 2) {
     const pData = promptSheet.getRange(3, 1, promptSheet.getLastRow() - 2, 6).getValues();
     for (let i = 0; i < pData.length; i++) {
@@ -662,23 +823,22 @@ function doGet(e) {
       } catch(e) {
         parsedJson = row[5];
       }
-      
-      const shotItem = {
+      shots.push({
         shot_number: i + 1,
         shot: `Shot #${i + 1}`,
-        duration: row[1] || "4s",
+        duration: row[1] || "6s",
         character: row[2] || "Reenu",
         dialogue_malayalam: row[3] || "",
         dialogue: row[3] || "",
         action_summary: row[4] || "",
         action: row[4] || "",
         json_prompt: parsedJson
-      };
-
-      shots.push(shotItem);
-      prompts.push(shotItem);
+      });
     }
   }
+
+  const seasonData = getSeasonStoryArcData();
+  const characterData = getCharacterRegistryData();
 
   const response = {
     success: true,
@@ -688,70 +848,12 @@ function doGet(e) {
     title_malayalam: epTitleMl,
     synopsis: epSynopsis,
     total_shots: shots.length,
-    calculated_runtime_display: Math.floor(shots.length * 5.6 / 60) + "m " + Math.floor((shots.length * 5.6) % 60) + "s",
     shots: shots,
-    prompts: prompts
+    prompts: shots,
+    season_story: seasonData,
+    characters: characterData.characters
   };
 
-  // If viewed directly in browser (and user didn't request raw JSON), show a beautiful visual webpage with all Malayalam dialogues!
-  if (format !== "json" && !params.action) {
-    let shotsHtml = shots.map(function(s) {
-      return '<div style="background:#121727; border:1px solid #212c48; border-radius:12px; padding:16px; margin-bottom:14px;">' +
-        '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">' +
-          '<div>' +
-            '<span style="background:#2563eb; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px;">Shot #' + s.shot_number + '</span>' +
-            '<span style="background:#059669; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px; margin-left:6px;">⏱️ ' + s.duration + '</span>' +
-            '<span style="background:#7c3aed; color:#fff; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px; margin-left:6px;">👤 ' + s.character + '</span>' +
-          '</div>' +
-          '<span style="color:#94a3b8; font-size:12px;">Active in Google Sheet</span>' +
-        '</div>' +
-        (s.dialogue_malayalam ? 
-          '<div style="background:#1b2033; border-left:4px solid #fde047; padding:12px 14px; border-radius:0 8px 8px 0; margin-bottom:10px;">' +
-            '<div style="font-size:11px; text-transform:uppercase; color:#f97316; font-weight:700; margin-bottom:4px;">💬 സംഭാഷണം (Malayalam Dialogue):</div>' +
-            '<div style="font-size:16px; font-weight:600; color:#fef08a; line-height:1.5;">"' + s.dialogue_malayalam + '"</div>' +
-          '</div>' : 
-          '<div style="background:#141a2e; padding:8px 12px; border-radius:6px; margin-bottom:10px; color:#94a3b8; font-size:12px;">🤫 <i>No spoken dialogue (Silent emotional scene)</i></div>'
-        ) +
-        '<div style="font-size:13px; color:#cbd5e1; margin-bottom:8px;"><b>Action:</b> ' + s.action_summary + '</div>' +
-      '</div>';
-    }).join("");
-
-    const pageHtml = '<!DOCTYPE html>' +
-'<html>' +
-'<head>' +
-'  <meta charset="UTF-8">' +
-'  <title>Sachin & Reenu — Episode ' + activeEp + ' Dialogues</title>' +
-'  <meta name="viewport" content="width=device-width, initial-scale=1.0">' +
-'  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">' +
-'  <style>' +
-'    body { background:#090c15; color:#f8fafc; font-family:\'Plus Jakarta Sans\', sans-serif; padding:20px; max-width:900px; margin:0 auto; }' +
-'    h1 { color:#f97316; font-size:22px; margin-bottom:4px; }' +
-'    .badge { background:#1e2947; color:#38bdf8; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; display:inline-block; }' +
-'  </style>' +
-'</head>' +
-'<body>' +
-'  <div style="border-bottom:1px solid #212c48; padding-bottom:16px; margin-bottom:20px;">' +
-'    <div class="badge">Google Apps Script Live Web App</div>' +
-'    <h1 style="margin-top:10px;">സച്ചിൻ & റീനു — Episode ' + activeEp + ': ' + epTitleEn + ' (' + epTitleMl + ')</h1>' +
-'    <p style="color:#94a3b8; font-size:14px; margin-top:6px;">' + epSynopsis + '</p>' +
-'    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">' +
-'      <span class="badge" style="background:#10b981; color:#fff;">✓ ' + shots.length + ' Shots Active</span>' +
-'      <a href="?action=get_prompts&format=json" style="background:#3b82f6; color:#fff; text-decoration:none; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:700;">View Raw JSON</a>' +
-'    </div>' +
-'  </div>' +
-'  <div>' +
-'    <h2 style="font-size:16px; margin-bottom:14px; color:#fde047;">🎬 Live Malayalam Dialogues from Google Sheet (Tab 2: Current_JSON_Prompts)</h2>' +
-'    ' + shotsHtml +
-'  </div>' +
-'</body>' +
-'</html>';
-
-    return HtmlService.createHtmlOutput(pageHtml)
-      .setTitle("Sachin & Reenu - Episode " + activeEp + " Dialogues")
-      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-  }
-
-  // Return formatted JSON for API calls and Portal sync
   return ContentService.createTextOutput(JSON.stringify(response, null, 2))
     .setMimeType(ContentService.MimeType.JSON);
 }
@@ -769,7 +871,6 @@ function doPost(e) {
     if (action === "upload_shot") {
       const fileName = body.filename || `shot_${Date.now()}.mp4`;
       const base64Data = body.base64_data;
-      
       const folder = getEpisodeDriveFolder(epNum);
       const decodedBytes = Utilities.base64Decode(base64Data);
       const blob = Utilities.newBlob(decodedBytes, "video/mp4", fileName);
@@ -781,8 +882,6 @@ function doPost(e) {
       
       const file = folder.createFile(blob);
       file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-      
-      // Update Tab 3
       syncDriveToChecklist(epNum);
 
       return ContentService.createTextOutput(JSON.stringify({
@@ -793,41 +892,27 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 2. Cleanup after Instagram publishing
-    if (action === "cleanup_after_publish") {
-      const deletedFiles = cleanEpisodeDrive(epNum);
-      const ss = getStudioSpreadsheet();
-      const storySheet = ss.getSheetByName(TAB_STORY);
-      if (storySheet) {
-        const data = storySheet.getDataRange().getValues();
-        const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-        for (let i = 1; i < data.length; i++) {
-          if (data[i][0] == epNum) {
-            storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-            if (body.instagram_url) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
-            storySheet.getRange(i + 1, 8).setValue(nowIst);
-          }
-        }
-      }
-      return ContentService.createTextOutput(JSON.stringify({
-        success: true,
-        cleaned_files: deletedFiles,
-        message: `Episode ${epNum} raw clips cleaned from Drive and marked Published in Tab 1.`
-      })).setMimeType(ContentService.MimeType.JSON);
+    // 2. Creator Story Idea Submission
+    if (action === "suggest_story_idea") {
+      const res = recordCreatorStoryIdea(body.target_episode, body.idea);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 3. Full Next-Episode Transition (Update Tab 1, Overwrite Tab 2, Reset Tab 3, Clean Drive)
+    // 3. Full Next-Episode Transition
     if (action === "update_next_episode_full") {
       const res = handleNextEpisodeFullUpdate(body);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 3. Sync Tab 3 checklist
-    if (action === "sync_checklist") {
-      const res = syncDriveToChecklist(epNum);
-      return ContentService.createTextOutput(JSON.stringify(res))
-        .setMimeType(ContentService.MimeType.JSON);
+    // 4. Cleanup after publish
+    if (action === "cleanup_after_publish") {
+      cleanEpisodeDrive(epNum);
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        message: `Episode ${epNum} raw clips cleaned from Drive.`
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
