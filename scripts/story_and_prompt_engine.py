@@ -106,6 +106,20 @@ CRITICAL PRODUCTION RULES:
 9. STYLE STRING:
    - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
+10. ORGANIC CHARACTER EXPANSION (OPTIONAL):
+   - The core recurring cast is Reenu, Sachin, and Amal.
+   - If the storyline organically calls for a new character (e.g. taxi driver, tea stall vendor, college friend, family member, bystander), you may introduce them.
+   - If introduced, add their details to 'new_characters_introduced'.
+   - Each entry must include:
+     • "name": character name
+     • "role": brief role in story
+     • "age": integer
+     • "gender": "male" / "female"
+     • "visual_dna": detailed Disney Pixar stylized 3D cartoon animation prompt (strictly non-human realism)
+     • "locked_attire": locked signature clothing description
+     • "voice_persona": voice description
+   - If NO new character is introduced for this episode, provide an empty array: "new_characters_introduced": []
+
 Output JSON structure:
 {{
   "episode_number": {next_ep_num},
@@ -116,6 +130,17 @@ Output JSON structure:
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
+  "new_characters_introduced": [
+    {{
+      "name": "...",
+      "role": "...",
+      "age": 24,
+      "gender": "male",
+      "visual_dna": "...",
+      "locked_attire": "...",
+      "voice_persona": "..."
+    }}
+  ],
   "shots": [
     {{
       "shot_number": 1,
@@ -229,6 +254,7 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
         "synopsis": episode_data.get("synopsis", ""),
         "cliffhanger": episode_data.get("cliffhanger", ""),
         "total_shots": episode_data["total_shots"],
+        "new_characters_introduced": episode_data.get("new_characters_introduced", []),
         "shots": [
             {
                 "shot_number": s["shot_number"],
@@ -272,7 +298,7 @@ def update_creator_portal(episode_data):
         json.dump(episode_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Saved updated screenplay to {json_path.name}")
 
-    # Update story_state.json history
+    # Update story_state.json history and character cast
     state_path = Path("story_state.json")
     if state_path.exists():
         try:
@@ -280,6 +306,25 @@ def update_creator_portal(episode_data):
                 state = json.load(f)
             ep_num = episode_data.get("episode_number", 1)
             state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
+            
+            # Record organic new characters if introduced
+            new_chars = episode_data.get("new_characters_introduced", [])
+            if new_chars and isinstance(new_chars, list):
+                if "characters" not in state:
+                    state["characters"] = {}
+                for nc in new_chars:
+                    cname = nc.get("name")
+                    if cname and cname not in state["characters"]:
+                        state["characters"][cname] = {
+                            "age": nc.get("age", 24),
+                            "gender": nc.get("gender", "unknown"),
+                            "voice": nc.get("voice_persona", "Malayalam expressive voice"),
+                            "role": nc.get("role", "Supporting Character"),
+                            "attire": nc.get("locked_attire", ""),
+                            "visual_dna": nc.get("visual_dna", "")
+                        }
+                        print(f"✨ New character '{cname}' recorded in story_state.json!")
+
             history = state.get("history", [])
             existing_eps = [h.get("episode") for h in history]
             if ep_num not in existing_eps:

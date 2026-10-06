@@ -699,10 +699,84 @@ function handleNextEpisodeFullUpdate(body) {
   const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 10);
   initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
   
+  // 4. Update Tab 4: Season_Story_Arc
+  try {
+    let seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
+    if (!seasonSheet) {
+      setupSeasonStoryArcSheet(1);
+      seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
+    }
+    if (seasonSheet && seasonSheet.getLastRow() >= 3) {
+      const sData = seasonSheet.getRange(3, 1, seasonSheet.getLastRow() - 2, 8).getValues();
+      let arcFound = false;
+      for (let r = 0; r < sData.length; r++) {
+        if (sData[r][1] == epNum) {
+          if (body.title_english) seasonSheet.getRange(r + 3, 3).setValue(body.title_english);
+          if (body.title_malayalam) seasonSheet.getRange(r + 3, 4).setValue(body.title_malayalam);
+          seasonSheet.getRange(r + 3, 5).setValue("Active").setBackground("#dcfce7").setFontColor("#15803d");
+          if (body.synopsis) seasonSheet.getRange(r + 3, 6).setValue(body.synopsis);
+          if (body.cliffhanger) seasonSheet.getRange(r + 3, 7).setValue(body.cliffhanger);
+          arcFound = true;
+          break;
+        }
+      }
+      if (!arcFound) {
+        seasonSheet.appendRow([
+          1, epNum,
+          body.title_english || `Episode ${epNum}`,
+          body.title_malayalam || "",
+          "Active",
+          body.synopsis || "",
+          body.cliffhanger || "",
+          ""
+        ]);
+        seasonSheet.getRange(seasonSheet.getLastRow(), 5).setBackground("#dcfce7").setFontColor("#15803d");
+      }
+    }
+  } catch (arcErr) {
+    Logger.log("Error updating Season_Story_Arc: " + arcErr.toString());
+  }
+
+  // 5. Update Tab 5: Character_Registry if new characters are introduced
+  try {
+    if (body.new_characters_introduced && Array.isArray(body.new_characters_introduced) && body.new_characters_introduced.length > 0) {
+      let charSheet = ss.getSheetByName(TAB_CHARACTERS);
+      if (!charSheet) {
+        setupCharacterRegistrySheet();
+        charSheet = ss.getSheetByName(TAB_CHARACTERS);
+      }
+      const existingNames = [];
+      if (charSheet.getLastRow() >= 3) {
+        const namesData = charSheet.getRange(3, 1, charSheet.getLastRow() - 2, 1).getValues();
+        namesData.forEach(row => existingNames.push((row[0] || "").toString().toLowerCase().trim()));
+      }
+      for (const nc of body.new_characters_introduced) {
+        const cName = (nc.name || "").trim();
+        if (cName && !existingNames.includes(cName.toLowerCase())) {
+          charSheet.appendRow([
+            cName,
+            nc.role || "Supporting Character",
+            `Season 1 • Ep ${epNum}`,
+            "Active",
+            nc.visual_dna || "Stylized 3D Pixar cartoon character (Strictly non-human realism)",
+            nc.locked_attire || "Locked signature costume (100% consistent across shots)",
+            nc.voice_persona || "Malayalam voice"
+          ]);
+          const newRowIdx = charSheet.getLastRow();
+          charSheet.getRange(newRowIdx, 4).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold");
+          existingNames.push(cName.toLowerCase());
+          Logger.log(`Added new character: ${cName} to Character_Registry`);
+        }
+      }
+    }
+  } catch (charErr) {
+    Logger.log("Error updating Character_Registry: " + charErr.toString());
+  }
+
   return {
     success: true,
     active_episode: epNum,
-    message: `Episode ${epNum} activated across all sheets!`
+    message: `Episode ${epNum} activated across all 5 sheets!`
   };
 }
 
