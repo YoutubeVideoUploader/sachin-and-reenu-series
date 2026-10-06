@@ -1865,116 +1865,75 @@
       };
     }
 
+    
+    
     function renderShots() {
       const container = document.getElementById('shotsContainer');
       const uploadList = document.getElementById('uploadList');
-      if (!container || !uploadList) return;
-
       container.innerHTML = '';
       uploadList.innerHTML = '';
 
-      const epNum = episodeData.episode_number || 1;
-      const titleEn = episodeData.title_english || 'The Homecoming';
-      const titleMl = episodeData.title_malayalam || 'തിരിച്ചുവരവ്';
-      const synopsis = episodeData.synopsis || '';
-      const runtimeStr = episodeData.calculated_runtime_display || '2m 04s';
-      const shots = episodeData.shots || [];
+      const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
+      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${episodeData.episode_number}`;
+      document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
+      document.getElementById('epSynopsis').innerText = episodeData.synopsis;
+      document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
 
-      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${epNum}`;
-      document.getElementById('epTitle').innerHTML = `${titleEn} <span>${titleMl}</span>`;
-      document.getElementById('epSynopsis').innerText = synopsis;
-      document.getElementById('shotCountBadge').innerText = `${shots.length} Shots • ⏱️ ${runtimeStr}`;
-
-      shots.forEach((shot) => {
-        const isPresent = driveStatus[shot.shot_number] && driveStatus[shot.shot_number].present;
-        const isStaged = stagedFiles[shot.shot_number] && stagedFiles[shot.shot_number].file && !stagedFiles[shot.shot_number].uploaded;
-
-        // 1. Render Shot Card (Director Tab)
-        const card = document.createElement('div');
-        card.className = 'shot-card';
-
-        const jsonPromptStr = typeof shot.json_prompt === 'string' ? shot.json_prompt : JSON.stringify(shot.json_prompt, null, 2);
-        const dialogueText = shot.dialogue_malayalam || shot.dialogue || '';
-
-        const dialogueHtml = dialogueText ? `
+      episodeData.shots.forEach((shot) => {
+        const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
+        const dialogueHtml = shot.dialogue_malayalam ? `
           <div class="dialogue-box">
-            <div style="font-size: 11px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 4px;">
-              💬 സംഭാഷണം (Malayalam Dialogue — ${shot.character}):
-            </div>
-            <div style="font-size: 16px; font-weight: 600; line-height: 1.5; color: #fde047; font-family: 'Noto Sans Malayalam', sans-serif;">
-              "${dialogueText}"
-            </div>
+            <b>💬 സംഭാഷണം (Malayalam Dialogue):</b> "${shot.dialogue_malayalam}"
           </div>
         ` : `
-          <div style="background: #141a2e; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; color: var(--text-muted); font-size: 13px;">
-            🤫 <i>No spoken character dialogue (Silent emotional gaze / ambient scene)</i>
+          <div class="dialogue-box-silent">
+            <span style="color: var(--text-muted); font-size: 13px;">🤫 <i>No spoken dialogue (Silent emotional gaze / ambient beat)</i></span>
           </div>
         `;
 
+        const jsonPromptFormatted = JSON.stringify(shot.json_prompt, null, 2);
+
+        // 1. Render Shot Card
+        const card = document.createElement('div');
+        card.className = 'shot-card';
         card.innerHTML = `
           <div class="shot-header">
-            <div class="shot-badges">
-              <span class="badge badge-shot">Shot #${shot.shot_number}</span>
-              <span class="badge badge-dur">⏱️ ${shot.duration}</span>
-              <span class="badge badge-char">👤 ${shot.character}</span>
-              <span class="badge badge-nobgm">🔇 NO BGM</span>
-              <span id="directorDriveBadge_${shot.shot_number}" class="badge" style="${isPresent ? 'display: inline-flex;' : 'display: none;'} background: #059669; color: #fff;">✓ Video in Drive</span>
+            <div class="shot-meta">
+              <span class="shot-badge">Shot #${shot.shot_number}</span>
+              <span class="dur-badge ${durClass}">⏱️ ${shot.duration}</span>
+              <span class="char-badge">👤 ${shot.character}</span>
+              <span style="font-size: 12px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+                🔇 NO BGM
+              </span>
             </div>
-            <div style="display: flex; gap: 8px;">
-              <button id="directorPreviewBtn_${shot.shot_number}" class="btn btn-preview" style="${isPresent || isStaged ? 'display: inline-flex;' : 'display: none;'}; padding: 6px 14px; font-size: 12px;" onclick="openDriveVideoPreview(${shot.shot_number})">
-                👁️ Preview Video
-              </button>
-              <button class="btn btn-primary" onclick="copyJsonPrompt(${shot.shot_number}, this)">
-                📋 Copy JSON Prompt
-              </button>
-            </div>
+            <button class="copy-btn" style="background: linear-gradient(135deg, #f97316, #ea580c); font-weight: 700; border: none; padding: 10px 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);" onclick="copyJsonPrompt(${shot.shot_number}, this)">
+              📋 Copy JSON Prompt
+            </button>
           </div>
           ${dialogueHtml}
-          <p style="font-size: 14px; margin-bottom: 10px;"><b>Action:</b> ${shot.action_summary || shot.action || ''}</p>
-          <div class="prompt-box">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 11px; text-transform: uppercase; color: var(--accent-blue); font-weight: 700;">
-                GOOGLE FLOW JSON PROMPT (Disney Pixar 3D • Character DNA • Location • Dialogue):
+          <p style="font-size: 14px; margin-bottom: 8px;"><b>Action:</b> ${shot.action_summary}</p>
+          <div class="prompt-box" style="background: #080a10; border: 1px solid #1e2640; border-radius: 8px; padding: 14px 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1a2238; padding-bottom: 6px;">
+              <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-blue); font-weight: 700;">
+                📦 GOOGLE FLOW JSON PROMPT (Character DNA • Location • Camera • Dialogue • No-BGM):
               </span>
               <span style="font-size: 11px; color: var(--text-muted);">JSON Format</span>
             </div>
-            <pre id="promptJson_${shot.shot_number}">${escapeHtml(jsonPromptStr)}</pre>
+            <pre style="margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; line-height: 1.5; color: #a5f3fc; white-space: pre-wrap; word-break: break-word;" id="promptJson_${shot.shot_number}">${escapeHtml(jsonPromptFormatted)}</pre>
           </div>
         `;
         container.appendChild(card);
 
-        // 2. Render Upload Item (Vault Tab)
-        let pillClass = 'status-pill status-pending';
-        let pillText = '⏳ Awaiting Video';
-
-        if (isStaged) {
-          pillClass = 'status-pill status-staged';
-          pillText = `⏳ Staged: ${stagedFiles[shot.shot_number].file.name}`;
-        } else if (isPresent) {
-          pillClass = 'status-pill status-ready';
-          pillText = `✓ In Drive (${driveStatus[shot.shot_number].filename || 'Present'})`;
-        }
-
+        // 2. Render Upload Item
         const upItem = document.createElement('div');
         upItem.className = 'upload-item';
         upItem.id = `upItem_${shot.shot_number}`;
         upItem.innerHTML = `
-          <div style="flex: 1; min-width: 250px;">
-            <b>Shot #${shot.shot_number}</b> (<span style="color: #34d399;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
-            ${dialogueText ? `<div style="font-size: 13px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px; font-weight: 600;">💬 "${dialogueText}"</div>` : ''}
+          <div>
+            <b>Shot #${shot.shot_number}</b> (<span class="dur-badge ${durClass}" style="padding: 2px 6px; font-size: 11px;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
+            ${shot.dialogue_malayalam ? `<div style="font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px;">"${shot.dialogue_malayalam}"</div>` : ''}
           </div>
-          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-            <span class="${pillClass}" id="statusPill_${shot.shot_number}">${pillText}</span>
-            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="selectSingleShotFile(${shot.shot_number})">
-              📁 Choose File
-            </button>
-            <button class="btn btn-preview" id="previewBtn_${shot.shot_number}" style="padding: 6px 12px; font-size: 12px; ${isPresent || isStaged ? 'display: inline-flex;' : 'display: none;'}" onclick="openDriveVideoPreview(${shot.shot_number})">
-              👁️ Preview Video
-            </button>
-            <button class="btn btn-primary" id="uploadBtn_${shot.shot_number}" style="padding: 6px 12px; font-size: 12px; ${isStaged ? 'display: inline-flex;' : 'display: none;'}" onclick="uploadSingleShot(${shot.shot_number})">
-              ☁️ Upload Shot #${shot.shot_number}
-            </button>
-          </div>
+          <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
         `;
         uploadList.appendChild(upItem);
       });
@@ -1987,15 +1946,16 @@
     function copyJsonPrompt(shotNum, btn) {
       const text = document.getElementById(`promptJson_${shotNum}`).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.innerHTML;
-        btn.innerHTML = '✓ Copied!';
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✓ Copied JSON Prompt!';
         btn.style.background = '#059669';
         setTimeout(() => {
-          btn.innerHTML = orig;
-          btn.style.background = '';
+          btn.innerHTML = originalText;
+          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
         }, 2000);
       });
     }
+
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');

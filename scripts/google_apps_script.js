@@ -423,12 +423,13 @@ function handleNextEpisodeFullUpdate(body) {
   }
 
   // 3. Overwrite Tab 2 (Current_JSON_Prompts) with new prompts
-  if (body.shots && body.shots.length > 0) {
+  if (body.shots && Array.isArray(body.shots) && body.shots.length > 0) {
     updateJsonPromptsSheet(epNum, body.shots);
   }
 
   // 4. Reset Tab 3 (Video_Checklist)
-  initVideoChecklist(epNum, body.total_shots || body.shots.length, body.title_malayalam || `Episode ${epNum}`);
+  const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 22);
+  initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
   
   return {
     success: true,
@@ -561,6 +562,49 @@ function doGet(e) {
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       data: status
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Pull new episode screenplay and prompts from GitHub
+  if (action === "sync_from_github" || action === "pull_current_episode") {
+    try {
+      const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/current_episode_shots.json?_t=${Date.now()}`;
+      const res = UrlFetchApp.fetch(rawUrl);
+      if (res.getResponseCode() === 200) {
+        const epData = JSON.parse(res.getContentText());
+        const updateRes = handleNextEpisodeFullUpdate(epData);
+        return ContentService.createTextOutput(JSON.stringify({
+          success: true,
+          message: `Episode ${epData.episode_number} synced from GitHub!`,
+          details: updateRes
+        })).setMimeType(ContentService.MimeType.JSON);
+      }
+    } catch (err) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        error: err.toString()
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+
+  // Cleanup after Instagram publish via GET
+  if (action === "cleanup_after_publish") {
+    cleanEpisodeDrive(epNum);
+    const ss = getStudioSpreadsheet();
+    const storySheet = ss.getSheetByName(TAB_STORY);
+    if (storySheet) {
+      const data = storySheet.getDataRange().getValues();
+      const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+      for (let i = 1; i < data.length; i++) {
+        if (data[i][0] == epNum) {
+          storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+          storySheet.getRange(i + 1, 8).setValue(nowIst);
+        }
+      }
+    }
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: `Episode ${epNum} Drive files trashed and marked Published in Tab 1.`
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
@@ -746,8 +790,31 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // 2. Full Next-Episode Transition (Update Tab 1, Overwrite Tab 2, Reset Tab 3, Clean Drive)
-    if (action === "update_next_episode_full" || action === "cleanup_after_publish") {
+    // 2. Cleanup after Instagram publishing
+    if (action === "cleanup_after_publish") {
+      const deletedFiles = cleanEpisodeDrive(epNum);
+      const ss = getStudioSpreadsheet();
+      const storySheet = ss.getSheetByName(TAB_STORY);
+      if (storySheet) {
+        const data = storySheet.getDataRange().getValues();
+        const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+        for (let i = 1; i < data.length; i++) {
+          if (data[i][0] == epNum) {
+            storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+            if (body.instagram_url) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
+            storySheet.getRange(i + 1, 8).setValue(nowIst);
+          }
+        }
+      }
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        cleaned_files: deletedFiles,
+        message: `Episode ${epNum} raw clips cleaned from Drive and marked Published in Tab 1.`
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 3. Full Next-Episode Transition (Update Tab 1, Overwrite Tab 2, Reset Tab 3, Clean Drive)
+    if (action === "update_next_episode_full") {
       const res = handleNextEpisodeFullUpdate(body);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);

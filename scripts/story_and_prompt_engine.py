@@ -21,6 +21,11 @@ import time
 import argparse
 import requests
 from pathlib import Path
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from google import genai
 from google.genai import types
 
@@ -131,16 +136,34 @@ Output JSON structure:
 }}
 """
 
-    print("Generating episode with Gemini 2.5 Flash...")
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            response_mime_type="application/json",
-            temperature=0.8
-        )
-    )
+    candidate_models = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-flash-latest"]
+    response = None
+    last_err = None
+
+    for model_name in candidate_models:
+        print(f"Generating episode with {model_name}...")
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        response_mime_type="application/json",
+                        temperature=0.8
+                    )
+                )
+                if response and response.text:
+                    break
+            except Exception as e:
+                last_err = e
+                print(f"  Attempt {attempt + 1} with {model_name} failed: {e}")
+                time.sleep(2)
+        if response and response.text:
+            break
+
+    if not response or not response.text:
+        raise RuntimeError(f"All Gemini models failed to generate screenplay. Last error: {last_err}")
 
     data = json.loads(response.text)
     
@@ -188,10 +211,23 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
         ]
     }
     
+    # 1. Try POST
     try:
-        res = requests.post(gas_url, json=payload, timeout=45)
-        print(f"✓ Google Sheet updated: HTTP {res.status_code}")
-        return res.status_code == 200
+        res = requests.post(gas_url, json=payload, timeout=30)
+        if res.status_code == 200:
+            print(f"✓ Google Sheet updated via POST: HTTP {res.status_code}")
+            return True
+        else:
+            print(f"POST returned HTTP {res.status_code}, falling back to GET sync...")
+    except Exception as e:
+        print(f"Notice on POST sync: {e}, falling back to GET sync...")
+        
+    # 2. Resilient GET fallback (Calls Apps Script to sync from GitHub)
+    try:
+        sync_url = f"{gas_url}?action=sync_from_github&episode={episode_data['episode_number']}"
+        res2 = requests.get(sync_url, timeout=30)
+        print(f"✓ Google Sheet synced from GitHub via GET: HTTP {res2.status_code}")
+        return res2.status_code == 200
     except Exception as e:
         print(f"Warning: Failed to update Google Sheet: {e}")
         return False

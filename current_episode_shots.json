@@ -1,1196 +1,702 @@
 {
-  "episode_number": 1,
-  "title_malayalam": "തിരിച്ചുവരവ്",
-  "title_english": "The Homecoming",
-  "synopsis": "After two long years of separation, Sachin returns from the UK to a nervous Reenu waiting with Amal at Kochi CIAL airport. Amidst the tearful, tender joy of their reunion, Sachin's subtle glance toward his travel pouch hints at a hidden secret brought from London.",
-  "target_duration_seconds": 124,
-  "total_shots": 22,
-  "calculated_total_seconds": 124,
-  "calculated_runtime_display": "2m 04s",
+  "episode_number": 2,
+  "title_malayalam": "മഴയും ചില രഹസ്യങ്ങളും",
+  "title_english": "Rain and Some Secrets",
+  "synopsis": "Stepping out of Kochi CIAL airport into the heavy, sudden Kerala monsoon, Sachin and Reenu rush to Amal's parked car. During the cozy, rain-drenched ride through Kochi's neon-lit streets, Reenu notices Sachin's extreme protectiveness over his London travel pouch. As Amal playfully teases them from the driver's seat, Reenu's curiosity turns into suspicion, pushing Sachin to the brink of revealing a life-altering secret from his time in the UK.",
+  "cliffhanger": "Sachin slowly unzips the leather pouch in the dim light of the moving car, revealing a mysterious, glowing object that leaves Reenu completely gasping in shock.",
+  "total_shots": 21,
+  "calculated_total_seconds": 130,
+  "calculated_runtime_display": "2m 10s",
   "shots": [
     {
       "shot_number": 1,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Inside Kochi CIAL Airport international arrival terminal hall. Polished reflective marble floor, modern glass sliding doors with green exit signage, chrome metal barrier railings, warm overhead ambient terminal lighting.",
-      "camera": "Slow cinematic tilt-down from terminal ceiling to Reenu standing anxiously by the barrier, centered 55% in vertical 9:16 frame.",
-      "action": "Reenu stands on her tiptoes behind the arrival barrier, holding onto the metal railing with trembling fingers as she scans the crowds.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "രണ്ടു നീണ്ട വർഷങ്ങൾ... കൊച്ചി വിമാനത്താവളത്തിന്റെ തിരക്കിലും, റീനുവിന്റെ മനസ്സിൽ ഒരു കടലിരമ്പമായിരുന്നു."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Inside Kochi CIAL Airport international arrival terminal hall. Polished reflective marble floor, modern glass sliding doors with green exit signage, chrome metal barrier railings, warm overhead ambient terminal lighting.",
-        "camera": "Slow cinematic tilt-down from terminal ceiling to Reenu standing anxiously by the barrier, centered 55% in vertical 9:16 frame.",
-        "action": "Reenu stands on her tiptoes behind the arrival barrier, holding onto the metal railing with trembling fingers as she scans the crowds.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "രണ്ടു നീണ്ട വർഷങ്ങൾ... കൊച്ചി വിമാനത്താവളത്തിന്റെ തിരക്കിലും, റീനുവിന്റെ മനസ്സിൽ ഒരു കടലിരമ്പമായിരുന്നു."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "രണ്ടു നീണ്ട വർഷങ്ങൾ... കൊച്ചി വിമാനത്താവളത്തിന്റെ തിരക്കിലും, റീനുവിന്റെ മനസ്സിൽ ഒരു കടലിരമ്പമായിരുന്നു.",
-      "action_summary": "Reenu stands on her tiptoes behind the arrival barrier, holding onto the metal railing with trembling fingers as she scans the crowds."
-    },
-    {
-      "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal & Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        },
-        {
-          "name": "Amal",
-          "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-        }
-      ],
-      "location": "Beside the passenger arrival barrier railing at Kochi CIAL terminal. Crowds waiting with welcome placards blurred in the background.",
-      "camera": "Eye-level medium two-shot, smooth pan from Amal to Reenu, centered framing.",
-      "action": "Amal nudges Reenu playfully on the shoulder with his elbow, grinning to break her anxious tension. Reenu bites her lip nervously.",
-      "dialogue": {
-        "speaker": "Amal",
-        "voice_persona": "22yo energetic Malayali young man, witty teasing tone",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "എന്താ റീനു, ഇങ്ങനെ പേടിക്കുന്നത്? അവൻ ലണ്ടനിൽ നിന്ന് വരില്ലെന്നാണോ?"
-      },
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "കൊച്ചിയിലെ ആ കനത്ത മഴയിലേക്ക് അവർ ഒരുമിച്ച് ഇറങ്ങുകയാണ്... പുതിയൊരു യാത്രയുടെ തുടക്കം പോലെ.",
+      "action_summary": "Sachin and Reenu, holding a shared umbrella, rush out of the CIAL airport canopy into the heavy Kochi monsoon rain, laughing.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           },
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           }
         ],
-        "location": "Beside the passenger arrival barrier railing at Kochi CIAL terminal. Crowds waiting with welcome placards blurred in the background.",
-        "camera": "Eye-level medium two-shot, smooth pan from Amal to Reenu, centered framing.",
-        "action": "Amal nudges Reenu playfully on the shoulder with his elbow, grinning to break her anxious tension. Reenu bites her lip nervously.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "22yo energetic Malayali young man, witty teasing tone",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "എന്താ റീനു, ഇങ്ങനെ പേടിക്കുന്നത്? അവൻ ലണ്ടനിൽ നിന്ന് വരില്ലെന്നാണോ?"
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "എന്താ റീനു, ഇങ്ങനെ പേടിക്കുന്നത്? അവൻ ലണ്ടനിൽ നിന്ന് വരില്ലെന്നാണോ?",
-      "action_summary": "Amal nudges Reenu playfully on the shoulder with his elbow, grinning to break her anxious tension. Reenu bites her lip nervously."
-    },
-    {
-      "shot_number": 3,
-      "duration": "8s",
-      "duration_seconds": 8,
-      "character": "Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "At the arrival barrier railings inside Kochi CIAL terminal, warm amber bokeh lights reflecting off polished floors.",
-      "camera": "Intimate close-up on Reenu's expressive face, shallow depth of field, centered 55%.",
-      "action": "Reenu fidgets with the strap of her bag, her hazel eyes glistening with raw emotional vulnerability as she speaks.",
-      "dialogue": {
-        "speaker": "Reenu",
-        "voice_persona": "22yo attractive South Indian girl, sweet vulnerable tone, nervous flutter in voice",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "രണ്ടു വർഷമായില്ലേ അമൽ... എനിക്കറിയില്ല, അവനെ കാണുമ്പോൾ എനിക്ക് ശ്വാസം കിട്ടുമോ എന്ന് പോലും പേടിയാകുന്നു."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "8s",
-        "perspective": "Direct Character Dialogue",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "At the arrival barrier railings inside Kochi CIAL terminal, warm amber bokeh lights reflecting off polished floors.",
-        "camera": "Intimate close-up on Reenu's expressive face, shallow depth of field, centered 55%.",
-        "action": "Reenu fidgets with the strap of her bag, her hazel eyes glistening with raw emotional vulnerability as she speaks.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "22yo attractive South Indian girl, sweet vulnerable tone, nervous flutter in voice",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "രണ്ടു വർഷമായില്ലേ അമൽ... എനിക്കറിയില്ല, അവനെ കാണുമ്പോൾ എനിക്ക് ശ്വാസം കിട്ടുമോ എന്ന് പോലും പേടിയാകുന്നു."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "രണ്ടു വർഷമായില്ലേ അമൽ... എനിക്കറിയില്ല, അവനെ കാണുമ്പോൾ എനിക്ക് ശ്വാസം കിട്ടുമോ എന്ന് പോലും പേടിയാകുന്നു.",
-      "action_summary": "Reenu fidgets with the strap of her bag, her hazel eyes glistening with raw emotional vulnerability as she speaks."
-    },
-    {
-      "shot_number": 4,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "The frosted-glass automatic sliding doors of the international arrival gate at Kochi CIAL airport.",
-      "camera": "Low-angle dynamic push-in toward the sliding glass doors, dramatic depth of field.",
-      "action": "The frosted glass doors glide open with a pneumatic whoosh, bright white light spilling into the darker waiting hall.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "അവസാനം... കാത്തിരിപ്പിന്റെ ആ വലിയ ചില്ലുവാതിലുകൾ പതുക്കെ തുറക്കപ്പെടുകയാണ്."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "The frosted-glass automatic sliding doors of the international arrival gate at Kochi CIAL airport.",
-        "camera": "Low-angle dynamic push-in toward the sliding glass doors, dramatic depth of field.",
-        "action": "The frosted glass doors glide open with a pneumatic whoosh, bright white light spilling into the darker waiting hall.",
+        "location": "Kochi CIAL Airport terminal exterior, heavy rain pouring down, warm golden terminal lights reflecting on wet tarmac",
+        "camera": "Medium tracking shot, moving backward as they run towards the camera under a single black umbrella",
+        "action": "Sachin holds the umbrella over Reenu, smiling warmly as wind blows rain droplets onto their faces. Reenu holds onto Sachin's arm, giggling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "അവസാനം... കാത്തിരിപ്പിന്റെ ആ വലിയ ചില്ലുവാതിലുകൾ പതുക്കെ തുറക്കപ്പെടുകയാണ്."
+          "line": "കൊച്ചിയിലെ ആ കനത്ത മഴയിലേക്ക് അവർ ഒരുമിച്ച് ഇറങ്ങുകയാണ്... പുതിയൊരു യാത്രയുടെ തുടക്കം പോലെ."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "അവസാനം... കാത്തിരിപ്പിന്റെ ആ വലിയ ചില്ലുവാതിലുകൾ പതുക്കെ തുറക്കപ്പെടുകയാണ്.",
-      "action_summary": "The frosted glass doors glide open with a pneumatic whoosh, bright white light spilling into the darker waiting hall."
+      }
+    },
+    {
+      "shot_number": 2,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Amal",
+      "dialogue_malayalam": "ഡാ സച്ചിൻ, യുകെയിലെ തണുപ്പല്ല മോനേ ഇത്, നമ്മുടെ സ്വന്തം കൊച്ചിയിലെ കട്ട മഴ! ഓടി വാടാ!",
+      "action_summary": "Amal stands by the open door of a cozy, retro hatchback car, waving frantically to them through the heavy rain.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Amal",
+        "characters_present": [
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
+          }
+        ],
+        "location": "Kochi airport parking lot, pouring rain, cozy warm headlights of a retro hatchback car glowing",
+        "camera": "Medium wide shot, framing Amal by the car door under a small yellow umbrella, rain splashing heavily around him",
+        "action": "Amal yells playfully over the sound of rain, waving his hand, urging Sachin and Reenu to hurry up.",
+        "dialogue": {
+          "speaker": "Amal",
+          "voice_persona": "Amal: Playful, high-energy 24yo Kochi youth, fast-paced, natural friendly tone, slight Kochi slang",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "ഡാ സച്ചിൻ, യുകെയിലെ തണുപ്പല്ല മോനേ ഇത്, നമ്മുടെ സ്വന്തം കൊച്ചിയിലെ കട്ട മഴ! ഓടി വാടാ!"
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 3,
+      "duration": "4s",
+      "duration_seconds": 4,
+      "character": "Reenu",
+      "dialogue_malayalam": "സച്ചിൻ, വേഗം ഓടിക്കോ! അല്ലെങ്കിൽ നമ്മൾ ഫുൾ നനയും!",
+      "action_summary": "Reenu pulls Sachin's hand, laughing as they run faster through the puddle-strewn parking lot.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "4s",
+        "perspective": "Reenu",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          }
+        ],
+        "location": "Airport parking lot, glistening wet asphalt, raindrops bouncing off puddles",
+        "camera": "Low angle tracking shot, focusing on their running feet splashing water, panning up to Reenu's joyous face",
+        "action": "Reenu looks back at Sachin with a brilliant, happy smile, her wavy dark-brown hair slightly damp from the wind.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "സച്ചിൻ, വേഗം ഓടിക്കോ! അല്ലെങ്കിൽ നമ്മൾ ഫുൾ നനയും!"
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഹാ, ഈ മഴയ്ക്ക് ഒരു പ്രത്യേക ഫീൽ തന്നെയുണ്ട്! ലണ്ടനിൽ ഇതില്ലല്ലോ റീനു.",
+      "action_summary": "Sachin gets into the backseat of the car, shaking water off his hair, holding his leather cross-bag tightly to his chest.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          }
+        ],
+        "location": "Inside the cozy backseat of Amal's car, warm yellow interior cabin light, rain dripping on windows",
+        "camera": "Medium close-up shot of Sachin inside the car, looking out the open door as he settles in",
+        "action": "Sachin smiles warmly, but his hand instinctively and nervously tightens its grip on the leather travel cross-bag.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "ഹാ, ഈ മഴയ്ക്ക് ഒരു പ്രത്യേക ഫീൽ തന്നെയുണ്ട്! ലണ്ടനിൽ ഇതില്ലല്ലോ റീനു."
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
     },
     {
       "shot_number": 5,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Amal",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Amal",
-          "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-        },
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "At the arrival gate threshold. Behind the barrier, Amal spots Sachin emerging with his silver luggage trolley.",
-      "camera": "Dynamic over-the-shoulder tracking shot from behind Amal looking out at the gate, centered 55%.",
-      "action": "Amal jumps up waving both hands in excitement, shouting over the airport ambient noise with a huge smile.",
-      "dialogue": {
-        "speaker": "Amal",
-        "voice_persona": "22yo energetic Malayali friend, booming joyful shout",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ഡാ റീനൂ, ദേ നോക്ക്! അവൻ വരുന്നുണ്ട്!"
-      },
+      "dialogue_malayalam": "വണ്ടിയിൽ കയറൂ മക്കളേ. ഇനി നേരെ നമ്മുടെ പഴയ തട്ടുകടയിലേക്ക് വിടാം!",
+      "action_summary": "Amal sits in the driver's seat, adjusting the rearview mirror, looking back at Sachin and Reenu with a huge grin.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Amal",
         "characters_present": [
           {
             "name": "Amal",
-            "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+            "visual_dna": "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
           }
         ],
-        "location": "At the arrival gate threshold. Behind the barrier, Amal spots Sachin emerging with his silver luggage trolley.",
-        "camera": "Dynamic over-the-shoulder tracking shot from behind Amal looking out at the gate, centered 55%.",
-        "action": "Amal jumps up waving both hands in excitement, shouting over the airport ambient noise with a huge smile.",
+        "location": "Driver's seat of the car, neon lights of Kochi city visible through the rain-streaked windshield",
+        "camera": "Over-the-shoulder shot from the backseat looking at Amal in the driver's seat, reflecting in the rearview mirror",
+        "action": "Amal turns the steering wheel, starting the engine, looking lively and full of energy.",
         "dialogue": {
           "speaker": "Amal",
-          "voice_persona": "22yo energetic Malayali friend, booming joyful shout",
+          "voice_persona": "Amal: Playful, high-energy 24yo Kochi youth, fast-paced, natural friendly tone, slight Kochi slang",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ഡാ റീനൂ, ദേ നോക്ക്! അവൻ വരുന്നുണ്ട്!"
+          "line": "വണ്ടിയിൽ കയറൂ മക്കളേ. ഇനി നേരെ നമ്മുടെ പഴയ തട്ടുകടയിലേക്ക് വിടാം!"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ഡാ റീനൂ, ദേ നോക്ക്! അവൻ വരുന്നുണ്ട്!",
-      "action_summary": "Amal jumps up waving both hands in excitement, shouting over the airport ambient noise with a huge smile."
+      }
     },
     {
       "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Across the bustling Kochi CIAL arrival hall. Passengers with carts walking past in blurred slow motion.",
-      "camera": "Cinematic whip-pan cutting between Sachin's searching eyes and Reenu's widening gaze, centered composition.",
-      "action": "In slow motion, Sachin abruptly stops pushing his trolley as his eyes find Reenu in the distance. The world around them seems to freeze.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ആയിരക്കണക്കിന് അപരിചിതർക്കിടയിൽ, അവരുടെ കണ്ണുകൾ ആ നിമിഷം പരസ്പരം കോർത്തു."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Across the bustling Kochi CIAL arrival hall. Passengers with carts walking past in blurred slow motion.",
-        "camera": "Cinematic whip-pan cutting between Sachin's searching eyes and Reenu's widening gaze, centered composition.",
-        "action": "In slow motion, Sachin abruptly stops pushing his trolley as his eyes find Reenu in the distance. The world around them seems to freeze.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "ആയിരക്കണക്കിന് അപരിചിതർക്കിടയിൽ, അവരുടെ കണ്ണുകൾ ആ നിമിഷം പരസ്പരം കോർത്തു."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ആയിരക്കണക്കിന് അപരിചിതർക്കിടയിൽ, അവരുടെ കണ്ണുകൾ ആ നിമിഷം പരസ്പരം കോർത്തു.",
-      "action_summary": "In slow motion, Sachin abruptly stops pushing his trolley as his eyes find Reenu in the distance. The world around them seems to freeze."
-    },
-    {
-      "shot_number": 7,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Sachin",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "Terminal hall floor, next to his abandoned luggage trolley.",
-      "camera": "Tight emotional portrait close-up on Sachin's face, golden airport lights illuminating his eyes.",
-      "action": "Sachin leaves the trolley handle, his jaw slackening in breathless disbelief before a radiant boyish smile breaks across his face.",
-      "dialogue": {
-        "speaker": "Sachin",
-        "voice_persona": "22yo handsome young man, soft breathless whisper",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "റീനു..."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Direct Character Dialogue",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          }
-        ],
-        "location": "Terminal hall floor, next to his abandoned luggage trolley.",
-        "camera": "Tight emotional portrait close-up on Sachin's face, golden airport lights illuminating his eyes.",
-        "action": "Sachin leaves the trolley handle, his jaw slackening in breathless disbelief before a radiant boyish smile breaks across his face.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "22yo handsome young man, soft breathless whisper",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "റീനു..."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "റീനു...",
-      "action_summary": "Sachin leaves the trolley handle, his jaw slackening in breathless disbelief before a radiant boyish smile breaks across his face."
-    },
-    {
-      "shot_number": 8,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Behind the arrival barrier, hands slipping off the metal railing.",
-      "camera": "Close-up dolly-in on Reenu, tears welling in her hazel eyes.",
-      "action": "Reenu covers her mouth in sheer joy, a tear escaping down her glowing cheek as she calls his name.",
-      "dialogue": {
-        "speaker": "Reenu",
-        "voice_persona": "22yo girl, emotional tear-choked cry of joy",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "സച്ചിൻ!"
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Direct Character Dialogue",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Behind the arrival barrier, hands slipping off the metal railing.",
-        "camera": "Close-up dolly-in on Reenu, tears welling in her hazel eyes.",
-        "action": "Reenu covers her mouth in sheer joy, a tear escaping down her glowing cheek as she calls his name.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "22yo girl, emotional tear-choked cry of joy",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ!"
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "സച്ചിൻ!",
-      "action_summary": "Reenu covers her mouth in sheer joy, a tear escaping down her glowing cheek as she calls his name."
-    },
-    {
-      "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "The open corridor between arrival gate and visitor barrier inside CIAL airport.",
-      "camera": "Tracking side-pan in slow motion following them as they run towards each other, centered 55%.",
-      "action": "Sachin dashes forward, sneakers squeaking on the marble tiles. Reenu slips past the barrier opening and runs directly toward him.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ആ നിമിഷം, ആ വിമാനത്താവളത്തിലെ മറ്റൊരു ശബ്ദവും അവർ കേൾക്കുന്നുണ്ടായിരുന്നില്ല."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "The open corridor between arrival gate and visitor barrier inside CIAL airport.",
-        "camera": "Tracking side-pan in slow motion following them as they run towards each other, centered 55%.",
-        "action": "Sachin dashes forward, sneakers squeaking on the marble tiles. Reenu slips past the barrier opening and runs directly toward him.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "ആ നിമിഷം, ആ വിമാനത്താവളത്തിലെ മറ്റൊരു ശബ്ദവും അവർ കേൾക്കുന്നുണ്ടായിരുന്നില്ല."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ആ നിമിഷം, ആ വിമാനത്താവളത്തിലെ മറ്റൊരു ശബ്ദവും അവർ കേൾക്കുന്നുണ്ടായിരുന്നില്ല.",
-      "action_summary": "Sachin dashes forward, sneakers squeaking on the marble tiles. Reenu slips past the barrier opening and runs directly toward him."
-    },
-    {
-      "shot_number": 10,
       "duration": "8s",
       "duration_seconds": 8,
-      "character": "Sachin & Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Center of the arrival terminal hall, beneath soaring glass ceilings.",
-      "camera": "Smooth 360-degree orbital camera rotation around the embracing couple, centered in middle 55% of vertical 9:16 frame.",
-      "action": "Sachin sweeps Reenu into his arms, lifting her off her feet. Reenu buries her face into his neck, wrapping her arms tightly around his shoulders.",
-      "dialogue": {
-        "speaker": "Sachin",
-        "voice_persona": "22yo young man, tender emotional whisper close to ear",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ഞാൻ വന്നു റീനൂ... ഇനി നിന്നെ വിട്ട് എങ്ങോട്ടുമില്ല."
-      },
+      "character": "Reenu",
+      "dialogue_malayalam": "രണ്ട് വർഷമായി ഞാൻ ഈ മുഖത്തേക്ക് ഇങ്ങനെ നോക്കിയിട്ട്... ഒരു മാറ്റവുമില്ലല്ലോ സച്ചീ.",
+      "action_summary": "Reenu slides close to Sachin in the backseat, her eyes locked onto his face with deep affection and slight emotional overwhelm.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "8s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Reenu",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           }
         ],
-        "location": "Center of the arrival terminal hall, beneath soaring glass ceilings.",
-        "camera": "Smooth 360-degree orbital camera rotation around the embracing couple, centered in middle 55% of vertical 9:16 frame.",
-        "action": "Sachin sweeps Reenu into his arms, lifting her off her feet. Reenu buries her face into his neck, wrapping her arms tightly around his shoulders.",
+        "location": "Backseat of the moving car, soft warm ambient glow from the dashboard, rain droplets sliding down the side window",
+        "camera": "Intimate close-up shot focusing on Reenu's expressive hazel-brown eyes, panning slightly to show Sachin's reaction",
+        "action": "Reenu gently tucks a strand of hair behind her ear, staring at Sachin with immense warmth, her smile soft and emotional.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "22yo young man, tender emotional whisper close to ear",
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ഞാൻ വന്നു റീനൂ... ഇനി നിന്നെ വിട്ട് എങ്ങോട്ടുമില്ല."
+          "line": "രണ്ട് വർഷമായി ഞാൻ ഈ മുഖത്തേക്ക് ഇങ്ങനെ നോക്കിയിട്ട്... ഒരു മാറ്റവുമില്ലല്ലോ സച്ചീ."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ഞാൻ വന്നു റീനൂ... ഇനി നിന്നെ വിട്ട് എങ്ങോട്ടുമില്ല.",
-      "action_summary": "Sachin sweeps Reenu into his arms, lifting her off her feet. Reenu buries her face into his neck, wrapping her arms tightly around his shoulders."
+      }
     },
     {
-      "shot_number": 11,
+      "shot_number": 7,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Terminal hall center, warm amber lighting falling upon their tear-streaked faces.",
-      "camera": "Intimate over-the-shoulder close-up from Sachin's shoulder looking at Reenu's emotional face.",
-      "action": "Reenu pulls back slightly, her hands framing Sachin's clean jawline, crying and laughing simultaneously.",
-      "dialogue": {
-        "speaker": "Reenu",
-        "voice_persona": "22yo girl, breathless mixture of tears and overflowing joy",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "എത്ര നാളായി സച്ചിൻ... ഞാൻ കാത്തിരുന്നതെന്നറിയുമോ?"
-      },
+      "character": "Sachin",
+      "dialogue_malayalam": "നീയും ഒട്ടും മാറിയിട്ടില്ല റീനു... ഇപ്പോഴും ആ പഴയ കുറുമ്പ് തന്നെയുണ്ട്.",
+      "action_summary": "Sachin looks at Reenu, smiling tenderly, but his hand nervously shifts again over the leather pouch.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Sachin",
         "characters_present": [
           {
             "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           }
         ],
-        "location": "Terminal hall center, warm amber lighting falling upon their tear-streaked faces.",
-        "camera": "Intimate over-the-shoulder close-up from Sachin's shoulder looking at Reenu's emotional face.",
-        "action": "Reenu pulls back slightly, her hands framing Sachin's clean jawline, crying and laughing simultaneously.",
+        "location": "Backseat of the moving car, warm yellow cabin lighting casting soft shadows",
+        "camera": "Medium shot of both in the backseat, showing their close proximity, warm and intimate framing",
+        "action": "Sachin speaks softly, his eyes full of love, but his posture shows a slight, subtle physical tension.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "22yo girl, breathless mixture of tears and overflowing joy",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "എത്ര നാളായി സച്ചിൻ... ഞാൻ കാത്തിരുന്നതെന്നറിയുമോ?"
+          "line": "നീയും ഒട്ടും മാറിയിട്ടില്ല റീനു... ഇപ്പോഴും ആ പഴയ കുറുമ്പ് തന്നെയുണ്ട്."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "എത്ര നാളായി സച്ചിൻ... ഞാൻ കാത്തിരുന്നതെന്നറിയുമോ?",
-      "action_summary": "Reenu pulls back slightly, her hands framing Sachin's clean jawline, crying and laughing simultaneously."
+      }
     },
     {
-      "shot_number": 12,
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Amal",
+      "dialogue_malayalam": "പിറകിൽ ഇരുന്നു കൊഞ്ചാതെ കാര്യത്തിലേക്ക് കടക്ക് സച്ചീ, വല്ല സമ്മാനവും കൊണ്ടുവന്നോ?",
+      "action_summary": "Amal laughs as he drives, glancing back momentarily with a playful smirk.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Amal",
+        "characters_present": [
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
+          }
+        ],
+        "location": "Front of the car, windshield wiper sweeping rhythmically, neon green and red Kochi city streetlights outside",
+        "camera": "Low angle shot from the passenger dashboard looking up at Amal driving, colorful light streaks on his face",
+        "action": "Amal gestures with one hand while keeping the other on the wheel, cracking a joke with a big smile.",
+        "dialogue": {
+          "speaker": "Amal",
+          "voice_persona": "Amal: Playful, high-energy 24yo Kochi youth, fast-paced, natural friendly tone, slight Kochi slang",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "പിറകിൽ ഇരുന്നു കൊഞ്ചാതെ കാര്യത്തിലേക്ക് കടക്ക് സച്ചീ, വല്ല സമ്മാനവും കൊണ്ടുവന്നോ?"
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 9,
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Reenu",
+      "dialogue_malayalam": "അതെന്താ സച്ചിൻ ഈ ബാഗ് ഇങ്ങനെ ചേർത്തുപിടിച്ചിരിക്കുന്നത്? ഇതിനുള്ളിൽ എന്താ ഇത്ര വലിയ രഹസ്യം?",
+      "action_summary": "Reenu's eyes drop to the leather travel cross-bag in Sachin's lap, her hand reaching out to touch it.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "8s",
+        "perspective": "Reenu",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          }
+        ],
+        "location": "Backseat of the car, rain-blurred city lights casting beautiful bokeh in the background",
+        "camera": "Close-up tracking shot on Reenu's hand gently tapping the dark brown leather cross-bag, then tilting up to her curious face",
+        "action": "Reenu tilts her head, her hazel eyes narrowing slightly with playful but genuine curiosity.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "അതെന്താ സച്ചിൻ ഈ ബാഗ് ഇങ്ങനെ ചേർത്തുപിടിച്ചിരിക്കുന്നത്? ഇതിനുള്ളിൽ എന്താ ഇത്ര വലിയ രഹസ്യം?"
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 10,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "അയ്യോ... അത് ഒന്നുമില്ല റീനു, എന്റെ ചില പ്രധാനപ്പെട്ട പേപ്പറുകൾ ഉള്ളതാ...",
+      "action_summary": "Sachin flinches slightly, pulling the bag slightly away to his other side with a nervous, forced laugh.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          }
+        ],
+        "location": "Backseat of the moving car, warm interior lighting",
+        "camera": "Tight close-up shot of Sachin's face, catching his sudden eye-dart and the sweat bead forming near his temple",
+        "action": "Sachin swallows hard, trying to maintain his charming smile, but his eyes reveal a brief moment of panic.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "അയ്യോ... അത് ഒന്നുമില്ല റീനു, എന്റെ ചില പ്രധാനപ്പെട്ട പേപ്പറുകൾ ഉള്ളതാ..."
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 11,
       "duration": "4s",
       "duration_seconds": 4,
       "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Center of Kochi CIAL arrival hall, soft reflections on polished marble floor.",
-      "camera": "Slow cinematic pull-back two-shot, centered vertical framing, shallow depth of field.",
-      "action": "Sachin rests his forehead against Reenu's, their eyes closed as they breathe in the reassurance of being together again.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "വാക്കുകൾക്ക് അതീതമായി, രണ്ടു ഹൃദയങ്ങൾ ഒന്നിച്ചു തുടിച്ച് തുടങ്ങിയ നിമിഷം."
-      },
+      "dialogue_malayalam": "മഴത്തുള്ളികൾ കാറിന്റെ ചില്ലുകളിൽ തട്ടി ചിതറുമ്പോഴും, കാറിനുള്ളിൽ ഒരു വല്ലാത്ത ആകാംഷ നിറഞ്ഞു നിൽക്കുകയായിരുന്നു.",
+      "action_summary": "An exterior shot of the vintage hatchback car driving through the rain-soaked Kochi highway under neon streetlamps.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "4s",
         "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Center of Kochi CIAL arrival hall, soft reflections on polished marble floor.",
-        "camera": "Slow cinematic pull-back two-shot, centered vertical framing, shallow depth of field.",
-        "action": "Sachin rests his forehead against Reenu's, their eyes closed as they breathe in the reassurance of being together again.",
+        "characters_present": [],
+        "location": "Kochi highway at night, rain pouring heavily, high-tech neon billboards in Malayalam and English glowing in the distance",
+        "camera": "Wide cinematic tracking shot, following the car from the side as water splashes from the tires",
+        "action": "The car moves smoothly through the rain, headlights cutting through the misty night.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "വാക്കുകൾക്ക് അതീതമായി, രണ്ടു ഹൃദയങ്ങൾ ഒന്നിച്ചു തുടിച്ച് തുടങ്ങിയ നിമിഷം."
+          "line": "മഴത്തുള്ളികൾ കാറിന്റെ ചില്ലുകളിൽ തട്ടി ചിതറുമ്പോഴും, കാറിനുള്ളിൽ ഒരു വല്ലാത്ത ആകാംഷ നിറഞ്ഞു നിൽക്കുകയായിരുന്നു."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "വാക്കുകൾക്ക് അതീതമായി, രണ്ടു ഹൃദയങ്ങൾ ഒന്നിച്ചു തുടിച്ച് തുടങ്ങിയ നിമിഷം.",
-      "action_summary": "Sachin rests his forehead against Reenu's, their eyes closed as they breathe in the reassurance of being together again."
+      }
     },
     {
-      "shot_number": 13,
+      "shot_number": 12,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Amal",
-          "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-        },
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Beside the passenger barrier railings, Amal leaning on the railing watching them.",
-      "camera": "Medium three-shot, Amal in foreground smiling wryly, Sachin and Reenu behind him.",
-      "action": "Amal crosses his arms, coughing comically into his fist and tapping his wristwatch with a teasing grin.",
-      "dialogue": {
-        "speaker": "Amal",
-        "voice_persona": "22yo witty best friend, humorous teasing Malayali cadence",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "മതി മതി... ഇവിടെ ആൾക്കാർ നോക്കുന്നുണ്ട്! ബാക്കി വീട്ടിൽ ചെന്നിട്ട്!"
-      },
+      "character": "Reenu",
+      "dialogue_malayalam": "പേപ്പറുകളോ? നീ ലണ്ടനിൽ നിന്ന് ഇത്രയും ദൂരം കൊണ്ടു വന്നത് വെറും പേപ്പറുകൾ മാത്രമാണോ?",
+      "action_summary": "Reenu folds her arms, looking at Sachin skeptically, her playful demeanor shifting to mild suspicion.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Reenu",
         "characters_present": [
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           },
           {
             "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          }
+        ],
+        "location": "Backseat of the moving car, warm interior glow",
+        "camera": "Medium shot of Reenu, framing her expressive upper body, looking directly at Sachin with raised eyebrows",
+        "action": "Reenu pouts slightly, her hazel eyes scanning Sachin's face for any signs of dishonesty.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "പേപ്പറുകളോ? നീ ലണ്ടനിൽ നിന്ന് ഇത്രയും ദൂരം കൊണ്ടു വന്നത് വെറും പേപ്പറുകൾ മാത്രമാണോ?"
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 13,
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു... ചില കാര്യങ്ങൾ പറയാൻ എനിക്ക് കുറച്ചു സമയം വേണം. ഞാൻ എല്ലാം പതുക്കെ പറയാം.",
+      "action_summary": "Sachin looks down at his hands, then looks up at Reenu with genuine, soft, vulnerable eyes.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "8s",
+        "perspective": "Sachin",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           }
         ],
-        "location": "Beside the passenger barrier railings, Amal leaning on the railing watching them.",
-        "camera": "Medium three-shot, Amal in foreground smiling wryly, Sachin and Reenu behind him.",
-        "action": "Amal crosses his arms, coughing comically into his fist and tapping his wristwatch with a teasing grin.",
+        "location": "Backseat of the moving car",
+        "camera": "Over-the-shoulder shot from behind Reenu's shoulder, focusing on Sachin's sincere and slightly worried expression",
+        "action": "Sachin leans in slightly, his tone becoming serious, dropping the playful shield.",
         "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "22yo witty best friend, humorous teasing Malayali cadence",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "മതി മതി... ഇവിടെ ആൾക്കാർ നോക്കുന്നുണ്ട്! ബാക്കി വീട്ടിൽ ചെന്നിട്ട്!"
+          "line": "റീനു... ചില കാര്യങ്ങൾ പറയാൻ എനിക്ക് കുറച്ചു സമയം വേണം. ഞാൻ എല്ലാം പതുക്കെ പറയാം."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "മതി മതി... ഇവിടെ ആൾക്കാർ നോക്കുന്നുണ്ട്! ബാക്കി വീട്ടിൽ ചെന്നിട്ട്!",
-      "action_summary": "Amal crosses his arms, coughing comically into his fist and tapping his wristwatch with a teasing grin."
+      }
     },
     {
       "shot_number": 14,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu & Sachin",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        },
-        {
-          "name": "Amal",
-          "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-        }
-      ],
-      "location": "Beside the airport barrier railing, crowds smiling at their reunion.",
-      "camera": "Medium reaction shot, warm lighting, centered 55%.",
-      "action": "Reenu wipes her tears with the back of her hand and playfully scowls at Amal, unable to stop giggling.",
-      "dialogue": {
-        "speaker": "Reenu",
-        "voice_persona": "22yo girl, playful scolding tone with a bubbly laugh",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "നീ ഒന്ന് മിണ്ടാതിരിക്ക് അമൽ! ഞങ്ങളുടെ സന്തോഷം കളയാൻ വന്നേക്കുന്നു!"
-      },
+      "character": "Amal",
+      "dialogue_malayalam": "ഡാ സച്ചീ, നീ ലണ്ടനിൽ പോയപ്പോൾ ഭയങ്കര ഗൗരവക്കാരൻ ആയല്ലോടാ! അതൊക്കെ വിട്, നമുക്ക് എൻജോയ് ചെയ്യാം!",
+      "action_summary": "Amal interrupts the heavy mood with a bright chuckle, tapping the steering wheel rhythmically.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Amal",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          },
-          {
             "name": "Amal",
-            "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+            "visual_dna": "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
           }
         ],
-        "location": "Beside the airport barrier railing, crowds smiling at their reunion.",
-        "camera": "Medium reaction shot, warm lighting, centered 55%.",
-        "action": "Reenu wipes her tears with the back of her hand and playfully scowls at Amal, unable to stop giggling.",
+        "location": "Front of the car, cozy yellow dashboard lights glowing",
+        "camera": "Medium shot of Amal, looking sideways towards the passenger seat then back to the road, laughing",
+        "action": "Amal smiles warmly, trying to lighten the atmosphere inside the car.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "22yo girl, playful scolding tone with a bubbly laugh",
+          "speaker": "Amal",
+          "voice_persona": "Amal: Playful, high-energy 24yo Kochi youth, fast-paced, natural friendly tone, slight Kochi slang",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "നീ ഒന്ന് മിണ്ടാതിരിക്ക് അമൽ! ഞങ്ങളുടെ സന്തോഷം കളയാൻ വന്നേക്കുന്നു!"
+          "line": "ഡാ സച്ചീ, നീ ലണ്ടനിൽ പോയപ്പോൾ ഭയങ്കര ഗൗരവക്കാരൻ ആയല്ലോടാ! അതൊക്കെ വിട്, നമുക്ക് എൻജോയ് ചെയ്യാം!"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "നീ ഒന്ന് മിണ്ടാതിരിക്ക് അമൽ! ഞങ്ങളുടെ സന്തോഷം കളയാൻ വന്നേക്കുന്നു!",
-      "action_summary": "Reenu wipes her tears with the back of her hand and playfully scowls at Amal, unable to stop giggling."
+      }
     },
     {
       "shot_number": 15,
-      "duration": "8s",
-      "duration_seconds": 8,
-      "character": "Sachin",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Airport arrival hall corridor.",
-      "camera": "Tight medium two-shot, slow push-in focusing on Sachin's tender smile.",
-      "action": "Sachin gently tucks a strand of wavy hair behind Reenu's ear, looking at her with quiet adoration.",
-      "dialogue": {
-        "speaker": "Sachin",
-        "voice_persona": "22yo young man, warm affectionate baritone",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "നീ ഒട്ടും മാറിയിട്ടില്ല റീനൂ... ആ പഴയ കൊഞ്ചലും ചിരിയും ഇപ്പോഴും അതുപോലെയുണ്ട്."
-      },
+      "duration": "4s",
+      "duration_seconds": 4,
+      "character": "Reenu",
+      "dialogue_malayalam": "അമൽ പറയുന്നതാണ് ശരി. പക്ഷേ... സച്ചിന്റെ കണ്ണ് ഇപ്പോഴും എന്തോ ഒളിക്കുന്നത് പോലെ തോന്നും.",
+      "action_summary": "Reenu smiles faintly at Amal's joke, but her eyes quickly return to Sachin, soft yet intensely observant.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "8s",
-        "perspective": "Direct Character Dialogue",
+        "duration": "4s",
+        "perspective": "Reenu",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           }
         ],
-        "location": "Airport arrival hall corridor.",
-        "camera": "Tight medium two-shot, slow push-in focusing on Sachin's tender smile.",
-        "action": "Sachin gently tucks a strand of wavy hair behind Reenu's ear, looking at her with quiet adoration.",
+        "location": "Backseat of the car, soft shadows playing on their faces from the passing streetlights",
+        "camera": "Close-up on Reenu's expressive face, capturing her gentle, inquiring gaze",
+        "action": "Reenu tilts her head, looking deep into Sachin's eyes with a mixture of love and mild concern.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "22yo young man, warm affectionate baritone",
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "നീ ഒട്ടും മാറിയിട്ടില്ല റീനൂ... ആ പഴയ കൊഞ്ചലും ചിരിയും ഇപ്പോഴും അതുപോലെയുണ്ട്."
+          "line": "അമൽ പറയുന്നതാണ് ശരി. പക്ഷേ... സച്ചിന്റെ കണ്ണ് ഇപ്പോഴും എന്തോ ഒളിക്കുന്നത് പോലെ തോന്നും."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "നീ ഒട്ടും മാറിയിട്ടില്ല റീനൂ... ആ പഴയ കൊഞ്ചലും ചിരിയും ഇപ്പോഴും അതുപോലെയുണ്ട്.",
-      "action_summary": "Sachin gently tucks a strand of wavy hair behind Reenu's ear, looking at her with quiet adoration."
+      }
     },
     {
       "shot_number": 16,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        },
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "Terminal walkway, golden ambient lighting.",
-      "camera": "Eye-level close-up on Reenu, soft rim light on her wavy brown hair.",
-      "action": "Reenu inspects Sachin's face and terracotta t-shirt, tilting her head with an admiring smile.",
-      "dialogue": {
-        "speaker": "Reenu",
-        "voice_persona": "22yo girl, teasing admiring tone",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "പക്ഷേ നീ മാറിയിട്ടുണ്ട്... കുറച്ചുകൂടി സുന്ദരനായിട്ടുണ്ട്, കണ്ടാൽ തിരിച്ചറിയില്ല!"
-      },
+      "character": "Sachin",
+      "dialogue_malayalam": "ഒന്നുമില്ലെടി... ഞാൻ ജസ്റ്റ് ഒന്ന് റിലാക്സ് ചെയ്യട്ടെ. നീ ഇങ്ങനെ പേടിപ്പിക്കാതെ.",
+      "action_summary": "Sachin looks out the rain-streaked window, sighing softly, trying to redirect the conversation.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Sachin",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          },
-          {
             "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           }
         ],
-        "location": "Terminal walkway, golden ambient lighting.",
-        "camera": "Eye-level close-up on Reenu, soft rim light on her wavy brown hair.",
-        "action": "Reenu inspects Sachin's face and terracotta t-shirt, tilting her head with an admiring smile.",
+        "location": "Backseat of the car, looking out at the passing neon signs of Kochi",
+        "camera": "Profile close-up shot of Sachin, looking at his reflection in the wet glass window",
+        "action": "Sachin rests his head against the headrest, his fingers still restlessly tapping the zipper of his leather bag.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "22yo girl, teasing admiring tone",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "പക്ഷേ നീ മാറിയിട്ടുണ്ട്... കുറച്ചുകൂടി സുന്ദരനായിട്ടുണ്ട്, കണ്ടാൽ തിരിച്ചറിയില്ല!"
+          "line": "ഒന്നുമില്ലെടി... ഞാൻ ജസ്റ്റ് ഒന്ന് റിലാക്സ് ചെയ്യട്ടെ. നീ ഇങ്ങനെ പേടിപ്പിക്കാതെ."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "പക്ഷേ നീ മാറിയിട്ടുണ്ട്... കുറച്ചുകൂടി സുന്ദരനായിട്ടുണ്ട്, കണ്ടാൽ തിരിച്ചറിയില്ല!",
-      "action_summary": "Reenu inspects Sachin's face and terracotta t-shirt, tilting her head with an admiring smile."
+      }
     },
     {
       "shot_number": 17,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "CIAL arrival walkway, warm golden reflections on polished floor tiles.",
-      "camera": "Slow forward tracking shot, centered vertical framing, cinematic depth.",
-      "action": "Sachin chuckles softly, shaking his head as he and Reenu share an intimate, knowing laugh.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ഒരു ചെറിയ ചിരിയിൽ രണ്ടു വർഷത്തെ സങ്കടങ്ങളെല്ലാം മാഞ്ഞുപോയ നിമിഷം."
-      },
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Reenu",
+      "dialogue_malayalam": "സച്ചീ... എന്നോട് കള്ളം പറയരുത്. ഈ ബാഗിന്റെ ഉള്ളിൽ എന്താണെന്ന് എനിക്ക് ഇപ്പോഴറിയണം!",
+      "action_summary": "Reenu shifts even closer, placing her hand directly over Sachin's hand on the zipper of the leather bag.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Third-Person Narrator",
+        "duration": "8s",
+        "perspective": "Reenu",
         "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           }
         ],
-        "location": "CIAL arrival walkway, warm golden reflections on polished floor tiles.",
-        "camera": "Slow forward tracking shot, centered vertical framing, cinematic depth.",
-        "action": "Sachin chuckles softly, shaking his head as he and Reenu share an intimate, knowing laugh.",
+        "location": "Backseat of the moving car, intimate tight space",
+        "camera": "Extremely tight close-up on their overlapping hands on the leather pouch, slowly panning up to Reenu's determined face",
+        "action": "Reenu looks at him with intense, loving urgency, refusing to back down.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: Sweet, affectionate 22yo Malayali girl, expressive, slightly breathless from running, tender emotional tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ഒരു ചെറിയ ചിരിയിൽ രണ്ടു വർഷത്തെ സങ്കടങ്ങളെല്ലാം മാഞ്ഞുപോയ നിമിഷം."
+          "line": "സച്ചീ... എന്നോട് കള്ളം പറയരുത്. ഈ ബാഗിന്റെ ഉള്ളിൽ എന്താണെന്ന് എനിക്ക് ഇപ്പോഴറിയണം!"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ഒരു ചെറിയ ചിരിയിൽ രണ്ടു വർഷത്തെ സങ്കടങ്ങളെല്ലാം മാഞ്ഞുപോയ നിമിഷം.",
-      "action_summary": "Sachin chuckles softly, shaking his head as he and Reenu share an intimate, knowing laugh."
+      }
     },
     {
       "shot_number": 18,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal",
-      "perspective": "Direct Character Dialogue",
-      "characters_present": [
-        {
-          "name": "Amal",
-          "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
-        },
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "Luggage trolley pickup point near the glass sliding exit doors.",
-      "camera": "Medium tracking shot following Amal as he pushes the trolley toward the exit, centered 55%.",
-      "action": "Amal grabs the handle of Sachin's luggage trolley and pushes it forward with an energetic bounce.",
-      "dialogue": {
-        "speaker": "Amal",
-        "voice_persona": "22yo energetic Malayali friend, lively conversational",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "വാ, പുറത്ത് വണ്ടി ഇട്ടിട്ടുണ്ട്... മഴ കനക്കുന്നതിന് മുൻപ് ഇറങ്ങാം."
-      },
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു... ഇത്... ഇത് നമ്മുടെ ഭാവിയെ മാറ്റാൻ പോകുന്ന ഒന്നാണ്...",
+      "action_summary": "Sachin releases a deep breath, his expression softening into complete surrender as he looks at her.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
-        "perspective": "Direct Character Dialogue",
+        "perspective": "Sachin",
         "characters_present": [
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Witty 22yo South Indian Malayali friend with cropped soft curly black hair, neat trim mustache and subtle goatee beard, warm humorous brown eyes, and energetic cheerful smile. Attire: Sage olive-green crewneck t-shirt, blue denim jeans, black wristwatch."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
           },
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           }
         ],
-        "location": "Luggage trolley pickup point near the glass sliding exit doors.",
-        "camera": "Medium tracking shot following Amal as he pushes the trolley toward the exit, centered 55%.",
-        "action": "Amal grabs the handle of Sachin's luggage trolley and pushes it forward with an energetic bounce.",
+        "location": "Backseat of the moving car, rain droplets creating beautiful patterns on the side window",
+        "camera": "Medium shot of both, focusing on the tension in Sachin's shoulders as he slowly grips the zipper",
+        "action": "Sachin looks into Reenu's eyes with absolute sincerity, his voice dropping to a soft whisper.",
         "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "22yo energetic Malayali friend, lively conversational",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "വാ, പുറത്ത് വണ്ടി ഇട്ടിട്ടുണ്ട്... മഴ കനക്കുന്നതിന് മുൻപ് ഇറങ്ങാം."
+          "line": "റീനു... ഇത്... ഇത് നമ്മുടെ ഭാവിയെ മാറ്റാൻ പോകുന്ന ഒന്നാണ്..."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "വാ, പുറത്ത് വണ്ടി ഇട്ടിട്ടുണ്ട്... മഴ കനക്കുന്നതിന് മുൻപ് ഇറങ്ങാം.",
-      "action_summary": "Amal grabs the handle of Sachin's luggage trolley and pushes it forward with an energetic bounce."
+      }
     },
     {
       "shot_number": 19,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
+      "character": "Amal",
+      "dialogue_malayalam": "ഡാ... നിങ്ങൾ അവിടെ എന്താ ഈ ഗുസ്‌തി പിടിക്കുന്നത്? എനിക്ക് ഡ്രൈവ് ചെയ്യാൻ പറ്റുന്നില്ല!",
+      "action_summary": "Amal looks at them through the rearview mirror, laughing but slightly curious about the heavy silence.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Amal",
+        "characters_present": [
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
+          }
+        ],
+        "location": "Driver's seat of the car, moving down the highway, streetlights casting fast-moving shadows",
+        "camera": "Close-up shot of Amal's eyes in the rearview mirror, with the blurred backseat action visible in the background reflection",
+        "action": "Amal chuckles, shaking his head as he concentrates on driving through the pouring rain.",
+        "dialogue": {
+          "speaker": "Amal",
+          "voice_persona": "Amal: Playful, high-energy 24yo Kochi youth, fast-paced, natural friendly tone, slight Kochi slang",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "ഡാ... നിങ്ങൾ അവിടെ എന്താ ഈ ഗുസ്‌തി പിടിക്കുന്നത്? എനിക്ക് ഡ്രൈവ് ചെയ്യാൻ പറ്റുന്നില്ല!"
         },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Approaching the outer glass doors of CIAL airport, rain streaking down the exterior glass in the distance.",
-      "camera": "Wide tracking shot from behind, following the couple walking side by side, centered framing.",
-      "action": "Sachin and Reenu walk together side by side, Sachin's hand gently brushing Reenu's arm as they step toward the automatic glass exit.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "അവർ ഒന്നിച്ച് നടന്നു തുടങ്ങി... കാത്തിരിപ്പ് അവസാനിച്ച പുതിയൊരു ജീവിതത്തിലേക്ക്."
-      },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 20,
+      "duration": "8s",
+      "duration_seconds": 8,
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു... ഞാൻ ഇത് കാണിച്ചു തരാം. പക്ഷേ നീ പെട്ടെന്ന് ദേഷ്യപ്പെടരുത്, പ്ലീസ്.",
+      "action_summary": "Sachin slowly begins to pull the zipper of the dark brown leather cross-bag, his fingers trembling slightly.",
+      "json_prompt": {
+        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
+        "duration": "8s",
+        "perspective": "Sachin",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
+          }
+        ],
+        "location": "Backseat of the moving car, warm intimate lighting",
+        "camera": "Extreme close-up on the leather bag zipper opening slowly, a warm, mysterious golden glow beginning to emit from inside the opening pouch",
+        "action": "Sachin's face is illuminated by a subtle, magical warm light from the bag, his eyes filled with immense emotion.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Charming, slightly nostalgic 24yo Malayali youth, gentle, boyish, with a hint of nervous hesitation",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "റീനു... ഞാൻ ഇത് കാണിച്ചു തരാം. പക്ഷേ നീ പെട്ടെന്ന് ദേഷ്യപ്പെടരുത്, പ്ലീസ്."
+        },
+        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
+        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+      }
+    },
+    {
+      "shot_number": 21,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "പതുക്കെ അവൻ ആ ബാഗിന്റെ സിപ്പർ താഴ്ത്തി... അതിനുള്ളിൽ തിളങ്ങിയ ആ വസ്തു കണ്ടതും റീനുവിന്റെ കണ്ണുകൾ അത്ഭുതം കൊണ്ട് വിടർന്നു!",
+      "action_summary": "The bag opens fully, casting a beautiful warm glow on Reenu's shocked, wide-eyed, beautiful face.",
       "json_prompt": {
         "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
-          {
             "name": "Reenu",
             "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
           }
         ],
-        "location": "Approaching the outer glass doors of CIAL airport, rain streaking down the exterior glass in the distance.",
-        "camera": "Wide tracking shot from behind, following the couple walking side by side, centered framing.",
-        "action": "Sachin and Reenu walk together side by side, Sachin's hand gently brushing Reenu's arm as they step toward the automatic glass exit.",
+        "location": "Backseat of the moving car, warm golden lighting illuminating Reenu's face",
+        "camera": "Slow zoom-in on Reenu's face, her hazel eyes reflecting a bright glittering golden ring-like glow, her mouth slightly agape in utter shock",
+        "action": "Reenu gasps, raising her hand to her mouth, completely mesmerized and stunned by what she sees inside the pouch.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "അവർ ഒന്നിച്ച് നടന്നു തുടങ്ങി... കാത്തിരിപ്പ് അവസാനിച്ച പുതിയൊരു ജീവിതത്തിലേക്ക്."
+          "line": "പതുക്കെ അവൻ ആ ബാഗിന്റെ സിപ്പർ താഴ്ത്തി... അതിനുള്ളിൽ തിളങ്ങിയ ആ വസ്തു കണ്ടതും റീനുവിന്റെ കണ്ണുകൾ അത്ഭുതം കൊണ്ട് വിടർന്നു!"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "അവർ ഒന്നിച്ച് നടന്നു തുടങ്ങി... കാത്തിരിപ്പ് അവസാനിച്ച പുതിയൊരു ജീവിതത്തിലേക്ക്.",
-      "action_summary": "Sachin and Reenu walk together side by side, Sachin's hand gently brushing Reenu's arm as they step toward the automatic glass exit."
-    },
-    {
-      "shot_number": 20,
-      "duration": "8s",
-      "duration_seconds": 8,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "Near the terminal exit doors, reflections of rain and amber streetlamps on the glass.",
-      "camera": "Close-up on Sachin's side profile, subtle tracking pan down to the black travel pouch slung across his shoulder.",
-      "action": "As Reenu looks away toward the rain, Sachin's fingers slowly trace the zipper of his small black leather travel pouch, a sudden shadow of mystery crossing his eyes.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "എന്നാൽ, സച്ചിന്റെ ബാഗിനുള്ളിൽ... റീനുവിനോട് പറയാത്തൊരു വലിയ രഹസ്യവുമുണ്ടായിരുന്നു."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "8s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          }
-        ],
-        "location": "Near the terminal exit doors, reflections of rain and amber streetlamps on the glass.",
-        "camera": "Close-up on Sachin's side profile, subtle tracking pan down to the black travel pouch slung across his shoulder.",
-        "action": "As Reenu looks away toward the rain, Sachin's fingers slowly trace the zipper of his small black leather travel pouch, a sudden shadow of mystery crossing his eyes.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "എന്നാൽ, സച്ചിന്റെ ബാഗിനുള്ളിൽ... റീനുവിനോട് പറയാത്തൊരു വലിയ രഹസ്യവുമുണ്ടായിരുന്നു."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "എന്നാൽ, സച്ചിന്റെ ബാഗിനുള്ളിൽ... റീനുവിനോട് പറയാത്തൊരു വലിയ രഹസ്യവുമുണ്ടായിരുന്നു.",
-      "action_summary": "As Reenu looks away toward the rain, Sachin's fingers slowly trace the zipper of his small black leather travel pouch, a sudden shadow of mystery crossing his eyes."
-    },
-    {
-      "shot_number": 21,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        }
-      ],
-      "location": "Close-up on the black leather travel pouch resting against Sachin's hip.",
-      "camera": "Extreme macro close-up on the metal zipper and luggage tag stamped with 'LHR - LONDON HEATHROW', centered.",
-      "action": "The pouch is slightly unzipped, revealing the corner of an ornate, velvet jewelry box tucked discreetly inside.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ആ ലണ്ടൻ യാത്ര വെറുമൊരു മടങ്ങിവരവ് മാത്രമായിരുന്നില്ല."
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          }
-        ],
-        "location": "Close-up on the black leather travel pouch resting against Sachin's hip.",
-        "camera": "Extreme macro close-up on the metal zipper and luggage tag stamped with 'LHR - LONDON HEATHROW', centered.",
-        "action": "The pouch is slightly unzipped, revealing the corner of an ornate, velvet jewelry box tucked discreetly inside.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "ആ ലണ്ടൻ യാത്ര വെറുമൊരു മടങ്ങിവരവ് മാത്രമായിരുന്നില്ല."
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ആ ലണ്ടൻ യാത്ര വെറുമൊരു മടങ്ങിവരവ് മാത്രമായിരുന്നില്ല.",
-      "action_summary": "The pouch is slightly unzipped, revealing the corner of an ornate, velvet jewelry box tucked discreetly inside."
-    },
-    {
-      "shot_number": 22,
-      "duration": "4s",
-      "duration_seconds": 4,
-      "character": "Third-Person Narrator",
-      "perspective": "Third-Person Narrator",
-      "characters_present": [
-        {
-          "name": "Sachin",
-          "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-        },
-        {
-          "name": "Reenu",
-          "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-        }
-      ],
-      "location": "Stepping out through the CIAL terminal sliding doors into the cool mist of the Kochi monsoon night.",
-      "camera": "Slow cinematic dolly-out, vertical 9:16 framing, glistening raindrops reflecting neon lights, 4k 60fps.",
-      "action": "Sachin quickly looks back up at Reenu with an enigmatic, loving smile as they step out into the rain together, closing Episode 1 on an emotional cliffhanger.",
-      "dialogue": {
-        "speaker": "Third-Person Narrator",
-        "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-        "language": "Malayalam",
-        "script": "മലയാളം ലിപി",
-        "line": "ആ രഹസ്യം അവരുടെ സ്നേഹത്തെ എങ്ങോട്ടാണ് കൊണ്ടുപോകുന്നത്?"
-      },
-      "json_prompt": {
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Handsome 22yo South Indian Malayali young man with messy wavy textured dark-brown hair styled with casual volume, warm dark-brown expressive doe eyes, clean defined jawline, charming boyish smile. Attire: Terracotta rust-orange crewneck t-shirt with subtle chest pocket, relaxed dark-gray joggers, black digital sports watch."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-          }
-        ],
-        "location": "Stepping out through the CIAL terminal sliding doors into the cool mist of the Kochi monsoon night.",
-        "camera": "Slow cinematic dolly-out, vertical 9:16 framing, glistening raindrops reflecting neon lights, 4k 60fps.",
-        "action": "Sachin quickly looks back up at Reenu with an enigmatic, loving smile as they step out into the rain together, closing Episode 1 on an emotional cliffhanger.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "ആ രഹസ്യം അവരുടെ സ്നേഹത്തെ എങ്ങോട്ടാണ് കൊണ്ടുപോകുന്നത്?"
-        },
-        "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
-      },
-      "dialogue_malayalam": "ആ രഹസ്യം അവരുടെ സ്നേഹത്തെ എങ്ങോട്ടാണ് കൊണ്ടുപോകുന്നത്?",
-      "action_summary": "Sachin quickly looks back up at Reenu with an enigmatic, loving smile as they step out into the rain together, closing Episode 1 on an emotional cliffhanger."
+      }
     }
   ]
 }
