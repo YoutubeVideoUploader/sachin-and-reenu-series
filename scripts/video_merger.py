@@ -153,25 +153,20 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     ]
     subprocess.run(cmd_concat, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    # Step 3: Select BGM from 10-track romantic music library
-    if bgm_num is None:
-        bgm_num = ((int(episode_num) - 1) % 10) + 1
-    
-    bgm_candidates = [
-        Path("assets/music/bgm_main_theme.mp3"),
-        Path(f"assets/music/bgm_{bgm_num}.mp3"),
-        Path("assets/music/bgm_1.mp3")
-    ]
+    # Step 3: Select BGM randomly from available tracks in assets/music
+    import random
+    music_dir = Path("assets/music")
+    all_bgm_files = sorted(list(music_dir.glob("*.mp3"))) if music_dir.exists() else []
+
     selected_bgm = None
-    for cand in bgm_candidates:
-        if cand.exists():
-            selected_bgm = cand
-            break
-            
-    if not selected_bgm:
-        print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
+    if bgm_num is not None and (music_dir / f"bgm_{bgm_num}.mp3").exists():
+        selected_bgm = music_dir / f"bgm_{bgm_num}.mp3"
+        print(f"🎵 Explicitly Selected Romantic BGM: {selected_bgm.name}")
+    elif all_bgm_files:
+        selected_bgm = random.choice(all_bgm_files)
+        print(f"🎲 Randomly Selected Romantic BGM: {selected_bgm.name} (from {len(all_bgm_files)} tracks: {[f.name for f in all_bgm_files]})")
     else:
-        print(f"🎵 Selected Romantic BGM: {selected_bgm.name} (Track #{bgm_num})")
+        print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
 
     # Step 4: Final Mix — Spoken Dialogue (Loud & Clear) + Ambient BGM Underlay (Vol 0.32 boosted) + Cinematic Title
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM) & Title Overlay...")
