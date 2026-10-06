@@ -15,56 +15,77 @@ import json
 import time
 import argparse
 import requests
+import cv2
 from pathlib import Path
 
+def verify_video(file_path):
+    """Verifies that the downloaded file is a valid, readable video with frames."""
+    try:
+        cap = cv2.VideoCapture(str(file_path))
+        if not cap.isOpened():
+            cap.release()
+            return False
+        frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        cap.release()
+        return frames > 0 and fps > 0
+    except Exception:
+        return False
+
 def download_file_from_drive(file_id, download_url, destination_path):
-    """Downloads a file from Google Drive using direct export link or download URL."""
+    """Downloads a file from Google Drive using direct export links and verifies with OpenCV."""
     dest = Path(destination_path)
     dest.parent.mkdir(parents=True, exist_ok=True)
     
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     }
     
     session = requests.Session()
+    urls_to_try = [
+        f"https://drive.usercontent.google.com/download?id={file_id}&export=download",
+        f"https://drive.google.com/uc?export=download&id={file_id}"
+    ]
     
-    # Priority 1: Google Drive export link (https://drive.google.com/uc?export=download&id=FILE_ID)
-    export_url = f"https://drive.google.com/uc?export=download&id={file_id}"
-    res = session.get(export_url, headers=headers, stream=True, timeout=60)
-    
-    # Handle Google Drive virus scan warning for large files
-    if "text/html" in res.headers.get("Content-Type", ""):
-        token = None
-        for k, v in session.cookies.items():
-            if k.startswith("download_warning"):
-                token = v
-                break
-        if token:
-            confirm_url = f"https://drive.google.com/uc?export=download&confirm={token}&id={file_id}"
-            res = session.get(confirm_url, headers=headers, stream=True, timeout=60)
-
-    # Priority 2: Fallback to download_url if export link fails
-    if ("text/html" in res.headers.get("Content-Type", "") or res.status_code != 200) and download_url and "view" not in download_url:
+    downloaded = False
+    for export_url in urls_to_try:
         try:
-            res = session.get(download_url, headers=headers, stream=True, timeout=60)
-        except Exception:
-            pass
+            res = session.get(export_url, headers=headers, stream=True, timeout=90)
+            
+            # Check for virus scan confirmation token if Google returns an HTML interstitial
+            content_type = res.headers.get("Content-Type", "")
+            if "text/html" in content_type:
+                token = None
+                for k, v in session.cookies.items():
+                    if k.startswith("download_warning"):
+                        token = v
+                        break
+                if not token:
+                    match = re.search(r'confirm=([0-9A-Za-z_-]+)', res.text)
+                    if match:
+                        token = match.group(1)
+                if token:
+                    confirm_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download&confirm={token}"
+                    res = session.get(confirm_url, headers=headers, stream=True, timeout=90)
 
-    with open(dest, "wb") as f:
-        for chunk in res.iter_content(chunk_size=1024*1024):
-            if chunk:
-                f.write(chunk)
-                
-    # Verify file is a valid non-empty video file (> 50KB) and not an HTML error page
-    if dest.exists() and dest.stat().st_size > 50000:
-        with open(dest, "rb") as check_f:
-            header = check_f.read(16)
-            if b"html" in header.lower() or b"<!doctype" in header.lower():
-                raise RuntimeError(f"Downloaded file for ID {file_id} is an HTML error page, not a video!")
+            # Write file in chunks
+            with open(dest, "wb") as f:
+                for chunk in res.iter_content(chunk_size=1024*1024):
+                    if chunk:
+                        f.write(chunk)
+
+            # Verify downloaded file size and playable video format
+            if dest.exists() and dest.stat().st_size > 50000 and verify_video(dest):
+                downloaded = True
+                break
+        except Exception as err:
+            print(f"      Attempt via {export_url[:40]}... failed: {err}")
+
+    if downloaded:
         return True
     else:
         file_size = dest.stat().st_size if dest.exists() else 0
-        raise RuntimeError(f"Downloaded file for ID {file_id} is corrupt or too small ({file_size} bytes).")
+        raise RuntimeError(f"Downloaded file for ID {file_id} failed video validation (Size: {file_size} bytes, Valid: False)")
 
 def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
     """
@@ -93,13 +114,14 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
 
     # Call Google Apps Script Web App GET endpoint with retry
     check_url = f"{gas_url}?action=check_status&episode={episode_num}"
-    print(f"Checking Google Sheet checklist via: {check_url[:45]}...")
-    
     try:
+        req_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+        }
         res = None
         for attempt in range(1, 4):
             try:
-                res = requests.get(check_url, timeout=60)
+                res = requests.get(check_url, headers=req_headers, timeout=60)
                 if res.status_code == 200:
                     break
             except requests.exceptions.RequestException as re_err:
@@ -129,7 +151,7 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
             print("   Stopping workflow cleanly without running.")
             set_github_output("should_run", "false")
             set_github_output("ready", "false")
-            return False
+            return "skip"
             
         # Condition 2: Not all shots present (e.g. 19 of 22)
         if not is_ready or present_shots < total_shots:
@@ -139,7 +161,7 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
             print("   Workflow will automatically run once all videos are uploaded to Google Drive.")
             set_github_output("should_run", "false")
             set_github_output("ready", "false")
-            return False
+            return "skip"
             
         # Condition 3: ALL shots present!
         print(f"\n🎉 ALL {total_shots}/{total_shots} SHOTS ARE VERIFIED PRESENT!")
@@ -171,18 +193,18 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
             dest_file = target_path / f"shot_{shot_num:02d}.mp4"
             print(f"  ⬇️  Downloading Shot {shot_num:02d} ({filename}) [Drive ID: {file_id}]...")
             download_file_from_drive(file_id, dl_url, dest_file)
-            print(f"     ✓ Saved to {dest_file.name} ({dest_file.stat().st_size} bytes)")
+            print(f"     ✓ Verified {dest_file.name} ({dest_file.stat().st_size} bytes)")
             
-        print(f"\n✓ All {len(sorted_files)} clips downloaded successfully!")
+        print(f"\n✓ All {len(sorted_files)} clips downloaded and verified successfully!")
         set_github_output("should_run", "true")
         set_github_output("ready", "true")
-        return True
+        return "success"
 
     except Exception as e:
-        print(f"Error checking/downloading shots from Google Drive: {e}")
+        print(f"\n❌ Error downloading or verifying shots from Google Drive: {e}")
         set_github_output("should_run", "false")
         set_github_output("ready", "false")
-        return False
+        return "error"
 
 def set_github_output(name, value):
     """Sets output variable for GitHub Actions step if GITHUB_OUTPUT environment variable is present."""
@@ -199,12 +221,13 @@ def main():
     parser.add_argument("--target_dir", default="uploaded_shots", help="Directory to save downloaded shots")
     args = parser.parse_args()
 
-    success = check_and_download(
+    status = check_and_download(
         gas_url=args.gas_url,
         episode_num=args.episode,
         target_dir=args.target_dir
     )
-    # Always exit 0 so GitHub Actions handles the condition cleanly via 'if' step checks
+    if status == "error":
+        sys.exit(1)
     sys.exit(0)
 
 if __name__ == "__main__":
