@@ -265,12 +265,41 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
 
 def update_creator_portal(episode_data):
     """
-    Updates current_episode_shots.json and injects the new prompts into portal.html.
+    Updates current_episode_shots.json, story_state.json, and injects the new prompts into portal.html.
     """
     json_path = Path("current_episode_shots.json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(episode_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Saved updated screenplay to {json_path.name}")
+
+    # Update story_state.json history
+    state_path = Path("story_state.json")
+    if state_path.exists():
+        try:
+            with open(state_path, "r", encoding="utf-8") as f:
+                state = json.load(f)
+            ep_num = episode_data.get("episode_number", 1)
+            state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
+            history = state.get("history", [])
+            existing_eps = [h.get("episode") for h in history]
+            if ep_num not in existing_eps:
+                chars = list(set([
+                    s.get("character") for s in episode_data.get("shots", [])
+                    if s.get("character") and s.get("character") != "Third-Person Narrator"
+                ]))
+                history.append({
+                    "episode": ep_num,
+                    "title": f"{episode_data.get('title_malayalam', '')} ({episode_data.get('title_english', '')})",
+                    "summary": episode_data.get("synopsis", ""),
+                    "cliffhanger": episode_data.get("cliffhanger", ""),
+                    "characters_present": chars
+                })
+                state["history"] = history
+            with open(state_path, "w", encoding="utf-8") as f:
+                json.dump(state, f, ensure_ascii=False, indent=2)
+            print("✓ Updated story_state.json with new episode progression!")
+        except Exception as e:
+            print(f"Notice updating story_state.json: {e}")
 
     # Re-run portal updater if available
     updater_script = Path("scripts/update_portals.py")
@@ -286,6 +315,26 @@ def main():
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     args = parser.parse_args()
 
+    # Robust default context
+    previous_story = (
+        "Episode 1: After two long years of waiting, Reenu and Amal wait at Kochi CIAL airport arrivals. "
+        "Sachin emerges through the doors resulting in an emotional reunion, but Sachin secretly clutches an anxious London leather pouch."
+    )
+    cliffhanger = "As Sachin hugs Reenu, an anxious look crosses his face while holding the mysterious pouch."
+    premise = ""
+    effective_current_ep = args.current_ep
+
+    # Check local current_episode_shots.json if present for context
+    if os.path.exists("current_episode_shots.json"):
+        try:
+            with open("current_episode_shots.json", "r", encoding="utf-8") as f:
+                cur = json.load(f)
+                previous_story = cur.get("synopsis") or previous_story
+                cliffhanger = cur.get("cliffhanger") or cliffhanger
+                effective_current_ep = cur.get("episode_number", args.current_ep)
+        except Exception as e:
+            print(f"Notice reading current_episode_shots.json: {e}")
+
     if args.target_ep == 1:
         effective_current_ep = 0
         previous_story = "Series Pilot: Sachin has been away in the UK for two long years, while Reenu waited for him in Kerala. Today is Sachin's return flight arriving at Kochi CIAL airport."
@@ -294,18 +343,6 @@ def main():
     elif args.target_ep is not None:
         effective_current_ep = args.target_ep - 1
         premise = ""
-    else:
-        premise = ""
-        if os.path.exists("current_episode_shots.json"):
-            try:
-                with open("current_episode_shots.json", "r", encoding="utf-8") as f:
-                    cur = json.load(f)
-                    previous_story = cur.get("synopsis", previous_story)
-                    cliffhanger = cur.get("cliffhanger", cliffhanger)
-                    args.current_ep = cur.get("episode_number", args.current_ep)
-            except Exception:
-                pass
-        effective_current_ep = args.current_ep
 
     # 1. Generate Next Episode with Gemini
     ep_data = generate_next_episode_screenplay(
