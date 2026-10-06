@@ -29,10 +29,10 @@ except ImportError:
 from google import genai
 from google.genai import types
 
-# Character Visual DNA Constants
-DNA_REENU = "Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, glowing radiant honey complexion. Attire: Classic pastel camouflage t-shirt in baby-blue and soft yellow cloud patches with sky-blue denim skirt."
-DNA_SACHIN = "Sachin: Endearing 24yo South Indian Malayali young man with soft textured wavy dark hair, warm expressive almond-shaped brown eyes, genuine contagious boyish smile, radiant dusky wheatish skin tone. Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
-DNA_AMAL = "Amal: Cheerful 24yo Malayali young man with neat casual short hair, playful lively eyes, friendly smile, warm medium brown complexion. Attire: Mustard yellow polo t-shirt with beige chinos."
+# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like)
+DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Pastel camouflage t-shirt in baby-blue and yellow cloud patches with sky-blue denim skirt."
+DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Tailored forest-green and navy-blue check flannel shirt over crisp white inner crewneck tee with dark denim jeans and a leather travel cross-bag."
+DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). Attire: Mustard yellow polo t-shirt with beige chinos."
 
 NARRATOR_VOICE = "Consistent Third-Person Male Narrator: 30yo mature male storyteller voice, warm reflective baritone, gentle evocative cadence, studio acoustic clarity"
 
@@ -44,21 +44,21 @@ def get_gemini_client():
 
 def generate_next_episode_screenplay(current_ep_num, previous_story, cliffhanger, next_ep_premise=""):
     """
-    Calls Gemini to generate a captivating next episode screenplay with detailed JSON prompts.
+    Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots) with strictly animated cartoon characters.
     """
     next_ep_num = current_ep_num + 1
     client = get_gemini_client()
     
     print(f"\n=======================================================")
-    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num}")
+    print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: EPISODE {next_ep_num} (1-MINUTE REEL)")
     print(f"=======================================================")
     print(f"Previous Episode Summary: {previous_story[:100]}...")
     print(f"Cliffhanger: {cliffhanger}")
 
     system_instruction = (
-        "You are an acclaimed Malayalam romantic film director and screenplay writer, known for heartwarming, "
-        "relatable Kochi romance cinema (like 'Premalu', 'Bangalore Days', 'Hridayam'). "
-        "You write compelling 2 to 2.5 minute vertical episodes (Reels format) for the animated 3D web series 'Sachin & Reenu'. "
+        "You are an acclaimed Malayalam romantic film director and 3D animated series showrunner. "
+        "You write punchy, fast-paced, emotionally rich 1-MINUTE vertical episodes (Reels format) for the 3D animated cartoon series 'Sachin & Reenu'. "
+        "Characters are strictly stylized 3D cartoon animation characters in high-end Disney Pixar / DreamWorks style. Real or human-like figures are strictly prohibited! "
         "Characters: Sachin (just returned from UK after 2 years), Reenu (deeply in love, nervous, overwhelmed), and Amal (Sachin's witty loyal best friend). "
         "Every episode must feel deeply emotional, charming, culturally authentic to Kerala/Kochi, and end on an irresistible cliffhanger. "
         "You will output ONLY valid JSON according to the specified schema."
@@ -73,22 +73,27 @@ Cliffhanger: {cliffhanger}
 Premise/Hook for Episode {next_ep_num}: {next_ep_premise or 'Stepping outside Kochi airport into the sudden monsoon rain. An intimate car ride with Amal driving, while Sachin hesitates to reveal his UK secret.'}
 
 CRITICAL RULES:
-1. TARGET DURATION: Between 120 and 150 seconds (2m 00s to 2m 30s).
-2. NUMBER OF SHOTS: Exactly 20 to 24 shots.
-3. DURATION LOGIC:
-   - Short dialogue (< 10 words) or swift reaction: "4s" (4 seconds)
-   - Medium dialogue (10-20 words) or meaningful conversation: "6s" (6 seconds)
-   - Long dialogue (> 20 words) or intense emotional exchange: "8s" (8 seconds)
-4. AUDIO DIRECTIVE:
+1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
+2. NUMBER OF SHOTS: STRICTLY 10 TO 11 SHOTS (No more than 11 shots, no fewer than 10 shots).
+3. DURATION LOGIC PER SHOT:
+   - Fast reaction / cut: "5s" (5 seconds)
+   - Dialogue exchange / scenic moment: "6s" (6 seconds)
+   - Total sum of shot durations MUST be between 55s and 65s (~1 minute).
+4. STRICT ANIMATION CHARACTER REQUIREMENT:
+   - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
+   - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
+   - Character visual DNA must be strictly followed:
+     • Reenu Visual DNA: "{DNA_REENU}"
+     • Sachin Visual DNA: "{DNA_SACHIN}"
+     • Amal Visual DNA: "{DNA_AMAL}"
+5. AUDIO DIRECTIVE:
    - Dialogue must be in pure, natural, conversational Malayalam written in Malayalam script (മലയാളം ലിപി).
    - If a shot has no dialogue between characters, use the Third-Person Narrator voice to give lively emotional narration.
    - For every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-5. CHARACTER VISUAL CONSISTENCY:
-   - Reenu Visual DNA: "{DNA_REENU}"
-   - Sachin Visual DNA: "{DNA_SACHIN}"
-   - Amal Visual DNA: "{DNA_AMAL}"
-6. STYLE:
-   - "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps"
+6. NEGATIVE PROMPT:
+   - Must strictly include: "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
+7. STYLE STRING:
+   - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
 Output JSON structure:
 {{
@@ -97,20 +102,20 @@ Output JSON structure:
   "title_english": "...",
   "synopsis": "Full exciting synopsis of the episode...",
   "cliffhanger": "Next cliffhanger...",
-  "total_shots": 22,
-  "calculated_total_seconds": 126,
-  "calculated_runtime_display": "2m 06s",
+  "total_shots": 10,
+  "calculated_total_seconds": 60,
+  "calculated_runtime_display": "1m 00s",
   "shots": [
     {{
       "shot_number": 1,
-      "duration": "4s",
-      "duration_seconds": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "...",
       "action_summary": "...",
       "json_prompt": {{
-        "style": "Disney Pixar 3D animated film, vertical 9:16 format, hyper-detailed 3D CGI animation, Octane render 4k 60fps",
-        "duration": "4s",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {{
@@ -129,7 +134,7 @@ Output JSON structure:
           "line": "..."
         }},
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
-        "negative_prompt": "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+        "negative_prompt": "real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, singing"
       }}
     }}
   ]
@@ -251,26 +256,31 @@ def update_creator_portal(episode_data):
 def main():
     parser = argparse.ArgumentParser(description="Generate Next Episode Screenplay & Prompts")
     parser.add_argument("--current_ep", type=int, default=1, help="Completed episode number")
+    parser.add_argument("--target_ep", type=int, default=None, help="Explicit target episode number to generate")
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     args = parser.parse_args()
 
-    # Load current episode context
+    # Base context from Episode 1
     previous_story = "After two years apart, Sachin returns from London to Kochi CIAL and reunites emotionally with Reenu and Amal."
     cliffhanger = "Sachin holds Reenu close, but nervously clutches a secret pouch brought from London."
     
-    if os.path.exists("current_episode_shots.json"):
-        try:
-            with open("current_episode_shots.json", "r", encoding="utf-8") as f:
-                cur = json.load(f)
-                previous_story = cur.get("synopsis", previous_story)
-                cliffhanger = cur.get("cliffhanger", cliffhanger)
-                args.current_ep = cur.get("episode_number", args.current_ep)
-        except Exception:
-            pass
+    if args.target_ep is not None:
+        effective_current_ep = args.target_ep - 1
+    else:
+        if os.path.exists("current_episode_shots.json"):
+            try:
+                with open("current_episode_shots.json", "r", encoding="utf-8") as f:
+                    cur = json.load(f)
+                    previous_story = cur.get("synopsis", previous_story)
+                    cliffhanger = cur.get("cliffhanger", cliffhanger)
+                    args.current_ep = cur.get("episode_number", args.current_ep)
+            except Exception:
+                pass
+        effective_current_ep = args.current_ep
 
     # 1. Generate Next Episode with Gemini
     ep_data = generate_next_episode_screenplay(
-        current_ep_num=args.current_ep,
+        current_ep_num=effective_current_ep,
         previous_story=previous_story,
         cliffhanger=cliffhanger
     )
