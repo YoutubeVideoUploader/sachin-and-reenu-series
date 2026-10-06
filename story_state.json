@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 2,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -56,6 +56,18 @@
         "None",
         "Reenu"
       ]
+    },
+    {
+      "episode": 3,
+      "title": "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും (A Roadside Chai & Unspoken Glances)",
+      "summary": "Amal pulls the car over at a quaint, misty tea stall near the Kerala backwaters. As the rain continues to pour, Sachin and Reenu step out under a shared umbrella, finding a moment of quiet connection over steaming hot tea. Despite the proximity, Sachin struggles to find the right words to address the tension from their earlier argument. The episode culminates in a shift of focus as Amal discovers the misplaced leather pouch on the floor of the car.",
+      "cliffhanger": "Amal picks up the mysterious leather pouch from the car floor, his expression shifting from curiosity to concern.",
+      "characters_present": [
+        "Reenu",
+        "Amal",
+        "Sachin"
+      ]
     }
-  ]
+  ],
+  "episode_number": 3
 }
