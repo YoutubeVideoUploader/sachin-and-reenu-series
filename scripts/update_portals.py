@@ -27,13 +27,20 @@ new_render_shots = """
 
       episodeData.shots.forEach((shot) => {
         const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
-        const dialogueHtml = shot.dialogue_malayalam ? `
-          <div class="dialogue-box">
-            <b>💬 സംഭാഷണം (Malayalam Dialogue):</b> "${shot.dialogue_malayalam}"
-          </div>
-        ` : `
+        const isNarrator = shot.character === 'Third-Person Narrator';
+        const dialogueHtml = shot.dialogue_malayalam ? (
+          isNarrator ? `
+            <div class="dialogue-box" style="border-left: 4px solid #38bdf8; background: rgba(56, 189, 248, 0.08);">
+              <b style="color: #38bdf8;">🎙️ ഓഫ്-സ്‌ക്രീൻ വിവരണം (Off-Screen Voiceover Narration — Characters Silent & Closed Lips):</b> "${shot.dialogue_malayalam}"
+            </div>
+          ` : `
+            <div class="dialogue-box">
+              <b>💬 കഥാപാത്ര സംഭാഷണം (${shot.character} Dialogue):</b> "${shot.dialogue_malayalam}"
+            </div>
+          `
+        ) : `
           <div class="dialogue-box-silent">
-            <span style="color: var(--text-muted); font-size: 13px;">🤫 <i>No spoken dialogue (Silent emotional gaze / ambient beat)</i></span>
+            <span style="color: var(--text-muted); font-size: 13px;">🤫 <i>No spoken dialogue (Silent emotional scene action / ambient beat)</i></span>
           </div>
         `;
 

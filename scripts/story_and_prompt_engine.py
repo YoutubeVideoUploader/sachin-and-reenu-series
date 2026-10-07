@@ -206,8 +206,14 @@ CRITICAL PRODUCTION RULES:
      • Sachin Visual DNA: "{DNA_SACHIN}"
      • Amal Visual DNA: "{DNA_AMAL}"
 5. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
-   - NARRATION SHOTS: If the Third-Person Narrator is speaking, character lips MUST BE COMPLETELY CLOSED. In the 'action' and 'audio_directive', explicitly state: "Characters' lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters. This is an external voiceover narration."
-   - CONVERSATION SHOTS: Only the designated speaking character moves their mouth. The listening character's mouth remains closed.
+   - THIRD-PERSON NARRATION SHOTS (VOICEOVER ONLY):
+     • The third-person narrator is an EXTERNAL, OFF-SCREEN STORYTELLER. NO on-screen character speaks the narration line!
+     • These shots MUST focus on SHOWING THE SCENE ACTION AND CINEMATIC ENVIRONMENT (e.g., car moving on road, rain falling on streetlights, characters walking, looking at scenery, touching props, silent emotional bodily gestures).
+     • In 'action', explicitly describe the physical scene action and state: "PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation. Characters do NOT speak."
+     • In 'dialogue', the speaker MUST be: "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)".
+     • In 'audio_directive', state: "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+   - CONVERSATION / CHARACTER DIALOGUE SHOTS:
+     • Only the designated speaking character moves their mouth in precise lip sync. The listening character's mouth remains strictly closed.
 6. STRICT MALAYALAM CHARACTER NAMES & PRONUNCIATION ACCURACY (MANDATORY):
    - EXACT CANONICAL SPELLING FOR NAMES:
      • Reenu: Strictly 'റീനു' with hard 'റ' (NEVER 'രീനു' with soft 'ര', NEVER 'റീന').
@@ -225,7 +231,7 @@ CRITICAL PRODUCTION RULES:
 8. ABSOLUTELY NO BACKGROUND MUSIC (BGM):
    - In every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
 9. NEGATIVE PROMPT:
-   - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+   - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
 10. STYLE STRING:
    - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 

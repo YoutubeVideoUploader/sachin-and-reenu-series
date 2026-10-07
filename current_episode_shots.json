@@ -15,7 +15,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "അമൽ ആ നിമിഷത്തിന്റെ പിരിമുറുക്കം മാറ്റാൻ നോക്കി.",
-      "action_summary": "Amal steps forward with a cheerful cartoon grin, trying to break the heavy silence between Sachin and Reenu. Amal's lips remain completely closed. External narration.",
+      "action_summary": "Atmospheric evening scene: A warm streetlight glows over the damp Kochi street corner. Amal steps out near the car, looking towards Sachin and Reenu with an easygoing posture. Characters are completely silent with closed lips.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -27,17 +27,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Medium eye-level shot, smooth cinematic push-in.",
-        "action": "Amal steps forward with a cheerful cartoon grin, trying to break the heavy silence. Amal's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Amal. This is an external voiceover narration.",
+        "camera": "Wide-to-medium cinematic establishing shot, gentle camera glide.",
+        "action": "PURE VISUAL SCENE ACTION. Cinematic evening atmosphere on a damp Kochi street corner with warm golden streetlight reflections on glistening pavement. Amal steps forward with a relaxed posture and friendly hand gesture. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely ZERO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "അമൽ ആ നിമിഷത്തിന്റെ പിരിമുറുക്കം മാറ്റാൻ നോക്കി."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
@@ -117,7 +117,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "അമലിന്റെ തമാശ സച്ചിന് ചിരി ഉണ്ടാക്കിയില്ല.",
-      "action_summary": "Sachin listens with a tense, worried expression on his cartoon face. Sachin's lips remain completely closed. External narration.",
+      "action_summary": "Cinematic medium shot of Sachin standing quietly under the warm amber streetlights, fingers tightly holding his travel bag strap in silent tension. Sachin does not speak.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -129,17 +129,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Medium shot focusing on Sachin's anxious facial expression.",
-        "action": "Sachin listens with a tense, worried expression on his cartoon face. Sachin's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Sachin. This is an external voiceover narration.",
+        "camera": "Medium cinematic portrait framing, subtle atmospheric rack-focus.",
+        "action": "PURE VISUAL SCENE ACTION. Medium shot of Sachin standing quietly under the warm amber streetlights, his fingers tightly clutching the leather cross-bag strap against his chest. His expression is contemplative and deeply conflicted. Sachin's lips are firmly closed and silent. Absolutely ZERO mouth movement, talking, or lip sync.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "അമലിന്റെ തമാശ സച്ചിന് ചിരി ഉണ്ടാക്കിയില്ല."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
@@ -219,7 +219,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടവും ചോദ്യങ്ങളും നിറഞ്ഞു.",
-      "action_summary": "Reenu looks at Sachin with deep emotional hurt and questioning hazel-brown cartoon eyes. Reenu's lips remain completely closed. External narration.",
+      "action_summary": "Atmospheric close-up of Reenu in the soft evening twilight, her expressive eyes glistening with silent emotional questions. Reenu's lips remain firmly closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -231,17 +231,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Close-up shot on Reenu's emotional cartoon face.",
-        "action": "Reenu looks at Sachin with deep emotional hurt and questioning hazel-brown cartoon eyes. Reenu's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Reenu. This is an external voiceover narration.",
+        "camera": "Close-up cinematic framing, shallow depth of field.",
+        "action": "PURE VISUAL SCENE ACTION. Close-up cinematic framing on Reenu in the soft evening twilight, the distant city lights blurred in soft bokeh behind her. Her expressive hazel eyes reflect quiet hurt and intense unasked questions. Reenu's lips are firmly closed and relaxed with zero mouth movement. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടവും ചോദ്യങ്ങളും നിറഞ്ഞു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
@@ -321,7 +321,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "അവളുടെ ആ ചോദ്യം സച്ചിന്റെ നെഞ്ചിൽ കൊണ്ടു.",
-      "action_summary": "Sachin closes his eyes in internal pain, feeling deeply torn. Sachin's lips remain completely closed. External narration.",
+      "action_summary": "Sachin reacts with a subtle silent emotional recoil under Reenu's questioning gaze. Sachin's lips remain completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -333,17 +333,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Medium close-up on Sachin's troubled expression.",
-        "action": "Sachin closes his eyes in internal pain, feeling deeply torn. Sachin's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Sachin. This is an external voiceover narration.",
+        "camera": "Over-the-shoulder cinematic framing, focus pulling to Sachin's eyes.",
+        "action": "PURE VISUAL SCENE ACTION. Over-the-shoulder perspective focusing on Sachin as he absorbs Reenu's question. A subtle drop of his shoulders and a flicker of emotional vulnerability in his eyes. Sachin's lips remain firmly closed. Absolutely NO mouth movement or speaking animation on characters.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "അവളുടെ ആ ചോദ്യം സച്ചിന്റെ നെഞ്ചിൽ കൊണ്ടു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
@@ -370,7 +370,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "ലണ്ടൻ തീരുമാനവും അവന്റെ ഭയവും തമ്മിൽ അവൻ മല്ലിട്ടു.",
-      "action_summary": "Sachin grips his travel bag tightly, torn between his life-changing decision and fear of hurting Reenu. Sachin's lips remain completely closed. External narration.",
+      "action_summary": "Cinematic shot of Sachin looking down at the secret London leather pouch in his hands, torn in silent inner conflict. Characters remain completely silent.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -382,17 +382,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Medium shot panning slightly around Sachin.",
-        "action": "Sachin grips his travel bag tightly, torn between his life-changing decision and fear of hurting Reenu. Sachin's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Sachin. This is an external voiceover narration.",
+        "camera": "Cinematic low-angle medium close-up, slow steady tracking.",
+        "action": "PURE VISUAL SCENE ACTION. Close cinematic focus on Sachin's hands gripping the vintage London leather pouch, followed by a slight upward tilt to his conflicted facial expression. Cool evening breeze rustles softly. Sachin's lips remain firmly closed. Absolutely ZERO mouth movement, talking, or speaking animation on characters.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "ലണ്ടൻ തീരുമാനവും അവന്റെ ഭയവും തമ്മിൽ അവൻ മല്ലിട്ടു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
@@ -472,7 +472,7 @@
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
       "dialogue_malayalam": "ആ വാഗ്ദാനത്തിൽ അവളുടെ മിഴികൾ വിടർന്നു.",
-      "action_summary": "Reenu's eyes widen with a mix of surprise and lingering suspense as she awaits the truth. Reenu's lips remain completely closed. External narration.",
+      "action_summary": "Season cliffhanger scene action: Reenu's wide expressive eyes softly glisten with surprise and lingering emotion under the glowing Kochi streetlights. Lips remain completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -488,17 +488,17 @@
           }
         ],
         "location": "A cozy evening street corner under soft warm streetlights, Disney Pixar style animation.",
-        "camera": "Close-up shot on Reenu reacting, subtle pull-back.",
-        "action": "Reenu's eyes widen with a mix of surprise and lingering suspense as she awaits the truth. Reenu's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Reenu. This is an external voiceover narration.",
+        "camera": "Dramatic slow cinematic push-in on Reenu's expressive eyes.",
+        "action": "PURE VISUAL SCENE ACTION. Dramatic cinematic close-up on Reenu reacting to Sachin's promise. Her eyes widen softly in wonder and quiet emotion, illuminated by the warm amber streetlight glow and rainy reflections. Reenu's lips remain completely closed and still. Absolutely ZERO mouth movement or talking animation. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "ആ വാഗ്ദാനത്തിൽ അവളുടെ മിഴികൾ വിടർന്നു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
         "sequence_continuity": {
           "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
           "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
