@@ -102,5 +102,23 @@
       ]
     }
   ],
-  "episode_number": 6
+  "episode_number": 6,
+  "cliffhanger_scene_state": {
+    "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+    "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+    "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+    "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+    "spatial_blocking": {
+      "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+      "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+      "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+    },
+    "eyeline_direction": "Reenu's eyes widen screen-left looking at Sachin with glimmering hope and unresolved mystery",
+    "persistent_props": [
+      "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+      "Reenu's silver wrist watch on left wrist"
+    ],
+    "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+  }
 }

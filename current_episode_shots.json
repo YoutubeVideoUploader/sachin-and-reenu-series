@@ -37,7 +37,25 @@
           "line": "അമൽ ആ നിമിഷത്തിന്റെ പിരിമുറുക്കം മാറ്റാൻ നോക്കി."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Amal looks screen-right towards Sachin and Reenu with a teasing smile",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "50mm cinematic prime lens, f/2.0 shallow depth of field"
+        }
       }
     },
     {
@@ -72,7 +90,25 @@
           "line": "എന്താ സച്ചിൻ, നിധി കടത്തുകയാണോ?"
         },
         "audio_directive": "CHARACTER DIALOGUE ONLY. Amal speaks with clean lip sync. Sachin's mouth remains completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Amal looks screen-center directly at Sachin with a playful animated expression",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "50mm cinematic prime lens, f/2.0 shallow depth of field"
+        }
       }
     },
     {
@@ -103,7 +139,25 @@
           "line": "അമലിന്റെ തമാശ സച്ചിന് ചിരി ഉണ്ടാക്കിയില്ല."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Sachin looks down screen-left in hesitation, unable to smile; Amal watches him",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -138,7 +192,25 @@
           "line": "അങ്ങനെ ഒന്നുമില്ല അമൽ."
         },
         "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks with clean lip sync. Amal's mouth remains completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Sachin looks screen-left at Amal, then glances nervously screen-right at Reenu",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -169,7 +241,25 @@
           "line": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടവും ചോദ്യങ്ങളും നിറഞ്ഞു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Reenu stares screen-center directly at Sachin with glistening hurt eyes",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -204,7 +294,25 @@
           "line": "എന്താണ് സച്ചിൻ നീ ഒളിക്കുന്നത്?"
         },
         "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu speaks with clean lip sync. Sachin's mouth remains completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Reenu maintains intense direct screen-center eyeline into Sachin's eyes",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -235,7 +343,25 @@
           "line": "അവളുടെ ആ ചോദ്യം സച്ചിന്റെ നെഞ്ചിൽ കൊണ്ടു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Sachin winces slightly, looking screen-right into Reenu's questioning gaze",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -266,7 +392,25 @@
           "line": "ലണ്ടൻ തീരുമാനവും അവന്റെ ഭയവും തമ്മിൽ അവൻ മല്ലിട്ടു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Sachin looks down at his hands clutching the leather pouch in emotional conflict",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "50mm cinematic prime lens, f/2.0 shallow depth of field"
+        }
       }
     },
     {
@@ -301,7 +445,25 @@
           "line": "റീനു, രാത്രി തീരുന്നതിന് മുൻപ് ഞാൻ എല്ലാം പറയാം."
         },
         "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks with clean lip sync. Reenu's mouth remains completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Sachin looks up screen-right directly into Reenu's eyes with solemn earnest promise",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     },
     {
@@ -336,7 +498,25 @@
           "line": "ആ വാഗ്ദാനത്തിൽ അവളുടെ മിഴികൾ വിടർന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing",
+        "sequence_continuity": {
+          "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
+          "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
+          "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
+          "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+          "spatial_blocking": {
+            "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
+            "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
+            "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+          },
+          "eyeline_direction": "Reenu's eyes widen screen-left looking at Sachin with glimmering hope and unresolved mystery",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch held securely in Sachin's hand",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+        }
       }
     }
   ]

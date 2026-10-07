@@ -111,11 +111,12 @@ def get_gemini_client():
         raise ValueError("GEMINI_API_KEY environment variable is required")
     return genai.Client(api_key=api_key)
 
-def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhanger="", next_ep_premise=""):
+def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
-    with locked character dress, strict lip-movement rules, female narrator, and pure Malayalam dialogue.
-    Dynamically adheres to the Master Season 1 Roadmap.
+    with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
+    and rigorous sequence continuity (lighting, weather, spatial blocking, eyelines, persistent props, camera lens).
+    Dynamically adheres to the Master Season 1 Roadmap and inherits cliffhanger scene state for episode continuity.
     """
     next_ep_num = current_ep_num + 1
     client = get_gemini_client()
@@ -142,6 +143,8 @@ def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhan
     print(f"Previous Episode {current_ep_num} Summary: {previous_story[:100]}...")
     print(f"Target Narrative Beat: {effective_premise[:100]}...")
     print(f"Target Cliffhanger: {target_cliffhanger_guide[:100]}...")
+    if cliffhanger_scene_state:
+        print(f"Inheriting Continuity Scene State: {cliffhanger_scene_state.get('scene_id')} ({cliffhanger_scene_state.get('weather')})")
 
     system_instruction = (
         "You are an acclaimed Malayalam romantic film director and 3D animated series showrunner. "
@@ -165,6 +168,15 @@ def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhan
         "You will output ONLY valid JSON according to the specified schema."
     )
 
+    handoff_text = ""
+    if cliffhanger_scene_state:
+        handoff_text = f"""
+CONTINUITY HANDOFF FROM PREVIOUS EPISODE {current_ep_num} ENDING SCENE:
+The previous episode ended with the following physical scene continuity state:
+{json.dumps(cliffhanger_scene_state, ensure_ascii=False, indent=2)}
+CRITICAL HANDOFF RULE: If Episode {next_ep_num} Shot 1 begins in this continuous sequence/location, you MUST seamlessly inherit this exact scene_id, weather, lighting palette, character spatial blocking, and prop placement to guarantee 100% continuous multi-shot flow across episode boundaries!
+"""
+
     prompt = f"""
 Write the full screenplay and shot-by-shot Google Flow JSON prompts for Episode {next_ep_num} of 'Sachin & Reenu'.
 
@@ -177,6 +189,7 @@ CONTEXT FROM PREVIOUS EPISODE {current_ep_num}:
 Story: {previous_story}
 Cliffhanger: {cliffhanger}
 Premise/Hook for Episode {next_ep_num}: {effective_premise}
+{handoff_text}
 
 CRITICAL PRODUCTION RULES:
 1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
@@ -230,6 +243,23 @@ CRITICAL PRODUCTION RULES:
      • "voice_persona": voice description
    - If NO new character is introduced for this episode, provide an empty array: "new_characters_introduced": []
 
+12. SEQUENCE CONTINUITY & SPATIAL BLOCKING (CRITICAL FOR VIDEO AI & MULTI-SHOT COHERENCE):
+   - In EVERY shot's "json_prompt", you MUST include a "sequence_continuity" object specifying:
+     • "scene_id": Identifier for current physical sequence/location (e.g. "SCENE_CAR_KOCHI_RAIN", "SCENE_AIRPORT_ARRIVAL_GATE", "SCENE_TEA_STALL_BACKWATERS").
+     • "time_of_day": Exact time of day (e.g. "4:45 PM Late Afternoon Monsoon Dusk").
+     • "lighting_palette": Color temperature & lighting scheme (e.g. "Cool 5600K overcast exterior daylight with soft warm 3200K amber dashboard glow").
+     • "weather": Persistent weather state (e.g. "Continuous Kochi monsoon drizzle with rain droplets sliding down car window glass").
+     • "spatial_blocking": Dictionary mapping each character to their exact physical seat, standing position, and orientation. E.g.:
+       {{
+         "Amal": "Driver seat (right side), hands on steering wheel, facing road",
+         "Sachin": "Front passenger seat (left side), seated upright with seatbelt, body angled toward Reenu",
+         "Reenu": "Rear seat directly behind Sachin, leaning forward toward front seats"
+       }}
+       MANDATORY: Character positions and seating MUST NEVER randomly flip or swap between shots within the same sequence!
+     • "eyeline_direction": Strict 180-degree rule camera axis & gaze direction (e.g. "Sachin looks screen-left/down; Reenu looks screen-right at Sachin").
+     • "persistent_props": Array of key physical hero props present and their exact state/location (e.g. ["Vintage tan-brown London leather pouch under front passenger seat", "Sachin's diagonal brown leather cross-bag strap over left shoulder", "Reenu's silver wrist watch on left wrist"]).
+     • "camera_lens": Specific cinematic focal length and aperture (e.g. "50mm cinematic prime lens, f/2.0 shallow depth of field, soft circular bokeh").
+
 Output JSON structure:
 {{
   "episode_number": {next_ep_num},
@@ -269,6 +299,24 @@ Output JSON structure:
             "visual_dna": "{DNA_REENU}"
           }}
         ],
+        "sequence_continuity": {{
+          "scene_id": "SCENE_CAR_KOCHI_RAIN",
+          "time_of_day": "4:45 PM Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Cool 5600K overcast exterior daylight with soft warm 3200K amber dashboard glow",
+          "weather": "Continuous Kochi monsoon drizzle with rain droplets sliding down car window glass",
+          "spatial_blocking": {{
+            "Amal": "Driver seat (right side), hands on steering wheel, facing road",
+            "Sachin": "Front passenger seat (left side), seated upright with seatbelt, body angled toward Reenu",
+            "Reenu": "Rear seat directly behind Sachin, leaning forward"
+          }},
+          "eyeline_direction": "Sachin looks screen-left; Reenu looks screen-right at Sachin",
+          "persistent_props": [
+            "Vintage tan-brown London leather pouch under front passenger seat",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
+          ],
+          "camera_lens": "50mm cinematic prime lens, f/2.0 shallow depth of field, soft circular bokeh"
+        }},
         "location": "...",
         "camera": "...",
         "action": "Reenu looks around with trembling anticipation. Reenu's lips remain completely closed. Absolutely NO mouth movement or speaking animation on Reenu. This is an external voiceover narration.",
@@ -464,6 +512,16 @@ def update_creator_portal(episode_data):
             else:
                 history.append(new_entry)
             state["history"] = history
+            # Save cliffhanger scene state for continuity handoff to next episode
+            shots = episode_data.get("shots", [])
+            if shots:
+                last_shot = shots[-1]
+                last_prompt = last_shot.get("json_prompt", {})
+                last_continuity = last_prompt.get("sequence_continuity")
+                if last_continuity:
+                    state["cliffhanger_scene_state"] = last_continuity
+                    print("✓ Saved ending shot sequence continuity as cliffhanger_scene_state in story_state.json!")
+
             with open(state_path, "w", encoding="utf-8") as f:
                 json.dump(state, f, ensure_ascii=False, indent=2)
             print("✓ Updated story_state.json with new episode progression!")
@@ -520,11 +578,13 @@ def main():
     ))
     cliffhanger = prev_entry.get("cliffhanger", "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.")
 
-    # Check story_state.json if it has memory for effective_current_ep
+    # Check story_state.json if it has memory & scene continuity for effective_current_ep
+    cliffhanger_scene_state = None
     if os.path.exists("story_state.json"):
         try:
             with open("story_state.json", "r", encoding="utf-8") as f:
                 sstate = json.load(f)
+                cliffhanger_scene_state = sstate.get("cliffhanger_scene_state")
                 for h in sstate.get("history", []):
                     if h.get("episode") == effective_current_ep:
                         previous_story = h.get("summary") or previous_story
@@ -551,7 +611,8 @@ def main():
         current_ep_num=effective_current_ep,
         previous_story=previous_story,
         cliffhanger=cliffhanger,
-        next_ep_premise=premise
+        next_ep_premise=premise,
+        cliffhanger_scene_state=cliffhanger_scene_state
     )
 
     # 2. Update local files & portal website
