@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 5,
+  "total_episodes_produced": 6,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -89,7 +89,18 @@
         "Sachin",
         "Amal"
       ]
+    },
+    {
+      "episode": 6,
+      "title": "അമലിന്റെ തമാശയും മൗനവും (Amal's Wit & Heavy Silence)",
+      "summary": "Amal uses humor and teasing to diffuse the heavy tension in the air. Sachin feels deeply torn between confessing his life-changing London decision and the fear of overwhelming റീനു.",
+      "cliffhanger": "Sachin promises റീനു: 'Before tonight ends, I will tell you everything.'",
+      "characters_present": [
+        "Amal",
+        "Sachin",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 5
+  "episode_number": 6
 }
