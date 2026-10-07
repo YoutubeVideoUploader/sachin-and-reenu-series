@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 4,
+  "total_episodes_produced": 5,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -78,7 +78,18 @@
         "Amal",
         "Reenu"
       ]
+    },
+    {
+      "episode": 5,
+      "title": "രഹസ്യം പുറത്തേക്ക് (The Secret Slips)",
+      "summary": "As the trio gathers, Amal hands over a mysterious travel pouch to Sachin. Reenu, already suspicious, presses Sachin about its contents. Sachin stammers and tries to change the subject, but his awkwardness only fuels Reenu's curiosity. The tension culminates when Reenu reaches out to touch the pouch, and Sachin instinctively pulls it away, leaving an uncomfortable silence between them.",
+      "cliffhanger": "Reenu looks at Sachin with newfound hurt and confusion, realizing he is hiding something significant.",
+      "characters_present": [
+        "Reenu",
+        "Sachin",
+        "Amal"
+      ]
     }
   ],
-  "episode_number": 4
+  "episode_number": 5
 }
