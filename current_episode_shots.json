@@ -14,7 +14,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "കൊച്ചിയിലെ മഴ നനഞ്ഞ തെരുവുകളിലൂടെ കാർ മുന്നോട്ട് നീങ്ങി. കോളേജ് കാലത്തെ മധുരമുള്ള ഓർമ്മകൾക്കിടയിലും സച്ചിന്റെ മനസ്സിൽ ഒരു വലിയ ഭാരമുണ്ടായിരുന്നു.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിന്റെ മനസ്സിൽ ഓർമ്മകളുടെ ഒരു ഭാരമുണ്ടായിരുന്നു.",
       "action_summary": "Close-up of Sachin looking out the car window, his expression pensive. Reenu sits beside him, glancing at him occasionally. Character lips remain completely closed. Absolutely NO mouth movement or speaking animation on characters.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -37,8 +37,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "കൊച്ചിയിലെ മഴ നനഞ്ഞ തെരുവുകളിലൂടെ കാർ മുന്നോട്ട് നീങ്ങി. കോളേജ് കാലത്തെ മധുരമുള്ള ഓർമ്മകൾക്കിടയിലും സച്ചിന്റെ മനസ്സിൽ ഒരു വലിയ ഭാരമുണ്ടായിരുന്നു.",
-          "line": "കൊച്ചിയിലെ മഴ നനഞ്ഞ തെരുവുകളിലൂടെ കാർ മുന്നോട്ട് നീങ്ങി. കോളേജ് കാലത്തെ മധുരമുള്ള ഓർമ്മകൾക്കിടയിലും സച്ചിന്റെ മനസ്സിൽ ഒരു വലിയ ഭാരമുണ്ടായിരുന്നു."
+          "script": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിന്റെ മനസ്സിൽ ഓർമ്മകളുടെ ഒരു ഭാരമുണ്ടായിരുന്നു.",
+          "line": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിന്റെ മനസ്സിൽ ഓർമ്മകളുടെ ഒരു ഭാരമുണ്ടായിരുന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -49,7 +49,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Sachin",
-      "dialogue_malayalam": "ഓർമ്മയുണ്ടോ റീനു, നമ്മൾ കോളേജിൽ വെച്ച് കന്റീനിൽ ഇരുന്ന ആ ദിവസങ്ങൾ? അന്ന് നമ്മൾ എത്ര പെട്ടെന്നാണ് സമയം ചിലവഴിച്ചിരുന്നത്.",
+      "dialogue_malayalam": "ഓർമ്മയുണ്ടോ റീനു, നമ്മളുടെ ആ പഴയ കോളേജ് ദിവസങ്ങൾ?",
       "action_summary": "Sachin turns to look at Reenu, smiling softly. Reenu is listening intently.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -68,8 +68,8 @@
           "speaker": "Sachin",
           "voice_persona": "Sachin: Warm, boyish, slightly hesitant, authentic Malayali male voice.",
           "language": "Malayalam",
-          "script": "ഓർമ്മയുണ്ടോ റീനു, നമ്മൾ കോളേജിൽ വെച്ച് കന്റീനിൽ ഇരുന്ന ആ ദിവസങ്ങൾ? അന്ന് നമ്മൾ എത്ര പെട്ടെന്നാണ് സമയം ചിലവഴിച്ചിരുന്നത്.",
-          "line": "ഓർമ്മയുണ്ടോ റീനു, നമ്മൾ കോളേജിൽ വെച്ച് കന്റീനിൽ ഇരുന്ന ആ ദിവസങ്ങൾ? അന്ന് നമ്മൾ എത്ര പെട്ടെന്നാണ് സമയം ചിലവഴിച്ചിരുന്നത്."
+          "script": "ഓർമ്മയുണ്ടോ റീനു, നമ്മളുടെ ആ പഴയ കോളേജ് ദിവസങ്ങൾ?",
+          "line": "ഓർമ്മയുണ്ടോ റീനു, നമ്മളുടെ ആ പഴയ കോളേജ് ദിവസങ്ങൾ?"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -80,7 +80,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "എനിക്കെല്ലാം ഓർമ്മയുണ്ട് സച്ചിൻ. പക്ഷെ നീ പോയ ആ 730 ദിവസങ്ങൾ... അത് വളരെ വലുതായിരുന്നു.",
+      "dialogue_malayalam": "ഓർമ്മയുണ്ട് സച്ചിൻ. നീയില്ലാതെ കഴിഞ്ഞ ആ രണ്ടു വർഷങ്ങൾ...",
       "action_summary": "Reenu looks down, her eyes shimmering with emotion. Reenu speaks, lips moving in lip sync.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -99,8 +99,8 @@
           "speaker": "Reenu",
           "voice_persona": "Reenu: Soft, gentle, slightly melancholic, authentic Malayali female voice.",
           "language": "Malayalam",
-          "script": "എനിക്കെല്ലാം ഓർമ്മയുണ്ട് സച്ചിൻ. പക്ഷെ നീ പോയ ആ 730 ദിവസങ്ങൾ... അത് വളരെ വലുതായിരുന്നു.",
-          "line": "എനിക്കെല്ലാം ഓർമ്മയുണ്ട് സച്ചിൻ. പക്ഷെ നീ പോയ ആ 730 ദിവസങ്ങൾ... അത് വളരെ വലുതായിരുന്നു."
+          "script": "ഓർമ്മയുണ്ട് സച്ചിൻ. നീയില്ലാതെ കഴിഞ്ഞ ആ രണ്ടു വർഷങ്ങൾ...",
+          "line": "ഓർമ്മയുണ്ട് സച്ചിൻ. നീയില്ലാതെ കഴിഞ്ഞ ആ രണ്ടു വർഷങ്ങൾ..."
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -173,7 +173,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമലിന്റെ വാക്കുകൾ വായുവിൽ അലിഞ്ഞുപോയി. റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു.",
+      "dialogue_malayalam": "അമലിന്റെ വാക്കുകൾക്കിടയിലും, റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു.",
       "action_summary": "Reenu looks at Amal, then shifts her gaze back to Sachin. Character lips remain completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -192,8 +192,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അമലിന്റെ വാക്കുകൾ വായുവിൽ അലിഞ്ഞുപോയി. റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു.",
-          "line": "അമലിന്റെ വാക്കുകൾ വായുവിൽ അലിഞ്ഞുപോയി. റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു."
+          "script": "അമലിന്റെ വാക്കുകൾക്കിടയിലും, റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു.",
+          "line": "അമലിന്റെ വാക്കുകൾക്കിടയിലും, റീനുവിന്റെ മനസ്സിൽ ചോദ്യങ്ങൾ ബാക്കിയായിരുന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -204,7 +204,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ, ഞാൻ ഒരു കാര്യം ചോദിച്ചോട്ടെ? നീ അന്ന് അത്രയും പെട്ടെന്ന് ഫ്ലൈറ്റ് ടിക്കറ്റ് ബുക്ക് ചെയ്തത് എന്തുകൊണ്ടാണെന്ന് നീ ഒരിക്കലും എന്നോട് പറഞ്ഞില്ല.",
+      "dialogue_malayalam": "സച്ചിൻ, അന്ന് നീ പെട്ടെന്ന് ലണ്ടനിലേക്ക് പോയത് എന്തിനായിരുന്നു?",
       "action_summary": "Reenu leans closer to Sachin, her expression serious and questioning. Reenu speaks, lips moving in lip sync.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -223,8 +223,8 @@
           "speaker": "Reenu",
           "voice_persona": "Reenu: Curious, serious, vulnerable.",
           "language": "Malayalam",
-          "script": "സച്ചിൻ, ഞാൻ ഒരു കാര്യം ചോദിച്ചോട്ടെ? നീ അന്ന് അത്രയും പെട്ടെന്ന് ഫ്ലൈറ്റ് ടിക്കറ്റ് ബുക്ക് ചെയ്തത് എന്തുകൊണ്ടാണെന്ന് നീ ഒരിക്കലും എന്നോട് പറഞ്ഞില്ല.",
-          "line": "സച്ചിൻ, ഞാൻ ഒരു കാര്യം ചോദിച്ചോട്ടെ? നീ അന്ന് അത്രയും പെട്ടെന്ന് ഫ്ലൈറ്റ് ടിക്കറ്റ് ബുക്ക് ചെയ്തത് എന്തുകൊണ്ടാണെന്ന് നീ ഒരിക്കലും എന്നോട് പറഞ്ഞില്ല."
+          "script": "സച്ചിൻ, അന്ന് നീ പെട്ടെന്ന് ലണ്ടനിലേക്ക് പോയത് എന്തിനായിരുന്നു?",
+          "line": "സച്ചിൻ, അന്ന് നീ പെട്ടെന്ന് ലണ്ടനിലേക്ക് പോയത് എന്തിനായിരുന്നു?"
         },
         "audio_directive": "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
