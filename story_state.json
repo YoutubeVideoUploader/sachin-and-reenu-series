@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 6,
+  "total_episodes_produced": 7,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -100,25 +100,33 @@
         "Sachin",
         "Reenu"
       ]
+    },
+    {
+      "episode": 7,
+      "title": "മഴ തോർന്ന രാത്രി (The Rain Settles)",
+      "summary": "The car pulls up to Reenu's house as the monsoon rain finally eases. Amidst the silence of the damp Kochi night, Sachin walks Reenu to her gate, the weight of his secret pressing down on him. He finally finds the courage to bridge the distance, asking her for a midnight meeting at Marine Drive.",
+      "cliffhanger": "Reenu looks at Sachin with a mixture of curiosity and apprehension, leaving the audience wondering if she will show up at Marine Drive.",
+      "characters_present": [
+        "Sachin",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 6,
+  "episode_number": 7,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_KOCHI_STREET_CORNER_DUSK",
-    "time_of_day": "6:30 PM Early Evening Monsoon Dusk",
-    "lighting_palette": "Warm 3200K amber incandescent streetlights and shopfront neon reflections against cool 5200K deep blue twilight sky",
-    "weather": "Post-monsoon cool damp atmosphere with glistening wet asphalt puddles reflecting warm golden streetlights",
+    "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
+    "time_of_day": "8:30 PM Night Monsoon",
+    "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+    "weather": "Damp air",
     "spatial_blocking": {
-      "Amal": "Standing screen-left, relaxed casual posture, gesturing with hands",
-      "Sachin": "Standing screen-center, facing Reenu, clutching his cross-bag strap, slightly bowed defensive posture",
-      "Reenu": "Standing screen-right, facing Sachin directly, arms folded, intense questioning gaze"
+      "Sachin": "Standing at gate",
+      "Reenu": "Standing at gate"
     },
-    "eyeline_direction": "Reenu's eyes widen screen-left looking at Sachin with glimmering hope and unresolved mystery",
+    "eyeline_direction": "Looking at each other",
     "persistent_props": [
-      "Vintage tan-brown London leather pouch held securely in Sachin's hand",
-      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-      "Reenu's silver wrist watch on left wrist"
+      "Sachin's cross-bag",
+      "Reenu's silver wrist watch"
     ],
-    "camera_lens": "85mm portrait prime lens, f/1.8 shallow depth of field"
+    "camera_lens": "35mm cinematic prime lens, f/1.8"
   }
 }
