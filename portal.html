@@ -422,6 +422,9 @@
         <button class="btn btn-secondary" onclick="syncAllWithSheet()" style="padding: 7px 14px; font-size: 12px;">
           🔄 Sync Google Sheet
         </button>
+        <button class="btn btn-secondary" onclick="openStudioSettings()" style="padding: 7px 14px; font-size: 12px; background: #1e293b; border-color: #334155;">
+          ⚙️ Settings
+        </button>
         <div class="badge-status">
           <div class="pulse"></div>
           Studio Active (2x Daily Schedule)
@@ -508,7 +511,7 @@
         <button class="btn btn-primary" id="bulkUploadBtn" style="padding: 14px 28px; font-size: 15px;" onclick="uploadFilesToDrive()">
           ☁️ Upload All Staged Clips to Google Drive
         </button>
-        <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px; background: #164e63; border-color: #0891b2;" onclick="triggerAssembly()">
+        <button class="btn btn-secondary" id="triggerAssemblyBtn" style="padding: 14px 22px; font-size: 15px; background: #164e63; border-color: #0891b2;" onclick="triggerAssembly()">
           ⚡ Trigger Instagram Assembly Now
         </button>
       </div>
@@ -686,6 +689,53 @@
     </div>
   </div>
 
+  <!-- Studio Settings Modal -->
+  <div class="modal-backdrop" id="studioSettingsModal" onclick="handleSettingsModalBackdropClick(event)">
+    <div class="modal-card" style="max-width: 540px;">
+      <div style="padding: 16px 20px; border-bottom: 1px solid #1f293d; display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">⚙️</span>
+          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin: 0;">Studio & Cloud Automation Settings</h3>
+        </div>
+        <button onclick="closeStudioSettings()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+      </div>
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;">
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #38bdf8; display: block; margin-bottom: 6px;">
+            📊 Google Apps Script Web App URL (Google Sheet Backend)
+          </label>
+          <input type="text" id="settingGasUrl" class="search-input" style="width: 100%; box-sizing: border-box;" placeholder="https://script.google.com/macros/s/.../exec">
+          <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">
+            Endpoint of your 5-Tab Google Sheet script engine.
+          </small>
+        </div>
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #f97316; display: block; margin-bottom: 6px;">
+            🔑 GitHub Personal Access Token (GH_PAT)
+          </label>
+          <input type="password" id="settingGhToken" class="search-input" style="width: 100%; box-sizing: border-box;" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+          <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">
+            Passed securely to your Google Apps Script Web App to trigger GitHub Actions (classic token with <code>repo</code> / <code>workflow</code> permissions). Saved locally in your browser.
+          </small>
+        </div>
+        <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-size: 12px; color: #94a3b8; line-height: 1.5;">
+          <b style="color: #cbd5e1;">⚡ Architecture Flow:</b><br>
+          Website Click ➔ Google Apps Script Web App (Sheet) ➔ GitHub Actions Workflow (<code>produce_and_publish.yml</code>) ➔ Instagram Publishing.
+        </div>
+        <div id="settingsStatusMsg" style="font-size: 13px; display: none;"></div>
+      </div>
+      <div style="padding: 14px 20px; background: #0c101c; border-top: 1px solid #1f293d; display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn btn-secondary" onclick="testGasConnection()" style="padding: 8px 14px; font-size: 13px;">
+          🔌 Test Sheet Link
+        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-secondary" onclick="closeStudioSettings()" style="padding: 8px 14px; font-size: 13px;">Cancel</button>
+          <button class="btn btn-primary" onclick="saveStudioSettings()" style="padding: 8px 18px; font-size: 13px;">Save Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       Sachin & Reenu Creator Studio • Built with Gemini 2.5 Flash, Google Flow & GitHub Actions
@@ -694,6 +744,9 @@
 
   <script>
     const FIXED_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec";
+    function getActiveGasUrl() {
+      return localStorage.getItem('gas_web_app_url') || FIXED_GAS_URL;
+    }
     let episodeData = {
   "episode_number": 3,
   "title_malayalam": "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും",
@@ -1266,8 +1319,8 @@
 
     async function syncLiveFromGoogleSheet() {
       const endpoints = [
-        FIXED_GAS_URL + "?action=get_prompts",
-        FIXED_GAS_URL + "?action=get_live_episode_data"
+        getActiveGasUrl() + "?action=get_prompts",
+        getActiveGasUrl() + "?action=get_live_episode_data"
       ];
 
       for (const url of endpoints) {
@@ -1296,7 +1349,7 @@
 
       try {
         const ep = episodeData.episode_number || 1;
-        const res = await fetch(FIXED_GAS_URL + "?action=check_status&episode=" + ep);
+        const res = await fetch(getActiveGasUrl() + "?action=check_status&episode=" + ep);
         if (!res.ok) throw new Error("HTTP " + res.status);
         const text = await res.text();
         if (!text.trim().startsWith('{')) throw new Error("Non-JSON response from server");
@@ -1644,7 +1697,7 @@
           base64_data: base64Data
         };
 
-        const res = await fetch(FIXED_GAS_URL, {
+        const res = await fetch(getActiveGasUrl(), {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
           body: JSON.stringify(payload)
@@ -1770,15 +1823,193 @@
     }
 
     async function triggerAssembly() {
+      const btn = document.getElementById('triggerAssemblyBtn');
+      const origHtml = btn ? btn.innerHTML : '⚡ Trigger Instagram Assembly Now';
+
+      const gasUrl = getActiveGasUrl();
+      const token = localStorage.getItem('gh_token') || "";
+      const epNum = episodeData.episode_number || 1;
+
+      // If user hasn't saved a GitHub token, prompt them nicely
+      if (!token) {
+        const userEntered = prompt(
+          "Enter your GitHub Personal Access Token (GH_PAT) so Google Sheet can trigger GitHub Actions:\n\n" +
+          "(This token will be saved locally in your browser and used whenever you trigger assembly)"
+        );
+        if (userEntered && userEntered.trim()) {
+          localStorage.setItem('gh_token', userEntered.trim());
+        } else {
+          // If user cancels or didn't provide token, inform them they can also run directly on GitHub
+          if (confirm("No token provided. Would you like to open GitHub Actions directly to run the workflow manually?")) {
+            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
+          }
+          return;
+        }
+      }
+
+      const activeToken = localStorage.getItem('gh_token') || "";
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Contacting Google Sheet...';
+        btn.style.opacity = '0.7';
+      }
+
       try {
-        await fetch(FIXED_GAS_URL, {
+        const payload = {
+          action: "trigger_workflow",
+          episode_number: epNum,
+          gh_token: activeToken
+        };
+
+        const response = await fetch(gasUrl, {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({ action: "trigger_workflow", episode_number: episodeData.episode_number || 1 })
+          body: JSON.stringify(payload)
         });
-        alert("Trigger request sent to Google Apps Script -> GitHub Actions!");
-      } catch (e) {
-        alert("Triggering GitHub Actions Video Merger & Instagram Reel Assembly!");
+
+        const text = await response.text();
+        let result = {};
+        try {
+          result = JSON.parse(text);
+        } catch (parseErr) {
+          result = { raw: text };
+        }
+
+        if (result.success) {
+          if (btn) {
+            btn.innerHTML = '✓ Sheet Triggered GitHub Actions!';
+            btn.style.background = '#059669';
+            btn.style.borderColor = '#10b981';
+          }
+          alert(`🚀 SUCCESS!\n\nGoogle Sheet has triggered GitHub Actions for Episode ${epNum}!\n\n${result.message || "Assembly and Instagram Reel publishing has started."}`);
+          if (confirm("Would you like to open GitHub Actions to watch the live compilation and publishing progress?")) {
+            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
+          }
+        } else {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
+            btn.style.opacity = '1';
+          }
+          const errDetail = result.error || result.message || "Unknown response from Google Sheet";
+          if (result.error === "MISSING_TOKEN" || errDetail.includes("token") || errDetail.includes("PAT")) {
+            const reEnter = prompt(`Google Sheet dispatch reported token error:\n\n${errDetail}\n\nPlease enter a valid GitHub PAT with repo/workflow permissions:`);
+            if (reEnter && reEnter.trim()) {
+              localStorage.setItem('gh_token', reEnter.trim());
+              triggerAssembly();
+              return;
+            }
+          } else {
+            alert(`Google Sheet Trigger Response:\n\n${errDetail}\n\nOpening GitHub Actions as alternative...`);
+            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
+          }
+        }
+
+      } catch (err) {
+        console.error("Assembly trigger error:", err);
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHtml;
+          btn.style.opacity = '1';
+        }
+        alert(`Could not connect to Google Apps Script at:\n${gasUrl}\n\nError: ${err.message}\n\nYou can update the URL in Settings ⚙️ or run directly on GitHub Actions.`);
+        window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
+      } finally {
+        setTimeout(() => {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
+            btn.style.background = '#164e63';
+            btn.style.borderColor = '#0891b2';
+            btn.style.opacity = '1';
+          }
+        }, 4000);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STUDIO SETTINGS MODAL HANDLERS
+    // -------------------------------------------------------------
+    function openStudioSettings() {
+      const modal = document.getElementById('studioSettingsModal');
+      const gasInput = document.getElementById('settingGasUrl');
+      const ghInput = document.getElementById('settingGhToken');
+      const msg = document.getElementById('settingsStatusMsg');
+      if (gasInput) gasInput.value = localStorage.getItem('gas_web_app_url') || FIXED_GAS_URL;
+      if (ghInput) ghInput.value = localStorage.getItem('gh_token') || "";
+      if (msg) msg.style.display = 'none';
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function closeStudioSettings() {
+      const modal = document.getElementById('studioSettingsModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleSettingsModalBackdropClick(e) {
+      if (e.target && e.target.id === 'studioSettingsModal') {
+        closeStudioSettings();
+      }
+    }
+
+    function saveStudioSettings() {
+      const gasInput = document.getElementById('settingGasUrl');
+      const ghInput = document.getElementById('settingGhToken');
+      const msg = document.getElementById('settingsStatusMsg');
+
+      if (gasInput && gasInput.value.trim()) {
+        localStorage.setItem('gas_web_app_url', gasInput.value.trim());
+      }
+      if (ghInput) {
+        if (ghInput.value.trim()) {
+          localStorage.setItem('gh_token', ghInput.value.trim());
+        } else {
+          localStorage.removeItem('gh_token');
+        }
+      }
+
+      if (msg) {
+        msg.style.display = 'block';
+        msg.style.color = '#34d399';
+        msg.innerText = "✓ Settings saved successfully to browser storage!";
+      }
+
+      setTimeout(() => {
+        closeStudioSettings();
+      }, 1000);
+    }
+
+    async function testGasConnection() {
+      const gasInput = document.getElementById('settingGasUrl');
+      const msg = document.getElementById('settingsStatusMsg');
+      const url = (gasInput && gasInput.value.trim()) ? gasInput.value.trim() : FIXED_GAS_URL;
+
+      if (msg) {
+        msg.style.display = 'block';
+        msg.style.color = '#38bdf8';
+        msg.innerText = "⏳ Testing Google Apps Script connection...";
+      }
+
+      try {
+        const res = await fetch(url + "?action=check_status&episode=1");
+        const json = await res.json();
+        if (json.success) {
+          if (msg) {
+            msg.style.color = '#34d399';
+            msg.innerText = "✓ Successfully connected to Google Sheet engine!";
+          }
+        } else {
+          if (msg) {
+            msg.style.color = '#f87171';
+            msg.innerText = "⚠️ Connected, but Sheet returned: " + (json.error || "Non-success status");
+          }
+        }
+      } catch (err) {
+        if (msg) {
+          msg.style.color = '#f87171';
+          msg.innerText = "❌ Connection failed: " + err.message;
+        }
       }
     }
 
@@ -2066,7 +2297,7 @@
 
     async function fetchSeasonStoryData() {
       try {
-        const res = await fetch(FIXED_GAS_URL + "?action=get_season_story");
+        const res = await fetch(getActiveGasUrl() + "?action=get_season_story");
         if (res.ok) {
           const json = await res.json();
           if (json && json.episodes && json.episodes.length > 0) {
@@ -2082,7 +2313,7 @@
 
     async function fetchCharacterData() {
       try {
-        const res = await fetch(FIXED_GAS_URL + "?action=get_characters");
+        const res = await fetch(getActiveGasUrl() + "?action=get_characters");
         if (res.ok) {
           const json = await res.json();
           if (json && json.characters && json.characters.length > 0) {
@@ -2117,7 +2348,7 @@
       }
 
       try {
-        const res = await fetch(FIXED_GAS_URL, {
+        const res = await fetch(getActiveGasUrl(), {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
           body: JSON.stringify({
@@ -2137,7 +2368,7 @@
       } catch (e) {
         // Fallback via GET
         try {
-          await fetch(`${FIXED_GAS_URL}?action=suggest_story_idea&target_episode=${targetEp}&idea=${encodeURIComponent(idea)}`);
+          await fetch(`${getActiveGasUrl()}?action=suggest_story_idea&target_episode=${targetEp}&idea=${encodeURIComponent(idea)}`);
           if (status) {
             status.style.color = '#34d399';
             status.innerText = `✓ Saved to Google Sheet Tab 4!`;

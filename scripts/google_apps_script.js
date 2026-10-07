@@ -34,6 +34,8 @@ function onOpen() {
       .createMenu("🎬 Studio Controls")
       .addItem("🔄 Sync Drive Uploads Now", "menuSyncDrive")
       .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
+      .addSeparator()
+      .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
   } catch (e) {}
 }
@@ -62,6 +64,38 @@ function menuSyncDrive() {
       5
     );
   } catch (e) {}
+}
+
+/**
+ * One-click menu trigger from inside Google Sheet to run GitHub Actions.
+ */
+function menuTriggerGitHubWorkflow() {
+  const ss = getStudioSpreadsheet();
+  let epNum = 1;
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  if (storySheet) {
+    const data = storySheet.getDataRange().getValues();
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][2] === "Active") {
+        epNum = parseInt(data[i][0], 10);
+        break;
+      }
+    }
+  }
+
+  const result = triggerGitHubWorkflowFromAppsScript({ episode_number: epNum });
+  if (result.success) {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      `🚀 GitHub Actions Assembly triggered successfully for Episode ${epNum}!`,
+      "Production Started",
+      8
+    );
+  } else {
+    SpreadsheetApp.getUi().alert(
+      "GitHub Dispatch Notice:\n\n" + (result.message || result.error) + 
+      "\n\nMake sure your GH_PAT is set in Script Properties (Key: GH_PAT) or configured in script."
+    );
+  }
 }
 
 /**
@@ -1145,11 +1179,113 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
+    // 5. Trigger GitHub Actions Workflow from Google Apps Script / Sheet
+    if (action === "trigger_workflow") {
+      const res = triggerGitHubWorkflowFromAppsScript(body);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
       .setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({ error: err.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Triggers GitHub Actions workflow produce_and_publish.yml using UrlFetchApp.
+ * Supports workflow_dispatch and repository_dispatch.
+ */
+function triggerGitHubWorkflowFromAppsScript(params) {
+  params = params || {};
+  const token = params.gh_token || PropertiesService.getScriptProperties().getProperty("GH_PAT") || GITHUB_PAT;
+  const epNum = parseInt(params.episode_number || "1", 10);
+
+  if (!token || token === "YOUR_GITHUB_PAT_HERE") {
+    return {
+      success: false,
+      error: "MISSING_TOKEN",
+      message: "GitHub Personal Access Token (GH_PAT) is not configured in Google Apps Script properties or provided in request payload."
+    };
+  }
+
+  // 1. Try workflow_dispatch
+  const dispatchUrl = `https://api.github.com/repos/${GITHUB_REPO}/actions/workflows/${GITHUB_WORKFLOW}/dispatches`;
+  try {
+    const res = UrlFetchApp.fetch(dispatchUrl, {
+      method: "post",
+      contentType: "application/json",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "Sachin-Reenu-Studio-AppsScript"
+      },
+      payload: JSON.stringify({
+        ref: "main",
+        inputs: {
+          force_run: true,
+          advance_to_next: false
+        }
+      }),
+      muteHttpExceptions: true
+    });
+
+    const code = res.getResponseCode();
+    if (code === 204 || code === 200 || code === 201) {
+      return {
+        success: true,
+        method: "workflow_dispatch",
+        status_code: code,
+        message: `GitHub Actions workflow [${GITHUB_WORKFLOW}] triggered successfully by Google Apps Script for Episode ${epNum}!`
+      };
+    }
+
+    // 2. Try repository_dispatch as fallback
+    const repoDispatchUrl = `https://api.github.com/repos/${GITHUB_REPO}/dispatches`;
+    const repoRes = UrlFetchApp.fetch(repoDispatchUrl, {
+      method: "post",
+      contentType: "application/json",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "Sachin-Reenu-Studio-AppsScript"
+      },
+      payload: JSON.stringify({
+        event_type: "trigger-assembly",
+        client_payload: {
+          episode_number: epNum,
+          force_run: true
+        }
+      }),
+      muteHttpExceptions: true
+    });
+
+    const repoCode = repoRes.getResponseCode();
+    if (repoCode === 204 || repoCode === 200 || repoCode === 201) {
+      return {
+        success: true,
+        method: "repository_dispatch",
+        status_code: repoCode,
+        message: `GitHub Actions assembly triggered successfully via repository_dispatch for Episode ${epNum}!`
+      };
+    }
+
+    return {
+      success: false,
+      error: "GITHUB_API_ERROR",
+      status_code: code,
+      response_text: res.getContentText() || repoRes.getContentText(),
+      message: `GitHub API error (HTTP ${code}): ${res.getContentText()}`
+    };
+
+  } catch (err) {
+    return {
+      success: false,
+      error: "FETCH_EXCEPTION",
+      message: err.toString()
+    };
   }
 }
