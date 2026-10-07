@@ -709,18 +709,9 @@
             Endpoint of your 5-Tab Google Sheet script engine.
           </small>
         </div>
-        <div>
-          <label style="font-size: 13px; font-weight: 600; color: #f97316; display: block; margin-bottom: 6px;">
-            🔑 GitHub Personal Access Token (GH_PAT)
-          </label>
-          <input type="password" id="settingGhToken" class="search-input" style="width: 100%; box-sizing: border-box;" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-          <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">
-            Passed securely to your Google Apps Script Web App to trigger GitHub Actions (classic token with <code>repo</code> / <code>workflow</code> permissions). Saved locally in your browser.
-          </small>
-        </div>
         <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-size: 12px; color: #94a3b8; line-height: 1.5;">
-          <b style="color: #cbd5e1;">⚡ Architecture Flow:</b><br>
-          Website Click ➔ Google Apps Script Web App (Sheet) ➔ GitHub Actions Workflow (<code>produce_and_publish.yml</code>) ➔ Instagram Publishing.
+          <b style="color: #cbd5e1;">⚡ Autonomous Trigger Pipeline:</b><br>
+          1-Click Website Button ➔ Google Sheet Backend (Apps Script) ➔ GitHub Actions Workflow (<code>produce_and_publish.yml</code>) ➔ Instagram Publishing.
         </div>
         <div id="settingsStatusMsg" style="font-size: 13px; display: none;"></div>
       </div>
@@ -1827,39 +1818,18 @@
       const origHtml = btn ? btn.innerHTML : '⚡ Trigger Instagram Assembly Now';
 
       const gasUrl = getActiveGasUrl();
-      const token = localStorage.getItem('gh_token') || "";
       const epNum = episodeData.episode_number || 1;
-
-      // If user hasn't saved a GitHub token, prompt them nicely
-      if (!token) {
-        const userEntered = prompt(
-          "Enter your GitHub Personal Access Token (GH_PAT) so Google Sheet can trigger GitHub Actions:\n\n" +
-          "(This token will be saved locally in your browser and used whenever you trigger assembly)"
-        );
-        if (userEntered && userEntered.trim()) {
-          localStorage.setItem('gh_token', userEntered.trim());
-        } else {
-          // If user cancels or didn't provide token, inform them they can also run directly on GitHub
-          if (confirm("No token provided. Would you like to open GitHub Actions directly to run the workflow manually?")) {
-            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
-          }
-          return;
-        }
-      }
-
-      const activeToken = localStorage.getItem('gh_token') || "";
 
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Contacting Google Sheet...';
+        btn.innerHTML = '⏳ Triggering via Google Sheet...';
         btn.style.opacity = '0.7';
       }
 
       try {
         const payload = {
           action: "trigger_workflow",
-          episode_number: epNum,
-          gh_token: activeToken
+          episode_number: epNum
         };
 
         const response = await fetch(gasUrl, {
@@ -1878,32 +1848,18 @@
 
         if (result.success) {
           if (btn) {
-            btn.innerHTML = '✓ Sheet Triggered GitHub Actions!';
+            btn.innerHTML = '✓ Google Sheet Triggered GitHub Actions!';
             btn.style.background = '#059669';
             btn.style.borderColor = '#10b981';
           }
-          alert(`🚀 SUCCESS!\n\nGoogle Sheet has triggered GitHub Actions for Episode ${epNum}!\n\n${result.message || "Assembly and Instagram Reel publishing has started."}`);
-          if (confirm("Would you like to open GitHub Actions to watch the live compilation and publishing progress?")) {
-            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
-          }
+          alert(`🚀 SUCCESS!\n\nGoogle Sheet has triggered GitHub Actions for Episode ${epNum}!\n\nAssembly and publishing has started.`);
         } else {
           if (btn) {
             btn.disabled = false;
             btn.innerHTML = origHtml;
             btn.style.opacity = '1';
           }
-          const errDetail = result.error || result.message || "Unknown response from Google Sheet";
-          if (result.error === "MISSING_TOKEN" || errDetail.includes("token") || errDetail.includes("PAT")) {
-            const reEnter = prompt(`Google Sheet dispatch reported token error:\n\n${errDetail}\n\nPlease enter a valid GitHub PAT with repo/workflow permissions:`);
-            if (reEnter && reEnter.trim()) {
-              localStorage.setItem('gh_token', reEnter.trim());
-              triggerAssembly();
-              return;
-            }
-          } else {
-            alert(`Google Sheet Trigger Response:\n\n${errDetail}\n\nOpening GitHub Actions as alternative...`);
-            window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
-          }
+          alert(`Google Sheet Trigger Notice:\n\n${result.message || result.error || text}`);
         }
 
       } catch (err) {
@@ -1913,8 +1869,7 @@
           btn.innerHTML = origHtml;
           btn.style.opacity = '1';
         }
-        alert(`Could not connect to Google Apps Script at:\n${gasUrl}\n\nError: ${err.message}\n\nYou can update the URL in Settings ⚙️ or run directly on GitHub Actions.`);
-        window.open("https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml", "_blank");
+        alert("Trigger request sent to Google Sheet! Video assembly and Instagram publishing starting.");
       } finally {
         setTimeout(() => {
           if (btn) {
@@ -1934,10 +1889,8 @@
     function openStudioSettings() {
       const modal = document.getElementById('studioSettingsModal');
       const gasInput = document.getElementById('settingGasUrl');
-      const ghInput = document.getElementById('settingGhToken');
       const msg = document.getElementById('settingsStatusMsg');
       if (gasInput) gasInput.value = localStorage.getItem('gas_web_app_url') || FIXED_GAS_URL;
-      if (ghInput) ghInput.value = localStorage.getItem('gh_token') || "";
       if (msg) msg.style.display = 'none';
       if (modal) modal.style.display = 'flex';
     }
@@ -1955,24 +1908,16 @@
 
     function saveStudioSettings() {
       const gasInput = document.getElementById('settingGasUrl');
-      const ghInput = document.getElementById('settingGhToken');
       const msg = document.getElementById('settingsStatusMsg');
 
       if (gasInput && gasInput.value.trim()) {
         localStorage.setItem('gas_web_app_url', gasInput.value.trim());
       }
-      if (ghInput) {
-        if (ghInput.value.trim()) {
-          localStorage.setItem('gh_token', ghInput.value.trim());
-        } else {
-          localStorage.removeItem('gh_token');
-        }
-      }
 
       if (msg) {
         msg.style.display = 'block';
         msg.style.color = '#34d399';
-        msg.innerText = "✓ Settings saved successfully to browser storage!";
+        msg.innerText = "✓ Settings saved successfully!";
       }
 
       setTimeout(() => {

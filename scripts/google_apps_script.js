@@ -15,7 +15,7 @@
 const SPREADSHEET_ID = "1-7AHyFLXXgF1CdOfQPgPFbNelgiufxlsccpahrMG_VI";
 const GITHUB_REPO = "YoutubeVideoUploader/sachin-and-reenu-series";
 const GITHUB_WORKFLOW = "produce_and_publish.yml";
-const GITHUB_PAT = "YOUR_GITHUB_PAT_HERE"; // Optional: GitHub PAT for automatic remote dispatch
+const GITHUB_PAT = PropertiesService.getScriptProperties().getProperty("GH_PAT") || "";
 const DRIVE_ROOT_FOLDER = "Sachin_And_Reenu_Studio";
 
 // TAB NAMES
@@ -1184,6 +1184,15 @@ function doPost(e) {
       const res = triggerGitHubWorkflowFromAppsScript(body);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 6. Save GitHub PAT into Script Properties
+    if (action === "save_gh_token" && body.token) {
+      PropertiesService.getScriptProperties().setProperty("GH_PAT", body.token);
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        message: "GH_PAT successfully saved to Script Properties."
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
