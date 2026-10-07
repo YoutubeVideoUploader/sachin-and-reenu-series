@@ -14,7 +14,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമലു വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും രീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമൽ വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും റീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു.",
       "action_summary": "Wide shot of a misty, rain-swept roadside tea stall in Kerala. Amal's car is parked nearby. Reenu and Sachin exit the car under a large umbrella. Characters' lips are completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -37,8 +37,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമലു വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും രീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു.",
-          "line": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമലു വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും രീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു."
+          "script": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമൽ വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും റീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു.",
+          "line": "കൊച്ചിയിലെ മഴയത്ത്, ഒരു ചെറിയ തട്ടുകടയുടെ മുന്നിൽ അമൽ വണ്ടി നിർത്തി. മഞ്ഞിന്റെ കുളിരിൽ, സച്ചിനും റീനുവും ഒരു കുടക്കീഴിൽ അടുത്തുനിന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -111,7 +111,7 @@
       "duration": "5s",
       "duration_seconds": 5,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം രീനു അറിയുന്നുണ്ടായിരുന്നു.",
+      "dialogue_malayalam": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം റീനു അറിയുന്നുണ്ടായിരുന്നു.",
       "action_summary": "Two-shot of Sachin and Reenu holding steaming tea glasses at the stall. They look at each other. Characters' lips are completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -134,8 +134,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം രീനു അറിയുന്നുണ്ടായിരുന്നു.",
-          "line": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം രീനു അറിയുന്നുണ്ടായിരുന്നു."
+          "script": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം റീനു അറിയുന്നുണ്ടായിരുന്നു.",
+          "line": "ചൂടുള്ള ചായയുടെ ആവിയിലും, ആ നോട്ടങ്ങളിൽ ഒളിപ്പിച്ച സങ്കടം റീനു അറിയുന്നുണ്ടായിരുന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -208,7 +208,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലുവിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു.",
+      "dialogue_malayalam": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു.",
       "action_summary": "Amal picks up the pouch, turning it over in his hands. He looks at it with confusion. Characters' lips are completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -227,8 +227,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലുവിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു.",
-          "line": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലുവിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു."
+          "script": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു.",
+          "line": "സച്ചിന്റെ ബാഗ്... അത് എങ്ങനെ ഇവിടെ വന്നു? അമലിന്റെ കണ്ണുകളിൽ കൗതുകവും സംശയവും നിറഞ്ഞു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -239,7 +239,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പുറത്ത് സച്ചിനും രീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലുവിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു.",
+      "dialogue_malayalam": "പുറത്ത് സച്ചിനും റീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു.",
       "action_summary": "Cut back to Reenu and Sachin standing by the stall, unaware of Amal's discovery. Characters' lips are completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -262,8 +262,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "പുറത്ത് സച്ചിനും രീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലുവിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു.",
-          "line": "പുറത്ത് സച്ചിനും രീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലുവിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു."
+          "script": "പുറത്ത് സച്ചിനും റീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു.",
+          "line": "പുറത്ത് സച്ചിനും റീനുവും പഴയ കാര്യങ്ങൾ സംസാരിക്കുമ്പോൾ, വണ്ടിക്കുള്ളിൽ ഒരു വലിയ രഹസ്യം അമലിനെ കാത്തിരിക്കുന്നുണ്ടായിരുന്നു."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
@@ -305,7 +305,7 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമലു ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം.",
+      "dialogue_malayalam": "അമൽ ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം.",
       "action_summary": "Amal's fingers touch the zipper of the leather pouch. Fade to black. Characters' lips are completely closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -324,8 +324,8 @@
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അമലു ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം.",
-          "line": "അമലു ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം."
+          "script": "അമൽ ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം.",
+          "line": "അമൽ ബാഗ് തുറക്കാൻ തുടങ്ങുന്നു. എന്താണ് ആ ബാഗിനുള്ളിൽ? അടുത്ത എപ്പിസോഡിൽ അറിയാം."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
         "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
