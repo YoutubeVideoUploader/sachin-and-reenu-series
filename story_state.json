@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 4,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -67,7 +67,18 @@
         "Amal",
         "Sachin"
       ]
+    },
+    {
+      "episode": 4,
+      "title": "മറന്നുപോയ ഓർമ്മകൾ (Forgotten Memories)",
+      "summary": "As the car glides through the misty streets of Kochi, Sachin and Reenu revisit the nostalgia of their college days. However, the weight of Sachin's two-year absence in the UK creates an unspoken distance. Sachin struggles with his guilt, while Reenu finds herself increasingly suspicious of his sudden departure.",
+      "cliffhanger": "Reenu confronts Sachin, asking why he really booked his flight home so suddenly, leaving the truth hanging in the air.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 3
+  "episode_number": 4
 }
