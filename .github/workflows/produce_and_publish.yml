@@ -67,7 +67,7 @@ jobs:
       # Inpainting removal on all clips before concatenation
       # -------------------------------------------------------------
       - name: 6. Remove Gemini Watermarks from All Video Clips
-        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run || github.event_name == 'repository_dispatch') }}
+        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' }}
         run: |
           echo "Removing Gemini sparkle watermarks from all clips..."
           python scripts/watermark_remover.py --input_dir uploaded_shots --output_dir clean_shots
@@ -77,7 +77,7 @@ jobs:
       # Preserves Malayalam voice dialogue, mixes romantic BGM @ vol 0.32
       # -------------------------------------------------------------
       - name: 7. Master Video & Audio Merge
-        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run || github.event_name == 'repository_dispatch') }}
+        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' }}
         run: |
           echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4
@@ -87,7 +87,7 @@ jobs:
       # Stamps exact Season & Episode numbers into the tape boxes
       # -------------------------------------------------------------
       - name: 7b. Generate Dynamic Reel Cover Thumbnail
-        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run || github.event_name == 'repository_dispatch') }}
+        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' }}
         run: |
           echo "Stamping Season & Episode numbers onto cover thumbnail..."
           python scripts/generate_thumbnail.py --season 1
@@ -96,7 +96,7 @@ jobs:
       # STEP 8: INSTAGRAM PUBLISHING
       # -------------------------------------------------------------
       - name: 8. Publish to Instagram Reels
-        if: ${{ !inputs.advance_to_next && (steps.drive_check.outputs.should_run == 'true' || inputs.force_run || github.event_name == 'repository_dispatch') && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
+        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
@@ -113,7 +113,7 @@ jobs:
       # Writes next story, 20-22 JSON prompts, updates 3-tab Sheet & website!
       # -------------------------------------------------------------
       - name: 9. Generate Next Episode Screenplay & Update Google Sheets + Website
-        if: ${{ inputs.advance_to_next || ((steps.drive_check.outputs.should_run == 'true' || inputs.force_run || github.event_name == 'repository_dispatch') && !inputs.dry_run) }}
+        if: ${{ inputs.advance_to_next || (steps.drive_check.outputs.should_run == 'true' && !inputs.dry_run) }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
