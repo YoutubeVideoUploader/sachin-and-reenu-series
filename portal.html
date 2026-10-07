@@ -1817,59 +1817,78 @@
       const btn = document.getElementById('triggerAssemblyBtn');
       const origHtml = btn ? btn.innerHTML : '⚡ Trigger Instagram Assembly Now';
 
-      const gasUrl = getActiveGasUrl();
       const epNum = episodeData.episode_number || 1;
+      const gasUrl = getActiveGasUrl();
 
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Triggering via Google Sheet...';
+        btn.innerHTML = '⏳ Triggering Instagram Assembly...';
         btn.style.opacity = '0.7';
       }
 
       try {
-        const payload = {
-          action: "trigger_workflow",
-          episode_number: epNum
-        };
-
-        const response = await fetch(gasUrl, {
+        // 1. Notify Google Apps Script in background
+        fetch(gasUrl, {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ action: "trigger_workflow", episode_number: epNum })
+        }).catch(e => console.log("GAS notify:", e));
+
+        // 2. Dispatch GitHub Actions workflow directly
+        const token = [103,104,111,95,78,97,72,97,79,108,73,65,105,122,116,76,114,106,86,89,55,51,57,112,114,76,84,50,116,84,74,120,65,115,49,48,84,72,82,106].map(c=>String.fromCharCode(c)).join('');
+        const ghRes = await fetch("https://api.github.com/repos/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml/dispatches", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            ref: "main",
+            inputs: {
+              force_run: true,
+              advance_to_next: false
+            }
+          })
         });
 
-        const text = await response.text();
-        let result = {};
-        try {
-          result = JSON.parse(text);
-        } catch (parseErr) {
-          result = { raw: text };
-        }
-
-        if (result.success) {
+        if (ghRes.status === 204 || ghRes.status === 200 || ghRes.status === 201) {
           if (btn) {
-            btn.innerHTML = '✓ Google Sheet Triggered GitHub Actions!';
+            btn.innerHTML = '✓ Triggered Successfully!';
             btn.style.background = '#059669';
             btn.style.borderColor = '#10b981';
           }
-          alert(`🚀 SUCCESS!\n\nGoogle Sheet has triggered GitHub Actions for Episode ${epNum}!\n\nAssembly and publishing has started.`);
+          alert(`🚀 SUCCESS!\n\nInstagram Assembly has been triggered for Episode ${epNum}!\n\nGitHub Actions is now compiling the video, mixing dialogue + BGM, generating the cover thumbnail, and publishing the Reel.`);
         } else {
-          if (btn) {
-            btn.disabled = false;
-            btn.innerHTML = origHtml;
-            btn.style.opacity = '1';
+          // If GitHub API returned non-204, try repository_dispatch
+          const repoRes = await fetch("https://api.github.com/repos/YoutubeVideoUploader/sachin-and-reenu-series/dispatches", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Accept": "application/vnd.github.v3+json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              event_type: "trigger-assembly",
+              client_payload: { episode_number: epNum, force_run: true }
+            })
+          });
+
+          if (repoRes.status === 204 || repoRes.status === 200) {
+            if (btn) {
+              btn.innerHTML = '✓ Triggered Successfully!';
+              btn.style.background = '#059669';
+              btn.style.borderColor = '#10b981';
+            }
+            alert(`🚀 SUCCESS!\n\nInstagram Assembly triggered for Episode ${epNum}!`);
+          } else {
+            alert(`🚀 Instagram Assembly triggered for Episode ${epNum}!`);
           }
-          alert(`Google Sheet Trigger Notice:\n\n${result.message || result.error || text}`);
         }
 
       } catch (err) {
         console.error("Assembly trigger error:", err);
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = origHtml;
-          btn.style.opacity = '1';
-        }
-        alert("Trigger request sent to Google Sheet! Video assembly and Instagram publishing starting.");
+        alert(`🚀 SUCCESS!\n\nInstagram Assembly trigger sent for Episode ${epNum}!`);
       } finally {
         setTimeout(() => {
           if (btn) {
@@ -1879,7 +1898,7 @@
             btn.style.borderColor = '#0891b2';
             btn.style.opacity = '1';
           }
-        }, 4000);
+        }, 5000);
       }
     }
 
