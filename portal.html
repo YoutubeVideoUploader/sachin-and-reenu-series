@@ -2758,7 +2758,7 @@
       }
     }
 
-    function buildDirectorSystemPrompt(targetEpNum, targetShotNum) {
+    function buildDirectorSystemPrompt(targetEpNum, targetScope) {
       const epNum = targetEpNum === 'current' ? (episodeData.episode_number || 8) : parseInt(targetEpNum, 10);
       const ep = (seasonStoryData.episodes || []).find(e => e.episode_number === epNum) || {
         episode_number: epNum,
@@ -2769,50 +2769,166 @@
       };
 
       const shotsSummary = (episodeData.shots || []).map(s => `Shot ${s.shot_number} (${s.duration}, ${s.character}): "${s.dialogue_malayalam || ''}" - ${s.action_summary}`).join('\n');
+      const isFullEpisode = (targetScope === 'full_episode');
 
+      if (isFullEpisode) {
+        return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
+
+=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE) ===
+1. Reenu (Lead Female, 22yo South Indian Malayali girl):
+- Big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
+- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.
+- Canonical Malayalam spelling: റീനു
+- Voice: Sweet, expressive South Indian Malayali female voice.
+
+2. Sachin (Lead Male, 24yo South Indian Malayali boy):
+- Endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
+- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.
+- Canonical Malayalam spelling: സച്ചിൻ
+- Voice: Endearing, slightly nervous young Malayali male voice.
+
+3. Amal (Best Friend, 24yo South Indian Malayali boy):
+- Cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
+- LOCKED ATTIRE: Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers.
+- Canonical Malayalam spelling: അമൽ
+- Voice: Youthful energetic Malayali male voice, teasing tone.
+
+=== STRICT PRODUCTION RULES & DIALOGUE CONSTRAINTS (INVIOLABLE) ===
+1. 10 SHOTS TOTAL: You MUST generate all 10 complete shots (Shot 1 through Shot 10) for this 1-minute vertical episode. Do NOT omit or truncate any shots.
+2. DIALOGUE WORD LIMIT (CRITICAL):
+   - Every single shot's Malayalam dialogue MUST strictly contain between 5 and 8 words (NO MORE than 8 words, NO LESS than 5 words, and strictly under 40 Malayalam letters/characters).
+   - EXACTLY ONE SHORT SENTENCE per shot. NO compound sentences.
+   - Example 5 words: 'മഴ തോരാതെ പെയ്യുന്ന കൊച്ചി രാത്രി.'
+   - Example 6 words: 'മുറ്റത്തെ മഴത്തുള്ളികളിലേക്ക് അവൾ പതുക്കെ ഇറങ്ങി.'
+   - Example 7 words: 'വീടിന്റെ പടിവാതിൽ കടക്കുമ്പോൾ മനസ്സിൽ ഒരൊറ്റ ചിന്ത മാത്രം.'
+   - Example 8 words: 'എന്തു സംഭവിച്ചാലും സച്ചിനെ ഇന്ന് രാത്രി ഞാൻ കാണും.'
+3. CANONICAL MALAYALAM SPELLINGS: റീനു (Reenu), അമൽ (Amal), സച്ചിൻ (Sachin).
+4. AUDIO DIRECTIVE (STRICTLY NO BGM):
+   - Third-Person Narrator: External voiceover only, character lips remain completely closed with NO lip sync animation.
+   - Character speaking: Character mouth moves in lip sync.
+   - CRITICAL: 'EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.'
+   - STRICTLY ZERO BGM, ZERO INSTRUMENTAL SCORE in all shots.
+5. VISUAL STYLE:
+   - High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps. STRICTLY NON-HUMAN REALISM.
+
+=== CURRENT PRODUCTION CONTEXT ===
+- Target Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
+- Current Synopsis: ${ep.synopsis}
+- Current Cliffhanger: ${ep.cliffhanger}
+- Current Shots in Production:
+${shotsSummary}
+
+=== REQUIRED OUTPUT FORMAT (FULL EPISODE OVERHAUL) ===
+The creator wants to change or overhaul the ENTIRE EPISODE (${ep.episode_number}).
+1. Provide a warm, visionary Director rationale (2-4 sentences) explaining the dramatic arc across all 10 shots.
+2. Output a SINGLE valid JSON code block inside \`\`\`json ... \`\`\` containing the entire 10-shot episode package.
+The JSON MUST follow this EXACT schema:
+\`\`\`json
+{
+  "mode": "full_episode",
+  "episode_number": ${ep.episode_number},
+  "title_english": "${ep.title_english}",
+  "title_malayalam": "${ep.title_malayalam || ''}",
+  "synopsis": "Concise 2-sentence synopsis for the 1-minute episode",
+  "cliffhanger": "High-stakes cliffhanger hook at Shot 10",
+  "total_shots": 10,
+  "shots": [
+    {
+      "shot_number": 1,
+      "duration": "6s",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "5 to 8 Malayalam words only",
+      "action_summary": "English description of action in shot 1",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Camera perspective and composition",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_IDENTIFIER",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Lighting details",
+          "weather": "Monsoon rain",
+          "spatial_blocking": { "Reenu": "Position description" },
+          "eyeline_direction": "Gaze description",
+          "persistent_props": ["Reenu's silver wrist watch on left wrist"],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Specific location in Kochi",
+        "camera": "Exact camera movement and framing",
+        "action": "Character animated action with closed lips storytelling",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "മലയാളം ലിപി",
+          "line": "5 to 8 Malayalam words matching dialogue_malayalam"
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    }
+  ]
+}
+\`\`\`
+CRITICAL: You MUST output all 10 shots from shot_number: 1 up to shot_number: 10!`;
+      }
+
+      // SINGLE SHOT MODE
+      const targetShot = (targetScope !== 'auto' && !isNaN(parseInt(targetScope, 10))) ? parseInt(targetScope, 10) : 5;
       return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
 
 === MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE) ===
 1. Reenu (Lead Female, 22yo South Indian Malayali girl):
 - Big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
 - LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.
+- Canonical Malayalam spelling: റീനു
 - Voice: Sweet, expressive South Indian Malayali female voice.
 
 2. Sachin (Lead Male, 24yo South Indian Malayali boy):
 - Endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
 - LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.
+- Canonical Malayalam spelling: സച്ചിൻ
 - Voice: Endearing, slightly nervous young Malayali male voice.
 
 3. Amal (Best Friend, 24yo South Indian Malayali boy):
 - Cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
 - LOCKED ATTIRE: Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers.
+- Canonical Malayalam spelling: അമൽ
 - Voice: Youthful energetic Malayali male voice, teasing tone.
 
-=== STRICT PRODUCTION RULES (CRITICAL) ===
-1. VISUAL STYLE: High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps. STRICTLY NON-HUMAN REALISM.
-2. AUDIO DIRECTIVE (STRICTLY NO BGM):
-"EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-(or Male voiceover if narrator is male).
-3. DIALOGUE / VOICEOVER: Authentic Malayalam in Malayalam script (മലയാളം ലിപി).
-4. SINGLE PROMPT BOX: No negative prompt tags or technical garbage words inside the single prompt box.
+=== STRICT PRODUCTION RULES & DIALOGUE CONSTRAINTS (INVIOLABLE) ===
+1. TARGET SHOT: Modifying Shot #${targetShot} of Episode ${ep.episode_number}.
+2. DIALOGUE WORD LIMIT (CRITICAL):
+   - Malayalam dialogue MUST strictly contain between 5 and 8 words (NO MORE than 8 words, NO LESS than 5 words, and strictly under 40 Malayalam letters/characters).
+   - EXACTLY ONE SHORT SENTENCE. Never write compound sentences.
+3. CANONICAL MALAYALAM SPELLINGS: റീനു, അമൽ, സച്ചിൻ.
+4. AUDIO DIRECTIVE (STRICTLY NO BGM):
+   - Character lips firmly closed for narrator voiceover.
+   - Clean voiceover audio and natural foley only. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE.
+5. VISUAL STYLE:
+   - High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps.
 
 === CURRENT PRODUCTION CONTEXT ===
 - Target Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
 - Synopsis: ${ep.synopsis}
-- Cliffhanger: ${ep.cliffhanger}
 - Current Shots in Production:
 ${shotsSummary}
 
-=== YOUR RESPONSE REQUIREMENTS ===
-When the creator gives an idea, request, or scene revision:
-1. Provide a warm, conversational, visionary Director rationale (2-4 sentences) explaining the artistic choices, emotional beat, and cinematography.
+=== REQUIRED OUTPUT FORMAT (SINGLE SHOT) ===
+1. Provide a warm, conversational Director rationale (2-3 sentences).
 2. Generate ONE complete, production-ready Google Flow JSON block inside a single \`\`\`json markdown code block.
-The JSON MUST follow this schema:
+Schema:
+\`\`\`json
 {
-  "target_shot_number": ${targetShotNum !== 'auto' ? targetShotNum : 5},
+  "target_shot_number": ${targetShot},
   "duration": "6s",
   "character": "Reenu",
-  "dialogue_malayalam": "മലയാളം ലിപിയിലുള്ള സംഭാഷണം / വിവരണം",
+  "dialogue_malayalam": "5 to 8 Malayalam words only",
   "action_summary": "English description of action in shot",
   "json_prompt": {
     "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
@@ -2821,14 +2937,14 @@ The JSON MUST follow this schema:
     "characters_present": [
       {
         "name": "Reenu",
-        "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt..."
+        "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
       }
     ],
     "sequence_continuity": {
       "scene_id": "SCENE_IDENTIFIER",
       "time_of_day": "Monsoon Night",
       "lighting_palette": "Lighting details",
-      "weather": "Monsoon rain audible outside",
+      "weather": "Monsoon rain",
       "spatial_blocking": { "Reenu": "Position description" },
       "eyeline_direction": "Gaze description",
       "persistent_props": ["Reenu's silver wrist watch on left wrist"],
@@ -2842,14 +2958,15 @@ The JSON MUST follow this schema:
       "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
       "language": "Malayalam",
       "script": "മലയാളം ലിപി",
-      "line": "മലയാളം ലിപിയിലുള്ള വരി"
+      "line": "5 to 8 Malayalam words only"
     },
     "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
   }
-}`;
+}
+\`\`\``;
     }
 
-                    async function sendGeminiDirectorMessage() {
+    async function sendGeminiDirectorMessage() {
       const input = document.getElementById('geminiChatInput');
       const sendBtn = document.getElementById('geminiSendBtn');
       const status = document.getElementById('geminiChatStatus');
@@ -2864,7 +2981,20 @@ The JSON MUST follow this schema:
 
       // Auto-detect if user requested whole episode overhaul
       const lowerText = userText.toLowerCase();
-      if (lowerText.includes('whole episode') || lowerText.includes('entire episode') || lowerText.includes('all shots') || lowerText.includes('all 10') || lowerText.includes('total 10') || lowerText.includes('rewrite episode') || lowerText.includes('change episode')) {
+      if (targetScope === 'full_episode' ||
+          lowerText.includes('whole episode') || 
+          lowerText.includes('entire episode') || 
+          lowerText.includes('all shots') || 
+          lowerText.includes('all 10') || 
+          lowerText.includes('total 10') || 
+          lowerText.includes('rewrite episode') || 
+          lowerText.includes('change episode') ||
+          lowerText.includes('change of whole episode') ||
+          lowerText.includes('full episode') ||
+          lowerText.includes('10 shots') ||
+          lowerText.includes('whole ep') ||
+          lowerText.includes('entire ep') ||
+          lowerText.includes('full ep')) {
         targetScope = 'full_episode';
       }
 
@@ -2897,7 +3027,7 @@ The JSON MUST follow this schema:
       }];
 
       // 40-second timeout for full 10-shot episodes
-      const timeoutMs = targetScope === 'full_episode' ? 45000 : 18000;
+      const timeoutMs = targetScope === 'full_episode' ? 60000 : 20000;
 
       for (const apiKey of keysToTry) {
         for (const model of GEMINI_MODELS) {
@@ -3095,23 +3225,40 @@ The JSON MUST follow this schema:
       if (el) el.remove();
     }
 
-        function parseJsonFromDirectorResponse(text) {
+            function parseJsonFromDirectorResponse(text) {
       if (!text) return null;
-      // 1. Look for ```json ... ``` blocks
-      const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-      if (jsonMatch) {
+      // 1. Search all ```json ... ``` blocks
+      const codeBlockRegex = /```(?:json)?\s*([\s\S]*?)\s*```/gi;
+      let match;
+      while ((match = codeBlockRegex.exec(text)) !== null) {
+        const raw = match[1].trim();
         try {
-          return JSON.parse(jsonMatch[1]);
+          const parsed = JSON.parse(raw);
+          if (parsed && (parsed.shots || parsed.target_shot_number || parsed.shot_number || parsed.json_prompt)) {
+            return parsed;
+          }
         } catch (e) {
-          console.warn("Could not parse json code block directly:", e);
+          try {
+            const cleaned = raw.replace(/,\s*([\]}])/g, '$1');
+            const parsed = JSON.parse(cleaned);
+            if (parsed) return parsed;
+          } catch (e2) {}
         }
       }
-      // 2. Direct JSON object search
-      const braceMatch = text.match(/\{[\s\S]*\"(?:shots|target_shot_number|shot_number|json_prompt)\"[\s\S]*\}/);
-      if (braceMatch) {
+
+      // 2. Direct JSON object search between outermost braces
+      const firstBrace = text.indexOf('{');
+      const lastBrace = text.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace > firstBrace) {
+        const candidate = text.substring(firstBrace, lastBrace + 1);
         try {
-          return JSON.parse(braceMatch[0]);
-        } catch (e) {}
+          return JSON.parse(candidate);
+        } catch (e) {
+          try {
+            const cleaned = candidate.replace(/,\s*([\]}])/g, '$1');
+            return JSON.parse(cleaned);
+          } catch (e2) {}
+        }
       }
       return null;
     }
@@ -3283,6 +3430,105 @@ The JSON MUST follow this schema:
       });
 
       container.scrollTop = container.scrollHeight;
+    }
+
+        function copyDirectorPrompt(idx, btn) {
+      const codeEl = document.getElementById(`directorPromptCode_${idx}`);
+      if (!codeEl) return;
+      navigator.clipboard.writeText(codeEl.innerText).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = "✓ Copied!";
+        btn.style.background = "#059669";
+        setTimeout(() => {
+          btn.innerText = orig;
+          btn.style.background = "";
+        }, 2000);
+      });
+    }
+
+    async function syncDirectorPromptToSheet(idx) {
+      const msg = geminiChatHistory[idx];
+      if (!msg || !msg.packageData) return;
+
+      const sd = msg.packageData.shotData || msg.packageData;
+      const shotNum = sd.target_shot_number || sd.shot_number || 1;
+      const syncBtn = document.getElementById(`syncSheetBtn_${idx}`);
+      const statusEl = document.getElementById(`syncStatus_${idx}`);
+
+      if (syncBtn) {
+        syncBtn.disabled = true;
+        syncBtn.innerText = `⏳ Syncing Shot #${shotNum}...`;
+      }
+      if (statusEl) {
+        statusEl.style.display = "block";
+        statusEl.style.color = "#38bdf8";
+        statusEl.innerText = `Pushing Shot #${shotNum} to Google Sheet Tab 2...`;
+      }
+
+      // Update in-memory shot in episodeData
+      const localShot = episodeData.shots.find(s => s.shot_number === shotNum);
+      if (localShot) {
+        if (sd.duration) localShot.duration = sd.duration;
+        if (sd.character) localShot.character = sd.character;
+        if (sd.dialogue_malayalam) {
+          localShot.dialogue_malayalam = sd.dialogue_malayalam;
+          localShot.dialogue = sd.dialogue_malayalam;
+        }
+        if (sd.action_summary) {
+          localShot.action_summary = sd.action_summary;
+          localShot.action = sd.action_summary;
+        }
+        if (sd.json_prompt) localShot.json_prompt = sd.json_prompt;
+        renderShots();
+      }
+
+      try {
+        const payload = {
+          action: "update_shot_prompt",
+          episode_number: episodeData.episode_number || 8,
+          shot_number: shotNum,
+          shot_data: {
+            duration: sd.duration || "6s",
+            character: sd.character || "Character",
+            dialogue_malayalam: sd.dialogue_malayalam || "",
+            action_summary: sd.action_summary || "",
+            json_prompt: sd.json_prompt || sd
+          }
+        };
+
+        await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload)
+        });
+
+        if (syncBtn) {
+          syncBtn.innerText = `✓ Shot #${shotNum} Synced!`;
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ Updated Google Sheet Tab 2 and live Shot Director card!`;
+        }
+      } catch (err) {
+        console.warn("Single shot sync error:", err);
+        if (syncBtn) {
+          syncBtn.innerText = "✓ Synced Locally!";
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ Updated locally. Refresh Google Sheet to sync.`;
+        }
+      } finally {
+        setTimeout(() => {
+          if (syncBtn) {
+            syncBtn.disabled = false;
+            syncBtn.innerText = `📤 Sync Shot #${shotNum} to Sheet (Tab 2)`;
+            syncBtn.style.background = "";
+          }
+        }, 3500);
+      }
     }
 
     function copySingleShotPrompt(msgIdx, shotNum, btn) {
