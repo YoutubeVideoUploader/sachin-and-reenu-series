@@ -718,6 +718,67 @@ function updateJsonPromptsSheet(episodeNum, shots) {
 /**
  * Reads Tab 4: Season_Story_Arc and returns structured JSON.
  */
+/**
+ * Updates or overwrites Tab 4: Season_Story_Arc with a complete 10-episode roadmap.
+ */
+function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_SEASON_ARC);
+  }
+
+  sheet.clear();
+  sheet.getRange(1, 1).setValue(`MASTER STORY ROADMAP: SEASON ${seasonNum}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(seasonTitle || `Season ${seasonNum}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#312e81").setFontColor("#ffffff");
+
+  const headers = [
+    "Season #",
+    "Episode #",
+    "Title (English)",
+    "Title (Malayalam)",
+    "Status",
+    "Episode Story Summary / Synopsis",
+    "Episode Climax / Cliffhanger",
+    "Creator Story Suggestion / Notes"
+  ];
+
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#1e1b4b")
+    .setFontColor("#e0e7ff")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+
+  const rows = [];
+  for (let i = 0; i < episodes.length; i++) {
+    const ep = episodes[i];
+    rows.push([
+      seasonNum || ep.season_number || 1,
+      ep.episode_number || (i + 1),
+      ep.title_english || `Episode ${i + 1}`,
+      ep.title_malayalam || "",
+      ep.status || (i === 0 ? "Active" : "Upcoming"),
+      ep.synopsis || ep.story_summary || "",
+      ep.cliffhanger || "",
+      ep.creator_notes || ""
+    ]);
+  }
+
+  if (rows.length > 0) {
+    sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
+    sheet.getRange(3, 5, rows.length, 1).setHorizontalAlignment("center");
+  }
+
+  return {
+    success: true,
+    season_number: seasonNum,
+    count: rows.length,
+    message: `Updated Season ${seasonNum} arc (${rows.length} episodes) in Tab 4 [Season_Story_Arc]!`
+  };
+}
+
 function getSeasonStoryArcData() {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SEASON_ARC);
@@ -1203,6 +1264,13 @@ function doPost(e) {
     }
 
     // 8. Gemini Director AI Proxy (Bypasses browser adblockers and CORS)
+        // 9. Update Master Season Story Arc in Tab 4
+    if (action === "update_season_story_arc") {
+      const res = updateSeasonStoryArcInSheet(body.season_number || 1, body.season_title, body.episodes || []);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     if (action === "gemini_proxy") {
       const model = body.model || "gemini-3.5-flash";
       const token = body.key || PropertiesService.getScriptProperties().getProperty("GEMINI_API_KEY") || "";

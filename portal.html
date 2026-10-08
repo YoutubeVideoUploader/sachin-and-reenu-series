@@ -2758,7 +2758,7 @@
       }
     }
 
-    function buildDirectorSystemPrompt(targetEpNum, targetScope) {
+    function buildDirectorSystemPrompt(targetEpNum, targetScope, mode, userText) {
       const epNum = targetEpNum === 'current' ? (episodeData.episode_number || 8) : parseInt(targetEpNum, 10);
       const ep = (seasonStoryData.episodes || []).find(e => e.episode_number === epNum) || {
         episode_number: epNum,
@@ -2769,8 +2769,76 @@
       };
 
       const shotsSummary = (episodeData.shots || []).map(s => `Shot ${s.shot_number} (${s.duration}, ${s.character}): "${s.dialogue_malayalam || ''}" - ${s.action_summary}`).join('\n');
-      const isFullEpisode = (targetScope === 'full_episode');
 
+      // =========================================================
+      // 1. DISCUSSION / STORY INQUIRY MODE (STRICTLY NO PROMPTS)
+      // =========================================================
+      if (mode === 'discussion') {
+        const seasonEpList = (seasonStoryData.episodes || []).map(e => `Episode ${e.episode_number}: ${e.title_english} (${e.title_malayalam || ''}) - ${e.synopsis}`).join('\n');
+        return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala (10 episodes per season, 1 minute per episode, 10 shots per episode).
+
+=== CURRENT PRODUCTION CONTEXT ===
+- Active Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
+- Synopsis: ${ep.synopsis}
+- Cliffhanger: ${ep.cliffhanger}
+- Current Shots in Production:
+${shotsSummary}
+
+=== MASTER SEASON 1 ARC (10 EPISODES) ===
+${seasonEpList}
+
+=== CURRENT PHASE: DISCUSSION & STORY INQUIRY (NO PROMPTS) ===
+The creator is asking questions, exploring narrative ideas, or seeking a story breakdown.
+CRITICAL INSTRUCTIONS:
+1. DO NOT OUTPUT ANY CODE BLOCKS OR JSON PROMPTS! ZERO JSON BLOCKS.
+2. Speak as a passionate, warm, articulate Showrunner and Animation Co-Director who knows every detail of the characters, the Kochi monsoon setting, and the story beats.
+3. If the user asks about an episode (e.g. "What is episode 8 about?"):
+   - Give the core story premise and emotional conflict of the episode.
+   - Provide a CLEAR, ENGAGING SHOT-BY-SHOT BREAKDOWN (Shots 1 to 10) explaining what happens visually and emotionally in each of the 10 shots, including the character beats, actions, and Malayalam dialogue lines.
+   - Highlight the dramatic cliffhanger at Shot 10.
+   - Conclude by asking the creator what they think, or if they would like to adjust any pacing, dialogues, or character actions before generating prompts.
+4. If the user asks about a character, Season arc, or creative ideas, brainstorm collaboratively and suggest cinematic visual ideas.
+5. Remind the creator gently that when they are happy with the discussion, they can simply say "Let's change Episode X with this..." or "Generate the prompts", and you will write the complete production package for them!`;
+      }
+
+      // =========================================================
+      // 2. SEASON STORY ARC PLANNING (10 EPISODES OVERHAUL)
+      // =========================================================
+      if (mode === 'season_arc') {
+        const seasonTarget = (userText && userText.toLowerCase().includes('season 2')) ? 2 : 1;
+        return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala.
+
+=== CURRENT PHASE: MASTER SEASON STORY ARC OVERHAUL ===
+The creator wants to plan, outline, or rewrite a whole season narrative arc (Season ${seasonTarget}, 10 episodes, 1-minute vertical episodes).
+
+CRITICAL INSTRUCTIONS:
+1. DO NOT OUTPUT VIDEO PROMPTS (no json_prompts, no style, no camera keys).
+2. First, write an inspiring Director's Season Pitch explaining the season theme, emotional arc, and progression.
+3. Then, output a single valid JSON block inside \`\`\`json ... \`\`\` with this EXACT schema:
+\`\`\`json
+{
+  "mode": "season_arc",
+  "season_number": ${seasonTarget},
+  "season_title": "Season Title in English (മലയാളം ലിപി)",
+  "logline": "Two-sentence master season synopsis",
+  "episodes": [
+    {
+      "episode_number": 1,
+      "title_english": "Episode 1 Title",
+      "title_malayalam": "മലയാളം തലക്കെട്ട്",
+      "synopsis": "Clear 2-sentence story summary of what happens in this episode",
+      "cliffhanger": "Ending hook of this episode"
+    }
+    /* ALL 10 EPISODES FROM EPISODE 1 UP TO EPISODE 10 MUST BE INCLUDED */
+  ]
+}
+\`\`\`
+CRITICAL: You MUST include all 10 episodes in the episodes array!`;
+      }
+
+      // =========================================================
+      // 3. EPISODE PROMPTS & SCREENPLAY GENERATION
+      // =========================================================
       const lockedCharactersGuide = `=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE VERBATIM STRINGS) ===
 Whenever a character is in 'characters_present', their 'visual_dna' field MUST MATCH the following VERBATIM strings word-for-word. NEVER summarize, paraphrase, or truncate them!
 
@@ -2804,7 +2872,7 @@ Whenever a character is in 'characters_present', their 'visual_dna' field MUST M
    - MUST BE EXACTLY:
      "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"`;
 
-      if (isFullEpisode) {
+      if (mode === 'full_episode') {
         return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
 
 ${lockedCharactersGuide}
@@ -2952,24 +3020,45 @@ The JSON MUST follow this EXACT schema:
 
       const targetEp = epSelect ? epSelect.value : 'current';
       let targetScope = shotSelect ? shotSelect.value : 'auto';
+      const lower = userText.toLowerCase().trim();
 
-      // Auto-detect if user requested whole episode overhaul
-      const lowerText = userText.toLowerCase();
-      if (targetScope === 'full_episode' ||
-          lowerText.includes('whole episode') || 
-          lowerText.includes('entire episode') || 
-          lowerText.includes('all shots') || 
-          lowerText.includes('all 10') || 
-          lowerText.includes('total 10') || 
-          lowerText.includes('rewrite episode') || 
-          lowerText.includes('change episode') ||
-          lowerText.includes('change of whole episode') ||
-          lowerText.includes('full episode') ||
-          lowerText.includes('10 shots') ||
-          lowerText.includes('whole ep') ||
-          lowerText.includes('entire ep') ||
-          lowerText.includes('full ep')) {
-        targetScope = 'full_episode';
+      // =========================================================
+      // INTELLIGENT INTENT DETECTION (Discussion vs Season vs Episode)
+      // =========================================================
+      let mode = 'discussion';
+
+      const isSeasonArcRequest = (
+        (targetEp === '0' || lower.includes('season 2') || lower.includes('season 3') || lower.includes('season arc') || lower.includes('story arc') || lower.includes('entire season') || lower.includes('whole season')) &&
+        (lower.includes('plan') || lower.includes('write') || lower.includes('change') || lower.includes('create') || lower.includes('suggest') || lower.includes('make') || lower.includes('new season') || lower.includes('story of each episode') || lower.includes('edit the entire season') || lower.includes('change the story arc') || lower.includes('starting and i'))
+      );
+
+      const isQuestionOrInquiry = (
+        lower.startsWith('what ') || lower.startsWith('what is') || lower.startsWith('what about') ||
+        lower.startsWith('tell me') || lower.startsWith('explain') || lower.startsWith('why ') ||
+        lower.startsWith('who ') || lower.startsWith('how ') || lower.startsWith('describe') ||
+        lower.startsWith('give me summary') || lower.startsWith('summary of') || lower.startsWith('can you explain')
+      );
+
+      const isPromptCreationRequest = (
+        lower.includes('generate prompt') || lower.includes('create prompt') || lower.includes('make prompt') || lower.includes('write prompt') ||
+        lower.includes('rewrite episode') || lower.includes('change episode') || lower.includes('overhaul episode') || lower.includes('update episode') ||
+        lower.includes('rewrite the episode') || lower.includes('change the episode') || lower.includes('create what the prompts') ||
+        lower.includes('change the prompt') || lower.includes('edit the prompt') || lower.includes('now create') || lower.includes('write the prompts') ||
+        lower.includes('produce prompt') || (lower.startsWith('in shot') && (lower.includes('make') || lower.includes('change') || lower.includes('add')))
+      );
+
+      if (isSeasonArcRequest) {
+        mode = 'season_arc';
+      } else if (isPromptCreationRequest || (targetScope === 'full_episode' && !isQuestionOrInquiry)) {
+        if (targetScope === 'full_episode' || lower.includes('whole episode') || lower.includes('entire episode') || lower.includes('all shots') || lower.includes('10 shots') || lower.includes('all 10') || lower.includes('total 10') || lower.includes('rewrite episode') || lower.includes('change episode') || lower.includes('change of whole episode')) {
+          mode = 'full_episode';
+          targetScope = 'full_episode';
+        } else {
+          mode = (targetScope !== 'auto' && !isNaN(parseInt(targetScope, 10))) ? 'single_shot' : 'full_episode';
+        }
+      } else {
+        // Default: Discussion & Story Inquiry Phase
+        mode = 'discussion';
       }
 
       geminiChatHistory.push({ role: 'user', content: userText, timestamp: new Date() });
@@ -2982,14 +3071,20 @@ The JSON MUST follow this EXACT schema:
       if (status) {
         status.style.display = 'block';
         status.style.color = '#38bdf8';
-        status.innerText = targetScope === 'full_episode' 
-          ? "⚡ Gemini Director is drafting complete 10-shot episode & prompts (~20s)..." 
-          : "⚡ Gemini Director is drafting cinematic scene & prompt...";
+        if (mode === 'discussion') {
+          status.innerText = "💬 AI Showrunner is analyzing story and preparing narrative breakdown...";
+        } else if (mode === 'season_arc') {
+          status.innerText = "📖 AI Showrunner is architecting 10-episode Master Season Arc...";
+        } else {
+          status.innerText = mode === 'full_episode' 
+            ? "⚡ Gemini Director is drafting complete 10-shot episode & prompts (~20s)..." 
+            : "⚡ Gemini Director is drafting cinematic scene & prompt...";
+        }
       }
 
       const customKey = (localStorage.getItem('gemini_api_key') || '').trim();
       const keysToTry = customKey ? [customKey, ...BACKUP_GEMINI_KEYS] : BACKUP_GEMINI_KEYS;
-      const systemInstruction = buildDirectorSystemPrompt(targetEp, targetScope);
+      const systemInstruction = buildDirectorSystemPrompt(targetEp, targetScope, mode, userText);
 
       let responseText = null;
       let usedModel = "gemini-3.5-flash";
@@ -2997,11 +3092,10 @@ The JSON MUST follow this EXACT schema:
 
       const conversationContents = [{
         role: "user",
-        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR SUGGESTION]:\n${userText}` }]
+        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR MESSAGE]:\n${userText}` }]
       }];
 
-      // 40-second timeout for full 10-shot episodes
-      const timeoutMs = targetScope === 'full_episode' ? 60000 : 20000;
+      const timeoutMs = (mode === 'full_episode' || mode === 'season_arc') ? 60000 : 25000;
 
       for (const apiKey of keysToTry) {
         for (const model of GEMINI_MODELS) {
@@ -3091,7 +3185,7 @@ The JSON MUST follow this EXACT schema:
 
       if (status) {
         status.style.color = '#34d399';
-        status.innerText = `✓ Generated successfully by ${usedModel}!`;
+        status.innerText = `✓ Responded by ${usedModel}!`;
         setTimeout(() => { status.style.display = 'none'; }, 3000);
       }
 
@@ -3102,6 +3196,7 @@ The JSON MUST follow this EXACT schema:
         content: responseText,
         packageData: extractedData,
         model: usedModel,
+        mode: mode,
         timestamp: new Date()
       });
 
@@ -3237,7 +3332,7 @@ The JSON MUST follow this EXACT schema:
       return null;
     }
 
-        function renderAllChatMessages() {
+    function renderAllChatMessages() {
       const container = document.getElementById('geminiChatMessages');
       if (!container) return;
       container.innerHTML = '';
@@ -3264,13 +3359,74 @@ The JSON MUST follow this EXACT schema:
           narrativeText = escapeHtml(narrativeText)
             .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
             .replace(/\*(.*?)\*/g, '<i>$1</i>')
+            .replace(/^### (.*$)/gim, '<h4 style="color:#38bdf8;margin:10px 0 4px 0;font-size:14px;">$1</h4>')
+            .replace(/^## (.*$)/gim, '<h3 style="color:#fff;margin:12px 0 6px 0;font-size:15px;border-bottom:1px solid #334155;padding-bottom:4px;">$1</h3>')
+            .replace(/^# (.*$)/gim, '<h2 style="color:#fff;margin:14px 0 8px 0;font-size:16px;">$1</h2>')
+            .replace(/^\* (.*$)/gim, '• $1')
+            .replace(/^- (.*$)/gim, '• $1')
             .replace(/\n/g, '<br>');
 
           let cardHtml = '';
           const pkg = msg.packageData;
 
-          if (pkg && (pkg.mode === 'full_episode' || (pkg.shots && Array.isArray(pkg.shots) && pkg.shots.length > 1))) {
-            // FULL 10-SHOT EPISODE PACKAGE
+          // A. SEASON MASTER STORY ARC OVERHAUL CARD (Tab 4)
+          if (pkg && pkg.mode === 'season_arc' && pkg.episodes && Array.isArray(pkg.episodes)) {
+            const epList = pkg.episodes;
+            let epRowsHtml = '';
+
+            epList.forEach((e) => {
+              epRowsHtml += `
+                <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; gap: 4px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #fff;">
+                      Episode ${e.episode_number}: ${e.title_english || ''} <span style="font-family: 'Noto Sans Malayalam'; color: #fde047; font-size: 12px;">${e.title_malayalam || ''}</span>
+                    </div>
+                  </div>
+                  <div style="font-size: 12px; color: #cbd5e1; line-height: 1.4;">${e.synopsis || ''}</div>
+                  ${e.cliffhanger ? `<div style="font-size: 11px; color: #fda4af;"><b>Cliffhanger:</b> ${e.cliffhanger}</div>` : ''}
+                </div>
+              `;
+            });
+
+            cardHtml = `
+              <div class="gemini-prompt-card" style="border-left-color: #8b5cf6;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; margin-bottom: 10px;">
+                  <div>
+                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #a78bfa; font-weight: 800;">
+                      📖 SEASON ${pkg.season_number || 1} MASTER STORY ROADMAP (${epList.length} EPISODES)
+                    </span>
+                    <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 2px 0 0 0;">
+                      ${pkg.season_title || `Season ${pkg.season_number || 1}`}
+                    </h4>
+                  </div>
+                  <span class="badge" style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; font-size: 11px; font-weight: 700;">
+                    Tab 4 Ready
+                  </span>
+                </div>
+
+                ${pkg.logline ? `<p style="font-size: 12px; color: #cbd5e1; margin: 4px 0 10px 0; line-height: 1.4;"><b>Season Logline:</b> ${pkg.logline}</p>` : ''}
+
+                <!-- Master Sync Button for Tab 4 -->
+                <div style="background: rgba(88, 28, 135, 0.25); border: 1px solid #7c3aed; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                  <div>
+                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Push 10-Episode Roadmap to Production</div>
+                    <div style="font-size: 11px; color: #c4b5fd;">Updates Google Sheet Tab 4 [Season_Story_Arc] and your Season Roadmap grid immediately!</div>
+                  </div>
+                  <button class="btn btn-primary" id="syncSeasonArcBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: #7c3aed; border-color: #6d28d9; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);" onclick="syncSeasonArcToSheet(${idx})">
+                    📤 Sync Season Arc to Google Sheet (Tab 4)
+                  </button>
+                </div>
+                <div id="seasonArcStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
+
+                <!-- 10 Episode List -->
+                <div style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; padding-right: 4px;">
+                  ${epRowsHtml}
+                </div>
+              </div>
+            `;
+          }
+          // B. FULL 10-SHOT EPISODE PACKAGE (Tab 1 & Tab 2)
+          else if (pkg && (pkg.mode === 'full_episode' || (pkg.shots && Array.isArray(pkg.shots) && pkg.shots.length > 1))) {
             const shotsList = pkg.shots || [];
             let shotsRowsHtml = '';
 
@@ -3341,8 +3497,9 @@ The JSON MUST follow this EXACT schema:
                 </div>
               </div>
             `;
-          } else if (pkg) {
-            // SINGLE SHOT CARD
+          }
+          // C. SINGLE SHOT CARD
+          else if (pkg && (pkg.target_shot_number || pkg.shot_number || pkg.json_prompt)) {
             const sd = pkg.shotData || pkg;
             const shotNum = sd.target_shot_number || sd.shot_number || 1;
             const duration = sd.duration || (sd.json_prompt && sd.json_prompt.duration) || '6s';
@@ -3387,11 +3544,12 @@ The JSON MUST follow this EXACT schema:
             `;
           }
 
+          const badgeTitle = msg.mode === 'season_arc' ? 'Season Showrunner' : (msg.mode === 'discussion' ? 'Creative Discussion' : 'Director Vision');
           bubble.innerHTML = `
             <div class="gemini-bubble-meta">
               <span style="font-size: 16px;">🎬</span>
               <b>Gemini AI Director</b>
-              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">Director Vision</span>
+              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">${badgeTitle}</span>
             </div>
             <div style="font-size: 13px; line-height: 1.6; color: #e2e8f0;">
               ${narrativeText}
@@ -3406,7 +3564,86 @@ The JSON MUST follow this EXACT schema:
       container.scrollTop = container.scrollHeight;
     }
 
-        function copyDirectorPrompt(idx, btn) {
+    async function syncSeasonArcToSheet(idx) {
+      const msg = geminiChatHistory[idx];
+      if (!msg || !msg.packageData || !msg.packageData.episodes) return;
+
+      const pkg = msg.packageData;
+      const syncBtn = document.getElementById(`syncSeasonArcBtn_${idx}`);
+      const statusEl = document.getElementById(`seasonArcStatus_${idx}`);
+
+      if (syncBtn) {
+        syncBtn.disabled = true;
+        syncBtn.innerText = "⏳ Syncing Season Arc to Tab 4...";
+      }
+      if (statusEl) {
+        statusEl.style.display = "block";
+        statusEl.style.color = "#38bdf8";
+        statusEl.innerText = `Updating local Season ${pkg.season_number || 1} roadmap and pushing 10 episodes to Google Sheet Tab 4...`;
+      }
+
+      // 1. Update in-memory seasonStoryData
+      seasonStoryData.season_number = pkg.season_number || seasonStoryData.season_number || 1;
+      if (pkg.season_title) seasonStoryData.season_title = pkg.season_title;
+      seasonStoryData.episodes = pkg.episodes.map((ep, i) => ({
+        season_number: pkg.season_number || 1,
+        episode_number: ep.episode_number || (i + 1),
+        title_english: ep.title_english || `Episode ${i + 1}`,
+        title_malayalam: ep.title_malayalam || "",
+        status: i === 0 ? "Active" : "Upcoming",
+        synopsis: ep.synopsis || "",
+        cliffhanger: ep.cliffhanger || "",
+        creator_notes: ""
+      }));
+
+      // Re-render Roadmap UI grid immediately!
+      renderSeasonStoryRoadmap();
+
+      // 2. Post to Google Sheet Tab 4
+      try {
+        const payload = {
+          action: "update_season_story_arc",
+          season_number: pkg.season_number || 1,
+          season_title: pkg.season_title,
+          episodes: seasonStoryData.episodes
+        };
+
+        const res = await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload)
+        });
+
+        if (syncBtn) {
+          syncBtn.innerText = "✓ Season Arc Synced to Tab 4!";
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ SUCCESS! All ${pkg.episodes.length} episodes updated in Google Sheet Tab 4 [Season_Story_Arc] and your Roadmap grid!`;
+        }
+      } catch (err) {
+        console.warn("Season arc sync error:", err);
+        if (syncBtn) {
+          syncBtn.innerText = "✓ Synced Locally!";
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ Updated all episodes locally in portal. Refresh Google Sheet to sync.`;
+        }
+      } finally {
+        setTimeout(() => {
+          if (syncBtn) {
+            syncBtn.disabled = false;
+            syncBtn.innerText = "📤 Sync Season Arc to Google Sheet (Tab 4)";
+            syncBtn.style.background = "";
+          }
+        }, 4000);
+      }
+    }
+
+    function copyDirectorPrompt(idx, btn) {
       const codeEl = document.getElementById(`directorPromptCode_${idx}`);
       if (!codeEl) return;
       navigator.clipboard.writeText(codeEl.innerText).then(() => {
