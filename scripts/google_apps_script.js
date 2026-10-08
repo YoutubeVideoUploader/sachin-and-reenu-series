@@ -1202,6 +1202,20 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
+    // 8. Gemini Director AI Proxy (Bypasses browser adblockers and CORS)
+    if (action === "gemini_proxy") {
+      const model = body.model || "gemini-3.5-flash";
+      const token = body.key || PropertiesService.getScriptProperties().getProperty("GEMINI_API_KEY") || "";
+      const gUrl = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + token;
+      const gRes = UrlFetchApp.fetch(gUrl, {
+        method: "post",
+        contentType: "application/json",
+        payload: JSON.stringify({ contents: body.contents }),
+        muteHttpExceptions: true
+      });
+      return ContentService.createTextOutput(gRes.getContentText()).setMimeType(ContentService.MimeType.JSON);
+    }
+
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
       .setMimeType(ContentService.MimeType.JSON);
 

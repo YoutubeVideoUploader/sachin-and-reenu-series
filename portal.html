@@ -902,9 +902,14 @@
         <div id="settingsStatusMsg" style="font-size: 13px; display: none;"></div>
       </div>
       <div style="padding: 14px 20px; background: #0c101c; border-top: 1px solid #1f293d; display: flex; justify-content: space-between; align-items: center;">
-        <button class="btn btn-secondary" onclick="testGasConnection()" style="padding: 8px 14px; font-size: 13px;">
-          🔌 Test Sheet Link
-        </button>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="testGasConnection()" style="padding: 8px 14px; font-size: 13px;">
+            🔌 Test Sheet Link
+          </button>
+          <button class="btn btn-secondary" onclick="testGeminiConnection()" style="padding: 8px 14px; font-size: 13px; color: #c084fc; border-color: #7e22ce;">
+            🤖 Test Gemini Key
+          </button>
+        </div>
         <div style="display: flex; gap: 8px;">
           <button class="btn btn-secondary" onclick="closeStudioSettings()" style="padding: 8px 14px; font-size: 13px;">Cancel</button>
           <button class="btn btn-primary" onclick="saveStudioSettings()" style="padding: 8px 18px; font-size: 13px;">Save Settings</button>
@@ -2668,8 +2673,10 @@
     // =============================================================
     // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
     // =============================================================
+        // Master API Key & Resilient Gemini Models
+        // Master API Key & Resilient Gemini Models
     const DEFAULT_GEMINI_KEY = atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=");
-    const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"];
+    const GEMINI_MODELS = ["gemini-3.5-flash", "gemini-3.1-flash-lite", "gemini-flash-latest", "gemini-3.8-flash"];
     let geminiChatHistory = [];
 
     function getActiveGeminiKey() {
@@ -2835,13 +2842,12 @@ The JSON MUST follow this schema:
 }`;
     }
 
-    async function sendGeminiDirectorMessage() {
+            async function sendGeminiDirectorMessage() {
       const input = document.getElementById('geminiChatInput');
       const sendBtn = document.getElementById('geminiSendBtn');
       const status = document.getElementById('geminiChatStatus');
       const epSelect = document.getElementById('chatTargetEp');
       const shotSelect = document.getElementById('chatTargetShot');
-      const chatLog = document.getElementById('geminiChatMessages');
 
       const userText = (input ? input.value : '').trim();
       if (!userText) return;
@@ -2853,7 +2859,6 @@ The JSON MUST follow this schema:
       geminiChatHistory.push({ role: 'user', content: userText, timestamp: new Date() });
       if (input) input.value = '';
 
-      // Render chat log with temporary thinking bubble
       renderAllChatMessages();
       appendThinkingBubble();
 
@@ -2869,27 +2874,38 @@ The JSON MUST follow this schema:
 
       let responseText = null;
       let usedModel = GEMINI_MODELS[0];
+      let lastErr = "";
 
+      const conversationContents = [{
+        role: "user",
+        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:
+${systemInstruction}
+
+[CREATOR SUGGESTION]:
+${userText}` }]
+      }];
+
+      // Pass 1: Try Direct Gemini REST API (fastest, client-direct)
       for (const model of GEMINI_MODELS) {
         try {
           usedModel = model;
           const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
           
-          const conversationContents = [];
-          // Include system instruction
-          conversationContents.push({
-            role: "user",
-            parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR SUGGESTION]:\n${userText}` }]
-          });
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 12000);
 
           const res = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: conversationContents })
+            body: JSON.stringify({ contents: conversationContents }),
+            signal: controller.signal
           });
+          clearTimeout(timer);
 
           if (!res.ok) {
-            console.warn(`Model ${model} returned HTTP ${res.status}`);
+            const errTxt = await res.text().catch(() => "");
+            lastErr = `HTTP ${res.status}: ${errTxt.slice(0, 100)}`;
+            console.warn(`Model ${model} returned`, lastErr);
             continue;
           }
 
@@ -2900,7 +2916,36 @@ The JSON MUST follow this schema:
             if (responseText.trim()) break;
           }
         } catch (err) {
-          console.warn(`Attempt with ${model} failed:`, err);
+          lastErr = err.name === 'AbortError' ? 'Request timed out (12s)' : err.message;
+          console.warn(`Direct attempt with ${model} failed:`, err);
+        }
+      }
+
+      // Pass 2: Fallback to Google Apps Script Proxy (bypasses browser adblockers and file:// CORS)
+      if (!responseText) {
+        try {
+          if (status) status.innerText = "⏳ Direct connect blocked, syncing via Google Apps Script Proxy...";
+          const proxyRes = await fetch(getActiveGasUrl(), {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify({
+              action: "gemini_proxy",
+              model: "gemini-3.5-flash",
+              key: apiKey,
+              contents: conversationContents
+            })
+          });
+
+          if (proxyRes.ok) {
+            const pData = await proxyRes.json();
+            if (pData && pData.candidates && pData.candidates[0] && pData.candidates[0].content) {
+              const parts = pData.candidates[0].content.parts || [];
+              responseText = parts.map(p => p.text || '').join('\n');
+              usedModel = "gemini-3.5-flash (via GAS Proxy)";
+            }
+          }
+        } catch (proxyErr) {
+          console.warn("Proxy fallback also failed:", proxyErr);
         }
       }
 
@@ -2910,11 +2955,15 @@ The JSON MUST follow this schema:
       if (!responseText) {
         if (status) {
           status.style.color = '#f87171';
-          status.innerText = "⚠️ Could not connect to Gemini API. Check API key in Settings.";
+          status.innerText = `⚠️ Connection error: ${lastErr || "Failed to fetch"}`;
         }
         geminiChatHistory.push({
           role: 'ai',
-          content: "⚠️ I encountered a connection issue while contacting Gemini. Please verify your Google Gemini API key in **⚙️ Settings**.",
+          content: `⚠️ I encountered a connection issue while contacting Gemini (${lastErr || 'Browser blocked cross-origin request'}).
+
+**Quick Fix:**
+1. Open **⚙️ Settings** at the top right and click **🤖 Test Gemini Key**.
+2. If using Opera with built-in ad/tracker blocker, allow permissions or verify your API key in Settings.`,
           timestamp: new Date()
         });
         renderAllChatMessages();
@@ -2927,11 +2976,10 @@ The JSON MUST follow this schema:
 
       if (status) {
         status.style.color = '#34d399';
-        status.innerText = "✓ Prompt generated successfully!";
+        status.innerText = `✓ Prompt generated by ${usedModel}!`;
         setTimeout(() => { status.style.display = 'none'; }, 3000);
       }
 
-      // Extract JSON prompt if present
       const extractedShotData = parseJsonFromDirectorResponse(responseText);
 
       geminiChatHistory.push({
@@ -2943,6 +2991,71 @@ The JSON MUST follow this schema:
       });
 
       renderAllChatMessages();
+    }
+
+    async function testGeminiConnection() {
+      const geminiInput = document.getElementById('settingGeminiApiKey');
+      const msg = document.getElementById('settingsStatusMsg');
+      const key = (geminiInput && geminiInput.value.trim()) ? geminiInput.value.trim() : getActiveGeminiKey();
+
+      if (msg) {
+        msg.style.display = 'block';
+        msg.style.color = '#38bdf8';
+        msg.innerText = '⏳ Testing Gemini API key with gemini-3.5-flash...';
+      }
+
+
+
+    
+
+      try {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`;
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: "Say OK" }] }] })
+        });
+        if (res.ok) {
+          if (msg) {
+            msg.style.color = '#34d399';
+            msg.innerText = '✓ Successfully connected to Gemini 3.5 Flash!';
+          }
+          return;
+        } else {
+          const errText = await res.text().catch(() => "");
+          if (msg) {
+            msg.style.color = '#f87171';
+            msg.innerText = `⚠️ Direct request returned HTTP ${res.status}: ${errText.slice(0, 80)}`;
+          }
+        }
+      } catch (err) {
+        // Fallback via GAS proxy
+        try {
+          if (msg) msg.innerText = '⏳ Testing via Google Apps Script Proxy...';
+          const proxyRes = await fetch(getActiveGasUrl(), {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify({
+              action: "gemini_proxy",
+              model: "gemini-3.5-flash",
+              key: key,
+              contents: [{ role: "user", parts: [{ text: "Say OK" }] }]
+            })
+          });
+          if (proxyRes.ok) {
+            if (msg) {
+              msg.style.color = '#34d399';
+              msg.innerText = '✓ Successfully connected to Gemini via Google Apps Script Proxy!';
+            }
+            return;
+          }
+        } catch (e2) {}
+
+        if (msg) {
+          msg.style.color = '#f87171';
+          msg.innerText = `❌ Connection failed: ${err.message}. If using Opera, disable tracker blocker for this file or enter custom key.`;
+        }
+      }
     }
 
     function appendThinkingBubble() {
