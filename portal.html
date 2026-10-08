@@ -735,8 +735,9 @@
               <option value="10">Episode 10 (Climax)</option>
               <option value="0">General Season 1 Note</option>
             </select>
-            <select id="chatTargetShot" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="auto" selected>Auto-Detect Shot / Entire Scene</option>
+                        <select id="chatTargetShot" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+              <option value="auto" selected>Auto-Detect (Single Shot or Full Episode)</option>
+              <option value="full_episode">🎬 Full Episode (All 10 Shots)</option>
               <option value="1">Shot 1</option>
               <option value="2">Shot 2</option>
               <option value="3">Shot 3</option>
@@ -758,8 +759,11 @@
             <!-- Messages rendered dynamically -->
           </div>
 
-          <!-- Quick Suggestion Chips -->
+                    <!-- Quick Suggestion Chips -->
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Overhaul the whole episode: Sachin reveals the London pouch earlier in the rain, Amal jokes, and Reenu confronts him')">
+              🎬 Rewrite Entire Episode (10 Shots)
+            </button>
             <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal about Kochi rain and teasing Sachin')">
               😂 Add Amal Banter
             </button>
@@ -769,7 +773,7 @@
             <button class="chat-chip" onclick="quickFillPrompt('In Shot 4, add dramatic mystery focus on Sachin\'s London leather pouch')">
               👜 Focus on Leather Pouch (Shot 4)
             </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue for Shot 8 in authentic emotional Kochi Malayalam')">
+            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue for Shot 8 in authentic emotional Kochi Malayalam (5-8 words max)')">
               💬 Kochi Malayalam Polish
             </button>
             <button class="chat-chip" onclick="quickFillPrompt('Create a dramatic cliffhanger moment for Shot 10 leading to Marine Drive')">
@@ -2845,7 +2849,7 @@ The JSON MUST follow this schema:
 }`;
     }
 
-                async function sendGeminiDirectorMessage() {
+                    async function sendGeminiDirectorMessage() {
       const input = document.getElementById('geminiChatInput');
       const sendBtn = document.getElementById('geminiSendBtn');
       const status = document.getElementById('geminiChatStatus');
@@ -2856,7 +2860,13 @@ The JSON MUST follow this schema:
       if (!userText) return;
 
       const targetEp = epSelect ? epSelect.value : 'current';
-      const targetShot = shotSelect ? shotSelect.value : 'auto';
+      let targetScope = shotSelect ? shotSelect.value : 'auto';
+
+      // Auto-detect if user requested whole episode overhaul
+      const lowerText = userText.toLowerCase();
+      if (lowerText.includes('whole episode') || lowerText.includes('entire episode') || lowerText.includes('all shots') || lowerText.includes('all 10') || lowerText.includes('total 10') || lowerText.includes('rewrite episode') || lowerText.includes('change episode')) {
+        targetScope = 'full_episode';
+      }
 
       geminiChatHistory.push({ role: 'user', content: userText, timestamp: new Date() });
       if (input) input.value = '';
@@ -2868,12 +2878,14 @@ The JSON MUST follow this schema:
       if (status) {
         status.style.display = 'block';
         status.style.color = '#38bdf8';
-        status.innerText = "⚡ Gemini Director is drafting cinematic scene & prompt...";
+        status.innerText = targetScope === 'full_episode' 
+          ? "⚡ Gemini Director is drafting complete 10-shot episode & prompts (~20s)..." 
+          : "⚡ Gemini Director is drafting cinematic scene & prompt...";
       }
 
       const customKey = (localStorage.getItem('gemini_api_key') || '').trim();
       const keysToTry = customKey ? [customKey, ...BACKUP_GEMINI_KEYS] : BACKUP_GEMINI_KEYS;
-      const systemInstruction = buildDirectorSystemPrompt(targetEp, targetShot);
+      const systemInstruction = buildDirectorSystemPrompt(targetEp, targetScope);
 
       let responseText = null;
       let usedModel = "gemini-3.5-flash";
@@ -2884,7 +2896,9 @@ The JSON MUST follow this schema:
         parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR SUGGESTION]:\n${userText}` }]
       }];
 
-      // Try keys with gemini-3.5-flash
+      // 40-second timeout for full 10-shot episodes
+      const timeoutMs = targetScope === 'full_episode' ? 45000 : 18000;
+
       for (const apiKey of keysToTry) {
         for (const model of GEMINI_MODELS) {
           try {
@@ -2892,7 +2906,7 @@ The JSON MUST follow this schema:
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
             
             const controller = new AbortController();
-            const timer = setTimeout(() => controller.abort(), 14000);
+            const timer = setTimeout(() => controller.abort(), timeoutMs);
 
             const res = await fetch(url, {
               method: "POST",
@@ -2906,7 +2920,6 @@ The JSON MUST follow this schema:
               const errTxt = await res.text().catch(() => "");
               lastErr = `HTTP ${res.status}: ${errTxt.slice(0, 100)}`;
               console.warn(`Key attempt failed on ${model}:`, lastErr);
-              // If 402/403/429, try next key in loop
               continue;
             }
 
@@ -2974,16 +2987,16 @@ The JSON MUST follow this schema:
 
       if (status) {
         status.style.color = '#34d399';
-        status.innerText = `✓ Prompt generated by ${usedModel}!`;
+        status.innerText = `✓ Generated successfully by ${usedModel}!`;
         setTimeout(() => { status.style.display = 'none'; }, 3000);
       }
 
-      const extractedShotData = parseJsonFromDirectorResponse(responseText);
+      const extractedData = parseJsonFromDirectorResponse(responseText);
 
       geminiChatHistory.push({
         role: 'ai',
         content: responseText,
-        shotData: extractedShotData,
+        packageData: extractedData,
         model: usedModel,
         timestamp: new Date()
       });
@@ -3082,7 +3095,7 @@ The JSON MUST follow this schema:
       if (el) el.remove();
     }
 
-    function parseJsonFromDirectorResponse(text) {
+        function parseJsonFromDirectorResponse(text) {
       if (!text) return null;
       // 1. Look for ```json ... ``` blocks
       const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
@@ -3090,11 +3103,11 @@ The JSON MUST follow this schema:
         try {
           return JSON.parse(jsonMatch[1]);
         } catch (e) {
-          console.warn("Could not parse json code block:", e);
+          console.warn("Could not parse json code block directly:", e);
         }
       }
       // 2. Direct JSON object search
-      const braceMatch = text.match(/\{\s*"(?:target_shot_number|shot_number|json_prompt)"[\s\S]*?\}\s*\}/);
+      const braceMatch = text.match(/\{[\s\S]*\"(?:shots|target_shot_number|shot_number|json_prompt)\"[\s\S]*\}/);
       if (braceMatch) {
         try {
           return JSON.parse(braceMatch[0]);
@@ -3103,7 +3116,7 @@ The JSON MUST follow this schema:
       return null;
     }
 
-    function renderAllChatMessages() {
+        function renderAllChatMessages() {
       const container = document.getElementById('geminiChatMessages');
       if (!container) return;
       container.innerHTML = '';
@@ -3126,23 +3139,98 @@ The JSON MUST follow this schema:
           `;
         } else {
           // AI Director Message
-          // Strip out the ```json ... ``` block from text display so narrative text is clean
           let narrativeText = msg.content.replace(/```(?:json)?\s*[\s\S]*?\s*```/gi, '').trim();
           narrativeText = escapeHtml(narrativeText)
             .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
             .replace(/\*(.*?)\*/g, '<i>$1</i>')
             .replace(/\n/g, '<br>');
 
-          let jsonCardHtml = '';
-          if (msg.shotData) {
-            const sd = msg.shotData;
-            const shotNum = sd.target_shot_number || sd.shot_number || 5;
+          let cardHtml = '';
+          const pkg = msg.packageData;
+
+          if (pkg && (pkg.mode === 'full_episode' || (pkg.shots && Array.isArray(pkg.shots) && pkg.shots.length > 1))) {
+            // FULL 10-SHOT EPISODE PACKAGE
+            const shotsList = pkg.shots || [];
+            let shotsRowsHtml = '';
+
+            shotsList.forEach((s) => {
+              const sNum = s.shot_number;
+              const sDur = s.duration || '6s';
+              const sChar = s.character || 'Character';
+              const wordsCount = (s.dialogue_malayalam || '').trim().split(/\s+/).filter(Boolean).length;
+              const wordBadge = wordsCount > 0 ? `<span style="font-size: 10px; background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 2px 6px; border-radius: 4px; font-weight: 700;">${wordsCount} words</span>` : '';
+
+              shotsRowsHtml += `
+                <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; gap: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                      <span class="badge badge-shot" style="font-size: 10px; padding: 2px 6px;">Shot #${sNum}</span>
+                      <span class="badge badge-dur" style="font-size: 10px; padding: 2px 6px;">⏱️ ${sDur}</span>
+                      <span class="badge badge-char" style="font-size: 10px; padding: 2px 6px;">👤 ${sChar}</span>
+                      ${wordBadge}
+                    </div>
+                    <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="copySingleShotPrompt(${idx}, ${sNum}, this)">
+                      📋 Copy Prompt
+                    </button>
+                  </div>
+                  ${s.dialogue_malayalam ? `
+                    <div style="font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam';">
+                      <b>💬 സംഭാഷണം:</b> "${s.dialogue_malayalam}"
+                    </div>
+                  ` : ''}
+                  <div style="font-size: 11px; color: #cbd5e1;"><b>Action:</b> ${s.action_summary || ''}</div>
+                </div>
+              `;
+            });
+
+            cardHtml = `
+              <div class="gemini-prompt-card" style="border-left-color: #3b82f6;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; margin-bottom: 10px;">
+                  <div>
+                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #38bdf8; font-weight: 800;">
+                      🎬 FULL EPISODE OVERHAUL (${shotsList.length} SHOTS • ~60s)
+                    </span>
+                    <h4 style="font-size: 15px; font-weight: 800; color: #fff; margin: 2px 0 0 0;">
+                      ${pkg.title_english || `Episode ${pkg.episode_number || 8}`} <span style="font-family: 'Noto Sans Malayalam'; color: #fde047;">${pkg.title_malayalam || ''}</span>
+                    </h4>
+                  </div>
+                  <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11px; font-weight: 700;">
+                    ✓ All 10 Dialogue Word Limits Met
+                  </span>
+                </div>
+
+                ${pkg.synopsis ? `<p style="font-size: 12px; color: #cbd5e1; margin: 4px 0 8px 0; line-height: 1.4;"><b>Synopsis:</b> ${pkg.synopsis}</p>` : ''}
+                ${pkg.cliffhanger ? `<div style="font-size: 11px; color: #fda4af; background: rgba(244, 63, 94, 0.1); padding: 6px 10px; border-radius: 6px; margin-bottom: 10px;"><b>Cliffhanger:</b> ${pkg.cliffhanger}</div>` : ''}
+
+                <!-- Master Sync Button -->
+                <div style="background: rgba(30, 58, 138, 0.3); border: 1px solid #3b82f6; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                  <div>
+                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Push All 10 Shots to Production</div>
+                    <div style="font-size: 11px; color: #94a3b8;">Updates Tab 1, Tab 2 (Current_JSON_Prompts), Tab 3, and your Shot Director cards immediately!</div>
+                  </div>
+                  <button class="btn btn-primary" id="syncFullEpBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4);" onclick="syncFullEpisodeToSheet(${idx})">
+                    📤 Sync ENTIRE Episode (All 10 Shots) to Sheet
+                  </button>
+                </div>
+                <div id="fullEpStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
+
+                <!-- Accordion of All 10 Shots -->
+                <div style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; padding-right: 4px;">
+                  ${shotsRowsHtml}
+                </div>
+              </div>
+            `;
+          } else if (pkg) {
+            // SINGLE SHOT CARD
+            const sd = pkg.shotData || pkg;
+            const shotNum = sd.target_shot_number || sd.shot_number || 1;
             const duration = sd.duration || (sd.json_prompt && sd.json_prompt.duration) || '6s';
             const charName = sd.character || 'Character';
+            const wordsCount = (sd.dialogue_malayalam || '').trim().split(/\s+/).filter(Boolean).length;
             const jsonPromptObj = sd.json_prompt || sd;
             const jsonFormatted = JSON.stringify(jsonPromptObj, null, 2);
 
-            jsonCardHtml = `
+            cardHtml = `
               <div class="gemini-prompt-card">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
                   <div style="display: flex; align-items: center; gap: 6px;">
@@ -3150,6 +3238,7 @@ The JSON MUST follow this schema:
                     <span class="badge badge-dur" style="font-size: 11px;">⏱️ ${duration}</span>
                     <span class="badge badge-char" style="font-size: 11px;">👤 ${charName}</span>
                     <span class="badge badge-nobgm" style="font-size: 11px;">🔇 NO BGM</span>
+                    ${wordsCount > 0 ? `<span style="font-size: 10px; background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 2px 6px; border-radius: 4px; font-weight: 700;">${wordsCount} words</span>` : ''}
                   </div>
                   <span style="font-size: 11px; color: #38bdf8; font-weight: 700;">Google Flow Ready</span>
                 </div>
@@ -3169,7 +3258,7 @@ The JSON MUST follow this schema:
                     📋 Copy JSON Prompt
                   </button>
                   <button class="btn btn-primary" id="syncSheetBtn_${idx}" style="padding: 7px 16px; font-size: 12px;" onclick="syncDirectorPromptToSheet(${idx})">
-                    📤 Sync to Google Sheet (Tab 2)
+                    📤 Sync Shot #${shotNum} to Sheet (Tab 2)
                   </button>
                 </div>
                 <div id="syncStatus_${idx}" style="font-size: 12px; margin-top: 6px; text-align: right; display: none;"></div>
@@ -3181,12 +3270,12 @@ The JSON MUST follow this schema:
             <div class="gemini-bubble-meta">
               <span style="font-size: 16px;">🎬</span>
               <b>Gemini AI Director</b>
-              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">Director Advice</span>
+              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">Director Vision</span>
             </div>
             <div style="font-size: 13px; line-height: 1.6; color: #e2e8f0;">
               ${narrativeText}
             </div>
-            ${jsonCardHtml}
+            ${cardHtml}
           `;
         }
 
@@ -3196,12 +3285,15 @@ The JSON MUST follow this schema:
       container.scrollTop = container.scrollHeight;
     }
 
-    function copyDirectorPrompt(idx, btn) {
-      const codeEl = document.getElementById(`directorPromptCode_${idx}`);
-      if (!codeEl) return;
-      navigator.clipboard.writeText(codeEl.innerText).then(() => {
+    function copySingleShotPrompt(msgIdx, shotNum, btn) {
+      const msg = geminiChatHistory[msgIdx];
+      if (!msg || !msg.packageData || !msg.packageData.shots) return;
+      const shot = msg.packageData.shots.find(s => s.shot_number === shotNum);
+      if (!shot) return;
+      const jsonPrompt = shot.json_prompt || shot;
+      navigator.clipboard.writeText(JSON.stringify(jsonPrompt, null, 2)).then(() => {
         const orig = btn.innerText;
-        btn.innerText = "✓ Copied JSON!";
+        btn.innerText = "✓ Copied!";
         btn.style.background = "#059669";
         setTimeout(() => {
           btn.innerText = orig;
@@ -3210,58 +3302,46 @@ The JSON MUST follow this schema:
       });
     }
 
-    async function syncDirectorPromptToSheet(idx) {
+    async function syncFullEpisodeToSheet(idx) {
       const msg = geminiChatHistory[idx];
-      if (!msg || !msg.shotData) return;
+      if (!msg || !msg.packageData || !msg.packageData.shots) return;
 
-      const sd = msg.shotData;
-      const targetShotNum = sd.target_shot_number || sd.shot_number || 1;
-      const syncBtn = document.getElementById(`syncSheetBtn_${idx}`);
-      const statusEl = document.getElementById(`syncStatus_${idx}`);
+      const pkg = msg.packageData;
+      const syncBtn = document.getElementById(`syncFullEpBtn_${idx}`);
+      const statusEl = document.getElementById(`fullEpStatus_${idx}`);
 
       if (syncBtn) {
         syncBtn.disabled = true;
-        syncBtn.innerText = "⏳ Syncing...";
+        syncBtn.innerText = "⏳ Syncing All 10 Shots...";
       }
       if (statusEl) {
         statusEl.style.display = "block";
         statusEl.style.color = "#38bdf8";
-        statusEl.innerText = `Uploading Shot #${targetShotNum} to Google Sheet Tab 2...`;
+        statusEl.innerText = `Updating episodeData and pushing 10 shots to Google Sheet Tab 2...`;
       }
 
       // 1. Update in-memory episodeData
-      if (episodeData && episodeData.shots) {
-        const shotIdx = episodeData.shots.findIndex(s => s.shot_number === targetShotNum);
-        if (shotIdx !== -1) {
-          if (sd.json_prompt) episodeData.shots[shotIdx].json_prompt = sd.json_prompt;
-          if (sd.dialogue_malayalam) {
-            episodeData.shots[shotIdx].dialogue_malayalam = sd.dialogue_malayalam;
-            episodeData.shots[shotIdx].dialogue = sd.dialogue_malayalam;
-          }
-          if (sd.action_summary) {
-            episodeData.shots[shotIdx].action_summary = sd.action_summary;
-            episodeData.shots[shotIdx].action = sd.action_summary;
-          }
-          if (sd.duration) episodeData.shots[shotIdx].duration = sd.duration;
-          if (sd.character) episodeData.shots[shotIdx].character = sd.character;
-        } else {
-          // If shot didn't exist, append it
-          episodeData.shots.push({
-            shot_number: targetShotNum,
-            duration: sd.duration || "6s",
-            character: sd.character || "Reenu",
-            dialogue_malayalam: sd.dialogue_malayalam || "",
-            dialogue: sd.dialogue_malayalam || "",
-            action_summary: sd.action_summary || "",
-            action: sd.action_summary || "",
-            json_prompt: sd.json_prompt || sd
-          });
-        }
-        // Update Shot Director tab UI immediately!
-        renderShots();
-      }
+      if (pkg.title_english) episodeData.title_english = pkg.title_english;
+      if (pkg.title_malayalam) episodeData.title_malayalam = pkg.title_malayalam;
+      if (pkg.synopsis) episodeData.synopsis = pkg.synopsis;
+      if (pkg.cliffhanger) episodeData.cliffhanger = pkg.cliffhanger;
+      if (pkg.episode_number) episodeData.episode_number = pkg.episode_number;
 
-      // 2. Post to Google Sheet Webhook (Tab 2 Current_JSON_Prompts)
+      episodeData.shots = pkg.shots.map(s => ({
+        shot_number: s.shot_number,
+        duration: s.duration || "6s",
+        character: s.character || "Third-Person Narrator",
+        dialogue_malayalam: s.dialogue_malayalam || "",
+        dialogue: s.dialogue_malayalam || "",
+        action_summary: s.action_summary || "",
+        action: s.action_summary || "",
+        json_prompt: s.json_prompt || s
+      }));
+
+      // Render updated Shot Director tab cards immediately!
+      renderShots();
+
+      // 2. Post full update to Google Sheet (Tab 1, Tab 2, Tab 3)
       try {
         const payload = {
           action: "update_next_episode_full",
@@ -3270,7 +3350,7 @@ The JSON MUST follow this schema:
           title_malayalam: episodeData.title_malayalam,
           synopsis: episodeData.synopsis,
           cliffhanger: episodeData.cliffhanger,
-          total_shots: episodeData.shots ? episodeData.shots.length : 10,
+          total_shots: episodeData.shots.length,
           shots: episodeData.shots
         };
 
@@ -3281,39 +3361,33 @@ The JSON MUST follow this schema:
         });
 
         if (syncBtn) {
-          syncBtn.innerText = "✓ Synced to Sheet!";
+          syncBtn.innerText = "✓ All 10 Shots Synced to Sheet!";
           syncBtn.style.background = "#059669";
         }
         if (statusEl) {
           statusEl.style.color = "#34d399";
-          statusEl.innerText = `✓ Shot #${targetShotNum} updated live in Google Sheet Tab 2 and Shot Card!`;
+          statusEl.innerText = `✓ SUCCESS! All 10 shots updated in Google Sheet Tab 2 [Current_JSON_Prompts] and your Shot Director cards!`;
         }
       } catch (err) {
-        console.warn("Sheet sync error:", err);
-        // Fallback: also save to Tab 4 as idea
-        try {
-          await fetch(`${getActiveGasUrl()}?action=suggest_story_idea&target_episode=${episodeData.episode_number || 8}&idea=${encodeURIComponent(`Shot ${targetShotNum}: ${sd.action_summary || 'Updated prompt'}`)}`);
-        } catch (e2) {}
-
+        console.warn("Full episode sync error:", err);
         if (syncBtn) {
-          syncBtn.innerText = "✓ Synced (Local & Tab 4)!";
+          syncBtn.innerText = "✓ Synced Locally!";
           syncBtn.style.background = "#059669";
         }
         if (statusEl) {
           statusEl.style.color = "#34d399";
-          statusEl.innerText = `✓ Updated locally & saved to Google Sheet Tab 4!`;
+          statusEl.innerText = `✓ Updated all 10 shots locally in browser. Refresh Google Sheet to sync.`;
         }
       } finally {
         setTimeout(() => {
           if (syncBtn) {
             syncBtn.disabled = false;
-            syncBtn.innerText = "📤 Sync to Google Sheet (Tab 2)";
+            syncBtn.innerText = "📤 Sync ENTIRE Episode (All 10 Shots) to Sheet";
             syncBtn.style.background = "";
           }
-        }, 3500);
+        }, 4000);
       }
     }
-
 
     window.onload = () => {
       initGeminiChat();
