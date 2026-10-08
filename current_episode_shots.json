@@ -32,8 +32,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air, glistening wet ground",
           "spatial_blocking": {
             "Sachin": "Standing outside car, passenger side door open",
@@ -44,7 +44,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "35mm cinematic prime lens, f/1.8 shallow depth of field"
+          "camera_lens": "cinematic prime lens, shallow depth of field"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Low angle tracking shot following their steps",
@@ -56,8 +56,7 @@
           "script": "മഴ തോർന്ന രാത്രിയിൽ, സച്ചിനും റീനുവും വീടിന്റെ മുന്നിലെത്തി.",
           "line": "മഴ തോർന്ന രാത്രിയിൽ, സച്ചിനും റീനുവും വീടിന്റെ മുന്നിലെത്തി."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -83,8 +82,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air, glistening wet ground",
           "spatial_blocking": {
             "Sachin": "Standing right side of frame",
@@ -95,7 +94,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "85mm portrait prime lens, f/1.8"
+          "camera_lens": "portrait prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Close-up on Reenu",
@@ -107,8 +106,7 @@
           "script": "ഇന്ന് ഒരുപാട് വൈകിപ്പോയി, അല്ലേ സച്ചിൻ?",
           "line": "ഇന്ന് ഒരുപാട് വൈകിപ്പോയി, അല്ലേ സച്ചിൻ?"
         },
-        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -134,8 +132,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air, glistening wet ground",
           "spatial_blocking": {
             "Sachin": "Standing right side of frame facing Reenu",
@@ -146,7 +144,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "85mm portrait prime lens, f/1.8"
+          "camera_lens": "portrait prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Close-up on Sachin",
@@ -158,8 +156,7 @@
           "script": "അതെ റീനു, സമയം പോയതറിഞ്ഞില്ല.",
           "line": "അതെ റീനു, സമയം പോയതറിഞ്ഞില്ല."
         },
-        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -185,8 +182,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Sachin": "Hand reaching toward Reenu",
@@ -197,7 +194,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "100mm macro lens, f/2.8"
+          "camera_lens": "macro lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Extreme close-up",
@@ -209,8 +206,7 @@
           "script": "സച്ചിൻ മെല്ലെ റീനുവിന്റെ കൈകളിൽ തൊട്ടു.",
           "line": "സച്ചിൻ മെല്ലെ റീനുവിന്റെ കൈകളിൽ തൊട്ടു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -236,8 +232,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Sachin": "Facing Reenu",
@@ -248,7 +244,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "50mm cinematic prime lens, f/1.8"
+          "camera_lens": "cinematic prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Medium close-up",
@@ -260,8 +256,7 @@
           "script": "റീനു, അർദ്ധരാത്രി മറൈൻ ഡ്രൈവിൽ വരാമോ?",
           "line": "റീനു, അർദ്ധരാത്രി മറൈൻ ഡ്രൈവിൽ വരാമോ?"
         },
-        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -287,8 +282,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Reenu": "Facing Sachin",
@@ -299,7 +294,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "85mm portrait prime lens, f/1.8"
+          "camera_lens": "portrait prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Close-up on Reenu",
@@ -311,8 +306,7 @@
           "script": "അർദ്ധരാത്രിയോ? എന്തിനാണ് സച്ചിൻ?",
           "line": "അർദ്ധരാത്രിയോ? എന്തിനാണ് സച്ചിൻ?"
         },
-        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -338,8 +332,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Sachin": "Facing Reenu",
@@ -350,7 +344,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "85mm portrait prime lens, f/1.8"
+          "camera_lens": "portrait prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Close-up on Sachin",
@@ -362,8 +356,7 @@
           "script": "എല്ലാം അവിടെവെച്ച് പറയാം.",
           "line": "എല്ലാം അവിടെവെച്ച് പറയാം."
         },
-        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -389,8 +382,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Reenu": "Looking down at ground",
@@ -401,7 +394,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "50mm cinematic prime lens, f/1.8"
+          "camera_lens": "cinematic prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Medium shot",
@@ -413,8 +406,7 @@
           "script": "ഒരുനിമിഷം റീനു മടിച്ചു നിന്നു.",
           "line": "ഒരുനിമിഷം റീനു മടിച്ചു നിന്നു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -440,8 +432,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Reenu": "Facing Sachin",
@@ -452,7 +444,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "85mm portrait prime lens, f/1.8"
+          "camera_lens": "portrait prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Close-up on Reenu",
@@ -464,8 +456,7 @@
           "script": "ശരി, ഞാൻ വരാം.",
           "line": "ശരി, ഞാൻ വരാം."
         },
-        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio."
       }
     },
     {
@@ -491,8 +482,8 @@
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-          "time_of_day": "8:30 PM Night Monsoon",
-          "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
+          "time_of_day": "Night Monsoon",
+          "lighting_palette": "Cool moonlight with warm porch lamp glow",
           "weather": "Damp air",
           "spatial_blocking": {
             "Sachin": "Standing at gate",
@@ -503,7 +494,7 @@
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "35mm cinematic prime lens, f/1.8"
+          "camera_lens": "cinematic prime lens"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Wide shot",
@@ -515,8 +506,7 @@
           "script": "അവർ രണ്ടുപേരും പരസ്പരം നോക്കി ചിരിച്ചു.",
           "line": "അവർ രണ്ടുപേരും പരസ്പരം നോക്കി ചിരിച്ചു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     }
   ]

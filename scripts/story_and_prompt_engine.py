@@ -276,8 +276,8 @@ CRITICAL PRODUCTION RULES:
 12. SEQUENCE CONTINUITY & SPATIAL BLOCKING (CRITICAL FOR VIDEO AI & MULTI-SHOT COHERENCE):
    - In EVERY shot's "json_prompt", you MUST include a "sequence_continuity" object specifying:
      • "scene_id": Identifier for current physical sequence/location (e.g. "SCENE_CAR_KOCHI_RAIN", "SCENE_AIRPORT_ARRIVAL_GATE", "SCENE_TEA_STALL_BACKWATERS").
-     • "time_of_day": Exact time of day (e.g. "4:45 PM Late Afternoon Monsoon Dusk").
-     • "lighting_palette": Color temperature & lighting scheme (e.g. "Cool 5600K overcast exterior daylight with soft warm 3200K amber dashboard glow").
+     • "time_of_day": Pure atmospheric descriptive time (e.g. "Late Afternoon Monsoon Dusk", "Monsoon Night"). STRICTLY FORBIDDEN: NEVER use clock timestamps or numbers like "4:45 PM", "8:30 PM", because video AI prints them as slate text!
+     • "lighting_palette": Pure visual lighting atmosphere (e.g. "Cool overcast daylight with soft warm amber dashboard glow", "Moonlight with warm porch lamp glow"). STRICTLY FORBIDDEN: NEVER use Kelvin numbers like "5600K" or "3200K" because video AI prints them as slate text!
      • "weather": Persistent weather state (e.g. "Continuous Kochi monsoon drizzle with rain droplets sliding down car window glass").
      • "spatial_blocking": Dictionary mapping each character to their exact physical seat, standing position, and orientation. E.g.:
        {{
@@ -288,7 +288,7 @@ CRITICAL PRODUCTION RULES:
        MANDATORY: Character positions and seating MUST NEVER randomly flip or swap between shots within the same sequence!
      • "eyeline_direction": Strict 180-degree rule camera axis & gaze direction (e.g. "Sachin looks screen-left/down; Reenu looks screen-right at Sachin").
      • "persistent_props": Array of key physical hero props present and their exact state/location (e.g. ["Vintage tan-brown London leather pouch under front passenger seat", "Sachin's diagonal brown leather cross-bag strap over left shoulder", "Reenu's silver wrist watch on left wrist"]).
-     • "camera_lens": Specific cinematic focal length and aperture (e.g. "50mm cinematic prime lens, f/2.0 shallow depth of field, soft circular bokeh").
+     • "camera_lens": Pure cinematic depth description (e.g. "Cinematic prime lens, shallow depth of field, soft circular bokeh"). STRICTLY FORBIDDEN: NEVER use millimeter or f-stop numbers like "50mm", "85mm", "f/1.8", "f/2.0" because video AI prints them as slate text!
 
 13. MANDATORY COMPLETE SELF-CONTAINED PROMPT FOR EVERY SHOT (ZERO SHORTCUTS):
    - Video generation AIs (Google Flow, Veo, Kling, Hailuo) generate each clip INDEPENDENTLY. They do NOT carry over memory from previous shots.
@@ -296,11 +296,11 @@ CRITICAL PRODUCTION RULES:
    - In EVERY single shot, "characters_present" MUST contain full objects with "name" and the COMPLETE "visual_dna" with locked attire for EVERY character present in that shot/frame. FORBIDDEN: NEVER write plain string arrays like ["Sachin", "Reenu"]!
    - In EVERY single shot, "style" MUST be the full master 3D Pixar render string without truncating words.
    - In EVERY single shot, "persistent_props" MUST list all active scene props present in that sequence.
-   - In EVERY single shot, "negative_prompt" MUST be the complete master negative prompt string.
+   - DO NOT include "negative_prompt" inside "json_prompt". Single-box video generators like Google Flow read all fields inside the prompt box as positive instructions, so negative words cause text hallucination.
 
 14. STRICT PROHIBITION OF ON-SCREEN TEXT, TYPOGRAPHY, TIMESTAMPS & WATERMARKS (MANDATORY):
    - The visual video frames MUST be 100% clean and free of ANY written characters, symbols, numbers, or graphics.
-   - SPECIFIC INDIVIDUAL TEXT PROHIBITIONS (Must strictly enforce across all prompts and negative prompts):
+   - SPECIFIC INDIVIDUAL TEXT PROHIBITIONS (Must strictly enforce across all prompts):
      • NO Studio/Brand text or logos: no Disney text, no Pixar text, no Disney Pixar text, no Disney logo, no Pixar logo, no Walt Disney logo, no studio watermarks, no brand names, no brand logos, no Disney font.
      • NO Character names as text: no character names on screen, no 'Sachin' text, no 'Reenu' text, no 'Amal' text, no character name labels, no name tags, no name badges, no floating names.
      • NO Time, timestamps, or durations: no timestamps, no time text, no clock numbers, no timecode display, no '6:30 PM', no '4:45 PM', no '5s', no '6s', no duration numbers, no countdown timers, no digital clock overlay.
@@ -348,8 +348,8 @@ Output JSON structure:
         ],
         "sequence_continuity": {{
           "scene_id": "SCENE_CAR_KOCHI_RAIN",
-          "time_of_day": "4:45 PM Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Cool 5600K overcast exterior daylight with soft warm 3200K amber dashboard glow",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Cool overcast exterior daylight with soft warm amber dashboard glow",
           "weather": "Continuous Kochi monsoon drizzle with rain droplets sliding down car window glass",
           "spatial_blocking": {{
             "Amal": "Driver seat (right side), hands on steering wheel, facing road",
@@ -362,7 +362,7 @@ Output JSON structure:
             "Sachin's diagonal brown leather cross-bag strap over left shoulder",
             "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "50mm cinematic prime lens, f/2.0 shallow depth of field, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         }},
         "location": "...",
         "camera": "...",
@@ -374,8 +374,7 @@ Output JSON structure:
           "script": "മലയാളം ലിപി",
           "line": "..."
         }},
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, Disney logo, Pixar logo, Disney Pixar text, studio watermark, brand name, character names on screen, Sachin text, Reenu text, Amal text, name tags, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, 4K text, 60fps text, Octane Render text, 9:16 text, camera metadata text, subtitles, closed captions, lower thirds, title cards, watermarks, credits, UI text"
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }}
     }}
   ]
@@ -503,16 +502,35 @@ def enforce_prompt_completeness(data):
 
         jp["characters_present"] = normalized_chars
 
-        # 3. Full negative prompt
-        jp["negative_prompt"] = MASTER_NEGATIVE_PROMPT
+        # 3. Clean slate metadata and remove negative_prompt so single-box tools never draw badges
+        jp.pop("negative_prompt", None)
 
-        # 4. Normalize persistent props in sequence_continuity
+        # 4. Normalize and clean sequence_continuity
         if "sequence_continuity" in jp and isinstance(jp["sequence_continuity"], dict):
             sc = jp["sequence_continuity"]
             sc_props = sc.get("persistent_props", [])
             # If props were stripped down in this shot, restore all props from the scene
             if len(sc_props) < len(all_props) and len(all_props) > 0:
                 sc["persistent_props"] = sorted(list(all_props))
+
+            # Strip clock numbers (e.g., '8:30 PM ', '4:45 PM ')
+            if "time_of_day" in sc and isinstance(sc["time_of_day"], str):
+                sc["time_of_day"] = re.sub(r'\b\d{1,2}:\d{2}\s*(?:AM|PM|am|pm)?\s*', '', sc["time_of_day"]).strip()
+                if not sc["time_of_day"]:
+                    sc["time_of_day"] = "Monsoon Night"
+
+            # Strip Kelvin temperature numbers (e.g., '3200K', '5200K')
+            if "lighting_palette" in sc and isinstance(sc["lighting_palette"], str):
+                sc["lighting_palette"] = re.sub(r'\b\d{4,5}K\s*', '', sc["lighting_palette"]).strip()
+
+            # Strip lens millimeter and aperture numbers (e.g., '85mm', 'f/1.8')
+            if "camera_lens" in sc and isinstance(sc["camera_lens"], str):
+                clean_lens = re.sub(r'\b\d{2,3}mm\s*', '', sc["camera_lens"])
+                clean_lens = re.sub(r'f/\d+(\.\d+)?\s*', '', clean_lens).strip()
+                clean_lens = re.sub(r',\s*,', ',', clean_lens).strip(', ')
+                if not clean_lens:
+                    clean_lens = "Cinematic prime lens, shallow depth of field"
+                sc["camera_lens"] = clean_lens
 
     return data
 
