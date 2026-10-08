@@ -106,7 +106,7 @@ For every shot, you must produce a detailed JSON prompt object ('json_prompt') c
    - 'language': "Malayalam"
    - 'line': Full spoken sentence in Malayalam script (മലയാളം ലിപി), or "" if silent.
 - 'audio_directive': "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean Malayalam voice dialogue and natural ambient foley sound effects only (rain drizzle, car engine, cloth rustle)."
-- 'negative_prompt': "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing"
+- 'negative_prompt': "background music, musical score, singing, low resolution, 2D illustration, deformed faces, distorted anatomy, cutoff framing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, 4s, 8s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
 
 Also provide a compiled text 'flow_prompt' that combines all of these into a single copy-pasteable prompt string for Google Flow, explicitly including the NO-MUSIC directive and full Malayalam dialogue.
 
@@ -144,7 +144,7 @@ Return ONLY valid JSON (no markdown fences, no code blocks):
           "line": ""
         }},
         "audio_directive": "STRICTLY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. Clean ambient rain foley only.",
-        "negative_prompt": "background music, musical score, low resolution, wide aspect ratio"
+        "negative_prompt": "background music, musical score, low resolution, wide aspect ratio, on-screen text, visible text, typography, fonts, writing, letters, words, Disney logo, Pixar logo, Disney text, brand names, character names on screen, Sachin text, Reenu text, Amal text, timestamps, time text, clock numbers, 4K text, 60fps text, Octane Render text, subtitles, captions, lower thirds, title cards, watermarks, credits, UI text"
       }},
       "flow_prompt": "Disney Pixar 3D animated film, vertical 9:16 video. Outside CIAL airport terminal, sparkling monsoon rain begins drumming against sleek glass awnings. Reenu: Attractive 22yo South Indian Malayali girl with shoulder-length voluminous layered wavy dark-brown hair and soft curtain bangs, warm sparkling hazel-brown doe eyes, wearing classic pastel camouflage baby-blue and yellow t-shirt with sky-blue skirt, pauses at the curb, holding her hands out playfully. No spoken dialogue. AUDIO DIRECTIVE: STRICTLY NO BACKGROUND MUSIC, clean ambient rain foley only. Slow cinematic tilt-down, centered framing in middle 55%, volumetric amber bokeh, 4k 60fps render."
     }}

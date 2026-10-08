@@ -43,7 +43,20 @@ NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming Sout
 
 MASTER_STYLE = "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
-MASTER_NEGATIVE_PROMPT = "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+MASTER_NEGATIVE_PROMPT = (
+    "character mouth moving during voiceover, character lip sync during narration, "
+    "open mouth talking during voiceover, character talking during narration, "
+    "character speaking narrator words, speaking animation on character, character mouth moving, "
+    "real human, realistic human, real person, live-action actor, photorealistic human face, "
+    "human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, "
+    "2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, "
+    "on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, "
+    "Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, "
+    "character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, "
+    "timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, "
+    "4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, "
+    "subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
+)
 
 DNA_REGISTRY = {
     "Reenu": DNA_REENU,
@@ -175,6 +188,7 @@ def generate_next_episode_screenplay(current_ep_num, previous_story="", cliffhan
         "   - Every word must be written with precise orthography so that text-to-speech voice generators and voice actors pronounce every syllable clearly without stumbling, slurring, or mispronouncing. "
         "NARRATOR VOICE: The third-person narrator is a young, expressive female narrator with a melodic, charming Malayalam storytelling voice. "
         "AUDIO RESTRICTION: STRICTLY NO BACKGROUND MUSIC, NO INSTRUMENTAL BGM, NO MUSIC SCORE. Clean voice audio and natural ambient foley effects only. "
+        "STRICT NO-TEXT RESTRICTION: ABSOLUTELY NO VISIBLE ON-SCREEN TEXT, TYPOGRAPHY, WORDS, LETTERS, LABELS, WATERMARKS, TIMESTAMPS, OR LOGOS. The video frame must be completely clean of any written text, specifications, or graphic overlays. "
         "You will output ONLY valid JSON according to the specified schema."
     )
 
@@ -241,7 +255,7 @@ CRITICAL PRODUCTION RULES:
 8. ABSOLUTELY NO BACKGROUND MUSIC (BGM):
    - In every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
 9. NEGATIVE PROMPT:
-   - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+   - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
 10. STYLE STRING:
    - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
@@ -283,6 +297,15 @@ CRITICAL PRODUCTION RULES:
    - In EVERY single shot, "style" MUST be the full master 3D Pixar render string without truncating words.
    - In EVERY single shot, "persistent_props" MUST list all active scene props present in that sequence.
    - In EVERY single shot, "negative_prompt" MUST be the complete master negative prompt string.
+
+14. STRICT PROHIBITION OF ON-SCREEN TEXT, TYPOGRAPHY, TIMESTAMPS & WATERMARKS (MANDATORY):
+   - The visual video frames MUST be 100% clean and free of ANY written characters, symbols, numbers, or graphics.
+   - SPECIFIC INDIVIDUAL TEXT PROHIBITIONS (Must strictly enforce across all prompts and negative prompts):
+     • NO Studio/Brand text or logos: no Disney text, no Pixar text, no Disney Pixar text, no Disney logo, no Pixar logo, no Walt Disney logo, no studio watermarks, no brand names, no brand logos, no Disney font.
+     • NO Character names as text: no character names on screen, no 'Sachin' text, no 'Reenu' text, no 'Amal' text, no character name labels, no name tags, no name badges, no floating names.
+     • NO Time, timestamps, or durations: no timestamps, no time text, no clock numbers, no timecode display, no '6:30 PM', no '4:45 PM', no '5s', no '6s', no duration numbers, no countdown timers, no digital clock overlay.
+     • NO Technical or camera specifications: no '4K' text, no '60fps' text, no 'Octane Render' text, no '9:16' text, no aspect ratio labels, no camera metadata text, no resolution stamps, no specification text.
+     • NO Graphic overlays or text elements: no on-screen text, no typography, no subtitles, no closed captions, no captions, no lower thirds, no title card text, no watermarks, no credits, no copyright notices, no labels, no words, no letters, no alphabet, no UI elements.
 
 Output JSON structure:
 {{
@@ -352,7 +375,7 @@ Output JSON structure:
           "line": "..."
         }},
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, Disney logo, Pixar logo, Disney Pixar text, studio watermark, brand name, character names on screen, Sachin text, Reenu text, Amal text, name tags, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, 4K text, 60fps text, Octane Render text, 9:16 text, camera metadata text, subtitles, closed captions, lower thirds, title cards, watermarks, credits, UI text"
       }}
     }}
   ]
