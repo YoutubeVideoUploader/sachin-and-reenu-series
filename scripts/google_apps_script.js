@@ -1195,6 +1195,13 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
+    // 7. Update Single Shot Prompt in Tab 2
+    if (action === "update_shot_prompt") {
+      const res = updateSingleShotPrompt(epNum, body.shot_number, body.shot_data);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
       .setMimeType(ContentService.MimeType.JSON);
 
@@ -1298,3 +1305,38 @@ function triggerGitHubWorkflowFromAppsScript(params) {
     };
   }
 }
+
+/**
+ * Updates a single shot row in Tab 2 [Current_JSON_Prompts] without overwriting other shots.
+ */
+function updateSingleShotPrompt(episodeNum, shotNum, shotData) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_PROMPTS);
+  if (!sheet || sheet.getLastRow() < 3) {
+    return { success: false, error: "Tab 2 [Current_JSON_Prompts] not initialized" };
+  }
+  
+  const lastRow = sheet.getLastRow();
+  const numRows = lastRow - 2;
+  const pData = sheet.getRange(3, 1, numRows, 6).getValues();
+  
+  for (let i = 0; i < pData.length; i++) {
+    const currentShotNum = i + 1;
+    if (currentShotNum === shotNum) {
+      if (shotData.duration) sheet.getRange(i + 3, 2).setValue(shotData.duration);
+      if (shotData.character) sheet.getRange(i + 3, 3).setValue(shotData.character);
+      if (shotData.dialogue_malayalam) sheet.getRange(i + 3, 4).setValue(shotData.dialogue_malayalam);
+      if (shotData.action_summary) sheet.getRange(i + 3, 5).setValue(shotData.action_summary);
+      if (shotData.json_prompt) {
+        const jsonStr = typeof shotData.json_prompt === 'string' ? shotData.json_prompt : JSON.stringify(shotData.json_prompt, null, 2);
+        sheet.getRange(i + 3, 6).setValue(jsonStr);
+      }
+      return {
+        success: true,
+        message: `Shot #${shotNum} updated directly in Tab 2 [Current_JSON_Prompts]!`
+      };
+    }
+  }
+  return { success: false, error: `Shot #${shotNum} not found in Tab 2` };
+}
+

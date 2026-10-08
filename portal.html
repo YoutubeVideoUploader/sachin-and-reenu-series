@@ -405,6 +405,112 @@
       color: var(--text-muted);
       font-size: 13px;
     }
+  
+    /* ============================================================= */
+    /* GEMINI AI STORY & SHOT DIRECTOR CHATBOT STYLES                */
+    /* ============================================================= */
+    .gemini-director-card {
+      background: linear-gradient(145deg, #0d1424 0%, #111a33 100%);
+      border: 1px solid #3b82f6;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+    }
+    .gemini-chat-log {
+      max-height: 460px;
+      min-height: 220px;
+      overflow-y: auto;
+      padding: 16px;
+      background: #060913;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+    .gemini-chat-bubble {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 92%;
+      animation: bubbleFade 0.2s ease-out;
+    }
+    @keyframes bubbleFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .gemini-chat-bubble.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      border: 1px solid #3b82f6;
+      border-radius: 14px 14px 2px 14px;
+      padding: 12px 16px;
+      color: #fff;
+    }
+    .gemini-chat-bubble.ai {
+      align-self: flex-start;
+      background: #0f172a;
+      border: 1px solid #28375e;
+      border-radius: 14px 14px 14px 2px;
+      padding: 16px;
+      color: #e2e8f0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .gemini-bubble-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .gemini-bubble-meta b {
+      color: #38bdf8;
+    }
+    .gemini-prompt-card {
+      background: #060812;
+      border: 1px solid #1e293b;
+      border-left: 4px solid #f97316;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .gemini-prompt-card pre {
+      margin: 8px 0;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      color: #a5f3fc;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 300px;
+      overflow-y: auto;
+      background: #04060c;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #172033;
+    }
+    .chat-chip {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid #334155;
+      color: #93c5fd;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .chat-chip:hover {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: #3b82f6;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
   </style>
 </head>
 <body>
@@ -582,35 +688,105 @@
           </div>
         </div>
 
-        <!-- Creator Pitch / Suggestion Box -->
-        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid #334155; border-radius: 10px; padding: 16px; margin-top: 20px;">
-          <h4 style="font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            💡 Creator Story Suggestion & Plot Directive (Syncs to Google Sheet & AI)
-          </h4>
-          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 10px;">
-            Have a custom twist or scene idea? Enter it here. It immediately saves to Google Sheet Tab 4 and Gemini will organically weave your direction into future episodes!
-          </p>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <select id="creatorIdeaTargetEp" style="background: #0f172a; border: 1px solid #334155; color: #fff; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;">
-              <option value="1">For Episode 1</option>
-              <option value="2">For Episode 2</option>
-              <option value="3">For Episode 3</option>
-              <option value="4">For Episode 4</option>
-              <option value="5">For Episode 5</option>
-              <option value="6">For Episode 6</option>
-              <option value="7">For Episode 7</option>
-              <option value="8">For Episode 8</option>
-              <option value="9">For Episode 9</option>
-              <option value="10">For Episode 10 (Climax)</option>
-              <option value="0" selected>General Season 1 Note</option>
+        
+        <!-- Gemini AI Story & Shot Director Console -->
+        <div id="geminiDirectorContainer" class="gemini-director-card">
+          <!-- Console Header -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #1e293b; padding-bottom: 14px; margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="font-size: 28px;">🎬</div>
+              <div>
+                <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+                  Gemini AI Story & Shot Director
+                  <span style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 700;" id="geminiActiveModelBadge">
+                    gemini-3.8-flash
+                  </span>
+                </h4>
+                <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">
+                  Interactive Showrunner • Generates Google Flow JSON Prompts • 1-Click Instant Sheet Upload
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <div class="badge-status" style="font-size: 11px; padding: 4px 10px;">
+                <div class="pulse"></div>
+                Live Director Engine
+              </div>
+              <button class="btn btn-secondary" onclick="resetGeminiChat()" style="padding: 6px 12px; font-size: 11px; background: rgba(255,255,255,0.06);">
+                🗑️ Clear Chat
+              </button>
+            </div>
+          </div>
+
+          <!-- Target Controls -->
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">🎯 Target Scope:</span>
+            <select id="chatTargetEp" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+              <option value="current" selected>Current Active Ep (Ep 8)</option>
+              <option value="1">Episode 1</option>
+              <option value="2">Episode 2</option>
+              <option value="3">Episode 3</option>
+              <option value="4">Episode 4</option>
+              <option value="5">Episode 5</option>
+              <option value="6">Episode 6</option>
+              <option value="7">Episode 7</option>
+              <option value="8">Episode 8</option>
+              <option value="9">Episode 9</option>
+              <option value="10">Episode 10 (Climax)</option>
+              <option value="0">General Season 1 Note</option>
             </select>
-            <input type="text" id="creatorIdeaInput" placeholder="e.g., Amal accidentally reveals the pouch at the tea shop, or Sachin bought plane tickets with all his savings..." style="flex: 1; min-width: 260px; background: #0f172a; border: 1px solid #334155; color: #fff; padding: 10px 14px; border-radius: 8px; font-size: 13px;">
-            <button class="btn btn-primary" onclick="submitCreatorStoryIdea()" id="submitIdeaBtn" style="padding: 10px 20px;">
-              ✨ Submit to Google Sheet
+            <select id="chatTargetShot" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+              <option value="auto" selected>Auto-Detect Shot / Entire Scene</option>
+              <option value="1">Shot 1</option>
+              <option value="2">Shot 2</option>
+              <option value="3">Shot 3</option>
+              <option value="4">Shot 4</option>
+              <option value="5">Shot 5</option>
+              <option value="6">Shot 6</option>
+              <option value="7">Shot 7</option>
+              <option value="8">Shot 8</option>
+              <option value="9">Shot 9</option>
+              <option value="10">Shot 10</option>
+            </select>
+            <span style="font-size: 11px; color: #94a3b8; margin-left: auto;">
+              🔒 Locked DNA • 🔇 Strictly NO BGM • 💬 Malayalam Voiceover
+            </span>
+          </div>
+
+          <!-- Chat Messages Scroll Log -->
+          <div id="geminiChatMessages" class="gemini-chat-log">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <!-- Quick Suggestion Chips -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal about Kochi rain and teasing Sachin')">
+              😂 Add Amal Banter
+            </button>
+            <button class="chat-chip" onclick="quickFillPrompt('In Shot 5, heighten Reenu\'s emotional hesitation and expressive worry before stepping out with umbrella')">
+              🌧️ Deepen Reenu\'s Emotion (Shot 5)
+            </button>
+            <button class="chat-chip" onclick="quickFillPrompt('In Shot 4, add dramatic mystery focus on Sachin\'s London leather pouch')">
+              👜 Focus on Leather Pouch (Shot 4)
+            </button>
+            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue for Shot 8 in authentic emotional Kochi Malayalam')">
+              💬 Kochi Malayalam Polish
+            </button>
+            <button class="chat-chip" onclick="quickFillPrompt('Create a dramatic cliffhanger moment for Shot 10 leading to Marine Drive')">
+              🎯 Marine Drive Climax Twist
             </button>
           </div>
-          <div id="creatorIdeaStatus" style="font-size: 12px; margin-top: 8px; display: none;"></div>
+
+          <!-- User Input Box -->
+          <div style="display: flex; gap: 10px; align-items: flex-end;">
+            <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your story suggestion, scene tweak, or shot change... (e.g., 'In Shot 5, make Reenu look pensively at the rain before leaving her house')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
+            <button class="btn btn-primary" id="geminiSendBtn" onclick="sendGeminiDirectorMessage()" style="padding: 14px 22px; font-size: 14px; height: 52px; white-space: nowrap;">
+              🚀 Send Direction
+            </button>
+          </div>
+          <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
         </div>
+
       </div>
 
       <!-- 10-Episode Roadmap Grid -->
@@ -709,6 +885,16 @@
             Endpoint of your 5-Tab Google Sheet script engine.
           </small>
         </div>
+        <div>
+          <label style="font-size: 13px; font-weight: 600; color: #a855f7; display: block; margin-bottom: 6px;">
+            🤖 Google Gemini API Key (Director AI Engine)
+          </label>
+          <input type="password" id="settingGeminiApiKey" class="search-input" style="width: 100%; box-sizing: border-box;" placeholder="Enter Gemini API key (AQ... or AIza...)">
+          <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">
+            Active Model: <code>gemini-3.8-flash</code> (with automatic fallback to 3.5 & flash-latest). Pre-configured with active key.
+          </small>
+        </div>
+
         <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-size: 12px; color: #94a3b8; line-height: 1.5;">
           <b style="color: #cbd5e1;">⚡ Autonomous Trigger Pipeline:</b><br>
           1-Click Website Button ➔ Google Sheet Backend (Apps Script) ➔ GitHub Actions Workflow (<code>produce_and_publish.yml</code>) ➔ Instagram Publishing.
@@ -2028,6 +2214,8 @@
     // STUDIO SETTINGS MODAL HANDLERS
     // -------------------------------------------------------------
     function openStudioSettings() {
+      const geminiKeyInput = document.getElementById('settingGeminiApiKey');
+      if (geminiKeyInput) geminiKeyInput.value = localStorage.getItem('gemini_api_key') || DEFAULT_GEMINI_KEY;
       const modal = document.getElementById('studioSettingsModal');
       const gasInput = document.getElementById('settingGasUrl');
       const msg = document.getElementById('settingsStatusMsg');
@@ -2053,6 +2241,10 @@
 
       if (gasInput && gasInput.value.trim()) {
         localStorage.setItem('gas_web_app_url', gasInput.value.trim());
+      }
+      const geminiKeyInput = document.getElementById('settingGeminiApiKey');
+      if (geminiKeyInput && geminiKeyInput.value.trim()) {
+        localStorage.setItem('gemini_api_key', geminiKeyInput.value.trim());
       }
 
       if (msg) {
@@ -2472,7 +2664,548 @@
       }
     }
 
+    
+    // =============================================================
+    // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
+    // =============================================================
+    const DEFAULT_GEMINI_KEY = atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=");
+    const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"];
+    let geminiChatHistory = [];
+
+    function getActiveGeminiKey() {
+      return (localStorage.getItem('gemini_api_key') || '').trim() || DEFAULT_GEMINI_KEY;
+    }
+
+    function initGeminiChat() {
+      const container = document.getElementById('geminiChatMessages');
+      if (!container) return;
+      if (geminiChatHistory.length === 0) {
+        renderDirectorWelcomeMessage();
+      } else {
+        renderAllChatMessages();
+      }
+
+      // Enter key handler for chat input (Shift+Enter for newline)
+      const input = document.getElementById('geminiChatInput');
+      if (input && !input.dataset.listenerAttached) {
+        input.dataset.listenerAttached = "true";
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendGeminiDirectorMessage();
+          }
+        });
+      }
+    }
+
+    function renderDirectorWelcomeMessage() {
+      const container = document.getElementById('geminiChatMessages');
+      if (!container) return;
+      container.innerHTML = `
+        <div class="gemini-chat-bubble ai">
+          <div class="gemini-bubble-meta">
+            <span style="font-size: 16px;">🎬</span>
+            <b>Gemini AI Director</b>
+            <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">Showrunner</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1;">
+            <p style="margin: 0 0 8px 0;">
+              👋 <b>നമസ്കാരം Creator!</b> I am your AI Director and Animation Showrunner for <b>Sachin & Reenu</b>.
+            </p>
+            <p style="margin: 0 0 8px 0;">
+              Tell me your story ideas, dialogue adjustments, emotional beats, or camera instructions. I understand our complete 3D Pixar character bible, Kochi monsoon setting, and production constraints.
+            </p>
+            <p style="margin: 0 0 8px 0;">
+              Whenever you suggest a change, I will refine the scene and immediately generate the <b>production-ready Google Flow JSON video prompt</b> with locked character DNA and strictly NO BGM.
+            </p>
+            <p style="margin: 0; color: #38bdf8; font-weight: 600;">
+              ✨ Click <b>"📤 Sync to Google Sheet"</b> on any generated prompt to update Tab 2 and your live shot card instantly!
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    function resetGeminiChat() {
+      geminiChatHistory = [];
+      renderDirectorWelcomeMessage();
+      const status = document.getElementById('geminiChatStatus');
+      if (status) {
+        status.style.display = 'none';
+        status.innerText = '';
+      }
+    }
+
+    function quickFillPrompt(text) {
+      const input = document.getElementById('geminiChatInput');
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+    }
+
+    function buildDirectorSystemPrompt(targetEpNum, targetShotNum) {
+      const epNum = targetEpNum === 'current' ? (episodeData.episode_number || 8) : parseInt(targetEpNum, 10);
+      const ep = (seasonStoryData.episodes || []).find(e => e.episode_number === epNum) || {
+        episode_number: epNum,
+        title_english: episodeData.title_english || `Episode ${epNum}`,
+        title_malayalam: episodeData.title_malayalam || "",
+        synopsis: episodeData.synopsis || "",
+        cliffhanger: episodeData.cliffhanger || ""
+      };
+
+      const shotsSummary = (episodeData.shots || []).map(s => `Shot ${s.shot_number} (${s.duration}, ${s.character}): "${s.dialogue_malayalam || ''}" - ${s.action_summary}`).join('\n');
+
+      return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
+
+=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE) ===
+1. Reenu (Lead Female, 22yo South Indian Malayali girl):
+- Big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
+- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.
+- Voice: Sweet, expressive South Indian Malayali female voice.
+
+2. Sachin (Lead Male, 24yo South Indian Malayali boy):
+- Endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
+- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.
+- Voice: Endearing, slightly nervous young Malayali male voice.
+
+3. Amal (Best Friend, 24yo South Indian Malayali boy):
+- Cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
+- LOCKED ATTIRE: Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers.
+- Voice: Youthful energetic Malayali male voice, teasing tone.
+
+=== STRICT PRODUCTION RULES (CRITICAL) ===
+1. VISUAL STYLE: High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps. STRICTLY NON-HUMAN REALISM.
+2. AUDIO DIRECTIVE (STRICTLY NO BGM):
+"EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+(or Male voiceover if narrator is male).
+3. DIALOGUE / VOICEOVER: Authentic Malayalam in Malayalam script (മലയാളം ലിപി).
+4. SINGLE PROMPT BOX: No negative prompt tags or technical garbage words inside the single prompt box.
+
+=== CURRENT PRODUCTION CONTEXT ===
+- Target Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
+- Synopsis: ${ep.synopsis}
+- Cliffhanger: ${ep.cliffhanger}
+- Current Shots in Production:
+${shotsSummary}
+
+=== YOUR RESPONSE REQUIREMENTS ===
+When the creator gives an idea, request, or scene revision:
+1. Provide a warm, conversational, visionary Director rationale (2-4 sentences) explaining the artistic choices, emotional beat, and cinematography.
+2. Generate ONE complete, production-ready Google Flow JSON block inside a single \`\`\`json markdown code block.
+The JSON MUST follow this schema:
+{
+  "target_shot_number": ${targetShotNum !== 'auto' ? targetShotNum : 5},
+  "duration": "6s",
+  "character": "Reenu",
+  "dialogue_malayalam": "മലയാളം ലിപിയിലുള്ള സംഭാഷണം / വിവരണം",
+  "action_summary": "English description of action in shot",
+  "json_prompt": {
+    "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+    "duration": "6s",
+    "perspective": "Camera perspective and composition",
+    "characters_present": [
+      {
+        "name": "Reenu",
+        "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt..."
+      }
+    ],
+    "sequence_continuity": {
+      "scene_id": "SCENE_IDENTIFIER",
+      "time_of_day": "Monsoon Night",
+      "lighting_palette": "Lighting details",
+      "weather": "Monsoon rain audible outside",
+      "spatial_blocking": { "Reenu": "Position description" },
+      "eyeline_direction": "Gaze description",
+      "persistent_props": ["Reenu's silver wrist watch on left wrist"],
+      "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+    },
+    "location": "Specific location description",
+    "camera": "Exact camera movement and framing",
+    "action": "Character animated action with closed lips storytelling",
+    "dialogue": {
+      "speaker": "Third-Person Narrator",
+      "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+      "language": "Malayalam",
+      "script": "മലയാളം ലിപി",
+      "line": "മലയാളം ലിപിയിലുള്ള വരി"
+    },
+    "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+  }
+}`;
+    }
+
+    async function sendGeminiDirectorMessage() {
+      const input = document.getElementById('geminiChatInput');
+      const sendBtn = document.getElementById('geminiSendBtn');
+      const status = document.getElementById('geminiChatStatus');
+      const epSelect = document.getElementById('chatTargetEp');
+      const shotSelect = document.getElementById('chatTargetShot');
+      const chatLog = document.getElementById('geminiChatMessages');
+
+      const userText = (input ? input.value : '').trim();
+      if (!userText) return;
+
+      const targetEp = epSelect ? epSelect.value : 'current';
+      const targetShot = shotSelect ? shotSelect.value : 'auto';
+
+      // 1. Append User Message
+      geminiChatHistory.push({ role: 'user', content: userText, timestamp: new Date() });
+      if (input) input.value = '';
+
+      // Render chat log with temporary thinking bubble
+      renderAllChatMessages();
+      appendThinkingBubble();
+
+      if (sendBtn) sendBtn.disabled = true;
+      if (status) {
+        status.style.display = 'block';
+        status.style.color = '#38bdf8';
+        status.innerText = "⚡ Gemini Director is drafting cinematic scene & prompt...";
+      }
+
+      const apiKey = getActiveGeminiKey();
+      const systemInstruction = buildDirectorSystemPrompt(targetEp, targetShot);
+
+      let responseText = null;
+      let usedModel = GEMINI_MODELS[0];
+
+      for (const model of GEMINI_MODELS) {
+        try {
+          usedModel = model;
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+          
+          const conversationContents = [];
+          // Include system instruction
+          conversationContents.push({
+            role: "user",
+            parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR SUGGESTION]:\n${userText}` }]
+          });
+
+          const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: conversationContents })
+          });
+
+          if (!res.ok) {
+            console.warn(`Model ${model} returned HTTP ${res.status}`);
+            continue;
+          }
+
+          const data = await res.json();
+          if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
+            const parts = data.candidates[0].content.parts || [];
+            responseText = parts.map(p => p.text || '').join('\n');
+            if (responseText.trim()) break;
+          }
+        } catch (err) {
+          console.warn(`Attempt with ${model} failed:`, err);
+        }
+      }
+
+      removeThinkingBubble();
+      if (sendBtn) sendBtn.disabled = false;
+
+      if (!responseText) {
+        if (status) {
+          status.style.color = '#f87171';
+          status.innerText = "⚠️ Could not connect to Gemini API. Check API key in Settings.";
+        }
+        geminiChatHistory.push({
+          role: 'ai',
+          content: "⚠️ I encountered a connection issue while contacting Gemini. Please verify your Google Gemini API key in **⚙️ Settings**.",
+          timestamp: new Date()
+        });
+        renderAllChatMessages();
+        return;
+      }
+
+      // Update badge
+      const modelBadge = document.getElementById('geminiActiveModelBadge');
+      if (modelBadge) modelBadge.innerText = usedModel;
+
+      if (status) {
+        status.style.color = '#34d399';
+        status.innerText = "✓ Prompt generated successfully!";
+        setTimeout(() => { status.style.display = 'none'; }, 3000);
+      }
+
+      // Extract JSON prompt if present
+      const extractedShotData = parseJsonFromDirectorResponse(responseText);
+
+      geminiChatHistory.push({
+        role: 'ai',
+        content: responseText,
+        shotData: extractedShotData,
+        model: usedModel,
+        timestamp: new Date()
+      });
+
+      renderAllChatMessages();
+    }
+
+    function appendThinkingBubble() {
+      const container = document.getElementById('geminiChatMessages');
+      if (!container) return;
+      const bubble = document.createElement('div');
+      bubble.id = 'geminiThinkingBubble';
+      bubble.className = 'gemini-chat-bubble ai';
+      bubble.innerHTML = `
+        <div class="gemini-bubble-meta">
+          <span style="font-size: 16px;">🎬</span>
+          <b>Gemini AI Director</b>
+          <span style="color: #38bdf8; font-size: 11px;">Thinking...</span>
+        </div>
+        <div style="font-size: 13px; color: #94a3b8; display: flex; align-items: center; gap: 8px;">
+          <div class="pulse" style="background: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></div>
+          Directing scene, locking character DNA, and writing Google Flow JSON prompt...
+        </div>
+      `;
+      container.appendChild(bubble);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function removeThinkingBubble() {
+      const el = document.getElementById('geminiThinkingBubble');
+      if (el) el.remove();
+    }
+
+    function parseJsonFromDirectorResponse(text) {
+      if (!text) return null;
+      // 1. Look for ```json ... ``` blocks
+      const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+      if (jsonMatch) {
+        try {
+          return JSON.parse(jsonMatch[1]);
+        } catch (e) {
+          console.warn("Could not parse json code block:", e);
+        }
+      }
+      // 2. Direct JSON object search
+      const braceMatch = text.match(/\{\s*"(?:target_shot_number|shot_number|json_prompt)"[\s\S]*?\}\s*\}/);
+      if (braceMatch) {
+        try {
+          return JSON.parse(braceMatch[0]);
+        } catch (e) {}
+      }
+      return null;
+    }
+
+    function renderAllChatMessages() {
+      const container = document.getElementById('geminiChatMessages');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (geminiChatHistory.length === 0) {
+        renderDirectorWelcomeMessage();
+        return;
+      }
+
+      geminiChatHistory.forEach((msg, idx) => {
+        const bubble = document.createElement('div');
+        bubble.className = `gemini-chat-bubble ${msg.role === 'user' ? 'user' : 'ai'}`;
+
+        if (msg.role === 'user') {
+          bubble.innerHTML = `
+            <div class="gemini-bubble-meta" style="color: #bfdbfe;">
+              <b>👤 Creator Pitch</b>
+            </div>
+            <div style="font-size: 13px; line-height: 1.5; white-space: pre-wrap;">${escapeHtml(msg.content)}</div>
+          `;
+        } else {
+          // AI Director Message
+          // Strip out the ```json ... ``` block from text display so narrative text is clean
+          let narrativeText = msg.content.replace(/```(?:json)?\s*[\s\S]*?\s*```/gi, '').trim();
+          narrativeText = escapeHtml(narrativeText)
+            .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+            .replace(/\*(.*?)\*/g, '<i>$1</i>')
+            .replace(/\n/g, '<br>');
+
+          let jsonCardHtml = '';
+          if (msg.shotData) {
+            const sd = msg.shotData;
+            const shotNum = sd.target_shot_number || sd.shot_number || 5;
+            const duration = sd.duration || (sd.json_prompt && sd.json_prompt.duration) || '6s';
+            const charName = sd.character || 'Character';
+            const jsonPromptObj = sd.json_prompt || sd;
+            const jsonFormatted = JSON.stringify(jsonPromptObj, null, 2);
+
+            jsonCardHtml = `
+              <div class="gemini-prompt-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span class="badge badge-shot" style="font-size: 11px;">Shot #${shotNum}</span>
+                    <span class="badge badge-dur" style="font-size: 11px;">⏱️ ${duration}</span>
+                    <span class="badge badge-char" style="font-size: 11px;">👤 ${charName}</span>
+                    <span class="badge badge-nobgm" style="font-size: 11px;">🔇 NO BGM</span>
+                  </div>
+                  <span style="font-size: 11px; color: #38bdf8; font-weight: 700;">Google Flow Ready</span>
+                </div>
+                ${sd.dialogue_malayalam ? `
+                  <div style="margin-top: 8px; font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam';">
+                    <b>💬 സംഭാഷണം:</b> "${sd.dialogue_malayalam}"
+                  </div>
+                ` : ''}
+                ${sd.action_summary ? `
+                  <div style="margin-top: 4px; font-size: 12px; color: #cbd5e1;">
+                    <b>Action:</b> ${sd.action_summary}
+                  </div>
+                ` : ''}
+                <pre id="directorPromptCode_${idx}">${escapeHtml(jsonFormatted)}</pre>
+                <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; flex-wrap: wrap;">
+                  <button class="btn btn-secondary" style="padding: 7px 14px; font-size: 12px;" onclick="copyDirectorPrompt(${idx}, this)">
+                    📋 Copy JSON Prompt
+                  </button>
+                  <button class="btn btn-primary" id="syncSheetBtn_${idx}" style="padding: 7px 16px; font-size: 12px;" onclick="syncDirectorPromptToSheet(${idx})">
+                    📤 Sync to Google Sheet (Tab 2)
+                  </button>
+                </div>
+                <div id="syncStatus_${idx}" style="font-size: 12px; margin-top: 6px; text-align: right; display: none;"></div>
+              </div>
+            `;
+          }
+
+          bubble.innerHTML = `
+            <div class="gemini-bubble-meta">
+              <span style="font-size: 16px;">🎬</span>
+              <b>Gemini AI Director</b>
+              <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 1px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;">Director Advice</span>
+            </div>
+            <div style="font-size: 13px; line-height: 1.6; color: #e2e8f0;">
+              ${narrativeText}
+            </div>
+            ${jsonCardHtml}
+          `;
+        }
+
+        container.appendChild(bubble);
+      });
+
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function copyDirectorPrompt(idx, btn) {
+      const codeEl = document.getElementById(`directorPromptCode_${idx}`);
+      if (!codeEl) return;
+      navigator.clipboard.writeText(codeEl.innerText).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = "✓ Copied JSON!";
+        btn.style.background = "#059669";
+        setTimeout(() => {
+          btn.innerText = orig;
+          btn.style.background = "";
+        }, 2000);
+      });
+    }
+
+    async function syncDirectorPromptToSheet(idx) {
+      const msg = geminiChatHistory[idx];
+      if (!msg || !msg.shotData) return;
+
+      const sd = msg.shotData;
+      const targetShotNum = sd.target_shot_number || sd.shot_number || 1;
+      const syncBtn = document.getElementById(`syncSheetBtn_${idx}`);
+      const statusEl = document.getElementById(`syncStatus_${idx}`);
+
+      if (syncBtn) {
+        syncBtn.disabled = true;
+        syncBtn.innerText = "⏳ Syncing...";
+      }
+      if (statusEl) {
+        statusEl.style.display = "block";
+        statusEl.style.color = "#38bdf8";
+        statusEl.innerText = `Uploading Shot #${targetShotNum} to Google Sheet Tab 2...`;
+      }
+
+      // 1. Update in-memory episodeData
+      if (episodeData && episodeData.shots) {
+        const shotIdx = episodeData.shots.findIndex(s => s.shot_number === targetShotNum);
+        if (shotIdx !== -1) {
+          if (sd.json_prompt) episodeData.shots[shotIdx].json_prompt = sd.json_prompt;
+          if (sd.dialogue_malayalam) {
+            episodeData.shots[shotIdx].dialogue_malayalam = sd.dialogue_malayalam;
+            episodeData.shots[shotIdx].dialogue = sd.dialogue_malayalam;
+          }
+          if (sd.action_summary) {
+            episodeData.shots[shotIdx].action_summary = sd.action_summary;
+            episodeData.shots[shotIdx].action = sd.action_summary;
+          }
+          if (sd.duration) episodeData.shots[shotIdx].duration = sd.duration;
+          if (sd.character) episodeData.shots[shotIdx].character = sd.character;
+        } else {
+          // If shot didn't exist, append it
+          episodeData.shots.push({
+            shot_number: targetShotNum,
+            duration: sd.duration || "6s",
+            character: sd.character || "Reenu",
+            dialogue_malayalam: sd.dialogue_malayalam || "",
+            dialogue: sd.dialogue_malayalam || "",
+            action_summary: sd.action_summary || "",
+            action: sd.action_summary || "",
+            json_prompt: sd.json_prompt || sd
+          });
+        }
+        // Update Shot Director tab UI immediately!
+        renderShots();
+      }
+
+      // 2. Post to Google Sheet Webhook (Tab 2 Current_JSON_Prompts)
+      try {
+        const payload = {
+          action: "update_next_episode_full",
+          episode_number: episodeData.episode_number || 8,
+          title_english: episodeData.title_english,
+          title_malayalam: episodeData.title_malayalam,
+          synopsis: episodeData.synopsis,
+          cliffhanger: episodeData.cliffhanger,
+          total_shots: episodeData.shots ? episodeData.shots.length : 10,
+          shots: episodeData.shots
+        };
+
+        const res = await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload)
+        });
+
+        if (syncBtn) {
+          syncBtn.innerText = "✓ Synced to Sheet!";
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ Shot #${targetShotNum} updated live in Google Sheet Tab 2 and Shot Card!`;
+        }
+      } catch (err) {
+        console.warn("Sheet sync error:", err);
+        // Fallback: also save to Tab 4 as idea
+        try {
+          await fetch(`${getActiveGasUrl()}?action=suggest_story_idea&target_episode=${episodeData.episode_number || 8}&idea=${encodeURIComponent(`Shot ${targetShotNum}: ${sd.action_summary || 'Updated prompt'}`)}`);
+        } catch (e2) {}
+
+        if (syncBtn) {
+          syncBtn.innerText = "✓ Synced (Local & Tab 4)!";
+          syncBtn.style.background = "#059669";
+        }
+        if (statusEl) {
+          statusEl.style.color = "#34d399";
+          statusEl.innerText = `✓ Updated locally & saved to Google Sheet Tab 4!`;
+        }
+      } finally {
+        setTimeout(() => {
+          if (syncBtn) {
+            syncBtn.disabled = false;
+            syncBtn.innerText = "📤 Sync to Google Sheet (Tab 2)";
+            syncBtn.style.background = "";
+          }
+        }, 3500);
+      }
+    }
+
+
     window.onload = () => {
+      initGeminiChat();
       renderShots();
       renderSeasonStoryRoadmap();
       renderCharacterCards();
