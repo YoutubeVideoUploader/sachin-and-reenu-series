@@ -3027,24 +3027,41 @@ The JSON MUST follow this EXACT schema:
       // =========================================================
       let mode = 'discussion';
 
-      const isSeasonArcRequest = (
-        (targetEp === '0' || lower.includes('season 2') || lower.includes('season 3') || lower.includes('season arc') || lower.includes('story arc') || lower.includes('entire season') || lower.includes('whole season')) &&
-        (lower.includes('plan') || lower.includes('write') || lower.includes('change') || lower.includes('create') || lower.includes('suggest') || lower.includes('make') || lower.includes('new season') || lower.includes('story of each episode') || lower.includes('edit the entire season') || lower.includes('change the story arc') || lower.includes('starting and i'))
-      );
+      // --- GO SIGNALS: All natural ways a creator says "do it now" ---
+      const GO_SIGNALS = [
+        'generate', 'create the prompt', 'create prompts', 'make the prompt',
+        'make prompts', 'write the prompt', 'write prompts', 'build prompt',
+        'produce prompt', 'go ahead', 'ok do it', 'okay do it', 'proceed',
+        'yes do it', 'yes generate', 'ok generate', 'do it', 'go for it',
+        'now create', 'write it', 'make it', 'build it', "let's do it",
+        'lets do it', 'start generating', 'start creating', 'generate the',
+        'create the', 'make the', 'write the'
+      ];
+      const isGoSignal = GO_SIGNALS.some(sig => lower.includes(sig)) ||
+                         lower === 'ok' || lower === 'yes' || lower === 'go' ||
+                         lower === 'okay' || lower === 'generate' || lower === 'proceed' ||
+                         lower === 'do it' || lower === 'yes please' || lower === 'sure';
 
       const isQuestionOrInquiry = (
         lower.startsWith('what ') || lower.startsWith('what is') || lower.startsWith('what about') ||
         lower.startsWith('tell me') || lower.startsWith('explain') || lower.startsWith('why ') ||
         lower.startsWith('who ') || lower.startsWith('how ') || lower.startsWith('describe') ||
-        lower.startsWith('give me summary') || lower.startsWith('summary of') || lower.startsWith('can you explain')
+        lower.startsWith('give me summary') || lower.startsWith('summary of') || lower.startsWith('can you explain') ||
+        lower.startsWith('can you tell')
       );
 
-      const isPromptCreationRequest = (
-        lower.includes('generate prompt') || lower.includes('create prompt') || lower.includes('make prompt') || lower.includes('write prompt') ||
+      const isSeasonArcRequest = (
+        (targetEp === '0' || lower.includes('season 2') || lower.includes('season 3') || lower.includes('season arc') || lower.includes('story arc') || lower.includes('entire season') || lower.includes('whole season')) &&
+        (lower.includes('plan') || lower.includes('write') || lower.includes('change') || lower.includes('create') || lower.includes('suggest') || lower.includes('make') || lower.includes('new season') || lower.includes('story of each episode') || lower.includes('edit the entire season') || lower.includes('change the story arc') || lower.includes('starting and i')) &&
+        !isGoSignal
+      );
+
+      const isPromptCreationRequest = isGoSignal || (
+        (lower.includes('generate prompt') || lower.includes('create prompt') || lower.includes('make prompt') || lower.includes('write prompt') ||
         lower.includes('rewrite episode') || lower.includes('change episode') || lower.includes('overhaul episode') || lower.includes('update episode') ||
         lower.includes('rewrite the episode') || lower.includes('change the episode') || lower.includes('create what the prompts') ||
-        lower.includes('change the prompt') || lower.includes('edit the prompt') || lower.includes('now create') || lower.includes('write the prompts') ||
-        lower.includes('produce prompt') || (lower.startsWith('in shot') && (lower.includes('make') || lower.includes('change') || lower.includes('add')))
+        lower.includes('change the prompt') || lower.includes('edit the prompt') || lower.includes('write the prompts') ||
+        (lower.startsWith('in shot') && (lower.includes('make') || lower.includes('change') || lower.includes('add'))))
       );
 
       if (isSeasonArcRequest) {
