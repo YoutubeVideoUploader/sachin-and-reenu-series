@@ -41,6 +41,16 @@ DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo Sout
 
 NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
 
+MASTER_STYLE = "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
+
+MASTER_NEGATIVE_PROMPT = "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+
+DNA_REGISTRY = {
+    "Reenu": DNA_REENU,
+    "Sachin": DNA_SACHIN,
+    "Amal": DNA_AMAL
+}
+
 # Master Season 1 Story Roadmap (10 Episodes)
 SEASON_1_ROADMAP = {
     1: {
@@ -266,6 +276,14 @@ CRITICAL PRODUCTION RULES:
      • "persistent_props": Array of key physical hero props present and their exact state/location (e.g. ["Vintage tan-brown London leather pouch under front passenger seat", "Sachin's diagonal brown leather cross-bag strap over left shoulder", "Reenu's silver wrist watch on left wrist"]).
      • "camera_lens": Specific cinematic focal length and aperture (e.g. "50mm cinematic prime lens, f/2.0 shallow depth of field, soft circular bokeh").
 
+13. MANDATORY COMPLETE SELF-CONTAINED PROMPT FOR EVERY SHOT (ZERO SHORTCUTS):
+   - Video generation AIs (Google Flow, Veo, Kling, Hailuo) generate each clip INDEPENDENTLY. They do NOT carry over memory from previous shots.
+   - NEVER shorten, abbreviate, or omit fields in subsequent shots (e.g. Shot 2, Shot 3, Shot 4)!
+   - In EVERY single shot, "characters_present" MUST contain full objects with "name" and the COMPLETE "visual_dna" with locked attire for EVERY character present in that shot/frame. FORBIDDEN: NEVER write plain string arrays like ["Sachin", "Reenu"]!
+   - In EVERY single shot, "style" MUST be the full master 3D Pixar render string without truncating words.
+   - In EVERY single shot, "persistent_props" MUST list all active scene props present in that sequence.
+   - In EVERY single shot, "negative_prompt" MUST be the complete master negative prompt string.
+
 Output JSON structure:
 {{
   "episode_number": {next_ep_num},
@@ -392,7 +410,7 @@ Output JSON structure:
     if not parsed_data:
         raise RuntimeError(f"All Gemini models failed to generate valid screenplay JSON. Last error: {last_err}")
 
-    data = parsed_data
+    data = enforce_prompt_completeness(parsed_data)
     
     # Calculate exact total runtime
     total_sec = sum(s.get("duration_seconds", 6) for s in data["shots"])
@@ -402,6 +420,77 @@ Output JSON structure:
     
     print(f"✓ Successfully generated Episode {next_ep_num}: '{data.get('title_malayalam')}' ({data.get('title_english')})")
     print(f"✓ Total Shots: {data['total_shots']} | Runtime: {data['calculated_runtime_display']}")
+    return data
+
+def enforce_prompt_completeness(data):
+    """
+    Guarantees that 100% of the prompts are self-contained and fully detailed:
+    1. Guarantees the complete 3D Pixar render MASTER_STYLE string on EVERY shot.
+    2. Guarantees that EVERY character in characters_present has their FULL visual_dna object with locked attire.
+       Never permits plain string arrays (e.g. ['Sachin', 'Reenu']) or stripped-down descriptions.
+    3. Guarantees complete persistent_props across all shots in the sequence.
+    4. Guarantees complete MASTER_NEGATIVE_PROMPT.
+    """
+    new_chars_map = {}
+    for nc in data.get("new_characters_introduced", []):
+        if isinstance(nc, dict) and nc.get("name") and nc.get("visual_dna"):
+            new_chars_map[nc["name"]] = nc["visual_dna"]
+
+    # Collect master props from sequence_continuity across shots
+    all_props = set()
+    for s in data.get("shots", []):
+        jp = s.get("json_prompt", {})
+        sc = jp.get("sequence_continuity", {})
+        props = sc.get("persistent_props", [])
+        if isinstance(props, list):
+            for p in props:
+                if isinstance(p, str) and p.strip():
+                    all_props.add(p.strip())
+
+    for s in data.get("shots", []):
+        jp = s.get("json_prompt", {})
+        # 1. Full style
+        jp["style"] = MASTER_STYLE
+
+        # 2. Characters present completeness
+        raw_chars = jp.get("characters_present", [])
+        normalized_chars = []
+        for c in raw_chars:
+            cname = c if isinstance(c, str) else c.get("name")
+            if not cname:
+                continue
+            dna = DNA_REGISTRY.get(cname) or new_chars_map.get(cname)
+            if not dna and isinstance(c, dict):
+                dna = c.get("visual_dna", "")
+            if not dna:
+                dna = f"{cname}: Stylized 3D Pixar-style cartoon animation character."
+            normalized_chars.append({
+                "name": cname,
+                "visual_dna": dna
+            })
+        
+        # If characters_present was empty but dialogue character is specified, add them
+        char_speaker = s.get("character")
+        if char_speaker and char_speaker != "Third-Person Narrator":
+            if not any(nc["name"] == char_speaker for nc in normalized_chars):
+                normalized_chars.append({
+                    "name": char_speaker,
+                    "visual_dna": DNA_REGISTRY.get(char_speaker, f"{char_speaker}: Stylized 3D Pixar character.")
+                })
+
+        jp["characters_present"] = normalized_chars
+
+        # 3. Full negative prompt
+        jp["negative_prompt"] = MASTER_NEGATIVE_PROMPT
+
+        # 4. Normalize persistent props in sequence_continuity
+        if "sequence_continuity" in jp and isinstance(jp["sequence_continuity"], dict):
+            sc = jp["sequence_continuity"]
+            sc_props = sc.get("persistent_props", [])
+            # If props were stripped down in this shot, restore all props from the scene
+            if len(sc_props) < len(all_props) and len(all_props) > 0:
+                sc["persistent_props"] = sorted(list(all_props))
+
     return data
 
 def sync_new_episode_to_google_sheet(gas_url, episode_data):

@@ -23,11 +23,11 @@
         "characters_present": [
           {
             "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders. STRICTLY LOCKED ATTIRE: Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest."
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders. STRICTLY LOCKED ATTIRE: Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
@@ -41,8 +41,8 @@
           },
           "eyeline_direction": "Both looking toward the front gate",
           "persistent_props": [
-            "Sachin's diagonal brown leather cross-bag",
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "35mm cinematic prime lens, f/1.8 shallow depth of field"
         },
@@ -50,14 +50,14 @@
         "camera": "Low angle tracking shot following their steps",
         "action": "Sachin and Reenu walk slowly toward the gate. Their faces are calm. Their lips are firmly closed. NO talking.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Charming female storyteller, melodic and soft",
           "language": "Malayalam",
           "script": "മഴ തോർന്ന രാത്രിയിൽ, സച്ചിനും റീനുവും വീടിന്റെ മുന്നിലെത്തി.",
           "line": "മഴ തോർന്ന രാത്രിയിൽ, സച്ചിനും റീനുവും വീടിന്റെ മുന്നിലെത്തി."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS. Lips strictly closed. NO BGM. Natural ambient foley of crickets and distant water dripping.",
-        "negative_prompt": "character mouth moving, lip sync, talking, real human, realistic human, real person, live-action, photorealistic, background music, musical score, instrumental, singing"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -68,12 +68,18 @@
       "dialogue_malayalam": "ഇന്ന് ഒരുപാട് വൈകിപ്പോയി, അല്ലേ സച്ചിൻ?",
       "action_summary": "Reenu turns to face Sachin at the gate. Her lips move in perfect lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Close-up on Reenu",
         "characters_present": [
-          "Reenu",
-          "Sachin"
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -86,7 +92,8 @@
           },
           "eyeline_direction": "Reenu looking at Sachin",
           "persistent_props": [
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "85mm portrait prime lens, f/1.8"
         },
@@ -101,7 +108,7 @@
           "line": "ഇന്ന് ഒരുപാട് വൈകിപ്പോയി, അല്ലേ സച്ചിൻ?"
         },
         "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -112,12 +119,18 @@
       "dialogue_malayalam": "അതെ റീനു, സമയം പോയതറിഞ്ഞില്ല.",
       "action_summary": "Sachin smiles warmly at Reenu. His lips move in perfect lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Close-up on Sachin",
         "characters_present": [
-          "Sachin",
-          "Reenu"
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -130,7 +143,8 @@
           },
           "eyeline_direction": "Sachin looking at Reenu",
           "persistent_props": [
-            "Sachin's diagonal brown leather cross-bag"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "85mm portrait prime lens, f/1.8"
         },
@@ -145,7 +159,7 @@
           "line": "അതെ റീനു, സമയം പോയതറിഞ്ഞില്ല."
         },
         "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -156,12 +170,18 @@
       "dialogue_malayalam": "സച്ചിൻ മെല്ലെ റീനുവിന്റെ കൈകളിൽ തൊട്ടു.",
       "action_summary": "Sachin reaches out and gently touches Reenu's hand. Both have closed lips.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Extreme close-up on hands",
         "characters_present": [
-          "Sachin",
-          "Reenu"
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -174,22 +194,23 @@
           },
           "eyeline_direction": "N/A",
           "persistent_props": [
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "100mm macro lens, f/2.8"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Extreme close-up",
-        "action": "Sachin holds Reenu's hand gently. Both characters are completely silent with closed lips.",
+        "action": "PURE VISUAL SCENE ACTION. Sachin holds Reenu's hand gently. Both characters are completely silent with closed lips. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely ZERO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Charming female storyteller",
           "language": "Malayalam",
           "script": "സച്ചിൻ മെല്ലെ റീനുവിന്റെ കൈകളിൽ തൊട്ടു.",
           "line": "സച്ചിൻ മെല്ലെ റീനുവിന്റെ കൈകളിൽ തൊട്ടു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS. Lips strictly closed. NO BGM.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -200,12 +221,18 @@
       "dialogue_malayalam": "റീനു, അർദ്ധരാത്രി മറൈൻ ഡ്രൈവിൽ വരാമോ?",
       "action_summary": "Sachin looks deeply into Reenu's eyes. Lips move in lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Medium close-up on Sachin and Reenu",
         "characters_present": [
-          "Sachin",
-          "Reenu"
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -218,7 +245,8 @@
           },
           "eyeline_direction": "Sachin looking at Reenu",
           "persistent_props": [
-            "Sachin's diagonal brown leather cross-bag"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "50mm cinematic prime lens, f/1.8"
         },
@@ -233,7 +261,7 @@
           "line": "റീനു, അർദ്ധരാത്രി മറൈൻ ഡ്രൈവിൽ വരാമോ?"
         },
         "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -244,12 +272,18 @@
       "dialogue_malayalam": "അർദ്ധരാത്രിയോ? എന്തിനാണ് സച്ചിൻ?",
       "action_summary": "Reenu looks surprised. Her lips move in lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Close-up on Reenu",
         "characters_present": [
-          "Reenu",
-          "Sachin"
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -262,7 +296,8 @@
           },
           "eyeline_direction": "Reenu looking at Sachin",
           "persistent_props": [
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "85mm portrait prime lens, f/1.8"
         },
@@ -277,7 +312,7 @@
           "line": "അർദ്ധരാത്രിയോ? എന്തിനാണ് സച്ചിൻ?"
         },
         "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -288,12 +323,18 @@
       "dialogue_malayalam": "എല്ലാം അവിടെവെച്ച് പറയാം.",
       "action_summary": "Sachin looks determined. His lips move in lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Close-up on Sachin",
         "characters_present": [
-          "Sachin",
-          "Reenu"
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -306,7 +347,8 @@
           },
           "eyeline_direction": "Sachin looking at Reenu",
           "persistent_props": [
-            "Sachin's diagonal brown leather cross-bag"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "85mm portrait prime lens, f/1.8"
         },
@@ -321,7 +363,7 @@
           "line": "എല്ലാം അവിടെവെച്ച് പറയാം."
         },
         "audio_directive": "ONLY SACHIN SPEAKS. REENU LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -332,12 +374,18 @@
       "dialogue_malayalam": "ഒരുനിമിഷം റീനു മടിച്ചു നിന്നു.",
       "action_summary": "Reenu hesitates, looking down. Both have closed lips.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Medium shot",
         "characters_present": [
-          "Reenu",
-          "Sachin"
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -350,22 +398,23 @@
           },
           "eyeline_direction": "Reenu looking down",
           "persistent_props": [
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "50mm cinematic prime lens, f/1.8"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Medium shot",
-        "action": "Reenu hesitates. Both characters are completely silent with closed lips.",
+        "action": "PURE VISUAL SCENE ACTION. Reenu hesitates. Both characters are completely silent with closed lips. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely ZERO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Charming female storyteller",
           "language": "Malayalam",
           "script": "ഒരുനിമിഷം റീനു മടിച്ചു നിന്നു.",
           "line": "ഒരുനിമിഷം റീനു മടിച്ചു നിന്നു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS. Lips strictly closed. NO BGM.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -376,12 +425,18 @@
       "dialogue_malayalam": "ശരി, ഞാൻ വരാം.",
       "action_summary": "Reenu nods and agrees. Her lips move in lip sync.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Close-up on Reenu",
         "characters_present": [
-          "Reenu",
-          "Sachin"
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -394,7 +449,8 @@
           },
           "eyeline_direction": "Reenu looking at Sachin",
           "persistent_props": [
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "85mm portrait prime lens, f/1.8"
         },
@@ -409,7 +465,7 @@
           "line": "ശരി, ഞാൻ വരാം."
         },
         "audio_directive": "ONLY REENU SPEAKS. SACHIN LIPS CLOSED. NO BGM. Clean voice audio.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     },
     {
@@ -420,12 +476,18 @@
       "dialogue_malayalam": "അവർ രണ്ടുപേരും പരസ്പരം നോക്കി ചിരിച്ചു.",
       "action_summary": "Sachin and Reenu smile at each other. Both have closed lips.",
       "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Wide shot",
         "characters_present": [
-          "Sachin",
-          "Reenu"
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
         ],
         "sequence_continuity": {
           "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
@@ -438,23 +500,23 @@
           },
           "eyeline_direction": "Looking at each other",
           "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wrist watch"
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "35mm cinematic prime lens, f/1.8"
         },
         "location": "Outside Reenu's house gate",
         "camera": "Wide shot",
-        "action": "Sachin and Reenu smile. Both are completely silent with closed lips.",
+        "action": "PURE VISUAL SCENE ACTION. Sachin and Reenu smile. Both are completely silent with closed lips. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely ZERO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Charming female storyteller",
           "language": "Malayalam",
           "script": "അവർ രണ്ടുപേരും പരസ്പരം നോക്കി ചിരിച്ചു.",
           "line": "അവർ രണ്ടുപേരും പരസ്പരം നോക്കി ചിരിച്ചു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS. Lips strictly closed. NO BGM.",
-        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.",
+        "negative_prompt": "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing"
       }
     }
   ]
