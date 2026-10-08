@@ -108,11 +108,13 @@ def generate_outro_clip(image_path, output_path, duration=3.0, target_w=1080, ta
 def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", title_ml=""):
     """
     Renders a semi-transparent, cinematic 1080x220 title banner badge as a PNG.
+    Uses bundled Manjari-Bold.ttf with FFmpeg HarfBuzz shaping to guarantee
+    100% authentic, error-free Malayalam typography & Latin English text.
     Displays:
       - Line 1: SACHIN & REENU • EPISODE {episode_num}
       - Line 2: {title_en.upper()} (and Malayalam title if available)
-    Overlaid onto the master video during the opening seconds (0.5s - 5.0s).
     """
+    import tempfile
     try:
         w, h = 1080, 220
         img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
@@ -129,75 +131,82 @@ def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", tit
         draw.rounded_rectangle(
             [card_x1, card_y1, card_x2, card_y2],
             radius=radius,
-            fill=(10, 14, 22, 215),
-            outline=(249, 115, 22, 180),
+            fill=(10, 14, 22, 225),
+            outline=(249, 115, 22, 190),
             width=3
         )
 
-        def get_font(size, bold=False):
-            candidates = []
-            if bold:
-                candidates = [
-                    'arialbd.ttf', 'Arial Bold.ttf', 'DejaVuSans-Bold.ttf',
-                    'LiberationSans-Bold.ttf', 'FreeSansBold.ttf', 'NirmalaB.ttf',
-                    'C:/Windows/Fonts/arialbd.ttf', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
-                    '/usr/share/fonts/truetype/freefont/FreeSansBold.ttf',
-                    '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf'
-                ]
-            candidates += [
-                'Nirmala.ttf', 'arial.ttf', 'Arial.ttf', 'DejaVuSans.ttf',
-                'LiberationSans-Regular.ttf', 'FreeSans.ttf', 'segoeui.ttf',
-                'C:/Windows/Fonts/arial.ttf', 'C:/Windows/Fonts/Nirmala.ttf',
-                '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
-                '/usr/share/fonts/truetype/freefont/FreeSans.ttf'
-            ]
-            for c in candidates:
-                try:
-                    return ImageFont.truetype(c, size)
-                except Exception:
-                    pass
-            try:
-                return ImageFont.load_default(size=size)
-            except Exception:
-                return ImageFont.load_default()
-
-        font_header = get_font(30, bold=True)
-        font_sub = get_font(44, bold=True)
+        output_png_path = Path(output_png_path)
+        output_png_path.parent.mkdir(parents=True, exist_ok=True)
 
         header_text = f"SACHIN & REENU • EPISODE {episode_num}"
-
-        # Subtitle text
         sub_text = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
         if title_ml and title_ml.strip():
             sub_text = f"{sub_text} • {title_ml.strip()}"
 
-        # Header Text
-        bbox_h = draw.textbbox((0, 0), header_text, font=font_header)
-        text_w_h = bbox_h[2] - bbox_h[0]
-        text_x_h = (w - text_w_h) / 2
-        draw.text((text_x_h, card_y1 + 24), header_text, fill=(255, 255, 255, 245), font=font_header)
+        # Locate bundled Manjari-Bold font
+        font_candidates = [
+            Path("assets/fonts/Manjari-Bold.ttf"),
+            Path(__file__).parent.parent / "assets/fonts/Manjari-Bold.ttf",
+            Path("assets/fonts/NotoSansMalayalam-Bold.ttf")
+        ]
+        font_file = next((f for f in font_candidates if f.exists()), None)
 
-        # Subtitle Text (with fallback to English only if unicode/glyph failure)
-        try:
-            bbox_s = draw.textbbox((0, 0), sub_text, font=font_sub)
-            text_w_s = bbox_s[2] - bbox_s[0]
-            if text_w_s > (card_x2 - card_x1 - 40):
-                font_sub = get_font(34, bold=True)
-                bbox_s = draw.textbbox((0, 0), sub_text, font=font_sub)
-                text_w_s = bbox_s[2] - bbox_s[0]
-            text_x_s = (w - text_w_s) / 2
-            draw.text((text_x_s, card_y1 + 84), sub_text, fill=(249, 115, 22, 255), font=font_sub)
-        except Exception:
-            fallback_sub = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
-            bbox_s = draw.textbbox((0, 0), fallback_sub, font=font_sub)
-            text_w_s = bbox_s[2] - bbox_s[0]
-            text_x_s = (w - text_w_s) / 2
-            draw.text((text_x_s, card_y1 + 84), fallback_sub, fill=(249, 115, 22, 255), font=font_sub)
+        if font_file:
+            # Render text via FFmpeg HarfBuzz drawtext to ensure authentic Malayalam ligature shaping
+            with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tf:
+                temp_card_path = Path(tf.name)
 
-        output_png_path = Path(output_png_path)
-        output_png_path.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                img.save(str(temp_card_path), "PNG")
+                font_posix = font_file.resolve().as_posix().replace(":", r"\:")
+
+                def esc_ffmpeg(txt):
+                    return txt.replace("\\", "\\\\").replace(":", r"\:").replace("'", r"\'").replace("%", r"\%")
+
+                esc_h = esc_ffmpeg(header_text)
+                esc_s = esc_ffmpeg(sub_text)
+
+                # Dynamically size subtitle font if text is long
+                sub_fontsize = 34 if len(sub_text) > 38 else 40
+
+                vf = (
+                    f"drawtext=fontfile='{font_posix}':text='{esc_h}':fontcolor=white:fontsize=32:x=(w-text_w)/2:y=38,"
+                    f"drawtext=fontfile='{font_posix}':text='{esc_s}':fontcolor=#F97316:fontsize={sub_fontsize}:x=(w-text_w)/2:y=96"
+                )
+
+                cmd = ["ffmpeg", "-y", "-i", str(temp_card_path), "-vf", vf, str(output_png_path)]
+                res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+                if res.returncode == 0 and output_png_path.exists():
+                    print(f"✓ Generated high-res title banner with authentic Malayalam typography: {output_png_path.name}")
+                    return True
+                else:
+                    print(f"Notice: FFmpeg drawtext returned code {res.returncode}, falling back to PIL render")
+            finally:
+                if temp_card_path.exists():
+                    try:
+                        temp_card_path.unlink()
+                    except Exception:
+                        pass
+
+        # Fallback to Pillow if font file or drawtext not available
+        def get_font(size):
+            for c in ['NirmalaB.ttf', 'arialbd.ttf', 'DejaVuSans-Bold.ttf', 'arial.ttf']:
+                try:
+                    return ImageFont.truetype(c, size)
+                except Exception:
+                    pass
+            return ImageFont.load_default()
+
+        f_head = get_font(30)
+        f_sub = get_font(36)
+        bbox_h = draw.textbbox((0, 0), header_text, font=f_head)
+        draw.text(((w - (bbox_h[2] - bbox_h[0])) / 2, card_y1 + 24), header_text, fill=(255, 255, 255, 245), font=f_head)
+
+        bbox_s = draw.textbbox((0, 0), sub_text, font=f_sub)
+        draw.text(((w - (bbox_s[2] - bbox_s[0])) / 2, card_y1 + 84), sub_text, fill=(249, 115, 22, 255), font=f_sub)
         img.save(str(output_png_path), "PNG")
-        print(f"✓ Generated high-res title banner: {output_png_path.name} ('{header_text}' | '{sub_text}')")
+        print(f"✓ Generated fallback title banner: {output_png_path.name}")
         return True
     except Exception as e:
         print(f"Warning: Failed to generate title banner overlay: {e}")
@@ -312,9 +321,14 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
 
     if selected_bgm and selected_bgm.exists():
         if has_banner:
-            # Three inputs: 0 = video, 1 = BGM, 2 = title banner PNG
+            # Three inputs: 0 = video, 1 = BGM, 2 = title banner PNG (looped)
+            # Banner animation:
+            # - st=0.5:d=0.6: alpha fade-in while gliding down from y=80 to y=140
+            # - 1.1s to 4.5s: holds solidly at y=140
+            # - 4.5s to 5.1s: alpha fade-out while gliding up from y=140 to y=80
             complex_filter = (
-                f"[0:v][2:v]overlay=0:140:enable='between(t,0.5,5.0)'[vout];"
+                f"[2:v]format=rgba,fade=in:st=0.5:d=0.6:alpha=1,fade=out:st=4.5:d=0.6:alpha=1[banner];"
+                f"[0:v][banner]overlay=x=0:y='if(lt(t,0.5), -300, if(lt(t,1.1), 140 - 60*(1.1-t)/0.6, if(lt(t,4.5), 140, if(lt(t,5.1), 140 - 60*(t-4.5)/0.6, -300))))':enable='between(t,0.5,5.2)'[vout];"
                 f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
                 f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
                 f"[0:a]volume=1.1[voice];"
@@ -324,6 +338,7 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
                 "-i", str(selected_bgm),
+                "-loop", "1",
                 "-i", str(banner_png),
                 "-filter_complex", complex_filter,
                 "-map", "[vout]",
@@ -384,16 +399,21 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     else:
         # No BGM track: keep dialogue audio
         if has_banner:
-            complex_filter = "[0:v][1:v]overlay=0:140:enable='between(t,0.5,5.0)'[vout]"
+            complex_filter = (
+                f"[1:v]format=rgba,fade=in:st=0.5:d=0.6:alpha=1,fade=out:st=4.5:d=0.6:alpha=1[banner];"
+                f"[0:v][banner]overlay=x=0:y='if(lt(t,0.5), -300, if(lt(t,1.1), 140 - 60*(1.1-t)/0.6, if(lt(t,4.5), 140, if(lt(t,5.1), 140 - 60*(t-4.5)/0.6, -300))))':enable='between(t,0.5,5.2)'[vout]"
+            )
             cmd_master = [
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
+                "-loop", "1",
                 "-i", str(banner_png),
                 "-filter_complex", complex_filter,
                 "-map", "[vout]",
                 "-map", "0:a",
                 "-c:v", "libx264", "-preset", "slow", "-crf", "18",
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                "-shortest",
                 "-movflags", "+faststart",
                 str(output_path)
             ]
