@@ -2771,45 +2771,45 @@
       const shotsSummary = (episodeData.shots || []).map(s => `Shot ${s.shot_number} (${s.duration}, ${s.character}): "${s.dialogue_malayalam || ''}" - ${s.action_summary}`).join('\n');
       const isFullEpisode = (targetScope === 'full_episode');
 
+      const lockedCharactersGuide = `=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE VERBATIM STRINGS) ===
+Whenever a character is in 'characters_present', their 'visual_dna' field MUST MATCH the following VERBATIM strings word-for-word. NEVER summarize, paraphrase, or truncate them!
+
+1. Reenu:
+"Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+
+2. Sachin:
+"Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+
+3. Amal:
+"Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers. Absolutely zero costume variations."`;
+
+      const productionRules = `=== INVIOLABLE PRODUCTION GUARDRAILS (BENCHMARK LOCKED) ===
+1. ACTION FIELD 'LIPS CLOSED' DIRECTIVE:
+   - For every narrator shot, the 'action' field MUST explicitly end with:
+     "Her lips are firmly closed. No mouth movement. Pure visual storytelling." (or "His lips..." for Sachin/Amal, or "Their lips...").
+2. DIALOGUE OBJECT SPECIFICATION:
+   - 'voice_persona' MUST BE EXACTLY:
+     "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone"
+   - 'script' MUST BE LITERALLY: "മലയാളം ലിപി"
+   - 'line' MUST match 'dialogue_malayalam' and contain strictly 5 to 8 Malayalam words.
+3. AUDIO DIRECTIVE:
+   - MUST BE EXACTLY:
+     "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+4. DIALOGUE WORD LIMIT (CRITICAL):
+   - Every single shot's Malayalam dialogue MUST strictly contain between 5 and 8 words (NO MORE than 8 words, NO LESS than 5 words, and strictly under 40 Malayalam letters/characters).
+   - EXACTLY ONE SHORT SENTENCE. Never write compound sentences.
+5. CANONICAL MALAYALAM SPELLINGS:
+   - Reenu = റീനു, Sachin = സച്ചിൻ, Amal = അമൽ.
+6. STYLE:
+   - MUST BE EXACTLY:
+     "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"`;
+
       if (isFullEpisode) {
         return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
 
-=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE) ===
-1. Reenu (Lead Female, 22yo South Indian Malayali girl):
-- Big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
-- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.
-- Canonical Malayalam spelling: റീനു
-- Voice: Sweet, expressive South Indian Malayali female voice.
+${lockedCharactersGuide}
 
-2. Sachin (Lead Male, 24yo South Indian Malayali boy):
-- Endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
-- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.
-- Canonical Malayalam spelling: സച്ചിൻ
-- Voice: Endearing, slightly nervous young Malayali male voice.
-
-3. Amal (Best Friend, 24yo South Indian Malayali boy):
-- Cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
-- LOCKED ATTIRE: Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers.
-- Canonical Malayalam spelling: അമൽ
-- Voice: Youthful energetic Malayali male voice, teasing tone.
-
-=== STRICT PRODUCTION RULES & DIALOGUE CONSTRAINTS (INVIOLABLE) ===
-1. 10 SHOTS TOTAL: You MUST generate all 10 complete shots (Shot 1 through Shot 10) for this 1-minute vertical episode. Do NOT omit or truncate any shots.
-2. DIALOGUE WORD LIMIT (CRITICAL):
-   - Every single shot's Malayalam dialogue MUST strictly contain between 5 and 8 words (NO MORE than 8 words, NO LESS than 5 words, and strictly under 40 Malayalam letters/characters).
-   - EXACTLY ONE SHORT SENTENCE per shot. NO compound sentences.
-   - Example 5 words: 'മഴ തോരാതെ പെയ്യുന്ന കൊച്ചി രാത്രി.'
-   - Example 6 words: 'മുറ്റത്തെ മഴത്തുള്ളികളിലേക്ക് അവൾ പതുക്കെ ഇറങ്ങി.'
-   - Example 7 words: 'വീടിന്റെ പടിവാതിൽ കടക്കുമ്പോൾ മനസ്സിൽ ഒരൊറ്റ ചിന്ത മാത്രം.'
-   - Example 8 words: 'എന്തു സംഭവിച്ചാലും സച്ചിനെ ഇന്ന് രാത്രി ഞാൻ കാണും.'
-3. CANONICAL MALAYALAM SPELLINGS: റീനു (Reenu), അമൽ (Amal), സച്ചിൻ (Sachin).
-4. AUDIO DIRECTIVE (STRICTLY NO BGM):
-   - Third-Person Narrator: External voiceover only, character lips remain completely closed with NO lip sync animation.
-   - Character speaking: Character mouth moves in lip sync.
-   - CRITICAL: 'EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only.'
-   - STRICTLY ZERO BGM, ZERO INSTRUMENTAL SCORE in all shots.
-5. VISUAL STYLE:
-   - High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps. STRICTLY NON-HUMAN REALISM.
+${productionRules}
 
 === CURRENT PRODUCTION CONTEXT ===
 - Target Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
@@ -2846,7 +2846,7 @@ The JSON MUST follow this EXACT schema:
         "characters_present": [
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
@@ -2861,10 +2861,10 @@ The JSON MUST follow this EXACT schema:
         },
         "location": "Specific location in Kochi",
         "camera": "Exact camera movement and framing",
-        "action": "Character animated action with closed lips storytelling",
+        "action": "Description of action. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "5 to 8 Malayalam words matching dialogue_malayalam"
@@ -2875,46 +2875,20 @@ The JSON MUST follow this EXACT schema:
   ]
 }
 \`\`\`
-CRITICAL: You MUST output all 10 shots from shot_number: 1 up to shot_number: 10!`;
+CRITICAL: You MUST output all 10 shots from shot_number: 1 up to shot_number: 10! Every shot must include the full verbatim DNA and follow all guardrails!`;
       }
 
       // SINGLE SHOT MODE
       const targetShot = (targetScope !== 'auto' && !isNaN(parseInt(targetScope, 10))) ? parseInt(targetScope, 10) : 5;
       return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (1-minute episodes, 10 shots per episode).
 
-=== MANDATORY CHARACTERS & LOCKED DNA (INVIOLABLE) ===
-1. Reenu (Lead Female, 22yo South Indian Malayali girl):
-- Big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
-- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations.
-- Canonical Malayalam spelling: റീനു
-- Voice: Sweet, expressive South Indian Malayali female voice.
+${lockedCharactersGuide}
 
-2. Sachin (Lead Male, 24yo South Indian Malayali boy):
-- Endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES).
-- LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations.
-- Canonical Malayalam spelling: സച്ചിൻ
-- Voice: Endearing, slightly nervous young Malayali male voice.
-
-3. Amal (Best Friend, 24yo South Indian Malayali boy):
-- Cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
-- LOCKED ATTIRE: Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers.
-- Canonical Malayalam spelling: അമൽ
-- Voice: Youthful energetic Malayali male voice, teasing tone.
-
-=== STRICT PRODUCTION RULES & DIALOGUE CONSTRAINTS (INVIOLABLE) ===
-1. TARGET SHOT: Modifying Shot #${targetShot} of Episode ${ep.episode_number}.
-2. DIALOGUE WORD LIMIT (CRITICAL):
-   - Malayalam dialogue MUST strictly contain between 5 and 8 words (NO MORE than 8 words, NO LESS than 5 words, and strictly under 40 Malayalam letters/characters).
-   - EXACTLY ONE SHORT SENTENCE. Never write compound sentences.
-3. CANONICAL MALAYALAM SPELLINGS: റീനു, അമൽ, സച്ചിൻ.
-4. AUDIO DIRECTIVE (STRICTLY NO BGM):
-   - Character lips firmly closed for narrator voiceover.
-   - Clean voiceover audio and natural foley only. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE.
-5. VISUAL STYLE:
-   - High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps.
+${productionRules}
 
 === CURRENT PRODUCTION CONTEXT ===
 - Target Episode: ${ep.episode_number} - ${ep.title_english} (${ep.title_malayalam || ''})
+- Target Shot: #${targetShot}
 - Synopsis: ${ep.synopsis}
 - Current Shots in Production:
 ${shotsSummary}
@@ -2922,12 +2896,12 @@ ${shotsSummary}
 === REQUIRED OUTPUT FORMAT (SINGLE SHOT) ===
 1. Provide a warm, conversational Director rationale (2-3 sentences).
 2. Generate ONE complete, production-ready Google Flow JSON block inside a single \`\`\`json markdown code block.
-Schema:
+The JSON MUST follow this EXACT schema:
 \`\`\`json
 {
   "target_shot_number": ${targetShot},
   "duration": "6s",
-  "character": "Reenu",
+  "character": "Third-Person Narrator",
   "dialogue_malayalam": "5 to 8 Malayalam words only",
   "action_summary": "English description of action in shot",
   "json_prompt": {
@@ -2936,8 +2910,8 @@ Schema:
     "perspective": "Camera perspective and composition",
     "characters_present": [
       {
-        "name": "Reenu",
-        "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character... Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
+        "name": "Sachin",
+        "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
       }
     ],
     "sequence_continuity": {
@@ -2945,17 +2919,17 @@ Schema:
       "time_of_day": "Monsoon Night",
       "lighting_palette": "Lighting details",
       "weather": "Monsoon rain",
-      "spatial_blocking": { "Reenu": "Position description" },
+      "spatial_blocking": { "Sachin": "Position description" },
       "eyeline_direction": "Gaze description",
-      "persistent_props": ["Reenu's silver wrist watch on left wrist"],
+      "persistent_props": ["Brown leather travel cross-bag on Sachin"],
       "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
     },
     "location": "Specific location description",
     "camera": "Exact camera movement and framing",
-    "action": "Character animated action with closed lips storytelling",
+    "action": "Description of action. His lips are firmly closed. No mouth movement. Pure visual storytelling.",
     "dialogue": {
       "speaker": "Third-Person Narrator",
-      "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+      "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
       "language": "Malayalam",
       "script": "മലയാളം ലിപി",
       "line": "5 to 8 Malayalam words only"
