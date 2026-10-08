@@ -18,6 +18,7 @@ import json
 import argparse
 import subprocess
 from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
 
 def get_video_info(video_path):
     """Inspects video duration, width, height, and audio streams using ffprobe."""
@@ -103,6 +104,104 @@ def generate_outro_clip(image_path, output_path, duration=3.0, target_w=1080, ta
         str(output_path)
     ]
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", title_ml=""):
+    """
+    Renders a semi-transparent, cinematic 1080x220 title banner badge as a PNG.
+    Displays:
+      - Line 1: SACHIN & REENU • EPISODE {episode_num}
+      - Line 2: {title_en.upper()} (and Malayalam title if available)
+    Overlaid onto the master video during the opening seconds (0.5s - 5.0s).
+    """
+    try:
+        w, h = 1080, 220
+        img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(img)
+
+        # Rounded pill card container
+        card_margin = 60
+        card_x1 = card_margin
+        card_y1 = 15
+        card_x2 = w - card_margin
+        card_y2 = h - 15
+        radius = 24
+
+        draw.rounded_rectangle(
+            [card_x1, card_y1, card_x2, card_y2],
+            radius=radius,
+            fill=(10, 14, 22, 215),
+            outline=(249, 115, 22, 180),
+            width=3
+        )
+
+        def get_font(size, bold=False):
+            candidates = []
+            if bold:
+                candidates = [
+                    'arialbd.ttf', 'Arial Bold.ttf', 'DejaVuSans-Bold.ttf',
+                    'LiberationSans-Bold.ttf', 'FreeSansBold.ttf', 'NirmalaB.ttf',
+                    'C:/Windows/Fonts/arialbd.ttf', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
+                    '/usr/share/fonts/truetype/freefont/FreeSansBold.ttf',
+                    '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf'
+                ]
+            candidates += [
+                'Nirmala.ttf', 'arial.ttf', 'Arial.ttf', 'DejaVuSans.ttf',
+                'LiberationSans-Regular.ttf', 'FreeSans.ttf', 'segoeui.ttf',
+                'C:/Windows/Fonts/arial.ttf', 'C:/Windows/Fonts/Nirmala.ttf',
+                '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+                '/usr/share/fonts/truetype/freefont/FreeSans.ttf'
+            ]
+            for c in candidates:
+                try:
+                    return ImageFont.truetype(c, size)
+                except Exception:
+                    pass
+            try:
+                return ImageFont.load_default(size=size)
+            except Exception:
+                return ImageFont.load_default()
+
+        font_header = get_font(30, bold=True)
+        font_sub = get_font(44, bold=True)
+
+        header_text = f"SACHIN & REENU • EPISODE {episode_num}"
+
+        # Subtitle text
+        sub_text = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
+        if title_ml and title_ml.strip():
+            sub_text = f"{sub_text} • {title_ml.strip()}"
+
+        # Header Text
+        bbox_h = draw.textbbox((0, 0), header_text, font=font_header)
+        text_w_h = bbox_h[2] - bbox_h[0]
+        text_x_h = (w - text_w_h) / 2
+        draw.text((text_x_h, card_y1 + 24), header_text, fill=(255, 255, 255, 245), font=font_header)
+
+        # Subtitle Text (with fallback to English only if unicode/glyph failure)
+        try:
+            bbox_s = draw.textbbox((0, 0), sub_text, font=font_sub)
+            text_w_s = bbox_s[2] - bbox_s[0]
+            if text_w_s > (card_x2 - card_x1 - 40):
+                font_sub = get_font(34, bold=True)
+                bbox_s = draw.textbbox((0, 0), sub_text, font=font_sub)
+                text_w_s = bbox_s[2] - bbox_s[0]
+            text_x_s = (w - text_w_s) / 2
+            draw.text((text_x_s, card_y1 + 84), sub_text, fill=(249, 115, 22, 255), font=font_sub)
+        except Exception:
+            fallback_sub = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
+            bbox_s = draw.textbbox((0, 0), fallback_sub, font=font_sub)
+            text_w_s = bbox_s[2] - bbox_s[0]
+            text_x_s = (w - text_w_s) / 2
+            draw.text((text_x_s, card_y1 + 84), fallback_sub, fill=(249, 115, 22, 255), font=font_sub)
+
+        output_png_path = Path(output_png_path)
+        output_png_path.parent.mkdir(parents=True, exist_ok=True)
+        img.save(str(output_png_path), "PNG")
+        print(f"✓ Generated high-res title banner: {output_png_path.name} ('{header_text}' | '{sub_text}')")
+        return True
+    except Exception as e:
+        print(f"Warning: Failed to generate title banner overlay: {e}")
+        return False
 
 def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", title_ml="", bgm_num=None):
     """
@@ -202,59 +301,77 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     else:
         print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
 
-    # Step 4: Final Mix — Spoken Dialogue (Loud & Clear) + Ambient BGM Underlay (Vol 0.32 boosted) + Cinematic Title
+    # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Guaranteed Cinematic Title Overlay
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM) & Title Overlay...")
     
     output_path = Path(output_file)
-    
-    # Title Overlay Banner during first 5 seconds
-    header_text = f"SACHIN & REENU • EPISODE {episode_num}"
-    subtitle_text = title_en.upper() if title_en else f"EPISODE {episode_num}"
-    
-    draw_filter = (
-        f"drawbox=y=160:color=black@0.45:width=iw:height=140:t=fill:enable='between(t,0.5,5.0)',"
-        f"drawtext=text='{header_text}':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=180:enable='between(t,0.5,5.0)',"
-        f"drawtext=text='{subtitle_text}':fontcolor=#F97316:fontsize=48:x=(w-text_w)/2:y=230:enable='between(t,0.5,5.0)'"
-    )
+    banner_png = temp_dir / "title_banner.png"
+    has_banner = create_title_banner_overlay(banner_png, episode_num, title_en, title_ml)
 
     fade_out_start = max(0.0, total_video_duration - 2.5)
 
     if selected_bgm and selected_bgm.exists():
-        # Audio filter graph:
-        # [0:a] Dialogue audio kept at volume 1.1 (crystal clear speech)
-        # [1:a] BGM looped, volume boosted to 0.32 with gentle fade in/out
-        # amix merges both audio streams
-        complex_filter = (
-            f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
-            f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
-            f"[0:a]volume=1.1[voice];"
-            f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
-        )
-
-        cmd_master = [
-            "ffmpeg", "-y",
-            "-i", str(concatenated_raw),
-            "-i", str(selected_bgm),
-            "-vf", draw_filter,
-            "-filter_complex", complex_filter,
-            "-map", "0:v",
-            "-map", "[aout]",
-            "-c:v", "libx264", "-preset", "slow", "-crf", "18",
-            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-            "-shortest",
-            "-movflags", "+faststart",
-            str(output_path)
-        ]
-        
-        try:
-            subprocess.run(cmd_master, check=True)
-        except subprocess.CalledProcessError:
-            print("Note: Fallback mix without drawtext overlay...")
-            cmd_master_fallback = [
+        if has_banner:
+            # Three inputs: 0 = video, 1 = BGM, 2 = title banner PNG
+            complex_filter = (
+                f"[0:v][2:v]overlay=0:140:enable='between(t,0.5,5.0)'[vout];"
+                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
+                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
+                f"[0:a]volume=1.1[voice];"
+                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+            )
+            cmd_master = [
+                "ffmpeg", "-y",
+                "-i", str(concatenated_raw),
+                "-i", str(selected_bgm),
+                "-i", str(banner_png),
+                "-filter_complex", complex_filter,
+                "-map", "[vout]",
+                "-map", "[aout]",
+                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                "-shortest",
+                "-movflags", "+faststart",
+                str(output_path)
+            ]
+        else:
+            # Fallback audio mix without banner image
+            complex_filter = (
+                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
+                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
+                f"[0:a]volume=1.1[voice];"
+                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+            )
+            cmd_master = [
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
                 "-i", str(selected_bgm),
                 "-filter_complex", complex_filter,
+                "-map", "0:v",
+                "-map", "[aout]",
+                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                "-shortest",
+                "-movflags", "+faststart",
+                str(output_path)
+            ]
+        
+        try:
+            subprocess.run(cmd_master, check=True)
+            print("✓ Master video compiled with audio mix and Title Overlay!")
+        except subprocess.CalledProcessError as err:
+            print(f"Warning: Primary encode failed ({err}), running resilient audio merge...")
+            fallback_audio_filter = (
+                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
+                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
+                f"[0:a]volume=1.1[voice];"
+                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
+            )
+            cmd_master_fallback = [
+                "ffmpeg", "-y",
+                "-i", str(concatenated_raw),
+                "-i", str(selected_bgm),
+                "-filter_complex", fallback_audio_filter,
                 "-map", "0:v",
                 "-map", "[aout]",
                 "-c:v", "copy",
@@ -265,26 +382,29 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
             ]
             subprocess.run(cmd_master_fallback, check=True)
     else:
-        # No BGM track: keep original dialogue audio
-        cmd_master = [
-            "ffmpeg", "-y",
-            "-i", str(concatenated_raw),
-            "-vf", draw_filter,
-            "-c:v", "libx264", "-preset", "slow", "-crf", "18",
-            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-            "-movflags", "+faststart",
-            str(output_path)
-        ]
-        try:
-            subprocess.run(cmd_master, check=True)
-        except subprocess.CalledProcessError:
-            cmd_fallback = [
+        # No BGM track: keep dialogue audio
+        if has_banner:
+            complex_filter = "[0:v][1:v]overlay=0:140:enable='between(t,0.5,5.0)'[vout]"
+            cmd_master = [
+                "ffmpeg", "-y",
+                "-i", str(concatenated_raw),
+                "-i", str(banner_png),
+                "-filter_complex", complex_filter,
+                "-map", "[vout]",
+                "-map", "0:a",
+                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                "-movflags", "+faststart",
+                str(output_path)
+            ]
+        else:
+            cmd_master = [
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
                 "-c", "copy",
                 str(output_path)
             ]
-            subprocess.run(cmd_fallback, check=True)
+        subprocess.run(cmd_master, check=True)
 
     print(f"\n=======================================================")
     print(f"🎉 MASTER EPISODE PRODUCED SUCCESSFULLY!")
