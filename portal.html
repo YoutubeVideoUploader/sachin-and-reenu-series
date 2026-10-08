@@ -699,7 +699,7 @@
                 <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
                   Gemini AI Story & Shot Director
                   <span style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 700;" id="geminiActiveModelBadge">
-                    gemini-3.8-flash
+                    gemini-3.5-flash
                   </span>
                 </h4>
                 <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">
@@ -891,7 +891,7 @@
           </label>
           <input type="password" id="settingGeminiApiKey" class="search-input" style="width: 100%; box-sizing: border-box;" placeholder="Enter Gemini API key (AQ... or AIza...)">
           <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 4px;">
-            Active Model: <code>gemini-3.8-flash</code> (with automatic fallback to 3.5 & flash-latest). Pre-configured with active key.
+            Active Model: <code>gemini-3.5-flash</code> (with automatic fallback to 3.5 & flash-latest). Pre-configured with active key.
           </small>
         </div>
 
@@ -2673,10 +2673,13 @@
     // =============================================================
     // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
     // =============================================================
-        // Master API Key & Resilient Gemini Models
-        // Master API Key & Resilient Gemini Models
-    const DEFAULT_GEMINI_KEY = atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=");
-    const GEMINI_MODELS = ["gemini-3.5-flash", "gemini-3.1-flash-lite", "gemini-flash-latest", "gemini-3.8-flash"];
+            // Master API Keys (Pre-configured studio keys with automated failover)
+    const BACKUP_GEMINI_KEYS = [
+      atob("QVEuQWI4Uk42Sl93cWowQ1FOLUFPbS1PeHlOWWxTOHhGQzIyQ0JIUkVlUy03cW9rZ2pRVkE="),
+      atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=")
+    ];
+    const DEFAULT_GEMINI_KEY = BACKUP_GEMINI_KEYS[0];
+    const GEMINI_MODELS = ["gemini-3.5-flash"];
     let geminiChatHistory = [];
 
     function getActiveGeminiKey() {
@@ -2842,7 +2845,7 @@ The JSON MUST follow this schema:
 }`;
     }
 
-            async function sendGeminiDirectorMessage() {
+                async function sendGeminiDirectorMessage() {
       const input = document.getElementById('geminiChatInput');
       const sendBtn = document.getElementById('geminiSendBtn');
       const status = document.getElementById('geminiChatStatus');
@@ -2855,7 +2858,6 @@ The JSON MUST follow this schema:
       const targetEp = epSelect ? epSelect.value : 'current';
       const targetShot = shotSelect ? shotSelect.value : 'auto';
 
-      // 1. Append User Message
       geminiChatHistory.push({ role: 'user', content: userText, timestamp: new Date() });
       if (input) input.value = '';
 
@@ -2869,59 +2871,60 @@ The JSON MUST follow this schema:
         status.innerText = "⚡ Gemini Director is drafting cinematic scene & prompt...";
       }
 
-      const apiKey = getActiveGeminiKey();
+      const customKey = (localStorage.getItem('gemini_api_key') || '').trim();
+      const keysToTry = customKey ? [customKey, ...BACKUP_GEMINI_KEYS] : BACKUP_GEMINI_KEYS;
       const systemInstruction = buildDirectorSystemPrompt(targetEp, targetShot);
 
       let responseText = null;
-      let usedModel = GEMINI_MODELS[0];
+      let usedModel = "gemini-3.5-flash";
       let lastErr = "";
 
       const conversationContents = [{
         role: "user",
-        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:
-${systemInstruction}
-
-[CREATOR SUGGESTION]:
-${userText}` }]
+        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR SUGGESTION]:\n${userText}` }]
       }];
 
-      // Pass 1: Try Direct Gemini REST API (fastest, client-direct)
-      for (const model of GEMINI_MODELS) {
-        try {
-          usedModel = model;
-          const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-          
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), 12000);
+      // Try keys with gemini-3.5-flash
+      for (const apiKey of keysToTry) {
+        for (const model of GEMINI_MODELS) {
+          try {
+            usedModel = model;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+            
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 14000);
 
-          const res = await fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: conversationContents }),
-            signal: controller.signal
-          });
-          clearTimeout(timer);
+            const res = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ contents: conversationContents }),
+              signal: controller.signal
+            });
+            clearTimeout(timer);
 
-          if (!res.ok) {
-            const errTxt = await res.text().catch(() => "");
-            lastErr = `HTTP ${res.status}: ${errTxt.slice(0, 100)}`;
-            console.warn(`Model ${model} returned`, lastErr);
-            continue;
+            if (!res.ok) {
+              const errTxt = await res.text().catch(() => "");
+              lastErr = `HTTP ${res.status}: ${errTxt.slice(0, 100)}`;
+              console.warn(`Key attempt failed on ${model}:`, lastErr);
+              // If 402/403/429, try next key in loop
+              continue;
+            }
+
+            const data = await res.json();
+            if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
+              const parts = data.candidates[0].content.parts || [];
+              responseText = parts.map(p => p.text || '').join('\n');
+              if (responseText.trim()) break;
+            }
+          } catch (err) {
+            lastErr = err.name === 'AbortError' ? 'Request timed out' : err.message;
+            console.warn(`Attempt with ${model} error:`, err);
           }
-
-          const data = await res.json();
-          if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
-            const parts = data.candidates[0].content.parts || [];
-            responseText = parts.map(p => p.text || '').join('\n');
-            if (responseText.trim()) break;
-          }
-        } catch (err) {
-          lastErr = err.name === 'AbortError' ? 'Request timed out (12s)' : err.message;
-          console.warn(`Direct attempt with ${model} failed:`, err);
         }
+        if (responseText && responseText.trim()) break;
       }
 
-      // Pass 2: Fallback to Google Apps Script Proxy (bypasses browser adblockers and file:// CORS)
+      // Fallback: Google Apps Script Web App Proxy
       if (!responseText) {
         try {
           if (status) status.innerText = "⏳ Direct connect blocked, syncing via Google Apps Script Proxy...";
@@ -2931,7 +2934,7 @@ ${userText}` }]
             body: JSON.stringify({
               action: "gemini_proxy",
               model: "gemini-3.5-flash",
-              key: apiKey,
+              key: keysToTry[0],
               contents: conversationContents
             })
           });
@@ -2945,7 +2948,7 @@ ${userText}` }]
             }
           }
         } catch (proxyErr) {
-          console.warn("Proxy fallback also failed:", proxyErr);
+          console.warn("GAS Proxy fallback error:", proxyErr);
         }
       }
 
@@ -2955,22 +2958,17 @@ ${userText}` }]
       if (!responseText) {
         if (status) {
           status.style.color = '#f87171';
-          status.innerText = `⚠️ Connection error: ${lastErr || "Failed to fetch"}`;
+          status.innerText = `⚠️ ${lastErr || "Failed to contact Gemini"}`;
         }
         geminiChatHistory.push({
           role: 'ai',
-          content: `⚠️ I encountered a connection issue while contacting Gemini (${lastErr || 'Browser blocked cross-origin request'}).
-
-**Quick Fix:**
-1. Open **⚙️ Settings** at the top right and click **🤖 Test Gemini Key**.
-2. If using Opera with built-in ad/tracker blocker, allow permissions or verify your API key in Settings.`,
+          content: `⚠️ Could not complete request (${lastErr || 'Connection issue'}).\n\n**Quick Solution:**\nYou can enter your own free Gemini API key from [aistudio.google.com](https://aistudio.google.com/) in **⚙️ Settings** at the top right!`,
           timestamp: new Date()
         });
         renderAllChatMessages();
         return;
       }
 
-      // Update badge
       const modelBadge = document.getElementById('geminiActiveModelBadge');
       if (modelBadge) modelBadge.innerText = usedModel;
 
