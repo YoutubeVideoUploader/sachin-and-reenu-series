@@ -2,8 +2,8 @@
   "episode_number": 8,
   "title_malayalam": "റീനുവിന്റെ മനസ്സ്",
   "title_english": "Reenu's Suspicion & Worry",
-  "synopsis": "As the monsoon rain continues to mist over Kochi, Reenu sits by her window, lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to decide that she must confront her feelings and ask him to stay.",
-  "cliffhanger": "Reenu resolves to meet Sachin at Marine Drive to confess her love and beg him not to leave.",
+  "synopsis": "As the monsoon rain continues to mist over Kochi, Reenu sits in her bedroom lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to make a bold decision: she grabs her umbrella and steps out into the rainy night, determined to meet Sachin at Marine Drive and confess her true feelings.",
+  "cliffhanger": "Reenu steps out into the rainy night road, journeying toward Marine Drive to meet Sachin before the night ends.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -194,12 +194,12 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവൾ സച്ചിനെ കാണാൻ മറൈൻ ഡ്രൈവിലേക്ക് പോകുന്നു.",
-      "action_summary": "Reenu steps out into the rain.",
+      "dialogue_malayalam": "ഹൃദയത്തിന്റെ വിളി കേട്ട് അവൾ പുറത്തിറങ്ങാൻ ഒരുങ്ങി.",
+      "action_summary": "Reenu takes a deep breath, holding her umbrella by the bedroom door.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Medium shot of Reenu",
         "characters_present": [
           {
             "name": "Reenu",
@@ -207,29 +207,28 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_STREET_OUTSIDE_HOUSE",
+          "scene_id": "SCENE_REENU_BEDROOM_EXIT",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Streetlights reflecting on wet road",
-          "weather": "Heavy rain falling",
+          "lighting_palette": "Warm interior hallway lamp glow against cool rain outside",
+          "weather": "Monsoon rain audible outside",
           "spatial_blocking": {
-            "Reenu": "Walking out of the house gate"
+            "Reenu": "Standing at bedroom doorway, holding folded umbrella"
           },
-          "eyeline_direction": "Looking ahead towards the road",
+          "eyeline_direction": "Looking ahead with determined resolve",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Street outside Reenu's house",
-        "camera": "Wide shot of Reenu walking",
-        "action": "Reenu is walking in the rain. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "location": "Reenu's house, bedroom doorway",
+        "camera": "Medium shot of Reenu holding umbrella",
+        "action": "Reenu takes a deep breath and steps forward. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "അവൾ സച്ചിനെ കാണാൻ മറൈൻ ഡ്രൈവിലേക്ക് പോകുന്നു."
+          "line": "ഹൃദയത്തിന്റെ വിളി കേട്ട് അവൾ പുറത്തിറങ്ങാൻ ഒരുങ്ങി."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
@@ -239,12 +238,12 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "മറൈൻ ഡ്രൈവിലെ കാറ്റ് അവളുടെ മുടിയിഴകളെ തഴുകി.",
-      "action_summary": "Reenu arrives at Marine Drive, looking around.",
+      "dialogue_malayalam": "മുറ്റത്തെ മഴത്തുള്ളികളിലേക്ക് അവൾ പതുക്കെ ഇറങ്ങി.",
+      "action_summary": "Reenu steps onto the veranda porch, opening her umbrella.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Medium shot of Reenu on porch",
         "characters_present": [
           {
             "name": "Reenu",
@@ -252,29 +251,28 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE",
+          "scene_id": "SCENE_HOUSE_PORCH_NIGHT",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Distant city lights, moody dark sky",
-          "weather": "Rain mist",
+          "lighting_palette": "Warm golden porch light reflecting on wet terracotta tiles",
+          "weather": "Gentle monsoon drizzle falling",
           "spatial_blocking": {
-            "Reenu": "Standing at the railings of Marine Drive"
+            "Reenu": "Standing on porch opening umbrella"
           },
-          "eyeline_direction": "Scanning the area",
+          "eyeline_direction": "Looking out toward the gate and rainy courtyard",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive",
-        "camera": "Medium shot of Reenu at the railing",
-        "action": "Reenu is looking around. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "location": "Front porch of Reenu's house",
+        "camera": "Medium shot of Reenu opening umbrella",
+        "action": "Reenu opens her umbrella and steps into the misty courtyard. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "മറൈൻ ഡ്രൈവിലെ കാറ്റ് അവളുടെ മുടിയിഴകളെ തഴുകി."
+          "line": "മുറ്റത്തെ മഴത്തുള്ളികളിലേക്ക് അവൾ പതുക്കെ ഇറങ്ങി."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
@@ -284,42 +282,41 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവിടെ സച്ചിൻ കാത്തുനിൽക്കുന്നുണ്ടായിരുന്നു.",
-      "action_summary": "Sachin is seen standing under a streetlamp.",
+      "dialogue_malayalam": "വീടിന്റെ പടിവാതിൽ കടക്കുമ്പോൾ മനസ്സിൽ ഒരൊറ്റ ചിന്ത മാത്രം.",
+      "action_summary": "Reenu unlatches and pushes open the front gate.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Medium wide shot of gate",
         "characters_present": [
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE",
+          "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Streetlamp glow",
-          "weather": "Light rain",
+          "lighting_palette": "Amber streetlamp glow illuminating wet garden gate and lush foliage",
+          "weather": "Cool monsoon drizzle with glistening wet surfaces",
           "spatial_blocking": {
-            "Sachin": "Standing under a streetlamp, waiting"
+            "Reenu": "Pushing open the front iron gate"
           },
-          "eyeline_direction": "Looking for Reenu",
+          "eyeline_direction": "Looking ahead toward the road",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive",
-        "camera": "Medium shot of Sachin",
-        "action": "Sachin is standing still. His lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "location": "Outside Reenu's house gate",
+        "camera": "Medium wide shot of Reenu opening the gate",
+        "action": "Reenu opens the gate and steps onto the quiet lane. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "അവിടെ സച്ചിൻ കാത്തുനിൽക്കുന്നുണ്ടായിരുന്നു."
+          "line": "വീടിന്റെ പടിവാതിൽ കടക്കുമ്പോൾ മനസ്സിൽ ഒരൊറ്റ ചിന്ത മാത്രം."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
@@ -329,47 +326,41 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ, നീ എന്നെ വിട്ടു പോകരുത്.",
-      "action_summary": "Reenu approaches Sachin and speaks.",
+      "dialogue_malayalam": "എന്തു സംഭവിച്ചാലും, സച്ചിനെ ഞാൻ കാണും.",
+      "action_summary": "Reenu pauses on the road, speaking with heartfelt resolution.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "First-Person Perspective",
+        "perspective": "Close-up on Reenu",
         "characters_present": [
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE",
+          "scene_id": "SCENE_STREET_OUTSIDE_HOUSE",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Streetlamp glow",
-          "weather": "Light rain",
+          "lighting_palette": "Soft golden streetlamp reflection glistening on wet asphalt",
+          "weather": "Light monsoon rain mist",
           "spatial_blocking": {
-            "Reenu": "Standing in front of Sachin",
-            "Sachin": "Looking at Reenu"
+            "Reenu": "Standing on rain-washed roadside under umbrella"
           },
-          "eyeline_direction": "Eye contact",
+          "eyeline_direction": "Looking ahead with deep emotional determination",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive",
-        "camera": "Close-up of Reenu",
-        "action": "Reenu speaks to Sachin. Her mouth moves in perfect sync with the Malayalam dialogue.",
+        "location": "Street outside Reenu's house",
+        "camera": "Close-up of Reenu under umbrella",
+        "action": "Reenu speaks softly with emotion. Her mouth moves in perfect sync with the Malayalam dialogue.",
         "dialogue": {
           "speaker": "Reenu",
           "voice_persona": "Reenu: Soft, gentle, 22yo Malayalam female voice, earnest and slightly vulnerable tone.",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ, നീ എന്നെ വിട്ടു പോകരുത്."
+          "line": "എന്തു സംഭവിച്ചാലും, സച്ചിനെ ഞാൻ കാണും."
         },
         "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu speaks. Her mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
       }
@@ -378,50 +369,44 @@
       "shot_number": 9,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "ഒരിക്കലുമില്ല റീനു, ഞാൻ നിന്നെ വിട്ടു പോകില്ല.",
-      "action_summary": "Sachin replies, looking at Reenu with warmth.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "മറൈൻ ഡ്രൈവിലേക്ക് നീളുന്ന ആ രാത്രി പാതയിലേക്ക് അവൾ നടന്നു.",
+      "action_summary": "Reenu walks briskly down the wet road into the misty Kochi night.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "First-Person Perspective",
+        "perspective": "Wide shot of Reenu walking down the road",
         "characters_present": [
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE",
+          "scene_id": "SCENE_STREET_OUTSIDE_HOUSE",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Streetlamp glow",
-          "weather": "Light rain",
+          "lighting_palette": "Distant Kochi streetlights gleaming on rain-washed asphalt",
+          "weather": "Cool atmospheric monsoon rain mist",
           "spatial_blocking": {
-            "Reenu": "Standing in front of Sachin",
-            "Sachin": "Looking at Reenu"
+            "Reenu": "Walking away along the street under umbrella"
           },
-          "eyeline_direction": "Eye contact",
+          "eyeline_direction": "Looking ahead down the quiet street toward Kochi backwaters",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive",
-        "camera": "Close-up of Sachin",
-        "action": "Sachin speaks to Reenu. His mouth moves in perfect sync with the Malayalam dialogue.",
+        "location": "Street outside Reenu's house",
+        "camera": "Wide tracking shot of Reenu walking",
+        "action": "Reenu walks briskly through the glistening rain. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: Warm, boyish, 24yo Malayalam male voice, sincere and comforting tone.",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "ഒരിക്കലുമില്ല റീനു, ഞാൻ നിന്നെ വിട്ടു പോകില്ല."
+          "line": "മറൈൻ ഡ്രൈവിലേക്ക് നീളുന്ന ആ രാത്രി പാതയിലേക്ക് അവൾ നടന്നു."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks. His mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -429,47 +414,41 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "മഴയിലും അവർ പരസ്പരം ചേർന്നുനിന്നു.",
-      "action_summary": "Reenu and Sachin stand close together, looking at each other.",
+      "dialogue_malayalam": "സച്ചിൻ കാത്തിരിക്കുന്ന ആ കടൽത്തീരത്തേക്ക് റീനു യാത്രയായി.",
+      "action_summary": "Reenu moves into the distance through the mist, heading toward Marine Drive.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Cinematic wide shot vanishing into rain mist",
         "characters_present": [
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE",
+          "scene_id": "SCENE_ROAD_TO_MARINE_DRIVE",
           "time_of_day": "Monsoon Night",
-          "lighting_palette": "Streetlamp glow",
-          "weather": "Light rain",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
           "spatial_blocking": {
-            "Reenu": "Standing close to Sachin",
-            "Sachin": "Standing close to Reenu"
+            "Reenu": "Stepping forward into the night lane heading toward Marine Drive"
           },
-          "eyeline_direction": "Eye contact",
+          "eyeline_direction": "Looking ahead into the distance",
           "persistent_props": [
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+            "Reenu's silver wrist watch on left wrist"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive",
-        "camera": "Medium shot of both",
-        "action": "Reenu and Sachin stand together. Their lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "location": "Road heading toward Marine Drive",
+        "camera": "Cinematic wide silhouette shot of Reenu walking into the night",
+        "action": "Reenu journeys into the rainy night toward Marine Drive. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
-          "line": "മഴയിലും അവർ പരസ്പരം ചേർന്നുനിന്നു."
+          "line": "സച്ചിൻ കാത്തിരിക്കുന്ന ആ കടൽത്തീരത്തേക്ക് റീനു യാത്രയായി."
         },
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }

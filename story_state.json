@@ -114,28 +114,25 @@
     {
       "episode": 8,
       "title": "റീനുവിന്റെ മനസ്സ് (Reenu's Suspicion & Worry)",
-      "summary": "As the monsoon rain continues to mist over Kochi, Reenu sits by her window, lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to decide that she must confront her feelings and ask him to stay.",
-      "cliffhanger": "Reenu resolves to meet Sachin at Marine Drive to confess her love and beg him not to leave.",
+      "summary": "As the monsoon rain continues to mist over Kochi, Reenu sits in her bedroom lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to make a bold decision: she grabs her umbrella and steps out into the rainy night, determined to meet Sachin at Marine Drive and confess her true feelings.",
+      "cliffhanger": "Reenu steps out into the rainy night road, journeying toward Marine Drive to meet Sachin before the night ends.",
       "characters_present": [
-        "Sachin",
         "Reenu"
       ]
     }
   ],
   "episode_number": 8,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_MARINE_DRIVE",
+    "scene_id": "SCENE_ROAD_TO_MARINE_DRIVE",
     "time_of_day": "Monsoon Night",
-    "lighting_palette": "Streetlamp glow",
-    "weather": "Light rain",
+    "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+    "weather": "Monsoon drizzle and atmospheric haze",
     "spatial_blocking": {
-      "Reenu": "Standing close to Sachin",
-      "Sachin": "Standing close to Reenu"
+      "Reenu": "Stepping forward into the night lane heading toward Marine Drive"
     },
-    "eyeline_direction": "Eye contact",
+    "eyeline_direction": "Looking ahead into the distance",
     "persistent_props": [
-      "Reenu's silver wrist watch on left wrist",
-      "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+      "Reenu's silver wrist watch on left wrist"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   }
