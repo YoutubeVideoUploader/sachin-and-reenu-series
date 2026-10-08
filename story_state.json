@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 7,
+  "total_episodes_produced": 8,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -110,23 +110,33 @@
         "Sachin",
         "Reenu"
       ]
+    },
+    {
+      "episode": 8,
+      "title": "റീനുവിന്റെ മനസ്സ് (Reenu's Suspicion & Worry)",
+      "summary": "As the monsoon rain continues to mist over Kochi, Reenu sits by her window, lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to decide that she must confront her feelings and ask him to stay.",
+      "cliffhanger": "Reenu resolves to meet Sachin at Marine Drive to confess her love and beg him not to leave.",
+      "characters_present": [
+        "Sachin",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 7,
+  "episode_number": 8,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_REENU_HOUSE_GATE_NIGHT",
-    "time_of_day": "8:30 PM Night Monsoon",
-    "lighting_palette": "Cool 5200K moonlight with warm 3200K porch lamp glow",
-    "weather": "Damp air",
+    "scene_id": "SCENE_MARINE_DRIVE",
+    "time_of_day": "Monsoon Night",
+    "lighting_palette": "Streetlamp glow",
+    "weather": "Light rain",
     "spatial_blocking": {
-      "Sachin": "Standing at gate",
-      "Reenu": "Standing at gate"
+      "Reenu": "Standing close to Sachin",
+      "Sachin": "Standing close to Reenu"
     },
-    "eyeline_direction": "Looking at each other",
+    "eyeline_direction": "Eye contact",
     "persistent_props": [
-      "Sachin's cross-bag",
-      "Reenu's silver wrist watch"
+      "Reenu's silver wrist watch on left wrist",
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder"
     ],
-    "camera_lens": "35mm cinematic prime lens, f/1.8"
+    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   }
 }
