@@ -2859,18 +2859,39 @@ Whenever a character is in 'characters_present', their 'visual_dna' field MUST M
 "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers. Absolutely zero costume variations."`;
 
       const productionRules = `=== INVIOLABLE PRODUCTION GUARDRAILS (BENCHMARK LOCKED) ===
-1. ACTION FIELD 'LIPS CLOSED' DIRECTIVE:
-   - For every narrator shot, the 'action' field MUST explicitly end with:
-     "Her lips are firmly closed. No mouth movement. Pure visual storytelling." (or "His lips..." for Sachin/Amal, or "Their lips...").
+1. DYNAMIC SPEAKER, VOICE PERSONA & LIP SYNC (MATCH THE CHARACTER):
+   Every shot has a designated speaker in the 'character' field: "Third-Person Narrator", "Sachin", "Reenu", or "Amal".
+   You MUST dynamically align 'speaker', 'voice_persona', 'action', and 'audio_directive' to match that speaker:
+
+   A. WHEN CHARACTER IS "Third-Person Narrator":
+      - 'dialogue.speaker': "Third-Person Narrator"
+      - 'dialogue.voice_persona': "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone"
+      - 'action': MUST end with: "Character lips are firmly closed. No mouth movement. Pure visual storytelling."
+      - 'audio_directive': "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+
+   B. WHEN CHARACTER IS "Sachin":
+      - 'dialogue.speaker': "Sachin"
+      - 'dialogue.voice_persona': "Sachin: 24yo endearing boyish South Indian Malayalam male voice, warm sincere emotional Kochi accent"
+      - 'action': MUST end with: "Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed."
+      - 'audio_directive': "MALE CHARACTER DIALOGUE (SACHIN). Character mouth animates in natural lip-sync with spoken Malayalam dialogue line. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+
+   C. WHEN CHARACTER IS "Reenu":
+      - 'dialogue.speaker': "Reenu"
+      - 'dialogue.voice_persona': "Reenu: 22yo South Indian Malayalam female voice, sweet tender slightly trembling emotional Kochi accent"
+      - 'action': MUST end with: "Reenu's mouth moves in natural, expressive 3D lip-sync animation corresponding to her spoken Malayalam line. Other character lips remain closed."
+      - 'audio_directive': "FEMALE CHARACTER DIALOGUE (REENU). Character mouth animates in natural lip-sync with spoken Malayalam dialogue line. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+
+   D. WHEN CHARACTER IS "Amal":
+      - 'dialogue.speaker': "Amal"
+      - 'dialogue.voice_persona': "Amal: 24yo energetic playful South Indian Malayalam male voice, comedic upbeat Kochi accent"
+      - 'action': MUST end with: "Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed."
+      - 'audio_directive': "MALE CHARACTER DIALOGUE (AMAL). Character mouth animates in natural lip-sync with spoken Malayalam dialogue line. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+
 2. DIALOGUE OBJECT SPECIFICATION:
-   - 'voice_persona' MUST BE EXACTLY:
-     "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone"
    - 'script' MUST BE LITERALLY: "മലയാളം ലിപി"
    - 'line' MUST match 'dialogue_malayalam' and contain strictly 5 to 8 Malayalam words.
-3. AUDIO DIRECTIVE:
-   - MUST BE EXACTLY:
-     "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-4. DIALOGUE WORD LIMIT & NATURAL CINEMATIC MALAYALAM (CRITICAL):
+
+3. DIALOGUE WORD LIMIT & NATURAL CINEMATIC MALAYALAM (CRITICAL):
    - WORD COUNT: Every single shot's Malayalam line MUST contain strictly between 5 and 8 words (under 40 letters/characters). Exactly ONE natural sentence.
    - ABSOLUTELY NO ROBOTIC OR MECHANICAL REPETITION:
      * DO NOT mechanically attach the same verb ending (like "-ുകയാണ്") to every shot. Repeating the same grammatical structure line after line sounds completely robotic!
@@ -2944,15 +2965,15 @@ The JSON MUST follow this EXACT schema:
         },
         "location": "Specific location in Kochi",
         "camera": "Exact camera movement and framing",
-        "action": "Description of action. Her lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Description of action. If Narrator shot: Character lips are firmly closed. No mouth movement. If Sachin/Reenu shot: Character mouth moves in natural lip sync.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
+          "speaker": "Matches 'character' above (e.g. 'Sachin', 'Reenu', or 'Third-Person Narrator')",
+          "voice_persona": "Exact voice persona matching the speaker as defined in Rule 1",
           "language": "Malayalam",
           "script": "മലയാളം ലിപി",
           "line": "5 to 8 Malayalam words matching dialogue_malayalam"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "Exact audio directive matching the speaker as defined in Rule 1 (Character dialogue with lip-sync, OR External VO with closed lips). CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
       }
     }
   ]
@@ -3009,15 +3030,15 @@ The JSON MUST follow this EXACT schema:
     },
     "location": "Specific location description",
     "camera": "Exact camera movement and framing",
-    "action": "Description of action. His lips are firmly closed. No mouth movement. Pure visual storytelling.",
+    "action": "Description of action. If Narrator: Character lips are firmly closed. If Character speaking: Character mouth moves in natural lip sync.",
     "dialogue": {
-      "speaker": "Third-Person Narrator",
-      "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
+      "speaker": "Matches 'character' above (e.g. 'Sachin', 'Reenu', or 'Third-Person Narrator')",
+      "voice_persona": "Exact voice persona matching the speaker as defined in Rule 1",
       "language": "Malayalam",
       "script": "മലയാളം ലിപി",
       "line": "5 to 8 Malayalam words only"
     },
-    "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+    "audio_directive": "Exact audio directive matching the speaker as defined in Rule 1. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
   }
 }
 \`\`\``;
