@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 11,
+  "total_episodes_produced": 10,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -140,29 +140,19 @@
         "Reenu",
         "Sachin"
       ]
-    },
-    {
-      "episode": 11,
-      "title": "കൂടെയുണ്ട് എന്നെന്നും (Together Forever)",
-      "summary": "As the monsoon rain continues to fall on the Kochi streets, Sachin and Reenu walk slowly through the promenade, processing the realization that their future is now here, not in London. The weight of the decision settles as they look toward a new beginning in their hometown.",
-      "cliffhanger": "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
-      "characters_present": [
-        "Reenu",
-        "Sachin"
-      ]
     }
   ],
-  "episode_number": 11,
+  "episode_number": 10,
   "cliffhanger_scene_state": {
     "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
     "time_of_day": "Monsoon Night",
     "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
     "weather": "Monsoon drizzle and atmospheric haze",
     "spatial_blocking": {
-      "Sachin": "Walking away",
-      "Reenu": "Walking away"
+      "Sachin": "Walking away with Reenu",
+      "Reenu": "Walking away with Sachin"
     },
-    "eyeline_direction": "Forward",
+    "eyeline_direction": "Sachin and Reenu look forward",
     "persistent_props": [
       "Leather pouch inside Sachin's bag",
       "Reenu's silver wrist watch on left wrist",
