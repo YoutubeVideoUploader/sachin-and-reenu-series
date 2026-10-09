@@ -1,9 +1,9 @@
 {
-  "episode_number": 9,
-  "title_malayalam": "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും",
-  "title_english": "A Midnight Message",
-  "synopsis": "Sachin and Amal wait at Marine Drive as the Kochi rain intensifies. Amal offers Sachin words of encouragement to face his fears. Reenu arrives, her silhouette appearing through the golden haze of the backwater lights. The tension peaks as Sachin prepares to reveal what is inside his leather pouch.",
-  "cliffhanger": "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu.",
+  "episode_number": 10,
+  "title_malayalam": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ",
+  "title_english": "The Grand Climax: The Revelation",
+  "synopsis": "Sachin finally reveals the contents of his leather pouch to Reenu under the Kochi rain. Instead of leaving for London, he shows her his cancelled visa and a permanent job contract in Kochi, choosing to stay for love. The episode ends with a heartfelt embrace and a promise of a future together.",
+  "cliffhanger": "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -14,8 +14,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "മഴ നനഞ്ഞ കൊച്ചി കടപ്പുറം. സച്ചിൻ കാത്തിരിക്കുകയാണ്.",
-      "action_summary": "Establishing shot of Marine Drive at night. Rain misting over the golden streetlights. Sachin and Amal standing near the promenade wall. No characters speaking.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിൻ തന്റെ മനസ്സ് തുറക്കാൻ ഒരുങ്ങുന്നു.",
+      "action_summary": "Sachin stands in the rain, holding the leather pouch. Reenu watches him intently. All characters are silent with closed lips.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -26,106 +26,6 @@
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Standing by the promenade wall, looking into the distance",
-            "Amal": "Standing beside Sachin, patting his shoulder"
-          },
-          "eyeline_direction": "Both looking at the distant walkway",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Wide tracking shot moving slowly towards the characters",
-        "action": "Sachin and Amal stand silently in the rain. Their lips are firmly closed. No mouth movement.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "മഴ നനഞ്ഞ കൊച്ചി കടപ്പുറം. സച്ചിൻ കാത്തിരിക്കുകയാണ്."
-        },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 2,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "സച്ചിൻ, ധൈര്യമായിരിക്കൂ. എല്ലാം ശരിയാകും.",
-      "action_summary": "Amal looks at Sachin with an encouraging smile. Amal's lips move in sync with the Malayalam dialogue. Sachin listens with closed lips.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up on Amal",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Standing by the promenade wall, looking at Amal",
-            "Amal": "Standing beside Sachin, facing him"
-          },
-          "eyeline_direction": "Amal looks at Sachin; Sachin looks at Amal",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Close-up shot of Amal",
-        "action": "Amal speaks with a warm, encouraging expression. Amal's lips move in natural lip-sync with the Malayalam dialogue.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal: Energetic, friendly young male voice, warm and reassuring",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ, ധൈര്യമായിരിക്കൂ. എല്ലാം ശരിയാകും."
-        },
-        "audio_directive": "AMAL SPEAKS. Sachin's lips are strictly closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 3,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അകലെയായി റീനുവിന്റെ രൂപം തെളിഞ്ഞു വരുന്നു.",
-      "action_summary": "Reenu appears in the distance, walking through the hazy golden lights. PURE VISUAL ACTION. All characters silent. No mouth movement.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Distant wide shot",
-        "characters_present": [
-          {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
@@ -136,334 +36,8 @@
           "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
           "weather": "Monsoon drizzle and atmospheric haze",
           "spatial_blocking": {
-            "Reenu": "Walking towards the center of the promenade"
-          },
-          "eyeline_direction": "Reenu looking ahead",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Slow, cinematic pull-in shot",
-        "action": "Reenu walks through the golden haze. Reenu's lips are firmly closed. Absolutely NO mouth movement.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "അകലെയായി റീനുവിന്റെ രൂപം തെളിഞ്ഞു വരുന്നു."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 4,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അവൾ വന്നു റീനു ഇതാ വരുന്നു.",
-      "action_summary": "Sachin sees Reenu and gasps slightly, his eyes widening. Sachin's lips move in sync with the Malayalam dialogue. Amal listens silently.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up on Sachin",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Standing by the promenade wall, looking at Reenu"
-          },
-          "eyeline_direction": "Sachin looks at Reenu",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Close-up shot of Sachin",
-        "action": "Sachin's face lights up with nervous joy. His lips move in sync with the Malayalam dialogue.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: Soft, slightly nervous yet excited young male voice",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "അവൾ വന്നു റീനു ഇതാ വരുന്നു."
-        },
-        "audio_directive": "SACHIN SPEAKS. Amal is silent. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 5,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "മഴയും കാറ്റും ആ നിമിഷത്തിന് സാക്ഷിയാകുന്നു.",
-      "action_summary": "Rain droplets falling on the pavement. The golden lights reflect in the puddles. PURE VISUAL ACTION. No characters present.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Scenic shot",
-        "characters_present": [],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {},
-          "eyeline_direction": "N/A",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Low angle shot of rain on the ground",
-        "action": "Rain falling, no characters visible. Ambient scene shot.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "മഴയും കാറ്റും ആ നിമിഷത്തിന് സാക്ഷിയാകുന്നു."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ, നീ പോവുകയാണോ എന്നെ വിട്ട്?",
-      "action_summary": "Reenu stops walking and looks at Sachin with tearful, questioning eyes. Reenu's lips move in sync with the Malayalam dialogue.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Medium shot of Reenu",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Reenu": "Standing still, looking at Sachin"
-          },
-          "eyeline_direction": "Reenu looks at Sachin",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Medium shot of Reenu",
-        "action": "Reenu stops and asks her question with a worried expression. Her lips move in sync with the Malayalam dialogue.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: Sweet, slightly trembling youthful female voice",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ, നീ പോവുകയാണോ എന്നെ വിട്ട്?"
-        },
-        "audio_directive": "REENU SPEAKS. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 7,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "റീനു, ഇതാ നോക്കൂ, എല്ലാം ഇതിലുണ്ട്.",
-      "action_summary": "Sachin reaches for his leather pouch. Sachin's lips move in sync with the Malayalam dialogue.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up on Sachin's hands",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Reaching for the leather pouch"
-          },
-          "eyeline_direction": "Sachin looks down at the pouch",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Close-up shot of Sachin's hands",
-        "action": "Sachin's hands touch the pouch. His lips move in sync with the Malayalam dialogue.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: Soft, reassuring, determined male voice",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "റീനു, ഇതാ നോക്കൂ, എല്ലാം ഇതിലുണ്ട്."
-        },
-        "audio_directive": "SACHIN SPEAKS. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 8,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിൻ ഒരു ദീർഘശ്വാസമെടുക്കുന്നു.",
-      "action_summary": "Close-up of Sachin taking a deep, shaky breath. PURE VISUAL ACTION. No characters speaking. Lips closed.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Extreme close-up on Sachin's face",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Standing, taking a deep breath"
-          },
-          "eyeline_direction": "Sachin looks straight ahead",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Extreme close-up on Sachin's face",
-        "action": "Sachin takes a deep breath. His lips are closed. No talking.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ ഒരു ദീർഘശ്വാസമെടുക്കുന്നു."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവൻ ആ ലെതർ പൗച്ച് തുറക്കുന്നു.",
-      "action_summary": "Sachin's hands unzip the pouch. PURE VISUAL ACTION. No characters speaking. Lips closed.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up on the pouch",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Opening the leather pouch"
-          },
-          "eyeline_direction": "Sachin looks down at the pouch",
-          "persistent_props": [
-            "Leather pouch inside Sachin's bag",
-            "Reenu's silver wrist watch on left wrist",
-            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-            "Vintage tan-brown London leather pouch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Close-up of the zipper opening",
-        "action": "Hands unzip the pouch. Lips closed. No talking.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "അവൻ ആ ലെതർ പൗച്ച് തുറക്കുന്നു."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 10,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിൻ റീനുവിനെ ലക്ഷ്യമാക്കി നടക്കുന്നു.",
-      "action_summary": "Sachin takes a firm step forward toward Reenu. PURE VISUAL ACTION. No characters speaking. Lips closed.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Wide shot of both characters",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-          "time_of_day": "Monsoon Night",
-          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-          "weather": "Monsoon drizzle and atmospheric haze",
-          "spatial_blocking": {
-            "Sachin": "Stepping forward towards Reenu",
-            "Reenu": "Standing, watching Sachin approach"
+            "Sachin": "Standing facing Reenu holding pouch",
+            "Reenu": "Standing opposite Sachin"
           },
           "eyeline_direction": "Sachin looks at Reenu; Reenu looks at Sachin",
           "persistent_props": [
@@ -474,17 +48,450 @@
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Marine Drive promenade, Kochi",
-        "camera": "Wide tracking shot of Sachin walking toward Reenu",
-        "action": "Sachin steps forward. Both characters silent. No mouth movement.",
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up shot on both characters",
+        "action": "Sachin holds the leather pouch in his hands. Reenu waits with a nervous, hopeful expression. No characters speak. Lips are strictly closed.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice, warm and melodic.",
           "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "സച്ചിൻ റീനുവിനെ ലക്ഷ്യമാക്കി നടക്കുന്നു."
+          "script": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിൻ തന്റെ മനസ്സ് തുറക്കാൻ ഒരുങ്ങുന്നു.",
+          "line": "കൊച്ചിയിലെ മഴയത്ത്, സച്ചിൻ തന്റെ മനസ്സ് തുറക്കാൻ ഒരുങ്ങുന്നു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 2,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു, ഇതിൽ എന്റെ പഴയ സ്വപ്നങ്ങളായിരുന്നു.",
+      "action_summary": "Sachin speaks to Reenu, opening the pouch.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin speaking",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Standing facing Reenu holding pouch"
+          },
+          "eyeline_direction": "Sachin looks at Reenu",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Sachin",
+        "action": "Sachin speaks to Reenu with a gentle smile. Reenu is listening silently.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Warm, earnest male voice",
+          "language": "Malayalam",
+          "script": "റീനു, ഇതിൽ എന്റെ പഴയ സ്വപ്നങ്ങളായിരുന്നു.",
+          "line": "റീനു, ഇതിൽ എന്റെ പഴയ സ്വപ്നങ്ങളായിരുന്നു."
+        },
+        "audio_directive": "Sachin's voice only. Reenu's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 3,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "എന്താണ് സച്ചിൻ ഇതിൽ?",
+      "action_summary": "Reenu asks Sachin about the pouch.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Reenu speaking",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Reenu": "Standing facing Sachin"
+          },
+          "eyeline_direction": "Reenu looks at Sachin",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Reenu",
+        "action": "Reenu speaks with curiosity. Sachin is listening silently.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Soft, melodic female voice",
+          "language": "Malayalam",
+          "script": "എന്താണ് സച്ചിൻ ഇതിൽ?",
+          "line": "എന്താണ് സച്ചിൻ ഇതിൽ?"
+        },
+        "audio_directive": "Reenu's voice only. Sachin's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഇത് എന്റെ ലണ്ടൻ വിസയുടെ ക്യാൻസലേഷൻ പേപ്പറാണ്.",
+      "action_summary": "Sachin shows the papers.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin speaking",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Standing facing Reenu"
+          },
+          "eyeline_direction": "Sachin looks at Reenu",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Sachin",
+        "action": "Sachin shows the papers to Reenu.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Warm, earnest male voice",
+          "language": "Malayalam",
+          "script": "ഇത് എന്റെ ലണ്ടൻ വിസയുടെ ക്യാൻസലേഷൻ പേപ്പറാണ്.",
+          "line": "ഇത് എന്റെ ലണ്ടൻ വിസയുടെ ക്യാൻസലേഷൻ പേപ്പറാണ്."
+        },
+        "audio_directive": "Sachin's voice only. Reenu's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 5,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "പിന്നെ, കൊച്ചിയിൽ എനിക്കൊരു ജോലി കിട്ടി.",
+      "action_summary": "Sachin shows the job contract.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin speaking",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Standing facing Reenu"
+          },
+          "eyeline_direction": "Sachin looks at Reenu",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Sachin",
+        "action": "Sachin shows the contract with a smile.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Warm, earnest male voice",
+          "language": "Malayalam",
+          "script": "പിന്നെ, കൊച്ചിയിൽ എനിക്കൊരു ജോലി കിട്ടി.",
+          "line": "പിന്നെ, കൊച്ചിയിൽ എനിക്കൊരു ജോലി കിട്ടി."
+        },
+        "audio_directive": "Sachin's voice only. Reenu's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 6,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "നീ ഇതെല്ലാം എനിക്കു വേണ്ടി ചെയ്തതാണോ?",
+      "action_summary": "Reenu is touched and emotional.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Reenu speaking",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Reenu": "Standing facing Sachin"
+          },
+          "eyeline_direction": "Reenu looks at Sachin",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Reenu",
+        "action": "Reenu looks at Sachin with tears of joy.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Soft, melodic female voice",
+          "language": "Malayalam",
+          "script": "നീ ഇതെല്ലാം എനിക്കു വേണ്ടി ചെയ്തതാണോ?",
+          "line": "നീ ഇതെല്ലാം എനിക്കു വേണ്ടി ചെയ്തതാണോ?"
+        },
+        "audio_directive": "Reenu's voice only. Sachin's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 7,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "അതെ റീനു, എനിക്ക് നിന്നോടൊപ്പം ഇവിടെ മതിയെന്ന് തോന്നി.",
+      "action_summary": "Sachin confirms his decision.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin speaking",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Standing facing Reenu"
+          },
+          "eyeline_direction": "Sachin looks at Reenu",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Sachin",
+        "action": "Sachin looks at Reenu lovingly.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Warm, earnest male voice",
+          "language": "Malayalam",
+          "script": "അതെ റീനു, എനിക്ക് നിന്നോടൊപ്പം ഇവിടെ മതിയെന്ന് തോന്നി.",
+          "line": "അതെ റീനു, എനിക്ക് നിന്നോടൊപ്പം ഇവിടെ മതിയെന്ന് തോന്നി."
+        },
+        "audio_directive": "Sachin's voice only. Reenu's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "അവർ പരസ്പരം നോക്കി, ആ മഴയത്ത് ആലിംഗനം ചെയ്തു.",
+      "action_summary": "Sachin and Reenu embrace in the rain.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Embracing Reenu",
+            "Reenu": "Embracing Sachin"
+          },
+          "eyeline_direction": "Sachin and Reenu look at each other",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Medium shot of the embrace",
+        "action": "Sachin and Reenu embrace. No characters speak. Lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice, warm and melodic.",
+          "language": "Malayalam",
+          "script": "അവർ പരസ്പരം നോക്കി, ആ മഴയത്ത് ആലിംഗനം ചെയ്തു.",
+          "line": "അവർ പരസ്പരം നോക്കി, ആ മഴയത്ത് ആലിംഗനം ചെയ്തു."
+        },
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 9,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഞാൻ ഇനി എങ്ങോട്ടും പോകുന്നില്ല, ഞാൻ വീട്ടിലെത്തി.",
+      "action_summary": "Sachin whispers to Reenu.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin speaking",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Whispering to Reenu"
+          },
+          "eyeline_direction": "Sachin looks at Reenu",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Close-up on Sachin",
+        "action": "Sachin whispers to Reenu. Reenu is listening silently.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Warm, earnest male voice",
+          "language": "Malayalam",
+          "script": "ഞാൻ ഇനി എങ്ങോട്ടും പോകുന്നില്ല, ഞാൻ വീട്ടിലെത്തി.",
+          "line": "ഞാൻ ഇനി എങ്ങോട്ടും പോകുന്നില്ല, ഞാൻ വീട്ടിലെത്തി."
+        },
+        "audio_directive": "Sachin's voice only. Reenu's lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 10,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "സച്ചിനും റീനുവും, അവരുടെ കഥ തുടങ്ങുകയായി.",
+      "action_summary": "Sachin and Reenu walking away together under the rain.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+          "time_of_day": "Monsoon Night",
+          "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+          "weather": "Monsoon drizzle and atmospheric haze",
+          "spatial_blocking": {
+            "Sachin": "Walking away with Reenu",
+            "Reenu": "Walking away with Sachin"
+          },
+          "eyeline_direction": "Sachin and Reenu look forward",
+          "persistent_props": [
+            "Leather pouch inside Sachin's bag",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+            "Vintage tan-brown London leather pouch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Marine Drive Promenade",
+        "camera": "Long shot of the couple walking away",
+        "action": "Sachin and Reenu walk away together. No characters speak. Lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice, warm and melodic.",
+          "language": "Malayalam",
+          "script": "സച്ചിനും റീനുവും, അവരുടെ കഥ തുടങ്ങുകയായി.",
+          "line": "സച്ചിനും റീനുവും, അവരുടെ കഥ തുടങ്ങുകയായി."
+        },
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     }
   ]

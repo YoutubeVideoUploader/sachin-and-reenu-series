@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 9,
+  "total_episodes_produced": 10,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -130,19 +130,29 @@
         "Reenu",
         "Sachin"
       ]
+    },
+    {
+      "episode": 10,
+      "title": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ (The Grand Climax: The Revelation)",
+      "summary": "Sachin finally reveals the contents of his leather pouch to Reenu under the Kochi rain. Instead of leaving for London, he shows her his cancelled visa and a permanent job contract in Kochi, choosing to stay for love. The episode ends with a heartfelt embrace and a promise of a future together.",
+      "cliffhanger": "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
+      "characters_present": [
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 9,
+  "episode_number": 10,
   "cliffhanger_scene_state": {
     "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
     "time_of_day": "Monsoon Night",
     "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
     "weather": "Monsoon drizzle and atmospheric haze",
     "spatial_blocking": {
-      "Sachin": "Stepping forward towards Reenu",
-      "Reenu": "Standing, watching Sachin approach"
+      "Sachin": "Walking away with Reenu",
+      "Reenu": "Walking away with Sachin"
     },
-    "eyeline_direction": "Sachin looks at Reenu; Reenu looks at Sachin",
+    "eyeline_direction": "Sachin and Reenu look forward",
     "persistent_props": [
       "Leather pouch inside Sachin's bag",
       "Reenu's silver wrist watch on left wrist",
