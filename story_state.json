@@ -32,6 +32,14 @@
       "gender": "female",
       "role": "Reenu's Mother",
       "attire": "Traditional Kerala cotton cream and green saree"
+    },
+    "Reenu's Father": {
+      "age": 55,
+      "gender": "male",
+      "voice": "Deep, authoritative, stern middle-aged male voice.",
+      "role": "Antagonist/Parent",
+      "attire": "White cotton mundu, light-blue formal shirt.",
+      "visual_dna": "Stylized 3D Pixar-style cartoon character, tall, stern expression, grey-streaked short black hair, thick cartoonish mustache, wearing a traditional white cotton mundu and a crisp light-blue formal shirt."
     }
   },
   "history": [
@@ -124,6 +132,32 @@
       "status": "Upcoming",
       "synopsis": "SEASON 2 CLIMAX: The Fort Kochi book-cafe officially opens to glowing fairy lights and cheering friends. Madhavan and Girija arrive, giving their proud, heartfelt blessing to Sachin and Reenu.",
       "cliffhanger": "Sachin holds Reenu's hand under the glowing cafe lights, whispering: 'This is only the beginning.' Season 2 Grand Climax completed!"
+    },
+    {
+      "episode": 1,
+      "title": "വിരുന്നുകാർ (The Unannounced Guests)",
+      "summary": "Sachin and Reenu settle into their new life in Kochi. The peace is short-lived when Reenu's parents decide to pay a surprise visit, sending Sachin into a panicked cleaning frenzy.",
+      "cliffhanger": "Sachin opens the front door to find Reenu's stern father standing right in front of him.",
+      "characters_present": [
+        "Reenu",
+        "Sachin"
+      ]
     }
-  ]
+  ],
+  "cliffhanger_scene_state": {
+    "scene_id": "SCENE_KOCHI_APARTMENT_DOORWAY",
+    "time_of_day": "Late Afternoon Monsoon Dusk",
+    "lighting_palette": "Soft warm indoor ambient lighting hitting their faces",
+    "weather": "Continuous Kochi monsoon drizzle",
+    "spatial_blocking": {
+      "Sachin": "Standing inside the doorway",
+      "Reenu's Father": "Standing outside the doorway"
+    },
+    "eyeline_direction": "Sachin looks at Reenu's Father; Father looks at Sachin",
+    "persistent_props": [
+      "Reenu's silver wrist watch on left wrist",
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+    ],
+    "camera_lens": "Cinematic prime lens"
+  }
 }
