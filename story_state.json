@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 8,
+  "total_episodes_produced": 9,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -119,20 +119,35 @@
       "characters_present": [
         "Reenu"
       ]
+    },
+    {
+      "episode": 9,
+      "title": "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും (A Midnight Message)",
+      "summary": "Sachin and Amal wait at Marine Drive as the Kochi rain intensifies. Amal offers Sachin words of encouragement to face his fears. Reenu arrives, her silhouette appearing through the golden haze of the backwater lights. The tension peaks as Sachin prepares to reveal what is inside his leather pouch.",
+      "cliffhanger": "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 8,
+  "episode_number": 9,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_ROAD_TO_MARINE_DRIVE",
+    "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
     "time_of_day": "Monsoon Night",
     "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
     "weather": "Monsoon drizzle and atmospheric haze",
     "spatial_blocking": {
-      "Reenu": "Stepping forward into the night lane heading toward Marine Drive"
+      "Sachin": "Stepping forward towards Reenu",
+      "Reenu": "Standing, watching Sachin approach"
     },
-    "eyeline_direction": "Looking ahead into the distance",
+    "eyeline_direction": "Sachin looks at Reenu; Reenu looks at Sachin",
     "persistent_props": [
-      "Reenu's silver wrist watch on left wrist"
+      "Leather pouch inside Sachin's bag",
+      "Reenu's silver wrist watch on left wrist",
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+      "Vintage tan-brown London leather pouch"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   }
