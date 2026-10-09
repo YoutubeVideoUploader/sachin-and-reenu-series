@@ -1,4 +1,4 @@
-﻿name: "Generate Next Episode Screenplay & Prompts"
+name: "Generate Next Episode Screenplay & Prompts"
 
 on:
   workflow_dispatch:
@@ -8,6 +8,16 @@ on:
         required: false
         type: string
         default: ""
+      season_number:
+        description: "Season Number (e.g. 1 or 2)"
+        required: false
+        type: string
+        default: "1"
+      is_new_season:
+        description: "Set to 'true' if transitioning to a new season"
+        required: false
+        type: string
+        default: "false"
       story_premise:
         description: "Optional custom story idea or premise to guide Gemini"
         required: false
@@ -47,13 +57,22 @@ jobs:
           if [ -n "${{ inputs.target_episode }}" ]; then
             cmd="$cmd --target_ep ${{ inputs.target_episode }}"
           fi
+          if [ -n "${{ inputs.season_number }}" ]; then
+            cmd="$cmd --season ${{ inputs.season_number }}"
+          fi
+          if [ "${{ inputs.is_new_season }}" = "true" ]; then
+            cmd="$cmd --is_new_season"
+          fi
+          if [ -n "${{ inputs.story_premise }}" ]; then
+            cmd="$cmd --premise \"${{ inputs.story_premise }}\""
+          fi
           echo "Running: $cmd"
-          $cmd
+          eval $cmd
 
       - name: 5. Commit Updated Screenplay, Prompts & Portal to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add story_state.json current_episode_shots.json portal.html 2>/dev/null || true
+          git add story_state.json current_episode_shots.json portal.html scripts/ 2>/dev/null || true
           git diff-index --quiet HEAD || git commit -m "Advance episode: generated new screenplay & Google Flow prompts [skip ci]"
           git push || true

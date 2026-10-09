@@ -888,56 +888,97 @@ function recordCreatorStoryIdea(epNum, idea) {
 function handleNextEpisodeFullUpdate(body) {
   const epNum = body.episode_number || 1;
   const prevEp = epNum - 1;
+  const isNewSeason = (body.is_new_season === true || body.is_new_season === "true" || (body.season_number && body.season_number > 1 && epNum === 1));
+  const seasonNum = body.season_number || (isNewSeason ? 2 : 1);
   
   const ss = getStudioSpreadsheet();
   const storySheet = ss.getSheetByName(TAB_STORY);
   if (storySheet) {
-    const data = storySheet.getDataRange().getValues();
-    const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-    let epRowFound = false;
-    
-    for (let i = 1; i < data.length; i++) {
-      const rowEp = parseInt(data[i][0], 10);
-      if (prevEp > 0 && rowEp <= prevEp) {
-        storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-        if (body.instagram_url && rowEp === prevEp) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
-        if (!data[i][7] && rowEp === prevEp) storySheet.getRange(i + 1, 8).setValue(nowIst);
+    if (isNewSeason) {
+      // ----------------------------------------------------------------------
+      // NEW SEASON RESET FOR TAB 1 (Episode_Story):
+      // 1. Wipe all previous season published timestamps & Instagram URLs
+      // 2. Delete any extra rows > 11 (e.g. Episode 11)
+      // 3. Mark Episode 1 as Active, Episodes 2..10 as Upcoming with empty URLs
+      // ----------------------------------------------------------------------
+      const lastRow = storySheet.getLastRow();
+      if (lastRow > 11) {
+        storySheet.deleteRows(12, lastRow - 11);
       }
-      if (rowEp === epNum) {
-        storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
-        const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim();
-        if (fullTitle) storySheet.getRange(i + 1, 2).setValue(fullTitle);
-        if (body.total_shots) storySheet.getRange(i + 1, 4).setValue(body.total_shots);
-        if (body.synopsis) storySheet.getRange(i + 1, 5).setValue(body.synopsis);
-        if (body.cliffhanger) storySheet.getRange(i + 1, 6).setValue(body.cliffhanger);
-        epRowFound = true;
+      for (let r = 2; r <= 11; r++) {
+        const rowEp = r - 1;
+        if (rowEp === 1) {
+          const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || "Episode 1";
+          storySheet.getRange(r, 1).setValue(1);
+          storySheet.getRange(r, 2).setValue(fullTitle);
+          storySheet.getRange(r, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+          storySheet.getRange(r, 4).setValue(body.total_shots || 10);
+          storySheet.getRange(r, 5).setValue(body.synopsis || "");
+          storySheet.getRange(r, 6).setValue(body.cliffhanger || "");
+          storySheet.getRange(r, 7).setValue(""); // INSTAGRAM URL MUST BE EMPTY
+          storySheet.getRange(r, 8).setValue(""); // PUBLISHED TIMESTAMP MUST BE EMPTY
+        } else {
+          storySheet.getRange(r, 1).setValue(rowEp);
+          storySheet.getRange(r, 2).setValue(`Episode ${rowEp}`);
+          storySheet.getRange(r, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
+          storySheet.getRange(r, 4).setValue(10);
+          storySheet.getRange(r, 5).setValue("");
+          storySheet.getRange(r, 6).setValue("");
+          storySheet.getRange(r, 7).setValue(""); // INSTAGRAM URL MUST BE EMPTY
+          storySheet.getRange(r, 8).setValue(""); // PUBLISHED TIMESTAMP MUST BE EMPTY
+        }
       }
-      if (epNum === 1 && rowEp > 1) {
-        storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
+    } else {
+      // Regular mid-season episode update
+      const data = storySheet.getDataRange().getValues();
+      const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+      let epRowFound = false;
+      
+      for (let i = 1; i < data.length; i++) {
+        const rowEp = parseInt(data[i][0], 10);
+        if (prevEp > 0 && rowEp <= prevEp) {
+          storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+          if (body.instagram_url && rowEp === prevEp) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
+          if (!data[i][7] && rowEp === prevEp) storySheet.getRange(i + 1, 8).setValue(nowIst);
+        }
+        if (rowEp === epNum) {
+          storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+          const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim();
+          if (fullTitle) storySheet.getRange(i + 1, 2).setValue(fullTitle);
+          if (body.total_shots) storySheet.getRange(i + 1, 4).setValue(body.total_shots);
+          if (body.synopsis) storySheet.getRange(i + 1, 5).setValue(body.synopsis);
+          if (body.cliffhanger) storySheet.getRange(i + 1, 6).setValue(body.cliffhanger);
+          epRowFound = true;
+        }
+        if (epNum === 1 && rowEp > 1) {
+          storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
+        }
       }
-    }
 
-    if (!epRowFound) {
-      const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || `Episode ${epNum}`;
-      storySheet.appendRow([
-        epNum,
-        fullTitle,
-        "Active",
-        body.total_shots || (body.shots ? body.shots.length : 10),
-        body.synopsis || "",
-        body.cliffhanger || "",
-        "",
-        ""
-      ]);
-      const newRow = storySheet.getLastRow();
-      storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
+      if (!epRowFound) {
+        const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || `Episode ${epNum}`;
+        storySheet.appendRow([
+          epNum,
+          fullTitle,
+          "Active",
+          body.total_shots || (body.shots ? body.shots.length : 10),
+          body.synopsis || "",
+          body.cliffhanger || "",
+          "",
+          ""
+        ]);
+        const newRow = storySheet.getLastRow();
+        storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
+      }
     }
   }
 
+  // 2. Overwrite Tab 2: Current_JSON_Prompts
   if (body.shots && Array.isArray(body.shots) && body.shots.length > 0) {
     updateJsonPromptsSheet(epNum, body.shots);
   }
 
+  // 3. Reset Tab 3: Video_Checklist
   const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 10);
   initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
   
@@ -945,11 +986,21 @@ function handleNextEpisodeFullUpdate(body) {
   try {
     let seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
     if (!seasonSheet) {
-      setupSeasonStoryArcSheet(1);
+      setupSeasonStoryArcSheet(seasonNum);
       seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
     }
-    if (seasonSheet && seasonSheet.getLastRow() >= 3) {
-      const sData = seasonSheet.getRange(3, 1, seasonSheet.getLastRow() - 2, 8).getValues();
+    
+    // If full season roadmap is provided, update all 10 episodes in Tab 4
+    const roadmapEpisodes = body.season_arc || body.episodes;
+    if (roadmapEpisodes && Array.isArray(roadmapEpisodes) && roadmapEpisodes.length > 0) {
+      updateSeasonStoryArcInSheet(seasonNum, body.season_title, roadmapEpisodes);
+    } else if (seasonSheet && seasonSheet.getLastRow() >= 3) {
+      // Remove any Episode 11+ rows from Tab 4
+      const lastArcRow = seasonSheet.getLastRow();
+      if (lastArcRow > 12) {
+        seasonSheet.deleteRows(13, lastArcRow - 12);
+      }
+      const sData = seasonSheet.getRange(3, 1, Math.min(10, seasonSheet.getLastRow() - 2), 8).getValues();
       let arcFound = false;
       for (let r = 0; r < sData.length; r++) {
         if (sData[r][1] == epNum) {
@@ -961,18 +1012,6 @@ function handleNextEpisodeFullUpdate(body) {
           arcFound = true;
           break;
         }
-      }
-      if (!arcFound) {
-        seasonSheet.appendRow([
-          1, epNum,
-          body.title_english || `Episode ${epNum}`,
-          body.title_malayalam || "",
-          "Active",
-          body.synopsis || "",
-          body.cliffhanger || "",
-          ""
-        ]);
-        seasonSheet.getRange(seasonSheet.getLastRow(), 5).setBackground("#dcfce7").setFontColor("#15803d");
       }
     }
   } catch (arcErr) {
@@ -998,7 +1037,7 @@ function handleNextEpisodeFullUpdate(body) {
           charSheet.appendRow([
             cName,
             nc.role || "Supporting Character",
-            `Season 1 • Ep ${epNum}`,
+            `Season ${seasonNum} • Ep ${epNum}`,
             "Active",
             nc.visual_dna || "Stylized 3D Pixar cartoon character (Strictly non-human realism)",
             nc.locked_attire || "Locked signature costume (100% consistent across shots)",
@@ -1014,6 +1053,14 @@ function handleNextEpisodeFullUpdate(body) {
   } catch (charErr) {
     Logger.log("Error updating Character_Registry: " + charErr.toString());
   }
+
+  return {
+    success: true,
+    season_number: seasonNum,
+    episode_number: epNum,
+    message: isNewSeason ? `Season ${seasonNum} cleanly initialized! Tab 1 URLs cleared, Tab 4 updated.` : `Episode ${epNum} updated successfully.`
+  };
+}
 
   // Auto-scan single 'Episode' Drive folder immediately
   try {
