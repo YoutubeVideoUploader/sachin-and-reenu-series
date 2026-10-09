@@ -340,12 +340,12 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
                 "-i", str(selected_bgm),
                 "-loop", "1",
                 "-i", str(banner_png),
+                "-t", str(total_video_duration),
                 "-filter_complex", complex_filter,
                 "-map", "[vout]",
                 "-map", "[aout]",
-                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-shortest",
                 "-movflags", "+faststart",
                 str(output_path)
             ]
@@ -361,12 +361,12 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
                 "-i", str(selected_bgm),
+                "-t", str(total_video_duration),
                 "-filter_complex", complex_filter,
                 "-map", "0:v",
                 "-map", "[aout]",
-                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-shortest",
                 "-movflags", "+faststart",
                 str(output_path)
             ]
@@ -386,12 +386,12 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
                 "ffmpeg", "-y",
                 "-i", str(concatenated_raw),
                 "-i", str(selected_bgm),
+                "-t", str(total_video_duration),
                 "-filter_complex", fallback_audio_filter,
                 "-map", "0:v",
                 "-map", "[aout]",
                 "-c:v", "copy",
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-shortest",
                 "-movflags", "+faststart",
                 str(output_path)
             ]
@@ -408,12 +408,12 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
                 "-i", str(concatenated_raw),
                 "-loop", "1",
                 "-i", str(banner_png),
+                "-t", str(total_video_duration),
                 "-filter_complex", complex_filter,
                 "-map", "[vout]",
                 "-map", "0:a",
-                "-c:v", "libx264", "-preset", "slow", "-crf", "18",
+                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
                 "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-shortest",
                 "-movflags", "+faststart",
                 str(output_path)
             ]
