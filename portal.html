@@ -2677,10 +2677,12 @@
     // =============================================================
     // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
     // =============================================================
-            // Master API Keys (Pre-configured studio keys with automated failover)
+    // Master API Keys (Pre-configured studio keys with automated failover across all 4 keys)
     const BACKUP_GEMINI_KEYS = [
-      atob("QVEuQWI4Uk42Sl93cWowQ1FOLUFPbS1PeHlOWWxTOHhGQzIyQ0JIUkVlUy03cW9rZ2pRVkE="),
-      atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=")
+      atob("QVEuQWI4Uk42TF9OdUs2UkNJOEZKUjFpLVQwZXJmR1FZN2ktRlJHTXhnNm84Q3pXVVN5dEE="), // Key 1 (L_NuK6)
+      atob("QVEuQWI4Uk42SXdJbVN1cHd5eWUzS0ZWSVVUc1pRX3pJaElUVl9YWHJSUXAzRmotUlgwWWc="), // Key 2 (IwImSup)
+      atob("QVEuQWI4Uk42Sl93cWowQ1FOLUFPbS1PeHlOWWxTOHhGQzIyQ0JIUkVlUy03cW9rZ2pRVkE="), // Key 3 (J_wqj0)
+      atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=")  // Key 4 (LoWPD)
     ];
     const DEFAULT_GEMINI_KEY = BACKUP_GEMINI_KEYS[0];
     const GEMINI_MODELS = ["gemini-3.5-flash"];
