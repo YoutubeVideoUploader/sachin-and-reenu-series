@@ -702,6 +702,14 @@ def main():
         effective_current_ep = args.current_ep
         target_ep = effective_current_ep + 1
     else:
+        # Check if Season 1 Finale (Episode 10) is reached - do not auto-advance
+        if detected_ep >= 10:
+            print("\n" + "="*70)
+            print("🎯 SEASON 1 FINALE REACHED (Episode 10).")
+            print("Automatic background advancement halted.")
+            print("Please open the Creator Portal to review Episode 10 or launch Season 2!")
+            print("="*70 + "\n")
+            return
         # Default run: advance from current detected episode to the next one
         effective_current_ep = detected_ep
         target_ep = effective_current_ep + 1

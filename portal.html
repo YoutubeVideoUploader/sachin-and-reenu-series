@@ -554,6 +554,11 @@
       </div>
     </div>
 
+    <!-- Season Finale & Season Transition Banner (Appears at Episode 10) -->
+    <div id="seasonFinaleBanner" style="display: none; background: linear-gradient(135deg, #1e1035 0%, #31135e 50%, #1e1b4b 100%); border: 2px solid #a855f7; border-radius: var(--radius); padding: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);">
+      <!-- Rendered dynamically via renderSeasonFinaleBanner() -->
+    </div>
+
     <!-- Navigation Tabs -->
     <div class="tabs">
       <button class="tab-btn active" id="tabBtnShots" onclick="switchTab('shotsTab')">
@@ -918,6 +923,105 @@
           <button class="btn btn-secondary" onclick="closeStudioSettings()" style="padding: 8px 14px; font-size: 13px;">Cancel</button>
           <button class="btn btn-primary" onclick="saveStudioSettings()" style="padding: 8px 18px; font-size: 13px;">Save Settings</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Season 2 Transition & Architect Modal -->
+  <div class="modal-backdrop" id="season2SetupModal" onclick="handleSeason2ModalBackdropClick(event)" style="display: none;">
+    <div class="modal-card" style="max-width: 680px; background: #0c0f1d; border: 1px solid #7c3aed; box-shadow: 0 20px 60px rgba(124, 58, 237, 0.35);">
+      <!-- Modal Header -->
+      <div style="padding: 18px 24px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1035 0%, #0c0f1d 100%);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 26px;">🚀</span>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">Architect Season 2 (New Story Arc)</h3>
+            <div style="font-size: 12px; color: #c084fc;">Full Google Sheet Overhaul • 10-Episode Roadmap • S02E01 Video Prompts</div>
+          </div>
+        </div>
+        <button onclick="closeSeason2Modal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 16px; max-height: 70vh; overflow-y: auto;">
+        
+        <!-- Guardrail Alert -->
+        <div style="background: rgba(124, 58, 237, 0.12); border-left: 4px solid #a855f7; border-radius: 0 8px 8px 0; padding: 12px 14px;">
+          <div style="font-size: 12px; font-weight: 800; color: #d8b4fe; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
+            🛡️ Strict Character & Production Rules
+          </div>
+          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+            • <b>Faces & 3D Pixar DNA Locked:</b> Sachin, Reenu, and Amal retain their exact stylized 3D Pixar face DNA, age, and character personality.<br>
+            • <b>Costume Evolution:</b> Wardrobes will be restyled for Season 2's new setting and locked for consistency.<br>
+            • <b>New Characters:</b> Gemini may introduce 1-2 new supporting characters into the bible if the plot requires it.<br>
+            • <b>Google Sheet Reset:</b> Tab 4 gets the 10-episode Season 2 roadmap, and Tab 1 & Tab 2 are populated with Season 2, Episode 1.
+          </div>
+        </div>
+
+        <!-- Creator Story Input -->
+        <div>
+          <label style="font-size: 13px; font-weight: 700; color: #fde047; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span>📖 Your Story Idea, Plot Direction, or Genre for Season 2:</span>
+            <span style="font-size: 11px; color: #94a3b8; font-weight: 400;">Custom or AI Pitch</span>
+          </label>
+          <textarea id="season2StoryInput" class="search-input" rows="3" style="width: 100%; box-sizing: border-box; resize: vertical; font-size: 13px; line-height: 1.5; padding: 10px 14px; border-radius: 8px; font-family: inherit;" placeholder="Type your idea for Season 2 (e.g., Starting a cozy book cafe in Fort Kochi with Amal; or Reenu's traditional parents visiting Kochi; or corporate life at InfoPark)..."></textarea>
+        </div>
+
+        <!-- Quick Inspiration Pills -->
+        <div>
+          <div style="font-size: 11px; text-transform: uppercase; font-weight: 800; color: #94a3b8; margin-bottom: 6px; letter-spacing: 0.5px;">
+            ⚡ Quick Story Themes (Click to Pick):
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-secondary" onclick="quickSelectSeason2Idea('☕ Fort Kochi Cafe Startup: Sachin and Reenu decide to open a cozy coastal cafe in Fort Kochi, with Amal causing humorous chaos as their self-appointed manager.')" style="padding: 5px 10px; font-size: 11px;">
+              ☕ Fort Kochi Cafe Startup
+            </button>
+            <button class="btn btn-secondary" onclick="quickSelectSeason2Idea('🏡 Meeting the Families: With Sachin staying in Kerala, Reenu\'s traditional parents visit Kochi unexpectedly, leading to humorous cultural clashes and marriage expectations.')" style="padding: 5px 10px; font-size: 11px;">
+              🏡 Meeting the Families
+            </button>
+            <button class="btn btn-secondary" onclick="quickSelectSeason2Idea('💼 InfoPark Career & Ambition: Sachin joins a high-pressure tech firm in Kakkanad while Reenu leads an architectural project, balancing love with new corporate challenges.')" style="padding: 5px 10px; font-size: 11px;">
+              💼 InfoPark Life & Ambition
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive AI Brainstormer -->
+        <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff;">Want Gemini to Pitch Story Ideas?</div>
+              <div style="font-size: 11px; color: #94a3b8;">Generate 3 distinct Pixar-style Season 2 storylines to choose from.</div>
+            </div>
+            <button id="btnGeminiPitchSeason2" class="btn btn-secondary" onclick="generateSeason2StoryIdeas()" style="padding: 6px 14px; font-size: 12px; background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">
+              💡 Pitch 3 Story Ideas
+            </button>
+          </div>
+          <div id="season2PitchesContainer" style="display: none; margin-top: 10px;"></div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div id="season2ProgressBox" style="display: none; background: #080d1a; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div class="pulse" style="background: #38bdf8;"></div>
+            <div style="font-size: 13px; font-weight: 800; color: #38bdf8;" id="season2ProgressTitle">Architecting Season 2...</div>
+          </div>
+          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;" id="season2ProgressDetail">
+            Drafting 10-episode Season 2 roadmap, new wardrobe locks, and Season 2 Episode 1 shots (~30s)...
+          </div>
+        </div>
+
+        <div id="season2ErrorMsg" style="display: none; font-size: 12px; color: #f87171; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 6px;"></div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="padding: 14px 24px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <button class="btn btn-secondary" onclick="closeSeason2Modal()" style="padding: 9px 16px; font-size: 13px;">
+          ← Back to Episode 10
+        </button>
+        <button id="btnLaunchSeason2" class="btn btn-primary" onclick="launchSeason2Transition()" style="padding: 10px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);">
+          🎬 Launch Season 2 & Rewrite Google Sheets
+        </button>
       </div>
     </div>
   </div>
@@ -1472,10 +1576,14 @@
       uploadList.innerHTML = '';
 
       const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
-      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${episodeData.episode_number}`;
+      const epNum = episodeData.episode_number || 1;
+      const isS2 = episodeData.is_season_2 || (seasonStoryData && seasonStoryData.season_number >= 2);
+      document.getElementById('epNumberTag').innerText = isS2 ? `CURRENT PRODUCTION • SEASON 2, EPISODE ${epNum}` : `CURRENT PRODUCTION • EPISODE ${epNum}`;
       document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
       document.getElementById('epSynopsis').innerText = episodeData.synopsis;
       document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
+
+      renderSeasonFinaleBanner();
 
       episodeData.shots.forEach((shot) => {
         const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
@@ -3896,6 +4004,475 @@ The JSON MUST follow this EXACT schema:
             syncBtn.style.background = "";
           }
         }, 4000);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // SEASON 1 FINALE & SEASON 2 TRANSITION ARCHITECTURE
+    // -------------------------------------------------------------
+    window.editingEp10Confirmed = false;
+
+    function renderSeasonFinaleBanner() {
+      const banner = document.getElementById('seasonFinaleBanner');
+      if (!banner) return;
+      const epNum = episodeData.episode_number || 1;
+      const isSeason2 = episodeData.is_season_2 || (seasonStoryData && seasonStoryData.season_number >= 2);
+
+      // Show banner if Episode 10 of Season 1
+      if (epNum === 10 && !isSeason2) {
+        banner.style.display = 'block';
+        if (window.editingEp10Confirmed) {
+          banner.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; background: rgba(30, 41, 59, 0.7); border: 1px solid #475569; border-radius: 10px; padding: 14px 18px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 24px;">✏️</span>
+                <div>
+                  <div style="font-size: 13px; font-weight: 800; color: #fbbf24;">Editing Mode: Season 1 Finale (Episode 10: The Revelation)</div>
+                  <div style="font-size: 12px; color: #cbd5e1;">Review or edit any of the 10 shots below. When ready to transition to the new story, click the button on the right!</div>
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="openSeason2Modal()" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);">
+                🚀 Ready for Next Season? Proceed to Season 2 ➔
+              </button>
+            </div>
+          `;
+        } else {
+          banner.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+              <div style="max-width: 720px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <span style="font-size: 22px;">🎯</span>
+                  <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #d8b4fe;">SEASON 1 FINALE REACHED</span>
+                  <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); font-size: 11px;">Episode 10 Grand Climax</span>
+                </div>
+                <h3 style="font-size: 19px; font-weight: 800; color: #fff; margin: 4px 0 6px 0;">
+                  The London Secret is Revealed! What would you like to do next?
+                </h3>
+                <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">
+                  Episode 10 completes the Season 1 story arc. Gemini will <b>not</b> automatically advance. You can polish Episode 10, or launch <b>Season 2</b> with a brand-new story, updated character attire, and a full Google Sheet rewrite!
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                <button class="btn btn-secondary" onclick="chooseStayOnEp10()" style="padding: 11px 18px; font-size: 13px; font-weight: 700; background: #1e293b; border-color: #475569;">
+                  ✏️ Make Corrections to Episode 10
+                </button>
+                <button class="btn btn-primary" onclick="openSeason2Modal()" style="padding: 11px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 18px rgba(168, 85, 247, 0.5);">
+                  🚀 Proceed to Next Season (Season 2)
+                </button>
+              </div>
+            </div>
+          `;
+        }
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+
+    function chooseStayOnEp10() {
+      window.editingEp10Confirmed = true;
+      renderSeasonFinaleBanner();
+      const shotsEl = document.getElementById('shotsContainer');
+      if (shotsEl) shotsEl.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openSeason2Modal() {
+      const modal = document.getElementById('season2SetupModal');
+      if (modal) modal.style.display = 'flex';
+      const progressBox = document.getElementById('season2ProgressBox');
+      if (progressBox) progressBox.style.display = 'none';
+      const errMsg = document.getElementById('season2ErrorMsg');
+      if (errMsg) errMsg.style.display = 'none';
+    }
+
+    function closeSeason2Modal() {
+      const modal = document.getElementById('season2SetupModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleSeason2ModalBackdropClick(e) {
+      if (e.target && e.target.id === 'season2SetupModal') {
+        closeSeason2Modal();
+      }
+    }
+
+    function quickSelectSeason2Idea(text) {
+      const input = document.getElementById('season2StoryInput');
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+    }
+
+    function renderDefaultSeason2Ideas() {
+      const container = document.getElementById('season2PitchesContainer');
+      if (!container) return;
+      container.style.display = 'block';
+      container.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; cursor: pointer;" 
+               onclick="quickSelectSeason2Idea('☕ Fort Kochi Cafe Venture: Sachin and Reenu decide to open a cozy coastal book-cafe in Fort Kochi, with Amal causing humorous chaos as their self-appointed manager.')">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <b style="color: #fff; font-size: 13px;">☕ Fort Kochi Cafe Venture (കൊച്ചി കഫേ)</b>
+              <span style="font-size: 11px; background: rgba(168, 85, 247, 0.2); color: #c084fc; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Cozy Rom-Com</span>
+            </div>
+            <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">Sachin and Reenu decide to open a quaint seaside book-cafe in Fort Kochi. Balancing hectic jobs, contractor arguments, and Amal\\'s disastrous taste-tests brings sweet comedic romance.</p>
+            <div style="font-size: 11px; color: #38bdf8; margin-top: 6px; font-weight: 600;">👉 Click to select this storyline</div>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; cursor: pointer;" 
+               onclick="quickSelectSeason2Idea('🏡 Meeting the Families: With Sachin staying permanently in Kochi, Reenu\\'s traditional parents visit unexpectedly, leading to humorous cultural clashes and marriage expectations.')">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <b style="color: #fff; font-size: 13px;">🏡 Meeting the Families (കുടുംബ സംഗമം)</b>
+              <span style="font-size: 11px; background: rgba(168, 85, 247, 0.2); color: #c084fc; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Family Comedy</span>
+            </div>
+            <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">Reenu\\'s protective parents arrive in Kochi. Sachin tries desperately to prove his decision to leave London was responsible, while Amal tries to act as a marriage mediator.</p>
+            <div style="font-size: 11px; color: #38bdf8; margin-top: 6px; font-weight: 600;">👉 Click to select this storyline</div>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; cursor: pointer;" 
+               onclick="quickSelectSeason2Idea('💼 InfoPark Career & City Romance: Sachin joins a fast-paced Kochi tech firm while Reenu gets a dream promotion, testing their daily work-life balance and city romance.')">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <b style="color: #fff; font-size: 13px;">💼 InfoPark Career & City Romance (ഇൻഫോപാർക്ക് പ്രണയം)</b>
+              <span style="font-size: 11px; background: rgba(168, 85, 247, 0.2); color: #c084fc; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Workplace Rom-Com</span>
+            </div>
+            <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">Sachin starts his new software job at InfoPark Kakkanad while Reenu faces workplace rivalries. Late-night chai runs, metro rides, and shared dreams strengthen their bond.</p>
+            <div style="font-size: 11px; color: #38bdf8; margin-top: 6px; font-weight: 600;">👉 Click to select this storyline</div>
+          </div>
+        </div>
+      `;
+    }
+
+    async function generateSeason2StoryIdeas() {
+      const container = document.getElementById('season2PitchesContainer');
+      const btn = document.getElementById('btnGeminiPitchSeason2');
+      if (container) {
+        container.style.display = 'block';
+        container.innerHTML = `
+          <div style="font-size: 12px; color: #38bdf8; padding: 12px; background: rgba(56, 189, 248, 0.08); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+            <div class="pulse" style="background: #38bdf8;"></div>
+            AI Showrunner is crafting 3 creative, heartwarming Season 2 story concepts...
+          </div>
+        `;
+      }
+      if (btn) btn.disabled = true;
+
+      const prompt = `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style romantic comedy animated web series set in Kochi, Kerala. Season 1 concluded at Episode 10 with Sachin revealing his cancelled London visa to stay in Kochi with Reenu.
+Pitch 3 DISTINCT, charming, exciting story concepts for Season 2 (10 vertical 1-minute episodes).
+Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Schema:
+[
+  {
+    "title": "Title in English (മലയാളം ലിപി)",
+    "genre": "Genre / Tone (e.g. Cozy Cafe Rom-Com)",
+    "premise": "2-3 sentences describing the core conflict, romance, and Amal's comedic role"
+  }
+]`;
+
+      try {
+        const customKey = (localStorage.getItem('gemini_api_key') || '').trim();
+        const keysToTry = customKey ? [customKey, ...BACKUP_GEMINI_KEYS] : BACKUP_GEMINI_KEYS;
+        let resText = null;
+
+        for (const key of keysToTry) {
+          try {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`;
+            const res = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }] })
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
+                resText = data.candidates[0].content.parts.map(p => p.text || '').join('\n');
+                if (resText.trim()) break;
+              }
+            }
+          } catch (e) {}
+        }
+
+        if (!resText) {
+          renderDefaultSeason2Ideas();
+          return;
+        }
+
+        const match = resText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        const jsonStr = match ? match[1].trim() : resText.trim();
+        const ideas = JSON.parse(jsonStr);
+
+        if (Array.isArray(ideas) && ideas.length > 0) {
+          let cardsHtml = '<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">';
+          ideas.forEach((idea, i) => {
+            const t = escapeHtml(idea.title || `Concept ${i + 1}`);
+            const p = escapeHtml(idea.premise || '');
+            const g = escapeHtml(idea.genre || 'Romance & Comedy');
+            cardsHtml += `
+              <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; cursor: pointer; transition: all 0.2s;"
+                   onmouseover="this.style.borderColor='#a855f7'; this.style.background='#1e1b4b';"
+                   onmouseout="this.style.borderColor='#334155'; this.style.background='#0f172a';"
+                   onclick="quickSelectSeason2Idea('${t.replace(/'/g, "\\'")}: ${p.replace(/'/g, "\\'")}')">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <b style="color: #fff; font-size: 13px;">${t}</b>
+                  <span style="font-size: 11px; background: rgba(168, 85, 247, 0.2); color: #c084fc; padding: 2px 6px; border-radius: 4px; font-weight: 700;">${g}</span>
+                </div>
+                <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">${p}</p>
+                <div style="font-size: 11px; color: #38bdf8; margin-top: 6px; font-weight: 600;">👉 Click to select this storyline</div>
+              </div>
+            `;
+          });
+          cardsHtml += '</div>';
+          container.innerHTML = cardsHtml;
+        } else {
+          renderDefaultSeason2Ideas();
+        }
+      } catch (err) {
+        renderDefaultSeason2Ideas();
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    async function launchSeason2Transition() {
+      const input = document.getElementById('season2StoryInput');
+      const progressBox = document.getElementById('season2ProgressBox');
+      const progressTitle = document.getElementById('season2ProgressTitle');
+      const progressDetail = document.getElementById('season2ProgressDetail');
+      const errorMsg = document.getElementById('season2ErrorMsg');
+      const launchBtn = document.getElementById('btnLaunchSeason2');
+
+      const userIdea = (input ? input.value : '').trim() || "Sachin and Reenu start a cozy cafe venture in Fort Kochi with Amal while handling career and relationship growth.";
+
+      if (!confirm(`Are you ready to launch Season 2?\n\nStory Concept: "${userIdea.slice(0, 80)}..."\n\nThis will rewrite your Google Sheet for Season 2 (Tab 4 Roadmap & Tab 1/2 for Episode 1). Proceed?`)) {
+        return;
+      }
+
+      if (launchBtn) launchBtn.disabled = true;
+      if (errorMsg) errorMsg.style.display = 'none';
+      if (progressBox) progressBox.style.display = 'block';
+
+      if (progressTitle) progressTitle.innerText = "Step 1/3: AI Showrunner Architecting Season 2...";
+      if (progressDetail) progressDetail.innerText = "Drafting 10-episode Season 2 Roadmap, new wardrobe locks, and Season 2 Episode 1 full screenplay (~25s)...";
+
+      const systemPrompt = `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic comedy web series set in Kochi, Kerala.
+
+=== SEASON 2 TRANSITION & COMPLETE OVERHAUL ===
+Season 1 (Episodes 1 to 10: The London Secret Climax) is officially COMPLETE.
+The creator is now initiating SEASON 2 based on this storyline:
+"${userIdea}"
+
+=== STRICT INVIOLABLE RULES FOR SEASON 2 ===
+1. CORE CHARACTER FACES & 3D PIXAR DNA (STRICTLY PRESERVED):
+   - Sachin, Reenu, and Amal MUST retain their EXACT face shapes, eyes, hair style, ages, and stylized 3D Pixar cartoon proportions (Strictly non-human realism).
+   - Sachin: 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair.
+   - Reenu: 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs.
+   - Amal: 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle.
+
+2. SEASON 2 ATTIRE UPDATE (NEW SIGNATURE COSTUMES MATCHING THE NEW SEASON):
+   - Design fresh, stylish, locked attire for Sachin, Reenu, and Amal that fits the Season 2 setting.
+   - Once established, these attires will be locked for Season 2 shots.
+   - Example Sachin: Crisp casual linen button-down shirt (olive-green/beige), fitted dark charcoal trousers, brown leather wristwatch.
+   - Example Reenu: Modern floral pastel kurti over white palazzo pants, white sneakers, silver wrist watch.
+   - Example Amal: Solid maroon polo t-shirt with dark denim jeans, casual sneakers.
+
+3. OPTIONAL NEW SUPPORTING CHARACTERS:
+   - If the new story requires a supporting character (e.g. cafe owner, landlord, family member), introduce up to 1 character with full Pixar 3D DNA and locked attire.
+
+4. MASTER 10-EPISODE ROADMAP FOR SEASON 2:
+   - Must contain exactly 10 episodes (Episode 1 to 10 of Season 2).
+   - Each with episode_number (1..10), title_english, title_malayalam, 2-sentence synopsis, and cliffhanger.
+
+5. SEASON 2, EPISODE 1 FULL PRODUCTION PACKAGE:
+   - Title, synopsis, cliffhanger for S02E01.
+   - Exactly 10 shots (shot_number 1 to 10, each 6s).
+   - Dynamic speaker: "Third-Person Narrator", "Sachin", "Reenu", or "Amal".
+   - Natural spoken Malayalam dialogue (5-8 words, under 40 chars, no robotic endings like repeating "-ുകയാണ്", no newsreader "-ുന്നു", no literary words like 'പ്രതിസന്ധി' or 'ആശങ്ക').
+   - Full Google Flow JSON prompt for every shot following our exact schema:
+     * If Narrator: closed lips, off-screen female VO.
+     * If Sachin/Reenu/Amal: character lip-sync animation, specific voice persona.
+     * Audio directive: CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice and natural ambient foley sound effects only.
+
+You MUST output a SINGLE JSON block inside \`\`\`json ... \`\`\` with this exact schema:
+{
+  "mode": "season_transition",
+  "season_number": 2,
+  "season_title": "Season 2 Title in English (മലയാളം ലിപി)",
+  "season_logline": "Two-sentence logline for Season 2",
+  "season_arc": [
+    {
+      "episode_number": 1,
+      "title_english": "...",
+      "title_malayalam": "...",
+      "synopsis": "...",
+      "cliffhanger": "..."
+    }
+    /* ALL 10 EPISODES FROM 1 TO 10 */
+  ],
+  "characters_updated": [
+    {
+      "name": "Sachin",
+      "locked_attire": "...",
+      "visual_dna": "..."
+    },
+    {
+      "name": "Reenu",
+      "locked_attire": "...",
+      "visual_dna": "..."
+    },
+    {
+      "name": "Amal",
+      "locked_attire": "...",
+      "visual_dna": "..."
+    }
+  ],
+  "new_characters_introduced": [],
+  "episode_1": {
+    "title_english": "...",
+    "title_malayalam": "...",
+    "synopsis": "...",
+    "cliffhanger": "...",
+    "shots": [
+      /* ALL 10 SHOTS */
+    ]
+  }
+}`;
+
+      try {
+        const customKey = (localStorage.getItem('gemini_api_key') || '').trim();
+        const keysToTry = customKey ? [customKey, ...BACKUP_GEMINI_KEYS] : BACKUP_GEMINI_KEYS;
+        let responseText = null;
+
+        for (const key of keysToTry) {
+          for (const model of GEMINI_MODELS) {
+            try {
+              const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+              const controller = new AbortController();
+              const timer = setTimeout(() => controller.abort(), 65000);
+
+              const res = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: systemPrompt }] }] }),
+                signal: controller.signal
+              });
+              clearTimeout(timer);
+
+              if (res.ok) {
+                const data = await res.json();
+                if (data && data.candidates && data.candidates[0] && data.candidates[0].content) {
+                  responseText = data.candidates[0].content.parts.map(p => p.text || '').join('\n');
+                  if (responseText.trim()) break;
+                }
+              }
+            } catch (err) {}
+          }
+          if (responseText && responseText.trim()) break;
+        }
+
+        if (!responseText) {
+          throw new Error("Could not contact Gemini AI Director. Check API key and network.");
+        }
+
+        // Parse JSON
+        const match = responseText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        const jsonStr = match ? match[1].trim() : responseText.trim();
+        const pkg = JSON.parse(jsonStr);
+
+        if (!pkg.season_arc || !pkg.episode_1 || !pkg.episode_1.shots) {
+          throw new Error("Invalid Season 2 package format returned from Gemini.");
+        }
+
+        // Step 2: Push Season 2 Story Arc to Google Sheet Tab 4
+        if (progressTitle) progressTitle.innerText = "Step 2/3: Overwriting Google Sheet Tab 4 [Season_Story_Arc]...";
+        if (progressDetail) progressDetail.innerText = `Pushing 10-episode Season 2 roadmap "${pkg.season_title || 'Season 2'}" to Google Sheet...`;
+
+        seasonStoryData.season_number = 2;
+        seasonStoryData.season_title = pkg.season_title || "Season 2";
+        seasonStoryData.episodes = pkg.season_arc.map((ep, i) => ({
+          season_number: 2,
+          episode_number: ep.episode_number || (i + 1),
+          title_english: ep.title_english || `Episode ${i + 1}`,
+          title_malayalam: ep.title_malayalam || "",
+          status: i === 0 ? "Active" : "Upcoming",
+          synopsis: ep.synopsis || "",
+          cliffhanger: ep.cliffhanger || "",
+          creator_notes: ""
+        }));
+
+        await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            action: "update_season_story_arc",
+            season_number: 2,
+            season_title: pkg.season_title,
+            episodes: seasonStoryData.episodes
+          })
+        }).catch(err => console.warn("Tab 4 sync notice:", err));
+
+        // Step 3: Push Season 2 Episode 1 to Tab 1 and Tab 2
+        if (progressTitle) progressTitle.innerText = "Step 3/3: Populating Tab 1 & Tab 2 with Season 2, Episode 1...";
+        if (progressDetail) progressDetail.innerText = "Writing all 10 video generation prompts & updating Character Bible...";
+
+        episodeData.is_season_2 = true;
+        episodeData.season_number = 2;
+        episodeData.episode_number = 1;
+        episodeData.title_english = pkg.episode_1.title_english || "A New Beginning";
+        episodeData.title_malayalam = pkg.episode_1.title_malayalam || "പുതിയ തുടക്കം";
+        episodeData.synopsis = pkg.episode_1.synopsis || "";
+        episodeData.cliffhanger = pkg.episode_1.cliffhanger || "";
+        episodeData.shots = pkg.episode_1.shots.map(s => ({
+          shot_number: s.shot_number,
+          duration: s.duration || "6s",
+          character: s.character || "Third-Person Narrator",
+          dialogue_malayalam: s.dialogue_malayalam || "",
+          dialogue: s.dialogue_malayalam || "",
+          action_summary: s.action_summary || "",
+          action: s.action_summary || "",
+          json_prompt: s.json_prompt || s
+        }));
+
+        // Update characters if provided
+        if (pkg.characters_updated && Array.isArray(pkg.characters_updated)) {
+          pkg.characters_updated.forEach(cu => {
+            const found = characterRegistryData.find(c => c.name.toLowerCase() === cu.name.toLowerCase());
+            if (found && cu.locked_attire) {
+              found.locked_attire = cu.locked_attire;
+              found.first_appearance = "Season 2 • Ep 1";
+            }
+          });
+        }
+
+        await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            action: "update_next_episode_full",
+            episode_number: 1,
+            title_english: episodeData.title_english,
+            title_malayalam: episodeData.title_malayalam,
+            synopsis: episodeData.synopsis,
+            cliffhanger: episodeData.cliffhanger,
+            total_shots: episodeData.shots.length,
+            shots: episodeData.shots,
+            new_characters_introduced: pkg.new_characters_introduced || []
+          })
+        }).catch(err => console.warn("Tab 1 & 2 sync notice:", err));
+
+        // Re-render UI
+        renderShots();
+        renderSeasonStoryRoadmap();
+        renderCharacterCards();
+        renderSeasonFinaleBanner();
+
+        closeSeason2Modal();
+        alert(`🎉 SEASON 2 OFFICIALLY LAUNCHED!\n\n• Season 2 Roadmap (10 Episodes) synced to Tab 4!\n• Season 2, Episode 1 (All 10 Shots) loaded into Tab 1 & Tab 2!\n• Character wardrobes updated!`);
+
+      } catch (err) {
+        console.error("Season 2 transition error:", err);
+        if (errorMsg) {
+          errorMsg.style.display = 'block';
+          errorMsg.innerText = `⚠️ Error launching Season 2: ${err.message}`;
+        }
+      } finally {
+        if (launchBtn) launchBtn.disabled = false;
+        if (progressBox) progressBox.style.display = 'none';
       }
     }
 
