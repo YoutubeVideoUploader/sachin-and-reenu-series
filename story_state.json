@@ -30,19 +30,26 @@
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
       "attire": "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos",
       "personality": "Sachin's best friend, supportive, humorous, driving the car"
+    },
+    "Reenu's Father": {
+      "age": 55,
+      "gender": "male",
+      "voice": "Authoritative, deep, traditional Malayali father voice.",
+      "role": "Reenu's strict traditional father",
+      "attire": "Traditional white cotton mundu, crisp light-cream linen shirt, gold wrist watch.",
+      "visual_dna": "Stylized 3D Pixar-style cartoon character, middle-aged South Indian Malayali man, stern expression, neat grey-streaked short dark hair, sharp animated facial features, expressive eyes behind classic stylized glasses."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
   "history": [
     {
       "episode": 1,
-      "title": "തിരിച്ചുവരവ് (The Homecoming)",
-      "summary": "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
-      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
+      "title": "വിരുന്നുകാർ (The Unannounced Guests)",
+      "summary": "Sachin and Reenu settle into their new life in Kochi, but their peace is interrupted when Reenu's traditional parents arrive unexpectedly to check on their living situation.",
+      "cliffhanger": "Sachin opens the door, only to find himself face-to-face with Reenu's stern father.",
       "characters_present": [
         "Reenu",
-        "Sachin",
-        "Amal"
+        "Sachin"
       ]
     },
     {
@@ -142,23 +149,24 @@
       ]
     }
   ],
-  "episode_number": 10,
+  "episode_number": 1,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-    "time_of_day": "Monsoon Night",
-    "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-    "weather": "Monsoon drizzle and atmospheric haze",
+    "scene_id": "SCENE_KOCHI_APARTMENT_DOOR",
+    "time_of_day": "Afternoon",
+    "lighting_palette": "Warm golden hour sunlight",
+    "weather": "Clear sky",
     "spatial_blocking": {
-      "Sachin": "Walking away with Reenu",
-      "Reenu": "Walking away with Sachin"
+      "Sachin": "Standing inside",
+      "Reenu's Father": "Standing outside"
     },
-    "eyeline_direction": "Sachin and Reenu look forward",
+    "eyeline_direction": "Looking at each other",
     "persistent_props": [
-      "Leather pouch inside Sachin's bag",
-      "Reenu's silver wrist watch on left wrist",
-      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-      "Vintage tan-brown London leather pouch"
+      "Laundry",
+      "Laundry pile",
+      "Small clay pot",
+      "Smartphone",
+      "Watering can"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+    "camera_lens": "Cinematic prime lens"
   }
 }
