@@ -141,8 +141,6 @@ def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", tit
 
         header_text = f"SACHIN & REENU • EPISODE {episode_num}"
         sub_text = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
-        if title_ml and title_ml.strip():
-            sub_text = f"{sub_text} • {title_ml.strip()}"
 
         # Locate bundled Manjari-Bold font
         font_candidates = [
