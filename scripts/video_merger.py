@@ -260,20 +260,35 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
 
     print(f"✓ All {len(standardized_clips)} clips standardized! Total story runtime: {total_video_duration:.2f}s (~{int(total_video_duration//60)}m {int(total_video_duration%60):02d}s)")
 
-    # Append 3-second Outro Card Poster ('Wait for Next Episode • Follow for More')
-    outro_candidates = [
-        Path("assets/outro_card.jpg"),
-        Path("assets/outro_poster.jpg"),
-        Path("assets/outro_raw.jpg")
+    # Append Outro: Prefer Animated Video Outro with Narrator Voiceover, fallback to static card
+    outro_video_candidates = [
+        Path("assets/outro_video.mp4"),
+        Path("assets/outro.mp4"),
+        Path("assets/final_outro_with_narrator_dialogue.mp4")
     ]
-    outro_img = next((p for p in outro_candidates if p.exists()), None)
-    if outro_img:
-        print(f"\n   Adding 3-second Outro Card: {outro_img.name} (Wait for Next Episode • Follow for More)...")
+    outro_vid = next((p for p in outro_video_candidates if p.exists()), None)
+    if outro_vid:
+        print(f"\n   Adding Animated Video Outro with Narrator Dialogue: {outro_vid.name}...")
         std_outro = temp_dir / "std_outro.mp4"
-        generate_outro_clip(outro_img, std_outro, duration=3.0)
+        standardize_clip_with_audio(outro_vid, std_outro)
+        info_outro = get_video_info(std_outro)
         standardized_clips.append(std_outro)
-        total_video_duration += 3.0
-        print(f"   ✓ Outro Card appended! New total runtime: {total_video_duration:.2f}s")
+        total_video_duration += info_outro["duration"]
+        print(f"   ✓ Animated Video Outro appended! Duration: {info_outro['duration']:.2f}s | New total runtime: {total_video_duration:.2f}s")
+    else:
+        outro_candidates = [
+            Path("assets/outro_card.jpg"),
+            Path("assets/outro_poster.jpg"),
+            Path("assets/outro_raw.jpg")
+        ]
+        outro_img = next((p for p in outro_candidates if p.exists()), None)
+        if outro_img:
+            print(f"\n   Adding 3-second Outro Card: {outro_img.name} (Wait for Next Episode • Follow for More)...")
+            std_outro = temp_dir / "std_outro.mp4"
+            generate_outro_clip(outro_img, std_outro, duration=3.0)
+            standardized_clips.append(std_outro)
+            total_video_duration += 3.0
+            print(f"   ✓ Outro Card appended! New total runtime: {total_video_duration:.2f}s")
 
     # Concat manifest
     concat_manifest = temp_dir / "concat_list.txt"

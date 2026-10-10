@@ -14,5 +14,4 @@ temp_merger/
 test_*.mp3
 voice_*.mp3
 flux_test_sample.png
-instantid_reenu_test.png
-
+!assets/outro_video.mp4
