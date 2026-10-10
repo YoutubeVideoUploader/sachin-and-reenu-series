@@ -618,6 +618,21 @@ CRITICAL PRODUCTION RULES:
 3. DURATION LOGIC PER SHOT:
    - Dialogue exchange / action: "6s" (6 seconds per shot) for each of the 10 shots.
    - Total sum of shot durations MUST be exactly 60 seconds (1 minute total).
+4. STRICT CINEMATIC SHOT FLOW & CAUSE-AND-EFFECT CONTINUITY (MANDATORY):
+   - Every episode MUST tell a fluid 10-shot story with CLEAR CAUSE-AND-EFFECT PROGRESSION:
+     • Shot 1: Establishing setting, mood, and initial character activity (Warm atmosphere).
+     • Shot 2: Playful/organic dialogue exchange between characters.
+     • Shot 3: Counter-reaction or continuing conversation beat.
+     • Shot 4: Scenic intimate/humorous bonding moment or action beat.
+     • Shot 5: THE DISRUPTION / HOOK: An external sound, event, phone ring, or knock that shatters the calm.
+     • Shot 6: Investigation / reaction to the disruption (walking toward door/window/source).
+     • Shot 7: Comic panic / preparatory action (hiding mess, whispering, scrambling).
+     • Shot 8: THE REVELATION / CLIMAX ACTION: The door opens / the arrival / the discovery (gasps, shock).
+     • Shot 9: THE REACTION SHOT: Contrasting perspective of the other character frozen/caught red-handed.
+     • Shot 10: THE CLIFFHANGER PUNCHLINE: The definitive line or frozen confrontation that ends the episode.
+   - ZERO REPETITIVE DIALOGUE: Never repeat the same question or line in consecutive shots (e.g. asking "Who is at the door?" twice).
+   - ZERO REPEATED PHYSICAL ACTIONS: An irreversible physical action can happen ONLY ONCE in a scene (e.g. if the door is opened in Shot 8, do NOT open the door again in Shot 9 or 10; keep it open!).
+   - CANONICAL CHARACTER NAMES: Never mix up family names (e.g. Reenu's father is Kurian, NOT Roy; her mother is Annamma, NOT Molly).
 4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED CASUAL ATTIRE:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
