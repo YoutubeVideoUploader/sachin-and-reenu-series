@@ -118,16 +118,22 @@ updated_html = re.sub(
     flags=re.DOTALL
 )
 
-# Write to all 3 paths
-paths = [
-    "c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/portal.html",
-    "c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/repo_studio/portal.html",
-    "c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/portal.html"
+# Resilient cross-platform path handling for local PC & GitHub Actions runner
+from pathlib import Path
+
+target_paths = [
+    Path("portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/repo_studio/portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/portal.html")
 ]
 
-for p in paths:
-    with open(p, 'w', encoding='utf-8') as f:
-        f.write(updated_html)
-    print(f"Updated: {p}")
+for p in target_paths:
+    try:
+        if p.exists() or p.parent.exists():
+            p.write_text(updated_html, encoding='utf-8')
+            print(f"Updated: {p}")
+    except Exception as e:
+        print(f"Notice skipping {p}: {e}")
 
 print("All portals successfully updated with JSON prompt boxes!")

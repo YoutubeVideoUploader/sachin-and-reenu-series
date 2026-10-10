@@ -1054,14 +1054,6 @@ function handleNextEpisodeFullUpdate(body) {
     Logger.log("Error updating Character_Registry: " + charErr.toString());
   }
 
-  return {
-    success: true,
-    season_number: seasonNum,
-    episode_number: epNum,
-    message: isNewSeason ? `Season ${seasonNum} cleanly initialized! Tab 1 URLs cleared, Tab 4 updated.` : `Episode ${epNum} updated successfully.`
-  };
-}
-
   // Auto-scan single 'Episode' Drive folder immediately
   try {
     syncDriveToChecklist(epNum);
@@ -1071,8 +1063,10 @@ function handleNextEpisodeFullUpdate(body) {
 
   return {
     success: true,
+    season_number: seasonNum,
+    episode_number: epNum,
     active_episode: epNum,
-    message: `Episode ${epNum} activated across all 5 sheets!`
+    message: isNewSeason ? `Season ${seasonNum} cleanly initialized! Tab 1 URLs cleared, Tab 4 updated.` : `Episode ${epNum} activated across all 5 sheets!`
   };
 }
 
