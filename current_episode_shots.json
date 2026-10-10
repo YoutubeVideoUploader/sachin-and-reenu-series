@@ -323,70 +323,6 @@
       "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ ശക്തമായി മുട്ടിയത്.",
-      "action_summary": "The apartment door is shown from the inside as it shakes from loud knocking. Reenu and Sachin look at the door with concern. Lips closed.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Roy",
-            "visual_dna": "Roy: Stylized 3D Pixar-style cartoon animation character."
-          },
-          {
-            "name": "Molly",
-            "visual_dna": "Molly: Stylized 3D Pixar-style cartoon animation character."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_DOOR",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Sachin": "Standing near door",
-            "Reenu": "Standing near door"
-          },
-          "eyeline_direction": "Looking at the door",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Dirty clothes pile",
-            "Fairy lights",
-            "Front door",
-            "Laundry basket",
-            "Metal bowl",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Silver wrench",
-            "Snack box",
-            "Suitcases",
-            "Two large suitcases"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Living room",
-        "camera": "Medium shot",
-        "action": "Sachin and Reenu are looking at the door. Lips closed.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ ശക്തമായി മുട്ടിയത്.",
-          "line": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ ശക്തമായി മുട്ടിയത്."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
       "character": "Reenu",
       "dialogue_malayalam": "ആരാ ഈ സമയത്ത്?",
       "action_summary": "Reenu walks towards the door, looking puzzled. Her lips move in sync.",
@@ -555,54 +491,6 @@
     },
     {
       "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "വീണ്ടും വാതിലിൽ മുട്ടൽ.",
-      "action_summary": "The apartment door is shown again, someone is knocking loudly. Lips closed.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_DOOR",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {},
-          "eyeline_direction": "Not applicable",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Dirty clothes pile",
-            "Fairy lights",
-            "Front door",
-            "Laundry basket",
-            "Metal bowl",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Silver wrench",
-            "Snack box",
-            "Suitcases",
-            "Two large suitcases"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Living room",
-        "camera": "Close up shot of the door",
-        "action": "Door knocking sound. Silence.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "വീണ്ടും വാതിലിൽ മുട്ടൽ.",
-          "line": "വീണ്ടും വാതിലിൽ മുട്ടൽ."
-        },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",

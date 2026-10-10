@@ -614,11 +614,10 @@ Premise/Hook for Episode {next_ep_num}: {effective_premise}
 
 CRITICAL PRODUCTION RULES:
 1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
-2. NUMBER OF SHOTS: STRICTLY 10 TO 11 SHOTS (No more than 11 shots, no fewer than 10 shots).
+2. NUMBER OF SHOTS: STRICTLY EXACTLY 10 SHOTS (Shot 1 to Shot 10. Absolutely NO more than 10 shots, NO fewer than 10 shots).
 3. DURATION LOGIC PER SHOT:
-   - Fast reaction / cut: "5s" (5 seconds)
-   - Dialogue exchange / scenic moment: "6s" (6 seconds)
-   - Total sum of shot durations MUST be between 55s and 65s (~1 minute).
+   - Dialogue exchange / action: "6s" (6 seconds per shot) for each of the 10 shots.
+   - Total sum of shot durations MUST be exactly 60 seconds (1 minute total).
 4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED CASUAL ATTIRE:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
@@ -1010,6 +1009,22 @@ def enforce_prompt_completeness(data, active_dna=None):
                 if not clean_lens:
                     clean_lens = "Cinematic prime lens, shallow depth of field"
                 sc["camera_lens"] = clean_lens
+
+    # Strictly guarantee exactly 10 shots per episode
+    shots = data.get("shots", [])
+    if len(shots) > 10:
+        shots = shots[:10]
+    for idx, shot in enumerate(shots, start=1):
+        shot["shot_number"] = idx
+        if "json_prompt" in shot:
+            # ensure shot duration is 6s
+            shot["duration"] = "6s"
+            shot["duration_seconds"] = 6
+            shot["json_prompt"]["duration"] = "6s"
+    data["shots"] = shots
+    data["total_shots"] = len(shots)
+    data["calculated_total_seconds"] = len(shots) * 6
+    data["calculated_runtime_display"] = f"{data['calculated_total_seconds'] // 60}m {data['calculated_total_seconds'] % 60:02d}s"
 
     return data
 
