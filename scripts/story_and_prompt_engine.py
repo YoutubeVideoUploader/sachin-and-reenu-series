@@ -897,6 +897,14 @@ def enforce_prompt_completeness(data, active_dna=None):
             cname = cu["name"]
             attire = cu.get("locked_attire") or cu.get("attire", "")
             vdna = cu.get("visual_dna", "")
+            # Enforce casuals: never allow formals to override casual wardrobe
+            if cname in ["Sachin", "Reenu", "Amal"]:
+                if is_formal_attire(attire) or is_formal_attire(vdna):
+                    season_n = data.get("season_number", 2)
+                    attire = SEASON_2_CASUAL_ATTIRE.get(cname) if season_n == 2 else (
+                        DEFAULT_ATTIRE_REENU if cname == "Reenu" else (DEFAULT_ATTIRE_SACHIN if cname == "Sachin" else DEFAULT_ATTIRE_AMAL)
+                    )
+                    vdna = ""
             if vdna and "STRICTLY LOCKED ATTIRE" in vdna:
                 active_dna[cname] = vdna
             elif attire:
@@ -910,6 +918,13 @@ def enforce_prompt_completeness(data, active_dna=None):
             cname = nc["name"]
             attire = nc.get("locked_attire") or nc.get("attire", "")
             vdna = nc.get("visual_dna", "")
+            if cname in ["Sachin", "Reenu", "Amal"]:
+                if is_formal_attire(attire) or is_formal_attire(vdna):
+                    season_n = data.get("season_number", 2)
+                    attire = SEASON_2_CASUAL_ATTIRE.get(cname) if season_n == 2 else (
+                        DEFAULT_ATTIRE_REENU if cname == "Reenu" else (DEFAULT_ATTIRE_SACHIN if cname == "Sachin" else DEFAULT_ATTIRE_AMAL)
+                    )
+                    vdna = ""
             if vdna and "STRICTLY LOCKED ATTIRE" in vdna:
                 active_dna[cname] = vdna
             elif attire:
