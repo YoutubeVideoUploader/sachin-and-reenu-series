@@ -626,13 +626,13 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
         }
         storySheet.getRange(i + 1, 8).setValue(nowIst);
         publishedFound = true;
-      } else if (rowEp === epNum + 1) {
+      } else if (rowEp === epNum + 1 && epNum < 10) {
         storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
         nextEpFound = true;
       }
     }
 
-    if (!nextEpFound) {
+    if (!nextEpFound && epNum < 10) {
       storySheet.appendRow([
         epNum + 1,
         `Episode ${epNum + 1}`,
@@ -657,7 +657,7 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
         const rowEp = parseInt(sData[r][1], 10);
         if (rowEp === epNum) {
           seasonSheet.getRange(r + 3, 5).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-        } else if (rowEp === epNum + 1) {
+        } else if (rowEp === epNum + 1 && epNum < 10) {
           seasonSheet.getRange(r + 3, 5).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
         }
       }
