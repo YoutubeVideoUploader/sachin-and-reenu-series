@@ -1097,9 +1097,11 @@ function handleNextEpisodeFullUpdate(body) {
     updateJsonPromptsSheet(epNum, body.shots);
   }
 
-  // 3. Reset Tab 3: Video_Checklist
-  const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 10);
-  initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
+  // 3. Reset Tab 3: Video_Checklist (ONLY if not a new season transition; Sheet 3 must remain untouched on season reset)
+  if (!isNewSeason) {
+    const totalShots = body.total_shots || (body.shots && body.shots.length ? body.shots.length : 10);
+    initVideoChecklist(epNum, totalShots, body.title_malayalam || `Episode ${epNum}`);
+  }
   
   // 4. Update Tab 4: Season_Story_Arc
   try {
