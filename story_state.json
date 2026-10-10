@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 2,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -73,6 +73,22 @@
       "role": "Reenu's observant, warm-hearted yet discerning mother",
       "attire": "Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace.",
       "visual_dna": "Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws."
+    },
+    "Kurian": {
+      "age": 55,
+      "gender": "male",
+      "voice": "Deep, authoritative, slow-paced, stern Malayali father voice with a hint of judicial gravity.",
+      "role": "Reenu's Father",
+      "attire": "Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch.",
+      "visual_dna": "Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture."
+    },
+    "Annamma": {
+      "age": 50,
+      "gender": "female",
+      "voice": "Sharp, observant, slightly judgmental but polite, high-pitched inquisitive Malayali mother tone.",
+      "role": "Reenu's Mother",
+      "attire": "Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace.",
+      "visual_dna": "Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
@@ -86,25 +102,37 @@
         "Sachin",
         "Reenu"
       ]
+    },
+    {
+      "episode": 2,
+      "title": "ലിവിംഗ് റൂമിലെ വിചാരണ (The Living Room Trial)",
+      "summary": "Following the surprise arrival of Reenu's parents at her Kakkanad apartment, Sachin accidentally topples off a stool in a comedic slow-motion tumble. As he scrambles to regain his composure and present himself as a polite family friend, Reenu’s mother Annamma begins a meticulous inspection of the apartment. Meanwhile, Kurian settles onto the sofa like a judge in a high court, launching a barrage of intense questions about Sachin's family roots in Alappuzha and his career stability, leading to a tense, life-altering inquiry.",
+      "cliffhanger": "Madhavan sternly asks Sachin: 'So, young man... what is your 5-year financial blueprint for my daughter?'",
+      "characters_present": [
+        "Sachin",
+        "Reenu",
+        "Kurian",
+        "Annamma"
+      ]
     }
   ],
-  "episode_number": 1,
+  "episode_number": 2,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_KAKKANAD_APARTMENT_DOORWAY",
+    "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
     "time_of_day": "Sunday Afternoon",
     "lighting_palette": "Warm golden hour sunlight",
     "weather": "Clear sunny",
     "spatial_blocking": {
-      "Sachin": "Standing at the doorway",
-      "Reenu's Father": "Standing outside the door"
+      "Kurian": "Sitting on the sofa, staring directly ahead"
     },
-    "eyeline_direction": "Looking at each other",
+    "eyeline_direction": "Looking at Sachin",
     "persistent_props": [
       "Cardboard snack box",
+      "Cushion",
       "Fairy lights",
-      "Front door",
-      "Laundry basket",
-      "Snack box",
+      "None",
+      "Plastic stool",
+      "Sofa",
       "Suitcases"
     ],
     "camera_lens": "Cinematic prime lens"
