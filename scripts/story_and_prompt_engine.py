@@ -34,10 +34,37 @@ try:
 except ImportError:
     repair_json = None
 
-# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like, 100% LOCKED ATTIRE)
-DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch. Absolutely zero costume variations."
-DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos. Absolutely zero costume variations."
+# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like)
+BASE_DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+DEFAULT_ATTIRE_REENU = "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
+
+BASE_DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+DEFAULT_ATTIRE_SACHIN = "Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest."
+
+BASE_DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+DEFAULT_ATTIRE_AMAL = "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers."
+
+BASE_DNA_MAP = {
+    "Reenu": BASE_DNA_REENU,
+    "Sachin": BASE_DNA_SACHIN,
+    "Amal": BASE_DNA_AMAL
+}
+
+def format_character_visual_dna(name, physical_dna, attire):
+    """
+    Combines physical animation DNA with strictly locked attire into the canonical prompt format.
+    """
+    if "STRICTLY LOCKED ATTIRE" in physical_dna:
+        return physical_dna
+    p_dna = physical_dna.strip()
+    if not p_dna.startswith(f"{name}:"):
+        p_dna = f"{name}: {p_dna}"
+    attire_clean = attire.strip().rstrip('.')
+    return f"{p_dna} STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): {attire_clean}. Absolutely zero costume variations."
+
+DNA_REENU = format_character_visual_dna("Reenu", BASE_DNA_REENU, DEFAULT_ATTIRE_REENU)
+DNA_SACHIN = format_character_visual_dna("Sachin", BASE_DNA_SACHIN, DEFAULT_ATTIRE_SACHIN)
+DNA_AMAL = format_character_visual_dna("Amal", BASE_DNA_AMAL, DEFAULT_ATTIRE_AMAL)
 
 DNA_MADHAVAN = (
     "Madhavan (Reenu's Father): Stylized 3D Pixar-style cartoon animation character, 52yo South Indian Malayali gentleman, "
@@ -85,6 +112,76 @@ DNA_REGISTRY = {
     "Madhavan": DNA_MADHAVAN,
     "Girija": DNA_GIRIJA
 }
+
+def get_active_character_dna_map(season_num=1, character_updates=None, new_characters=None):
+    """
+    Builds the active character visual DNA dictionary, dynamically respecting season transitions,
+    character_updates from dynamic season arc, and story_state.json.
+    """
+    active_map = {
+        "Reenu": DNA_REENU,
+        "Sachin": DNA_SACHIN,
+        "Amal": DNA_AMAL,
+        "Madhavan": DNA_MADHAVAN,
+        "Girija": DNA_GIRIJA
+    }
+
+    # 1. Read persisted wardrobe and cast from story_state.json
+    state_file = Path("story_state.json")
+    if state_file.exists():
+        try:
+            with open(state_file, "r", encoding="utf-8") as f:
+                sstate = json.load(f)
+                chars = sstate.get("characters", {})
+                for cname, cinfo in chars.items():
+                    if not isinstance(cinfo, dict):
+                        continue
+                    v_dna = cinfo.get("visual_dna", "")
+                    attire = cinfo.get("attire") or cinfo.get("locked_attire", "")
+                    
+                    if v_dna and "STRICTLY LOCKED ATTIRE" in v_dna:
+                        active_map[cname] = v_dna
+                    elif attire:
+                        base = BASE_DNA_MAP.get(cname, v_dna or f"{cname}: Stylized 3D Pixar-style cartoon animation character.")
+                        active_map[cname] = format_character_visual_dna(cname, base, attire)
+                    elif v_dna:
+                        active_map[cname] = v_dna
+        except Exception as e:
+            print(f"Notice reading story_state.json in get_active_character_dna_map: {e}")
+
+    # 2. Apply fresh character_updates if passed (e.g. from generate_connected_season_arc)
+    if character_updates:
+        for cu in character_updates:
+            cname = cu.get("name")
+            if not cname:
+                continue
+            v_dna = cu.get("visual_dna", "")
+            attire = cu.get("locked_attire") or cu.get("attire", "")
+            if v_dna and "STRICTLY LOCKED ATTIRE" in v_dna:
+                active_map[cname] = v_dna
+            elif attire:
+                base = BASE_DNA_MAP.get(cname, v_dna or f"{cname}: Stylized 3D Pixar-style cartoon animation character.")
+                active_map[cname] = format_character_visual_dna(cname, base, attire)
+            elif v_dna:
+                active_map[cname] = v_dna
+
+    # 3. Add fresh new characters if introduced
+    if new_characters:
+        for nc in new_characters:
+            cname = nc.get("name")
+            if not cname:
+                continue
+            v_dna = nc.get("visual_dna", "")
+            attire = nc.get("locked_attire") or nc.get("attire", "")
+            if v_dna and "STRICTLY LOCKED ATTIRE" in v_dna:
+                active_map[cname] = v_dna
+            elif attire:
+                base = v_dna or f"{cname}: Stylized 3D Pixar-style cartoon animation character."
+                active_map[cname] = format_character_visual_dna(cname, base, attire)
+            elif v_dna:
+                active_map[cname] = v_dna
+
+    return active_map
 
 # Master Season 1 Story Roadmap (10 Episodes)
 SEASON_1_ROADMAP = {
@@ -371,7 +468,7 @@ Output JSON matching this exact schema:
         ]
     }
 
-def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title=""):
+def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
     with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
@@ -380,6 +477,18 @@ def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_s
     """
     next_ep_num = 1 if is_new_season else (current_ep_num + 1)
     client = get_gemini_client()
+
+    if active_character_dna is None:
+        active_character_dna = get_active_character_dna_map(season_number)
+
+    dna_guidelines_list = []
+    for cname in ["Reenu", "Sachin", "Amal"]:
+        if cname in active_character_dna:
+            dna_guidelines_list.append(f"     • {cname} Visual DNA: \"{active_character_dna[cname]}\"")
+    for cname, cdna in active_character_dna.items():
+        if cname not in ["Reenu", "Sachin", "Amal"]:
+            dna_guidelines_list.append(f"     • {cname} Visual DNA: \"{cdna}\"")
+    dna_guidelines = "\n".join(dna_guidelines_list)
 
     active_roadmap = SEASON_2_ROADMAP if season_number == 2 else SEASON_1_ROADMAP
     roadmap_target = active_roadmap.get(next_ep_num, {})
@@ -467,9 +576,7 @@ CRITICAL PRODUCTION RULES:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
    - Character visual DNA and locked clothing must be followed 100% identically:
-     • Reenu Visual DNA: "{DNA_REENU}"
-     • Sachin Visual DNA: "{DNA_SACHIN}"
-     • Amal Visual DNA: "{DNA_AMAL}"
+{dna_guidelines}
 5. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
    - THIRD-PERSON NARRATION SHOTS (VOICEOVER ONLY):
      • The third-person narrator is an EXTERNAL, OFF-SCREEN STORYTELLER. NO on-screen character speaks the narration line!
@@ -584,7 +691,7 @@ Output JSON structure:
         "characters_present": [
           {{
             "name": "Reenu",
-            "visual_dna": "{DNA_REENU}"
+            "visual_dna": "{active_character_dna.get('Reenu', DNA_REENU)}"
           }}
         ],
         "sequence_continuity": {{
@@ -673,7 +780,7 @@ Output JSON structure:
     if not parsed_data:
         raise RuntimeError(f"All Gemini models failed to generate valid screenplay JSON. Last error: {last_err}")
 
-    data = enforce_prompt_completeness(parsed_data)
+    data = enforce_prompt_completeness(parsed_data, active_character_dna)
     
     # Calculate exact total runtime
     total_sec = sum(s.get("duration_seconds", 6) for s in data["shots"])
@@ -717,19 +824,47 @@ Output JSON structure:
     print(f"✓ Total Shots: {data['total_shots']} | Runtime: {data['calculated_runtime_display']}")
     return data
 
-def enforce_prompt_completeness(data):
+def enforce_prompt_completeness(data, active_dna=None):
     """
     Guarantees that 100% of the prompts are self-contained and fully detailed:
     1. Guarantees the complete 3D Pixar render MASTER_STYLE string on EVERY shot.
     2. Guarantees that EVERY character in characters_present has their FULL visual_dna object with locked attire.
        Never permits plain string arrays (e.g. ['Sachin', 'Reenu']) or stripped-down descriptions.
+       Dynamically respects the active season's costume changes.
     3. Guarantees complete persistent_props across all shots in the sequence.
     4. Guarantees complete MASTER_NEGATIVE_PROMPT.
     """
-    new_chars_map = {}
+    if active_dna is None:
+        active_dna = get_active_character_dna_map(data.get("season_number", 1))
+    else:
+        active_dna = dict(active_dna)
+
+    # Incorporate any character_updates or new characters inside data
+    for cu in data.get("character_updates", []):
+        if isinstance(cu, dict) and cu.get("name"):
+            cname = cu["name"]
+            attire = cu.get("locked_attire") or cu.get("attire", "")
+            vdna = cu.get("visual_dna", "")
+            if vdna and "STRICTLY LOCKED ATTIRE" in vdna:
+                active_dna[cname] = vdna
+            elif attire:
+                base = BASE_DNA_MAP.get(cname, vdna or f"{cname}: Stylized 3D Pixar-style cartoon animation character.")
+                active_dna[cname] = format_character_visual_dna(cname, base, attire)
+            elif vdna:
+                active_dna[cname] = vdna
+
     for nc in data.get("new_characters_introduced", []):
-        if isinstance(nc, dict) and nc.get("name") and nc.get("visual_dna"):
-            new_chars_map[nc["name"]] = nc["visual_dna"]
+        if isinstance(nc, dict) and nc.get("name"):
+            cname = nc["name"]
+            attire = nc.get("locked_attire") or nc.get("attire", "")
+            vdna = nc.get("visual_dna", "")
+            if vdna and "STRICTLY LOCKED ATTIRE" in vdna:
+                active_dna[cname] = vdna
+            elif attire:
+                base = vdna or f"{cname}: Stylized 3D Pixar-style cartoon animation character."
+                active_dna[cname] = format_character_visual_dna(cname, base, attire)
+            elif vdna:
+                active_dna[cname] = vdna
 
     # Collect master props from sequence_continuity across shots
     all_props = set()
@@ -754,11 +889,14 @@ def enforce_prompt_completeness(data):
             cname = c if isinstance(c, str) else c.get("name")
             if not cname:
                 continue
-            dna = DNA_REGISTRY.get(cname) or new_chars_map.get(cname)
-            if not dna and isinstance(c, dict):
-                dna = c.get("visual_dna", "")
+            # Priority 1: active_dna (season costume changes)
+            dna = active_dna.get(cname)
+            # Priority 2: character's own visual_dna from Gemini if complete
+            if not dna and isinstance(c, dict) and c.get("visual_dna") and "STRICTLY LOCKED ATTIRE" in c.get("visual_dna"):
+                dna = c.get("visual_dna")
+            # Priority 3: Fallback DNA registry
             if not dna:
-                dna = f"{cname}: Stylized 3D Pixar-style cartoon animation character."
+                dna = DNA_REGISTRY.get(cname) or f"{cname}: Stylized 3D Pixar-style cartoon animation character."
             normalized_chars.append({
                 "name": cname,
                 "visual_dna": dna
@@ -768,9 +906,10 @@ def enforce_prompt_completeness(data):
         char_speaker = s.get("character")
         if char_speaker and char_speaker != "Third-Person Narrator":
             if not any(nc["name"] == char_speaker for nc in normalized_chars):
+                dna = active_dna.get(char_speaker) or DNA_REGISTRY.get(char_speaker, f"{char_speaker}: Stylized 3D Pixar character.")
                 normalized_chars.append({
                     "name": char_speaker,
-                    "visual_dna": DNA_REGISTRY.get(char_speaker, f"{char_speaker}: Stylized 3D Pixar character.")
+                    "visual_dna": dna
                 })
 
         jp["characters_present"] = normalized_chars
@@ -921,7 +1060,9 @@ def update_creator_portal(episode_data):
                         state["characters"] = {}
                     for cu in char_updates:
                         cname = cu.get("name")
-                        if cname and cname in state["characters"]:
+                        if cname:
+                            if cname not in state["characters"]:
+                                state["characters"][cname] = {}
                             if cu.get("locked_attire") or cu.get("attire"):
                                 state["characters"][cname]["attire"] = cu.get("locked_attire") or cu.get("attire")
                             if cu.get("visual_dna"):
@@ -1073,7 +1214,11 @@ def main():
         premise = target_entry.get("synopsis", user_premise)
         previous_story = f"Season {season_num - 1} Climax: Sachin cancelled his London visa and decided to stay in Kerala for love. Season {season_num} begins a new chapter in Kochi."
         cliffhanger = "A new beginning awaits in Kochi."
+
+        # Build active character DNA map for new season
+        active_dna_map = get_active_character_dna_map(season_num, character_updates=character_updates, new_characters=new_characters)
     else:
+        active_dna_map = get_active_character_dna_map(season_num)
         # Check if story_state.json has a saved season_arc for this season
         saved_arc = None
         if os.path.exists("story_state.json"):
@@ -1119,7 +1264,8 @@ def main():
         cliffhanger_scene_state=cliffhanger_scene_state,
         is_new_season=is_new_season,
         target_entry=target_entry,
-        season_title=season_title
+        season_title=season_title,
+        active_character_dna=active_dna_map
     )
 
     if is_new_season:
@@ -1127,8 +1273,21 @@ def main():
         ep_data["season_title"] = season_title
         ep_data["character_updates"] = character_updates
         ep_data["new_characters_introduced"] = new_characters
-    elif season_arc:
-        ep_data["season_arc"] = season_arc
+    else:
+        if season_arc:
+            ep_data["season_arc"] = season_arc
+            ep_data["season_title"] = season_title
+        if os.path.exists("story_state.json"):
+            try:
+                with open("story_state.json", "r", encoding="utf-8") as f:
+                    st = json.load(f)
+                    chars_in_state = st.get("characters", {})
+                    ep_data["character_updates"] = [
+                        {"name": k, "attire": v.get("attire", ""), "visual_dna": v.get("visual_dna", "")}
+                        for k, v in chars_in_state.items() if k in ["Sachin", "Reenu", "Amal"]
+                    ]
+            except Exception:
+                pass
         ep_data["season_title"] = season_title
 
     # 2. Update local files & portal website

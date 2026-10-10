@@ -1,116 +1,21 @@
 import json
 import re
+import sys
+from pathlib import Path
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
+# Load current episode shots
 with open('current_episode_shots.json', 'r', encoding='utf-8') as f:
     ep_data = json.load(f)
 
-# Load existing base portal.html for CSS and framework
+# Load existing base portal.html
 with open('portal.html', 'r', encoding='utf-8') as f:
     base_html = f.read()
 
 # Replace episodeData
 shots_json_str = json.dumps(ep_data, ensure_ascii=False, indent=2)
-
-# Update renderShots in JavaScript so prompt-box displays formatted JSON prompt
-new_render_shots = """
-    function renderShots() {
-      const container = document.getElementById('shotsContainer');
-      const uploadList = document.getElementById('uploadList');
-      container.innerHTML = '';
-      uploadList.innerHTML = '';
-
-      const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
-      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • EPISODE ${episodeData.episode_number}`;
-      document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
-      document.getElementById('epSynopsis').innerText = episodeData.synopsis;
-      document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
-
-      episodeData.shots.forEach((shot) => {
-        const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
-        const isNarrator = shot.character === 'Third-Person Narrator';
-        const dialogueHtml = shot.dialogue_malayalam ? (
-          isNarrator ? `
-            <div class="dialogue-box" style="border-left: 4px solid #38bdf8; background: rgba(56, 189, 248, 0.08);">
-              <b style="color: #38bdf8;">🎙️ ഓഫ്-സ്‌ക്രീൻ വിവരണം (Off-Screen Voiceover Narration — Characters Silent & Closed Lips):</b> "${shot.dialogue_malayalam}"
-            </div>
-          ` : `
-            <div class="dialogue-box">
-              <b>💬 കഥാപാത്ര സംഭാഷണം (${shot.character} Dialogue):</b> "${shot.dialogue_malayalam}"
-            </div>
-          `
-        ) : `
-          <div class="dialogue-box-silent">
-            <span style="color: var(--text-muted); font-size: 13px;">🤫 <i>No spoken dialogue (Silent emotional scene action / ambient beat)</i></span>
-          </div>
-        `;
-
-        const jsonPromptFormatted = JSON.stringify(shot.json_prompt, null, 2);
-
-        // 1. Render Shot Card
-        const card = document.createElement('div');
-        card.className = 'shot-card';
-        card.innerHTML = `
-          <div class="shot-header">
-            <div class="shot-meta">
-              <span class="shot-badge">Shot #${shot.shot_number}</span>
-              <span class="dur-badge ${durClass}">⏱️ ${shot.duration}</span>
-              <span class="char-badge">👤 ${shot.character}</span>
-              <span style="font-size: 12px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
-                🔇 NO BGM
-              </span>
-            </div>
-            <button class="copy-btn" style="background: linear-gradient(135deg, #f97316, #ea580c); font-weight: 700; border: none; padding: 10px 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);" onclick="copyJsonPrompt(${shot.shot_number}, this)">
-              📋 Copy JSON Prompt
-            </button>
-          </div>
-          ${dialogueHtml}
-          <p style="font-size: 14px; margin-bottom: 8px;"><b>Action:</b> ${shot.action_summary}</p>
-          <div class="prompt-box" style="background: #080a10; border: 1px solid #1e2640; border-radius: 8px; padding: 14px 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1a2238; padding-bottom: 6px;">
-              <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-blue); font-weight: 700;">
-                📦 GOOGLE FLOW JSON PROMPT (Character DNA • Location • Camera • Dialogue • No-BGM):
-              </span>
-              <span style="font-size: 11px; color: var(--text-muted);">JSON Format</span>
-            </div>
-            <pre style="margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; line-height: 1.5; color: #a5f3fc; white-space: pre-wrap; word-break: break-word;" id="promptJson_${shot.shot_number}">${escapeHtml(jsonPromptFormatted)}</pre>
-          </div>
-        `;
-        container.appendChild(card);
-
-        // 2. Render Upload Item
-        const upItem = document.createElement('div');
-        upItem.className = 'upload-item';
-        upItem.id = `upItem_${shot.shot_number}`;
-        upItem.innerHTML = `
-          <div>
-            <b>Shot #${shot.shot_number}</b> (<span class="dur-badge ${durClass}" style="padding: 2px 6px; font-size: 11px;">${shot.duration}</span>) — <span style="color: var(--text-muted); font-size: 13px;">${shot.character}</span>
-            ${shot.dialogue_malayalam ? `<div style="font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 4px;">"${shot.dialogue_malayalam}"</div>` : ''}
-          </div>
-          <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
-        `;
-        uploadList.appendChild(upItem);
-      });
-    }
-
-    function escapeHtml(str) {
-      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    function copyJsonPrompt(shotNum, btn) {
-      const text = document.getElementById(`promptJson_${shotNum}`).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '✓ Copied JSON Prompt!';
-        btn.style.background = '#059669';
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = 'linear-gradient(135deg, #f97316, #ea580c)';
-        }, 2000);
-      });
-    }
-"""
-
-# Replace episodeData in base_html
 updated_html = re.sub(
     r'let episodeData = \{.*?\};\s+// Tracks current state',
     f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
@@ -118,9 +23,88 @@ updated_html = re.sub(
     flags=re.DOTALL
 )
 
-# Resilient cross-platform path handling for local PC & GitHub Actions runner
-from pathlib import Path
+# Load story_state.json for dynamic character wardrobe & season story arc
+state_path = Path('story_state.json')
+if state_path.exists():
+    try:
+        with open(state_path, 'r', encoding='utf-8') as f:
+            state = json.load(f)
 
+        season_num = state.get('season_number', 1)
+        chars = state.get('characters', {})
+
+        # Default fallbacks
+        default_roles = {
+            "Reenu": "Lead Female",
+            "Sachin": "Lead Male",
+            "Amal": "Best Friend / Comic Anchor",
+            "Roy (Reenu's Father)": "Reenu's Father (Retired Bank Manager)",
+            "Molly (Reenu's Mother)": "Reenu's Mother",
+            "Madhavan": "Reenu's Father",
+            "Girija": "Reenu's Mother"
+        }
+        default_voices = {
+            "Reenu": "Sweet, expressive 22yo South Indian Malayali female voice, warm, gentle, clear studio warmth.",
+            "Sachin": "Endearing, slightly nervous young Malayali male voice, warm, playful, sincere, clear studio cadence.",
+            "Amal": "Youthful energetic Malayali male voice, friendly, casual, slightly teasing tone, natural cheerful energy."
+        }
+
+        # Build clean character registry
+        registry_list = []
+        # Ensure lead characters first
+        ordered_names = ["Reenu", "Sachin", "Amal"]
+        for cname in chars.keys():
+            if cname not in ordered_names:
+                ordered_names.append(cname)
+
+        for cname in ordered_names:
+            cinfo = chars.get(cname, {})
+            attire = cinfo.get("attire") or cinfo.get("locked_attire", "")
+            vdna = cinfo.get("visual_dna", "")
+            first_app = "Season 1 • Ep 1" if cname in ["Reenu", "Sachin", "Amal"] else f"Season {season_num} • Ep 1"
+            role = cinfo.get("role") or default_roles.get(cname, "Supporting Character")
+            voice = cinfo.get("voice") or default_voices.get(cname, "Expressive Malayalam voice")
+
+            registry_list.append({
+                "name": cname,
+                "role": role,
+                "first_appearance": first_app,
+                "status": "Active",
+                "visual_dna": vdna or f"{cname}: Stylized 3D Pixar-style cartoon animation character (Strictly non-human realism).",
+                "locked_attire": attire or "Locked signature costume. Absolutely zero variations.",
+                "voice_persona": voice
+            })
+
+        char_reg_str = json.dumps(registry_list, ensure_ascii=False, indent=2)
+        updated_html = re.sub(
+            r'let characterRegistryData = \[.*?\];',
+            f'let characterRegistryData = {char_reg_str};',
+            updated_html,
+            flags=re.DOTALL
+        )
+
+        # Update seasonStoryData if season_arc is present
+        if state.get("season_arc"):
+            season_story_obj = {
+                "season_number": season_num,
+                "season_title": state.get("season_title", f"Season {season_num}"),
+                "total_episodes": len(state.get("season_arc", [])),
+                "climax_target_episode": 10,
+                "episodes": state.get("season_arc", [])
+            }
+            season_story_str = json.dumps(season_story_obj, ensure_ascii=False, indent=2)
+            updated_html = re.sub(
+                r'let seasonStoryData = \{.*?\};',
+                f'let seasonStoryData = {season_story_str};',
+                updated_html,
+                flags=re.DOTALL
+            )
+            print("✓ Updated seasonStoryData and characterRegistryData from story_state.json!")
+
+    except Exception as e:
+        print(f"Notice updating character registry from story_state.json: {e}")
+
+# Target paths across project workspace
 target_paths = [
     Path("portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/portal.html"),
@@ -136,4 +120,4 @@ for p in target_paths:
     except Exception as e:
         print(f"Notice skipping {p}: {e}")
 
-print("All portals successfully updated with JSON prompt boxes!")
+print("All portals successfully updated with dynamic episode prompts and character wardrobe!")
