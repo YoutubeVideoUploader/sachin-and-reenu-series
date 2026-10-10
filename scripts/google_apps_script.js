@@ -1133,6 +1133,13 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  // Get Series Thumbnail details
+  if (action === "get_series_thumbnail" || action === "thumbnail") {
+    const thumbData = getSeriesThumbnailData();
+    return ContentService.createTextOutput(JSON.stringify(thumbData))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Pull episode from GitHub
   if (action === "sync_from_github") {
     try {
@@ -1355,9 +1362,14 @@ function doPost(e) {
         method: "post",
         contentType: "application/json",
         payload: JSON.stringify({ contents: body.contents }),
-        muteHttpExceptions: true
-      });
       return ContentService.createTextOutput(gRes.getContentText()).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 10. Upload Series Thumbnail to Google Drive (Deletes any old series thumbnail and saves the new one)
+    if (action === "upload_series_thumbnail") {
+      const res = handleUploadSeriesThumbnail(body);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))
@@ -1496,5 +1508,130 @@ function updateSingleShotPrompt(episodeNum, shotNum, shotData) {
     }
   }
   return { success: false, error: `Shot #${shotNum} not found in Tab 2` };
+}
+
+/**
+ * Uploads a series thumbnail image to Google Drive:
+ * 1. Finds or creates the folder 'Series_Thumbnails' in Google Drive.
+ * 2. Deletes/trashes any existing previous series thumbnail image in that folder.
+ * 3. Saves the new thumbnail image and sets view permissions.
+ * 4. Records the thumbnail URL into Tab 4 (Season_Story_Arc) metadata or returns file details.
+ */
+function handleUploadSeriesThumbnail(body) {
+  try {
+    const seasonNum = body.season_number || 1;
+    const base64Data = body.base64_data;
+    const fileName = body.filename || `series_thumbnail_season_${seasonNum}.jpg`;
+    const mimeType = body.mime_type || "image/jpeg";
+
+    if (!base64Data) {
+      return { success: false, error: "Missing base64_data payload for thumbnail upload." };
+    }
+
+    // 1. Locate or create folder for Series Thumbnails
+    let thumbFolder = null;
+    const folderName = "Series_Thumbnails";
+    
+    // Check inside DRIVE_ROOT_FOLDER if it exists
+    const rootIter = DriveApp.getFoldersByName(DRIVE_ROOT_FOLDER);
+    if (rootIter.hasNext()) {
+      const rootFolder = rootIter.next();
+      const subIter = rootFolder.getFoldersByName(folderName);
+      if (subIter.hasNext()) {
+        thumbFolder = subIter.next();
+      } else {
+        thumbFolder = rootFolder.createFolder(folderName);
+      }
+    } else {
+      const directIter = DriveApp.getFoldersByName(folderName);
+      if (directIter.hasNext()) {
+        thumbFolder = directIter.next();
+      } else {
+        thumbFolder = DriveApp.createFolder(folderName);
+      }
+    }
+
+    // 2. Trash ANY old thumbnail in this folder (guarantees previous image is deleted)
+    const existingFiles = thumbFolder.getFiles();
+    let deletedCount = 0;
+    while (existingFiles.hasNext()) {
+      const oldFile = existingFiles.next();
+      oldFile.setTrashed(true);
+      deletedCount++;
+    }
+
+    // 3. Create the new thumbnail file
+    const decodedBytes = Utilities.base64Decode(base64Data);
+    const blob = Utilities.newBlob(decodedBytes, mimeType, fileName);
+    const newFile = thumbFolder.createFile(blob);
+    newFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+    const fileUrl = newFile.getUrl();
+    const fileId = newFile.getId();
+    const downloadUrl = `https://drive.google.com/uc?export=view&id=${fileId}`;
+
+    // 4. Optionally record in Tab 4 (Season_Story_Arc) header / cell
+    try {
+      const ss = getStudioSpreadsheet();
+      const seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
+      if (seasonSheet) {
+        seasonSheet.getRange(1, 3).setValue(`THUMBNAIL_URL: ${downloadUrl}`);
+      }
+    } catch (e) {
+      Logger.log("Notice recording thumbnail in Tab 4: " + e.toString());
+    }
+
+    return {
+      success: true,
+      message: `New series thumbnail uploaded! ${deletedCount} previous thumbnail(s) removed from Drive.`,
+      file_id: fileId,
+      filename: fileName,
+      folder_url: thumbFolder.getUrl(),
+      download_url: downloadUrl,
+      deleted_previous_count: deletedCount
+    };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
+}
+
+/**
+ * Retrieves the currently active series thumbnail file from Google Drive.
+ */
+function getSeriesThumbnailData() {
+  try {
+    const folderName = "Series_Thumbnails";
+    let thumbFolder = null;
+    const directIter = DriveApp.getFoldersByName(folderName);
+    if (directIter.hasNext()) {
+      thumbFolder = directIter.next();
+    } else {
+      const rootIter = DriveApp.getFoldersByName(DRIVE_ROOT_FOLDER);
+      if (rootIter.hasNext()) {
+        const subIter = rootIter.next().getFoldersByName(folderName);
+        if (subIter.hasNext()) thumbFolder = subIter.next();
+      }
+    }
+
+    if (!thumbFolder) {
+      return { success: true, has_thumbnail: false };
+    }
+
+    const files = thumbFolder.getFiles();
+    if (files.hasNext()) {
+      const f = files.next();
+      return {
+        success: true,
+        has_thumbnail: true,
+        file_id: f.getId(),
+        filename: f.getName(),
+        download_url: `https://drive.google.com/uc?export=view&id=${f.getId()}`,
+        folder_url: thumbFolder.getUrl()
+      };
+    }
+    return { success: true, has_thumbnail: false };
+  } catch (err) {
+    return { success: false, error: err.toString() };
+  }
 }
 

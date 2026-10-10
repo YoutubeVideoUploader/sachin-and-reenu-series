@@ -1393,5 +1393,71 @@ def main():
     # 3. Sync to Google Sheet (Sheets 1, 4, 2 updated, Sheet 3 untouched, Sheet 5 updated)
     sync_new_episode_to_google_sheet(args.gas_url, ep_data)
 
+def generate_series_thumbnail_prompt(season_number=None, story_state=None):
+    """
+    Generates the exact series thumbnail prompt with locked layout placeholders
+    and dynamic story situation & casual costumes for the active season.
+    - Top-left: Title logo 'Sachin & Reenu' with crown and heart
+    - Top-right: Taped note stickers for 'Season' and 'Episode' placeholders
+    - Center/Foreground: Sachin & Reenu in the current season story setting & casual wardrobe
+    """
+    if story_state is None and os.path.exists("story_state.json"):
+        try:
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                story_state = json.load(f)
+        except Exception:
+            story_state = {}
+    story_state = story_state or {}
+
+    season_num = season_number or story_state.get("season_number", 2)
+    season_title = story_state.get("season_title", f"Season {season_num}")
+    
+    # Resolve costumes
+    chars = story_state.get("characters", {})
+    sachin_attire = chars.get("Sachin", {}).get("attire")
+    reenu_attire = chars.get("Reenu", {}).get("attire")
+
+    if not sachin_attire or is_formal_attire(sachin_attire):
+        sachin_attire = SEASON_2_CASUAL_ATTIRE.get("Sachin") if season_num == 2 else DEFAULT_ATTIRE_SACHIN
+    if not reenu_attire or is_formal_attire(reenu_attire):
+        reenu_attire = SEASON_2_CASUAL_ATTIRE.get("Reenu") if season_num == 2 else DEFAULT_ATTIRE_REENU
+
+    # Determine setting from season arc or default
+    if season_num == 1:
+        setting_description = "Kochi CIAL airport arrival gates / Cochin city monsoon street with rain-washed ambience"
+        action_description = "Sachin excitedly holding a vintage London travel pouch while Reenu stands joyfully beside him, laughing with affectionate eyes under a cozy shared umbrella."
+    elif season_num == 2:
+        setting_description = "Cozy Kakkanad apartment living room with warm golden afternoon sunlight streaming through the French balcony windows"
+        action_description = "Sachin and Reenu are decorating with warm glowing multi-colored fairy lights, looking adorably at each other with beaming smiles and playful laughter."
+    else:
+        setting_description = f"Vibrant Kerala cinematic backdrop matching {season_title}"
+        action_description = "Sachin and Reenu sharing an affectionate, romantic smile in the center of the scene, highlighting their charming chemistry."
+
+    prompt_text = (
+        f"High-end Disney Pixar 3D animated vertical 9:16 YouTube Shorts poster thumbnail for the romantic comedy series 'Sachin & Reenu'.\n\n"
+        f"[LAYOUT & GRAPHIC BRANDING]:\n"
+        f"- Top-Left: Stylized, playful 3D cartoon title logo with vibrant bubble typography reading 'Sachin & Reenu', featuring a tiny cartoon crown icon above the 'S' and a playful pink heart over the 'e'.\n"
+        f"- Top-Right: Two paper note card stickers pinned with beige masking tape on corners in the exact same location:\n"
+        f"  1. Top sticker banner labeled 'Season' in handwritten font with a blank cream rectangular note card directly below it.\n"
+        f"  2. Bottom sticker banner labeled 'Episode' in handwritten font with a blank cream rectangular note card directly below it.\n"
+        f"- Decorative playful floating white cartoon hearts and doodle lines around the couple.\n\n"
+        f"[CHARACTERS & CURRENT STORY SCENE - {season_title}]:\n"
+        f"- Setting: {setting_description}.\n"
+        f"- Action: {action_description}\n"
+        f"- Sachin Visuals & Costume: Stylized 3D Pixar character, 24yo Malayali boy, wavy dark hair, warm brown eyes, endearing smile. Wearing {sachin_attire}.\n"
+        f"- Reenu Visuals & Costume: Stylized 3D Pixar character, 22yo Malayali girl, voluminous bouncy wavy dark-brown hair with curtain bangs, large expressive hazel-brown doe eyes, sweet dimpled cartoon smile. Wearing {reenu_attire}.\n\n"
+        f"[LIGHTING & RENDER QUALITY]:\n"
+        f"- Disney Pixar 3D animated movie render, soft velvety cartoon shaders, Octane 3D render, vertical 9:16 ratio, clean vibrant 4K resolution."
+    )
+
+    return {
+        "season_number": season_num,
+        "season_title": season_title,
+        "thumbnail_prompt": prompt_text,
+        "sachin_costume": sachin_attire,
+        "reenu_costume": reenu_attire,
+        "setting": setting_description
+    }
+
 if __name__ == "__main__":
     main()
