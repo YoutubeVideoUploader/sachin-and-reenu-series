@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 2,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -114,26 +114,37 @@
         "Kurian",
         "Annamma"
       ]
+    },
+    {
+      "episode": 3,
+      "title": "ചായയും ജിലേബിയും ഒരു നിശ്ശബ്ദ യുദ്ധവും (Chai, Jalebi & A Silent War)",
+      "summary": "Sachin struggles to present his tech-startup pitch to Kurian in the apartment, but the calm is shattered when Amal bursts in with oily snacks and loud gossip, forcing a chaotic cover-up attempt.",
+      "cliffhanger": "Amal accidentally blurts out Sachin's secret plan to open a coastal cafe in Fort Kochi, leaving Kurian stunned.",
+      "characters_present": [
+        "Sachin",
+        "Kurian",
+        "Amal"
+      ]
     }
   ],
-  "episode_number": 2,
+  "episode_number": 3,
   "cliffhanger_scene_state": {
     "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
     "time_of_day": "Sunday Afternoon",
     "lighting_palette": "Warm golden hour sunlight",
     "weather": "Clear sunny",
     "spatial_blocking": {
-      "Kurian": "Sitting on the sofa, staring directly ahead"
+      "Amal": "Standing in the doorway, hand over mouth",
+      "Sachin": "Sitting on the stool, frozen in shock"
     },
-    "eyeline_direction": "Looking at Sachin",
+    "eyeline_direction": "Looking at each other",
     "persistent_props": [
       "Cardboard snack box",
-      "Cushion",
-      "Fairy lights",
-      "None",
+      "Door",
+      "Packet of beef cutlets",
       "Plastic stool",
       "Sofa",
-      "Suitcases"
+      "Tea cup"
     ],
     "camera_lens": "Cinematic prime lens"
   },
