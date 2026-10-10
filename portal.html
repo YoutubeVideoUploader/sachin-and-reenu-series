@@ -4328,6 +4328,9 @@ The JSON MUST follow this EXACT schema:
       // Temporarily set episode to 10 of Season 1
       episodeData.episode_number = 10;
       episodeData.is_season_2 = false;
+      if (typeof seasonStoryData !== 'undefined' && seasonStoryData) {
+        seasonStoryData.season_number = 1;
+      }
       episodeData.title_english = "The Grand Climax: The Revelation";
       episodeData.title_malayalam = "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ";
       episodeData.synopsis = "SEASON 1 CLIMAX: Sachin reveals what was inside the pouch—his officially cancelled London visa documents and a permanent employment contract in Kochi, choosing to stay by Reenu's side forever.";
@@ -4335,7 +4338,10 @@ The JSON MUST follow this EXACT schema:
       renderShots();
       renderSeasonFinaleBanner();
       const banner = document.getElementById('seasonFinaleBanner');
-      if (banner) banner.scrollIntoView({ behavior: 'smooth' });
+      if (banner) {
+        banner.style.display = 'block';
+        banner.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     function chooseStayOnEp10() {
