@@ -220,7 +220,158 @@ def get_gemini_client():
         raise ValueError("GEMINI_API_KEY environment variable is required")
     return genai.Client(api_key=api_key)
 
-def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False):
+def generate_connected_season_arc(season_number, premise):
+    """
+    Calls Gemini to dynamically generate a cohesive, continuous 10-episode story roadmap based on user's premise.
+    Also handles character costume updates and introduces new characters if required by the story.
+    """
+    client = get_gemini_client()
+    candidate_models = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-flash-latest"]
+
+    system_instruction = (
+        "You are the Showrunner and Head Screenplay Writer for the viral Disney Pixar 3D animated Malayalam romantic comedy series 'Sachin & Reenu' (സച്ചിൻ & റീനു). "
+        "Language: Malayalam setting in Kerala (Kochi). "
+        "You are architecting the complete 10-EPISODE MASTER STORY ROADMAP for an entire new season. "
+        "CRITICAL PROGRESSION RULE: Every single episode must connect seamlessly into the next episode. "
+        "Episode 1 introduces the premise/arrival. "
+        "Episode 2 directly follows Episode 1's cliffhanger. "
+        "Episode 3 escalates the narrative with comedic or emotional complications. "
+        "Episodes continue sequentially without filler or narrative drag, culminating in Episode 10 as the grand emotional climax resolving the core story. "
+        "Output ONLY valid JSON."
+    )
+
+    prompt = f"""
+Architect a continuous, tightly interconnected 10-EPISODE MASTER STORY ROADMAP for Season {season_number} of 'Sachin & Reenu' (സച്ചിൻ & റീനു).
+
+CORE USER STORY PREMISE / PLOT:
+"{premise}"
+
+REQUIREMENTS:
+1. STRICT CHRONOLOGICAL CONTINUITY (EVERY EPISODE CONNECTS TO THE NEXT):
+   - Episode 1: Direct opening inciting incident introducing the premise (e.g. if parents arrive, their unexpected arrival at the Kochi flat).
+   - Episode 2: Direct continuation of Episode 1 cliffhanger (e.g. living room interrogation, parents inspecting the flat).
+   - Episode 3: Humorous complication or friend intervention (e.g. Amal barging in unexpectedly, awkward tea conversation).
+   - Episode 4: Growing tension or outdoor interaction (e.g. walk along Marine Drive, testing Sachin's career/intentions).
+   - Episode 5: Secret or emotional vulnerability shared (e.g. mother's intuition, heart-to-heart talk with Reenu).
+   - Episode 6: A major shared challenge or adventure in Kochi (e.g. shopping, visiting Fort Kochi, vehicle trouble).
+   - Episode 7: Misunderstanding or rising conflict (e.g. father disapproving or rival proposal mention).
+   - Episode 8: Turning point / Sachin proving his genuine love, maturity, and responsibility.
+   - Episode 9: Pre-climax high emotion / pivotal decision or parents' impending departure.
+   - Episode 10: Grand Season Finale Climax / full emotional blessing, heartwarming romantic victory directly resolving the plot.
+
+2. EPISODE FORMAT:
+   - Exactly 10 episodes numbered 1 to 10.
+   - Each episode has:
+     • "episode_number": integer (1..10)
+     • "title_english": Catchy English title
+     • "title_malayalam": Accurate, natural Malayalam title in Malayalam script (മലയാളം ലിപി)
+     • "status": "Active" for Episode 1, "Upcoming" for Episodes 2 through 10. (NONE marked Published).
+     • "synopsis": Clear, detailed 2-3 sentence narrative describing the action of that 1-minute reel.
+     • "cliffhanger": Dramatic ending hook that leads directly into the next episode.
+
+3. CHARACTER ATTIRE & NEW CHARACTERS:
+   - You can update the locked signature costume for Sachin, Reenu, and Amal suited for this new storyline.
+   - If the plot introduces new recurring characters (e.g. Reenu's Father, Mother, Boss, etc.), define them with complete 3D Pixar visual DNA, age, role, locked attire, and Malayalam voice persona.
+
+Output JSON matching this exact schema:
+{{
+  "season_title": "Season Title in English (മലയാളം ശീർഷകം)",
+  "character_updates": [
+    {{
+      "name": "Sachin",
+      "locked_attire": "...",
+      "visual_dna": "..."
+    }},
+    {{
+      "name": "Reenu",
+      "locked_attire": "...",
+      "visual_dna": "..."
+    }}
+  ],
+  "new_characters": [
+    {{
+      "name": "Character Name",
+      "role": "Role in story",
+      "age": 52,
+      "gender": "male",
+      "visual_dna": "Stylized 3D Pixar-style cartoon character...",
+      "locked_attire": "...",
+      "voice_persona": "..."
+    }}
+  ],
+  "episodes": [
+    {{
+      "episode_number": 1,
+      "title_english": "...",
+      "title_malayalam": "...",
+      "status": "Active",
+      "synopsis": "...",
+      "cliffhanger": "..."
+    }},
+    ... up to episode_number 10
+  ]
+}}
+"""
+    def clean_json(raw_text):
+        text = raw_text.strip()
+        if text.startswith("```"):
+            text = re.sub(r"^```(?:json)?\s*", "", text)
+            text = re.sub(r"\s*```$", "", text)
+        if repair_json:
+            try:
+                return json.loads(repair_json(text))
+            except Exception:
+                pass
+        text = re.sub(r',\s*([\]\}])', r'\1', text)
+        return json.loads(text)
+
+    for model_name in candidate_models:
+        print(f"Architecting Season {season_number} 10-episode continuous roadmap with {model_name}...")
+        for attempt in range(3):
+            try:
+                resp = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_instruction,
+                        response_mime_type="application/json",
+                        temperature=0.7,
+                        max_output_tokens=8192
+                    )
+                )
+                if resp and resp.text:
+                    arc_data = clean_json(resp.text)
+                    if "episodes" in arc_data and len(arc_data["episodes"]) >= 10:
+                        arc_data["episodes"] = arc_data["episodes"][:10]
+                        for idx, ep in enumerate(arc_data["episodes"]):
+                            ep["episode_number"] = idx + 1
+                            ep["status"] = "Active" if idx == 0 else "Upcoming"
+                        print(f"✓ Successfully architected 10-episode continuous storyline for Season {season_number}: '{arc_data.get('season_title')}'")
+                        return arc_data
+            except Exception as e:
+                print(f"  Attempt {attempt + 1} with {model_name} failed: {e}")
+                time.sleep(2)
+
+    print("Notice: Using fallback roadmap due to API timeout.")
+    fallback_map = SEASON_2_ROADMAP if season_number == 2 else SEASON_1_ROADMAP
+    return {
+        "season_title": f"Season {season_number}: Fort Kochi Days (ഫോർട്ട് കൊച്ചി ദിനങ്ങൾ)",
+        "character_updates": [],
+        "new_characters": [],
+        "episodes": [
+            {
+                "episode_number": idx,
+                "title_english": info["title_english"],
+                "title_malayalam": info["title_malayalam"],
+                "status": "Active" if idx == 1 else "Upcoming",
+                "synopsis": info["synopsis"],
+                "cliffhanger": info["cliffhanger"]
+            }
+            for idx, info in fallback_map.items()
+        ]
+    }
+
+def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title=""):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
     with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
@@ -661,7 +812,9 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
     Calls Google Apps Script to:
     1. Update Tab 1 (Episode_Story) with the new episode outline.
     2. Overwrite Tab 2 (Current_JSON_Prompts) with the new JSON prompts.
-    3. Reset Tab 3 (Video_Checklist) for Shot 1..N with 'Pending' status.
+    3. Tab 3 (Video_Checklist) remains UNTOUCHED during season transition.
+    4. Overwrite Tab 4 (Season_Story_Arc) with the full 10-episode continuous roadmap.
+    5. Update Tab 5 (Character_Registry) with costume changes and new characters.
     """
     if not gas_url:
         print("Notice: GAS_WEBHOOK_URL not set. Skipping remote Google Sheet sync.")
@@ -672,22 +825,24 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
     season_title = episode_data.get("season_title", f"Season {season_num}")
     season_arc = episode_data.get("season_arc", [])
     
-    print(f"\nUpdating Google Sheet with Season {season_num} Episode {episode_data['episode_number']} prompts & checklist...")
+    print(f"\nUpdating Google Sheet with Season {season_num} Episode {episode_data['episode_number']} prompts & roadmap...")
     
+    action_name = "clean_slate_season_transition" if is_new_season else "update_next_episode_full"
     payload = {
-        "action": "update_next_episode_full",
+        "action": action_name,
         "season_number": season_num,
         "is_new_season": is_new_season,
         "season_title": season_title,
         "season_arc": season_arc,
         "episodes": season_arc,
+        "character_updates": episode_data.get("character_updates", []),
+        "new_characters": episode_data.get("new_characters_introduced", []),
         "episode_number": episode_data["episode_number"],
         "title_english": episode_data.get("title_english", ""),
         "title_malayalam": episode_data.get("title_malayalam", ""),
         "synopsis": episode_data.get("synopsis", ""),
         "cliffhanger": episode_data.get("cliffhanger", ""),
         "total_shots": episode_data["total_shots"],
-        "new_characters_introduced": episode_data.get("new_characters_introduced", []),
         "shots": [
             {
                 "shot_number": s["shot_number"],
@@ -701,23 +856,19 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
         ]
     }
     
-    # If is_new_season, also push Tab 4 update
-    if is_new_season and season_arc:
-        try:
-            p_arc = {
-                "action": "update_season_story_arc",
-                "season_number": season_num,
-                "season_title": season_title,
-                "episodes": season_arc
-            }
-            requests.post(gas_url, data=json.dumps(p_arc), headers={"Content-Type": "text/plain"}, timeout=30)
-        except Exception:
-            pass
-
     # 1. Try POST with text/plain
     try:
         res = requests.post(gas_url, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=45)
         if res.status_code == 200:
+            res_json = {}
+            try:
+                res_json = res.json()
+            except Exception:
+                pass
+            if res_json.get("error") == "Unknown action" and is_new_season:
+                print("clean_slate_season_transition not recognized on older GAS deployment, falling back to update_next_episode_full...")
+                payload["action"] = "update_next_episode_full"
+                res = requests.post(gas_url, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=45)
             print(f"✓ Google Sheet updated via POST: HTTP {res.status_code}")
             return True
         else:
@@ -725,7 +876,7 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
     except Exception as e:
         print(f"Notice on POST sync: {e}, falling back to GET sync...")
         
-    # 2. Resilient GET fallback (Calls Apps Script to sync from GitHub)
+    # 2. Resilient GET fallback
     try:
         sync_url = f"{gas_url}?action=sync_from_github&episode={episode_data['episode_number']}"
         res2 = requests.get(sync_url, timeout=30)
@@ -751,8 +902,34 @@ def update_creator_portal(episode_data):
             with open(state_path, "r", encoding="utf-8") as f:
                 state = json.load(f)
             ep_num = episode_data.get("episode_number", 1)
-            state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
-            state["episode_number"] = ep_num
+            is_new = episode_data.get("is_new_season", False)
+
+            if is_new:
+                state["season_number"] = episode_data.get("season_number", 2)
+                state["total_episodes_produced"] = 1
+                state["episode_number"] = 1
+                state["history"] = []
+                if episode_data.get("season_arc"):
+                    state["season_arc"] = episode_data["season_arc"]
+                if episode_data.get("season_title"):
+                    state["season_title"] = episode_data["season_title"]
+                
+                # Update character costumes if changed
+                char_updates = episode_data.get("character_updates", [])
+                if char_updates and isinstance(char_updates, list):
+                    if "characters" not in state:
+                        state["characters"] = {}
+                    for cu in char_updates:
+                        cname = cu.get("name")
+                        if cname and cname in state["characters"]:
+                            if cu.get("locked_attire") or cu.get("attire"):
+                                state["characters"][cname]["attire"] = cu.get("locked_attire") or cu.get("attire")
+                            if cu.get("visual_dna"):
+                                state["characters"][cname]["visual_dna"] = cu.get("visual_dna")
+                            print(f"✨ Updated costume for '{cname}' in story_state.json!")
+            else:
+                state["total_episodes_produced"] = max(state.get("total_episodes_produced", 0), ep_num)
+                state["episode_number"] = ep_num
             
             # Record organic new characters if introduced
             new_chars = episode_data.get("new_characters_introduced", [])
@@ -793,6 +970,7 @@ def update_creator_portal(episode_data):
             else:
                 history.append(new_entry)
             state["history"] = history
+            
             # Save cliffhanger scene state for continuity handoff to next episode
             shots = episode_data.get("shots", [])
             if shots:
@@ -874,43 +1052,64 @@ def main():
         effective_current_ep = detected_ep
         target_ep = effective_current_ep + 1
 
-    active_roadmap = SEASON_2_ROADMAP if season_num == 2 else SEASON_1_ROADMAP
-    target_entry = active_roadmap.get(target_ep, {})
-    premise = args.premise or target_entry.get("synopsis", "")
-
-    # Load context for effective_current_ep from roadmap
-    prev_entry = active_roadmap.get(effective_current_ep, {})
-    previous_story = prev_entry.get("synopsis", "Season prologue.")
-    cliffhanger = prev_entry.get("cliffhanger", "Prologue ending.")
-
+    # Resolve roadmap & storyline
+    dynamic_arc_data = None
+    season_title = ""
+    season_arc = []
+    character_updates = []
+    new_characters = []
     cliffhanger_scene_state = None
-    if os.path.exists("story_state.json") and not is_new_season:
-        try:
-            with open("story_state.json", "r", encoding="utf-8") as f:
-                sstate = json.load(f)
-                cliffhanger_scene_state = sstate.get("cliffhanger_scene_state")
-                for h in sstate.get("history", []):
-                    if h.get("episode") == effective_current_ep:
-                        previous_story = h.get("summary") or previous_story
-                        cliffhanger = h.get("cliffhanger") or cliffhanger
-        except Exception as e:
-            print(f"Notice reading story_state.json: {e}")
 
-    if is_new_season and target_ep == 1:
-        if season_num == 2:
-            previous_story = "Season 1 Climax: Sachin cancelled his London visa and decided to stay in Kerala for love. In Season 2, Sachin and Reenu start a new chapter in Kochi."
-            cliffhanger = "A new beginning awaits in Kochi."
-            premise = args.premise or target_entry.get("synopsis", "Reenu's traditional parents arrive in Kochi without warning, throwing Sachin and Reenu into sudden panic as they scramble to keep their apartment presentable.")
+    if is_new_season:
+        print(f"\n🌟 Launching Season {season_num} with Dynamic Storyline Architect...")
+        user_premise = args.premise or "Meeting the Families: Reenu's traditional parents visit Kochi unexpectedly, testing Sachin and Reenu's relationship with hilarious cultural clashes."
+        dynamic_arc_data = generate_connected_season_arc(season_num, user_premise)
+        season_title = dynamic_arc_data.get("season_title", f"Season {season_num}: Fort Kochi Days")
+        season_arc = dynamic_arc_data.get("episodes", [])
+        character_updates = dynamic_arc_data.get("character_updates", [])
+        new_characters = dynamic_arc_data.get("new_characters", [])
+        
+        target_entry = season_arc[0] if season_arc else {}
+        premise = target_entry.get("synopsis", user_premise)
+        previous_story = f"Season {season_num - 1} Climax: Sachin cancelled his London visa and decided to stay in Kerala for love. Season {season_num} begins a new chapter in Kochi."
+        cliffhanger = "A new beginning awaits in Kochi."
+    else:
+        # Check if story_state.json has a saved season_arc for this season
+        saved_arc = None
+        if os.path.exists("story_state.json"):
+            try:
+                with open("story_state.json", "r", encoding="utf-8") as f:
+                    sstate = json.load(f)
+                    saved_arc = sstate.get("season_arc")
+                    season_title = sstate.get("season_title", "")
+                    cliffhanger_scene_state = sstate.get("cliffhanger_scene_state")
+                    for h in sstate.get("history", []):
+                        if h.get("episode") == effective_current_ep:
+                            previous_story = h.get("summary") or ""
+                            cliffhanger = h.get("cliffhanger") or ""
+            except Exception as e:
+                print(f"Notice reading story_state.json: {e}")
+
+        if saved_arc and isinstance(saved_arc, list) and len(saved_arc) >= target_ep:
+            target_entry = saved_arc[target_ep - 1]
+            season_arc = saved_arc
+            premise = args.premise or target_entry.get("synopsis", "")
+            prev_entry = saved_arc[effective_current_ep - 1] if effective_current_ep > 0 else {}
+            previous_story = prev_entry.get("synopsis", "Season prologue.")
+            cliffhanger = prev_entry.get("cliffhanger", "Prologue hook.")
         else:
-            previous_story = "Series Pilot: Sachin has been away in the UK for two long years, while Reenu waited for him in Kerala. Today is Sachin's return flight arriving at Kochi CIAL airport."
-            cliffhanger = "Reenu waits with trembling hands behind the arrival barrier, not having seen Sachin in person for 730 days."
-            premise = args.premise or "Episode 1 Pilot ('തിരിച്ചുവരവ്' / 'The Homecoming'): Reenu and Amal wait anxiously at Kochi CIAL international arrival terminal. Amal teases Reenu in playful Kochi slang to break her tension. Sachin finally emerges through the glass doors, resulting in an emotional, tender, tearful reunion. Cliffhanger: As they embrace, Sachin clutches a secret leather pouch from London with a nervous look."
+            active_roadmap = SEASON_2_ROADMAP if season_num == 2 else SEASON_1_ROADMAP
+            target_entry = active_roadmap.get(target_ep, {})
+            premise = args.premise or target_entry.get("synopsis", "")
+            prev_entry = active_roadmap.get(effective_current_ep, {})
+            previous_story = prev_entry.get("synopsis", "Season prologue.")
+            cliffhanger = prev_entry.get("cliffhanger", "Prologue ending.")
 
     print(f"Directing Season {season_num} Episode {target_ep} from Master Roadmap:")
     print(f"  Target: {target_entry.get('title_malayalam', '')} ({target_entry.get('title_english', '')})")
     print(f"  Premise: {premise}")
 
-    # 1. Generate Next Episode with Gemini
+    # 1. Generate Episode Screenplay & Long Disney Pixar Prompts
     ep_data = generate_next_episode_screenplay(
         current_ep_num=effective_current_ep,
         season_number=season_num,
@@ -918,13 +1117,24 @@ def main():
         cliffhanger=cliffhanger,
         next_ep_premise=premise,
         cliffhanger_scene_state=cliffhanger_scene_state,
-        is_new_season=is_new_season
+        is_new_season=is_new_season,
+        target_entry=target_entry,
+        season_title=season_title
     )
+
+    if is_new_season:
+        ep_data["season_arc"] = season_arc
+        ep_data["season_title"] = season_title
+        ep_data["character_updates"] = character_updates
+        ep_data["new_characters_introduced"] = new_characters
+    elif season_arc:
+        ep_data["season_arc"] = season_arc
+        ep_data["season_title"] = season_title
 
     # 2. Update local files & portal website
     update_creator_portal(ep_data)
 
-    # 3. Sync to Google Sheet 5-Tab structure
+    # 3. Sync to Google Sheet (Sheets 1, 4, 2 updated, Sheet 3 untouched, Sheet 5 updated)
     sync_new_episode_to_google_sheet(args.gas_url, ep_data)
 
 if __name__ == "__main__":

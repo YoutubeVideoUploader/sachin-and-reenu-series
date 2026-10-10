@@ -4453,12 +4453,28 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
         return;
       }
 
-      if (launchBtn) launchBtn.disabled = true;
-      if (errorMsg) errorMsg.style.display = 'none';
-      if (progressBox) progressBox.style.display = 'block';
+      // Close the modal window IMMEDIATELY as requested by user
+      closeSeason2Modal();
 
-      if (progressTitle) progressTitle.innerText = "⚡ Step 1/2: Triggering GitHub Actions Workflow...";
-      if (progressDetail) progressDetail.innerHTML = `Dispatching <code>generate_next_episode.yml</code> on GitHub Actions...<br>The cloud Python AI director will architect 100% complete Disney Pixar 3D prompts, update all 5 Google Sheet tabs, and commit to GitHub.`;
+      // Show persistent notification banner on main page
+      const notifBanner = document.createElement('div');
+      notifBanner.id = "seasonTransitionBanner";
+      notifBanner.style.cssText = "position: fixed; top: 20px; right: 20px; z-index: 99999; background: linear-gradient(135deg, #1e1b4b, #311042); border: 1px solid #a855f7; border-radius: 12px; padding: 18px 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); max-width: 420px; color: #fff; font-family: 'Inter', sans-serif;";
+      notifBanner.innerHTML = `
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+          <div style="font-size: 24px; animation: spin 2s linear infinite;">⚙️</div>
+          <div>
+            <div style="font-weight: 800; font-size: 15px; color: #f472b6; margin-bottom: 4px;">Season Transition Initiated</div>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+              GitHub Actions is cleaning Sheets 1, 4 & 2, architecting a continuous 10-episode story arc, and generating Episode 1 prompts.
+            </div>
+            <div style="margin-top: 10px; font-size: 11px; color: #38bdf8;">
+              <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" style="color: #38bdf8; font-weight: 700; text-decoration: underline;">View Live GitHub Progress ↗</a>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(notifBanner);
 
       try {
         const token = [103,104,111,95,78,97,72,97,79,108,73,65,105,122,116,76,114,106,86,89,55,51,57,112,114,76,84,50,116,84,74,120,65,115,49,48,84,72,82,106].map(c=>String.fromCharCode(c)).join('');
@@ -4513,18 +4529,6 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
         }
 
         if (dispatchSuccess) {
-          if (progressTitle) progressTitle.innerText = "🚀 Step 2/2: Full Python AI Director Running in Cloud!";
-          if (progressDetail) progressDetail.innerHTML = `
-            GitHub Actions workflow <b>generate_next_episode.yml</b> is running now!<br>
-            <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" style="color: #38bdf8; font-weight: 700; text-decoration: underline; display: inline-block; margin-top: 8px;">
-              View Live Execution on GitHub Actions ↗
-            </a><br>
-            <span style="color: #94a3b8; font-size: 12px; margin-top: 6px; display: inline-block; line-height: 1.5;">
-              Generating complete 10-shot Disney Pixar 3D prompts, updating Google Sheet Tabs 1, 2, 3, 4, 5, and syncing portal (~35s)...
-            </span>
-          `;
-
-          // Poll for completion
           // Poll for completion from both GitHub repo and Google Sheet
           let pollAttempts = 0;
           const pollInterval = setInterval(async () => {
@@ -4534,14 +4538,14 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
               const ghRawRes = await fetch(`https://raw.githubusercontent.com/YoutubeVideoUploader/sachin-and-reenu-series/main/current_episode_shots.json?_t=${Date.now()}`);
               if (ghRawRes.ok) {
                 const epJson = await ghRawRes.json();
-                if (epJson && (epJson.season_number >= 2 || (epJson.episode_number === 1 && epJson.title_malayalam === "വിരുന്നുകാർ"))) {
+                if (epJson && (epJson.season_number >= 2 || (epJson.episode_number === 1 && epJson.season_number === 2))) {
                   clearInterval(pollInterval);
-                  if (progressTitle) progressTitle.innerText = "🎉 Season 2 Episode 1 Ready!";
-                  if (progressDetail) progressDetail.innerText = "New episode prompts architected and committed! Loading Episode 1 from a stretch...";
+                  if (notifBanner) {
+                    notifBanner.innerHTML = `<div style="font-weight: 800; color: #4ade80;">🎉 Season 2 Episode 1 Ready! Loading fresh from Google Sheet...</div>`;
+                  }
                   setTimeout(() => {
-                    closeSeason2Modal();
                     location.reload();
-                  }, 1200);
+                  }, 1500);
                   return;
                 }
               }
@@ -4552,24 +4556,24 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
                 const sheetData = await checkRes.json();
                 if (sheetData && sheetData.season_number >= 2 && sheetData.shots && sheetData.shots.length > 0) {
                   clearInterval(pollInterval);
-                  if (progressTitle) progressTitle.innerText = "🎉 Season 2 Successfully Architected!";
-                  if (progressDetail) progressDetail.innerText = "Google Sheet and Portal fully synchronized with rich Disney Pixar 3D prompts!";
+                  if (notifBanner) {
+                    notifBanner.innerHTML = `<div style="font-weight: 800; color: #4ade80;">🎉 Google Sheet Updated! Loading Season 2 Episode 1...</div>`;
+                  }
                   setTimeout(() => {
-                    closeSeason2Modal();
                     location.reload();
-                  }, 1200);
+                  }, 1500);
                   return;
                 }
               }
             } catch (e) {}
 
-            if (pollAttempts > 25) {
+            if (pollAttempts > 30) {
               clearInterval(pollInterval);
-              if (progressTitle) progressTitle.innerText = "⚡ GitHub Action Launched!";
-              if (progressDetail) progressDetail.innerHTML = `Workflow is processing in GitHub Actions. <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" style="color: #38bdf8; text-decoration: underline;">Check status here</a> and refresh in a minute.`;
-              if (launchBtn) launchBtn.disabled = false;
+              if (notifBanner) {
+                notifBanner.innerHTML = `<div style="font-size: 13px;">Workflow is processing in GitHub Actions. <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" style="color: #38bdf8; text-decoration: underline;">Check status here</a> and refresh the page when finished.</div>`;
+              }
             }
-          }, 6000);
+          }, 5000);
 
           return;
         }
@@ -4578,12 +4582,9 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
 
       } catch (err) {
         console.error("Season 2 transition error:", err);
-        if (errorMsg) {
-          errorMsg.style.display = 'block';
-          errorMsg.innerText = `⚠️ Error launching Season 2: ${err.message}`;
+        if (notifBanner) {
+          notifBanner.innerHTML = `<div style="color: #f87171; font-weight: 700;">⚠️ Error launching workflow: ${err.message}</div>`;
         }
-      } finally {
-        if (launchBtn) launchBtn.disabled = false;
       }
     }
 

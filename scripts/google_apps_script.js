@@ -779,6 +779,125 @@ function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
   };
 }
 
+/**
+ * Clean-slate Season Transition:
+ * 1. Sheet 1 (Episode_Story): Wiped & populated with all 10 episodes (Ep 1 Active, Ep 2-10 Upcoming, blank URLs).
+ * 2. Sheet 4 (Season_Story_Arc): Wiped & populated with the full 10 continuous episodes roadmap.
+ * 3. Sheet 2 (Current_JSON_Prompts): Wiped & populated with all 10 long JSON prompts for Episode 1.
+ * 4. Sheet 3 (Video_Checklist): UNTOUCHED!
+ * 5. Sheet 5 (Character_Registry): Updates existing character attire & registers new recurring characters.
+ */
+function cleanSlateSeasonTransition(body) {
+  const ss = getStudioSpreadsheet();
+  const seasonNum = parseInt(body.season_number || "2", 10);
+  const seasonTitle = body.season_title || `Season ${seasonNum}`;
+  const episodes = body.episodes || body.season_arc || [];
+  const shots = body.shots || [];
+
+  // 1. Wipe & Rebuild Sheet 1: Episode_Story (TAB_STORY)
+  let storySheet = ss.getSheetByName(TAB_STORY);
+  if (!storySheet) {
+    storySheet = ss.insertSheet(TAB_STORY);
+  }
+  storySheet.clear();
+  const storyHeaders = [
+    "Episode #",
+    "Episode Title (Malayalam & English)",
+    "Status",
+    "Total Shots",
+    "Story Summary / Synopsis",
+    "Ending Cliffhanger / Hook",
+    "Instagram Post URL",
+    "Published Timestamp"
+  ];
+  storySheet.getRange(1, 1, 1, storyHeaders.length).setValues([storyHeaders])
+    .setBackground("#1e1b4b").setFontColor("#e0e7ff").setFontWeight("bold").setHorizontalAlignment("center");
+  storySheet.setFrozenRows(1);
+
+  const storyRows = [];
+  for (let i = 0; i < episodes.length; i++) {
+    const ep = episodes[i];
+    const epN = ep.episode_number || (i + 1);
+    const fullTitle = `${ep.title_malayalam || ''} (${ep.title_english || 'Episode ' + epN})`.trim();
+    storyRows.push([
+      epN,
+      fullTitle,
+      i === 0 ? "Active" : "Upcoming",
+      10,
+      ep.synopsis || "",
+      ep.cliffhanger || "",
+      "", // Blank Instagram URL
+      ""  // Blank Published Timestamp
+    ]);
+  }
+  if (storyRows.length > 0) {
+    storySheet.getRange(2, 1, storyRows.length, storyHeaders.length).setValues(storyRows);
+    storySheet.getRange(2, 3).setBackground("#dbeafe").setFontColor("#1d4ed8"); // Ep 1 Active
+    if (storyRows.length > 1) {
+      storySheet.getRange(3, 3, storyRows.length - 1, 1).setBackground("#fef3c7").setFontColor("#92400e"); // Upcoming
+    }
+  }
+
+  // 2. Wipe & Rebuild Sheet 4: Season_Story_Arc (TAB_SEASON_ARC)
+  updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes);
+
+  // 3. Wipe & Rebuild Sheet 2: Current_JSON_Prompts (TAB_PROMPTS)
+  if (shots && shots.length > 0) {
+    updateJsonPromptsSheet(1, shots);
+  }
+
+  // 4. Sheet 3: Video_Checklist (TAB_CHECKLIST) is UNTOUCHED as requested!
+
+  // 5. Sheet 5: Character_Registry (TAB_CHARACTERS) - Update costumes & add new characters
+  if (body.character_updates || body.new_characters) {
+    try {
+      let charSheet = ss.getSheetByName(TAB_CHARACTERS);
+      if (charSheet && charSheet.getLastRow() >= 2) {
+        const cData = charSheet.getDataRange().getValues();
+        if (body.character_updates && Array.isArray(body.character_updates)) {
+          for (const cu of body.character_updates) {
+            for (let r = 1; r < cData.length; r++) {
+              if (cData[r][0].toString().toLowerCase() === cu.name.toString().toLowerCase()) {
+                if (cu.attire || cu.locked_attire) charSheet.getRange(r + 1, 6).setValue(cu.attire || cu.locked_attire);
+                if (cu.visual_dna) charSheet.getRange(r + 1, 5).setValue(cu.visual_dna);
+              }
+            }
+          }
+        }
+        if (body.new_characters && Array.isArray(body.new_characters)) {
+          const existingNames = cData.slice(1).map(r => r[0].toString().toLowerCase());
+          for (const nc of body.new_characters) {
+            const cName = nc.name || "New Character";
+            if (!existingNames.includes(cName.toLowerCase())) {
+              charSheet.appendRow([
+                cName,
+                nc.role || "Supporting Character",
+                `Season ${seasonNum} • Ep 1`,
+                "Active",
+                nc.visual_dna || "Stylized 3D Pixar cartoon character (Strictly non-human realism)",
+                nc.locked_attire || "Locked signature costume (100% consistent across shots)",
+                nc.voice_persona || "Malayalam voice"
+              ]);
+              const newRowIdx = charSheet.getLastRow();
+              charSheet.getRange(newRowIdx, 4).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold");
+              existingNames.push(cName.toLowerCase());
+            }
+          }
+        }
+      }
+    } catch (e) {
+      Logger.log("Error updating Character_Registry: " + e.toString());
+    }
+  }
+
+  return {
+    success: true,
+    season_number: seasonNum,
+    active_episode: 1,
+    message: `Season ${seasonNum} clean transition completed: Sheet 1, 4, 2 updated, Sheet 3 untouched, Sheet 5 updated.`
+  };
+}
+
 function getSeasonStoryArcData() {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SEASON_ARC);
@@ -1264,8 +1383,20 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
+    // Clean-slate Season Transition (Sheets 1, 4, 2 updated, Sheet 3 untouched, Sheet 5 updated)
+    if (action === "clean_slate_season_transition") {
+      const res = cleanSlateSeasonTransition(body);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     // 3. Full Next-Episode Transition
     if (action === "update_next_episode_full") {
+      if (body.is_new_season === true || body.is_new_season === "true") {
+        const res = cleanSlateSeasonTransition(body);
+        return ContentService.createTextOutput(JSON.stringify(res))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
       const res = handleNextEpisodeFullUpdate(body);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
