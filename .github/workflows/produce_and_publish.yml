@@ -84,13 +84,15 @@ jobs:
 
       # -------------------------------------------------------------
       # STEP 7b: DYNAMIC EPISODE THUMBNAIL COVER GENERATION
-      # Stamps exact Season & Episode numbers into the tape boxes
+      # Syncs latest Drive thumbnail & stamps active Season/Episode numbers
       # -------------------------------------------------------------
       - name: 7b. Generate Dynamic Reel Cover Thumbnail
         if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' }}
+        env:
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
-          echo "Stamping Season & Episode numbers onto cover thumbnail..."
-          python scripts/generate_thumbnail.py --season 1
+          echo "Syncing latest series thumbnail from Google Drive & stamping Season & Episode numbers..."
+          python scripts/generate_thumbnail.py
 
       # -------------------------------------------------------------
       # STEP 8: INSTAGRAM PUBLISHING

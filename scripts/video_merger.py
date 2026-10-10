@@ -105,13 +105,13 @@ def generate_outro_clip(image_path, output_path, duration=3.0, target_w=1080, ta
     ]
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", title_ml=""):
+def create_title_banner_overlay(output_png_path, episode_num=1, season_num=1, title_en="", title_ml=""):
     """
     Renders a semi-transparent, cinematic 1080x220 title banner badge as a PNG.
     Uses bundled Manjari-Bold.ttf with FFmpeg HarfBuzz shaping to guarantee
     100% authentic, error-free Malayalam typography & Latin English text.
     Displays:
-      - Line 1: SACHIN & REENU • EPISODE {episode_num}
+      - Line 1: SACHIN & REENU • SEASON {season_num} • EPISODE {episode_num}
       - Line 2: {title_en.upper()} (and Malayalam title if available)
     """
     import tempfile
@@ -139,7 +139,10 @@ def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", tit
         output_png_path = Path(output_png_path)
         output_png_path.parent.mkdir(parents=True, exist_ok=True)
 
-        header_text = f"SACHIN & REENU • EPISODE {episode_num}"
+        if season_num and season_num > 1:
+            header_text = f"SACHIN & REENU • SEASON {season_num} • EPISODE {episode_num}"
+        else:
+            header_text = f"SACHIN & REENU • EPISODE {episode_num}"
         sub_text = title_en.upper().strip() if title_en else f"EPISODE {episode_num}"
 
         # Locate bundled Manjari-Bold font
@@ -210,7 +213,7 @@ def create_title_banner_overlay(output_png_path, episode_num=1, title_en="", tit
         print(f"Warning: Failed to generate title banner overlay: {e}")
         return False
 
-def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", title_ml="", bgm_num=None):
+def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None):
     """
     Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
     Combines spoken dialogue audio with atmospheric romantic background score.
@@ -329,7 +332,7 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     
     output_path = Path(output_file)
     banner_png = temp_dir / "title_banner.png"
-    has_banner = create_title_banner_overlay(banner_png, episode_num, title_en, title_ml)
+    has_banner = create_title_banner_overlay(banner_png, episode_num, season_num, title_en, title_ml)
 
     # Watermark asset detection
     watermark_path = Path("assets/watermark.png")
@@ -440,29 +443,38 @@ def main():
     parser = argparse.ArgumentParser(description="Sachin & Reenu Video Merger")
     parser.add_argument("--shots_dir", default="clean_shots", help="Directory containing de-watermarked shots")
     parser.add_argument("--output", default="master_episode.mp4", help="Output master video filename")
+    parser.add_argument("--season", type=int, default=None, help="Season number")
     parser.add_argument("--episode", type=int, default=None, help="Episode number")
     parser.add_argument("--title_en", default="", help="Episode English title")
     parser.add_argument("--title_ml", default="", help="Episode Malayalam title")
     parser.add_argument("--bgm", type=int, default=None, help="BGM track index (1-10)")
     args = parser.parse_args()
 
+    season_num = args.season
     ep_num = args.episode
     title_en = args.title_en
     title_ml = args.title_ml
     
-    if os.path.exists("current_episode_shots.json"):
-        try:
-            with open("current_episode_shots.json", "r", encoding="utf-8") as f:
-                ep_json = json.load(f)
-                if ep_num is None:
-                    ep_num = ep_json.get("episode_number", 1)
-                if not title_en:
-                    title_en = ep_json.get("title_english", "")
-                if not title_ml:
-                    title_ml = ep_json.get("title_malayalam", "")
-        except Exception:
-            pass
+    for fn in ["current_episode_shots.json", "current_episode.json", "story_state.json"]:
+        if os.path.exists(fn):
+            try:
+                with open(fn, "r", encoding="utf-8") as f:
+                    ep_json = json.load(f)
+                    if season_num is None and ep_json.get("season_number"):
+                        season_num = int(ep_json.get("season_number"))
+                    if ep_num is None and ep_json.get("episode_number"):
+                        ep_num = int(ep_json.get("episode_number"))
+                    if not title_en and ep_json.get("title_english"):
+                        title_en = ep_json.get("title_english")
+                    if not title_ml and ep_json.get("title_malayalam"):
+                        title_ml = ep_json.get("title_malayalam")
+                    if season_num is not None and ep_num is not None and title_en:
+                        break
+            except Exception:
+                pass
 
+    if season_num is None:
+        season_num = 1
     if ep_num is None:
         ep_num = 1
 
@@ -470,6 +482,7 @@ def main():
         shots_dir=args.shots_dir,
         output_file=args.output,
         episode_num=ep_num,
+        season_num=season_num,
         title_en=title_en,
         title_ml=title_ml,
         bgm_num=args.bgm
