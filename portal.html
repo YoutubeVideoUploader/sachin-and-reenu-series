@@ -964,7 +964,23 @@
           <p style="font-size: 12px; color: #94a3b8; margin: 0 0 10px 0;">
             This prompt locks the series title logo (top-left) and the 'Season' & 'Episode' placeholder stickers (top-right) in identical locations, while adapting the scene and casual wardrobe to the active story.
           </p>
-          <textarea id="seriesThumbnailPromptText" readonly rows="7" style="width: 100%; box-sizing: border-box; background: #020617; border: 1px solid #334155; color: #e2e8f0; font-family: monospace; font-size: 12px; line-height: 1.5; padding: 12px; border-radius: 8px; resize: vertical;"></textarea>
+          <textarea id="seriesThumbnailPromptText" readonly rows="7" style="width: 100%; box-sizing: border-box; background: #020617; border: 1px solid #334155; color: #e2e8f0; font-family: monospace; font-size: 12px; line-height: 1.5; padding: 12px; border-radius: 8px; resize: vertical;">High-end Disney Pixar 3D animated vertical 9:16 YouTube Shorts poster thumbnail for the romantic comedy series 'Sachin & Reenu'.
+
+[LAYOUT & GRAPHIC BRANDING]:
+- Top-Left: Stylized, playful 3D cartoon title logo with vibrant bubble typography reading 'Sachin & Reenu', featuring a tiny cartoon crown icon above the 'S' and a playful pink heart over the 'e'.
+- Top-Right: Two paper note card stickers pinned with beige masking tape on corners in the exact same location:
+  1. Top sticker banner labeled 'Season' in handwritten font with a blank cream rectangular note card directly below it.
+  2. Bottom sticker banner labeled 'Episode' in handwritten font with a blank cream rectangular note card directly below it.
+- Decorative playful floating white cartoon hearts and doodle lines around the couple.
+
+[CHARACTERS & CURRENT STORY SCENE - Season 2: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)]:
+- Setting: Cozy Kakkanad apartment living room with warm golden afternoon sunlight streaming through the French balcony windows.
+- Action: Sachin and Reenu are playfully hanging fairy lights together, looking adorably at each other with beaming smiles and cheerful laughter amidst colorful festive home decor.
+- Sachin Visuals & Costume: Stylized 3D Pixar character, 24yo Malayali boy, wavy dark hair, warm brown eyes, endearing smile. Wearing Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.
+- Reenu Visuals & Costume: Stylized 3D Pixar character, 22yo Malayali girl, voluminous bouncy wavy dark-brown hair with curtain bangs, large expressive hazel-brown doe eyes, sweet dimpled cartoon smile. Wearing Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.
+
+[LIGHTING & RENDER QUALITY]:
+- Disney Pixar 3D animated movie render, soft velvety cartoon shaders, Octane 3D render, vertical 9:16 ratio, clean vibrant 4K resolution.</textarea>
         </div>
 
         <!-- Section 2: Upload Generated Thumbnail to Google Drive -->
@@ -4831,8 +4847,10 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
     }
 
     function renderSeriesThumbnailPrompt() {
-      const seasonNum = (currentEpisodeData && currentEpisodeData.season_number) ? currentEpisodeData.season_number : 2;
-      const seasonTitle = (currentEpisodeData && currentEpisodeData.season_title) ? currentEpisodeData.season_title : `Season ${seasonNum}`;
+      const epData = (typeof episodeData !== 'undefined' && episodeData) ? episodeData : {};
+      const sStory = (typeof seasonStoryData !== 'undefined' && seasonStoryData) ? seasonStoryData : {};
+      const seasonNum = epData.season_number || sStory.season_number || 2;
+      const seasonTitle = epData.season_title || sStory.season_title || `Season ${seasonNum}: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)`;
       
       const seasonBadge = document.getElementById('thumbPromptSeasonBadge');
       if (seasonBadge) seasonBadge.innerText = `Season ${seasonNum}`;
@@ -4841,10 +4859,19 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
       let sachinAttire = "Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.";
       let reenuAttire = "Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.";
 
-      if (window.characterRegistryData && Array.isArray(window.characterRegistryData)) {
-        const sChar = window.characterRegistryData.find(c => c.name.toLowerCase() === 'sachin');
+      let charList = [];
+      try {
+        if (typeof characterRegistryData !== 'undefined' && Array.isArray(characterRegistryData)) {
+          charList = characterRegistryData;
+        } else if (window.characterRegistryData && Array.isArray(window.characterRegistryData)) {
+          charList = window.characterRegistryData;
+        }
+      } catch (e) {}
+
+      if (charList && charList.length > 0) {
+        const sChar = charList.find(c => c && c.name && c.name.toLowerCase() === 'sachin');
         if (sChar && sChar.locked_attire) sachinAttire = sChar.locked_attire;
-        const rChar = window.characterRegistryData.find(c => c.name.toLowerCase() === 'reenu');
+        const rChar = charList.find(c => c && c.name && c.name.toLowerCase() === 'reenu');
         if (rChar && rChar.locked_attire) reenuAttire = rChar.locked_attire;
       }
 
@@ -4876,7 +4903,12 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
 - Disney Pixar 3D animated movie render, soft velvety cartoon shaders, Octane 3D render, vertical 9:16 ratio, clean vibrant 4K resolution.`;
 
       const promptEl = document.getElementById('seriesThumbnailPromptText');
-      if (promptEl) promptEl.value = prompt;
+      if (promptEl) {
+        promptEl.value = prompt;
+        promptEl.innerText = prompt;
+        promptEl.textContent = prompt;
+      }
+      return prompt;
     }
 
     function copySeriesThumbnailPrompt() {
@@ -5051,7 +5083,13 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
       syncLiveFromGoogleSheet();
       fetchSeasonStoryData();
       fetchCharacterData();
+      renderSeriesThumbnailPrompt();
     };
+
+    // Pre-render prompt immediately
+    try {
+      renderSeriesThumbnailPrompt();
+    } catch (e) {}
   </script>
 </body>
 </html>
