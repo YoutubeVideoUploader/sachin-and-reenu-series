@@ -64,4 +64,4 @@ for p in paths:
             f.write(portal_html)
         print(f"Updated: {p}")
 
-print("\n✓ Successfully restored all portals and Google Sheet to Season 1 Finale (Episode 10)!")
+print("\n[SUCCESS] Successfully restored all portals and Google Sheet to Season 1 Finale (Episode 10)!")

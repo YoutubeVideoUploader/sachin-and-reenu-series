@@ -1,163 +1,164 @@
 {
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
-  "season_number": 2,
-  "episode_number": 1,
+  "language": "Malayalam",
+  "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
   "total_episodes_produced": 10,
-  "season_title": "The Unannounced Guests & Fort Kochi Days (വിരുന്നുകാരും പുതിയ തുടക്കവും)",
-  "current_arc": "Season 2: Reenu's Parents in Kochi & The Fort Kochi Cafe",
   "characters": {
     "Sachin": {
-      "age": 24,
+      "age": 22,
       "gender": "male",
-      "attire": "Olive-green linen button-down shirt over white t-shirt, dark charcoal denim jeans"
+      "voice": "Fenrir",
+      "hair": "Tousled thick wavy textured dark-brown hair with volume",
+      "face": "Warm hazel-brown expressive eyes, defined jawline, boyish charming grin",
+      "attire": "Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest",
+      "personality": "Warm, emotional, charming, returning from UK after years away"
     },
     "Reenu": {
       "age": 22,
       "gender": "female",
-      "attire": "Pastel mustard-yellow floral kurti over white cotton palazzo pants"
+      "voice": "Kore",
+      "hair": "Shoulder-length voluminous layered wavy dark-brown hair with soft curtain bangs",
+      "face": "Large sparkling hazel-brown doe eyes, expressive emotions, glowing radiant smile",
+      "attire": "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch",
+      "personality": "Bubbly, deeply emotional, faithful, reunited with Sachin at Kochi CIAL"
     },
     "Amal": {
-      "age": 24,
+      "age": 22,
       "gender": "male",
-      "attire": "Solid maroon polo t-shirt with dark navy denim jeans"
-    },
-    "Madhavan": {
-      "age": 52,
-      "gender": "male",
-      "role": "Reenu's Father",
-      "attire": "White Kerala cotton jubba over gold-bordered mundu"
-    },
-    "Girija": {
-      "age": 48,
-      "gender": "female",
-      "role": "Reenu's Mother",
-      "attire": "Traditional Kerala cotton cream and green saree"
-    },
-    "Reenu's Father": {
-      "age": 55,
-      "gender": "male",
-      "voice": "Deep, authoritative, stern middle-aged male voice.",
-      "role": "Antagonist/Parent",
-      "attire": "White cotton mundu, light-blue formal shirt.",
-      "visual_dna": "Stylized 3D Pixar-style cartoon character, tall, stern expression, grey-streaked short black hair, thick cartoonish mustache, wearing a traditional white cotton mundu and a crisp light-blue formal shirt."
+      "voice": "Puck",
+      "hair": "Cropped textured curly black hair",
+      "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
+      "attire": "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos",
+      "personality": "Sachin's best friend, supportive, humorous, driving the car"
     }
   },
+  "current_arc": "The Monsoon Car Ride & Secret Pouch",
   "history": [
     {
-      "season_number": 2,
-      "episode_number": 1,
-      "title_english": "The Unannounced Guests",
-      "title_malayalam": "വിരുന്നുകാർ",
-      "status": "Active",
-      "synopsis": "Reenu's traditional parents arrive in Kochi without warning, throwing Sachin and Reenu into sudden panic as they scramble to keep their apartment presentable.",
-      "cliffhanger": "Just as Sachin finishes hiding a giant pile of dirty clothes, the doorbell rings, and he opens the door face-to-face with Reenu's stern father."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 2,
-      "title_english": "First Impressions & Spilled Chai",
-      "title_malayalam": "ആദ്യ കൂടിക്കാഴ്ച",
-      "status": "Upcoming",
-      "synopsis": "Sachin nervously serves traditional Kerala tea to Reenu's parents while Amal desperately tries to coach Sachin via subtle hand gestures from the balcony.",
-      "cliffhanger": "Madhavan suddenly asks Sachin what his long-term career stability looks like after quitting his London job."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 3,
-      "title_english": "The Kochi Job Dilemma",
-      "title_malayalam": "പുതിയ ജോലി",
-      "status": "Upcoming",
-      "synopsis": "Sachin heads to his first official day at the InfoPark Kakkanad software office, facing a high-pressure corporate environment while Reenu cheers him on.",
-      "cliffhanger": "Sachin receives an urgent project deadline that directly conflicts with an important family dinner with Reenu's parents."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 4,
-      "title_english": "A Secret Cafe Dream",
-      "title_malayalam": "കഫേ സ്വപ്നം",
-      "status": "Upcoming",
-      "synopsis": "Over late-night roadside parotta, Sachin, Reenu, and Amal stumble upon a charming abandoned heritage building near Fort Kochi beach and dream of turning it into a book-cafe.",
-      "cliffhanger": "The elderly Portuguese landlord mentions another buyer is ready to make a deposit by tomorrow morning."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 5,
-      "title_english": "The Fort Kochi Bid",
-      "title_malayalam": "ഒരു പുതിയ തുടക്കം",
-      "status": "Upcoming",
-      "synopsis": "Amal pools together his quirky savings while Sachin and Reenu present an emotional pitch to the cafe owner, winning his heart with their creative vision.",
-      "cliffhanger": "They sign the lease, but realize the plumbing and interiors need massive renovation within two weeks."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 6,
-      "title_english": "Paint Splatters & Stolen Moments",
-      "title_malayalam": "ചായക്കൂട്ടുകൾ",
-      "status": "Upcoming",
-      "synopsis": "Sachin and Reenu spend late evenings renovating the cafe, sharing playful paint fights and quiet romantic glances amidst the sawdust and warm hanging lamps.",
-      "cliffhanger": "Reenu's mother Girija secretly spots them together through the cafe window, noticing their undeniable bond."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 7,
-      "title_english": "A Mother's Heart",
-      "title_malayalam": "അമ്മയുടെ മനസ്സ്",
-      "status": "Upcoming",
-      "synopsis": "Girija sits down with Reenu for a heart-to-heart conversation by the Marine Drive walkway, realizing how happy Sachin makes her daughter.",
-      "cliffhanger": "Girija warns Reenu: 'Your father won't be as easy to convince, Reenu. You need to show him Sachin's true dedication.'"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 8,
-      "title_english": "The Tasting Night Chaos",
-      "title_malayalam": "അമലിന്റെ വിരുന്ന്",
-      "status": "Upcoming",
-      "synopsis": "Amal hosts a mock tasting dinner for the cafe menu with Reenu's family, resulting in hilarious culinary mishaps with extra spicy chicken cutlets and dessert disasters.",
-      "cliffhanger": "Despite the chaos, Madhavan takes a bite of Sachin's homemade dessert and pauses in deep silence."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 9,
-      "title_english": "A Father's Test",
-      "title_malayalam": "തീരുമാനങ്ങൾ",
-      "status": "Upcoming",
-      "synopsis": "Madhavan invites Sachin for an early morning stroll by the Fort Kochi Chinese fishing nets, asking the difficult questions about their future and family responsibilities.",
-      "cliffhanger": "Sachin honestly confesses his fears and wholehearted love for Reenu, standing tall without dodging any question."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 10,
-      "title_english": "The Grand Opening & The Blessing",
-      "title_malayalam": "ഒരു പുതിയ പ്രഭാതം (ഗ്രാൻഡ് ക്ലൈമാക്സ്)",
-      "status": "Upcoming",
-      "synopsis": "SEASON 2 CLIMAX: The Fort Kochi book-cafe officially opens to glowing fairy lights and cheering friends. Madhavan and Girija arrive, giving their proud, heartfelt blessing to Sachin and Reenu.",
-      "cliffhanger": "Sachin holds Reenu's hand under the glowing cafe lights, whispering: 'This is only the beginning.' Season 2 Grand Climax completed!"
-    },
-    {
       "episode": 1,
-      "title": "വിരുന്നുകാർ (The Unannounced Guests)",
-      "summary": "Sachin and Reenu settle into their new life in Kochi. The peace is short-lived when Reenu's parents decide to pay a surprise visit, sending Sachin into a panicked cleaning frenzy.",
-      "cliffhanger": "Sachin opens the front door to find Reenu's stern father standing right in front of him.",
+      "title": "തിരിച്ചുവരവ് (The Homecoming)",
+      "summary": "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
+      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
+      "characters_present": [
+        "Reenu",
+        "Sachin",
+        "Amal"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "മഴയും ചില രഹസ്യങ്ങളും (Rain and Some Secrets)",
+      "summary": "Sachin, Reenu, and Amal exit the Kochi airport into a torrential downpour. As they navigate the rain-soaked streets in Amal's car, Reenu grows suspicious of Sachin's intense, nervous attachment to his leather pouch. A sudden jolt causes the pouch to disappear under the seat, sparking a moment of intense confrontation.",
+      "cliffhanger": "As the pouch slides away, Reenu confronts Sachin about his strange behavior, leaving the secret of the bag hanging in the air.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "None",
+        "Reenu"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും (A Roadside Chai & Unspoken Glances)",
+      "summary": "Amal pulls the car over at a quaint, misty tea stall near the Kerala backwaters. As the rain continues to pour, Sachin and Reenu step out under a shared umbrella, finding a moment of quiet connection over steaming hot tea. Despite the proximity, Sachin struggles to find the right words to address the tension from their earlier argument. The episode culminates in a shift of focus as Amal discovers the misplaced leather pouch on the floor of the car.",
+      "cliffhanger": "Amal picks up the mysterious leather pouch from the car floor, his expression shifting from curiosity to concern.",
+      "characters_present": [
+        "Reenu",
+        "Amal",
+        "Sachin"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "മറന്നുപോയ ഓർമ്മകൾ (Forgotten Memories)",
+      "summary": "As the car glides through the misty streets of Kochi, Sachin and Reenu revisit the nostalgia of their college days. However, the weight of Sachin's two-year absence in the UK creates an unspoken distance. Sachin struggles with his guilt, while Reenu finds herself increasingly suspicious of his sudden departure.",
+      "cliffhanger": "Reenu confronts Sachin, asking why he really booked his flight home so suddenly, leaving the truth hanging in the air.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "Reenu"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "രഹസ്യം പുറത്തേക്ക് (The Secret Slips)",
+      "summary": "As the trio gathers, Amal hands over a mysterious travel pouch to Sachin. Reenu, already suspicious, presses Sachin about its contents. Sachin stammers and tries to change the subject, but his awkwardness only fuels Reenu's curiosity. The tension culminates when Reenu reaches out to touch the pouch, and Sachin instinctively pulls it away, leaving an uncomfortable silence between them.",
+      "cliffhanger": "Reenu looks at Sachin with newfound hurt and confusion, realizing he is hiding something significant.",
+      "characters_present": [
+        "Reenu",
+        "Sachin",
+        "Amal"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "അമലിന്റെ തമാശയും മൗനവും (Amal's Wit & Heavy Silence)",
+      "summary": "Amal uses humor and teasing to diffuse the heavy tension in the air. Sachin feels deeply torn between confessing his life-changing London decision and the fear of overwhelming റീനു.",
+      "cliffhanger": "Sachin promises റീനു: 'Before tonight ends, I will tell you everything.'",
+      "characters_present": [
+        "Amal",
+        "Sachin",
+        "Reenu"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "മഴ തോർന്ന രാത്രി (The Rain Settles)",
+      "summary": "The car pulls up to Reenu's house as the monsoon rain finally eases. Amidst the silence of the damp Kochi night, Sachin walks Reenu to her gate, the weight of his secret pressing down on him. He finally finds the courage to bridge the distance, asking her for a midnight meeting at Marine Drive.",
+      "cliffhanger": "Reenu looks at Sachin with a mixture of curiosity and apprehension, leaving the audience wondering if she will show up at Marine Drive.",
+      "characters_present": [
+        "Sachin",
+        "Reenu"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "റീനുവിന്റെ മനസ്സ് (Reenu's Suspicion & Worry)",
+      "summary": "As the monsoon rain continues to mist over Kochi, Reenu sits in her bedroom lost in thought about Sachin's mysterious secret. She fears his sudden shift in behavior implies he might be returning to the UK permanently. The weight of uncertainty pushes her to make a bold decision: she grabs her umbrella and steps out into the rainy night, determined to meet Sachin at Marine Drive and confess her true feelings.",
+      "cliffhanger": "Reenu steps out into the rainy night road, journeying toward Marine Drive to meet Sachin before the night ends.",
+      "characters_present": [
+        "Reenu"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും (A Midnight Message)",
+      "summary": "Sachin and Amal wait at Marine Drive as the Kochi rain intensifies. Amal offers Sachin words of encouragement to face his fears. Reenu arrives, her silhouette appearing through the golden haze of the backwater lights. The tension peaks as Sachin prepares to reveal what is inside his leather pouch.",
+      "cliffhanger": "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ (The Grand Climax: The Revelation)",
+      "summary": "Sachin finally reveals the contents of his leather pouch to Reenu under the Kochi rain. Instead of leaving for London, he shows her his cancelled visa and a permanent job contract in Kochi, choosing to stay for love. The episode ends with a heartfelt embrace and a promise of a future together.",
+      "cliffhanger": "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
       "characters_present": [
         "Reenu",
         "Sachin"
       ]
     }
   ],
+  "episode_number": 10,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_KOCHI_APARTMENT_DOORWAY",
-    "time_of_day": "Late Afternoon Monsoon Dusk",
-    "lighting_palette": "Soft warm indoor ambient lighting hitting their faces",
-    "weather": "Continuous Kochi monsoon drizzle",
+    "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
+    "time_of_day": "Monsoon Night",
+    "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
+    "weather": "Monsoon drizzle and atmospheric haze",
     "spatial_blocking": {
-      "Sachin": "Standing inside the doorway",
-      "Reenu's Father": "Standing outside the doorway"
+      "Sachin": "Walking away with Reenu",
+      "Reenu": "Walking away with Sachin"
     },
-    "eyeline_direction": "Sachin looks at Reenu's Father; Father looks at Sachin",
+    "eyeline_direction": "Sachin and Reenu look forward",
     "persistent_props": [
+      "Leather pouch inside Sachin's bag",
       "Reenu's silver wrist watch on left wrist",
-      "Sachin's diagonal brown leather cross-bag strap over left shoulder"
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
+      "Vintage tan-brown London leather pouch"
     ],
-    "camera_lens": "Cinematic prime lens"
+    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   }
 }
