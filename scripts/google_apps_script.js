@@ -143,29 +143,6 @@ function setupStudioSpreadsheet() {
       .setHorizontalAlignment("center");
     storySheet.setFrozenRows(1);
     
-    // Episode 1 (Active)
-    storySheet.appendRow([
-      1,
-      "തിരിച്ചുവരവ് (The Homecoming)",
-      "Active",
-      10,
-      "After two long years of waiting, Reenu stands anxiously with her friend Amal at the Kochi CIAL arrival terminal. Sachin emerges through the glass doors, leading to a tearful, tender reunion, but he nervously clutches a secret leather pouch from London.",
-      "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
-      "",
-      ""
-    ]);
-
-    // Episode 2 (Upcoming)
-    storySheet.appendRow([
-      2,
-      "മഴയും ചില രഹസ്യങ്ങളും (Rain and Some Secrets)",
-      "Upcoming",
-      10,
-      "Stepping outside into a sudden Kochi monsoon shower, Sachin, Reenu, and Amal rush to the car. As they drive through the rain, Reenu notices Sachin's nervous protectiveness over his bag.",
-      "The pouch slips from Sachin's hand and slides deep under the car seat just as he is about to confess.",
-      "",
-      ""
-    ]);
   }
 
   // -------------------------------------------------------------
@@ -195,25 +172,12 @@ function setupStudioSpreadsheet() {
     promptSheet.setFrozenRows(1);
   }
 
-  // Auto-populate Tab 2 with Episode 1 prompts from GitHub if available
-  try {
-    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/main/current_episode_shots.json`;
-    const res = UrlFetchApp.fetch(rawUrl);
-    if (res.getResponseCode() === 200) {
-      const epData = JSON.parse(res.getContentText());
-      updateJsonPromptsSheet(epData.episode_number || 1, epData.shots || []);
-    }
-  } catch (err) {}
-
   // -------------------------------------------------------------
   // 3. TAB 3: Video_Checklist
   // -------------------------------------------------------------
   let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
   if (!checkSheet) {
     checkSheet = ss.insertSheet(TAB_CHECKLIST, 2);
-  }
-  if (checkSheet.getLastRow() === 0) {
-    initVideoChecklist(1, 10, "തിരിച്ചുവരവ് (The Homecoming)");
   }
 
   // -------------------------------------------------------------
@@ -226,11 +190,11 @@ function setupStudioSpreadsheet() {
   // -------------------------------------------------------------
   setupCharacterRegistrySheet();
 
-  Logger.log("All 5 Google Sheet tabs initialized successfully!");
+  Logger.log("All 5 Google Sheet tabs initialized with clean headers!");
 }
 
 /**
- * Initializes Tab 4: Season_Story_Arc with 10-episode narrative roadmap.
+ * Initializes Tab 4: Season_Story_Arc headers cleanly without hardcoding any episode story.
  */
 function setupSeasonStoryArcSheet(seasonNum) {
   const ss = getStudioSpreadsheet();
@@ -242,9 +206,9 @@ function setupSeasonStoryArcSheet(seasonNum) {
   if (sheet.getLastRow() > 0) return; // Already initialized
 
   // Meta Banner
-  sheet.getRange(1, 1).setValue(`SEASON ${seasonNum}: THE HOMECOMING & THE LONDON SECRET (തിരിച്ചുവരവ്)`).setFontWeight("bold").setFontSize(12);
-  sheet.getRange(1, 2).setValue("CLIMAX TARGET: EPISODE 10").setFontWeight("bold");
-  sheet.getRange(1, 1, 1, 2).setBackground("#4f46e5").setFontColor("#ffffff");
+  sheet.getRange(1, 1).setValue(`MASTER STORY ROADMAP: SEASON ${seasonNum || 1}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#312e81").setFontColor("#ffffff");
 
   const headers = [
     "Season #",
@@ -263,79 +227,8 @@ function setupSeasonStoryArcSheet(seasonNum) {
     .setFontWeight("bold")
     .setHorizontalAlignment("center");
   sheet.setFrozenRows(2);
-
-  const season1Episodes = [
-    [
-      1, 1, "The Homecoming", "തിരിച്ചുവരവ്", "Active",
-      "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
-      "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
-      ""
-    ],
-    [
-      1, 2, "Rain and Some Secrets", "മഴയും ചില രഹസ്യങ്ങളും", "Upcoming",
-      "Stepping outside into a sudden Kochi monsoon shower, Sachin, Reenu, and Amal rush to the car. As they drive through the rain-drenched streets, Reenu notices Sachin's nervous protectiveness over his bag.",
-      "The pouch slips from Sachin's hand and slides deep under the car seat just as he is about to confess.",
-      ""
-    ],
-    [
-      1, 3, "A Roadside Chai & Unspoken Glances", "ഒരു തട്ടുകട ചായയും നോട്ടങ്ങളും", "Upcoming",
-      "Amal stops the car at a misty tea stall by the backwaters. Under a shared umbrella, Sachin and Reenu share an intimate moment over hot tea, but Sachin hesitates to speak.",
-      "Amal spots the London leather pouch lying on the car floor and picks it up curiously.",
-      ""
-    ],
-    [
-      1, 4, "Forgotten Memories", "മറന്നുപോയ ഓർമ്മകൾ", "Upcoming",
-      "Continuing their ride into Kochi city, Sachin and Reenu reminisce about their college days, but Sachin feels guilty about being away in the UK for 730 days.",
-      "Reenu asks Sachin directly: 'Why didn't you tell me the real reason you booked your flight so suddenly?'",
-      ""
-    ],
-    [
-      1, 5, "The Secret Slips", "രഹസ്യം പുറത്തേക്ക്", "Upcoming",
-      "Amal hands the pouch back to Sachin, asking what is inside. Sachin stammers and tries to divert the topic, raising Reenu's suspicion.",
-      "Reenu reaches for the pouch playfully, but Sachin instinctively pulls it back, creating an awkward silence.",
-      ""
-    ],
-    [
-      1, 6, "Amal's Wit & Heavy Silence", "അമലിന്റെ തമാശയും മൗനവും", "Upcoming",
-      "Amal uses humor and teasing to diffuse the tension. Sachin feels deeply torn between confessing his life-changing London decision and the fear of overwhelming Reenu.",
-      "Sachin promises Reenu: 'Before tonight ends, I will tell you everything.'",
-      ""
-    ],
-    [
-      1, 7, "The Rain Settles", "മഴ തോർന്ന രാത്രി", "Upcoming",
-      "The car arrives outside Reenu's house. In the quiet, rain-washed night, Sachin walks Reenu to the front gate. A tender, lingering goodbye.",
-      "Sachin gently holds Reenu's hand, asking her to meet him at Marine Drive walkway at midnight.",
-      ""
-    ],
-    [
-      1, 8, "Reenu's Suspicion & Worry", "റീനുവിന്റെ മനസ്സ്", "Upcoming",
-      "Reenu sits in her room by the window, watching the rain mist. She wonders whether Sachin's secret means he has to go back to the UK permanently.",
-      "Reenu makes a heartfelt decision to profess her true love and ask Sachin never to leave again.",
-      ""
-    ],
-    [
-      1, 9, "A Midnight Message", "ഒരു സന്ദേശവും അർദ്ധരാത്രിയും", "Upcoming",
-      "Sachin and Amal prepare at Marine Drive. Amal gives Sachin emotional courage. Reenu arrives in the dim golden lights of Kochi backwaters.",
-      "Sachin takes a deep breath, unzips the leather pouch, and steps forward toward Reenu.",
-      ""
-    ],
-    [
-      1, 10, "The Grand Climax: The Revelation", "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ", "Upcoming",
-      "SEASON 1 CLIMAX: Sachin reveals what was inside the pouch—his officially cancelled London visa documents and a permanent contract in Kochi, choosing to stay by Reenu's side forever. Tears of joy, a breathtaking embrace, and a sweet tease for Season 2!",
-      "Sachin whispers: 'I'm never going back. I'm home.' Season 1 Climax completed!",
-      ""
-    ]
-  ];
-
-  sheet.getRange(3, 1, season1Episodes.length, headers.length).setValues(season1Episodes);
-  
-  // Format Status Column (Col 5)
-  sheet.getRange(3, 5).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold"); // Ep 1 Active
-  sheet.getRange(4, 5, 9, 1).setBackground("#fef3c7").setFontColor("#92400e"); // Upcoming
-
   sheet.setColumnWidth(6, 400); // Story summary width
   sheet.setColumnWidth(7, 300); // Cliffhanger width
-  Logger.log("Season_Story_Arc sheet populated with Season 1 (10 Episodes) roadmap.");
 }
 
 /**
@@ -923,11 +816,20 @@ function getSeasonStoryArcData() {
     });
   }
 
+  let currentSeasonNum = 1;
+  let currentSeasonTitle = "Season 1";
+  try {
+    const rawBanner = (sheet.getRange(1, 1).getValue() || "").toString();
+    const match = rawBanner.match(/SEASON\s+(\d+)/i);
+    if (match) currentSeasonNum = parseInt(match[1], 10);
+    currentSeasonTitle = sheet.getRange(1, 2).getValue() || `Season ${currentSeasonNum}`;
+  } catch (e) {}
+
   return {
     success: true,
-    season_number: 1,
-    season_title: "The Homecoming & The London Secret (തിരിച്ചുവരവ്)",
-    total_episodes: 10,
+    season_number: currentSeasonNum,
+    season_title: currentSeasonTitle,
+    total_episodes: episodes.length,
     climax_target_episode: 10,
     episodes: episodes
   };
@@ -1275,9 +1177,9 @@ function doGet(e) {
   }
 
   let activeEp = 1;
-  let epTitleEn = "The Homecoming";
-  let epTitleMl = "തിരിച്ചുവരവ്";
-  let epSynopsis = "After two long years of waiting, Reenu stands anxiously with her friend Amal at the Kochi CIAL arrival terminal...";
+  let epTitleEn = "Episode 1";
+  let epTitleMl = "";
+  let epSynopsis = "";
 
   if (storySheet && storySheet.getLastRow() > 1) {
     const storyData = storySheet.getDataRange().getValues();
