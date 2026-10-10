@@ -36,13 +36,23 @@ except ImportError:
 
 # Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like)
 BASE_DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+# Reenu's preference: Strictly casual T-shirt WITH EYE-CATCHING PATTERNS/PRINTS (clouds, florals, doodles, stripes) + denim skirt/jeans + sneakers + watch
 DEFAULT_ATTIRE_REENU = "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
 
 BASE_DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
-DEFAULT_ATTIRE_SACHIN = "Forest-green and dark navy-blue check flannel button-down shirt worn open over a plain crisp white crewneck inner t-shirt, dark charcoal denim jeans, brown leather travel cross-bag worn diagonally across chest."
+# Sachin's preference: Strictly casual PLAIN T-shirt (100% solid color, ZERO patterns, ZERO graphics) + casual denim jeans + sneakers + cross-bag
+DEFAULT_ATTIRE_SACHIN = "Solid forest-green plain crewneck t-shirt (strictly zero patterns or graphics), classic dark blue denim jeans, white sneakers, brown leather travel cross-bag worn diagonally across chest."
 
 BASE_DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
-DEFAULT_ATTIRE_AMAL = "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos, casual loafers."
+# Amal's preference: Strictly casual PLAIN T-shirt (100% solid color, ZERO patterns, ZERO graphics) in a distinct contrasting color + casual denim jeans/pants
+DEFAULT_ATTIRE_AMAL = "Solid mustard-yellow plain crewneck t-shirt (strictly zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers."
+
+# Season 2 Canon Casual Wardrobes (Distinct contrasting colors across all 3 characters)
+SEASON_2_CASUAL_ATTIRE = {
+    "Sachin": "Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.",
+    "Reenu": "Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.",
+    "Amal": "Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers."
+}
 
 BASE_DNA_MAP = {
     "Reenu": BASE_DNA_REENU,
@@ -113,10 +123,21 @@ DNA_REGISTRY = {
     "Girija": DNA_GIRIJA
 }
 
+def is_formal_attire(attire_str):
+    """
+    Checks if an attire description contains formal or semi-formal elements that violate the casuals rule.
+    """
+    if not attire_str or not isinstance(attire_str, str):
+        return False
+    lower = attire_str.lower()
+    formal_keywords = ["formal", "kurti", "kurta", "cigarette pants", "moccasins", "linen button-down", "linen shirt", "tailored trousers", "pressed half-sleeve"]
+    return any(kw in lower for kw in formal_keywords)
+
 def get_active_character_dna_map(season_num=1, character_updates=None, new_characters=None):
     """
     Builds the active character visual DNA dictionary, dynamically respecting season transitions,
     character_updates from dynamic season arc, and story_state.json.
+    Strictly enforces casuals (plain t-shirts for Sachin & Amal, patterned t-shirt for Reenu, contrasting colors).
     """
     active_map = {
         "Reenu": DNA_REENU,
@@ -125,6 +146,10 @@ def get_active_character_dna_map(season_num=1, character_updates=None, new_chara
         "Madhavan": DNA_MADHAVAN,
         "Girija": DNA_GIRIJA
     }
+
+    if season_num == 2:
+        for cname, cattire in SEASON_2_CASUAL_ATTIRE.items():
+            active_map[cname] = format_character_visual_dna(cname, BASE_DNA_MAP[cname], cattire)
 
     # 1. Read persisted wardrobe and cast from story_state.json
     state_file = Path("story_state.json")
@@ -138,6 +163,14 @@ def get_active_character_dna_map(season_num=1, character_updates=None, new_chara
                         continue
                     v_dna = cinfo.get("visual_dna", "")
                     attire = cinfo.get("attire") or cinfo.get("locked_attire", "")
+
+                    # Enforce casuals: if Sachin, Reenu, or Amal was assigned formals, sanitize to casuals
+                    if cname in ["Sachin", "Reenu", "Amal"]:
+                        if is_formal_attire(attire) or is_formal_attire(v_dna):
+                            attire = SEASON_2_CASUAL_ATTIRE.get(cname) if season_num == 2 else (
+                                DEFAULT_ATTIRE_REENU if cname == "Reenu" else (DEFAULT_ATTIRE_SACHIN if cname == "Sachin" else DEFAULT_ATTIRE_AMAL)
+                            )
+                            v_dna = ""
                     
                     if v_dna and "STRICTLY LOCKED ATTIRE" in v_dna:
                         active_map[cname] = v_dna
@@ -366,9 +399,23 @@ REQUIREMENTS:
      • "synopsis": Clear, detailed 2-3 sentence narrative describing the action of that 1-minute reel.
      • "cliffhanger": Dramatic ending hook that leads directly into the next episode.
 
-3. CHARACTER ATTIRE & NEW CHARACTERS:
-   - You can update the locked signature costume for Sachin, Reenu, and Amal suited for this new storyline.
-   - If the plot introduces new recurring characters (e.g. Reenu's Father, Mother, Boss, etc.), define them with complete 3D Pixar visual DNA, age, role, locked attire, and Malayalam voice persona.
+3. CHARACTER ATTIRE RULES (STRICT CASUALS ONLY - NO FORMALS):
+   - ABSOLUTELY NO FORMALS OR SEMI-FORMALS for the core trio (NO formal shirts, NO formal trousers, NO kurtas, NO cigarette pants, NO button-downs, NO linen formals).
+   - Sachin, Reenu, and Amal MUST ALWAYS WEAR CASUALS (T-shirts & jeans / denim skirts / pants / sneakers).
+   - SACHIN'S STYLE PREFERENCE:
+     • Strictly a PLAIN casual T-shirt (100% solid color, ZERO patterns, ZERO prints, ZERO graphics).
+     • Casual denim jeans (dark indigo, charcoal, or faded blue denim), clean sneakers, and his signature brown leather cross-bag.
+   - AMAL'S STYLE PREFERENCE:
+     • Strictly a PLAIN casual T-shirt (100% solid color, ZERO patterns, ZERO prints, ZERO graphics) or plain polo.
+     • Casual denim jeans or chinos, casual sneakers/slip-ons.
+   - REENU'S STYLE PREFERENCE:
+     • Strictly a casual T-shirt WITH EYE-CATCHING PATTERNS/PRINTS (STRICTLY PATTERNED: graphic doodles, cute floral prints, cloud prints, retro stripes, or abstract geometric patterns). Every season she gets a fresh new distinctive pattern!
+     • Casual denim skirt, mom jeans, or denim pants, clean sneakers, and silver wrist watch.
+   - MANDATORY COLOR CONTRAST & DIVERSITY (NO MATCHING OR SIMILAR COLORS):
+     • Sachin, Reenu, and Amal MUST NEVER wear matching, identical, or similar colors in the same season! (It looks awkward on screen).
+     • Each of the 3 characters MUST wear distinctly contrasting, harmonious colors (e.g. Sachin in Olive Green, Amal in Terracotta Rust-Orange, Reenu in Pastel Lavender/Pink pattern).
+   - NEW CHARACTERS (e.g., traditional parents like Reenu's Father or Mother):
+     • Traditional Kerala elderly parents wear traditional attire (mundu, jubba, saree). Younger friends or colleagues follow casuals.
 
 Output JSON matching this exact schema:
 {{
@@ -572,9 +619,14 @@ CRITICAL PRODUCTION RULES:
    - Fast reaction / cut: "5s" (5 seconds)
    - Dialogue exchange / scenic moment: "6s" (6 seconds)
    - Total sum of shot durations MUST be between 55s and 65s (~1 minute).
-4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED ATTIRE:
+4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED CASUAL ATTIRE:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
+   - STRICT CASUAL ATTIRE RULES FOR SACHIN, REENU & AMAL (ZERO FORMALS):
+     • Sachin, Reenu, and Amal MUST strictly wear CASUALS (T-shirts & jeans / denim skirts / pants). Absolutely NO formal shirts, NO formal trousers, NO kurtis/kurtas, NO cigarette pants!
+     • Sachin & Amal: Strictly PLAIN solid t-shirts (zero patterns/prints), contrasting distinct solid colors.
+     • Reenu: Strictly a casual t-shirt WITH PATTERNS/PRINTS (florals, doodles, clouds, stripes), casual denim skirt or mom jeans, white sneakers.
+     • Contrasting colors: All 3 characters must wear distinctly different colors (never matching or similar colors in the same season).
    - Character visual DNA and locked clothing must be followed 100% identically:
 {dna_guidelines}
 5. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
