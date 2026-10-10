@@ -30,19 +30,27 @@
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
       "attire": "Solid mustard-yellow polo t-shirt with brown buttons, slim-fit beige chinos",
       "personality": "Sachin's best friend, supportive, humorous, driving the car"
+    },
+    "Menon": {
+      "age": 54,
+      "gender": "male",
+      "voice": "Deep authoritative South Indian male voice with a stern, commanding tone.",
+      "role": "Reenu's traditional and strict father",
+      "attire": "Crisp off-white traditional cotton shirt, white cotton mundu with golden kasavu border, black leather sandals.",
+      "visual_dna": "Menon: Stylized 3D Pixar-style cartoon animation character, 54yo South Indian Malayali man, sharp distinguished grey-streaked short cartoon hair, neatly trimmed grey mustache, strict observant brown cartoon eyes behind classic round framed glasses, stern yet respectable cartoon facial structure with smooth 3D cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp off-white traditional cotton shirt with rolled-up sleeves, classic white cotton mundu with a fine golden kasavu border, black leather sandals. Absolutely zero costume variations."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
   "history": [
     {
       "episode": 1,
-      "title": "തിരിച്ചുവരവ് (The Homecoming)",
-      "summary": "After two long years of waiting, Reenu stands anxiously with her friend Amal at Kochi CIAL arrival terminal. Sachin emerges through the sliding glass doors, leading to an emotional, tearful reunion. However, Sachin nervously clutches a secret leather pouch from London.",
-      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
+      "title": "വിരുന്നുകാർ (The Unannounced Guests)",
+      "summary": "With Sachin staying back in Kochi for love, Reenu's traditional parents arrive unexpectedly, creating a chaotic mix of cultural clashes, hidden laundry piles, and high expectations.",
+      "cliffhanger": "Just as Sachin finishes hiding a giant pile of dirty clothes, the doorbell rings, and he opens the door face-to-face with Reenu's stern father.",
       "characters_present": [
         "Reenu",
-        "Sachin",
-        "Amal"
+        "Amal",
+        "Sachin"
       ]
     },
     {
@@ -142,22 +150,24 @@
       ]
     }
   ],
-  "episode_number": 10,
+  "episode_number": 1,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_MARINE_DRIVE_PROMENADE",
-    "time_of_day": "Monsoon Night",
-    "lighting_palette": "Atmospheric moody streetlights with glowing golden haze and raindrops",
-    "weather": "Monsoon drizzle and atmospheric haze",
+    "scene_id": "SCENE_KOCHI_APARTMENT_DOOR",
+    "time_of_day": "Late Afternoon Monsoon Dusk",
+    "lighting_palette": "Cool overcast exterior daylight with warm hallway light glow",
+    "weather": "Continuous Kochi monsoon drizzle outside apartment corridor",
     "spatial_blocking": {
-      "Sachin": "Walking away with Reenu",
-      "Reenu": "Walking away with Sachin"
+      "Sachin": "Standing just inside doorway, facing outward",
+      "Menon": "Standing upright outside apartment doorway in hallway, facing Sachin with a stern expression"
     },
-    "eyeline_direction": "Sachin and Reenu look forward",
+    "eyeline_direction": "Sachin looks up screen-up at Menon; Menon looks down screen-down at Sachin",
     "persistent_props": [
-      "Leather pouch inside Sachin's bag",
+      "Large wicker laundry basket full of colorful cartoon clothes",
+      "Menon's black leather sandals by doorway",
+      "Modern brass apartment doorbell unit on white wall",
       "Reenu's silver wrist watch on left wrist",
-      "Sachin's diagonal brown leather cross-bag strap over left shoulder",
-      "Vintage tan-brown London leather pouch"
+      "Sachin's diagonal brown leather cross-bag on living room table",
+      "Sachin's diagonal brown leather cross-bag strap over left shoulder"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   }
