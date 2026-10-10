@@ -256,7 +256,8 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
         total_video_duration += info["duration"]
         standardized_clips.append(std_name)
 
-    print(f"✓ All {len(standardized_clips)} clips standardized! Total story runtime: {total_video_duration:.2f}s (~{int(total_video_duration//60)}m {int(total_video_duration%60):02d}s)")
+    story_duration = total_video_duration
+    print(f"✓ All {len(standardized_clips)} clips standardized! Total story runtime: {story_duration:.2f}s (~{int(story_duration//60)}m {int(story_duration%60):02d}s)")
 
     # Append Outro: Prefer Animated Video Outro with Narrator Voiceover, fallback to static card
     outro_video_candidates = [
@@ -323,121 +324,107 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, title_en="", titl
     else:
         print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
 
-    # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Guaranteed Cinematic Title Overlay
-    print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM) & Title Overlay...")
+    # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Title Overlay + Story Watermark
+    print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM), Title Overlay & Watermark...")
     
     output_path = Path(output_file)
     banner_png = temp_dir / "title_banner.png"
     has_banner = create_title_banner_overlay(banner_png, episode_num, title_en, title_ml)
 
+    # Watermark asset detection
+    watermark_path = Path("assets/watermark.png")
+    has_watermark = watermark_path.exists()
+    if has_watermark:
+        print(f"🏷️  Watermark detected: {watermark_path.name} (Active during story shots 0s to {story_duration:.2f}s, excluded from outro)")
+
     fade_out_start = max(0.0, total_video_duration - 2.5)
 
+    # Dynamically assemble FFmpeg inputs and filter complex
+    cmd_inputs = ["-i", str(concatenated_raw)]
+    current_input_idx = 1
+
+    bgm_input_idx = None
     if selected_bgm and selected_bgm.exists():
-        if has_banner:
-            # Three inputs: 0 = video, 1 = BGM, 2 = title banner PNG (looped)
-            # Banner animation:
-            # - st=0.5:d=0.6: alpha fade-in while gliding down from y=80 to y=140
-            # - 1.1s to 4.5s: holds solidly at y=140
-            # - 4.5s to 5.1s: alpha fade-out while gliding up from y=140 to y=80
-            complex_filter = (
-                f"[2:v]format=rgba,fade=in:st=0.5:d=0.6:alpha=1,fade=out:st=4.5:d=0.6:alpha=1[banner];"
-                f"[0:v][banner]overlay=x=0:y='if(lt(t,0.5), -300, if(lt(t,1.1), 140 - 60*(1.1-t)/0.6, if(lt(t,4.5), 140, if(lt(t,5.1), 140 - 60*(t-4.5)/0.6, -300))))':enable='between(t,0.5,5.2)'[vout];"
-                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
-                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
-                f"[0:a]volume=1.1[voice];"
-                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
-            )
-            cmd_master = [
-                "ffmpeg", "-y",
-                "-i", str(concatenated_raw),
-                "-i", str(selected_bgm),
-                "-loop", "1",
-                "-i", str(banner_png),
-                "-t", str(total_video_duration),
-                "-filter_complex", complex_filter,
-                "-map", "[vout]",
-                "-map", "[aout]",
-                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-movflags", "+faststart",
-                str(output_path)
-            ]
+        cmd_inputs.extend(["-i", str(selected_bgm)])
+        bgm_input_idx = current_input_idx
+        current_input_idx += 1
+
+    banner_input_idx = None
+    if has_banner:
+        cmd_inputs.extend(["-loop", "1", "-i", str(banner_png)])
+        banner_input_idx = current_input_idx
+        current_input_idx += 1
+
+    watermark_input_idx = None
+    if has_watermark:
+        cmd_inputs.extend(["-loop", "1", "-i", str(watermark_path)])
+        watermark_input_idx = current_input_idx
+        current_input_idx += 1
+
+    filters = []
+
+    # 1. Video Filter Pipeline
+    curr_v = "0:v"
+    if has_banner:
+        filters.append(f"[{banner_input_idx}:v]format=rgba,fade=in:st=0.5:d=0.6:alpha=1,fade=out:st=4.5:d=0.6:alpha=1[banner]")
+        filters.append(f"[{curr_v}][banner]overlay=x=0:y='if(lt(t,0.5), -300, if(lt(t,1.1), 140 - 60*(1.1-t)/0.6, if(lt(t,4.5), 140, if(lt(t,5.1), 140 - 60*(t-4.5)/0.6, -300))))':enable='between(t,0.5,5.2)'[v_banner]")
+        curr_v = "v_banner"
+
+    if has_watermark:
+        filters.append(f"[{watermark_input_idx}:v]scale=180:-1,format=rgba[wm]")
+        filters.append(f"[{curr_v}][wm]overlay=x=W-w-40:y=H-h-100:enable='between(t,0,{story_duration:.2f})'[v_wm]")
+        curr_v = "v_wm"
+
+    # 2. Audio Filter Pipeline
+    has_audio_mix = (bgm_input_idx is not None)
+    if has_audio_mix:
+        filters.append(
+            f"[{bgm_input_idx}:a]aloop=loop=-1:size=2e+09,volume=0.32,"
+            f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm]"
+        )
+        filters.append(f"[0:a]volume=1.1[voice]")
+        filters.append(f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]")
+
+    cmd_master = ["ffmpeg", "-y"] + cmd_inputs + ["-t", str(total_video_duration)]
+
+    if filters:
+        filter_complex = ";".join(filters)
+        cmd_master.extend(["-filter_complex", filter_complex])
+
+        if curr_v != "0:v":
+            cmd_master.extend(["-map", f"[{curr_v}]"])
         else:
-            # Fallback audio mix without banner image
-            complex_filter = (
-                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
-                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
-                f"[0:a]volume=1.1[voice];"
-                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
-            )
-            cmd_master = [
-                "ffmpeg", "-y",
-                "-i", str(concatenated_raw),
-                "-i", str(selected_bgm),
-                "-t", str(total_video_duration),
-                "-filter_complex", complex_filter,
-                "-map", "0:v",
-                "-map", "[aout]",
-                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-movflags", "+faststart",
-                str(output_path)
-            ]
-        
-        try:
-            subprocess.run(cmd_master, check=True)
-            print("✓ Master video compiled with audio mix and Title Overlay!")
-        except subprocess.CalledProcessError as err:
-            print(f"Warning: Primary encode failed ({err}), running resilient audio merge...")
-            fallback_audio_filter = (
-                f"[1:a]aloop=loop=-1:size=2e+09,volume=0.32,"
-                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm];"
-                f"[0:a]volume=1.1[voice];"
-                f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]"
-            )
-            cmd_master_fallback = [
-                "ffmpeg", "-y",
-                "-i", str(concatenated_raw),
-                "-i", str(selected_bgm),
-                "-t", str(total_video_duration),
-                "-filter_complex", fallback_audio_filter,
-                "-map", "0:v",
-                "-map", "[aout]",
-                "-c:v", "copy",
-                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-movflags", "+faststart",
-                str(output_path)
-            ]
-            subprocess.run(cmd_master_fallback, check=True)
+            cmd_master.extend(["-map", "0:v"])
+
+        if has_audio_mix:
+            cmd_master.extend(["-map", "[aout]"])
+        else:
+            cmd_master.extend(["-map", "0:a"])
+
+        cmd_master.extend([
+            "-c:v", "libx264", "-preset", "fast", "-crf", "18",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+            "-movflags", "+faststart",
+            str(output_path)
+        ])
     else:
-        # No BGM track: keep dialogue audio
-        if has_banner:
-            complex_filter = (
-                f"[1:v]format=rgba,fade=in:st=0.5:d=0.6:alpha=1,fade=out:st=4.5:d=0.6:alpha=1[banner];"
-                f"[0:v][banner]overlay=x=0:y='if(lt(t,0.5), -300, if(lt(t,1.1), 140 - 60*(1.1-t)/0.6, if(lt(t,4.5), 140, if(lt(t,5.1), 140 - 60*(t-4.5)/0.6, -300))))':enable='between(t,0.5,5.2)'[vout]"
-            )
-            cmd_master = [
-                "ffmpeg", "-y",
-                "-i", str(concatenated_raw),
-                "-loop", "1",
-                "-i", str(banner_png),
-                "-t", str(total_video_duration),
-                "-filter_complex", complex_filter,
-                "-map", "[vout]",
-                "-map", "0:a",
-                "-c:v", "libx264", "-preset", "fast", "-crf", "18",
-                "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
-                "-movflags", "+faststart",
-                str(output_path)
-            ]
-        else:
-            cmd_master = [
-                "ffmpeg", "-y",
-                "-i", str(concatenated_raw),
-                "-c", "copy",
-                str(output_path)
-            ]
+        cmd_master.extend([
+            "-c", "copy",
+            str(output_path)
+        ])
+
+    try:
         subprocess.run(cmd_master, check=True)
+        print("✓ Master video compiled with audio mix, Title Overlay & Watermark!")
+    except subprocess.CalledProcessError as err:
+        print(f"Warning: Primary encode failed ({err}), running resilient audio merge...")
+        cmd_fallback = [
+            "ffmpeg", "-y",
+            "-i", str(concatenated_raw),
+            "-c", "copy",
+            str(output_path)
+        ]
+        subprocess.run(cmd_fallback, check=True)
 
     print(f"\n=======================================================")
     print(f"🎉 MASTER EPISODE PRODUCED SUCCESSFULLY!")
