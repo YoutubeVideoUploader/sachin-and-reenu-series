@@ -63,6 +63,7 @@ BASE_DNA_MAP = {
 def format_character_visual_dna(name, physical_dna, attire):
     """
     Combines physical animation DNA with strictly locked attire into the canonical prompt format.
+    Enforces strict casuals for lead characters, prohibiting ethnic kurtis/sarees and formal shirts.
     """
     if "STRICTLY LOCKED ATTIRE" in physical_dna:
         return physical_dna
@@ -70,7 +71,8 @@ def format_character_visual_dna(name, physical_dna, attire):
     if not p_dna.startswith(f"{name}:"):
         p_dna = f"{name}: {p_dna}"
     attire_clean = attire.strip().rstrip('.')
-    return f"{p_dna} STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): {attire_clean}. Absolutely zero costume variations."
+    anti_traditional = " (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY)" if name in ["Sachin", "Reenu", "Amal"] else ""
+    return f"{p_dna} STRICTLY LOCKED ATTIRE{anti_traditional} (IDENTICAL IN EVERY SHOT): {attire_clean}. Absolutely zero costume variations."
 
 DNA_REENU = format_character_visual_dna("Reenu", BASE_DNA_REENU, DEFAULT_ATTIRE_REENU)
 DNA_SACHIN = format_character_visual_dna("Sachin", BASE_DNA_SACHIN, DEFAULT_ATTIRE_SACHIN)
@@ -101,6 +103,7 @@ NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming Sout
 MASTER_STYLE = "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
 MASTER_NEGATIVE_PROMPT = (
+    "kurti, kurta, salwar, saree, dupatta, jhumka, jhumkas, ethnic Indian wear, traditional festive wear, formal collared shirt, button-up shirt, pleated trousers, formal pants, "
     "character mouth moving during voiceover, character lip sync during narration, "
     "open mouth talking during voiceover, character talking during narration, "
     "character speaking narrator words, speaking animation on character, character mouth moving, "
@@ -1434,20 +1437,23 @@ def generate_series_thumbnail_prompt(season_number=None, story_state=None):
         action_description = "Sachin and Reenu sharing an affectionate, romantic smile in the center of the scene, highlighting their charming chemistry."
 
     prompt_text = (
-        f"High-end Disney Pixar 3D animated vertical 9:16 YouTube Shorts poster thumbnail for the romantic comedy series 'Sachin & Reenu'.\n\n"
+        f"High-end Disney Pixar 3D animated vertical 9:16 poster thumbnail for 'Sachin & Reenu'.\n\n"
+        f"[CRITICAL CLOTHING MANDATE - 100% MODERN CASUAL ONLY]:\n"
+        f"- PROHIBIT ALL TRADITIONAL CLOTHING: ABSOLUTELY ZERO KURTIS, ZERO SAREES, ZERO SALWARS, ZERO DUPATTAS, ZERO JHUMKA EARRINGS, ZERO FORMAL COLLARED SHIRTS, ZERO TROUSERS. STRICTLY MODERN YOUTH CASUAL STREETWEAR ONLY.\n"
+        f"- SACHIN ATTIRE: {sachin_attire}\n"
+        f"- REENU ATTIRE: {reenu_attire}\n\n"
         f"[LAYOUT & GRAPHIC BRANDING]:\n"
         f"- Top-Left: Stylized, playful 3D cartoon title logo with vibrant bubble typography reading 'Sachin & Reenu', featuring a tiny cartoon crown icon above the 'S' and a playful pink heart over the 'e'.\n"
         f"- Top-Right: Two paper note card stickers pinned with beige masking tape on corners in the exact same location:\n"
         f"  1. Top sticker banner labeled 'Season' in handwritten font with a blank cream rectangular note card directly below it.\n"
         f"  2. Bottom sticker banner labeled 'Episode' in handwritten font with a blank cream rectangular note card directly below it.\n"
         f"- Decorative playful floating white cartoon hearts and doodle lines around the couple.\n\n"
-        f"[CHARACTERS & CURRENT STORY SCENE - {season_title}]:\n"
+        f"[CHARACTERS & SCENE - {season_title}]:\n"
+        f"- Stylized 3D Pixar cartoon characters: 24yo Malayali boy Sachin (wavy dark hair, warm brown eyes, endearing smile) and 22yo Malayali girl Reenu (bouncy wavy dark hair with curtain bangs, large doe eyes, sweet smile).\n"
         f"- Setting: {setting_description}.\n"
-        f"- Action: {action_description}\n"
-        f"- Sachin Visuals & Costume: Stylized 3D Pixar character, 24yo Malayali boy, wavy dark hair, warm brown eyes, endearing smile. Wearing {sachin_attire}.\n"
-        f"- Reenu Visuals & Costume: Stylized 3D Pixar character, 22yo Malayali girl, voluminous bouncy wavy dark-brown hair with curtain bangs, large expressive hazel-brown doe eyes, sweet dimpled cartoon smile. Wearing {reenu_attire}.\n\n"
-        f"[LIGHTING & RENDER QUALITY]:\n"
-        f"- Disney Pixar 3D animated movie render, soft velvety cartoon shaders, Octane 3D render, vertical 9:16 ratio, clean vibrant 4K resolution."
+        f"- Action: {action_description}\n\n"
+        f"[RENDER QUALITY]:\n"
+        f"- Disney Pixar 3D animation movie render, smooth velvety cartoon shaders, Octane 3D render, vertical 9:16 aspect ratio, clean vibrant 4K resolution."
     )
 
     return {
