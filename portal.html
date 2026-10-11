@@ -3759,6 +3759,7 @@ The JSON MUST follow this EXACT schema:
       }
 
       const extractedData = parseJsonFromDirectorResponse(responseText);
+      const msgIdx = geminiChatHistory.length;
 
       geminiChatHistory.push({
         role: 'ai',
@@ -3770,6 +3771,19 @@ The JSON MUST follow this EXACT schema:
       });
 
       renderAllChatMessages();
+
+      // AUTO-SYNC TO GOOGLE SHEET: Automatically push generated prompts to Tab 2!
+      if (extractedData && (extractedData.shots || extractedData.mode === 'full_episode')) {
+        console.log("Auto-syncing full episode prompts to Google Sheet...");
+        setTimeout(() => {
+          syncFullEpisodeToSheet(msgIdx);
+        }, 300);
+      } else if (extractedData && (extractedData.target_shot_number || extractedData.json_prompt)) {
+        console.log("Auto-syncing single shot prompt to Google Sheet...");
+        setTimeout(() => {
+          syncDirectorPromptToSheet(msgIdx);
+        }, 300);
+      }
     }
 
     async function testGeminiConnection() {

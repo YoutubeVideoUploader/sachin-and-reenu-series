@@ -1473,6 +1473,8 @@ function doPost(e) {
         method: "post",
         contentType: "application/json",
         payload: JSON.stringify({ contents: body.contents }),
+        muteHttpExceptions: true
+      });
       return ContentService.createTextOutput(gRes.getContentText()).setMimeType(ContentService.MimeType.JSON);
     }
 
