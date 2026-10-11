@@ -3616,10 +3616,53 @@ The JSON MUST follow this EXACT schema:
       let usedModel = "gemini-3.5-flash";
       let lastErr = "";
 
-      const conversationContents = [{
-        role: "user",
-        parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR MESSAGE]:\n${userText}` }]
-      }];
+      // =========================================================
+      // MULTI-TURN CONVERSATION MEMORY: Keep prior dialogue & context
+      // =========================================================
+      const prevHistory = geminiChatHistory.slice(0, -1).filter(m => m && m.content && !m.content.startsWith('⚠️'));
+      const recentTurns = prevHistory.slice(-10);
+
+      const conversationContents = [];
+      let lastRole = null;
+
+      for (const msg of recentTurns) {
+        const geminiRole = (msg.role === 'ai' || msg.role === 'model') ? 'model' : 'user';
+        if (conversationContents.length === 0 && geminiRole !== 'user') {
+          continue;
+        }
+
+        if (geminiRole === lastRole) {
+          conversationContents[conversationContents.length - 1].parts[0].text += `\n\n${msg.content}`;
+        } else {
+          conversationContents.push({
+            role: geminiRole,
+            parts: [{ text: msg.content }]
+          });
+          lastRole = geminiRole;
+        }
+      }
+
+      if (conversationContents.length > 0) {
+        // Prepend system prompt to the first user turn for persistent context
+        conversationContents[0].parts[0].text = `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR MESSAGE]:\n${conversationContents[0].parts[0].text}`;
+        
+        // Ensure proper alternating sequence before appending the latest user turn
+        if (lastRole === 'user') {
+          conversationContents.push({
+            role: 'model',
+            parts: [{ text: "Understood. Please provide your next instruction." }]
+          });
+        }
+        conversationContents.push({
+          role: 'user',
+          parts: [{ text: userText }]
+        });
+      } else {
+        conversationContents.push({
+          role: 'user',
+          parts: [{ text: `[SYSTEM INSTRUCTION & SERIES BIBLE]:\n${systemInstruction}\n\n[CREATOR MESSAGE]:\n${userText}` }]
+        });
+      }
 
       const timeoutMs = (mode === 'full_episode' || mode === 'season_arc') ? 60000 : 25000;
 
