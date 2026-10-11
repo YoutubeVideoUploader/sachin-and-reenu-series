@@ -1,9 +1,9 @@
 {
-  "episode_number": 3,
-  "title_malayalam": "ചായയും ജിലേബിയും ഒരു നിശ്ശബ്ദ യുദ്ധവും",
-  "title_english": "Chai, Jalebi & A Silent War",
-  "synopsis": "Sachin struggles to present his tech-startup pitch to Kurian in the apartment, but the calm is shattered when Amal bursts in with oily snacks and loud gossip, forcing a chaotic cover-up attempt.",
-  "cliffhanger": "Amal accidentally blurts out Sachin's secret plan to open a coastal cafe in Fort Kochi, leaving Kurian stunned.",
+  "episode_number": 4,
+  "title_malayalam": "മറൈൻ ഡ്രൈവിലെ സായാഹ്നം",
+  "title_english": "A Stroll Along Marine Drive",
+  "synopsis": "After the near-disaster with the tea, Sachin finds himself walking along the Kochi Marine Drive walkway, being closely observed by a stoic Kurian. As they watch the Chinese fishing nets against the sunset, Kurian challenges Sachin's intentions, only to reveal a surprising secret from his own past.",
+  "cliffhanger": "Madhavan stops, looks out across the backwaters, and shares a surprising memory of his own rebellious youth.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -14,8 +14,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിന്റെ സ്വപ്നങ്ങൾക്ക് മുന്നിൽ കുര്യൻ ഒരു വലിയ ചോദ്യചിഹ്നമായി നിന്നു.",
-      "action_summary": "Kurian sits sternly on the sofa while Sachin nervously adjusts his posture, both are silent.",
+      "dialogue_malayalam": "കായലിന്റെ ഓരത്ത് സച്ചിൻ കുര്യന്റെ കൂടെ നടക്കുന്നു.",
+      "action_summary": "Establishing shot of Marine Drive walkway at dawn. Sachin and Kurian walking side-by-side. Sachin looks slightly nervous, Kurian looks stern. All characters' lips are closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -31,135 +31,132 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
           "spatial_blocking": {
-            "Kurian": "Sitting on the sofa, staring directly ahead",
-            "Sachin": "Sitting on a plastic stool, leaning forward"
+            "Sachin": "Walking on the left, hands slightly fidgeting",
+            "Kurian": "Walking on the right, posture upright and steady"
           },
-          "eyeline_direction": "Looking at each other",
+          "eyeline_direction": "Both looking ahead at the backwaters",
           "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
+            "Sachin's diagonal brown leather cross-bag",
+            "Kurian's analog Titan watch"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Kakkanad apartment living room",
-        "camera": "Medium close-up shot",
-        "action": "Pure visual scene action. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Tracking shot moving with the characters",
+        "action": "Sachin and Kurian walk along the walkway. Both characters have lips firmly closed. No speech animation.",
         "dialogue": {
-          "speaker": "Off-Screen Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, clear acoustic studio warmth",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
           "language": "Malayalam",
-          "script": "സച്ചിന്റെ സ്വപ്നങ്ങൾക്ക് മുന്നിൽ കുര്യൻ ഒരു വലിയ ചോദ്യചിഹ്നമായി നിന്നു.",
-          "line": "സച്ചിന്റെ സ്വപ്നങ്ങൾക്ക് മുന്നിൽ കുര്യൻ ഒരു വലിയ ചോദ്യചിഹ്നമായി നിന്നു."
+          "script": "കായലിന്റെ ഓരത്ത് സച്ചിൻ കുര്യന്റെ കൂടെ നടക്കുന്നു.",
+          "line": "കായലിന്റെ ഓരത്ത് സച്ചിൻ കുര്യന്റെ കൂടെ നടക്കുന്നു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voiceover audio and natural ambient foley sound effects of waves and distant morning birds only."
       }
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "ഇതൊരു വലിയ സ്റ്റാർട്ടപ്പ് പ്ലാൻ ആണ് സാർ.",
-      "action_summary": "Sachin speaks nervously to Kurian.",
+      "character": "Kurian",
+      "dialogue_malayalam": "സച്ചിൻ, നിന്റെ ലക്ഷ്യങ്ങൾ എന്താണ്?",
+      "action_summary": "Kurian stops walking and turns to face Sachin. Only Kurian's mouth moves in lip sync.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Medium shot",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Kurian": "Sitting on the sofa, staring directly ahead",
-            "Sachin": "Sitting on a plastic stool, leaning forward"
           },
-          "eyeline_direction": "Looking at Kurian",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Kakkanad apartment living room",
-        "camera": "Medium shot",
-        "action": "Sachin speaks with nervous lip sync while Kurian listens silently.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Young, energetic but nervous Malayali male voice",
-          "language": "Malayalam",
-          "script": "ഇതൊരു വലിയ സ്റ്റാർട്ടപ്പ് പ്ലാൻ ആണ് സാർ.",
-          "line": "ഇതൊരു വലിയ സ്റ്റാർട്ടപ്പ് പ്ലാൻ ആണ് സാർ."
-        },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
-      }
-    },
-    {
-      "shot_number": 3,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Kurian",
-      "dialogue_malayalam": "സ്റ്റാർട്ടപ്പോ അതോ വെറും വായോ സച്ചിൻ?",
-      "action_summary": "Kurian responds with a skeptical look.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up shot",
-        "characters_present": [
           {
             "name": "Kurian",
             "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
           "spatial_blocking": {
-            "Kurian": "Sitting on the sofa, staring directly ahead"
+            "Sachin": "Standing still, looking at Kurian",
+            "Kurian": "Standing still, facing Sachin"
           },
-          "eyeline_direction": "Looking at Sachin",
+          "eyeline_direction": "Kurian looks at Sachin; Sachin looks at Kurian",
           "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
+            "Sachin's diagonal brown leather cross-bag",
+            "Kurian's analog Titan watch"
           ],
-          "camera_lens": "Cinematic prime lens"
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Kakkanad apartment living room",
-        "camera": "Close-up shot",
-        "action": "Kurian speaks with skeptical lip sync.",
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium close-up on Kurian",
+        "action": "Kurian speaks. Sachin listens with mouth closed.",
         "dialogue": {
           "speaker": "Kurian",
-          "voice_persona": "Deep, stern, authoritative Malayali male voice",
+          "voice_persona": "Deep, mature, authoritative male voice",
           "language": "Malayalam",
-          "script": "സ്റ്റാർട്ടപ്പോ അതോ വെറും വായോ സച്ചിൻ?",
-          "line": "സ്റ്റാർട്ടപ്പോ അതോ വെറും വായോ സച്ചിൻ?"
+          "script": "സച്ചിൻ, നിന്റെ ലക്ഷ്യങ്ങൾ എന്താണ്?",
+          "line": "സച്ചിൻ, നിന്റെ ലക്ഷ്യങ്ങൾ എന്താണ്?"
         },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+        "audio_directive": "CHARACTER DIALOGUE. Only Kurian's mouth moves. Sachin's mouth is closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
+      }
+    },
+    {
+      "shot_number": 3,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഞാൻ കഠിനമായി അധ്വാനിക്കാൻ ആഗ്രഹിക്കുന്നു, അങ്കിൾ.",
+      "action_summary": "Sachin replies earnestly. Only Sachin's mouth moves.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {
+            "Sachin": "Standing still, facing Kurian",
+            "Kurian": "Standing still, listening"
+          },
+          "eyeline_direction": "Sachin looks at Kurian; Kurian looks at Sachin",
+          "persistent_props": [
+            "Sachin's diagonal brown leather cross-bag",
+            "Kurian's analog Titan watch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium close-up on Sachin",
+        "action": "Sachin speaks. Kurian listens with mouth closed.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Youthful, sincere male voice",
+          "language": "Malayalam",
+          "script": "ഞാൻ കഠിനമായി അധ്വാനിക്കാൻ ആഗ്രഹിക്കുന്നു, അങ്കിൾ.",
+          "line": "ഞാൻ കഠിനമായി അധ്വാനിക്കാൻ ആഗ്രഹിക്കുന്നു, അങ്കിൾ."
+        },
+        "audio_directive": "CHARACTER DIALOGUE. Only Sachin's mouth moves. Kurian's mouth is closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
       }
     },
     {
@@ -167,48 +164,37 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിൻ വിയർത്തു തുടങ്ങിയിരുന്നു, അപ്പോഴാണ് ആ വലിയ ശബ്ദം കേട്ടത്.",
-      "action_summary": "Sachin looks uncomfortable, wiping sweat from his forehead.",
+      "dialogue_malayalam": "ചൈനീസ് വലകൾ കായലിൽ നിഴൽ വീഴ്ത്തുന്നു.",
+      "action_summary": "Cinematic shot of the Chinese fishing nets silhouetted against the dawn sky. No characters on screen.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Medium shot",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
+        "perspective": "Third-Person Narrator",
+        "characters_present": [],
         "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Sachin": "Sitting on a plastic stool, looking nervous"
-          },
-          "eyeline_direction": "Looking away from Kurian",
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {},
+          "eyeline_direction": "N/A",
           "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
           ],
-          "camera_lens": "Cinematic prime lens"
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Kakkanad apartment living room",
-        "camera": "Medium shot",
-        "action": "Sachin looks uncomfortable. Pure visual scene action. No dialogue.",
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Wide scenic shot",
+        "action": "Beautiful scenery of the backwaters and fishing nets. No characters present.",
         "dialogue": {
-          "speaker": "Off-Screen Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
           "language": "Malayalam",
-          "script": "സച്ചിൻ വിയർത്തു തുടങ്ങിയിരുന്നു, അപ്പോഴാണ് ആ വലിയ ശബ്ദം കേട്ടത്.",
-          "line": "സച്ചിൻ വിയർത്തു തുടങ്ങിയിരുന്നു, അപ്പോഴാണ് ആ വലിയ ശബ്ദം കേട്ടത്."
+          "script": "ചൈനീസ് വലകൾ കായലിൽ നിഴൽ വീഴ്ത്തുന്നു.",
+          "line": "ചൈനീസ് വലകൾ കായലിൽ നിഴൽ വീഴ്ത്തുന്നു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voiceover audio and natural ambient foley of water lapping."
       }
     },
     {
@@ -216,208 +202,12 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമലിന്റെ വലിയ കാൽപെരുമാറ്റം വാതിലിൽ ഇടിമുഴക്കം പോലെ കേട്ടു.",
-      "action_summary": "The front door kicks open violently, revealing Amal.",
+      "dialogue_malayalam": "കുര്യന്റെ മുഖത്ത് ഒരു ചെറിയ പുഞ്ചിരി തെളിയുന്നു.",
+      "action_summary": "Close-up on Kurian's face as he looks at the water. His expression softens slightly. Mouth remains closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Wide shot",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Amal": "Standing at the open doorway, holding a packet of cutlets"
-          },
-          "eyeline_direction": "Looking at Sachin",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Kakkanad apartment living room",
-        "camera": "Wide shot",
-        "action": "The door swings open and Amal enters, holding a greasy snack box. Pure visual scene action.",
-        "dialogue": {
-          "speaker": "Off-Screen Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator",
-          "language": "Malayalam",
-          "script": "അമലിന്റെ വലിയ കാൽപെരുമാറ്റം വാതിലിൽ ഇടിമുഴക്കം പോലെ കേട്ടു.",
-          "line": "അമലിന്റെ വലിയ കാൽപെരുമാറ്റം വാതിലിൽ ഇടിമുഴക്കം പോലെ കേട്ടു."
-        },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
-      }
-    },
-    {
-      "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "സച്ചിനെ, നിന്റെ പണി പോയ കാര്യം ഞാൻ അറിഞ്ഞു!",
-      "action_summary": "Amal yells loudly, oblivious to Kurian's presence.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Medium shot",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Amal": "Standing in the doorway, shouting"
-          },
-          "eyeline_direction": "Looking at Sachin",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Kakkanad apartment living room",
-        "camera": "Medium shot",
-        "action": "Amal speaks loudly with wide mouth gestures.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Loud, boisterous, unfiltered Malayali male voice",
-          "language": "Malayalam",
-          "script": "സച്ചിനെ, നിന്റെ പണി പോയ കാര്യം ഞാൻ അറിഞ്ഞു!",
-          "line": "സച്ചിനെ, നിന്റെ പണി പോയ കാര്യം ഞാൻ അറിഞ്ഞു!"
-        },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
-      }
-    },
-    {
-      "shot_number": 7,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അമൽ, മിണ്ടാതിരിക്ക്!",
-      "action_summary": "Sachin desperately tries to signal Amal to be quiet.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up shot",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Sachin": "Sitting on a plastic stool, making frantic gestures"
-          },
-          "eyeline_direction": "Looking at Amal",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Kakkanad apartment living room",
-        "camera": "Close-up shot",
-        "action": "Sachin whispers intensely with frantic lip sync.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Urgent, whispering, distressed Malayali male voice",
-          "language": "Malayalam",
-          "script": "അമൽ, മിണ്ടാതിരിക്ക്!",
-          "line": "അമൽ, മിണ്ടാതിരിക്ക്!"
-        },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
-      }
-    },
-    {
-      "shot_number": 8,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "ഓ, ഞാൻ ദാ ചായയുമായി വരുന്നു!",
-      "action_summary": "Amal realizes the situation and tries to act like a professional butler.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Medium shot",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
-          "spatial_blocking": {
-            "Amal": "Walking toward the table with tea"
-          },
-          "eyeline_direction": "Looking at Kurian",
-          "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
-          ],
-          "camera_lens": "Cinematic prime lens"
-        },
-        "location": "Kakkanad apartment living room",
-        "camera": "Medium shot",
-        "action": "Amal tries to mimic a butler, walking stiffly with a tray.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Overly formal, trembling, awkward Malayali male voice",
-          "language": "Malayalam",
-          "script": "ഓ, ഞാൻ ദാ ചായയുമായി വരുന്നു!",
-          "line": "ഓ, ഞാൻ ദാ ചായയുമായി വരുന്നു!"
-        },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
-      }
-    },
-    {
-      "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Kurian",
-      "dialogue_malayalam": "എന്ത് കഫേ? എന്ത് കൊച്ചി?",
-      "action_summary": "Kurian looks confused and suspicious at Amal's blunder.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Close-up shot",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
             "name": "Kurian",
@@ -425,89 +215,256 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
           "spatial_blocking": {
-            "Kurian": "Sitting on the sofa, looking at Amal"
+            "Kurian": "Standing, looking at the horizon"
           },
-          "eyeline_direction": "Looking at Amal",
+          "eyeline_direction": "Looking at the water",
           "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
           ],
-          "camera_lens": "Cinematic prime lens"
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Kakkanad apartment living room",
-        "camera": "Close-up shot",
-        "action": "Kurian asks with a stern, questioning expression.",
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Close-up",
+        "action": "Kurian's face softens. Lips are closed.",
         "dialogue": {
-          "speaker": "Kurian",
-          "voice_persona": "Stern, authoritative Malayali male voice",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
           "language": "Malayalam",
-          "script": "എന്ത് കഫേ? എന്ത് കൊച്ചി?",
-          "line": "എന്ത് കഫേ? എന്ത് കൊച്ചി?"
+          "script": "കുര്യന്റെ മുഖത്ത് ഒരു ചെറിയ പുഞ്ചിരി തെളിയുന്നു.",
+          "line": "കുര്യന്റെ മുഖത്ത് ഒരു ചെറിയ പുഞ്ചിരി തെളിയുന്നു."
         },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voiceover audio and natural ambient foley."
       }
     },
     {
-      "shot_number": 10,
+      "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "അയ്യോ, സച്ചിന്റെ കൊച്ചി കഫേ പ്ലാൻ ഞാൻ പറഞ്ഞു പോയി!",
-      "action_summary": "Amal covers his mouth in horror, staring at a frozen Sachin.",
+      "character": "Kurian",
+      "dialogue_malayalam": "ഞാനും നിന്നെപ്പോലെയായിരുന്നു ഒരിക്കൽ.",
+      "action_summary": "Kurian speaks, revealing a soft side. Only Kurian's mouth moves.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Wide shot",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {
+            "Kurian": "Standing, talking to Sachin"
           },
+          "eyeline_direction": "Looking at Sachin",
+          "persistent_props": [
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium shot",
+        "action": "Kurian speaks. Mouth moves in lip sync.",
+        "dialogue": {
+          "speaker": "Kurian",
+          "voice_persona": "Deep, mature, authoritative male voice",
+          "language": "Malayalam",
+          "script": "ഞാനും നിന്നെപ്പോലെയായിരുന്നു ഒരിക്കൽ.",
+          "line": "ഞാനും നിന്നെപ്പോലെയായിരുന്നു ഒരിക്കൽ."
+        },
+        "audio_directive": "CHARACTER DIALOGUE. Only Kurian's mouth moves. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
+      }
+    },
+    {
+      "shot_number": 7,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "എന്താണ് അങ്കിൾ ഉദ്ദേശിച്ചത്?",
+      "action_summary": "Sachin looks surprised and curious. Only Sachin's mouth moves.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Warm golden hour sunlight",
-          "weather": "Clear sunny",
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
           "spatial_blocking": {
-            "Amal": "Standing in the doorway, hand over mouth",
-            "Sachin": "Sitting on the stool, frozen in shock"
+            "Sachin": "Standing, listening to Kurian"
           },
-          "eyeline_direction": "Looking at each other",
+          "eyeline_direction": "Looking at Kurian",
           "persistent_props": [
-            "Cardboard snack box",
-            "Door",
-            "Packet of beef cutlets",
-            "Plastic stool",
-            "Sofa",
-            "Tea cup"
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
           ],
-          "camera_lens": "Cinematic prime lens"
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Kakkanad apartment living room",
-        "camera": "Wide shot",
-        "action": "Amal freezes in panic. This is the cliffhanger.",
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium shot",
+        "action": "Sachin speaks. Mouth moves in lip sync.",
         "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Panicked, high-pitched Malayali male voice",
+          "speaker": "Sachin",
+          "voice_persona": "Youthful, sincere male voice",
           "language": "Malayalam",
-          "script": "അയ്യോ, സച്ചിന്റെ കൊച്ചി കഫേ പ്ലാൻ ഞാൻ പറഞ്ഞു പോയി!",
-          "line": "അയ്യോ, സച്ചിന്റെ കൊച്ചി കഫേ പ്ലാൻ ഞാൻ പറഞ്ഞു പോയി!"
+          "script": "എന്താണ് അങ്കിൾ ഉദ്ദേശിച്ചത്?",
+          "line": "എന്താണ് അങ്കിൾ ഉദ്ദേശിച്ചത്?"
         },
-        "audio_directive": "Clean voice audio with natural foley. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+        "audio_directive": "CHARACTER DIALOGUE. Only Sachin's mouth moves. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
+      }
+    },
+    {
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "കുര്യൻ ഓർമ്മകളിലേക്ക് വഴുതി വീഴുന്നു.",
+      "action_summary": "Kurian looks far off, eyes slightly glassy, reflective. No characters speaking.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {
+            "Kurian": "Standing, looking away"
+          },
+          "eyeline_direction": "Looking into distance",
+          "persistent_props": [
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Close-up on Kurian",
+        "action": "Kurian reflects. Lips are closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "കുര്യൻ ഓർമ്മകളിലേക്ക് വഴുതി വീഴുന്നു.",
+          "line": "കുര്യൻ ഓർമ്മകളിലേക്ക് വഴുതി വീഴുന്നു."
+        },
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voiceover audio and natural ambient foley."
+      }
+    },
+    {
+      "shot_number": 9,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "അങ്കിൾ, എന്തെങ്കിലും പ്രശ്നമുണ്ടോ?",
+      "action_summary": "Sachin looks concerned at Kurian. Only Sachin's mouth moves.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {
+            "Sachin": "Standing, looking at Kurian"
+          },
+          "eyeline_direction": "Looking at Kurian",
+          "persistent_props": [
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium shot",
+        "action": "Sachin speaks. Mouth moves in lip sync.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Youthful, sincere male voice",
+          "language": "Malayalam",
+          "script": "അങ്കിൾ, എന്തെങ്കിലും പ്രശ്നമുണ്ടോ?",
+          "line": "അങ്കിൾ, എന്തെങ്കിലും പ്രശ്നമുണ്ടോ?"
+        },
+        "audio_directive": "CHARACTER DIALOGUE. Only Sachin's mouth moves. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
+      }
+    },
+    {
+      "shot_number": 10,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Kurian",
+      "dialogue_malayalam": "എന്റെ ചെറുപ്പത്തിലെ ആ കഥ ഞാൻ പറയാം.",
+      "action_summary": "Kurian turns back to Sachin with a faint, knowing smile. Only Kurian's mouth moves.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+          "time_of_day": "Early Morning Dawn",
+          "lighting_palette": "Soft golden morning light reflecting on backwaters",
+          "weather": "Clear calm Kochi morning",
+          "spatial_blocking": {
+            "Kurian": "Standing, facing Sachin"
+          },
+          "eyeline_direction": "Looking at Sachin",
+          "persistent_props": [
+            "Kurian's analog Titan watch",
+            "Sachin's diagonal brown leather cross-bag"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Marine Drive Walkway, Kochi",
+        "camera": "Medium shot",
+        "action": "Kurian speaks. Mouth moves in lip sync.",
+        "dialogue": {
+          "speaker": "Kurian",
+          "voice_persona": "Deep, mature, authoritative male voice",
+          "language": "Malayalam",
+          "script": "എന്റെ ചെറുപ്പത്തിലെ ആ കഥ ഞാൻ പറയാം.",
+          "line": "എന്റെ ചെറുപ്പത്തിലെ ആ കഥ ഞാൻ പറയാം."
+        },
+        "audio_directive": "CHARACTER DIALOGUE. Only Kurian's mouth moves. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Clean voice audio and natural ambient foley."
       }
     }
   ],

@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 4,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -125,28 +125,33 @@
         "Kurian",
         "Amal"
       ]
+    },
+    {
+      "episode": 4,
+      "title": "മറൈൻ ഡ്രൈവിലെ സായാഹ്നം (A Stroll Along Marine Drive)",
+      "summary": "After the near-disaster with the tea, Sachin finds himself walking along the Kochi Marine Drive walkway, being closely observed by a stoic Kurian. As they watch the Chinese fishing nets against the sunset, Kurian challenges Sachin's intentions, only to reveal a surprising secret from his own past.",
+      "cliffhanger": "Madhavan stops, looks out across the backwaters, and shares a surprising memory of his own rebellious youth.",
+      "characters_present": [
+        "Kurian",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 3,
+  "episode_number": 4,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_KAKKANAD_APARTMENT_LIVING_ROOM",
-    "time_of_day": "Sunday Afternoon",
-    "lighting_palette": "Warm golden hour sunlight",
-    "weather": "Clear sunny",
+    "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
+    "time_of_day": "Early Morning Dawn",
+    "lighting_palette": "Soft golden morning light reflecting on backwaters",
+    "weather": "Clear calm Kochi morning",
     "spatial_blocking": {
-      "Amal": "Standing in the doorway, hand over mouth",
-      "Sachin": "Sitting on the stool, frozen in shock"
+      "Kurian": "Standing, facing Sachin"
     },
-    "eyeline_direction": "Looking at each other",
+    "eyeline_direction": "Looking at Sachin",
     "persistent_props": [
-      "Cardboard snack box",
-      "Door",
-      "Packet of beef cutlets",
-      "Plastic stool",
-      "Sofa",
-      "Tea cup"
+      "Kurian's analog Titan watch",
+      "Sachin's diagonal brown leather cross-bag"
     ],
-    "camera_lens": "Cinematic prime lens"
+    "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
   "season_number": 2,
   "season_arc": [
