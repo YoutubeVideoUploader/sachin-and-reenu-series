@@ -788,8 +788,8 @@ Output JSON structure:
           "speaker": "Third-Person Narrator",
           "voice_persona": "{NARRATOR_VOICE}",
           "language": "Malayalam",
-          "script": "മലയാളം ലിപി",
-          "line": "..."
+          "script": "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച.",
+          "line": "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച."
         }},
         "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }}
@@ -1027,6 +1027,20 @@ def enforce_prompt_completeness(data, active_dna=None):
                 if not clean_lens:
                     clean_lens = "Cinematic prime lens, shallow depth of field"
                 sc["camera_lens"] = clean_lens
+
+        # 5. Guarantee dialogue script is real Malayalam text (never literal placeholder 'മലയാളം ലിപി')
+        dlg = jp.get("dialogue", {})
+        if isinstance(dlg, dict):
+            ml_line = dlg.get("line") or s.get("dialogue_malayalam") or ""
+            if dlg.get("script") == "മലയാളം ലിപി" or not dlg.get("script"):
+                dlg["script"] = ml_line
+            if ml_line and not dlg.get("line"):
+                dlg["line"] = ml_line
+
+        # 6. Normalize perspective to Prompt 1 benchmark
+        persp = jp.get("perspective", "")
+        if not persp or any(kw in persp.lower() for kw in ["shot", "lens", "close-up", "medium shot", "framing", "angle"]):
+            jp["perspective"] = "Third-Person Narrator"
 
     # Strictly guarantee exactly 10 shots per episode
     shots = data.get("shots", [])

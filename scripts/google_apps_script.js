@@ -558,16 +558,69 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
   } catch (err) {
     Logger.log("Notice updating Tab 4 on publish: " + err.toString());
   }
+
+  // Also archive published episode prompts into a dedicated Prompts_Ep<N> sheet
+  try {
+    archiveCurrentPromptsSheet(epNum);
+  } catch (err) {
+    Logger.log("Notice archiving prompts on publish: " + err.toString());
+  }
+}
+
+/**
+ * Archives current Tab 2: Current_JSON_Prompts into a dedicated tab: Prompts_Ep<N>.
+ */
+function archiveCurrentPromptsSheet(fallbackEpNum) {
+  const ss = getStudioSpreadsheet();
+  const promptSheet = ss.getSheetByName(TAB_PROMPTS);
+  if (!promptSheet || promptSheet.getLastRow() < 3) return;
+
+  let epNumToArchive = fallbackEpNum;
+  try {
+    const banner = (promptSheet.getRange(1, 1).getValue() || "").toString();
+    const m = banner.match(/EPISODE\s+(\d+)/i);
+    if (m) epNumToArchive = parseInt(m[1], 10);
+  } catch (e) {}
+
+  if (!epNumToArchive) epNumToArchive = 1;
+
+  const archiveTabName = `Prompts_Ep${epNumToArchive}`;
+  let archiveSheet = ss.getSheetByName(archiveTabName);
+  if (!archiveSheet) {
+    archiveSheet = ss.insertSheet(archiveTabName);
+  } else {
+    archiveSheet.clear();
+  }
+
+  const lastRow = promptSheet.getLastRow();
+  const lastCol = Math.max(6, promptSheet.getLastColumn());
+  const values = promptSheet.getRange(1, 1, lastRow, lastCol).getValues();
+
+  archiveSheet.getRange(1, 1, values.length, values[0].length).setValues(values);
+  archiveSheet.getRange(1, 1).setValue(`ARCHIVED PROMPTS: EPISODE ${epNumToArchive}`).setFontWeight("bold");
+  archiveSheet.getRange(1, 1, 1, values[0].length).setBackground("#1e293b").setFontColor("#f8fafc");
+  archiveSheet.getRange(2, 1, 1, values[0].length).setBackground("#334155").setFontColor("#e2e8f0").setFontWeight("bold");
+  archiveSheet.setFrozenRows(2);
+  Logger.log(`Successfully archived Episode ${epNumToArchive} prompts to tab [${archiveTabName}]`);
 }
 
 /**
  * Overwrites Tab 2: Current_JSON_Prompts with the new episode prompts.
+ * Automatically archives previous episode prompts before overwriting.
  */
 function updateJsonPromptsSheet(episodeNum, shots) {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_PROMPTS);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_PROMPTS);
+  } else {
+    // 1. Archive existing prompts into Prompts_Ep<old> before wiping
+    try {
+      const prevEpNum = episodeNum > 1 ? (episodeNum - 1) : null;
+      archiveCurrentPromptsSheet(prevEpNum);
+    } catch (err) {
+      Logger.log("Notice archiving prompts before overwrite: " + err.toString());
+    }
   }
   
   sheet.clear();
@@ -834,6 +887,54 @@ function getSeasonStoryArcData() {
     total_episodes: episodes.length,
     climax_target_episode: 10,
     episodes: episodes
+  };
+}
+
+/**
+ * Reads archived prompts from Prompts_Ep<N> or Tab 2 (Current_JSON_Prompts).
+ */
+function getArchivedEpisodePrompts(epNum) {
+  const ss = getStudioSpreadsheet();
+  const archiveTabName = `Prompts_Ep${epNum}`;
+  let sheet = ss.getSheetByName(archiveTabName);
+  if (!sheet) {
+    sheet = ss.getSheetByName(TAB_PROMPTS);
+  }
+  if (!sheet || sheet.getLastRow() < 3) {
+    return {
+      success: false,
+      episode_number: epNum,
+      message: `No archived prompts found for Episode ${epNum}`
+    };
+  }
+
+  const lastRow = sheet.getLastRow();
+  const data = sheet.getRange(3, 1, lastRow - 2, 6).getValues();
+  const shots = [];
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    let promptJson = row[5];
+    if (typeof promptJson === 'string') {
+      try {
+        promptJson = JSON.parse(promptJson);
+      } catch (e) {}
+    }
+    shots.push({
+      shot_number: i + 1,
+      duration: row[1] || "6s",
+      character: row[2] || "",
+      dialogue_malayalam: row[3] || "",
+      action_summary: row[4] || "",
+      json_prompt: promptJson
+    });
+  }
+
+  return {
+    success: true,
+    episode_number: epNum,
+    tab_name: sheet.getName(),
+    total_shots: shots.length,
+    shots: shots
   };
 }
 
@@ -1122,6 +1223,14 @@ function doGet(e) {
   // Tab 5: Character Registry
   if (action === "get_characters" || action === "characters") {
     const data = getCharacterRegistryData();
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Archived & Previous Episode Prompts for Sequence Continuity
+  if (action === "get_previous_prompts" || action === "get_archived_prompts" || action === "get_episode_prompts") {
+    const targetEp = parseInt(params.episode || params.ep || (epNum > 1 ? (epNum - 1) : 1), 10);
+    const data = getArchivedEpisodePrompts(targetEp);
     return ContentService.createTextOutput(JSON.stringify(data))
       .setMimeType(ContentService.MimeType.JSON);
   }
