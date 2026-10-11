@@ -32,31 +32,70 @@ def sync_thumbnail_template_from_drive(gas_url=None):
         print(f"[THUMBNAIL] Notice syncing thumbnail from Drive: {e}")
     return False
 
-def resolve_season_and_episode_num():
-    """Resolves active season number and episode number from project state files."""
-    season_num = 1
-    episode_num = 1
+def fetch_season_from_google_sheet(gas_url=None):
+    """
+    Fetches the active season number directly from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    via the Google Apps Script Web App API (action=get_season_story).
+    Returns int season number (e.g. 2), or None if offline/error.
+    """
+    import requests
+    target_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+    try:
+        res = requests.get(f"{target_url}?action=get_season_story", timeout=20)
+        if res.status_code == 200:
+            data = res.json()
+            if data.get("season_number") is not None:
+                s_num = int(data["season_number"])
+                print(f"[THUMBNAIL] Fetched Season {s_num} directly from Google Sheet Tab 'Season_Story_Arc' (Cell A1)")
+                return s_num
+            cell_a1 = str(data.get("cell_a1", ""))
+            import re
+            m = re.search(r'SEASON\s*(\d+)', cell_a1, re.I) or re.search(r'(\d+)', cell_a1)
+            if m:
+                s_num = int(m.group(1))
+                print(f"[THUMBNAIL] Fetched Season {s_num} from Google Sheet Tab 'Season_Story_Arc' Cell A1 ('{cell_a1}')")
+                return s_num
+    except Exception as e:
+        print(f"[THUMBNAIL] Notice fetching season from Sheet Tab 'Season_Story_Arc': {e}")
+    return None
+
+def resolve_season_and_episode_num(gas_url=None):
+    """
+    Resolves active season number and episode number.
+    Priority 1 for Season: Live Google Sheet Tab 'Season_Story_Arc', Cell A1!
+    Priority 2: Local project state files (current_episode_shots.json, story_state.json).
+    """
+    season_num = fetch_season_from_google_sheet(gas_url)
+    episode_num = None
+
     for fn in ["current_episode_shots.json", "current_episode.json", "story_state.json"]:
         if os.path.exists(fn):
             try:
                 with open(fn, "r", encoding="utf-8") as f:
                     d = json.load(f)
-                    if d.get("season_number"):
+                    if season_num is None and d.get("season_number"):
                         season_num = int(d.get("season_number"))
-                    if d.get("episode_number"):
-                        episode_num = int(d.get("episode_number"))
-                    elif d.get("total_episodes_produced"):
-                        episode_num = int(d.get("total_episodes_produced"))
-                    break
+                    if episode_num is None:
+                        if d.get("episode_number"):
+                            episode_num = int(d.get("episode_number"))
+                        elif d.get("total_episodes_produced"):
+                            episode_num = int(d.get("total_episodes_produced"))
+                    if season_num is not None and episode_num is not None:
+                        break
             except Exception:
                 pass
+
+    if season_num is None:
+        season_num = 1
+    if episode_num is None:
+        episode_num = 1
     return season_num, episode_num
 
-def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync_drive=True):
+def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync_drive=True, gas_url=None):
     if sync_drive:
-        sync_thumbnail_template_from_drive()
+        sync_thumbnail_template_from_drive(gas_url)
 
-    detected_season, detected_ep = resolve_season_and_episode_num()
+    detected_season, detected_ep = resolve_season_and_episode_num(gas_url)
     season_num = season_num if season_num is not None else detected_season
     episode_num = episode_num if episode_num is not None else detected_ep
 
@@ -123,7 +162,8 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate episode thumbnail cover")
-    parser.add_argument("--season", type=int, default=None, help="Season number (auto-detected if omitted)")
+    parser.add_argument("--gas_url", type=str, default=None, help="Google Apps Script Web App URL")
+    parser.add_argument("--season", type=int, default=None, help="Season number (auto-detected from Sheet Tab 'Season_Story_Arc' Cell A1 if omitted)")
     parser.add_argument("--episode", type=int, default=None, help="Episode number (auto-detected if omitted)")
     parser.add_argument("--output", type=str, default=None, help="Output image path")
     parser.add_argument("--no_sync", action="store_true", help="Skip syncing template from Google Drive")
@@ -133,5 +173,6 @@ if __name__ == "__main__":
         season_num=args.season,
         episode_num=args.episode,
         output_file=args.output,
-        sync_drive=not args.no_sync
+        sync_drive=not args.no_sync,
+        gas_url=args.gas_url
     )

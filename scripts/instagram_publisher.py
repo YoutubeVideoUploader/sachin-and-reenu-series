@@ -192,6 +192,32 @@ def update_story_state(ep_data=None):
         json.dump(state, f, ensure_ascii=False, indent=2)
     print(f"Updated story state for Episode {ep_num}!")
 
+def fetch_season_from_google_sheet(gas_url=None):
+    """
+    Fetches the active season number directly from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    via the Google Apps Script Web App API (action=get_season_story).
+    Returns int season number (e.g. 2), or None if offline/error.
+    """
+    import re
+    target_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+    try:
+        res = requests.get(f"{target_url}?action=get_season_story", timeout=20)
+        if res.status_code == 200:
+            data = res.json()
+            if data.get("season_number") is not None:
+                s_num = int(data["season_number"])
+                print(f"[INSTAGRAM] Fetched Season {s_num} directly from Google Sheet Tab 'Season_Story_Arc' (Cell A1)")
+                return s_num
+            cell_a1 = str(data.get("cell_a1", ""))
+            m = re.search(r'SEASON\s*(\d+)', cell_a1, re.I) or re.search(r'(\d+)', cell_a1)
+            if m:
+                s_num = int(m.group(1))
+                print(f"[INSTAGRAM] Fetched Season {s_num} from Google Sheet Tab 'Season_Story_Arc' Cell A1 ('{cell_a1}')")
+                return s_num
+    except Exception as e:
+        print(f"[INSTAGRAM] Notice fetching season from Sheet Tab 'Season_Story_Arc': {e}")
+    return None
+
 def main():
     if not os.path.exists(VIDEO_FILE):
         raise FileNotFoundError(f"Missing master video {VIDEO_FILE}")
@@ -207,8 +233,9 @@ def main():
             except Exception:
                 pass
                 
-    ep_num = ep_data.get("episode_number", 2)
-    season_num = 1
+    ep_num = ep_data.get("episode_number", 1)
+    # Priority 1: Fetch live from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    season_num = fetch_season_from_google_sheet(os.getenv("GAS_WEBHOOK_URL")) or ep_data.get("season_number") or 1
 
     # Strip any Malayalam characters to guarantee 100% English description
     import re

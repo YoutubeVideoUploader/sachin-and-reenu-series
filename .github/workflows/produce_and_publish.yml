@@ -78,6 +78,8 @@ jobs:
       # -------------------------------------------------------------
       - name: 7. Master Video & Audio Merge
         if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' }}
+        env:
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
           echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4

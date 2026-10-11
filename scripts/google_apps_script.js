@@ -818,9 +818,10 @@ function getSeasonStoryArcData() {
 
   let currentSeasonNum = 1;
   let currentSeasonTitle = "Season 1";
+  let cellA1Raw = "";
   try {
-    const rawBanner = (sheet.getRange(1, 1).getValue() || "").toString();
-    const match = rawBanner.match(/SEASON\s+(\d+)/i);
+    cellA1Raw = (sheet.getRange(1, 1).getValue() || "").toString().trim();
+    const match = cellA1Raw.match(/SEASON\s*(\d+)/i) || cellA1Raw.match(/^(\d+)$/) || cellA1Raw.match(/(\d+)/);
     if (match) currentSeasonNum = parseInt(match[1], 10);
     currentSeasonTitle = sheet.getRange(1, 2).getValue() || `Season ${currentSeasonNum}`;
   } catch (e) {}
@@ -829,6 +830,7 @@ function getSeasonStoryArcData() {
     success: true,
     season_number: currentSeasonNum,
     season_title: currentSeasonTitle,
+    cell_a1: cellA1Raw,
     total_episodes: episodes.length,
     climax_target_episode: 10,
     episodes: episodes

@@ -20,6 +20,32 @@ import subprocess
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
+def fetch_season_from_google_sheet(gas_url=None):
+    """
+    Fetches the active season number directly from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    via the Google Apps Script Web App API (action=get_season_story).
+    Returns int season number (e.g. 2), or None if offline/error.
+    """
+    import requests
+    target_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+    try:
+        res = requests.get(f"{target_url}?action=get_season_story", timeout=20)
+        if res.status_code == 200:
+            data = res.json()
+            if data.get("season_number") is not None:
+                s_num = int(data["season_number"])
+                print(f"[VIDEO MERGER] Fetched Season {s_num} directly from Google Sheet Tab 'Season_Story_Arc' (Cell A1)")
+                return s_num
+            cell_a1 = str(data.get("cell_a1", ""))
+            m = re.search(r'SEASON\s*(\d+)', cell_a1, re.I) or re.search(r'(\d+)', cell_a1)
+            if m:
+                s_num = int(m.group(1))
+                print(f"[VIDEO MERGER] Fetched Season {s_num} from Google Sheet Tab 'Season_Story_Arc' Cell A1 ('{cell_a1}')")
+                return s_num
+    except Exception as e:
+        print(f"[VIDEO MERGER] Notice fetching season from Sheet Tab 'Season_Story_Arc': {e}")
+    return None
+
 def get_video_info(video_path):
     """Inspects video duration, width, height, and audio streams using ffprobe."""
     cmd = [
@@ -237,7 +263,7 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     
     sorted_shots = sorted(video_files, key=extract_shot_num)
     print(f"\n=======================================================")
-    print(f"🎬 SACHIN & REENU STUDIO: MERGING EPISODE {episode_num}")
+    print(f"🎬 SACHIN & REENU STUDIO: MERGING SEASON {season_num} • EPISODE {episode_num}")
     print(f"=======================================================")
     print(f"Found {len(sorted_shots)} shot clip(s):")
     for s in sorted_shots:
@@ -441,9 +467,10 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
 
 def main():
     parser = argparse.ArgumentParser(description="Sachin & Reenu Video Merger")
+    parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
     parser.add_argument("--shots_dir", default="clean_shots", help="Directory containing de-watermarked shots")
     parser.add_argument("--output", default="master_episode.mp4", help="Output master video filename")
-    parser.add_argument("--season", type=int, default=None, help="Season number")
+    parser.add_argument("--season", type=int, default=None, help="Season number (auto-detected from Sheet Tab 'Season_Story_Arc' Cell A1 if omitted)")
     parser.add_argument("--episode", type=int, default=None, help="Episode number")
     parser.add_argument("--title_en", default="", help="Episode English title")
     parser.add_argument("--title_ml", default="", help="Episode Malayalam title")
@@ -455,6 +482,10 @@ def main():
     title_en = args.title_en
     title_ml = args.title_ml
     
+    # Priority 1 for Season: Fetch live from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    if season_num is None:
+        season_num = fetch_season_from_google_sheet(args.gas_url or os.getenv("GAS_WEBHOOK_URL"))
+
     for fn in ["current_episode_shots.json", "current_episode.json", "story_state.json"]:
         if os.path.exists(fn):
             try:

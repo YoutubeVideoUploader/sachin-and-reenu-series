@@ -18,6 +18,31 @@ import requests
 import cv2
 from pathlib import Path
 
+def fetch_season_from_google_sheet(gas_url=None):
+    """
+    Fetches the active season number directly from Google Sheet Tab 'Season_Story_Arc', Cell A1
+    via the Google Apps Script Web App API (action=get_season_story).
+    Returns int season number (e.g. 2), or None if offline/error.
+    """
+    target_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+    try:
+        res = requests.get(f"{target_url}?action=get_season_story", timeout=20)
+        if res.status_code == 200:
+            data = res.json()
+            if data.get("season_number") is not None:
+                s_num = int(data["season_number"])
+                print(f"[GOOGLE SHEET] Pre-check verified Season {s_num} from Tab 'Season_Story_Arc' (Cell A1)")
+                return s_num
+            cell_a1 = str(data.get("cell_a1", ""))
+            m = re.search(r'SEASON\s*(\d+)', cell_a1, re.I) or re.search(r'(\d+)', cell_a1)
+            if m:
+                s_num = int(m.group(1))
+                print(f"[GOOGLE SHEET] Pre-check verified Season {s_num} from Tab 'Season_Story_Arc' Cell A1 ('{cell_a1}')")
+                return s_num
+    except Exception as e:
+        print(f"[GOOGLE SHEET] Notice fetching season from Sheet Tab 'Season_Story_Arc': {e}")
+    return None
+
 def verify_video(file_path):
     """Verifies that the downloaded file is a valid, readable video with frames."""
     try:
@@ -92,9 +117,11 @@ def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
     Queries Google Apps Script for Google Sheet checklist status.
     If all shots present, downloads them into target_dir.
     """
+    season_num = fetch_season_from_google_sheet(gas_url) or 1
     print(f"\n=======================================================")
-    print(f"📊 GOOGLE SHEET & DRIVE PRE-CHECK: EPISODE {episode_num}")
+    print(f"📊 GOOGLE SHEET & DRIVE PRE-CHECK: SEASON {season_num} • EPISODE {episode_num}")
     print(f"=======================================================")
+    set_github_output("season", str(season_num))
     
     if not gas_url:
         print("⚠️ Warning: GAS_WEBHOOK_URL is not set.")
