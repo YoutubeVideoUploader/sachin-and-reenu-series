@@ -35,8 +35,24 @@ function onOpen() {
       .addItem("🔄 Sync Drive Uploads Now", "menuSyncDrive")
       .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
       .addSeparator()
+      .addItem("📁 Archive Current Prompts Tab Now", "menuArchiveCurrentPrompts")
+      .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
+  } catch (e) {}
+}
+
+/**
+ * One-click menu action to manually archive Tab 2 (Current_JSON_Prompts) to a dedicated Prompts_Ep<N> tab.
+ */
+function menuArchiveCurrentPrompts() {
+  archiveCurrentPromptsSheet();
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      "Current prompts successfully archived to dedicated Prompts_Ep tab!",
+      "Archive Complete",
+      5
+    );
   } catch (e) {}
 }
 
