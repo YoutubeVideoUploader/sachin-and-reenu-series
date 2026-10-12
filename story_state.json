@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 4,
+  "total_episodes_produced": 5,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -135,21 +135,36 @@
         "Kurian",
         "Sachin"
       ]
+    },
+    {
+      "episode": 5,
+      "title": "അമ്മയുടെ മനസ്സും ചില ചോദ്യങ്ങളും (Mother's Intuition)",
+      "summary": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
+      "cliffhanger": "Girija pulls out a traditional family heirloom gold bangle and asks Reenu if she is truly sure about Sachin.",
+      "characters_present": [
+        "Annamma",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 4,
+  "episode_number": 5,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_MARINE_DRIVE_WALKWAY",
-    "time_of_day": "Early Morning Dawn",
-    "lighting_palette": "Soft golden morning light reflecting on backwaters",
-    "weather": "Clear calm Kochi morning",
+    "scene_id": "SCENE_APARTMENT_KITCHEN",
+    "time_of_day": "Sunday Afternoon",
+    "lighting_palette": "Bright warm kitchen sunlight",
+    "weather": "Clear sunny day",
     "spatial_blocking": {
-      "Kurian": "Standing, facing Sachin"
+      "Annamma": "Looking at Reenu",
+      "Reenu": "Looking at Annamma"
     },
-    "eyeline_direction": "Looking at Sachin",
+    "eyeline_direction": "Annamma looks at Reenu",
     "persistent_props": [
-      "Kurian's analog Titan watch",
-      "Sachin's diagonal brown leather cross-bag"
+      "Annamma's gold bangles",
+      "Gold bangle",
+      "Reenu's silver wrist watch",
+      "Sachin's cross-bag",
+      "Traditional steel cooking pans",
+      "Wrench"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
