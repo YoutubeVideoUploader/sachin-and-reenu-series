@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 5,
+  "total_episodes_produced": 6,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -145,26 +145,34 @@
         "Annamma",
         "Reenu"
       ]
+    },
+    {
+      "episode": 6,
+      "title": "ഫോർട്ട് കൊച്ചിയിലെ പുതിയ താവളം (The Fort Kochi Site Discovery)",
+      "summary": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour. As they seek shelter in a vacant storefront, a rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer.",
+      "cliffhanger": "A rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer!",
+      "characters_present": [
+        "Sachin",
+        "Annamma",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 5,
+  "episode_number": 6,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_APARTMENT_KITCHEN",
-    "time_of_day": "Sunday Afternoon",
-    "lighting_palette": "Bright warm kitchen sunlight",
-    "weather": "Clear sunny day",
+    "scene_id": "SCENE_SHOP_SHELTER",
+    "time_of_day": "Late Afternoon Monsoon",
+    "lighting_palette": "Dim doorway light",
+    "weather": "Rain outside",
     "spatial_blocking": {
-      "Annamma": "Looking at Reenu",
-      "Reenu": "Looking at Annamma"
+      "Sachin": "Looking shocked"
     },
-    "eyeline_direction": "Annamma looks at Reenu",
+    "eyeline_direction": "Looking at the street",
     "persistent_props": [
       "Annamma's gold bangles",
-      "Gold bangle",
       "Reenu's silver wrist watch",
       "Sachin's cross-bag",
-      "Traditional steel cooking pans",
-      "Wrench"
+      "Umbrella"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field"
   },

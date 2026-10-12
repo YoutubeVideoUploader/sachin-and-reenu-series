@@ -1,9 +1,9 @@
 {
-  "episode_number": 5,
-  "title_malayalam": "അമ്മയുടെ മനസ്സും ചില ചോദ്യങ്ങളും",
-  "title_english": "Mother's Intuition",
-  "synopsis": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
-  "cliffhanger": "Girija pulls out a traditional family heirloom gold bangle and asks Reenu if she is truly sure about Sachin.",
+  "episode_number": 6,
+  "title_malayalam": "ഫോർട്ട് കൊച്ചിയിലെ പുതിയ താവളം",
+  "title_english": "The Fort Kochi Site Discovery",
+  "synopsis": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour. As they seek shelter in a vacant storefront, a rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer.",
+  "cliffhanger": "A rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer!",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -14,51 +14,54 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമലിന്റെ വീട്ടിൽ ഒരു ഞായറാഴ്ച ഉച്ച.",
-      "action_summary": "Establishing shot of the kitchen. Annamma is busy cooking, Reenu stands by the counter. All characters have closed lips.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ തിരക്കുള്ള ബ്രോഡ്‌വേ മാർക്കറ്റിലേക്കൊരു യാത്ര.",
+      "action_summary": "Annamma, Reenu, and Sachin walk through the busy Broadway market. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+          },
+          {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           },
           {
-            "name": "Annamma",
-            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
+          "scene_id": "SCENE_BROADWAY_MARKET",
           "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight, soft golden highlights",
+          "lighting_palette": "Bright market daylight",
           "weather": "Clear sunny day",
           "spatial_blocking": {
-            "Annamma": "Cooking at the stove, facing the counter",
-            "Reenu": "Leaning against the kitchen counter, watching Annamma"
+            "Annamma": "Walking in center",
+            "Reenu": "Walking to the left",
+            "Sachin": "Walking to the right, carrying bags"
           },
-          "eyeline_direction": "Annamma looks down at the stove; Reenu looks at Annamma",
+          "eyeline_direction": "Looking forward",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Medium shot, side profile",
-        "action": "Annamma is cooking. Reenu is watching her. Both are completely silent with lips closed. No mouth animation.",
+        "location": "Broadway Market Kochi",
+        "camera": "Tracking shot following the trio",
+        "action": "Annamma, Reenu, and Sachin walk through the busy Broadway market. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അമലിന്റെ വീട്ടിൽ ഒരു ഞായറാഴ്ച ഉച്ച.",
-          "line": "അമലിന്റെ വീട്ടിൽ ഒരു ഞായറാഴ്ച ഉച്ച."
+          "script": "കൊച്ചിയിലെ തിരക്കുള്ള ബ്രോഡ്‌വേ മാർക്കറ്റിലേക്കൊരു യാത്ര.",
+          "line": "കൊച്ചിയിലെ തിരക്കുള്ള ബ്രോഡ്‌വേ മാർക്കറ്റിലേക്കൊരു യാത്ര."
         },
         "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
@@ -68,164 +71,64 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Annamma",
-      "dialogue_malayalam": "സച്ചിൻ എങ്ങനെയുള്ള ആളാണ് മോളെ?",
-      "action_summary": "Annamma turns to look at Reenu while asking the question.",
+      "dialogue_malayalam": "സച്ചിൻ, ഈ മസാലപ്പൊടികൾ നോക്കൂ.",
+      "action_summary": "Annamma points to a spice shop. Only Annamma speaks. Reenu and Sachin listen.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Medium close up",
         "characters_present": [
           {
             "name": "Annamma",
             "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           },
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
+          "scene_id": "SCENE_BROADWAY_MARKET",
           "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
+          "lighting_palette": "Bright market daylight",
           "weather": "Clear sunny day",
           "spatial_blocking": {
-            "Annamma": "Cooking at the stove, facing Reenu",
-            "Reenu": "Leaning against the kitchen counter"
+            "Annamma": "Facing Sachin",
+            "Sachin": "Facing Annamma"
           },
-          "eyeline_direction": "Annamma looks at Reenu; Reenu looks away shyly",
+          "eyeline_direction": "Annamma looks at Sachin",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Close-up",
-        "action": "Annamma speaks to Reenu. Reenu's mouth is closed.",
+        "location": "Spice shop aisle",
+        "camera": "Close up on Annamma",
+        "action": "Annamma points to a spice shop. Only Annamma speaks.",
         "dialogue": {
           "speaker": "Annamma",
-          "voice_persona": "Soft, maternal, inquisitive.",
+          "voice_persona": "Soft, warm, matronly Malayali motherly voice",
           "language": "Malayalam",
-          "script": "സച്ചിൻ എങ്ങനെയുള്ള ആളാണ് മോളെ?",
-          "line": "സച്ചിൻ എങ്ങനെയുള്ള ആളാണ് മോളെ?"
+          "script": "സച്ചിൻ, ഈ മസാലപ്പൊടികൾ നോക്കൂ.",
+          "line": "സച്ചിൻ, ഈ മസാലപ്പൊടികൾ നോക്കൂ."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Annamma's mouth moves in lip sync. Reenu's mouth is closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "Only Annamma speaks. Sachin's mouth remains closed. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 3,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "അവൻ വളരെ നല്ലൊരു മനുഷ്യനാണ് അമ്മേ.",
-      "action_summary": "Reenu replies to Annamma, looking down at her hands.",
+      "character": "Sachin",
+      "dialogue_malayalam": "ഇതൊക്കെ നല്ല മണമുള്ളതാണല്ലോ അമ്മേ.",
+      "action_summary": "Sachin smiles and responds. Only Sachin speaks.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
-          "spatial_blocking": {
-            "Reenu": "Standing at counter, looking down"
-          },
-          "eyeline_direction": "Reenu looks down",
-          "persistent_props": [
-            "Annamma's gold bangles",
-            "Gold bangle",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
-        },
-        "location": "Apartment Kitchen",
-        "camera": "Close-up",
-        "action": "Reenu speaks, mouth moving in lip sync.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Soft, sincere, shy.",
-          "language": "Malayalam",
-          "script": "അവൻ വളരെ നല്ലൊരു മനുഷ്യനാണ് അമ്മേ.",
-          "line": "അവൻ വളരെ നല്ലൊരു മനുഷ്യനാണ് അമ്മേ."
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 4,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമ്മ അടുക്കളയിലെ ജനലിലൂടെ പുറത്തേക്ക് നോക്കി.",
-      "action_summary": "Annamma looks through the kitchen pass/window towards the sink area.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Annamma",
-            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
-          "spatial_blocking": {
-            "Annamma": "Standing at the kitchen window pass"
-          },
-          "eyeline_direction": "Annamma looks through the window",
-          "persistent_props": [
-            "Annamma's gold bangles",
-            "Gold bangle",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
-        },
-        "location": "Apartment Kitchen",
-        "camera": "Medium shot",
-        "action": "Annamma looks out the window, mouth closed.",
-        "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
-          "language": "Malayalam",
-          "script": "അമ്മ അടുക്കളയിലെ ജനലിലൂടെ പുറത്തേക്ക് നോക്കി.",
-          "line": "അമ്മ അടുക്കളയിലെ ജനലിലൂടെ പുറത്തേക്ക് നോക്കി."
-        },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 5,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവിടെ സച്ചിൻ പൈപ്പ് നന്നാക്കുന്ന തിരക്കിലാണ്.",
-      "action_summary": "View through the window: Sachin is kneeling, fixing a leaky sink pipe.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "POV from kitchen",
+        "perspective": "Close up",
         "characters_present": [
           {
             "name": "Sachin",
@@ -233,33 +136,135 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_SINK",
+          "scene_id": "SCENE_BROADWAY_MARKET",
           "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright interior lighting",
+          "lighting_palette": "Bright market daylight",
           "weather": "Clear sunny day",
           "spatial_blocking": {
-            "Sachin": "Kneeling under the sink, hands working on the pipe"
+            "Sachin": "Facing Annamma"
           },
-          "eyeline_direction": "Sachin looks at the pipe",
+          "eyeline_direction": "Sachin looks at Annamma",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Sink Area",
-        "camera": "Close-up",
-        "action": "Sachin is working on the pipe, mouth closed.",
+        "location": "Spice shop aisle",
+        "camera": "Close up on Sachin",
+        "action": "Sachin smiles and responds. Only Sachin speaks.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
+          "speaker": "Sachin",
+          "voice_persona": "Warm, genuine, boyish Malayali youth voice",
+          "language": "Malayalam",
+          "script": "ഇതൊക്കെ നല്ല മണമുള്ളതാണല്ലോ അമ്മേ.",
+          "line": "ഇതൊക്കെ നല്ല മണമുള്ളതാണല്ലോ അമ്മേ."
+        },
+        "audio_directive": "Only Sachin speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "നമുക്ക് വേഗം പോകാം, മഴ വരുന്നുണ്ട്.",
+      "action_summary": "Reenu looks up at the darkening sky. Reenu speaks.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_BROADWAY_MARKET",
+          "time_of_day": "Late Afternoon",
+          "lighting_palette": "Overcast grey sky",
+          "weather": "Darkening clouds",
+          "spatial_blocking": {
+            "Reenu": "Looking up"
+          },
+          "eyeline_direction": "Looking up at the sky",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Reenu's silver wrist watch",
+            "Sachin's cross-bag",
+            "Umbrella"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Market street",
+        "camera": "Medium shot on Reenu",
+        "action": "Reenu looks up at the darkening sky. Reenu speaks.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Soft, sweet, youthful Malayali girl voice",
+          "language": "Malayalam",
+          "script": "നമുക്ക് വേഗം പോകാം, മഴ വരുന്നുണ്ട്.",
+          "line": "നമുക്ക് വേഗം പോകാം, മഴ വരുന്നുണ്ട്."
+        },
+        "audio_directive": "Only Reenu speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 5,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "പെട്ടെന്ന് ആകാശം ഇരുണ്ട്, പേമാരി തുടങ്ങി.",
+      "action_summary": "Heavy rain begins to pour. PURE VISUAL SCENE ACTION. No characters are speaking.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_BROADWAY_MARKET_RAIN",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Gloomy grey, rainy atmosphere",
+          "weather": "Heavy tropical rain",
+          "spatial_blocking": {
+            "Annamma": "Huddling near Reenu",
+            "Reenu": "Huddling near Annamma",
+            "Sachin": "Opening umbrella"
+          },
+          "eyeline_direction": "Looking for shelter",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Reenu's silver wrist watch",
+            "Sachin's cross-bag",
+            "Umbrella"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
+        },
+        "location": "Market street",
+        "camera": "Wide shot of the street",
+        "action": "Heavy rain begins to pour. PURE VISUAL SCENE ACTION. No characters are speaking.",
+        "dialogue": {
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
           "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അവിടെ സച്ചിൻ പൈപ്പ് നന്നാക്കുന്ന തിരക്കിലാണ്.",
-          "line": "അവിടെ സച്ചിൻ പൈപ്പ് നന്നാക്കുന്ന തിരക്കിലാണ്."
+          "script": "പെട്ടെന്ന് ആകാശം ഇരുണ്ട്, പേമാരി തുടങ്ങി.",
+          "line": "പെട്ടെന്ന് ആകാശം ഇരുണ്ട്, പേമാരി തുടങ്ങി."
         },
         "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
@@ -268,9 +273,9 @@
       "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പരാതികളില്ലാതെ അവൻ പണി തുടരുന്നു.",
-      "action_summary": "Close up of Sachin's focused expression as he turns the wrench.",
+      "character": "Sachin",
+      "dialogue_malayalam": "അമ്മേ, വേഗം ഇങ്ങോട്ട് വരൂ!",
+      "action_summary": "Sachin holds the umbrella over Annamma. Sachin speaks.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -279,51 +284,54 @@
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_SINK",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright interior lighting",
-          "weather": "Clear sunny day",
+          "scene_id": "SCENE_BROADWAY_MARKET_RAIN",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Gloomy grey, rainy atmosphere",
+          "weather": "Heavy tropical rain",
           "spatial_blocking": {
-            "Sachin": "Kneeling, tightening the pipe"
+            "Sachin": "Holding umbrella",
+            "Annamma": "Under the umbrella"
           },
-          "eyeline_direction": "Sachin looks at the pipe",
+          "eyeline_direction": "Sachin looks at Annamma",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Sink Area",
-        "camera": "Close-up",
-        "action": "Sachin works, mouth closed.",
+        "location": "Market street",
+        "camera": "Medium shot on Sachin",
+        "action": "Sachin holds the umbrella over Annamma. Sachin speaks.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Sachin",
+          "voice_persona": "Warm, genuine, boyish Malayali youth voice",
           "language": "Malayalam",
-          "script": "പരാതികളില്ലാതെ അവൻ പണി തുടരുന്നു.",
-          "line": "പരാതികളില്ലാതെ അവൻ പണി തുടരുന്നു."
+          "script": "അമ്മേ, വേഗം ഇങ്ങോട്ട് വരൂ!",
+          "line": "അമ്മേ, വേഗം ഇങ്ങോട്ട് വരൂ!"
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "Only Sachin speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 7,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമ്മയുടെ മനസ്സിൽ ഒരു സംശയം ഉദിച്ചു.",
-      "action_summary": "Annamma turns away from the window, looking contemplative.",
+      "character": "Annamma",
+      "dialogue_malayalam": "സച്ചിൻ, നീ സൂക്ഷിക്കണം കേട്ടോ.",
+      "action_summary": "Annamma looks concerned at the rain. Annamma speaks.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Close up",
         "characters_present": [
           {
             "name": "Annamma",
@@ -331,44 +339,42 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
+          "scene_id": "SCENE_BROADWAY_MARKET_RAIN",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Gloomy grey, rainy atmosphere",
+          "weather": "Heavy tropical rain",
           "spatial_blocking": {
-            "Annamma": "Turning away from the window"
+            "Annamma": "Looking up at Sachin"
           },
-          "eyeline_direction": "Annamma looks thoughtful",
+          "eyeline_direction": "Looking at Sachin",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Medium shot",
-        "action": "Annamma looks contemplative, mouth closed.",
+        "location": "Market street",
+        "camera": "Close up on Annamma",
+        "action": "Annamma looks concerned at the rain. Annamma speaks.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Annamma",
+          "voice_persona": "Soft, warm, matronly Malayali motherly voice",
           "language": "Malayalam",
-          "script": "അമ്മയുടെ മനസ്സിൽ ഒരു സംശയം ഉദിച്ചു.",
-          "line": "അമ്മയുടെ മനസ്സിൽ ഒരു സംശയം ഉദിച്ചു."
+          "script": "സച്ചിൻ, നീ സൂക്ഷിക്കണം കേട്ടോ.",
+          "line": "സച്ചിൻ, നീ സൂക്ഷിക്കണം കേട്ടോ."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "Only Annamma speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 8,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Annamma",
-      "dialogue_malayalam": "ഇതൊന്ന് നോക്കൂ റീനൂ.",
-      "action_summary": "Annamma pulls out a gold bangle from her pocket.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "അവർ ഒരു കടയുടെ മുന്നിൽ ഒളിച്ചു നിന്നു.",
+      "action_summary": "They take shelter in a doorway. PURE VISUAL SCENE ACTION.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -381,39 +387,42 @@
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
+          "scene_id": "SCENE_SHOP_SHELTER",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Dim doorway light",
+          "weather": "Rain outside",
           "spatial_blocking": {
-            "Annamma": "Holding out a gold bangle",
-            "Reenu": "Standing nearby"
+            "Annamma": "Inside doorway",
+            "Reenu": "Inside doorway",
+            "Sachin": "Inside doorway"
           },
-          "eyeline_direction": "Annamma looks at Reenu",
+          "eyeline_direction": "Looking at the street",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Close-up",
-        "action": "Annamma speaks, mouth moving in lip sync.",
+        "location": "Doorway of a shop",
+        "camera": "Wide shot",
+        "action": "They take shelter in a doorway. PURE VISUAL SCENE ACTION.",
         "dialogue": {
-          "speaker": "Annamma",
-          "voice_persona": "Soft, maternal, serious.",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "ഇതൊന്ന് നോക്കൂ റീനൂ.",
-          "line": "ഇതൊന്ന് നോക്കൂ റീനൂ."
+          "script": "അവർ ഒരു കടയുടെ മുന്നിൽ ഒളിച്ചു നിന്നു.",
+          "line": "അവർ ഒരു കടയുടെ മുന്നിൽ ഒളിച്ചു നിന്നു."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Annamma's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -421,8 +430,8 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "അമ്മേ, ഇത് എന്തിനാ?",
-      "action_summary": "Reenu looks at the gold bangle with a confused expression.",
+      "dialogue_malayalam": "ആ വരുന്നത് ആരാണെന്ന് നോക്കൂ!",
+      "action_summary": "Reenu points at someone arriving. Reenu speaks.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -434,89 +443,80 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
+          "scene_id": "SCENE_SHOP_SHELTER",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Dim doorway light",
+          "weather": "Rain outside",
           "spatial_blocking": {
-            "Reenu": "Looking at the bangle"
+            "Reenu": "Pointing at the street"
           },
-          "eyeline_direction": "Reenu looks at the bangle",
+          "eyeline_direction": "Looking at the street",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Close-up",
-        "action": "Reenu speaks, mouth moving in lip sync.",
+        "location": "Doorway of a shop",
+        "camera": "Medium shot on Reenu",
+        "action": "Reenu points at someone arriving. Reenu speaks.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Soft, confused, gentle.",
+          "voice_persona": "Soft, sweet, youthful Malayali girl voice",
           "language": "Malayalam",
-          "script": "അമ്മേ, ഇത് എന്തിനാ?",
-          "line": "അമ്മേ, ഇത് എന്തിനാ?"
+          "script": "ആ വരുന്നത് ആരാണെന്ന് നോക്കൂ!",
+          "line": "ആ വരുന്നത് ആരാണെന്ന് നോക്കൂ!"
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "Only Reenu speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Annamma",
-      "dialogue_malayalam": "നിനക്ക് സച്ചിനെക്കുറിച്ച് ഉറപ്പാണോ റീനൂ?",
-      "action_summary": "Annamma looks directly at Reenu with a stern, motherly gaze.",
+      "character": "Sachin",
+      "dialogue_malayalam": "അയ്യോ, അതല്ലേ ആ റിയൽ എസ്റ്റേറ്റ്ക്കാരൻ!",
+      "action_summary": "Sachin gasps, realizing who it is. Sachin speaks.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Close up",
         "characters_present": [
           {
-            "name": "Annamma",
-            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_KITCHEN",
-          "time_of_day": "Sunday Afternoon",
-          "lighting_palette": "Bright warm kitchen sunlight",
-          "weather": "Clear sunny day",
+          "scene_id": "SCENE_SHOP_SHELTER",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Dim doorway light",
+          "weather": "Rain outside",
           "spatial_blocking": {
-            "Annamma": "Looking at Reenu",
-            "Reenu": "Looking at Annamma"
+            "Sachin": "Looking shocked"
           },
-          "eyeline_direction": "Annamma looks at Reenu",
+          "eyeline_direction": "Looking at the street",
           "persistent_props": [
             "Annamma's gold bangles",
-            "Gold bangle",
             "Reenu's silver wrist watch",
             "Sachin's cross-bag",
-            "Traditional steel cooking pans",
-            "Wrench"
+            "Umbrella"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Apartment Kitchen",
-        "camera": "Medium close-up",
-        "action": "Annamma speaks, mouth moving in lip sync. Reenu's mouth is closed.",
+        "location": "Doorway of a shop",
+        "camera": "Close up on Sachin",
+        "action": "Sachin gasps, realizing who it is. Sachin speaks.",
         "dialogue": {
-          "speaker": "Annamma",
-          "voice_persona": "Soft, maternal, serious.",
+          "speaker": "Sachin",
+          "voice_persona": "Warm, genuine, boyish Malayali youth voice",
           "language": "Malayalam",
-          "script": "നിനക്ക് സച്ചിനെക്കുറിച്ച് ഉറപ്പാണോ റീനൂ?",
-          "line": "നിനക്ക് സച്ചിനെക്കുറിച്ച് ഉറപ്പാണോ റീനൂ?"
+          "script": "അയ്യോ, അതല്ലേ ആ റിയൽ എസ്റ്റേറ്റ്ക്കാരൻ!",
+          "line": "അയ്യോ, അതല്ലേ ആ റിയൽ എസ്റ്റേറ്റ്ക്കാരൻ!"
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Annamma's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "Only Sachin speaks. NO MUSIC. Clean voice audio and natural ambient foley sound effects only."
       }
     }
   ],
