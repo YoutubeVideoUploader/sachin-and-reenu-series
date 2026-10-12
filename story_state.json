@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 6,
+  "total_episodes_produced": 7,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -156,23 +156,35 @@
         "Annamma",
         "Reenu"
       ]
+    },
+    {
+      "episode": 7,
+      "title": "സമയവുമായുള്ള ഓട്ടം (Race Against the Clock)",
+      "summary": "Sachin rushes an ailing Kurian to a clinic through monsoon floods. While recovering, Kurian finds Reenu's London job offer, misinterpreting Sachin's role in her life. The episode ends with a high-stakes lease negotiation.",
+      "cliffhanger": "The owner holds two competing lease agreements in his hands, waiting for Sachin to make his final pitch.",
+      "characters_present": [
+        "Sachin",
+        "Kurian",
+        "Amal"
+      ]
     }
   ],
-  "episode_number": 6,
+  "episode_number": 7,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_SHOP_SHELTER",
-    "time_of_day": "Late Afternoon Monsoon",
-    "lighting_palette": "Dim doorway light",
-    "weather": "Rain outside",
+    "scene_id": "SCENE_OFFICE_NEGOTIATION",
+    "time_of_day": "Evening",
+    "lighting_palette": "Bright office light",
+    "weather": "Rainy",
     "spatial_blocking": {
-      "Sachin": "Looking shocked"
+      "Sachin": "Standing in front of the owner"
     },
-    "eyeline_direction": "Looking at the street",
+    "eyeline_direction": "Sachin looking at the papers",
     "persistent_props": [
-      "Annamma's gold bangles",
+      "Job offer letter",
       "Reenu's silver wrist watch",
       "Sachin's cross-bag",
-      "Umbrella"
+      "Smartphone",
+      "Two lease agreements"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
