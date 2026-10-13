@@ -1,0 +1,2546 @@
+{
+  "season_number": 2,
+  "season_title": "Season 2: Kochi Dreams (കൊച്ചിയിലെ സ്വപ്നങ്ങൾ)",
+  "total_episodes": 10,
+  "total_shots": 100,
+  "episodes": [
+    {
+      "episode_number": 1,
+      "title_english": "The New Beginning",
+      "title_malayalam": "പുതിയൊരു തുടക്കം",
+      "synopsis": "Sachin and Reenu settle into their new Kakkanad apartment, dreaming of their heritage cafe, but a surprise visitor disrupts the peace.",
+      "cliffhanger": "A loud knock at the door reveals Sachin's father, Kurian, standing with three massive suitcases.",
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Unpacking a box of kitchenware, smiling at Reenu who is hanging a fairy light.",
+          "dialogue_malayalam": "റീനു, നമ്മുടെ കൊച്ചിയിലെ ആദ്യത്തെ ദിവസം! ഇത് നമ്മൾ അടിച്ചുപൊളിക്കും.",
+          "location": "Kakkanad apartment living room",
+          "persistent_props": [
+            "Cardboard boxes",
+            "Fairy lights"
+          ],
+          "camera_hint": "Wide shot showing the vibrant, sunlit apartment."
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Reenu",
+          "action": "Adjusting the lights, looking excited.",
+          "dialogue_malayalam": "സച്ചിൻ, നമ്മുടെ കഫേയുടെ കാര്യം ആലോചിക്കുമ്പോൾ എനിക്ക് ഒരു സമാധാനവുമില്ല. അത്രയും ആകാംക്ഷയുണ്ട്!",
+          "location": "Kakkanad apartment living room",
+          "persistent_props": [
+            "Fairy lights"
+          ],
+          "camera_hint": "Close-up on Reenu's expressive face."
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Sachin",
+          "action": "Pulls out a miniature model of their dream cafe.",
+          "dialogue_malayalam": "ഇതാ നോക്ക്, 'ഹെറിറ്റേജ് ഹാർട്ട്സ്'. ഇത് വെറുമൊരു കഫേ മാത്രമല്ല, നമ്മുടെ സ്വപ്നമാണ്.",
+          "location": "Kakkanad apartment living room",
+          "persistent_props": [
+            "Cafe model"
+          ],
+          "camera_hint": "Low-angle shot focusing on the model."
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Third-Person Narrator",
+          "action": "A montage of them arranging furniture and laughing.",
+          "dialogue_malayalam": "കൊച്ചിയിലെ ജീവിതം അവർ പ്രതീക്ഷിച്ചതിലും സുന്ദരമായിരുന്നു.",
+          "location": "Various spots in the apartment",
+          "persistent_props": [
+            "Cleaning supplies"
+          ],
+          "camera_hint": "Fast-paced jump cuts."
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Reenu",
+          "action": "Looking out the balcony at the Kochi skyline.",
+          "dialogue_malayalam": "നമ്മുടെ വീട്ടുകാർ അറിഞ്ഞാൽ എന്ത് പറയും?",
+          "location": "Balcony",
+          "persistent_props": [
+            "Coffee mugs"
+          ],
+          "camera_hint": "Over-the-shoulder shot."
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Sachin",
+          "action": "Joining her on the balcony, wrapping an arm around her.",
+          "dialogue_malayalam": "കുറച്ചു ദിവസം നമ്മൾ മാത്രം മതി. പതുക്കെ അറിയിക്കാം.",
+          "location": "Balcony",
+          "persistent_props": [
+            "Coffee mugs"
+          ],
+          "camera_hint": "Medium shot with sunset lighting."
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Third-Person Narrator",
+          "action": "The doorbell rings suddenly, loud and rhythmic.",
+          "dialogue_malayalam": "പക്ഷേ വിധിക്ക് മറ്റ് ചില പദ്ധതികൾ ഉണ്ടായിരുന്നു.",
+          "location": "Living room",
+          "persistent_props": [
+            "Doorbell"
+          ],
+          "camera_hint": "Quick zoom on the front door."
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Sachin",
+          "action": "Looking confused at the door.",
+          "dialogue_malayalam": "ഈ സമയത്ത് ആരായിരിക്കും? ഡെലിവറി വല്ലതും ആണോ?",
+          "location": "Living room near door",
+          "persistent_props": [],
+          "camera_hint": "Eye-level shot."
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Reenu",
+          "action": "Peeking from behind Sachin.",
+          "dialogue_malayalam": "സൂക്ഷിക്കണേ സച്ചിൻ.",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Focus on Reenu's worried expression."
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Kurian",
+          "action": "Sachin opens the door. Kurian stands there with a huge grin and many bags.",
+          "dialogue_malayalam": "എടാ മോനേ! സർപ്രൈസ്! ഞാൻ ഇവിടെ കുറച്ചു കാലം നിൽക്കാൻ തീരുമാനിച്ചു.",
+          "location": "Doorstep",
+          "persistent_props": [
+            "Large suitcases"
+          ],
+          "camera_hint": "Dramatic low-angle reveal of Kurian."
+        }
+      ]
+    },
+    {
+      "episode_number": 2,
+      "title_english": "The Uninvited Guest",
+      "title_malayalam": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി",
+      "synopsis": "Kurian starts rearranging the house, driving Sachin and Reenu crazy, until a second surprise arrives.",
+      "cliffhanger": "Annamma arrives at the door with even more bags than Kurian.",
+      "shots": [
+        {
+          "shot_number": 11,
+          "speaker": "Sachin",
+          "action": "Staring at Kurian in shock as he marches into the living room.",
+          "dialogue_malayalam": "പപ്പാ... ഇത് എന്താ ഈ കാണിക്കുന്നത്? വിളിച്ചു പറഞ്ഞില്ലല്ലോ!",
+          "location": "Living room",
+          "persistent_props": [
+            "Suitcases"
+          ],
+          "camera_hint": "Close-up on Sachin's wide eyes."
+        },
+        {
+          "shot_number": 12,
+          "speaker": "Kurian",
+          "action": "Dropping bags on the new sofa.",
+          "dialogue_malayalam": "സർപ്രൈസ് എന്ന് പറഞ്ഞാൽ വിളിച്ചു പറയുന്നതാണോടാ? കൊച്ചി എനിക്ക് കാണണ്ടേ?",
+          "location": "Living room",
+          "persistent_props": [
+            "Suitcases"
+          ],
+          "camera_hint": "Tracking shot following Kurian."
+        },
+        {
+          "shot_number": 13,
+          "speaker": "Reenu",
+          "action": "Forcing a polite smile while looking at the mess.",
+          "dialogue_malayalam": "വരൂ പപ്പാ, ഇരിക്കൂ. ചായ എടുക്കട്ടെ?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 14,
+          "speaker": "Kurian",
+          "action": "Inspecting the kitchen and clicking his tongue.",
+          "dialogue_malayalam": "ഈ അടുക്കള ഇങ്ങനെയല്ല ഇരിക്കേണ്ടത്. ഇത് ഞാൻ ശരിയാക്കി തരാം.",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Kitchen utensils"
+          ],
+          "camera_hint": "POV shot of Kurian's inspection."
+        },
+        {
+          "shot_number": 15,
+          "speaker": "Sachin",
+          "action": "Whispering to Reenu in the corner.",
+          "dialogue_malayalam": "റീനു, പപ്പ എല്ലാം നശിപ്പിക്കും. നമ്മൾ എന്ത് ചെയ്യും?",
+          "location": "Kitchen corner",
+          "persistent_props": [],
+          "camera_hint": "Tight close-up of the whisper."
+        },
+        {
+          "shot_number": 16,
+          "speaker": "Reenu",
+          "action": "Whispering back, trying to stay calm.",
+          "dialogue_malayalam": "സാരമില്ല സച്ചിൻ, പപ്പയല്ലേ. കുറച്ചു ദിവസം നിൽക്കട്ടെ.",
+          "location": "Kitchen corner",
+          "persistent_props": [],
+          "camera_hint": "Two-shot."
+        },
+        {
+          "shot_number": 17,
+          "speaker": "Kurian",
+          "action": "Throwing a cushion off the sofa.",
+          "dialogue_malayalam": "ഈ കവർ കൊള്ളില്ല, ഇത് മാറ്റണം. നാളെ തന്നെ കടയിൽ പോകാം.",
+          "location": "Living room",
+          "persistent_props": [
+            "Cushions"
+          ],
+          "camera_hint": "Medium shot showing Kurian's dominance."
+        },
+        {
+          "shot_number": 18,
+          "speaker": "Third-Person Narrator",
+          "action": "Night falls. Sachin and Reenu are exhausted.",
+          "dialogue_malayalam": "ആദ്യത്തെ ദിവസം തന്നെ പപ്പ വീട് കൈക്കലാക്കി.",
+          "location": "Bedroom",
+          "persistent_props": [],
+          "camera_hint": "Dim lighting, slow pan."
+        },
+        {
+          "shot_number": 19,
+          "speaker": "Sachin",
+          "action": "Hearing the doorbell ring again late at night.",
+          "dialogue_malayalam": "ഇനി ഇത് ആരാ? പപ്പയുടെ ഫ്രണ്ട്സ് വല്ലതും ആണോ?",
+          "location": "Bedroom/Hallway",
+          "persistent_props": [],
+          "camera_hint": "Handheld camera following Sachin."
+        },
+        {
+          "shot_number": 20,
+          "speaker": "Annamma",
+          "action": "Sachin opens the door to see his mother, Annamma, smiling widely.",
+          "dialogue_malayalam": "കുര്യൻ ചേട്ടൻ ഇവിടെ ഉണ്ടെന്ന് അറിഞ്ഞു. ഞാനും അങ്ങ് പോന്നു!",
+          "location": "Doorstep",
+          "persistent_props": [
+            "Tiffin carriers",
+            "Bags"
+          ],
+          "camera_hint": "Sudden zoom on Annamma's face."
+        }
+      ]
+    },
+    {
+      "episode_number": 3,
+      "title_english": "The Cafe Dream",
+      "title_malayalam": "കഫേ സ്വപ്നം",
+      "synopsis": "Despite the parental chaos, Sachin and Reenu find a perfect heritage building for their cafe, but a corporate rival emerges.",
+      "cliffhanger": "A wealthy businessman named Shyam claims he has already signed the lease for the same building.",
+      "shots": [
+        {
+          "shot_number": 21,
+          "speaker": "Sachin",
+          "action": "Walking through Fort Kochi with Reenu, looking at old buildings.",
+          "dialogue_malayalam": "പപ്പയും മമ്മിയും വീട്ടിലുണ്ട്. നമുക്ക് കുറച്ചു നേരം സമാധാനമായി കഫേ നോക്കാം.",
+          "location": "Fort Kochi Street",
+          "persistent_props": [
+            "Map/Tablet"
+          ],
+          "camera_hint": "Wide tracking shot."
+        },
+        {
+          "shot_number": 22,
+          "speaker": "Reenu",
+          "action": "Pointing at a beautiful, slightly dilapidated Dutch-style house.",
+          "dialogue_malayalam": "സച്ചിൻ! അത് നോക്ക്! അത് നമ്മുടെ കഫേയ്ക്ക് ചേരുന്ന സ്ഥലമല്ലേ?",
+          "location": "Fort Kochi Street",
+          "persistent_props": [],
+          "camera_hint": "Point-of-view shot of the building."
+        },
+        {
+          "shot_number": 23,
+          "speaker": "Sachin",
+          "action": "Approaching the building with awe.",
+          "dialogue_malayalam": "ഇത് തന്നെ! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' ഇവിടെ തുടങ്ങാം.",
+          "location": "Front of Heritage Building",
+          "persistent_props": [],
+          "camera_hint": "Low-angle grand shot."
+        },
+        {
+          "shot_number": 24,
+          "speaker": "Reenu",
+          "action": "Peeking through the dusty window.",
+          "dialogue_malayalam": "അകത്ത് നല്ല സ്ഥലമുണ്ട്. നമുക്ക് ഇവിടെ ഒരു വായനശാലയും തുടങ്ങാം.",
+          "location": "Heritage Building Window",
+          "persistent_props": [],
+          "camera_hint": "Close-up on Reenu's eyes."
+        },
+        {
+          "shot_number": 25,
+          "speaker": "Third-Person Narrator",
+          "action": "They start dancing a little jig in the street.",
+          "dialogue_malayalam": "അവരുടെ സ്വപ്നങ്ങൾ ചിറക് വിരിക്കുകയായിരുന്നു.",
+          "location": "Fort Kochi Street",
+          "persistent_props": [],
+          "camera_hint": "Whimsical circular camera move."
+        },
+        {
+          "shot_number": 26,
+          "speaker": "Sachin",
+          "action": "Calling the number on the 'To Let' board.",
+          "dialogue_malayalam": "ഹലോ, എനിക്ക് ഈ ബിൽഡിംഗിനെ കുറിച്ച് ഒന്ന് സംസാരിക്കണം.",
+          "location": "Front of Heritage Building",
+          "persistent_props": [
+            "Phone"
+          ],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 27,
+          "speaker": "Reenu",
+          "action": "Seeing a black luxury car pull up.",
+          "dialogue_malayalam": "സച്ചിൻ, ആരെങ്കിലും വരുന്നുണ്ട്.",
+          "location": "Front of Heritage Building",
+          "persistent_props": [
+            "Luxury car"
+          ],
+          "camera_hint": "Focus on the car's chrome grill."
+        },
+        {
+          "shot_number": 28,
+          "speaker": "Shyam",
+          "action": "Stepping out of the car, wearing expensive sunglasses.",
+          "dialogue_malayalam": "നിങ്ങൾ ഇവിടെ എന്ത് ചെയ്യുകയാണ് കുട്ടികളെ?",
+          "location": "Front of Heritage Building",
+          "persistent_props": [
+            "Sunglasses"
+          ],
+          "camera_hint": "Low-angle power shot of Shyam."
+        },
+        {
+          "shot_number": 29,
+          "speaker": "Sachin",
+          "action": "Looking confused.",
+          "dialogue_malayalam": "ഞങ്ങൾ ഈ സ്ഥലം കഫേ തുടങ്ങാൻ വേണ്ടി നോക്കുകയാണ്.",
+          "location": "Front of Heritage Building",
+          "persistent_props": [],
+          "camera_hint": "Two-shot."
+        },
+        {
+          "shot_number": 30,
+          "speaker": "Shyam",
+          "action": "Smirking and holding up a folder.",
+          "dialogue_malayalam": "ക്ഷമിക്കണം, ഈ സ്ഥലം ഞാൻ ഓൾറെഡി ബുക്ക് ചെയ്തു കഴിഞ്ഞു. ഇവിടെ ഒരു വലിയ റെസ്റ്റോറന്റ് വരാൻ പോകുന്നു.",
+          "location": "Front of Heritage Building",
+          "persistent_props": [
+            "Lease folder"
+          ],
+          "camera_hint": "Close-up on the lease document."
+        }
+      ]
+    },
+    {
+      "episode_number": 4,
+      "title_english": "Kitchen Chaos",
+      "title_malayalam": "അടുക്കളയിലെ പുകില്",
+      "synopsis": "Devastated by the building news, Sachin and Reenu return home to find Kurian and Annamma in a massive cooking battle.",
+      "cliffhanger": "A kitchen fire starts as Kurian forgets the stove while arguing with Annamma.",
+      "shots": [
+        {
+          "shot_number": 31,
+          "speaker": "Sachin",
+          "action": "Walking into the apartment, looking dejected.",
+          "dialogue_malayalam": "ആ ശ്യാം എല്ലാം നശിപ്പിച്ചു. നമ്മുടെ കഫേ ഇനി എവിടെ തുടങ്ങും?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Slow, sad pan."
+        },
+        {
+          "shot_number": 32,
+          "speaker": "Reenu",
+          "action": "Trying to comfort him.",
+          "dialogue_malayalam": "സാരമില്ല സച്ചിൻ, നമുക്ക് വേറെ വഴി നോക്കാം. പക്ഷേ ഈ ശബ്ദം എന്താ?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Sound-driven shot."
+        },
+        {
+          "shot_number": 33,
+          "speaker": "Kurian",
+          "action": "Screaming from the kitchen, flour all over his face.",
+          "dialogue_malayalam": "അന്നമ്മേ, മീൻ കറിയിൽ ഇത്രയും മഞ്ഞൾപ്പൊടി ഇടാൻ പാടില്ലെന്ന് ഞാൻ പറഞ്ഞതല്ലേ!",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Flour",
+            "Pot"
+          ],
+          "camera_hint": "Fast zoom into the kitchen."
+        },
+        {
+          "shot_number": 34,
+          "speaker": "Annamma",
+          "action": "Banging a ladle on the counter.",
+          "dialogue_malayalam": "നിങ്ങൾ എന്നെ പഠിപ്പിക്കണ്ട! എന്റെ കറിക്ക് ഒരു പ്രത്യേക രുചിയാണ്.",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Ladle"
+          ],
+          "camera_hint": "Close-up on Annamma's angry face."
+        },
+        {
+          "shot_number": 35,
+          "speaker": "Sachin",
+          "action": "Trying to intervene.",
+          "dialogue_malayalam": "പപ്പാ, മമ്മീ... ഒന്ന് നിർത്തുന്നുണ്ടോ? ഞങ്ങൾക്ക് ഇവിടെ ഒരു വലിയ പ്രശ്നം ഉണ്ട്.",
+          "location": "Kitchen",
+          "persistent_props": [],
+          "camera_hint": "Sachin in the middle of the frame."
+        },
+        {
+          "shot_number": 36,
+          "speaker": "Kurian",
+          "action": "Ignoring Sachin completely.",
+          "dialogue_malayalam": "നീ മിണ്ടാതിരിക്ക് സച്ചിൻ. ഇത് അഭിമാനത്തിന്റെ പോരാട്ടമാണ്!",
+          "location": "Kitchen",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 37,
+          "speaker": "Reenu",
+          "action": "Noticing smoke coming from the back burner.",
+          "dialogue_malayalam": "പപ്പാ, ആ അടുപ്പ്! പുക വരുന്നു!",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Smoke"
+          ],
+          "camera_hint": "Focus on the rising smoke."
+        },
+        {
+          "shot_number": 38,
+          "speaker": "Annamma",
+          "action": "Still arguing, not noticing.",
+          "dialogue_malayalam": "അതൊന്നും ഒന്നുമല്ല, വെറുതെ പേടിപ്പിക്കാതെ.",
+          "location": "Kitchen",
+          "persistent_props": [],
+          "camera_hint": "Side profile shot."
+        },
+        {
+          "shot_number": 39,
+          "speaker": "Sachin",
+          "action": "Grabbing a fire extinguisher.",
+          "dialogue_malayalam": "അയ്യോ! ഇത് കത്തുകയാണല്ലോ!",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Fire extinguisher"
+          ],
+          "camera_hint": "High-action handheld shot."
+        },
+        {
+          "shot_number": 40,
+          "speaker": "Third-Person Narrator",
+          "action": "A flash of orange light erupts from the stove as the curtains catch fire.",
+          "dialogue_malayalam": "ഒരു ചെറിയ വഴക്ക് വലിയൊരു അപകടത്തിലേക്ക് മാറി.",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Fire",
+            "Curtains"
+          ],
+          "camera_hint": "Dramatic freeze-frame on the explosion of flame."
+        }
+      ]
+    },
+    {
+      "episode_number": 5,
+      "title_english": "The Rivalry",
+      "title_malayalam": "മത്സരം",
+      "synopsis": "After the fire is put out, Sachin confronts Shyam again, but Reenu receives a life-changing job offer from London.",
+      "cliffhanger": "Sachin accidentally sees the 'Job Offer: London' email on Reenu's laptop.",
+      "shots": [
+        {
+          "shot_number": 41,
+          "speaker": "Sachin",
+          "action": "Coughing in the smoke-filled kitchen, holding the extinguisher.",
+          "dialogue_malayalam": "ഭാഗ്യം! വലിയ അപകടം ഒഴിവായി.",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Exhausted fire extinguisher"
+          ],
+          "camera_hint": "Low-angle shot through the smoke."
+        },
+        {
+          "shot_number": 42,
+          "speaker": "Kurian",
+          "action": "Looking guilty and quiet.",
+          "dialogue_malayalam": "സച്ചിൻ, സോറിടാ. ഞാൻ അറിഞ്ഞില്ല.",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Close-up on Kurian's sad eyes."
+        },
+        {
+          "shot_number": 43,
+          "speaker": "Reenu",
+          "action": "Cleaning up the mess with a heavy heart.",
+          "dialogue_malayalam": "എല്ലാം കൂടി എന്തിനാ ഇങ്ങനെ സംഭവിക്കുന്നത്?",
+          "location": "Kitchen",
+          "persistent_props": [
+            "Cleaning rag"
+          ],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 44,
+          "speaker": "Sachin",
+          "action": "Determined, putting on his jacket.",
+          "dialogue_malayalam": "ഞാൻ ആ ശ്യാമിനെ പോയി കാണാൻ പോവുകയാണ്. ആ ബിൽഡിംഗ് നമുക്ക് വേണം.",
+          "location": "Apartment Door",
+          "persistent_props": [
+            "Jacket"
+          ],
+          "camera_hint": "Hero shot."
+        },
+        {
+          "shot_number": 45,
+          "speaker": "Third-Person Narrator",
+          "action": "Sachin meets Shyam at a fancy cafe.",
+          "dialogue_malayalam": "സച്ചിൻ തന്റെ സ്വപ്നത്തിന് വേണ്ടി പോരാടാൻ തീരുമാനിച്ചു.",
+          "location": "Fancy Cafe",
+          "persistent_props": [],
+          "camera_hint": "Wide shot of the meeting."
+        },
+        {
+          "shot_number": 46,
+          "speaker": "Shyam",
+          "action": "Laughing at Sachin's request.",
+          "dialogue_malayalam": "നിന്റെ കയ്യിൽ പണമില്ല സച്ചിൻ. ബിസിനസ്സ് വികാരങ്ങൾ കൊണ്ട് ചെയ്യേണ്ടതല്ല.",
+          "location": "Fancy Cafe",
+          "persistent_props": [
+            "Coffee cup"
+          ],
+          "camera_hint": "Over-the-shoulder shot."
+        },
+        {
+          "shot_number": 47,
+          "speaker": "Sachin",
+          "action": "Returning home, frustrated.",
+          "dialogue_malayalam": "അവൻ എന്നെ കളിയാക്കി. പക്ഷേ ഞാൻ തോൽക്കില്ല.",
+          "location": "Apartment hallway",
+          "persistent_props": [],
+          "camera_hint": "Tracking shot."
+        },
+        {
+          "shot_number": 48,
+          "speaker": "Reenu",
+          "action": "Sitting at her laptop, looking conflicted.",
+          "dialogue_malayalam": "(സ്വയം പറയുന്നു) ലണ്ടൻ... ഇത് വലിയൊരു അവസരമാണ്. പക്ഷേ സച്ചിനോട് എങ്ങനെ പറയും?",
+          "location": "Dining table",
+          "persistent_props": [
+            "Laptop"
+          ],
+          "camera_hint": "Close-up on the screen."
+        },
+        {
+          "shot_number": 49,
+          "speaker": "Sachin",
+          "action": "Walking behind Reenu to give her a hug.",
+          "dialogue_malayalam": "റീനു, നമുക്ക് വേറെ സ്ഥലം നോക്കാം... ഏതാ ഈ മെയിൽ?",
+          "location": "Dining table",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 50,
+          "speaker": "Third-Person Narrator",
+          "action": "Sachin's eyes widen as he reads the subject line: 'Job Offer: Senior Designer, London'.",
+          "dialogue_malayalam": "അവരുടെ പ്രണയത്തിന് മുന്നിൽ വലിയൊരു കടമ്പ കൂടി.",
+          "location": "Dining table",
+          "persistent_props": [
+            "Laptop"
+          ],
+          "camera_hint": "Extreme close-up on Sachin's shocked face."
+        }
+      ]
+    },
+    {
+      "episode_number": 6,
+      "title_english": "Decisions, Decisions",
+      "title_malayalam": "തീരുമാനങ്ങൾ",
+      "synopsis": "Tensions rise as Sachin and Reenu argue about the London offer. Sachin discovers an old letter Reenu wrote to herself.",
+      "cliffhanger": "Sachin reads a line in the letter: 'I will never let my dreams destroy his.'",
+      "shots": [
+        {
+          "shot_number": 51,
+          "speaker": "Sachin",
+          "action": "Backing away from the laptop, voice trembling.",
+          "dialogue_malayalam": "ലണ്ടൻ? നീ എന്നോട് പറയാതെ ഇതിന് അപ്ലൈ ചെയ്തോ?",
+          "location": "Dining table",
+          "persistent_props": [
+            "Laptop"
+          ],
+          "camera_hint": "Low-angle shot showing tension."
+        },
+        {
+          "shot_number": 52,
+          "speaker": "Reenu",
+          "action": "Closing the laptop quickly, standing up.",
+          "dialogue_malayalam": "സച്ചിൻ, അത് വെറുതെ ഒരു അപ്ലിക്കേഷൻ ആയിരുന്നു. എനിക്ക് കിട്ടുമെന്ന് കരുതിയതല്ല.",
+          "location": "Dining table",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 53,
+          "speaker": "Sachin",
+          "action": "Walking to the balcony, looking away.",
+          "dialogue_malayalam": "അപ്പോൾ നമ്മുടെ കഫേ? നമ്മുടെ സ്വപ്നങ്ങൾ?",
+          "location": "Balcony",
+          "persistent_props": [],
+          "camera_hint": "Back shot of Sachin."
+        },
+        {
+          "shot_number": 54,
+          "speaker": "Reenu",
+          "action": "Following him, eyes tearing up.",
+          "dialogue_malayalam": "നമുക്ക് അവിടെയും എന്തെങ്കിലും തുടങ്ങാമല്ലോ. പ്ലീസ് സച്ചിൻ, മനസ്സിലാക്കാൻ നോക്ക്.",
+          "location": "Balcony",
+          "persistent_props": [],
+          "camera_hint": "Two-shot with soft lighting."
+        },
+        {
+          "shot_number": 55,
+          "speaker": "Kurian",
+          "action": "Watching them from the shadows of the living room.",
+          "dialogue_malayalam": "അവർ തമ്മിൽ പ്രശ്നമാണല്ലോ. നമ്മൾ കാരണം ആണോ?",
+          "location": "Living room shadows",
+          "persistent_props": [],
+          "camera_hint": "Obscured shot of Kurian."
+        },
+        {
+          "shot_number": 56,
+          "speaker": "Annamma",
+          "action": "Nodding sadly.",
+          "dialogue_malayalam": "നമുക്ക് അവരെ സഹായിക്കണം. പക്ഷേ എങ്ങനെ?",
+          "location": "Living room shadows",
+          "persistent_props": [],
+          "camera_hint": "Close-up on Annamma."
+        },
+        {
+          "shot_number": 57,
+          "speaker": "Sachin",
+          "action": "Rummaging through a drawer for a charger and finding an old diary.",
+          "dialogue_malayalam": "ഇത് റീനുവിന്റെ പഴയ ഡയറി ആണല്ലോ.",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Old diary"
+          ],
+          "camera_hint": "Close-up on the dusty diary."
+        },
+        {
+          "shot_number": 58,
+          "speaker": "Third-Person Narrator",
+          "action": "Sachin opens a page and a loose letter falls out.",
+          "dialogue_malayalam": "ഭൂതകാലത്തിലെ ചില വാക്കുകൾക്ക് വർത്തമാനകാലത്തെ മാറ്റാൻ കഴിയും.",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Letter"
+          ],
+          "camera_hint": "Slow motion of the letter falling."
+        },
+        {
+          "shot_number": 59,
+          "speaker": "Sachin",
+          "action": "Reading the letter, his expression softening.",
+          "dialogue_malayalam": "ഇത് അവൾ പണ്ട് എഴുതിയതാണോ?",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Letter"
+          ],
+          "camera_hint": "Tight close-up on Sachin's eyes."
+        },
+        {
+          "shot_number": 60,
+          "speaker": "Third-Person Narrator",
+          "action": "The camera zooms in on the handwriting: 'എന്റെ സ്വപ്നങ്ങൾ അവന്റേതിനെ തകർക്കാൻ ഞാൻ അനുവദിക്കില്ല.'",
+          "dialogue_malayalam": "ത്യാഗത്തിന്റെ ആ വരികൾ സച്ചിനെ ഉലച്ചു കളഞ്ഞു.",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Letter"
+          ],
+          "camera_hint": "Macro shot of the text."
+        }
+      ]
+    },
+    {
+      "episode_number": 7,
+      "title_english": "The Heritage Hunt",
+      "title_malayalam": "പൈതൃക വേട്ട",
+      "synopsis": "Sachin decides to support Reenu, but they discover a secret legal loophole that might help them get the heritage building back.",
+      "cliffhanger": "While inspecting the building's basement, a hidden wall crumbles, revealing an antique safe.",
+      "shots": [
+        {
+          "shot_number": 61,
+          "speaker": "Sachin",
+          "action": "Holding Reenu's hands, looking into her eyes.",
+          "dialogue_malayalam": "റീനു, നീ ലണ്ടനിൽ പൊയ്ക്കോ. ഞാൻ നിന്റെ കൂടെ വരാം. നമ്മുടെ കഫേ നമുക്ക് അവിടെ തുടങ്ങാം.",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Warm, emotional medium shot."
+        },
+        {
+          "shot_number": 62,
+          "speaker": "Reenu",
+          "action": "Surprised and crying with joy.",
+          "dialogue_malayalam": "സച്ചിൻ... സത്യമാണോ? നീ എനിക്ക് വേണ്ടി ഇത്രയും ചെയ്യുമോ?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Close-up on Reenu."
+        },
+        {
+          "shot_number": 63,
+          "speaker": "Kurian",
+          "action": "Entering with a legal document.",
+          "dialogue_malayalam": "നിൽക്ക്! ഈ ലണ്ടൻ യാത്ര പിന്നെ ആവാം. ഞാൻ ഒരു കാര്യം കണ്ടുപിടിച്ചു.",
+          "location": "Living room",
+          "persistent_props": [
+            "Legal paper"
+          ],
+          "camera_hint": "Sudden entrance shot."
+        },
+        {
+          "shot_number": 64,
+          "speaker": "Sachin",
+          "action": "Taking the paper.",
+          "dialogue_malayalam": "ഇതെന്താ പപ്പാ?",
+          "location": "Living room",
+          "persistent_props": [
+            "Legal paper"
+          ],
+          "camera_hint": "Close-up on the paper."
+        },
+        {
+          "shot_number": 65,
+          "speaker": "Kurian",
+          "action": "Pointing at a clause.",
+          "dialogue_malayalam": "ആ ബിൽഡിംഗ് ഒരു ഹെറിറ്റേജ് സൈറ്റ് ആണ്. അവിടെ വലിയ മാറ്റങ്ങൾ വരുത്താൻ ശ്യാമിന് കഴിയില്ല. പക്ഷേ ഒരു ചെറിയ കഫേയ്ക്ക് അനുമതി കിട്ടും!",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Triumphant shot of Kurian."
+        },
+        {
+          "shot_number": 66,
+          "speaker": "Reenu",
+          "action": "Hope returning to her face.",
+          "dialogue_malayalam": "അപ്പോൾ നമുക്ക് ആ സ്ഥലം തിരിച്ചു കിട്ടാൻ ചാൻസ് ഉണ്ടോ?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 67,
+          "speaker": "Third-Person Narrator",
+          "action": "They all go back to the building to inspect it with a lawyer.",
+          "dialogue_malayalam": "അവർ തങ്ങളുടെ സ്വപ്നത്തിന് വേണ്ടി അവസാനമായി ഒരു ശ്രമം കൂടി നടത്തി.",
+          "location": "Heritage Building exterior",
+          "persistent_props": [],
+          "camera_hint": "Wide shot of the group."
+        },
+        {
+          "shot_number": 68,
+          "speaker": "Sachin",
+          "action": "Going into the dark basement with a flashlight.",
+          "dialogue_malayalam": "ഇവിടെ എന്തോ ഉണ്ടല്ലോ.",
+          "location": "Basement",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Low-light suspense shot."
+        },
+        {
+          "shot_number": 69,
+          "speaker": "Reenu",
+          "action": "Touching a damp wall.",
+          "dialogue_malayalam": "ഈ ഭിത്തി ഇളകി ഇരിക്കുകയാണല്ലോ.",
+          "location": "Basement",
+          "persistent_props": [],
+          "camera_hint": "Close-up on hand touching bricks."
+        },
+        {
+          "shot_number": 70,
+          "speaker": "Third-Person Narrator",
+          "action": "The wall collapses with a loud crash, revealing a heavy iron safe behind it.",
+          "dialogue_malayalam": "പഴയ ആ കെട്ടിടം അതിന്റെ രഹസ്യങ്ങൾ വെളിപ്പെടുത്തി തുടങ്ങി.",
+          "location": "Basement",
+          "persistent_props": [
+            "Iron safe",
+            "Dust"
+          ],
+          "camera_hint": "Dynamic crash zoom on the safe."
+        }
+      ]
+    },
+    {
+      "episode_number": 8,
+      "title_english": "Financial Woes",
+      "title_malayalam": "സാമ്പത്തിക പ്രതിസന്ധി",
+      "synopsis": "The safe contains old documents proving the building belongs to a trust, not Shyam. However, the bank refuses Sachin's loan for renovations.",
+      "cliffhanger": "The bank manager slides a 'Rejected' stamp onto their application.",
+      "shots": [
+        {
+          "shot_number": 71,
+          "speaker": "Sachin",
+          "action": "Blowing dust off the documents found in the safe.",
+          "dialogue_malayalam": "ഇത് നോക്ക്! ഈ ബിൽഡിംഗ് ശ്യാമിന്റേതല്ല, ഇതൊരു ട്രസ്റ്റിന്റെതാണ്.",
+          "location": "Basement",
+          "persistent_props": [
+            "Old documents"
+          ],
+          "camera_hint": "Close-up on the text."
+        },
+        {
+          "shot_number": 72,
+          "speaker": "Reenu",
+          "action": "Smiling broadly.",
+          "dialogue_malayalam": "അപ്പോൾ ശ്യാമിനെ നമുക്ക് പുറത്താക്കാം!",
+          "location": "Basement",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 73,
+          "speaker": "Kurian",
+          "action": "Patting Sachin's back.",
+          "dialogue_malayalam": "പക്ഷേ ഇത് നന്നാക്കാൻ ഒരുപാട് പണം വേണ്ടി വരും മോനേ.",
+          "location": "Basement",
+          "persistent_props": [],
+          "camera_hint": "Two-shot."
+        },
+        {
+          "shot_number": 74,
+          "speaker": "Third-Person Narrator",
+          "action": "Sachin and Reenu visit a bank the next day.",
+          "dialogue_malayalam": "അടുത്ത കടമ്പ പണമായിരുന്നു.",
+          "location": "Bank Office",
+          "persistent_props": [
+            "Briefcase"
+          ],
+          "camera_hint": "Formal wide shot."
+        },
+        {
+          "shot_number": 75,
+          "speaker": "Bank Manager",
+          "action": "Looking through their papers with a stern face.",
+          "dialogue_malayalam": "നിങ്ങൾക്ക് ഈ ബിസിനസ്സിൽ മുൻപരിചയം ഒന്നുമില്ലല്ലോ.",
+          "location": "Bank Office",
+          "persistent_props": [
+            "Glasses"
+          ],
+          "camera_hint": "POV from Sachin's perspective."
+        },
+        {
+          "shot_number": 76,
+          "speaker": "Sachin",
+          "action": "Leaning forward, pleading.",
+          "dialogue_malayalam": "ഞങ്ങൾക്ക് വലിയ പ്ലാനുകൾ ഉണ്ട് സർ. ഇത് വിജയിക്കും.",
+          "location": "Bank Office",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 77,
+          "speaker": "Reenu",
+          "action": "Showing the design on her tablet.",
+          "dialogue_malayalam": "നോക്കൂ സർ, ഇതാണ് ഞങ്ങളുടെ ഡിസൈൻ. കൊച്ചിയിൽ ഇങ്ങനെയൊന്ന് വേറെയില്ല.",
+          "location": "Bank Office",
+          "persistent_props": [
+            "Tablet"
+          ],
+          "camera_hint": "Close-up on the tablet screen."
+        },
+        {
+          "shot_number": 78,
+          "speaker": "Bank Manager",
+          "action": "Sighing and shaking his head.",
+          "dialogue_malayalam": "റിസ്ക് കൂടുതലാണ്. എനിക്ക് ക്ഷമിക്കണം.",
+          "location": "Bank Office",
+          "persistent_props": [],
+          "camera_hint": "Side profile shot."
+        },
+        {
+          "shot_number": 79,
+          "speaker": "Sachin",
+          "action": "His face falling in disappointment.",
+          "dialogue_malayalam": "സർ, ദയവായി ഒന്ന് കൂടി ആലോചിക്കൂ.",
+          "location": "Bank Office",
+          "persistent_props": [],
+          "camera_hint": "Close-up on Sachin's trembling lip."
+        },
+        {
+          "shot_number": 80,
+          "speaker": "Third-Person Narrator",
+          "action": "The manager slams the 'REJECTED' stamp onto the file with a loud thud.",
+          "dialogue_malayalam": "എല്ലാം കൈവിട്ടു പോകുന്ന അവസ്ഥ.",
+          "location": "Bank Office",
+          "persistent_props": [
+            "Rejected stamp"
+          ],
+          "camera_hint": "Extreme close-up on the red stamp."
+        }
+      ]
+    },
+    {
+      "episode_number": 9,
+      "title_english": "The Grand Opening Prep",
+      "title_malayalam": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ",
+      "synopsis": "Kurian and Annamma use their life savings to fund the cafe. As they prepare for the opening, a massive storm hits Kochi.",
+      "cliffhanger": "The power goes out and the roof starts leaking directly over the expensive coffee machine.",
+      "shots": [
+        {
+          "shot_number": 81,
+          "speaker": "Kurian",
+          "action": "Handing Sachin a check in the living room.",
+          "dialogue_malayalam": "ഇത് വെച്ചോ മോനേ. ഇത് ഞങ്ങളുടെ സമ്പാദ്യമാണ്.",
+          "location": "Living room",
+          "persistent_props": [
+            "Check"
+          ],
+          "camera_hint": "Emotional close-up on the hands."
+        },
+        {
+          "shot_number": 82,
+          "speaker": "Sachin",
+          "action": "Hugging his father, tears in his eyes.",
+          "dialogue_malayalam": "പപ്പാ... ഇത് വേണ്ട. ഇത് നിങ്ങളുടെ റിട്ടയർമെന്റ് പണമല്ലേ?",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Wide emotional shot."
+        },
+        {
+          "shot_number": 83,
+          "speaker": "Annamma",
+          "action": "Smiling warmly at Reenu.",
+          "dialogue_malayalam": "നിങ്ങളുടെ സ്വപ്നത്തേക്കാൾ വലുതല്ല ഞങ്ങൾക്ക് ഈ പണം.",
+          "location": "Living room",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 84,
+          "speaker": "Third-Person Narrator",
+          "action": "A montage of everyone working together to paint and decorate the cafe.",
+          "dialogue_malayalam": "കുടുംബം ഒന്നിച്ചപ്പോൾ സ്വപ്നങ്ങൾക്ക് നിറം വെച്ചു.",
+          "location": "Heritage Cafe Interior",
+          "persistent_props": [
+            "Paint brushes",
+            "Plants"
+          ],
+          "camera_hint": "Fast-paced, upbeat montage."
+        },
+        {
+          "shot_number": 85,
+          "speaker": "Reenu",
+          "action": "Placing the 'Heritage Hearts' sign above the door.",
+          "dialogue_malayalam": "നാളെയാണ് ആ വലിയ ദിവസം!",
+          "location": "Cafe Front",
+          "persistent_props": [
+            "Cafe sign"
+          ],
+          "camera_hint": "Low-angle looking up at the sign."
+        },
+        {
+          "shot_number": 86,
+          "speaker": "Sachin",
+          "action": "Testing the new espresso machine.",
+          "dialogue_malayalam": "കാപ്പി റെഡി! മണം വരുന്നുണ്ടോ?",
+          "location": "Cafe Counter",
+          "persistent_props": [
+            "Espresso machine"
+          ],
+          "camera_hint": "Close-up on the coffee dripping."
+        },
+        {
+          "shot_number": 87,
+          "speaker": "Third-Person Narrator",
+          "action": "Suddenly, thunder rumbles and heavy rain starts lashing against the windows.",
+          "dialogue_malayalam": "പ്രകൃതിയും അവരെ പരീക്ഷിക്കാൻ തീരുമാനിച്ചു.",
+          "location": "Cafe Interior",
+          "persistent_props": [
+            "Rain"
+          ],
+          "camera_hint": "Focus on the window with raindrops."
+        },
+        {
+          "shot_number": 88,
+          "speaker": "Reenu",
+          "action": "Looking worriedly at the ceiling.",
+          "dialogue_malayalam": "ഈ മഴ ഇത്രയും കൂടുമെന്ന് കരുതിയില്ല.",
+          "location": "Cafe Interior",
+          "persistent_props": [],
+          "camera_hint": "High-angle shot."
+        },
+        {
+          "shot_number": 89,
+          "speaker": "Sachin",
+          "action": "The lights flicker and then go completely dark.",
+          "dialogue_malayalam": "അയ്യോ, കറന്റ് പോയി!",
+          "location": "Cafe Interior",
+          "persistent_props": [],
+          "camera_hint": "Sudden blackout (pitch black screen)."
+        },
+        {
+          "shot_number": 90,
+          "speaker": "Third-Person Narrator",
+          "action": "A drop of water falls from the ceiling directly onto the control panel of the coffee machine with a 'sizzle' sound.",
+          "dialogue_malayalam": "നാളെ ഉദ്ഘാടനം നടക്കുമോ?",
+          "location": "Cafe Counter",
+          "persistent_props": [
+            "Water drop",
+            "Machine"
+          ],
+          "camera_hint": "Slow-motion macro shot of the water drop."
+        }
+      ]
+    },
+    {
+      "episode_number": 10,
+      "title_english": "The Grand Opening",
+      "title_malayalam": "മംഗളകരമായ തുടക്കം",
+      "synopsis": "Against all odds, the cafe opens. Sachin and Reenu decide to stay together in Kochi, balancing their dreams and family.",
+      "cliffhanger": "None. The season ends with a celebratory payoff.",
+      "shots": [
+        {
+          "shot_number": 91,
+          "speaker": "Sachin",
+          "action": "Covering the machine with his jacket in the dark.",
+          "dialogue_malayalam": "റീനു, വേഗം ഒരു ബക്കറ്റ് എടുക്ക്! ഇത് നനയാൻ പാടില്ല.",
+          "location": "Cafe Counter",
+          "persistent_props": [
+            "Jacket",
+            "Bucket"
+          ],
+          "camera_hint": "Fast-paced handheld in low light."
+        },
+        {
+          "shot_number": 92,
+          "speaker": "Kurian",
+          "action": "Coming in with a flashlight and tools.",
+          "dialogue_malayalam": "പേടിക്കണ്ടടാ, ഞാൻ ഇത് ശരിയാക്കാം. പഴയ വീടല്ലേ, ചെറിയ പണികൾ കാണും.",
+          "location": "Cafe Interior",
+          "persistent_props": [
+            "Flashlight",
+            "Wrench"
+          ],
+          "camera_hint": "Reassuring medium shot."
+        },
+        {
+          "shot_number": 93,
+          "speaker": "Third-Person Narrator",
+          "action": "Morning arrives. The sun is shining, and the cafe looks beautiful.",
+          "dialogue_malayalam": "മഴയ്ക്ക് ശേഷം തെളിഞ്ഞ സൂര്യപ്രകാശം പോലെ അവരുടെ മുഖങ്ങളും തിളങ്ങി.",
+          "location": "Cafe Exterior",
+          "persistent_props": [
+            "Sunlight"
+          ],
+          "camera_hint": "Wide, sweeping crane shot."
+        },
+        {
+          "shot_number": 94,
+          "speaker": "Reenu",
+          "action": "Cutting the ribbon at the entrance.",
+          "dialogue_malayalam": "സ്വാഗതം! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' തുറന്നിരിക്കുന്നു.",
+          "location": "Cafe Entrance",
+          "persistent_props": [
+            "Ribbon",
+            "Scissors"
+          ],
+          "camera_hint": "Close-up on the ribbon cutting."
+        },
+        {
+          "shot_number": 95,
+          "speaker": "Third-Person Narrator",
+          "action": "Crowds pour in, including friends from Season 1. The cafe is a hit.",
+          "dialogue_malayalam": "കൊച്ചി ആ സ്വപ്നത്തെ ഇരുകൈയ്യും നീട്ടി സ്വീകരിച്ചു.",
+          "location": "Cafe Interior",
+          "persistent_props": [
+            "Coffee cups",
+            "Pastries"
+          ],
+          "camera_hint": "Bustling wide shot."
+        },
+        {
+          "shot_number": 96,
+          "speaker": "Shyam",
+          "action": "Walking in, looking defeated but respectful.",
+          "dialogue_malayalam": "സമ്മതിച്ചിരിക്കുന്നു. നിങ്ങൾ ജയിച്ചു. ഒരു കാപ്പി കിട്ടുമോ?",
+          "location": "Cafe Counter",
+          "persistent_props": [],
+          "camera_hint": "Medium shot."
+        },
+        {
+          "shot_number": 97,
+          "speaker": "Sachin",
+          "action": "Serving Shyam with a smile.",
+          "dialogue_malayalam": "തീർച്ചയായും സർ. ഇത് ഞങ്ങളുടെ സ്പെഷ്യൽ ആണ്.",
+          "location": "Cafe Counter",
+          "persistent_props": [
+            "Coffee"
+          ],
+          "camera_hint": "Over-the-shoulder shot."
+        },
+        {
+          "shot_number": 98,
+          "speaker": "Reenu",
+          "action": "Taking Sachin aside to the balcony.",
+          "dialogue_malayalam": "സച്ചിൻ, ഞാൻ ആ ലണ്ടൻ ഓഫർ വേണ്ടെന്ന് വെച്ചു. എനിക്ക് ഇവിടെ നിന്റെ കൂടെ ഇരുന്നാൽ മതി.",
+          "location": "Cafe Balcony",
+          "persistent_props": [],
+          "camera_hint": "Intimate close-up."
+        },
+        {
+          "shot_number": 99,
+          "speaker": "Sachin",
+          "action": "Looking at the Kochi sunset with her.",
+          "dialogue_malayalam": "നമ്മൾ ഒരുമിച്ച് ഉണ്ടെങ്കിൽ ഏത് നാടും ലണ്ടൻ പോലെ സുന്ദരമായിരിക്കും.",
+          "location": "Cafe Balcony",
+          "persistent_props": [],
+          "camera_hint": "Profile shot of the couple."
+        },
+        {
+          "shot_number": 100,
+          "speaker": "Third-Person Narrator",
+          "action": "The camera pulls back to show the glowing cafe, the happy family inside, and Sachin and Reenu holding hands on the balcony.",
+          "dialogue_malayalam": "ചില സ്വപ്നങ്ങൾ പൂർത്തിയാകാൻ സ്നേഹം മാത്രം മതി.",
+          "location": "Full Cafe Exterior",
+          "persistent_props": [
+            "Sunset"
+          ],
+          "camera_hint": "Grand aerial pull-back shot ending on a heart-shaped bokeh."
+        }
+      ]
+    }
+  ],
+  "flattened_shots": [
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 1,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Sachin",
+      "action": "Unpacking a box of kitchenware, smiling at Reenu who is hanging a fairy light.",
+      "dialogue_malayalam": "റീനു, നമ്മുടെ കൊച്ചിയിലെ ആദ്യത്തെ ദിവസം! ഇത് നമ്മൾ അടിച്ചുപൊളിക്കും.",
+      "location": "Kakkanad apartment living room",
+      "persistent_props": [
+        "Cardboard boxes",
+        "Fairy lights"
+      ],
+      "camera_hint": "Wide shot showing the vibrant, sunlit apartment.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 2,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Reenu",
+      "action": "Adjusting the lights, looking excited.",
+      "dialogue_malayalam": "സച്ചിൻ, നമ്മുടെ കഫേയുടെ കാര്യം ആലോചിക്കുമ്പോൾ എനിക്ക് ഒരു സമാധാനവുമില്ല. അത്രയും ആകാംക്ഷയുണ്ട്!",
+      "location": "Kakkanad apartment living room",
+      "persistent_props": [
+        "Fairy lights"
+      ],
+      "camera_hint": "Close-up on Reenu's expressive face.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 3,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Sachin",
+      "action": "Pulls out a miniature model of their dream cafe.",
+      "dialogue_malayalam": "ഇതാ നോക്ക്, 'ഹെറിറ്റേജ് ഹാർട്ട്സ്'. ഇത് വെറുമൊരു കഫേ മാത്രമല്ല, നമ്മുടെ സ്വപ്നമാണ്.",
+      "location": "Kakkanad apartment living room",
+      "persistent_props": [
+        "Cafe model"
+      ],
+      "camera_hint": "Low-angle shot focusing on the model.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 4,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Third-Person Narrator",
+      "action": "A montage of them arranging furniture and laughing.",
+      "dialogue_malayalam": "കൊച്ചിയിലെ ജീവിതം അവർ പ്രതീക്ഷിച്ചതിലും സുന്ദരമായിരുന്നു.",
+      "location": "Various spots in the apartment",
+      "persistent_props": [
+        "Cleaning supplies"
+      ],
+      "camera_hint": "Fast-paced jump cuts.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 5,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Reenu",
+      "action": "Looking out the balcony at the Kochi skyline.",
+      "dialogue_malayalam": "നമ്മുടെ വീട്ടുകാർ അറിഞ്ഞാൽ എന്ത് പറയും?",
+      "location": "Balcony",
+      "persistent_props": [
+        "Coffee mugs"
+      ],
+      "camera_hint": "Over-the-shoulder shot.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 6,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Sachin",
+      "action": "Joining her on the balcony, wrapping an arm around her.",
+      "dialogue_malayalam": "കുറച്ചു ദിവസം നമ്മൾ മാത്രം മതി. പതുക്കെ അറിയിക്കാം.",
+      "location": "Balcony",
+      "persistent_props": [
+        "Coffee mugs"
+      ],
+      "camera_hint": "Medium shot with sunset lighting.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 7,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Third-Person Narrator",
+      "action": "The doorbell rings suddenly, loud and rhythmic.",
+      "dialogue_malayalam": "പക്ഷേ വിധിക്ക് മറ്റ് ചില പദ്ധതികൾ ഉണ്ടായിരുന്നു.",
+      "location": "Living room",
+      "persistent_props": [
+        "Doorbell"
+      ],
+      "camera_hint": "Quick zoom on the front door.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 8,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Sachin",
+      "action": "Looking confused at the door.",
+      "dialogue_malayalam": "ഈ സമയത്ത് ആരായിരിക്കും? ഡെലിവറി വല്ലതും ആണോ?",
+      "location": "Living room near door",
+      "persistent_props": [],
+      "camera_hint": "Eye-level shot.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 9,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Reenu",
+      "action": "Peeking from behind Sachin.",
+      "dialogue_malayalam": "സൂക്ഷിക്കണേ സച്ചിൻ.",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Focus on Reenu's worried expression.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 1,
+      "shot_number": 10,
+      "episode_title": "പുതിയൊരു തുടക്കം (The New Beginning)",
+      "speaker": "Kurian",
+      "action": "Sachin opens the door. Kurian stands there with a huge grin and many bags.",
+      "dialogue_malayalam": "എടാ മോനേ! സർപ്രൈസ്! ഞാൻ ഇവിടെ കുറച്ചു കാലം നിൽക്കാൻ തീരുമാനിച്ചു.",
+      "location": "Doorstep",
+      "persistent_props": [
+        "Large suitcases"
+      ],
+      "camera_hint": "Dramatic low-angle reveal of Kurian.",
+      "status": "Active"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 1,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Sachin",
+      "action": "Staring at Kurian in shock as he marches into the living room.",
+      "dialogue_malayalam": "പപ്പാ... ഇത് എന്താ ഈ കാണിക്കുന്നത്? വിളിച്ചു പറഞ്ഞില്ലല്ലോ!",
+      "location": "Living room",
+      "persistent_props": [
+        "Suitcases"
+      ],
+      "camera_hint": "Close-up on Sachin's wide eyes.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 2,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Kurian",
+      "action": "Dropping bags on the new sofa.",
+      "dialogue_malayalam": "സർപ്രൈസ് എന്ന് പറഞ്ഞാൽ വിളിച്ചു പറയുന്നതാണോടാ? കൊച്ചി എനിക്ക് കാണണ്ടേ?",
+      "location": "Living room",
+      "persistent_props": [
+        "Suitcases"
+      ],
+      "camera_hint": "Tracking shot following Kurian.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 3,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Reenu",
+      "action": "Forcing a polite smile while looking at the mess.",
+      "dialogue_malayalam": "വരൂ പപ്പാ, ഇരിക്കൂ. ചായ എടുക്കട്ടെ?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 4,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Kurian",
+      "action": "Inspecting the kitchen and clicking his tongue.",
+      "dialogue_malayalam": "ഈ അടുക്കള ഇങ്ങനെയല്ല ഇരിക്കേണ്ടത്. ഇത് ഞാൻ ശരിയാക്കി തരാം.",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Kitchen utensils"
+      ],
+      "camera_hint": "POV shot of Kurian's inspection.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 5,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Sachin",
+      "action": "Whispering to Reenu in the corner.",
+      "dialogue_malayalam": "റീനു, പപ്പ എല്ലാം നശിപ്പിക്കും. നമ്മൾ എന്ത് ചെയ്യും?",
+      "location": "Kitchen corner",
+      "persistent_props": [],
+      "camera_hint": "Tight close-up of the whisper.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 6,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Reenu",
+      "action": "Whispering back, trying to stay calm.",
+      "dialogue_malayalam": "സാരമില്ല സച്ചിൻ, പപ്പയല്ലേ. കുറച്ചു ദിവസം നിൽക്കട്ടെ.",
+      "location": "Kitchen corner",
+      "persistent_props": [],
+      "camera_hint": "Two-shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 7,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Kurian",
+      "action": "Throwing a cushion off the sofa.",
+      "dialogue_malayalam": "ഈ കവർ കൊള്ളില്ല, ഇത് മാറ്റണം. നാളെ തന്നെ കടയിൽ പോകാം.",
+      "location": "Living room",
+      "persistent_props": [
+        "Cushions"
+      ],
+      "camera_hint": "Medium shot showing Kurian's dominance.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 8,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Third-Person Narrator",
+      "action": "Kurian smiles warmly and pats Sachin on the shoulder, giving his wholehearted blessing for the cafe project.",
+      "dialogue_malayalam": "മോനെ സച്ചിൻ, നിന്റെ സ്വപ്നം മനോഹരമാണ്. ഞാൻ ഒപ്പമുണ്ട്.",
+      "location": "Bedroom",
+      "persistent_props": [],
+      "camera_hint": "Dim lighting, slow pan.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 9,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Sachin",
+      "action": "Sachin and Reenu look at each other, surprised by the doorbell ringing late at night.",
+      "dialogue_malayalam": "ഇനി ഇത് ആരാ? പപ്പയുടെ ഫ്രണ്ട്സ് വല്ലതും ആണോ?",
+      "location": "Bedroom/Hallway",
+      "persistent_props": [],
+      "camera_hint": "Handheld camera following Sachin.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 2,
+      "shot_number": 10,
+      "episode_title": "ക്ഷണിക്കപ്പെടാത്ത അതിഥി (The Uninvited Guest)",
+      "speaker": "Annamma",
+      "action": "Sachin opens the door to see his mother, Annamma, smiling widely with luggage.",
+      "dialogue_malayalam": "കുര്യൻ ചേട്ടൻ ഇവിടെ ഉണ്ടെന്ന് അറിഞ്ഞു. ഞാനും അങ്ങ് പോന്നു!",
+      "location": "Doorstep",
+      "persistent_props": [
+        "Tiffin carriers",
+        "Bags"
+      ],
+      "camera_hint": "Sudden zoom on Annamma's face.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 1,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Sachin",
+      "action": "Sachin and Reenu walk through Fort Kochi, feeling relieved that the parents are occupied.",
+      "dialogue_malayalam": "പപ്പയും മമ്മിയും വീട്ടിലുണ്ട്. നമുക്ക് കുറച്ചു നേരം സമാധാനമായി കഫേ നോക്കാം.",
+      "location": "Fort Kochi Street",
+      "persistent_props": [
+        "Map/Tablet"
+      ],
+      "camera_hint": "Wide tracking shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 2,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Reenu",
+      "action": "Reenu points at a beautiful, slightly dilapidated Dutch-style house.",
+      "dialogue_malayalam": "സച്ചിൻ! അത് നോക്ക്! അത് നമ്മുടെ കഫേയ്ക്ക് ചേരുന്ന സ്ഥലമല്ലേ?",
+      "location": "Fort Kochi Street",
+      "persistent_props": [],
+      "camera_hint": "Point-of-view shot of the building.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 3,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Sachin",
+      "action": "Sachin approaches the building with awe, imagining the potential.",
+      "dialogue_malayalam": "ഇത് തന്നെ! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' ഇവിടെ തുടങ്ങാം.",
+      "location": "Front of Heritage Building",
+      "persistent_props": [],
+      "camera_hint": "Low-angle grand shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 4,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Reenu",
+      "action": "Sachin peeks through the dusty window, seeing the spacious interior.",
+      "dialogue_malayalam": "അകത്ത് നല്ല സ്ഥലമുണ്ട്. നമുക്ക് ഇവിടെ ഒരു വായനശാലയും തുടങ്ങാം.",
+      "location": "Heritage Building Window",
+      "persistent_props": [],
+      "camera_hint": "Close-up on Reenu's eyes.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 5,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Third-Person Narrator",
+      "action": "They start dancing a little jig in the street in pure excitement.",
+      "dialogue_malayalam": "അവരുടെ സ്വപ്നങ്ങൾ ചിറക് വിരിക്കുകയായിരുന്നു.",
+      "location": "Fort Kochi Street",
+      "persistent_props": [],
+      "camera_hint": "Whimsical circular camera move.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 6,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Sachin",
+      "action": "Sachin calls the number on the 'To Let' board with trembling hands.",
+      "dialogue_malayalam": "ഹലോ, എനിക്ക് ഈ ബിൽഡിംഗിനെ കുറിച്ച് ഒന്ന് സംസാരിക്കണം.",
+      "location": "Front of Heritage Building",
+      "persistent_props": [
+        "Phone"
+      ],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 7,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Reenu",
+      "action": "A black luxury car pulls up, interrupting their celebration.",
+      "dialogue_malayalam": "സച്ചിൻ, ആരെങ്കിലും വരുന്നുണ്ട്.",
+      "location": "Front of Heritage Building",
+      "persistent_props": [
+        "Luxury car"
+      ],
+      "camera_hint": "Focus on the car's chrome grill.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 8,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Shyam",
+      "action": "Shyam steps out of the car, wearing expensive sunglasses and looking arrogant.",
+      "dialogue_malayalam": "നിങ്ങൾ ഇവിടെ എന്ത് ചെയ്യുകയാണ് കുട്ടികളെ?",
+      "location": "Front of Heritage Building",
+      "persistent_props": [
+        "Sunglasses"
+      ],
+      "camera_hint": "Low-angle power shot of Shyam.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 9,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Sachin",
+      "action": "Sachin looks at Shyam, confused by his presence.",
+      "dialogue_malayalam": "ഞങ്ങൾ ഈ സ്ഥലം കഫേ തുടങ്ങാൻ വേണ്ടി നോക്കുകയാണ്.",
+      "location": "Front of Heritage Building",
+      "persistent_props": [],
+      "camera_hint": "Two-shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 3,
+      "shot_number": 10,
+      "episode_title": "കഫേ സ്വപ്നം (The Cafe Dream)",
+      "speaker": "Shyam",
+      "action": "Shyam smirks and holds up a folder, blocking their path.",
+      "dialogue_malayalam": "ക്ഷമിക്കണം, ഈ സ്ഥലം ഞാൻ ഓൾറെഡി ബുക്ക് ചെയ്തു കഴിഞ്ഞു. ഇവിടെ ഒരു വലിയ റെസ്റ്റോറന്റ് വരാൻ പോകുന്നു.",
+      "location": "Front of Heritage Building",
+      "persistent_props": [
+        "Lease folder"
+      ],
+      "camera_hint": "Close-up on the lease document.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 1,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Sachin",
+      "action": "Sachin and Reenu walk into the apartment, looking dejected.",
+      "dialogue_malayalam": "ആ ശ്യാം എല്ലാം നശിപ്പിച്ചു. നമ്മുടെ കഫേ ഇനി എവിടെ തുടങ്ങും?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Slow, sad pan.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 2,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Reenu",
+      "action": "Reenu tries to comfort him, but loud shouting erupts from the kitchen.",
+      "dialogue_malayalam": "സാരമില്ല സച്ചിൻ, നമുക്ക് വേറെ വഴി നോക്കാം. പക്ഷേ ഈ ശബ്ദം എന്താ?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Sound-driven shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 3,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Kurian",
+      "action": "Kurian screams from the kitchen, flour all over his face while cooking.",
+      "dialogue_malayalam": "അന്നമ്മേ, മീൻ കറിയിൽ ഇത്രയും മഞ്ഞൾപ്പൊടി ഇടാൻ പാടില്ലെന്ന് ഞാൻ പറഞ്ഞതല്ലേ!",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Flour",
+        "Pot"
+      ],
+      "camera_hint": "Fast zoom into the kitchen.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 4,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Annamma",
+      "action": "Annamma bangs a ladle on the counter in retaliation.",
+      "dialogue_malayalam": "നിങ്ങൾ എന്നെ പഠിപ്പിക്കണ്ട! എന്റെ കറിക്ക് ഒരു പ്രത്യേക രുചിയാണ്.",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Ladle"
+      ],
+      "camera_hint": "Close-up on Annamma's angry face.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 5,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Sachin",
+      "action": "Sachin tries to intervene between the bickering parents.",
+      "dialogue_malayalam": "പപ്പാ, മമ്മീ... ഒന്ന് നിർത്തുന്നുണ്ടോ? ഞങ്ങൾക്ക് ഇവിടെ ഒരു വലിയ പ്രശ്നം ഉണ്ട്.",
+      "location": "Kitchen",
+      "persistent_props": [],
+      "camera_hint": "Sachin in the middle of the frame.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 6,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Kurian",
+      "action": "Kurian ignores Sachin, focused entirely on the cooking argument.",
+      "dialogue_malayalam": "നീ മിണ്ടാതിരിക്ക് സച്ചിൻ. ഇത് അഭിമാനത്തിന്റെ പോരാട്ടമാണ്!",
+      "location": "Kitchen",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 7,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Reenu",
+      "action": "Reenu notices smoke coming from the back burner.",
+      "dialogue_malayalam": "പപ്പാ, ആ അടുപ്പ്! പുക വരുന്നു!",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Smoke"
+      ],
+      "camera_hint": "Focus on the rising smoke.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 8,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Annamma",
+      "action": "Kurian and Annamma keep arguing, failing to notice the danger.",
+      "dialogue_malayalam": "അതൊന്നും ഒന്നുമല്ല, വെറുതെ പേടിപ്പിക്കാതെ.",
+      "location": "Kitchen",
+      "persistent_props": [],
+      "camera_hint": "Side profile shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 9,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Sachin",
+      "action": "Sachin grabs a fire extinguisher as the flames grow.",
+      "dialogue_malayalam": "അയ്യോ! ഇത് കത്തുകയാണല്ലോ!",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Fire extinguisher"
+      ],
+      "camera_hint": "High-action handheld shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 4,
+      "shot_number": 10,
+      "episode_title": "അടുക്കളയിലെ പുകില് (Kitchen Chaos)",
+      "speaker": "Third-Person Narrator",
+      "action": "A flash of orange light erupts from the stove as the curtains catch fire.",
+      "dialogue_malayalam": "ഒരു ചെറിയ വഴക്ക് വലിയൊരു അപകടത്തിലേക്ക് മാറി.",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Fire",
+        "Curtains"
+      ],
+      "camera_hint": "Dramatic freeze-frame on the explosion of flame.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 1,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Sachin",
+      "action": "Sachin coughs in the smoke-filled kitchen, holding the extinguisher.",
+      "dialogue_malayalam": "ഭാഗ്യം! വലിയ അപകടം ഒഴിവായി.",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Exhausted fire extinguisher"
+      ],
+      "camera_hint": "Low-angle shot through the smoke.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 2,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Kurian",
+      "action": "Kurian looks guilty and quiet, realizing the gravity of the situation.",
+      "dialogue_malayalam": "സച്ചിൻ, സോറിടാ. ഞാൻ അറിഞ്ഞില്ല.",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Close-up on Kurian's sad eyes.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 3,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Reenu",
+      "action": "Sachin cleans up the mess, feeling overwhelmed by the series of events.",
+      "dialogue_malayalam": "എല്ലാം കൂടി എന്തിനാ ഇങ്ങനെ സംഭവിക്കുന്നത്?",
+      "location": "Kitchen",
+      "persistent_props": [
+        "Cleaning rag"
+      ],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 4,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Sachin",
+      "action": "Determined, Sachin puts on his jacket to face Shyam once more.",
+      "dialogue_malayalam": "ഞാൻ ആ ശ്യാമിനെ പോയി കാണാൻ പോവുകയാണ്. ആ ബിൽഡിംഗ് നമുക്ക് വേണം.",
+      "location": "Apartment Door",
+      "persistent_props": [
+        "Jacket"
+      ],
+      "camera_hint": "Hero shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 5,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Third-Person Narrator",
+      "action": "Sachin meets Shyam at a fancy cafe to negotiate.",
+      "dialogue_malayalam": "സച്ചിൻ തന്റെ സ്വപ്നത്തിന് വേണ്ടി പോരാടാൻ തീരുമാനിച്ചു.",
+      "location": "Fancy Cafe",
+      "persistent_props": [],
+      "camera_hint": "Wide shot of the meeting.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 6,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Shyam",
+      "action": "Shyam laughs at Sachin's request, dismissing his passion.",
+      "dialogue_malayalam": "നിന്റെ കയ്യിൽ പണമില്ല സച്ചിൻ. ബിസിനസ്സ് വികാരങ്ങൾ കൊണ്ട് ചെയ്യേണ്ടതല്ല.",
+      "location": "Fancy Cafe",
+      "persistent_props": [
+        "Coffee cup"
+      ],
+      "camera_hint": "Over-the-shoulder shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 7,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Sachin",
+      "action": "Sachin returns home, frustrated and drained.",
+      "dialogue_malayalam": "അവൻ എന്നെ കളിയാക്കി. പക്ഷേ ഞാൻ തോൽക്കില്ല.",
+      "location": "Apartment hallway",
+      "persistent_props": [],
+      "camera_hint": "Tracking shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 8,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Reenu",
+      "action": "Reenu sits at her laptop, looking conflicted about a job offer.",
+      "dialogue_malayalam": "(സ്വയം പറയുന്നു) ലണ്ടൻ... ഇത് വലിയൊരു അവസരമാണ്. പക്ഷേ സച്ചിനോട് എങ്ങനെ പറയും?",
+      "location": "Dining table",
+      "persistent_props": [
+        "Laptop"
+      ],
+      "camera_hint": "Close-up on the screen.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 9,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Sachin",
+      "action": "Sachin walks behind Reenu to give her a hug, noticing the screen.",
+      "dialogue_malayalam": "റീനു, നമുക്ക് വേറെ സ്ഥലം നോക്കാം... ഏതാ ഈ മെയിൽ?",
+      "location": "Dining table",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 5,
+      "shot_number": 10,
+      "episode_title": "മത്സരം (The Rivalry)",
+      "speaker": "Third-Person Narrator",
+      "action": "Sachin's eyes widen as he reads the subject line: 'Job Offer: Senior Designer, London'.",
+      "dialogue_malayalam": "അവരുടെ പ്രണയത്തിന് മുന്നിൽ വലിയൊരു കടമ്പ കൂടി.",
+      "location": "Dining table",
+      "persistent_props": [
+        "Laptop"
+      ],
+      "camera_hint": "Extreme close-up on Sachin's shocked face.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 1,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Sachin",
+      "action": "Sachin backs away from the laptop, his voice trembling.",
+      "dialogue_malayalam": "ലണ്ടൻ? നീ എന്നോട് പറയാതെ ഇതിന് അപ്ലൈ ചെയ്തോ?",
+      "location": "Dining table",
+      "persistent_props": [
+        "Laptop"
+      ],
+      "camera_hint": "Low-angle shot showing tension.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 2,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Reenu",
+      "action": "Reenu closes the laptop quickly, standing up nervously.",
+      "dialogue_malayalam": "സച്ചിൻ, അത് വെറുതെ ഒരു അപ്ലിക്കേഷൻ ആയിരുന്നു. എനിക്ക് കിട്ടുമെന്ന് കരുതിയതല്ല.",
+      "location": "Dining table",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 3,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Sachin",
+      "action": "Sachin walks to the balcony, staring into the distance.",
+      "dialogue_malayalam": "അപ്പോൾ നമ്മുടെ കഫേ? നമ്മുടെ സ്വപ്നങ്ങൾ?",
+      "location": "Balcony",
+      "persistent_props": [],
+      "camera_hint": "Back shot of Sachin.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 4,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Reenu",
+      "action": "Reenu follows him, eyes tearing up as she pleads.",
+      "dialogue_malayalam": "നമുക്ക് അവിടെയും എന്തെങ്കിലും തുടങ്ങാമല്ലോ. പ്ലീസ് സച്ചിൻ, മനസ്സിലാക്കാൻ നോക്ക്.",
+      "location": "Balcony",
+      "persistent_props": [],
+      "camera_hint": "Two-shot with soft lighting.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 5,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Kurian",
+      "action": "Kurian and Annamma watch them from the shadows, feeling guilty.",
+      "dialogue_malayalam": "അവർ തമ്മിൽ പ്രശ്നമാണല്ലോ. നമ്മൾ കാരണം ആണോ?",
+      "location": "Living room shadows",
+      "persistent_props": [],
+      "camera_hint": "Obscured shot of Kurian.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 6,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Annamma",
+      "action": "Annamma nods sadly, wanting to fix the rift.",
+      "dialogue_malayalam": "നമുക്ക് അവരെ സഹായിക്കണം. പക്ഷേ എങ്ങനെ?",
+      "location": "Living room shadows",
+      "persistent_props": [],
+      "camera_hint": "Close-up on Annamma.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 7,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Sachin",
+      "action": "Kurian rummages through a drawer and finds an old diary.",
+      "dialogue_malayalam": "ഇത് റീനുവിന്റെ പഴയ ഡയറി ആണല്ലോ.",
+      "location": "Bedroom",
+      "persistent_props": [
+        "Old diary"
+      ],
+      "camera_hint": "Close-up on the dusty diary.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 8,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Third-Person Narrator",
+      "action": "Sachin opens a page and a loose letter falls out, revealing a secret.",
+      "dialogue_malayalam": "ഭൂതകാലത്തിലെ ചില വാക്കുകൾക്ക് വർത്തമാനകാലത്തെ മാറ്റാൻ കഴിയും.",
+      "location": "Bedroom",
+      "persistent_props": [
+        "Letter"
+      ],
+      "camera_hint": "Slow motion of the letter falling.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 9,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Sachin",
+      "action": "Sachin reads the letter, his expression softening immediately.",
+      "dialogue_malayalam": "ഇത് അവൾ പണ്ട് എഴുതിയതാണോ?",
+      "location": "Bedroom",
+      "persistent_props": [
+        "Letter"
+      ],
+      "camera_hint": "Tight close-up on Sachin's eyes.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 6,
+      "shot_number": 10,
+      "episode_title": "തീരുമാനങ്ങൾ (Decisions, Decisions)",
+      "speaker": "Third-Person Narrator",
+      "action": "The camera zooms in on the handwriting: 'എന്റെ സ്വപ്നങ്ങൾ അവന്റേതിനെ തകർക്കാൻ ഞാൻ അനുവദിക്കില്ല.'",
+      "dialogue_malayalam": "ത്യാഗത്തിന്റെ ആ വരികൾ സച്ചിനെ ഉലച്ചു കളഞ്ഞു.",
+      "location": "Bedroom",
+      "persistent_props": [
+        "Letter"
+      ],
+      "camera_hint": "Macro shot of the text.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 1,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Sachin",
+      "action": "Sachin holds Reenu's hands, looking into her eyes with resolve.",
+      "dialogue_malayalam": "റീനു, നീ ലണ്ടനിൽ പൊയ്ക്കോ. ഞാൻ നിന്റെ കൂടെ വരാം. നമ്മുടെ കഫേ നമുക്ക് അവിടെ തുടങ്ങാം.",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Warm, emotional medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 2,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Reenu",
+      "action": "Reenu is surprised and cries with joy at his sacrifice.",
+      "dialogue_malayalam": "സച്ചിൻ... സത്യമാണോ? നീ എനിക്ക് വേണ്ടി ഇത്രയും ചെയ്യുമോ?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Close-up on Reenu.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 3,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Kurian",
+      "action": "Kurian enters with a legal document he found.",
+      "dialogue_malayalam": "നിൽക്ക്! ഈ ലണ്ടൻ യാത്ര പിന്നെ ആവാം. ഞാൻ ഒരു കാര്യം കണ്ടുപിടിച്ചു.",
+      "location": "Living room",
+      "persistent_props": [
+        "Legal paper"
+      ],
+      "camera_hint": "Sudden entrance shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 4,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Sachin",
+      "action": "Sachin takes the paper, looking at it with confusion.",
+      "dialogue_malayalam": "ഇതെന്താ പപ്പാ?",
+      "location": "Living room",
+      "persistent_props": [
+        "Legal paper"
+      ],
+      "camera_hint": "Close-up on the paper.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 5,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Kurian",
+      "action": "Kurian points at a legal clause regarding the building.",
+      "dialogue_malayalam": "ആ ബിൽഡിംഗ് ഒരു ഹെറിറ്റേജ് സൈറ്റ് ആണ്. അവിടെ വലിയ മാറ്റങ്ങൾ വരുത്താൻ ശ്യാമിന് കഴിയില്ല. പക്ഷേ ഒരു ചെറിയ കഫേയ്ക്ക് അനുമതി കിട്ടും!",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Triumphant shot of Kurian.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 6,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Reenu",
+      "action": "Reenu's face lights up with hope once again.",
+      "dialogue_malayalam": "അപ്പോൾ നമുക്ക് ആ സ്ഥലം തിരിച്ചു കിട്ടാൻ ചാൻസ് ഉണ്ടോ?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 7,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Third-Person Narrator",
+      "action": "They all go back to the building to inspect it with a lawyer.",
+      "dialogue_malayalam": "അവർ തങ്ങളുടെ സ്വപ്നത്തിന് വേണ്ടി അവസാനമായി ഒരു ശ്രമം കൂടി നടത്തി.",
+      "location": "Heritage Building exterior",
+      "persistent_props": [],
+      "camera_hint": "Wide shot of the group.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 8,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Sachin",
+      "action": "They enter the dark basement with a flashlight.",
+      "dialogue_malayalam": "ഇവിടെ എന്തോ ഉണ്ടല്ലോ.",
+      "location": "Basement",
+      "persistent_props": [
+        "Flashlight"
+      ],
+      "camera_hint": "Low-light suspense shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 9,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Reenu",
+      "action": "Sachin touches a damp wall, sensing something behind it.",
+      "dialogue_malayalam": "ഈ ഭിത്തി ഇളകി ഇരിക്കുകയാണല്ലോ.",
+      "location": "Basement",
+      "persistent_props": [],
+      "camera_hint": "Close-up on hand touching bricks.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 7,
+      "shot_number": 10,
+      "episode_title": "പൈതൃക വേട്ട (The Heritage Hunt)",
+      "speaker": "Third-Person Narrator",
+      "action": "The wall collapses with a crash, revealing a heavy iron safe.",
+      "dialogue_malayalam": "പഴയ ആ കെട്ടിടം അതിന്റെ രഹസ്യങ്ങൾ വെളിപ്പെടുത്തി തുടങ്ങി.",
+      "location": "Basement",
+      "persistent_props": [
+        "Iron safe",
+        "Dust"
+      ],
+      "camera_hint": "Dynamic crash zoom on the safe.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 1,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Sachin",
+      "action": "Sachin blows dust off the documents found in the safe.",
+      "dialogue_malayalam": "ഇത് നോക്ക്! ഈ ബിൽഡിംഗ് ശ്യാമിന്റേതല്ല, ഇതൊരു ട്രസ്റ്റിന്റെതാണ്.",
+      "location": "Basement",
+      "persistent_props": [
+        "Old documents"
+      ],
+      "camera_hint": "Close-up on the text.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 2,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Reenu",
+      "action": "Reenu smiles broadly, knowing they have a winning hand.",
+      "dialogue_malayalam": "അപ്പോൾ ശ്യാമിനെ നമുക്ക് പുറത്താക്കാം!",
+      "location": "Basement",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 3,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Kurian",
+      "action": "Kurian pats Sachin's back, reminding him of reality.",
+      "dialogue_malayalam": "പക്ഷേ ഇത് നന്നാക്കാൻ ഒരുപാട് പണം വേണ്ടി വരും മോനേ.",
+      "location": "Basement",
+      "persistent_props": [],
+      "camera_hint": "Two-shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 4,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Third-Person Narrator",
+      "action": "Sachin and Reenu visit a bank the next day for a loan.",
+      "dialogue_malayalam": "അടുത്ത കടമ്പ പണമായിരുന്നു.",
+      "location": "Bank Office",
+      "persistent_props": [
+        "Briefcase"
+      ],
+      "camera_hint": "Formal wide shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 5,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Bank Manager",
+      "action": "The bank manager looks through their papers with a stern face.",
+      "dialogue_malayalam": "നിങ്ങൾക്ക് ഈ ബിസിനസ്സിൽ മുൻപരിചയം ഒന്നുമില്ലല്ലോ.",
+      "location": "Bank Office",
+      "persistent_props": [
+        "Glasses"
+      ],
+      "camera_hint": "POV from Sachin's perspective.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 6,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Sachin",
+      "action": "Sachin leans forward, pleading for a chance.",
+      "dialogue_malayalam": "ഞങ്ങൾക്ക് വലിയ പ്ലാനുകൾ ഉണ്ട് സർ. ഇത് വിജയിക്കും.",
+      "location": "Bank Office",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 7,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Reenu",
+      "action": "Reenu shows the beautiful design on her tablet.",
+      "dialogue_malayalam": "നോക്കൂ സർ, ഇതാണ് ഞങ്ങളുടെ ഡിസൈൻ. കൊച്ചിയിൽ ഇങ്ങനെയൊന്ന് വേറെയില്ല.",
+      "location": "Bank Office",
+      "persistent_props": [
+        "Tablet"
+      ],
+      "camera_hint": "Close-up on the tablet screen.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 8,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Bank Manager",
+      "action": "The manager sighs and shakes his head, unimpressed.",
+      "dialogue_malayalam": "റിസ്ക് കൂടുതലാണ്. എനിക്ക് ക്ഷമിക്കണം.",
+      "location": "Bank Office",
+      "persistent_props": [],
+      "camera_hint": "Side profile shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 9,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Sachin",
+      "action": "Sachin's face falls in deep disappointment.",
+      "dialogue_malayalam": "സർ, ദയവായി ഒന്ന് കൂടി ആലോചിക്കൂ.",
+      "location": "Bank Office",
+      "persistent_props": [],
+      "camera_hint": "Close-up on Sachin's trembling lip.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 8,
+      "shot_number": 10,
+      "episode_title": "സാമ്പത്തിക പ്രതിസന്ധി (Financial Woes)",
+      "speaker": "Third-Person Narrator",
+      "action": "The manager slams the 'REJECTED' stamp onto the file.",
+      "dialogue_malayalam": "എല്ലാം കൈവിട്ടു പോകുന്ന അവസ്ഥ.",
+      "location": "Bank Office",
+      "persistent_props": [
+        "Rejected stamp"
+      ],
+      "camera_hint": "Extreme close-up on the red stamp.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 1,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Kurian",
+      "action": "Kurian hands Sachin a check in the living room.",
+      "dialogue_malayalam": "ഇത് വെച്ചോ മോനേ. ഇത് ഞങ്ങളുടെ സമ്പാദ്യമാണ്.",
+      "location": "Living room",
+      "persistent_props": [
+        "Check"
+      ],
+      "camera_hint": "Emotional close-up on the hands.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 2,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Sachin",
+      "action": "Sachin hugs his father, tears flowing freely.",
+      "dialogue_malayalam": "പപ്പാ... ഇത് വേണ്ട. ഇത് നിങ്ങളുടെ റിട്ടയർമെന്റ് പണമല്ലേ?",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Wide emotional shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 3,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Annamma",
+      "action": "Annamma smiles warmly at Reenu, offering support.",
+      "dialogue_malayalam": "നിങ്ങളുടെ സ്വപ്നത്തേക്കാൾ വലുതല്ല ഞങ്ങൾക്ക് ഈ പണം.",
+      "location": "Living room",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 4,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Third-Person Narrator",
+      "action": "A montage shows everyone working together to decorate the cafe.",
+      "dialogue_malayalam": "കുടുംബം ഒന്നിച്ചപ്പോൾ സ്വപ്നങ്ങൾക്ക് നിറം വെച്ചു.",
+      "location": "Heritage Cafe Interior",
+      "persistent_props": [
+        "Paint brushes",
+        "Plants"
+      ],
+      "camera_hint": "Fast-paced, upbeat montage.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 5,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Reenu",
+      "action": "Sachin places the 'Heritage Hearts' sign above the door.",
+      "dialogue_malayalam": "നാളെയാണ് ആ വലിയ ദിവസം!",
+      "location": "Cafe Front",
+      "persistent_props": [
+        "Cafe sign"
+      ],
+      "camera_hint": "Low-angle looking up at the sign.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 6,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Sachin",
+      "action": "Reenu tests the new espresso machine, happy with the aroma.",
+      "dialogue_malayalam": "കാപ്പി റെഡി! മണം വരുന്നുണ്ടോ?",
+      "location": "Cafe Counter",
+      "persistent_props": [
+        "Espresso machine"
+      ],
+      "camera_hint": "Close-up on the coffee dripping.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 7,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Third-Person Narrator",
+      "action": "Thunder rumbles and rain starts lashing against the windows.",
+      "dialogue_malayalam": "പ്രകൃതിയും അവരെ പരീക്ഷിക്കാൻ തീരുമാനിച്ചു.",
+      "location": "Cafe Interior",
+      "persistent_props": [
+        "Rain"
+      ],
+      "camera_hint": "Focus on the window with raindrops.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 8,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Reenu",
+      "action": "Sachin looks worriedly at the ceiling as rain leaks in.",
+      "dialogue_malayalam": "ഈ മഴ ഇത്രയും കൂടുമെന്ന് കരുതിയില്ല.",
+      "location": "Cafe Interior",
+      "persistent_props": [],
+      "camera_hint": "High-angle shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 9,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Sachin",
+      "action": "The lights flicker and then go completely dark.",
+      "dialogue_malayalam": "അയ്യോ, കറന്റ് പോയി!",
+      "location": "Cafe Interior",
+      "persistent_props": [],
+      "camera_hint": "Sudden blackout (pitch black screen).",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 9,
+      "shot_number": 10,
+      "episode_title": "ഉദ്ഘാടന ഒരുക്കങ്ങൾ (The Grand Opening Prep)",
+      "speaker": "Third-Person Narrator",
+      "action": "A drop of water falls onto the coffee machine with a 'sizzle'.",
+      "dialogue_malayalam": "നാളെ ഉദ്ഘാടനം നടക്കുമോ?",
+      "location": "Cafe Counter",
+      "persistent_props": [
+        "Water drop",
+        "Machine"
+      ],
+      "camera_hint": "Slow-motion macro shot of the water drop.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 1,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Sachin",
+      "action": "Sachin covers the machine with his jacket in the dark.",
+      "dialogue_malayalam": "റീനു, വേഗം ഒരു ബക്കറ്റ് എടുക്ക്! ഇത് നനയാൻ പാടില്ല.",
+      "location": "Cafe Counter",
+      "persistent_props": [
+        "Jacket",
+        "Bucket"
+      ],
+      "camera_hint": "Fast-paced handheld in low light.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 2,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Kurian",
+      "action": "Kurian comes in with a flashlight and tools to help.",
+      "dialogue_malayalam": "പേടിക്കണ്ടടാ, ഞാൻ ഇത് ശരിയാക്കാം. പഴയ വീടല്ലേ, ചെറിയ പണികൾ കാണും.",
+      "location": "Cafe Interior",
+      "persistent_props": [
+        "Flashlight",
+        "Wrench"
+      ],
+      "camera_hint": "Reassuring medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 3,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Third-Person Narrator",
+      "action": "Morning arrives with sunshine, making the cafe look beautiful.",
+      "dialogue_malayalam": "മഴയ്ക്ക് ശേഷം തെളിഞ്ഞ സൂര്യപ്രകാശം പോലെ അവരുടെ മുഖങ്ങളും തിളങ്ങി.",
+      "location": "Cafe Exterior",
+      "persistent_props": [
+        "Sunlight"
+      ],
+      "camera_hint": "Wide, sweeping crane shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 4,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Reenu",
+      "action": "Sachin and Reenu cut the ribbon at the entrance.",
+      "dialogue_malayalam": "സ്വാഗതം! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' തുറന്നിരിക്കുന്നു.",
+      "location": "Cafe Entrance",
+      "persistent_props": [
+        "Ribbon",
+        "Scissors"
+      ],
+      "camera_hint": "Close-up on the ribbon cutting.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 5,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Third-Person Narrator",
+      "action": "Crowds pour in, making the cafe an instant hit.",
+      "dialogue_malayalam": "കൊച്ചി ആ സ്വപ്നത്തെ ഇരുകൈയ്യും നീട്ടി സ്വീകരിച്ചു.",
+      "location": "Cafe Interior",
+      "persistent_props": [
+        "Coffee cups",
+        "Pastries"
+      ],
+      "camera_hint": "Bustling wide shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 6,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Shyam",
+      "action": "Shyam walks in, looking defeated but respectful.",
+      "dialogue_malayalam": "സമ്മതിച്ചിരിക്കുന്നു. നിങ്ങൾ ജയിച്ചു. ഒരു കാപ്പി കിട്ടുമോ?",
+      "location": "Cafe Counter",
+      "persistent_props": [],
+      "camera_hint": "Medium shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 7,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Sachin",
+      "action": "Sachin serves Shyam with a smile, showing grace.",
+      "dialogue_malayalam": "തീർച്ചയായും സർ. ഇത് ഞങ്ങളുടെ സ്പെഷ്യൽ ആണ്.",
+      "location": "Cafe Counter",
+      "persistent_props": [
+        "Coffee"
+      ],
+      "camera_hint": "Over-the-shoulder shot.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 8,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Reenu",
+      "action": "Reenu takes Sachin aside to the balcony.",
+      "dialogue_malayalam": "സച്ചിൻ, ഞാൻ ആ ലണ്ടൻ ഓഫർ വേണ്ടെന്ന് വെച്ചു. എനിക്ക് ഇവിടെ നിന്റെ കൂടെ ഇരുന്നാൽ മതി.",
+      "location": "Cafe Balcony",
+      "persistent_props": [],
+      "camera_hint": "Intimate close-up.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 9,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Sachin",
+      "action": "Sachin looks at the Kochi sunset with her, feeling complete.",
+      "dialogue_malayalam": "നമ്മൾ ഒരുമിച്ച് ഉണ്ടെങ്കിൽ ഏത് നാടും ലണ്ടൻ പോലെ സുന്ദരമായിരിക്കും.",
+      "location": "Cafe Balcony",
+      "persistent_props": [],
+      "camera_hint": "Profile shot of the couple.",
+      "status": "Upcoming"
+    },
+    {
+      "season_number": 2,
+      "episode_number": 10,
+      "shot_number": 10,
+      "episode_title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "speaker": "Third-Person Narrator",
+      "action": "The camera pulls back to show the happy family in the glowing cafe.",
+      "dialogue_malayalam": "ചില സ്വപ്നങ്ങൾ പൂർത്തിയാകാൻ സ്നേഹം മാത്രം മതി.",
+      "location": "Full Cafe Exterior",
+      "persistent_props": [
+        "Sunset"
+      ],
+      "camera_hint": "Grand aerial pull-back shot ending on a heart-shaped bokeh.",
+      "status": "Upcoming"
+    }
+  ]
+}

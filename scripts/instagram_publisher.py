@@ -354,6 +354,27 @@ def main():
         except Exception as e:
             print(f"Notice: Google Sheet webhook cleanup skipped or failed: {e}")
 
+    # Auto-compile and activate Episode N+1 from 100-shot outline if available
+    if ep_num < 10:
+        outline_file = f"season_{season_num}_shot_outline.json"
+        has_outline = os.path.exists(outline_file)
+        if not has_outline and os.path.exists("story_state.json"):
+            try:
+                with open("story_state.json", "r", encoding="utf-8") as f:
+                    st = json.load(f)
+                    has_outline = "season_shot_outline" in st
+            except Exception:
+                pass
+
+        if has_outline:
+            try:
+                from story_and_prompt_engine import compile_episode_prompts_from_outline
+                print(f"\n🚀 Auto-compiling Episode {ep_num + 1} prompts from Master 100-Shot Outline...")
+                compile_episode_prompts_from_outline(season_num, ep_num + 1, gas_url=gas_webhook)
+                print(f"✓ Episode {ep_num + 1} prompts ready in Tab 2 [Current_JSON_Prompts]!")
+            except Exception as e:
+                print(f"Notice auto-compiling Episode {ep_num + 1}: {e}")
+
 if __name__ == "__main__":
     main()
 

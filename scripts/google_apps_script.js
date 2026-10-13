@@ -25,6 +25,7 @@ const TAB_CHECKLIST = "Video_Checklist";
 const TAB_SEASON_ARC = "Season_Story_Arc";
 const TAB_CHARACTERS = "Character_Registry";
 const TAB_PAST_PROMPTS = "Past_Episodes_Prompts";
+const TAB_SHOT_OUTLINE = "Season_Shot_Outline";
 
 /**
  * Creates custom studio menu when Google Spreadsheet is opened.
@@ -975,6 +976,161 @@ function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
 }
 
 /**
+ * Tab 7: Season_Shot_Outline
+ * Manages the 100-shot columnar screenplay outline (10 episodes x 10 shots).
+ */
+function setupSeasonShotOutlineSheet(seasonNum) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_SHOT_OUTLINE, 6);
+  }
+  if (sheet.getLastRow() > 0) return;
+
+  sheet.getRange(1, 1).setValue(`MASTER 100-SHOT SCREENPLAY OUTLINE: SEASON ${seasonNum || 1}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
+
+  const headers = [
+    "Season #",
+    "Episode #",
+    "Shot #",
+    "Episode Title (Malayalam & English)",
+    "Speaker",
+    "Visual Action Beat",
+    "Dialogue (Malayalam Script)",
+    "Location",
+    "Persistent Props",
+    "Status"
+  ];
+
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#134e4a")
+    .setFontColor("#ccfbf1")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+  sheet.setColumnWidth(4, 250);
+  sheet.setColumnWidth(6, 400);
+  sheet.setColumnWidth(7, 300);
+}
+
+function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_SHOT_OUTLINE, 6);
+  }
+
+  sheet.clear();
+  sheet.getRange(1, 1).setValue(`MASTER 100-SHOT SCREENPLAY OUTLINE: SEASON ${seasonNum || 1}`).setFontWeight("bold").setFontSize(12);
+  sheet.getRange(1, 2).setValue(seasonTitle || `Season ${seasonNum || 1}`).setFontWeight("bold");
+  sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
+
+  const headers = [
+    "Season #",
+    "Episode #",
+    "Shot #",
+    "Episode Title (Malayalam & English)",
+    "Speaker",
+    "Visual Action Beat",
+    "Dialogue (Malayalam Script)",
+    "Location",
+    "Persistent Props",
+    "Status"
+  ];
+
+  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
+    .setBackground("#134e4a")
+    .setFontColor("#ccfbf1")
+    .setFontWeight("bold")
+    .setHorizontalAlignment("center");
+  sheet.setFrozenRows(2);
+
+  const rows = [];
+  const shotsList = Array.isArray(shots) ? shots : [];
+  for (let i = 0; i < shotsList.length; i++) {
+    const s = shotsList[i];
+    const epNum = s.episode_number || Math.floor(i / 10) + 1;
+    const shotNum = s.shot_number || (i % 10) + 1;
+    const title = s.episode_title || s.title || `Episode ${epNum}`;
+    const speaker = s.speaker || "Third-Person Narrator";
+    const action = s.action || s.action_summary || "";
+    const dialogue = s.dialogue_malayalam || s.dialogue || "";
+    const loc = s.location || "";
+    const props = Array.isArray(s.persistent_props) ? s.persistent_props.join(", ") : (s.persistent_props || "");
+    const status = s.status || (epNum === 1 ? "Active" : "Upcoming");
+
+    rows.push([
+      seasonNum || 1,
+      epNum,
+      shotNum,
+      title,
+      speaker,
+      action,
+      dialogue,
+      loc,
+      props,
+      status
+    ]);
+  }
+
+  if (rows.length > 0) {
+    sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
+    sheet.setColumnWidth(4, 250);
+    sheet.setColumnWidth(6, 400);
+    sheet.setColumnWidth(7, 300);
+  }
+
+  return {
+    success: true,
+    season_number: seasonNum,
+    count: rows.length,
+    message: `Updated ${rows.length} shots in Tab 7 [${TAB_SHOT_OUTLINE}]!`
+  };
+}
+
+function getSeasonShotOutlineData(seasonNum) {
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+  if (!sheet || sheet.getLastRow() < 3) {
+    return {
+      success: true,
+      season_number: seasonNum || 1,
+      total_shots: 0,
+      shots: []
+    };
+  }
+
+  const lastRow = sheet.getLastRow();
+  const data = sheet.getRange(3, 1, lastRow - 2, 10).getValues();
+  const shots = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    shots.push({
+      season_number: row[0],
+      episode_number: row[1],
+      shot_number: row[2],
+      episode_title: row[3],
+      speaker: row[4],
+      action: row[5],
+      dialogue_malayalam: row[6],
+      location: row[7],
+      persistent_props: typeof row[8] === "string" ? row[8].split(",").map(p => p.trim()).filter(Boolean) : [],
+      status: row[9]
+    });
+  }
+
+  return {
+    success: true,
+    season_number: seasonNum || 1,
+    total_shots: shots.length,
+    shots: shots
+  };
+}
+
+/**
  * Clean-slate Season Transition:
  * 1. Sheet 1 (Episode_Story): Wiped & populated with all 10 episodes (Ep 1 Active, Ep 2-10 Upcoming, blank URLs).
  * 2. Sheet 4 (Season_Story_Arc): Wiped & populated with the full 10 continuous episodes roadmap.
@@ -1669,6 +1825,14 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  // Tab 7: Master Season Shot Outline (100 shots)
+  if (action === "get_season_shot_outline" || action === "get_100_shots" || action === "shot_outline") {
+    const targetSeason = parseInt(params.season || "1", 10);
+    const data = getSeasonShotOutlineData(targetSeason);
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Get Series Thumbnail details
   if (action === "get_series_thumbnail" || action === "thumbnail") {
     const thumbData = getSeriesThumbnailData();
@@ -1930,6 +2094,13 @@ function doPost(e) {
     // 10. Upload Series Thumbnail to Google Drive (Deletes any old series thumbnail and saves the new one)
     if (action === "upload_series_thumbnail") {
       const res = handleUploadSeriesThumbnail(body);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 11. Tab 7: Save 100-Shot Master Screenplay Outline
+    if (action === "save_season_shot_outline") {
+      const res = updateSeasonShotOutlineInSheet(body.season_number || 1, body.season_title, body.shots || []);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }

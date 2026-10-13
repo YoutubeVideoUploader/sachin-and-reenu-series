@@ -39,9 +39,7 @@ with open('portal.html', 'r', encoding='utf-8') as f:
 shots_json_str = json.dumps(ep_obj, ensure_ascii=False, indent=2)
 updated_html = re.sub(
     r'let episodeData = (?:\[.*?\]|\{.*?\});\s+// Tracks current state',
-    f'let episodeData = {shots_json_str};
-
-    // Tracks current state',
+    f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
     base_html,
     flags=re.DOTALL
 )
@@ -124,6 +122,23 @@ if state_path.exists():
                 flags=re.DOTALL
             )
             print("✓ Updated seasonStoryData and characterRegistryData from story_state.json!")
+
+        outline_obj = state.get("season_shot_outline")
+        if not outline_obj and Path(f"season_{season_num}_shot_outline.json").exists():
+            try:
+                outline_obj = json.loads(Path(f"season_{season_num}_shot_outline.json").read_text(encoding="utf-8"))
+            except Exception:
+                pass
+        if outline_obj:
+            outline_str = json.dumps(outline_obj, ensure_ascii=False, indent=2)
+            if "let seasonShotOutlineData = {" in updated_html:
+                updated_html = re.sub(
+                    r'let seasonShotOutlineData = \{.*?\};',
+                    f'let seasonShotOutlineData = {outline_str};',
+                    updated_html,
+                    flags=re.DOTALL
+                )
+                print("✓ Updated seasonShotOutlineData from story_state.json!")
 
     except Exception as e:
         print(f"Notice updating character registry from story_state.json: {e}")

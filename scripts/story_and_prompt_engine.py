@@ -1557,6 +1557,530 @@ Output JSON matching this schema:
 
     return full_arc
 
+def generate_100_shot_season_outline(season_number, season_premise=None, gas_url=None):
+    """
+    Generates a master 100-shot screenplay beat sheet for the entire season (10 episodes x 10 shots).
+    Lightweight, token-efficient, and structured in columns.
+    Saves to:
+    - season_{season_number}_shot_outline.json
+    - Tab 7: Season_Shot_Outline via Google Apps Script
+    - Tab 4: Season_Story_Arc via Google Apps Script
+    """
+    client = get_gemini_client()
+    candidate_models = [
+        "gemini-3.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite",
+        "gemini-3.1-flash-lite-preview",
+        "gemini-3.8-flash",
+        "gemini-flash-latest"
+    ]
+
+    premise_text = season_premise or (
+        "Sachin and Reenu start a vibrant new chapter in Kochi. Testing their love, "
+        "managing unexpected family visits from Kurian and Annamma, and pursuing their dream heritage cafe."
+    )
+
+    prompt = f"""You are the Master Showrunner and Head Screenplay Writer for the viral Disney Pixar 3D animated Malayalam romantic series 'Sachin & Reenu' (സച്ചിൻ & റീനു).
+SEASON {season_number} COMPLETE 100-SHOT MASTER SCREENPLAY BEAT SHEET
+
+CORE SEASON PREMISE:
+{premise_text}
+
+CRITICAL ARCHITECTURE RULES:
+1. OUTPUT EXACTLY 10 EPISODES (Episodes 1 to 10).
+2. OUTPUT EXACTLY 10 SHOTS PER EPISODE (Shots 1 to 10 for each episode) = 100 SHOTS TOTAL.
+3. Episode 1 Shot 1 sets the inciting incident and vibrant season kickoff.
+4. Shot 10 of EVERY episode (Episodes 1 to 9) MUST be an intense, suspenseful cliffhanger or dramatic turning point.
+5. Shot 1 of EVERY subsequent episode (Episodes 2 to 10) MUST seamlessly resolve and continue from the preceding episode's cliffhanger.
+6. Episode 10 Shot 10 (Shot 100) MUST be the grand emotional season climax delivering a heartwarming, decisive relationship payoff for Sachin and Reenu.
+7. Dialogue MUST be authentic conversational Malayalam phonetics in Malayalam script with natural emotion.
+8. Visual Actions MUST describe character body language, comedic or tender expressions, and staging clearly.
+
+OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
+{{
+  "season_number": {season_number},
+  "season_title": "Season {season_number}: Title in English (മലയാളം തലക്കെട്ട്)",
+  "total_episodes": 10,
+  "total_shots": 100,
+  "episodes": [
+    {{
+      "episode_number": 1,
+      "title_english": "...",
+      "title_malayalam": "...",
+      "synopsis": "Full episode summary...",
+      "cliffhanger": "Ending cliffhanger...",
+      "shots": [
+        {{
+          "shot_number": 1,
+          "speaker": "Third-Person Narrator",
+          "action": "...",
+          "dialogue_malayalam": "...",
+          "location": "Kakkanad apartment living room",
+          "persistent_props": ["..."],
+          "camera_hint": "Dynamic high-angle shot..."
+        }}
+      ]
+    }}
+  ]
+}}
+"""
+
+    system_instruction = (
+        "You are the Showrunner and Head Screenplay Writer for 'Sachin & Reenu'."
+        " Write a master 100-shot screenplay beat sheet (10 episodes x 10 shots). Output ONLY valid JSON."
+    )
+
+    parsed_data = None
+    for model_name in candidate_models:
+        print(f"Generating 100-shot season outline with {model_name}...")
+        try:
+            resp = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
+                    response_mime_type="application/json",
+                    temperature=0.7,
+                    max_output_tokens=65536
+                )
+            )
+            if resp and resp.text:
+                raw_text = resp.text.strip()
+                if raw_text.startswith("```"):
+                    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+                    raw_text = re.sub(r"\s*```$", "", raw_text)
+                try:
+                    parsed_data = json.loads(raw_text)
+                except Exception:
+                    if repair_json:
+                        parsed_data = repair_json(raw_text, return_objects=True)
+                if parsed_data and isinstance(parsed_data, dict) and "episodes" in parsed_data:
+                    break
+        except Exception as e:
+            print(f"Notice with {model_name}: {e}")
+
+    if not parsed_data or "episodes" not in parsed_data:
+        raise RuntimeError("Failed to generate 100-shot season outline with Gemini models.")
+
+    episodes = parsed_data.get("episodes", [])
+    season_title = parsed_data.get("season_title", f"Season {season_number}")
+
+    flattened_shots = []
+    arc_summaries = []
+    for ep in episodes:
+        ep_num = ep.get("episode_number", len(arc_summaries) + 1)
+        t_en = ep.get("title_english", f"Episode {ep_num}")
+        t_ml = ep.get("title_malayalam", "")
+        arc_summaries.append({
+            "season_number": season_number,
+            "episode_number": ep_num,
+            "title_english": t_en,
+            "title_malayalam": t_ml,
+            "status": "Active" if ep_num == 1 else "Upcoming",
+            "synopsis": ep.get("synopsis", ""),
+            "cliffhanger": ep.get("cliffhanger", "")
+        })
+
+        for s_idx, s in enumerate(ep.get("shots", []), start=1):
+            raw_num = s.get("shot_number", s_idx)
+            try:
+                s_num = ((int(raw_num) - 1) % 10) + 1
+            except Exception:
+                s_num = s_idx
+            s["shot_number"] = s_num
+            flattened_shots.append({
+                "season_number": season_number,
+                "episode_number": ep_num,
+                "shot_number": s_num,
+                "episode_title": f"{t_ml} ({t_en})".strip(),
+                "speaker": s.get("speaker", "Third-Person Narrator"),
+                "action": s.get("action", ""),
+                "dialogue_malayalam": s.get("dialogue_malayalam", ""),
+                "location": s.get("location", "Kochi, Kerala"),
+                "persistent_props": s.get("persistent_props", []),
+                "camera_hint": s.get("camera_hint", "Dynamic cinematic shot"),
+                "status": "Active" if ep_num == 1 else "Upcoming"
+            })
+
+    outline_payload = {
+        "season_number": season_number,
+        "season_title": season_title,
+        "total_episodes": len(episodes),
+        "total_shots": len(flattened_shots),
+        "episodes": episodes,
+        "flattened_shots": flattened_shots
+    }
+
+    out_fn = f"season_{season_number}_shot_outline.json"
+    with open(out_fn, "w", encoding="utf-8") as f:
+        json.dump(outline_payload, f, ensure_ascii=False, indent=2)
+    print(f"✓ Saved 100-shot Master Screenplay Outline ({len(flattened_shots)} shots) to {out_fn}!")
+
+    if os.path.exists("story_state.json"):
+        try:
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                st = json.load(f)
+            st["season_shot_outline"] = outline_payload
+            st["season_arc"] = arc_summaries
+            st["season_title"] = season_title
+            st["season_number"] = season_number
+            with open("story_state.json", "w", encoding="utf-8") as f:
+                json.dump(st, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"Notice saving outline to story_state.json: {e}")
+
+    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
+    if target_gas:
+        try:
+            # 1. Update Tab 7: Season_Shot_Outline (100 shots)
+            p7 = {
+                "action": "save_season_shot_outline",
+                "season_number": season_number,
+                "season_title": season_title,
+                "shots": flattened_shots
+            }
+            r7 = requests.post(target_gas, data=json.dumps(p7), headers={"Content-Type": "text/plain"}, timeout=45)
+            print(f"✓ Google Sheet Tab 7 [Season_Shot_Outline] updated with {len(flattened_shots)} shots! (HTTP {r7.status_code})")
+
+            # 2. Update Tab 4: Season_Story_Arc
+            p4 = {
+                "action": "update_season_story_arc",
+                "season_number": season_number,
+                "season_title": season_title,
+                "episodes": arc_summaries
+            }
+            r4 = requests.post(target_gas, data=json.dumps(p4), headers={"Content-Type": "text/plain"}, timeout=30)
+            print(f"✓ Google Sheet Tab 4 [Season_Story_Arc] synchronized! (HTTP {r4.status_code})")
+        except Exception as e:
+            print(f"Notice syncing outline to Sheet: {e}")
+
+    return outline_payload
+
+def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=None, gas_url=None):
+    """
+    Pulls the 10 shots of target_ep from the 100-shot beat sheet and programmatically
+    compiles them into full 10-key Disney Pixar Google Flow JSON prompts.
+    """
+    fn = outline_file or f"season_{season_number}_shot_outline.json"
+    if not os.path.exists(fn):
+        if os.path.exists("story_state.json"):
+            try:
+                with open("story_state.json", "r", encoding="utf-8") as f:
+                    st = json.load(f)
+                    if "season_shot_outline" in st:
+                        fn = "story_state.json"
+            except Exception:
+                pass
+
+    outline_data = {}
+    if not os.path.exists(fn):
+        print(f"Outline file {fn} not found. Attempting to generate fresh 100-shot outline first...")
+        try:
+            generate_100_shot_season_outline(season_number, gas_url=gas_url)
+            fn = f"season_{season_number}_shot_outline.json"
+        except Exception as e:
+            print(f"Notice generating outline: {e}. Falling back to existing roadmap.")
+
+    if os.path.exists(fn):
+        with open(fn, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        outline_data = data.get("season_shot_outline", data) if "season_shot_outline" in data else data
+
+    episodes = outline_data.get("episodes", [])
+    target_ep_obj = next((e for e in episodes if e.get("episode_number") == target_ep), None)
+
+    if not target_ep_obj:
+        flat = outline_data.get("flattened_shots", [])
+        ep_shots = [s for s in flat if s.get("episode_number") == target_ep]
+        if not ep_shots:
+            fb_roadmap = SEASON_2_ROADMAP if season_number == 2 else SEASON_1_ROADMAP
+            fb_entry = fb_roadmap.get(target_ep, {})
+            ep_shots = [
+                {
+                    "shot_number": i,
+                    "speaker": "Third-Person Narrator",
+                    "action": f"{fb_entry.get('synopsis', 'Story beat')}. Shot {i}.",
+                    "dialogue_malayalam": "കൊച്ചിയിലെ മനോഹരമായ നിമിഷം.",
+                    "location": "Kakkanad apartment living room",
+                    "persistent_props": ["Sachin's cross-bag", "Reenu's silver wrist watch"],
+                    "camera_hint": "Dynamic cinematic medium shot"
+                }
+                for i in range(1, 11)
+            ]
+        target_ep_obj = {
+            "episode_number": target_ep,
+            "title_english": f"Episode {target_ep}",
+            "title_malayalam": "",
+            "synopsis": f"Episode {target_ep} narrative.",
+            "cliffhanger": "",
+            "shots": ep_shots
+        }
+
+    raw_shots = target_ep_obj.get("shots", [])
+    active_dna_map = get_active_character_dna_map(season_number)
+
+    known_chars = ["Sachin", "Reenu", "Kurian", "Annamma", "Madhavan", "Girija", "Amal", "Broker Shaji", "Varghese"]
+    compiled_shots = []
+
+    for idx, s in enumerate(raw_shots, start=1):
+        s_action = s.get("action", "")
+        s_speaker = s.get("speaker", "Third-Person Narrator")
+        s_diag = s.get("dialogue_malayalam") or s.get("dialogue") or ""
+        s_loc = s.get("location", "Kochi, Kerala")
+        s_camera = s.get("camera_hint") or s.get("camera") or "Dynamic cinematic 3D medium shot"
+
+        # Detect characters present
+        present_names = []
+        for c in known_chars:
+            if c.lower() in s_action.lower() or c.lower() in s_speaker.lower():
+                present_names.append(c)
+        if not present_names:
+            present_names = ["Sachin", "Reenu"]
+
+        characters_present = []
+        blocking = {}
+        for b_idx, c in enumerate(present_names):
+            c_dna = active_dna_map.get(c, DNA_REGISTRY.get(c, f"{c}: Stylized 3D Pixar character"))
+            characters_present.append({"name": c, "visual_dna": c_dna})
+            pos = ["Screen-center", "Screen-left", "Screen-right", "Background"][b_idx % 4]
+            blocking[c] = f"{pos} reacting expressively to scene action"
+
+        scene_clean_loc = re.sub(r'[^A-Za-z0-9]+', '_', s_loc).upper()[:22]
+        seq_cont = {
+            "scene_id": f"SCENE_{scene_clean_loc}",
+            "time_of_day": "Late Afternoon Monsoon Dusk",
+            "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+            "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
+            "spatial_blocking": blocking,
+            "eyeline_direction": "Characters looking attentively toward scene focal action",
+            "persistent_props": s.get("persistent_props") or ["Sachin's cross-bag", "Reenu's silver wrist watch"],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        }
+
+        # Enforce closed mouth directive
+        clean_action = s_action.strip()
+        if "closed" not in clean_action.lower():
+            clean_action += " Character lips are firmly closed. No mouth movement. Pure visual storytelling."
+
+        json_prompt = {
+            "style": MASTER_STYLE,
+            "duration": "6s",
+            "perspective": "Third-Person Narrator",
+            "characters_present": characters_present,
+            "sequence_continuity": seq_cont,
+            "location": s_loc,
+            "camera": s_camera,
+            "action": clean_action,
+            "dialogue": {
+                "speaker": s_speaker,
+                "voice_persona": NARRATOR_VOICE,
+                "language": "Malayalam",
+                "script": s_diag,
+                "line": s_diag
+            },
+            "audio_directive": (
+                "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
+                "All characters maintain strictly closed lips with zero talking or mouth animation. "
+                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
+                "Clean voiceover audio and natural ambient foley sound effects only."
+            )
+        }
+
+        compiled_shots.append({
+            "shot_number": idx,
+            "duration": "6s",
+            "duration_seconds": 6,
+            "character": s_speaker,
+            "dialogue_malayalam": s_diag,
+            "action_summary": s_action,
+            "json_prompt": json_prompt
+        })
+
+    ep_data = {
+        "episode_number": target_ep,
+        "season_number": season_number,
+        "season_title": outline_data.get("season_title", f"Season {season_number}"),
+        "title_english": target_ep_obj.get("title_english", f"Episode {target_ep}"),
+        "title_malayalam": target_ep_obj.get("title_malayalam", ""),
+        "synopsis": target_ep_obj.get("synopsis", ""),
+        "cliffhanger": target_ep_obj.get("cliffhanger", ""),
+        "total_shots": len(compiled_shots),
+        "calculated_total_seconds": len(compiled_shots) * 6,
+        "calculated_runtime_display": f"{len(compiled_shots) * 6 // 60}m {len(compiled_shots) * 6 % 60:02d}s",
+        "shots": compiled_shots
+    }
+
+    # Save to disk
+    with open("current_episode_shots.json", "w", encoding="utf-8") as f:
+        json.dump(ep_data, f, ensure_ascii=False, indent=2)
+    print(f"✓ Compiled {len(compiled_shots)} Disney Pixar JSON prompts for Episode {target_ep} into current_episode_shots.json!")
+
+    # Update creator portal
+    update_creator_portal(ep_data)
+
+    # Sync to Google Sheet (Tab 2, Tab 1)
+    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
+    if target_gas:
+        sync_new_episode_to_google_sheet(target_gas, ep_data)
+
+    return ep_data
+
+def reharmonize_outline_from_pivot(season_number, pivot_ep, pivot_shot, new_action, new_dialogue, outline_file=None, gas_url=None):
+    """
+    Ripples a story change at (pivot_ep, pivot_shot) through all subsequent shots
+    up to Episode 10 Climax so the entire season remains causally unbroken.
+    """
+    fn = outline_file or f"season_{season_number}_shot_outline.json"
+    if not os.path.exists(fn):
+        raise FileNotFoundError(f"Master outline {fn} not found.")
+
+    with open(fn, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    flat_shots = data.get("flattened_shots", [])
+    # Normalize existing shot numbers
+    for s in flat_shots:
+        try:
+            raw_s = int(s.get("shot_number", 1))
+            s["shot_number"] = ((raw_s - 1) % 10) + 1
+        except Exception:
+            pass
+
+    pivot_idx = -1
+    for i, s in enumerate(flat_shots):
+        try:
+            s_ep = int(s.get("episode_number", 0))
+            s_shot = int(s.get("shot_number", 0))
+        except Exception:
+            continue
+        if s_ep == pivot_ep and s_shot == pivot_shot:
+            pivot_idx = i
+            break
+
+    if pivot_idx == -1:
+        raise ValueError(f"Shot (Ep {pivot_ep}, Shot {pivot_shot}) not found in outline.")
+
+    # Apply pivot edit
+    flat_shots[pivot_idx]["action"] = new_action
+    flat_shots[pivot_idx]["dialogue_malayalam"] = new_dialogue
+
+    locked_history = flat_shots[:pivot_idx + 1]
+    subsequent_shots = flat_shots[pivot_idx + 1:]
+
+    if not subsequent_shots:
+        print("Pivot shot is the final shot of the season. No subsequent shots to re-harmonize.")
+        with open(fn, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return data
+
+    client = get_gemini_client()
+    candidate_models = [
+        "gemini-3.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite",
+        "gemini-3.1-flash-lite-preview",
+        "gemini-3.8-flash",
+        "gemini-flash-latest"
+    ]
+
+    history_summary = "\n".join([
+        f"[Ep {s['episode_number']} Shot {s['shot_number']}]: {s['action']} | Line: '{s['dialogue_malayalam']}'"
+        for s in locked_history[-10:] # last 10 established shots
+    ])
+
+    subsequent_summary = "\n".join([
+        f"[Ep {s['episode_number']} Shot {s['shot_number']}]: {s['action']} | Line: '{s['dialogue_malayalam']}'"
+        for s in subsequent_shots
+    ])
+
+    prompt = f"""You are the Master Showrunner for 'Sachin & Reenu' (Season {season_number}).
+A major story change occurred at Episode {pivot_ep} Shot {pivot_shot}:
+- New Action: {new_action}
+- New Dialogue: {new_dialogue}
+
+RECENT ESTABLISHED HISTORY LEADING UP TO THIS PIVOT:
+{history_summary}
+
+PLANNED SUBSEQUENT SHOTS THAT NEED RE-HARMONIZATION ({len(subsequent_shots)} shots):
+{subsequent_summary}
+
+MISSION:
+Adapt and re-harmonize all {len(subsequent_shots)} subsequent shots so that they logically flow from the new pivot event.
+- Maintain unbroken cause-and-effect.
+- Shot 10 of every episode must remain a strong cliffhanger.
+- Episode 10 Shot 10 MUST deliver the definitive happy emotional climax.
+- Output exactly {len(subsequent_shots)} shots in JSON:
+{{
+  "shots": [
+    {{
+      "episode_number": {subsequent_shots[0]['episode_number']},
+      "shot_number": {subsequent_shots[0]['shot_number']},
+      "action": "...",
+      "dialogue_malayalam": "..."
+    }}
+  ]
+}}
+"""
+
+    system_instruction = "Adapt subsequent screenplay shots to preserve narrative continuity following a pivot change. Output ONLY valid JSON."
+    harmonized = None
+
+    for model_name in candidate_models:
+        try:
+            resp = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
+                    response_mime_type="application/json",
+                    temperature=0.7,
+                    max_output_tokens=32768
+                )
+            )
+            if resp and resp.text:
+                raw_text = resp.text.strip()
+                if raw_text.startswith("```"):
+                    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+                    raw_text = re.sub(r"\s*```$", "", raw_text)
+                try:
+                    p = json.loads(raw_text)
+                except Exception:
+                    p = repair_json(raw_text, return_objects=True) if repair_json else None
+                if p and isinstance(p, dict) and "shots" in p and len(p["shots"]) > 0:
+                    harmonized = p["shots"]
+                    break
+        except Exception as e:
+            print(f"Notice during pivot re-harmonization with {model_name}: {e}")
+
+    if harmonized:
+        for idx, new_s in enumerate(harmonized):
+            target_idx = pivot_idx + 1 + idx
+            if target_idx < len(flat_shots):
+                flat_shots[target_idx]["action"] = new_s.get("action", flat_shots[target_idx]["action"])
+                flat_shots[target_idx]["dialogue_malayalam"] = new_s.get("dialogue_malayalam", flat_shots[target_idx]["dialogue_malayalam"])
+
+    data["flattened_shots"] = flat_shots
+    with open(fn, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"✓ Re-harmonized {len(subsequent_shots)} subsequent shots following pivot at Ep {pivot_ep} Shot {pivot_shot}!")
+
+    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
+    if target_gas:
+        try:
+            payload_shots = {
+                "action": "save_season_shot_outline",
+                "season_number": season_number,
+                "season_title": data.get("season_title", f"Season {season_number}"),
+                "shots": flat_shots
+            }
+            r = requests.post(target_gas, data=json.dumps(payload_shots), headers={"Content-Type": "text/plain"}, timeout=45)
+            print(f"✓ Google Sheet Tab 7 updated after pivot re-harmonization! (HTTP {r.status_code})")
+        except Exception as e:
+            print(f"Notice updating Sheet after pivot: {e}")
+
+    return data
+
 def main():
     parser = argparse.ArgumentParser(description="Generate Next Episode Screenplay & Prompts")
     parser.add_argument("--current_ep", type=int, default=None, help="Completed episode number")
@@ -1565,6 +2089,11 @@ def main():
     parser.add_argument("--is_new_season", action="store_true", help="Flag to launch a new season")
     parser.add_argument("--premise", type=str, default="", help="Custom story idea or premise to guide generation")
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
+    parser.add_argument("--mode", type=str, default="auto", choices=["auto", "generate_100_outline", "compile_episode", "reharmonize_outline"], help="Operation mode")
+    parser.add_argument("--pivot_ep", type=int, default=None, help="Pivot episode for re-harmonization")
+    parser.add_argument("--pivot_shot", type=int, default=None, help="Pivot shot for re-harmonization")
+    parser.add_argument("--new_action", type=str, default="", help="Updated action text for pivot shot")
+    parser.add_argument("--new_dialogue", type=str, default="", help="Updated dialogue text for pivot shot")
     args = parser.parse_args()
 
     # Determine season
@@ -1579,6 +2108,27 @@ def main():
                 season_num = 1
         else:
             season_num = 1
+
+    # Route based on explicit mode
+    if args.mode == "generate_100_outline":
+        print(f"\n🌟 Launching 100-Shot Master Screenplay Beat Sheet Generator for Season {season_num}...")
+        outline = generate_100_shot_season_outline(season_num, args.premise, gas_url=args.gas_url)
+        print(f"\n✨ Compiling Episode 1 prompts from the new 100-shot outline...")
+        compile_episode_prompts_from_outline(season_num, 1, gas_url=args.gas_url)
+        return
+
+    if args.mode == "compile_episode":
+        target = args.target_ep or 1
+        print(f"\n✨ Compiling Episode {target} prompts from Master 100-Shot Outline...")
+        compile_episode_prompts_from_outline(season_num, target, gas_url=args.gas_url)
+        return
+
+    if args.mode == "reharmonize_outline":
+        p_ep = args.pivot_ep or 1
+        p_shot = args.pivot_shot or 1
+        print(f"\n⚡ Re-harmonizing 100-Shot Outline from pivot Season {season_num} Ep {p_ep} Shot {p_shot}...")
+        reharmonize_outline_from_pivot(season_num, p_ep, p_shot, args.new_action, args.new_dialogue, gas_url=args.gas_url)
+        return
 
     is_new_season = args.is_new_season or (season_num > 1 and args.target_ep == 1)
 
