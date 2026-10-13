@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 11,
+  "total_episodes_produced": 12,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -230,30 +230,38 @@
         "Reenu",
         "Sachin"
       ]
+    },
+    {
+      "episode": 12,
+      "title": "പുതിയ തുടക്കം (A New Beginning)",
+      "summary": "Following their engagement announcement, Sachin and Reenu return to the apartment to find an unexpected visitor waiting, leading to a series of chaotic yet heartwarming events.",
+      "cliffhanger": "A surprise guest from Kottayam arrives at the apartment door.",
+      "characters_present": [
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 11,
+  "episode_number": 12,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_APARTMENT_BALCONY",
-    "time_of_day": "Afternoon",
-    "lighting_palette": "Soft golden afternoon light on their faces",
-    "weather": "Clear",
+    "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
+    "time_of_day": "Morning",
+    "lighting_palette": "Soft indoor daylight",
+    "weather": "Clear sky",
     "spatial_blocking": {
-      "Reenu": "Screen-right, facing Sachin, holding his hand",
-      "Sachin": "Screen-left, facing Reenu"
+      "Sachin": "Standing at the doorway, looking out"
     },
-    "eyeline_direction": "Reenu looks screen-left into Sachin's eyes",
+    "eyeline_direction": "Looking outside",
     "persistent_props": [
-      "Balcony railing",
+      "Apartment door",
+      "Apartment door in the background",
       "Handmade 'Just Engaged' cardboard banner",
-      "Kurian's analog Titan watch",
-      "Open apartment door",
+      "Kurian's analog Titan watch on Sachin's wrist",
       "Reenu's silver wrist watch",
       "Sachin's diagonal brown leather cross-bag",
-      "Shiny silver apartment key",
-      "Two large brown cardboard moving boxes"
+      "Two large brown cardboard moving boxes in the background"
     ],
-    "camera_lens": "Tight close-up on Reenu and Sachin's faces"
+    "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
   "season_number": 2,
   "season_arc": [
