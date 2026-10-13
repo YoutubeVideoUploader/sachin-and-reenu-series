@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 9,
+  "total_episodes_produced": 10,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -206,6 +206,19 @@
         "Kurian",
         "Reenu",
         "Sachin"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
+      "summary": "Against all odds, the cafe opens. Sachin and Reenu decide to stay together in Kochi, balancing their dreams and family.",
+      "cliffhanger": "None. The season ends with a celebratory payoff.",
+      "characters_present": [
+        "Shyam",
+        "Third-Person Narrator",
+        "Kurian",
+        "Sachin",
+        "Reenu"
       ]
     }
   ],
