@@ -37,10 +37,25 @@ function onOpen() {
       .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
       .addSeparator()
       .addItem("📁 Append Current Prompts to Past_Episodes_Prompts", "menuAppendCurrentPrompts")
+      .addItem("🗑️ Delete Episode 7 from Past_Episodes_Prompts", "menuDeleteEp7FromPastPrompts")
       .addItem("🧹 Migrate & Clean All Old Prompts_Ep Tabs", "menuMigrateOldPromptsTabs")
       .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
+  } catch (e) {}
+}
+
+/**
+ * One-click menu action to remove Episode 7 from Tab [Past_Episodes_Prompts].
+ */
+function menuDeleteEp7FromPastPrompts() {
+  removeEpisodeFromPastPrompts(null, 7);
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      "Episode 7 prompts removed from Past_Episodes_Prompts!",
+      "Deleted",
+      5
+    );
   } catch (e) {}
 }
 
@@ -673,11 +688,13 @@ function appendCurrentPromptsToPastEpisodes(fallbackEpNum) {
   }
 
   let epNumToArchive = fallbackEpNum;
-  try {
-    const banner = (promptSheet.getRange(1, 1).getValue() || "").toString();
-    const m = banner.match(/EPISODE\s+(\d+)/i);
-    if (m) epNumToArchive = parseInt(m[1], 10);
-  } catch (e) {}
+  if (!epNumToArchive) {
+    try {
+      const banner = (promptSheet.getRange(1, 1).getValue() || "").toString();
+      const m = banner.match(/EPISODE\s+(\d+)/i);
+      if (m) epNumToArchive = parseInt(m[1], 10);
+    } catch (e) {}
+  }
 
   if (!epNumToArchive) epNumToArchive = 1;
 
@@ -853,14 +870,6 @@ function updateJsonPromptsSheet(episodeNum, shots) {
   let sheet = ss.getSheetByName(TAB_PROMPTS);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_PROMPTS);
-  } else {
-    // 1. Archive existing prompts into Tab [Past_Episodes_Prompts] before wiping
-    try {
-      const prevEpNum = episodeNum > 1 ? (episodeNum - 1) : null;
-      appendCurrentPromptsToPastEpisodes(prevEpNum);
-    } catch (err) {
-      Logger.log("Notice archiving prompts before overwrite: " + err.toString());
-    }
   }
   
   sheet.clear();
@@ -1626,6 +1635,16 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  // Remove specific episode from Past_Episodes_Prompts via GET
+  if (action === "delete_from_past_prompts" || action === "remove_past_episode") {
+    const targetEp = parseInt(params.episode || params.ep || "7", 10);
+    removeEpisodeFromPastPrompts(null, targetEp);
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: `Episode ${targetEp} removed from Past_Episodes_Prompts.`
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Migrate legacy Prompts_Ep tabs into Past_Episodes_Prompts via GET
   if (action === "migrate_to_past_episodes" || action === "migrate_old_tabs") {
     const res = migrateAllPromptEpSheetsToPastPrompts();
@@ -1852,6 +1871,16 @@ function doPost(e) {
       const res = appendCurrentPromptsToPastEpisodes(body.episode_number || epNum);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 4d. Remove specific episode from Past_Episodes_Prompts
+    if (action === "delete_from_past_prompts" || action === "remove_past_episode") {
+      const targetEp = parseInt(body.episode_number || epNum || "7", 10);
+      removeEpisodeFromPastPrompts(null, targetEp);
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        message: `Episode ${targetEp} removed from Past_Episodes_Prompts.`
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     // 5. Trigger GitHub Actions Workflow from Google Apps Script / Sheet
