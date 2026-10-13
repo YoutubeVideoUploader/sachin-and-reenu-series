@@ -41,8 +41,24 @@ function onOpen() {
       .addItem("🗑️ Delete Episode 7 from Past_Episodes_Prompts", "menuDeleteEp7FromPastPrompts")
       .addItem("🧹 Migrate & Clean All Old Prompts_Ep Tabs", "menuMigrateOldPromptsTabs")
       .addSeparator()
+      .addItem("🎬 Setup 100-Shot Season Outline Tab", "menuSetupSeasonShotOutline")
+      .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
+  } catch (e) {}
+}
+
+/**
+ * One-click menu action to create and format Tab 7 [Season_Shot_Outline].
+ */
+function menuSetupSeasonShotOutline() {
+  setupSeasonShotOutlineSheet(2);
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      "Tab [Season_Shot_Outline] successfully created & formatted!",
+      "Success",
+      5
+    );
   } catch (e) {}
 }
 
