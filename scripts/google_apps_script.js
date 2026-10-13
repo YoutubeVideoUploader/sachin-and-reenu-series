@@ -24,6 +24,7 @@ const TAB_PROMPTS = "Current_JSON_Prompts";
 const TAB_CHECKLIST = "Video_Checklist";
 const TAB_SEASON_ARC = "Season_Story_Arc";
 const TAB_CHARACTERS = "Character_Registry";
+const TAB_PAST_PROMPTS = "Past_Episodes_Prompts";
 
 /**
  * Creates custom studio menu when Google Spreadsheet is opened.
@@ -35,7 +36,8 @@ function onOpen() {
       .addItem("🔄 Sync Drive Uploads Now", "menuSyncDrive")
       .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
       .addSeparator()
-      .addItem("📁 Archive Current Prompts Tab Now", "menuArchiveCurrentPrompts")
+      .addItem("📁 Append Current Prompts to Past_Episodes_Prompts", "menuAppendCurrentPrompts")
+      .addItem("🧹 Migrate & Clean All Old Prompts_Ep Tabs", "menuMigrateOldPromptsTabs")
       .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
@@ -43,17 +45,38 @@ function onOpen() {
 }
 
 /**
- * One-click menu action to manually archive Tab 2 (Current_JSON_Prompts) to a dedicated Prompts_Ep<N> tab.
+ * One-click menu action to append Tab 2 (Current_JSON_Prompts) into Tab [Past_Episodes_Prompts].
  */
-function menuArchiveCurrentPrompts() {
-  archiveCurrentPromptsSheet();
+function menuAppendCurrentPrompts() {
+  const res = appendCurrentPromptsToPastEpisodes();
   try {
     SpreadsheetApp.getActiveSpreadsheet().toast(
-      "Current prompts successfully archived to dedicated Prompts_Ep tab!",
-      "Archive Complete",
+      `Episode ${res.episode_number || ''} prompts successfully appended to ${TAB_PAST_PROMPTS}!`,
+      "Archive Saved",
       5
     );
   } catch (e) {}
+}
+
+/**
+ * One-click menu action to consolidate all Prompts_Ep<N> tabs into Past_Episodes_Prompts and delete old tabs.
+ */
+function menuMigrateOldPromptsTabs() {
+  const res = migrateAllPromptEpSheetsToPastPrompts();
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(
+      `Consolidated ${res.migrated_count || 0} episode tabs into ${TAB_PAST_PROMPTS} and cleaned up old sheets!`,
+      "Migration Complete",
+      6
+    );
+  } catch (e) {}
+}
+
+/**
+ * Legacy wrapper: calls appendCurrentPromptsToPastEpisodes.
+ */
+function menuArchiveCurrentPrompts() {
+  menuAppendCurrentPrompts();
 }
 
 /**
@@ -575,21 +598,79 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
     Logger.log("Notice updating Tab 4 on publish: " + err.toString());
   }
 
-  // Also archive published episode prompts into a dedicated Prompts_Ep<N> sheet
+  // Also archive published episode prompts into single master tab [Past_Episodes_Prompts]
   try {
-    archiveCurrentPromptsSheet(epNum);
+    appendCurrentPromptsToPastEpisodes(epNum);
   } catch (err) {
     Logger.log("Notice archiving prompts on publish: " + err.toString());
   }
 }
 
 /**
- * Archives current Tab 2: Current_JSON_Prompts into a dedicated tab: Prompts_Ep<N>.
+ * Initializes and styles the single master Tab 6: [Past_Episodes_Prompts] if not already present.
  */
-function archiveCurrentPromptsSheet(fallbackEpNum) {
+function setupPastEpisodesPromptsSheet(ss) {
+  if (!ss) ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_PAST_PROMPTS);
+  if (!sheet) {
+    sheet = ss.insertSheet(TAB_PAST_PROMPTS);
+  }
+  if (sheet.getLastRow() === 0) {
+    const headers = [
+      "Episode #",
+      "Shot #",
+      "Duration",
+      "Character",
+      "Malayalam Dialogue",
+      "Action Summary",
+      "Google Flow JSON Prompt",
+      "Archived At (IST)"
+    ];
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length)
+      .setBackground("#312e81")
+      .setFontColor("#e0e7ff")
+      .setFontWeight("bold")
+      .setHorizontalAlignment("center");
+    sheet.setFrozenRows(1);
+    sheet.setColumnWidth(1, 85);   // Episode #
+    sheet.setColumnWidth(2, 75);   // Shot #
+    sheet.setColumnWidth(3, 80);   // Duration
+    sheet.setColumnWidth(4, 110);  // Character
+    sheet.setColumnWidth(5, 260);  // Malayalam Dialogue
+    sheet.setColumnWidth(6, 320);  // Action Summary
+    sheet.setColumnWidth(7, 450);  // Google Flow JSON Prompt
+    sheet.setColumnWidth(8, 160);  // Archived At (IST)
+  }
+  return sheet;
+}
+
+/**
+ * Safely removes existing rows for a specific episode from Tab [Past_Episodes_Prompts] to prevent duplicates.
+ */
+function removeEpisodeFromPastPrompts(ss, epNum) {
+  if (!ss) ss = getStudioSpreadsheet();
+  const sheet = ss.getSheetByName(TAB_PAST_PROMPTS);
+  if (!sheet || sheet.getLastRow() <= 1) return;
+  const lastRow = sheet.getLastRow();
+  const data = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+  for (let r = data.length - 1; r >= 0; r--) {
+    if (parseInt(data[r][0], 10) === epNum) {
+      sheet.deleteRow(r + 2);
+    }
+  }
+}
+
+/**
+ * Appends current active prompts from Tab 2: [Current_JSON_Prompts] underneath the existing
+ * rows in Tab [Past_Episodes_Prompts]. Ensures strict chronological stacking and no duplicate rows.
+ */
+function appendCurrentPromptsToPastEpisodes(fallbackEpNum) {
   const ss = getStudioSpreadsheet();
   const promptSheet = ss.getSheetByName(TAB_PROMPTS);
-  if (!promptSheet || promptSheet.getLastRow() < 3) return;
+  if (!promptSheet || promptSheet.getLastRow() < 3) {
+    return { success: false, message: "No active prompts in Tab 2 to archive." };
+  }
 
   let epNumToArchive = fallbackEpNum;
   try {
@@ -600,29 +681,172 @@ function archiveCurrentPromptsSheet(fallbackEpNum) {
 
   if (!epNumToArchive) epNumToArchive = 1;
 
-  const archiveTabName = `Prompts_Ep${epNumToArchive}`;
-  let archiveSheet = ss.getSheetByName(archiveTabName);
-  if (!archiveSheet) {
-    archiveSheet = ss.insertSheet(archiveTabName);
-  } else {
-    archiveSheet.clear();
-  }
+  const pastSheet = setupPastEpisodesPromptsSheet(ss);
+  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+  // Remove existing rows for this episode if re-archiving, to avoid duplicate shots
+  removeEpisodeFromPastPrompts(ss, epNumToArchive);
 
   const lastRow = promptSheet.getLastRow();
   const lastCol = Math.max(6, promptSheet.getLastColumn());
-  const values = promptSheet.getRange(1, 1, lastRow, lastCol).getValues();
+  const values = promptSheet.getRange(3, 1, lastRow - 2, lastCol).getValues();
 
-  archiveSheet.getRange(1, 1, values.length, values[0].length).setValues(values);
-  archiveSheet.getRange(1, 1).setValue(`ARCHIVED PROMPTS: EPISODE ${epNumToArchive}`).setFontWeight("bold");
-  archiveSheet.getRange(1, 1, 1, values[0].length).setBackground("#1e293b").setFontColor("#f8fafc");
-  archiveSheet.getRange(2, 1, 1, values[0].length).setBackground("#334155").setFontColor("#e2e8f0").setFontWeight("bold");
-  archiveSheet.setFrozenRows(2);
-  Logger.log(`Successfully archived Episode ${epNumToArchive} prompts to tab [${archiveTabName}]`);
+  const rowsToAppend = [];
+  for (let i = 0; i < values.length; i++) {
+    const row = values[i];
+    let shotNum = row[0];
+    if (typeof shotNum === 'string') {
+      const sm = shotNum.match(/\d+/);
+      shotNum = sm ? parseInt(sm[0], 10) : (i + 1);
+    } else {
+      shotNum = parseInt(shotNum, 10) || (i + 1);
+    }
+
+    let jsonStr = row[5] || "";
+    if (typeof jsonStr === 'object') {
+      try { jsonStr = JSON.stringify(jsonStr); } catch (e) {}
+    }
+
+    rowsToAppend.push([
+      epNumToArchive,
+      shotNum,
+      row[1] || "6s",
+      row[2] || "",
+      row[3] || "",
+      row[4] || "",
+      jsonStr,
+      nowIst
+    ]);
+  }
+
+  if (rowsToAppend.length > 0) {
+    const startRow = pastSheet.getLastRow() + 1;
+    pastSheet.getRange(startRow, 1, rowsToAppend.length, rowsToAppend[0].length).setValues(rowsToAppend);
+  }
+
+  Logger.log(`Successfully appended Episode ${epNumToArchive} (${rowsToAppend.length} shots) to Tab [${TAB_PAST_PROMPTS}]`);
+  return {
+    success: true,
+    episode_number: epNumToArchive,
+    shots_appended: rowsToAppend.length,
+    tab_name: TAB_PAST_PROMPTS
+  };
+}
+
+/**
+ * Consolidates all legacy Prompts_Ep<N> tabs (e.g. Prompts_Ep3, Prompts_Ep4, Prompts_Ep5, Prompts_Ep6)
+ * in chronological order (Ep 3 then 4 then 5 then 6 down to down) into the single master tab
+ * [Past_Episodes_Prompts], and DELETES the individual Prompts_Ep tabs.
+ */
+function migrateAllPromptEpSheetsToPastPrompts() {
+  const ss = getStudioSpreadsheet();
+  const allSheets = ss.getSheets();
+  const epSheets = [];
+
+  for (const s of allSheets) {
+    const m = s.getName().match(/^Prompts_Ep(\d+)$/i);
+    if (m) {
+      epSheets.push({
+        sheet: s,
+        name: s.getName(),
+        epNum: parseInt(m[1], 10)
+      });
+    }
+  }
+
+  if (epSheets.length === 0) {
+    Logger.log("No legacy Prompts_Ep<N> tabs found to migrate.");
+    return {
+      success: true,
+      message: "No legacy Prompts_Ep tabs found.",
+      migrated_count: 0,
+      episodes: []
+    };
+  }
+
+  // Sort numerically ascending (e.g. Ep 3, Ep 4, Ep 5, Ep 6...)
+  epSheets.sort((a, b) => a.epNum - b.epNum);
+
+  const pastSheet = setupPastEpisodesPromptsSheet(ss);
+  const nowIst = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  let totalRowsMigrated = 0;
+  const migratedEps = [];
+
+  for (const item of epSheets) {
+    const s = item.sheet;
+    const epNum = item.epNum;
+    const lastRow = s.getLastRow();
+
+    if (lastRow >= 3) {
+      const lastCol = Math.max(6, s.getLastColumn());
+      const values = s.getRange(3, 1, lastRow - 2, lastCol).getValues();
+
+      // Clean prior rows for this episode in Past_Episodes_Prompts to avoid duplication
+      removeEpisodeFromPastPrompts(ss, epNum);
+
+      const rowsToAppend = [];
+      for (let i = 0; i < values.length; i++) {
+        const row = values[i];
+        let shotNum = row[0];
+        if (typeof shotNum === 'string') {
+          const sm = shotNum.match(/\d+/);
+          shotNum = sm ? parseInt(sm[0], 10) : (i + 1);
+        } else {
+          shotNum = parseInt(shotNum, 10) || (i + 1);
+        }
+
+        let jsonStr = row[5] || "";
+        if (typeof jsonStr === 'object') {
+          try { jsonStr = JSON.stringify(jsonStr); } catch (e) {}
+        }
+
+        rowsToAppend.push([
+          epNum,
+          shotNum,
+          row[1] || "6s",
+          row[2] || "",
+          row[3] || "",
+          row[4] || "",
+          jsonStr,
+          nowIst
+        ]);
+      }
+
+      if (rowsToAppend.length > 0) {
+        const startRow = pastSheet.getLastRow() + 1;
+        pastSheet.getRange(startRow, 1, rowsToAppend.length, rowsToAppend[0].length).setValues(rowsToAppend);
+        totalRowsMigrated += rowsToAppend.length;
+      }
+    }
+
+    migratedEps.push(epNum);
+    Logger.log(`Migrated Episode ${epNum} from sheet [${item.name}]. Deleting sheet now.`);
+    try {
+      ss.deleteSheet(s);
+    } catch (err) {
+      Logger.log(`Notice deleting sheet [${item.name}]: ${err.toString()}`);
+    }
+  }
+
+  return {
+    success: true,
+    message: `Migrated ${migratedEps.length} episode tabs (${totalRowsMigrated} shots) into [${TAB_PAST_PROMPTS}] and deleted old tabs.`,
+    migrated_count: migratedEps.length,
+    episodes: migratedEps,
+    total_shots: totalRowsMigrated
+  };
+}
+
+/**
+ * Backward compatibility alias: appends current prompts to Past_Episodes_Prompts.
+ */
+function archiveCurrentPromptsSheet(fallbackEpNum) {
+  return appendCurrentPromptsToPastEpisodes(fallbackEpNum);
 }
 
 /**
  * Overwrites Tab 2: Current_JSON_Prompts with the new episode prompts.
- * Automatically archives previous episode prompts before overwriting.
+ * Automatically appends previous episode prompts to Tab [Past_Episodes_Prompts] before overwriting.
  */
 function updateJsonPromptsSheet(episodeNum, shots) {
   const ss = getStudioSpreadsheet();
@@ -630,10 +854,10 @@ function updateJsonPromptsSheet(episodeNum, shots) {
   if (!sheet) {
     sheet = ss.insertSheet(TAB_PROMPTS);
   } else {
-    // 1. Archive existing prompts into Prompts_Ep<old> before wiping
+    // 1. Archive existing prompts into Tab [Past_Episodes_Prompts] before wiping
     try {
       const prevEpNum = episodeNum > 1 ? (episodeNum - 1) : null;
-      archiveCurrentPromptsSheet(prevEpNum);
+      appendCurrentPromptsToPastEpisodes(prevEpNum);
     } catch (err) {
       Logger.log("Notice archiving prompts before overwrite: " + err.toString());
     }
@@ -907,10 +1131,161 @@ function getSeasonStoryArcData() {
 }
 
 /**
- * Reads archived prompts from Prompts_Ep<N> or Tab 2 (Current_JSON_Prompts).
+ * Reads Tab [Past_Episodes_Prompts] to provide complete multi-episode story and prompt continuity.
+ * Returns:
+ * - episodes: list of archived episode numbers
+ * - episodes_map: object mapping episode number -> shots array
+ * - last_shot: full details of the last shot (Shot 10 of targetEp-1, or the latest shot in the sheet)
+ * - last_episode_number: the latest completed episode number
+ * - timeline_summary: text narrative summary of past shots and story progression
+ */
+function getPastEpisodesPromptsData(targetEp) {
+  const ss = getStudioSpreadsheet();
+  const sheet = ss.getSheetByName(TAB_PAST_PROMPTS);
+  if (!sheet || sheet.getLastRow() <= 1) {
+    return {
+      success: true,
+      total_shots: 0,
+      episodes: [],
+      episodes_map: {},
+      last_shot: null,
+      last_episode_number: 0,
+      timeline_summary: "No past episodes archived yet."
+    };
+  }
+
+  const lastRow = sheet.getLastRow();
+  const lastCol = Math.max(8, sheet.getLastColumn());
+  const data = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+
+  const episodesMap = {};
+  const episodesList = [];
+  const allShots = [];
+  let absoluteLastShot = null;
+
+  for (let i = 0; i < data.length; i++) {
+    const row = data[i];
+    const epNum = parseInt(row[0], 10);
+    if (isNaN(epNum)) continue;
+
+    let shotNum = row[1];
+    if (typeof shotNum === 'string') {
+      const m = shotNum.match(/\d+/);
+      shotNum = m ? parseInt(m[0], 10) : (i + 1);
+    } else {
+      shotNum = parseInt(shotNum, 10) || (i + 1);
+    }
+
+    let jsonPrompt = row[6];
+    if (typeof jsonPrompt === 'string' && jsonPrompt.trim().startsWith('{')) {
+      try {
+        jsonPrompt = JSON.parse(jsonPrompt);
+      } catch (e) {}
+    }
+
+    const shotObj = {
+      episode_number: epNum,
+      shot_number: shotNum,
+      duration: row[2] || "6s",
+      character: row[3] || "",
+      dialogue_malayalam: row[4] || "",
+      action_summary: row[5] || "",
+      json_prompt: jsonPrompt,
+      archived_at: row[7] || ""
+    };
+
+    if (!episodesMap[epNum]) {
+      episodesMap[epNum] = [];
+      episodesList.push(epNum);
+    }
+    episodesMap[epNum].push(shotObj);
+    allShots.push(shotObj);
+    absoluteLastShot = shotObj;
+  }
+
+  episodesList.sort((a, b) => a - b);
+
+  // Determine last_shot specifically for targetEp if provided
+  let relevantLastShot = absoluteLastShot;
+  if (targetEp && targetEp > 1) {
+    const prevEp = targetEp - 1;
+    if (episodesMap[prevEp] && episodesMap[prevEp].length > 0) {
+      const prevShots = episodesMap[prevEp];
+      relevantLastShot = prevShots[prevShots.length - 1];
+    }
+  }
+
+  // Build timeline narrative summary
+  const summaryParts = [];
+  for (const ep of episodesList) {
+    const shots = episodesMap[ep] || [];
+    if (shots.length === 0) continue;
+    const firstShot = shots[0];
+    const lastShotInEp = shots[shots.length - 1];
+    let epSummary = `[Episode ${ep} (${shots.length} Shots)]: Begins with: "${firstShot.action_summary}" (${firstShot.character}). Ends with: "${lastShotInEp.action_summary}" (${lastShotInEp.character}) -> Final line: "${lastShotInEp.dialogue_malayalam}"`;
+    summaryParts.push(epSummary);
+  }
+
+  return {
+    success: true,
+    total_shots: allShots.length,
+    episodes: episodesList,
+    episodes_map: episodesMap,
+    all_shots: allShots,
+    last_shot: relevantLastShot,
+    last_episode_number: episodesList.length > 0 ? episodesList[episodesList.length - 1] : 0,
+    timeline_summary: summaryParts.join("\n")
+  };
+}
+
+/**
+ * Reads archived prompts from Tab [Past_Episodes_Prompts], or legacy Prompts_Ep<N> / TAB_PROMPTS.
  */
 function getArchivedEpisodePrompts(epNum) {
   const ss = getStudioSpreadsheet();
+
+  // 1. Check Tab [Past_Episodes_Prompts] first
+  const pastSheet = ss.getSheetByName(TAB_PAST_PROMPTS);
+  if (pastSheet && pastSheet.getLastRow() > 1) {
+    const lastRow = pastSheet.getLastRow();
+    const data = pastSheet.getRange(2, 1, lastRow - 1, 8).getValues();
+    const matchingShots = [];
+    for (let i = 0; i < data.length; i++) {
+      const row = data[i];
+      if (parseInt(row[0], 10) === epNum) {
+        let promptJson = row[6];
+        if (typeof promptJson === 'string' && promptJson.trim().startsWith('{')) {
+          try {
+            promptJson = JSON.parse(promptJson);
+          } catch (e) {}
+        }
+        let shotNum = row[1];
+        if (typeof shotNum === 'string') {
+          const m = shotNum.match(/\d+/);
+          shotNum = m ? parseInt(m[0], 10) : (matchingShots.length + 1);
+        }
+        matchingShots.push({
+          shot_number: shotNum,
+          duration: row[2] || "6s",
+          character: row[3] || "",
+          dialogue_malayalam: row[4] || "",
+          action_summary: row[5] || "",
+          json_prompt: promptJson
+        });
+      }
+    }
+    if (matchingShots.length > 0) {
+      return {
+        success: true,
+        episode_number: epNum,
+        tab_name: TAB_PAST_PROMPTS,
+        total_shots: matchingShots.length,
+        shots: matchingShots
+      };
+    }
+  }
+
+  // 2. Fallback to legacy Prompts_Ep<N> or Tab 2
   const archiveTabName = `Prompts_Ep${epNum}`;
   let sheet = ss.getSheetByName(archiveTabName);
   if (!sheet) {
@@ -1243,6 +1618,21 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  // Tab 6: Master Past Episodes Prompts & Multi-Episode Continuity
+  if (action === "get_past_prompts" || action === "get_past_episodes_prompts" || action === "past_prompts") {
+    const targetEp = params.episode ? parseInt(params.episode, 10) : (epNum > 1 ? (epNum - 1) : 1);
+    const data = getPastEpisodesPromptsData(targetEp);
+    return ContentService.createTextOutput(JSON.stringify(data))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // Migrate legacy Prompts_Ep tabs into Past_Episodes_Prompts via GET
+  if (action === "migrate_to_past_episodes" || action === "migrate_old_tabs") {
+    const res = migrateAllPromptEpSheetsToPastPrompts();
+    return ContentService.createTextOutput(JSON.stringify(res))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Archived & Previous Episode Prompts for Sequence Continuity
   if (action === "get_previous_prompts" || action === "get_archived_prompts" || action === "get_episode_prompts") {
     const targetEp = parseInt(params.episode || params.ep || (epNum > 1 ? (epNum - 1) : 1), 10);
@@ -1448,6 +1838,20 @@ function doPost(e) {
         success: true,
         message: `Episode ${epNum} raw clips cleaned from Drive and marked Published in Sheet.`
       })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 4b. Consolidate & Migrate all old Prompts_Ep tabs into Past_Episodes_Prompts
+    if (action === "migrate_to_past_episodes" || action === "migrate_old_tabs") {
+      const res = migrateAllPromptEpSheetsToPastPrompts();
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 4c. Append current prompts to Past_Episodes_Prompts
+    if (action === "archive_to_past_episodes" || action === "append_past_prompts") {
+      const res = appendCurrentPromptsToPastEpisodes(body.episode_number || epNum);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     // 5. Trigger GitHub Actions Workflow from Google Apps Script / Sheet

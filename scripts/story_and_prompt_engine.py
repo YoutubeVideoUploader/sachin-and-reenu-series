@@ -518,7 +518,7 @@ Output JSON matching this exact schema:
         ]
     }
 
-def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None):
+def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None, past_timeline_summary="", last_shot_details=None):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
     with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
@@ -593,13 +593,26 @@ def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_s
     )
 
     handoff_text = ""
-    if cliffhanger_scene_state:
+    if last_shot_details:
+        jp = last_shot_details.get("json_prompt") or {}
+        sc = jp.get("sequence_continuity") or {}
+        handoff_text = f"""
+EXACT PREVIOUS EPISODE {current_ep_num} ENDING (SHOT 10 RECORD FROM GOOGLE SHEET):
+- Action Summary: {last_shot_details.get('action_summary', '')}
+- Spoken Dialogue: "{last_shot_details.get('dialogue_malayalam', '')}"
+- Setting/Location: {jp.get('location', 'Scene Location')}
+- Spatial Blocking: {json.dumps(sc.get('spatial_blocking', {}), ensure_ascii=False)}
+- Persistent Hero Props: {', '.join(sc.get('persistent_props', []))}
+"""
+    elif cliffhanger_scene_state:
         handoff_text = f"""
 CONTINUITY HANDOFF FROM PREVIOUS EPISODE {current_ep_num} ENDING SCENE:
 The previous episode ended with the following physical scene continuity state:
 {json.dumps(cliffhanger_scene_state, ensure_ascii=False, indent=2)}
 CRITICAL HANDOFF RULE: If Episode {next_ep_num} Shot 1 begins in this continuous sequence/location, you MUST seamlessly inherit this exact scene_id, weather, lighting palette, character spatial blocking, and prop placement to guarantee 100% continuous multi-shot flow across episode boundaries!
 """
+
+    past_timeline_block = f"\nMASTER STORY TIMELINE UP TO NOW (FROM TAB: PAST_EPISODES_PROMPTS):\n{past_timeline_summary}\n" if past_timeline_summary else ""
 
     prompt = f"""
 Write the full screenplay and shot-by-shot Google Flow JSON prompts for Episode {next_ep_num} of 'Sachin & Reenu'.
@@ -609,11 +622,16 @@ MASTER ROADMAP GUIDANCE:
 - Target Premise / Narrative Beat: {effective_premise}
 - Target Climax / Cliffhanger: {target_cliffhanger_guide}
 
+{past_timeline_block}
 CONTEXT FROM PREVIOUS EPISODE {current_ep_num}:
 Story: {previous_story}
 Cliffhanger: {cliffhanger}
 Premise/Hook for Episode {next_ep_num}: {effective_premise}
 {handoff_text}
+
+CRITICAL CONTINUITY MANDATE (ABSOLUTELY NO EPISODE JUMPING):
+Episode {next_ep_num} Shot 1 MUST start directly and seamlessly from the exact closing situation, location, and emotional state where Episode {current_ep_num} ended in Shot 10!
+The story CANNOT jump forward abruptly in time or skip to an unrelated event without addressing and resolving the previous cliffhanger. Characters must react directly to what just occurred in Shot 10 before naturally evolving the scene forward!
 
 CRITICAL PRODUCTION RULES:
 1. TARGET DURATION: STRICTLY AROUND 1 MINUTE (55 to 65 seconds total).
@@ -1364,9 +1382,27 @@ def main():
             previous_story = prev_entry.get("synopsis", "Season prologue.")
             cliffhanger = prev_entry.get("cliffhanger", "Prologue ending.")
 
-    print(f"Directing Season {season_num} Episode {target_ep} from Master Roadmap:")
-    print(f"  Target: {target_entry.get('title_malayalam', '')} ({target_entry.get('title_english', '')})")
-    print(f"  Premise: {premise}")
+    past_timeline_summary = ""
+    last_shot_details = None
+    gas_target_url = args.gas_url or os.getenv("GAS_WEBHOOK_URL")
+    if gas_target_url and not is_new_season and effective_current_ep >= 1:
+        try:
+            print(f"Fetching master past episodes prompts from Google Sheet ({gas_target_url})...")
+            res_past = requests.get(f"{gas_target_url}?action=get_past_prompts&episode={target_ep}", timeout=25)
+            if res_past.status_code == 200:
+                p_data = res_past.json()
+                if p_data.get("success"):
+                    past_timeline_summary = p_data.get("timeline_summary", "")
+                    last_shot_details = p_data.get("last_shot")
+                    if last_shot_details:
+                        jp = last_shot_details.get("json_prompt")
+                        if isinstance(jp, dict) and "sequence_continuity" in jp:
+                            cliffhanger_scene_state = jp.get("sequence_continuity")
+                        if last_shot_details.get("action_summary"):
+                            previous_story += f" Ending shot: {last_shot_details['action_summary']}. Final dialogue: '{last_shot_details.get('dialogue_malayalam', '')}'"
+                    print(f"✓ Retrieved master Past_Episodes_Prompts ({len(p_data.get('episodes', []))} episodes) from Google Sheet!")
+        except Exception as err:
+            print(f"Notice querying Past_Episodes_Prompts from Sheet: {err}")
 
     # 1. Generate Episode Screenplay & Long Disney Pixar Prompts
     ep_data = generate_next_episode_screenplay(
@@ -1379,7 +1415,9 @@ def main():
         is_new_season=is_new_season,
         target_entry=target_entry,
         season_title=season_title,
-        active_character_dna=active_dna_map
+        active_character_dna=active_dna_map,
+        past_timeline_summary=past_timeline_summary,
+        last_shot_details=last_shot_details
     )
 
     if is_new_season:
