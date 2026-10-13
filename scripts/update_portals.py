@@ -8,19 +8,48 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 # Load current episode shots
 with open('current_episode_shots.json', 'r', encoding='utf-8') as f:
-    ep_data = json.load(f)
+    raw_data = json.load(f)
+
+# Normalize into full episodeData object
+if isinstance(raw_data, list):
+    shots_list = raw_data
+    ep_obj = {
+        "episode_number": 7,
+        "season_number": 2,
+        "is_season_2": True,
+        "title_english": "The Monsoon Revelation",
+        "title_malayalam": "മഴയും വെളിപ്പെടുത്തലും",
+        "synopsis": "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi. Overwhelmed by Sachin's genuine sacrifice and humble devotion, Annamma's heart melts with motherly approval. But just as love blossoms under the monsoon awning, Annamma's phone rings with an urgent call from Kurian back at the flat: a wealthy marriage proposal party from Kottayam has arrived at their doorstep!",
+        "cliffhanger": "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
+        "total_shots": len(shots_list),
+        "calculated_runtime_display": f"{len(shots_list)*6 // 60}m {len(shots_list)*6 % 60:02d}s",
+        "shots": shots_list,
+        "prompts": shots_list
+    }
+else:
+    ep_obj = raw_data
+    if "shots" not in ep_obj and "prompts" in ep_obj:
+        ep_obj["shots"] = ep_obj["prompts"]
 
 # Load existing base portal.html
 with open('portal.html', 'r', encoding='utf-8') as f:
     base_html = f.read()
 
 # Replace episodeData
-shots_json_str = json.dumps(ep_data, ensure_ascii=False, indent=2)
+shots_json_str = json.dumps(ep_obj, ensure_ascii=False, indent=2)
 updated_html = re.sub(
-    r'let episodeData = \{.*?\};\s+// Tracks current state',
-    f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
+    r'let episodeData = (?:\[.*?\]|\{.*?\});\s+// Tracks current state',
+    f'let episodeData = {shots_json_str};
+
+    // Tracks current state',
     base_html,
     flags=re.DOTALL
+)
+
+# Ensure overlay is hidden by default
+updated_html = updated_html.replace(
+    '<div id="studioLoaderOverlay" class="studio-loader-overlay">',
+    '<div id="studioLoaderOverlay" class="studio-loader-overlay hidden">'
 )
 
 # Load story_state.json for dynamic character wardrobe & season story arc
@@ -30,18 +59,16 @@ if state_path.exists():
         with open(state_path, 'r', encoding='utf-8') as f:
             state = json.load(f)
 
-        season_num = state.get('season_number', 1)
+        season_num = state.get('season_number', 2)
         chars = state.get('characters', {})
 
-        # Default fallbacks
         default_roles = {
             "Reenu": "Lead Female",
             "Sachin": "Lead Male",
             "Amal": "Best Friend / Comic Anchor",
-            "Roy (Reenu's Father)": "Reenu's Father (Retired Bank Manager)",
-            "Molly (Reenu's Mother)": "Reenu's Mother",
-            "Madhavan": "Reenu's Father",
-            "Girija": "Reenu's Mother"
+            "Annamma": "Reenu's Mother",
+            "Kurian": "Reenu's Father",
+            "Broker Shaji": "Kochi Real Estate Broker"
         }
         default_voices = {
             "Reenu": "Sweet, expressive 22yo South Indian Malayali female voice, warm, gentle, clear studio warmth.",
@@ -49,10 +76,8 @@ if state_path.exists():
             "Amal": "Youthful energetic Malayali male voice, friendly, casual, slightly teasing tone, natural cheerful energy."
         }
 
-        # Build clean character registry
         registry_list = []
-        # Ensure lead characters first
-        ordered_names = ["Reenu", "Sachin", "Amal"]
+        ordered_names = ["Reenu", "Sachin", "Amal", "Annamma", "Kurian", "Broker Shaji"]
         for cname in chars.keys():
             if cname not in ordered_names:
                 ordered_names.append(cname)
@@ -70,7 +95,7 @@ if state_path.exists():
                 "role": role,
                 "first_appearance": first_app,
                 "status": "Active",
-                "visual_dna": vdna or f"{cname}: Stylized 3D Pixar-style cartoon animation character (Strictly non-human realism).",
+                "visual_dna": vdna or f"{cname}: Stylized 3D cartoon animation character (Strictly non-human realism).",
                 "locked_attire": attire or "Locked signature costume. Absolutely zero variations.",
                 "voice_persona": voice
             })
@@ -83,7 +108,6 @@ if state_path.exists():
             flags=re.DOTALL
         )
 
-        # Update seasonStoryData if season_arc is present
         if state.get("season_arc"):
             season_story_obj = {
                 "season_number": season_num,
@@ -109,7 +133,9 @@ target_paths = [
     Path("portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/repo_studio/portal.html"),
-    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/portal.html")
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/New folder (3)/portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/New folder (3)/index.html")
 ]
 
 for p in target_paths:
@@ -120,4 +146,4 @@ for p in target_paths:
     except Exception as e:
         print(f"Notice skipping {p}: {e}")
 
-print("All portals successfully updated with dynamic episode prompts and character wardrobe!")
+print("All portals successfully updated with valid episodeData and instant-load fixes!")
