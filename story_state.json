@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 10,
+  "total_episodes_produced": 11,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -219,27 +219,41 @@
         "Sachin",
         "Amal"
       ]
+    },
+    {
+      "episode": 11,
+      "title": "നമ്മുടെ സ്വന്തം വീട് (Our Very Own Home)",
+      "summary": "Following the emotional victory at the railway station, the scene shifts to Sachin and Reenu's new beginning. After receiving the heartfelt blessings of Kurian and Annamma, the couple, along with their ever-loyal friend Amal, arrives at their new apartment in Kochi. The episode captures the tender realization of their shared journey, culminating in a beautiful moment on their new balcony where Reenu acknowledges the home they have built together against all odds.",
+      "cliffhanger": "Reenu holds Sachin's hand tight: 'We made our home together, Sachin.' Season 2 Grand Finale concluded!",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 10,
+  "episode_number": 11,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_ERNAKULAM_STATION_PLATFORM",
-    "time_of_day": "Early Morning Golden Hour",
-    "lighting_palette": "Soft cinematic golden morning sunlight",
-    "weather": "Clear bright morning",
+    "scene_id": "SCENE_APARTMENT_BALCONY",
+    "time_of_day": "Afternoon",
+    "lighting_palette": "Soft golden afternoon light on their faces",
+    "weather": "Clear",
     "spatial_blocking": {
-      "Amal": "Standing, shouting with joy"
+      "Reenu": "Screen-right, facing Sachin, holding his hand",
+      "Sachin": "Screen-left, facing Reenu"
     },
-    "eyeline_direction": "Looking at Sachin",
+    "eyeline_direction": "Reenu looks screen-left into Sachin's eyes",
     "persistent_props": [
-      "Annamma's gold bangles",
-      "Banner",
+      "Balcony railing",
+      "Handmade 'Just Engaged' cardboard banner",
       "Kurian's analog Titan watch",
-      "Sachin's brown cross-bag",
-      "Sachin's cross-bag",
-      "Vintage mechanical watch"
+      "Open apartment door",
+      "Reenu's silver wrist watch",
+      "Sachin's diagonal brown leather cross-bag",
+      "Shiny silver apartment key",
+      "Two large brown cardboard moving boxes"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field"
+    "camera_lens": "Tight close-up on Reenu and Sachin's faces"
   },
   "season_number": 2,
   "season_arc": [
