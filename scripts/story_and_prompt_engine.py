@@ -2166,6 +2166,7 @@ def main():
         target_ep = effective_current_ep + 1
 
     # Resolve roadmap & storyline
+    active_roadmap = SEASON_2_ROADMAP if season_num == 2 else SEASON_1_ROADMAP
     dynamic_arc_data = None
     season_title = ""
     season_arc = []
