@@ -7421,10 +7421,11 @@ The JSON MUST follow this EXACT schema:
       const banner = document.getElementById('seasonFinaleBanner');
       if (!banner) return;
       const epNum = episodeData.episode_number || 1;
-      const isSeason2 = episodeData.is_season_2 || (seasonStoryData && seasonStoryData.season_number >= 2);
+      const currentSeason = (seasonStoryData && seasonStoryData.season_number) ? parseInt(seasonStoryData.season_number, 10) : (episodeData.season_number || 2);
+      const nextSeason = currentSeason + 1;
 
-      // Show banner if Episode 10 of Season 1
-      if (epNum === 10 && !isSeason2) {
+      // Show banner whenever Episode 10 of any season is reached
+      if (epNum === 10) {
         banner.style.display = 'block';
         if (window.editingEp10Confirmed) {
           banner.innerHTML = `
@@ -7432,12 +7433,12 @@ The JSON MUST follow this EXACT schema:
               <div style="display: flex; align-items: center; gap: 12px;">
                 <span style="font-size: 24px;">✏️</span>
                 <div>
-                  <div style="font-size: 13px; font-weight: 800; color: #fbbf24;">Editing Mode: Season 1 Finale (Episode 10: The Revelation)</div>
-                  <div style="font-size: 12px; color: #cbd5e1;">Review or edit any of the 10 shots below. When ready to transition to the new story, click the button on the right!</div>
+                  <div style="font-size: 13px; font-weight: 800; color: #fbbf24;">Editing Mode: Season ${currentSeason} Finale (Episode 10: ${episodeData.title_english || 'Grand Finale'})</div>
+                  <div style="font-size: 12px; color: #cbd5e1;">Review or edit any of the 10 shots below. When ready to transition to Season ${nextSeason}, click the button on the right!</div>
                 </div>
               </div>
-              <button class="btn btn-primary" onclick="openSeason2Modal()" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);">
-                🚀 Proceed to Next Episode ➔
+              <button class="btn btn-primary" onclick="openSeason2Modal(${nextSeason})" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);">
+                🚀 Proceed to Season ${nextSeason} ➔
               </button>
             </div>
           `;
@@ -7447,14 +7448,14 @@ The JSON MUST follow this EXACT schema:
               <div style="max-width: 720px;">
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                   <span style="font-size: 22px;">🎯</span>
-                  <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #d8b4fe;">SEASON 1 FINALE REACHED</span>
+                  <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #d8b4fe;">SEASON ${currentSeason} FINALE REACHED</span>
                   <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); font-size: 11px;">Episode 10 Grand Climax</span>
                 </div>
                 <h3 style="font-size: 19px; font-weight: 800; color: #fff; margin: 4px 0 6px 0;">
-                  The London Secret is Revealed! What would you like to do next?
+                  Season ${currentSeason} is Complete! Ready to Launch Season ${nextSeason}?
                 </h3>
                 <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0;">
-                  Episode 10 completes the Season 1 story arc. Gemini will <b>not</b> automatically advance. You can polish Episode 10, or launch <b>Season 2</b> with a brand-new story, updated character attire, and a full Google Sheet rewrite!
+                  Episode 10 completes the Season ${currentSeason} story arc. All 10 episodes are Published. Automatic background runs are halted. You can inspect the shots or launch <b>Season ${nextSeason}</b> with a brand-new 10-episode story arc!
                 </p>
               </div>
               <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
@@ -7462,10 +7463,10 @@ The JSON MUST follow this EXACT schema:
                   🔄 Reset Sheet to Ep 10
                 </button>
                 <button class="btn btn-secondary" onclick="chooseStayOnEp10()" style="padding: 11px 18px; font-size: 13px; font-weight: 700; background: #1e293b; border-color: #475569;">
-                  ✏️ Make Corrections to Episode 10
+                  ✏️ Edit Episode 10
                 </button>
-                <button class="btn btn-primary" onclick="openSeason2Modal()" style="padding: 11px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 18px rgba(168, 85, 247, 0.5);">
-                  🚀 Proceed to Next Episode
+                <button class="btn btn-primary" onclick="openSeason2Modal(${nextSeason})" style="padding: 11px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 18px rgba(168, 85, 247, 0.5);">
+                  🚀 Proceed to Season ${nextSeason} ➔
                 </button>
               </div>
             </div>
@@ -7547,9 +7548,23 @@ The JSON MUST follow this EXACT schema:
       if (shotsEl) shotsEl.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function openSeason2Modal() {
+    function openSeason2Modal(targetSeason) {
+      const curS = (seasonStoryData && seasonStoryData.season_number) ? parseInt(seasonStoryData.season_number, 10) : (episodeData.season_number || 2);
+      const nextS = targetSeason || (curS + 1);
+      window.targetNextSeason = nextS;
+
       const modal = document.getElementById('season2SetupModal');
-      if (modal) modal.style.display = 'flex';
+      if (modal) {
+        modal.style.display = 'flex';
+        const titleEl = modal.querySelector('h3');
+        if (titleEl) titleEl.innerText = `Architect Season ${nextS} (New Story Arc)`;
+        const subtitleEl = modal.querySelector('div[style*="c084fc"]');
+        if (subtitleEl) subtitleEl.innerText = `Full Google Sheet Overhaul • 10-Episode Roadmap • S0${nextS}E01 Video Prompts`;
+        const labelEl = modal.querySelector('label span:first-child');
+        if (labelEl) labelEl.innerText = `📖 Your Story Idea, Plot Direction, or Genre for Season ${nextS}:`;
+        const btnLaunch = document.getElementById('btnLaunchSeason2');
+        if (btnLaunch) btnLaunch.innerText = `🎬 Launch Season ${nextS} & Rewrite Google Sheets`;
+      }
       const progressBox = document.getElementById('season2ProgressBox');
       if (progressBox) progressBox.style.display = 'none';
       const errMsg = document.getElementById('season2ErrorMsg');
@@ -7712,9 +7727,12 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
       const errorMsg = document.getElementById('season2ErrorMsg');
       const launchBtn = document.getElementById('btnLaunchSeason2');
 
-      const userIdea = (input ? input.value : '').trim() || "Sachin and Reenu start a cozy cafe venture in Fort Kochi with Amal while handling career and relationship growth.";
+      const curS = (seasonStoryData && seasonStoryData.season_number) ? parseInt(seasonStoryData.season_number, 10) : (episodeData.season_number || 2);
+      const nextS = window.targetNextSeason || (curS + 1);
 
-      if (!confirm(`Are you ready to launch Season 2?\n\nStory Concept: "${userIdea.slice(0, 80)}..."\n\nThis will rewrite your Google Sheet for Season 2 (Tab 4 Roadmap & Tab 1/2 for Episode 1). Proceed?`)) {
+      const userIdea = (input ? input.value : '').trim() || `Sachin and Reenu embark on Season ${nextS} balancing love, career, and family in Kochi.`;
+
+      if (!confirm(`Are you ready to launch Season ${nextS}?\n\nStory Concept: "${userIdea.slice(0, 80)}..."\n\nThis will rewrite your Google Sheet for Season ${nextS} (Tab 4 Roadmap, Tab 1 & Tab 2 for Episode 1). Proceed?`)) {
         return;
       }
 
@@ -7729,9 +7747,9 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           <div style="font-size: 24px; animation: spin 2s linear infinite;">⚙️</div>
           <div>
-            <div style="font-weight: 800; font-size: 15px; color: #f472b6; margin-bottom: 4px;">Season Transition Initiated</div>
+            <div style="font-weight: 800; font-size: 15px; color: #f472b6; margin-bottom: 4px;">Season ${nextS} Transition Initiated</div>
             <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
-              GitHub Actions is cleaning Sheets 1, 4 & 2, architecting a continuous 10-episode story arc, and generating Episode 1 prompts.
+              GitHub Actions is cleaning Sheets 1, 4 & 2, architecting a continuous 10-episode story arc for Season ${nextS}, and generating Episode 1 prompts.
             </div>
             <div style="margin-top: 10px; font-size: 11px; color: #38bdf8;">
               <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" style="color: #38bdf8; font-weight: 700; text-decoration: underline;">View Live GitHub Progress ↗</a>
@@ -7758,7 +7776,7 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
               ref: "main",
               inputs: {
                 target_episode: "1",
-                season_number: "2",
+                season_number: String(nextS),
                 is_new_season: "true",
                 story_premise: userIdea
               }
