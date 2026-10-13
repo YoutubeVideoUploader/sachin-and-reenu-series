@@ -359,7 +359,7 @@ def generate_connected_season_arc(season_number, premise):
     Also handles character costume updates and introduces new characters if required by the story.
     """
     client = get_gemini_client()
-    candidate_models = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-flash-latest"]
+    candidate_models = ["gemini-3.5-flash", "gemini-3-flash-preview", "gemini-3.1-flash-lite", "gemini-3.1-flash-lite-preview", "gemini-3.8-flash", "gemini-flash-latest"]
 
     system_instruction = (
         "You are the Showrunner and Head Screenplay Writer for the viral Disney Pixar 3D animated Malayalam romantic comedy series 'Sachin & Reenu' (സച്ചിൻ & റീനു). "
@@ -483,7 +483,7 @@ Output JSON matching this exact schema:
                         system_instruction=system_instruction,
                         response_mime_type="application/json",
                         temperature=0.7,
-                        max_output_tokens=8192
+                        max_output_tokens=32768
                     )
                 )
                 if resp and resp.text:
@@ -496,8 +496,12 @@ Output JSON matching this exact schema:
                         print(f"✓ Successfully architected 10-episode continuous storyline for Season {season_number}: '{arc_data.get('season_title')}'")
                         return arc_data
             except Exception as e:
+                err_s = str(e)
                 print(f"  Attempt {attempt + 1} with {model_name} failed: {e}")
-                time.sleep(2)
+                if "503" in err_s or "UNAVAILABLE" in err_s:
+                    time.sleep(4 * (attempt + 1))
+                else:
+                    time.sleep(2)
 
     print("Notice: Using fallback roadmap due to API timeout.")
     fallback_map = SEASON_2_ROADMAP if season_number == 2 else SEASON_1_ROADMAP
@@ -816,7 +820,14 @@ Output JSON structure:
 }}
 """
 
-    candidate_models = ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"]
+    candidate_models = [
+        "gemini-3.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite",
+        "gemini-3.1-flash-lite-preview",
+        "gemini-3.8-flash",
+        "gemini-flash-latest"
+    ]
     parsed_data = None
     last_err = None
 
@@ -828,7 +839,8 @@ Output JSON structure:
         if repair_json:
             try:
                 repaired = repair_json(text)
-                return repaired
+                if repaired and isinstance(repaired, str):
+                    return repaired
             except Exception:
                 pass
         # Remove trailing commas
@@ -846,13 +858,23 @@ Output JSON structure:
                         system_instruction=system_instruction,
                         response_mime_type="application/json",
                         temperature=0.7,
-                        max_output_tokens=8192
+                        max_output_tokens=65536
                     )
                 )
                 if response and response.text:
                     try:
                         clean_text = clean_json_text(response.text)
-                        parsed_data = json.loads(clean_text)
+                        try:
+                            parsed_data = json.loads(clean_text)
+                        except Exception as pe:
+                            if repair_json:
+                                try:
+                                    parsed_data = repair_json(response.text, return_objects=True)
+                                except Exception:
+                                    parsed_data = None
+                            if not parsed_data or not isinstance(parsed_data, dict):
+                                raise pe
+
                         if "shots" in parsed_data and len(parsed_data["shots"]) >= 10:
                             break
                         else:
@@ -862,8 +884,14 @@ Output JSON structure:
                         print(f"  Attempt {attempt + 1} JSON parse error: {je}")
             except Exception as e:
                 last_err = e
+                err_s = str(e)
                 print(f"  Attempt {attempt + 1} with {model_name} failed: {e}")
-                time.sleep(3)
+                if "503" in err_s or "UNAVAILABLE" in err_s:
+                    time.sleep(5 * (attempt + 1))
+                elif "429" in err_s or "RESOURCE_EXHAUSTED" in err_s:
+                    time.sleep(10)
+                else:
+                    time.sleep(2)
         if parsed_data:
             break
 

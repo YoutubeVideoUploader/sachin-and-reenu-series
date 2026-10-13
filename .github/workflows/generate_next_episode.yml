@@ -44,7 +44,7 @@ jobs:
       - name: 3. Install Python Dependencies
         run: |
           pip install --upgrade pip
-          pip install google-genai requests
+          pip install google-genai requests json-repair
 
       - name: 4. Generate Screenplay & Sync to Google Sheets + Creator Portal
         env:
