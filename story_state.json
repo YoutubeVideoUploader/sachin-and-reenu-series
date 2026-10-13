@@ -89,6 +89,22 @@
       "role": "Reenu's Mother",
       "attire": "Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace.",
       "visual_dna": "Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws."
+    },
+    "Broker Shaji": {
+      "age": 45,
+      "gender": "male",
+      "voice": "Lively, booming, uninhibited South Indian Malayalam male voice with energetic theatrical broker cadence",
+      "role": "Real estate broker handling Kochi apartment leases",
+      "attire": "Bright mustard-yellow casual polo t-shirt, chocolate-brown casual trousers, black rubber slip-on shoes, dripping black compact folding umbrella in hand.",
+      "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45yo South Indian Malayali broker, energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Bright mustard-yellow casual polo t-shirt, chocolate-brown casual trousers, black rubber slip-on shoes, dripping black compact folding umbrella in hand. Absolutely zero costume variations."
+    },
+    "Varghese (Flat Owner)": {
+      "age": 62,
+      "gender": "male",
+      "voice": "Deep, calm, measured South Indian Malayalam elderly male voice with gentle authoritative tone",
+      "role": "Elderly Kochi flat owner holding lease agreements",
+      "attire": "Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders.",
+      "visual_dna": "Varghese (Flat Owner): Stylized 3D Pixar-style cartoon animation character, 62yo South Indian Malayali gentleman, dignified gentle grandfatherly face, rounded tortoiseshell spectacles, receding silver-white cartoon hair, warm observant eyes, calm posture (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders. Absolutely zero costume variations."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
@@ -160,12 +176,12 @@
     {
       "episode": 7,
       "title": "സമയവുമായുള്ള ഓട്ടം (Race Against the Clock)",
-      "summary": "Sachin rushes an ailing Kurian to a clinic through monsoon floods. While recovering, Kurian finds Reenu's London job offer, misinterpreting Sachin's role in her life. The episode ends with a high-stakes lease negotiation.",
-      "cliffhanger": "The owner holds two competing lease agreements in his hands, waiting for Sachin to make his final pitch.",
+      "summary": "Seamlessly picking up from the Broadway market downpour, Kurian suddenly clutches his chest and collapses into Sachin's arms. Panic strikes Annamma and Reenu, but Sachin acts swiftly, carrying Kurian through the flooded streets to a nearby emergency clinic. As Kurian recovers and looks upon Sachin with newfound affection and gratitude, the Broadway real estate broker steps inside seeking shelter from the rain. In a stunning twist, the broker loudly reveals that Sachin forfeited his dream London visa to purchase a Kochi flat, right before the apartment owner enters holding two competing lease agreements.",
+      "cliffhanger": "The apartment owner stands inside the clinic holding two competing lease agreements in his hands, looking directly at Sachin for his final decision while Reenu and Kurian stare in stunned silence.",
       "characters_present": [
         "Sachin",
-        "Kurian",
-        "Amal"
+        "Reenu",
+        "Annamma"
       ]
     }
   ],

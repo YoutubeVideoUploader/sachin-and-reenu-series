@@ -816,7 +816,7 @@ Output JSON structure:
 }}
 """
 
-    candidate_models = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-flash-latest"]
+    candidate_models = ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-3.8-flash", "gemini-3.5-flash", "gemini-flash-latest"]
     parsed_data = None
     last_err = None
 
@@ -853,8 +853,11 @@ Output JSON structure:
                     try:
                         clean_text = clean_json_text(response.text)
                         parsed_data = json.loads(clean_text)
-                        if "shots" in parsed_data and len(parsed_data["shots"]) > 0:
+                        if "shots" in parsed_data and len(parsed_data["shots"]) >= 10:
                             break
+                        else:
+                            print(f"  Attempt {attempt + 1}: Model returned {len(parsed_data.get('shots', []))} shots instead of required 10 shots. Retrying...")
+                            parsed_data = None
                     except Exception as je:
                         print(f"  Attempt {attempt + 1} JSON parse error: {je}")
             except Exception as e:

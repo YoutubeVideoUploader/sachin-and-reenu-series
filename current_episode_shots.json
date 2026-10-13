@@ -1,21 +1,32 @@
 {
   "episode_number": 7,
+  "season_number": 2,
   "title_malayalam": "സമയവുമായുള്ള ഓട്ടം",
   "title_english": "Race Against the Clock",
-  "synopsis": "Sachin rushes an ailing Kurian to a clinic through monsoon floods. While recovering, Kurian finds Reenu's London job offer, misinterpreting Sachin's role in her life. The episode ends with a high-stakes lease negotiation.",
-  "cliffhanger": "The owner holds two competing lease agreements in his hands, waiting for Sachin to make his final pitch.",
+  "synopsis": "Picking up right at the Broadway shop doorway from Episode 6, Kurian stumbles out of the downpour clutching his chest and collapses into Sachin's arms. While Annamma and Reenu panic, Sachin heroically carries Kurian through the flooded monsoon streets to a nearby clinic. Inside, the doctor confirms it was only acute dehydration, and Kurian is deeply moved by Sachin's selfless filial care. But in a sudden cliffhanger, the Broadway real estate broker steps into the clinic and loudly asks Sachin if he cancelled his dream London visa just to buy a flat in Kochi!",
+  "cliffhanger": "Broker Shaji bursts into the clinic shaking his wet umbrella and loudly asks Sachin if he cancelled his London visa to buy a flat in Kochi, leaving Kurian bolting upright in bed and Reenu gasping in stunned shock!",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
-  "new_characters_introduced": [],
+  "new_characters_introduced": [
+    {
+      "name": "Broker Shaji",
+      "role": "Real estate broker handling Kochi apartment leases",
+      "age": 45,
+      "gender": "male",
+      "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45yo South Indian Malayali broker, energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Bright mustard-yellow casual polo t-shirt, chocolate-brown casual trousers, black rubber slip-on shoes, dripping black compact folding umbrella in hand. Absolutely zero costume variations.",
+      "locked_attire": "Bright mustard-yellow casual polo t-shirt, chocolate-brown casual trousers, black rubber slip-on shoes, dripping black compact folding umbrella in hand.",
+      "voice_persona": "Lively, booming, uninhibited South Indian Malayalam male voice with energetic theatrical broker cadence"
+    }
+  ],
   "shots": [
     {
       "shot_number": 1,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "മഴയത്ത് സച്ചിൻ കുര്യനെ താങ്ങി മെഡിക്കൽ ക്ലിനിക്കിലേക്ക് ഓടി.",
-      "action_summary": "Sachin is seen carrying Kurian through knee-deep water. Sachin is focused and determined. Kurian is limp and dizzy. No character speaks.",
+      "dialogue_malayalam": "കുര്യൻ നെഞ്ചിൽ കൈവെച്ച് സച്ചിന്റെ കൈകളിലേക്ക് വീണു.",
+      "action_summary": "At the Broadway shop doorway, Kurian stumbles out of the downpour clutching his chest and collapses directly into Sachin's arms. All characters have closed lips.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -23,197 +34,209 @@
         "characters_present": [
           {
             "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
             "name": "Kurian",
             "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_CLINIC_RUSH",
-          "time_of_day": "Afternoon Monsoon",
-          "lighting_palette": "Grey rainy daylight with wet reflection highlights",
-          "weather": "Heavy monsoon rain",
+          "scene_id": "SCENE_BROADWAY_DOORWAY_RAIN",
+          "time_of_day": "Late Afternoon Monsoon Downpour",
+          "lighting_palette": "Moody monsoon daylight diffused through rain sheets with warm yellow incandescent light spilling from shop doorway",
+          "weather": "Fierce monsoon torrential downpour with cascading sheets of water flooding street cobbles",
           "spatial_blocking": {
-            "Sachin": "Carrying Kurian in arms, wading through water",
-            "Kurian": "In Sachin's arms, eyes closed"
+            "Sachin": "Standing under shop awning entrance screen-center, bracing arms to catch Kurian",
+            "Kurian": "Stumbling from street into doorway screen-left, collapsing into Sachin's chest",
+            "Reenu": "Standing next to shop doorway screen-right, gasping with hands to face",
+            "Annamma": "Beside Reenu screen-right, clutching shopping bags in terror"
           },
-          "eyeline_direction": "Sachin looking forward",
+          "eyeline_direction": "Sachin looks down into Kurian's pale face; Reenu and Annamma look at Kurian in panic",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Annamma's cloth grocery bags",
+            "Kurian's gold-bordered mundu hitched up",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's brown leather cross-bag worn across chest"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, dynamic shallow depth of field, dramatic atmospheric water droplets bokeh"
         },
-        "location": "Clinic approach",
-        "camera": "Low angle tracking shot",
-        "action": "Sachin carries Kurian through water. Both characters have lips tightly closed. No speaking animation.",
+        "location": "Broadway alley sheltered shop entrance, Kochi",
+        "camera": "Medium shot tracking down quickly as Kurian tilts forward and Sachin catches him securely",
+        "action": "PURE VISUAL SCENE ACTION. Kurian stumbles out of the downpour clutching his chest and collapses into Sachin's arms. Sachin braces his legs and catches Kurian firmly. All characters on screen have lips completely closed and relaxed. Absolutely NO mouth movement or speaking animation on characters.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
           "language": "Malayalam",
-          "line": "മഴയത്ത് സച്ചിൻ കുര്യനെ താങ്ങി മെഡിക്കൽ ക്ലിനിക്കിലേക്ക് ഓടി.",
-          "script": "മഴയത്ത് സച്ചിൻ കുര്യനെ താങ്ങി മെഡിക്കൽ ക്ലിനിക്കിലേക്ക് ഓടി."
+          "script": "കുര്യൻ നെഞ്ചിൽ കൈവെച്ച് സച്ചിന്റെ കൈകളിലേക്ക് വീണു.",
+          "line": "കുര്യൻ നെഞ്ചിൽ കൈവെച്ച് സച്ചിന്റെ കൈകളിലേക്ക് വീണു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only, including roaring heavy monsoon rain on tin roofs."
       }
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പരിശോധനയിൽ കുര്യന് നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞു.",
-      "action_summary": "Doctor (off-screen) talking to Sachin and Reenu inside the clinic. Sachin looks relieved. Reenu looks calm. No character speaks.",
+      "character": "Annamma",
+      "dialogue_malayalam": "ഈശോയേ, ഇദ്ദേഹത്തിന് എന്താണ് പറ്റിയത്!",
+      "action_summary": "Annamma drops her shopping bag on the wet steps in panic, clutching her chest crucifix while looking at Kurian. Annamma speaks with emotional lip sync while others listen silently.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue",
         "characters_present": [
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           },
           {
             "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_CLINIC_INTERIOR",
-          "time_of_day": "Afternoon",
-          "lighting_palette": "Soft clinical indoor light",
-          "weather": "Rain visible through window",
+          "scene_id": "SCENE_BROADWAY_DOORWAY_RAIN",
+          "time_of_day": "Late Afternoon Monsoon Downpour",
+          "lighting_palette": "Moody monsoon daylight diffused through rain sheets with warm yellow incandescent light spilling from shop doorway",
+          "weather": "Fierce monsoon torrential downpour with cascading sheets of water flooding street cobbles",
           "spatial_blocking": {
-            "Sachin": "Standing near clinic bed",
-            "Reenu": "Standing next to Sachin"
+            "Annamma": "Foreground screen-left, hands clutching chest in panic, leaning toward Kurian",
+            "Reenu": "Beside Annamma screen-right, holding Annamma's arm in trembling terror"
           },
-          "eyeline_direction": "Both looking at the doctor",
+          "eyeline_direction": "Annamma looks down screen-right toward Kurian; Reenu looks downward with wide terrified eyes",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Annamma's cloth grocery bags on floor",
+            "Annamma's gold crucifix necklace",
+            "Reenu's silver wrist watch on left wrist"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, dramatic focus on Annamma's frantic maternal expression"
         },
-        "location": "Medical Clinic",
-        "camera": "Medium shot",
-        "action": "Sachin and Reenu listening to the doctor. Lips are closed. No talking.",
+        "location": "Broadway alley sheltered shop entrance, Kochi",
+        "camera": "Close-up on Annamma's alarmed face as her gold bangles clink against her chest",
+        "action": "Annamma clutches her golden crucifix with trembling fingers, her eyes wide with fear as she speaks. Annamma speaks with emotional, synchronized mouth movement. Reenu stands beside her with lips firmly closed and terrified gaze.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Annamma",
+          "voice_persona": "Distressed, motherly South Indian Malayalam female voice trembling with raw emotional concern",
           "language": "Malayalam",
-          "line": "പരിശോധനയിൽ കുര്യന് നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞു.",
-          "script": "പരിശോധനയിൽ കുര്യന് നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞു."
+          "script": "ഈശോയേ, ഇദ്ദേഹത്തിന് എന്താണ് പറ്റിയത്!",
+          "line": "ഈശോയേ, ഇദ്ദേഹത്തിന് എന്താണ് പറ്റിയത്!"
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "ANNAMMA SPEAKS IN PRECISE LIP SYNC. Reenu maintains closed lips with zero talking. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only, including torrential rain and wet fabric rustling."
       }
     },
     {
       "shot_number": 3,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അങ്കിൾ, ഇപ്പോൾ കുഴപ്പമൊന്നുമില്ലല്ലോ?",
-      "action_summary": "Sachin talks to Kurian while sitting in the flat.",
+      "character": "Reenu",
+      "dialogue_malayalam": "സച്ചിൻ, വേഗം എന്തെങ്കിലും ചെയ്യ്!",
+      "action_summary": "Reenu clutches Sachin's arm in tears, pleading urgently for help while Sachin firmly supports Kurian's limp body.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Sachin",
+        "perspective": "Character Dialogue",
         "characters_present": [
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           },
           {
-            "name": "Kurian",
-            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_BROADWAY_DOORWAY_RAIN",
+          "time_of_day": "Late Afternoon Monsoon Downpour",
+          "lighting_palette": "Moody monsoon daylight diffused through rain sheets with warm yellow incandescent light spilling from shop doorway",
+          "weather": "Fierce monsoon torrential downpour with cascading sheets of water flooding street cobbles",
           "spatial_blocking": {
-            "Sachin": "Sitting on a chair",
-            "Kurian": "Sitting on the sofa"
+            "Reenu": "Screen-left, leaning forward, hand reaching out to touch Sachin's arm",
+            "Sachin": "Screen-right, supporting Kurian firmly, turning his determined face toward Reenu"
           },
-          "eyeline_direction": "Sachin looking at Kurian",
+          "eyeline_direction": "Reenu looks desperately into Sachin's eyes; Sachin locks eyes with Reenu with calming determination",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's brown leather cross-bag worn across chest"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, tight focal depth capturing raw emotional tension and glistening rain mist"
         },
-        "location": "Living Room",
-        "camera": "Close up on Sachin",
-        "action": "Sachin speaks clearly with lip sync.",
+        "location": "Broadway alley sheltered shop entrance, Kochi",
+        "camera": "Over-the-shoulder medium close-up focused on Reenu's pleading face with Sachin in foreground frame",
+        "action": "Reenu clutches Sachin's arm with both hands, her doe eyes shining with desperate tears as she pleads. Reenu speaks with urgent, synchronized lip movements. Sachin's lips remain firmly closed as he nods resolutely.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin's voice: youthful, warm, caring, authentic Malayalam",
+          "speaker": "Reenu",
+          "voice_persona": "Young, sweet, emotionally vulnerable Malayalam female voice filled with urgent desperate worry",
           "language": "Malayalam",
-          "line": "അങ്കിൾ, ഇപ്പോൾ കുഴപ്പമൊന്നുമില്ലല്ലോ?",
-          "script": "അങ്കിൾ, ഇപ്പോൾ കുഴപ്പമൊന്നുമില്ലല്ലോ?"
+          "script": "സച്ചിൻ, വേഗം എന്തെങ്കിലും ചെയ്യ്!",
+          "line": "സച്ചിൻ, വേഗം എന്തെങ്കിലും ചെയ്യ്!"
         },
-        "audio_directive": "Sachin speaks with precise lip sync. Kurian remains silent with closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "REENU SPEAKS IN PRECISE LIP SYNC. Sachin maintains closed lips with zero talking. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only, including howling rain wind and wet splash echoes."
       }
     },
     {
       "shot_number": 4,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Kurian",
-      "dialogue_malayalam": "എനിക്ക് കുഴപ്പമില്ല സച്ചിൻ.",
-      "action_summary": "Kurian replies calmly.",
+      "character": "Sachin",
+      "dialogue_malayalam": "പേടിക്കണ്ട, അടുത്തുള്ള ക്ലിനിക്കിലേക്ക് വേഗം പോകാം!",
+      "action_summary": "Sachin hoists Kurian securely onto his shoulder and points toward the alleyway with resolute courage, taking charge heroically.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Kurian",
+        "perspective": "Character Dialogue",
         "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
           {
             "name": "Kurian",
             "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_BROADWAY_DOORWAY_RAIN",
+          "time_of_day": "Late Afternoon Monsoon Downpour",
+          "lighting_palette": "Moody monsoon daylight diffused through rain sheets with warm yellow incandescent light spilling from shop doorway",
+          "weather": "Fierce monsoon torrential downpour with cascading sheets of water flooding street cobbles",
           "spatial_blocking": {
-            "Kurian": "Sitting on the sofa"
+            "Sachin": "Screen-center, carrying Kurian over his shoulder, stepping decisively out toward the rain",
+            "Kurian": "Resting limp against Sachin's shoulder, eyes closed gently",
+            "Reenu": "Screen-right, opening large black umbrella to shield them"
           },
-          "eyeline_direction": "Kurian looking at Sachin",
+          "eyeline_direction": "Sachin looks forward down the flooded alley; Reenu watches Sachin with awe and relief",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Large black umbrella held by Reenu",
+            "Reenu's silver wrist watch on left wrist",
+            "Sachin's brown leather cross-bag worn across chest"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, dynamic low-angle hero framing with soft bokeh background"
         },
-        "location": "Living Room",
-        "camera": "Close up on Kurian",
-        "action": "Kurian speaks clearly with lip sync.",
+        "location": "Broadway alley sheltered shop entrance, Kochi",
+        "camera": "Low-angle medium shot showcasing Sachin taking charge heroically with Kurian over his shoulder",
+        "action": "Sachin shifts Kurian's weight onto his shoulder, his boyish expression hardening into mature heroic resolve. Sachin speaks with crisp, commanding lip sync. Reenu and Kurian have completely closed lips.",
         "dialogue": {
-          "speaker": "Kurian",
-          "voice_persona": "Kurian's voice: mature, firm, dignified, authentic Malayalam",
+          "speaker": "Sachin",
+          "voice_persona": "Confident, protective, warm South Indian Malayalam male voice ringing with resolute courage",
           "language": "Malayalam",
-          "line": "എനിക്ക് കുഴപ്പമില്ല സച്ചിൻ.",
-          "script": "എനിക്ക് കുഴപ്പമില്ല സച്ചിൻ."
+          "script": "പേടിക്കണ്ട, അടുത്തുള്ള ക്ലിനിക്കിലേക്ക് വേഗം പോകാം!",
+          "line": "പേടിക്കണ്ട, അടുത്തുള്ള ക്ലിനിക്കിലേക്ക് വേഗം പോകാം!"
         },
-        "audio_directive": "Kurian speaks with precise lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "SACHIN SPEAKS IN PRECISE LIP SYNC. All other characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only, including thundering rain drops and sloshing footstep splashes."
       }
     },
     {
@@ -221,95 +244,117 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമലിന്റെ ഫോൺ ശബ്ദിച്ചു.",
-      "action_summary": "Amal reaches for his phone on the table. Sachin and Kurian look toward Amal.",
+      "dialogue_malayalam": "വെള്ളക്കെട്ടിലൂടെ സച്ചിൻ കുര്യനെയും താങ്ങി മുന്നോട്ട് നടന്നു.",
+      "action_summary": "Sachin bravely wades through knee-deep murky water in the flooded Broadway alley carrying Kurian, with Reenu holding the umbrella over them and Annamma following.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_FLOODED_ALLEY_WADE",
+          "time_of_day": "Late Afternoon Monsoon Downpour",
+          "lighting_palette": "Deep overcast monsoon gloom with wet reflective street water and shop signs glow",
+          "weather": "Heavy continuous Kochi monsoon downpour with deep ripples across water surface",
           "spatial_blocking": {
-            "Amal": "Standing by the table"
+            "Sachin": "Screen-center, wading forward through knee-deep water carrying Kurian in both arms",
+            "Kurian": "Cradled limp in Sachin's arms, soaked cotton jubba",
+            "Reenu": "Beside Sachin screen-left, holding black umbrella stretched high over Sachin and Kurian",
+            "Annamma": "Behind Reenu screen-left, clutching saree hem above water"
           },
-          "eyeline_direction": "Amal looking at his phone",
+          "eyeline_direction": "Sachin focused resolutely forward; Reenu looking anxiously at Kurian's face",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Large black umbrella held by Reenu",
+            "Sachin's soaked brown leather cross-bag",
+            "Reenu's silver wrist watch"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic wide prime lens, cinematic wet reflections, heavy atmospheric rain fog"
         },
-        "location": "Living Room",
-        "camera": "Close up on Amal",
-        "action": "Amal picks up the phone. No speaking.",
+        "location": "Flooded Broadway alleyway road, Kochi",
+        "camera": "Dynamic tracking shot moving backward ahead of Sachin as he wades through the splashing water",
+        "action": "PURE VISUAL SCENE ACTION. Sachin wades determinedly through knee-deep water carrying the unconscious Kurian. Reenu stays close holding an umbrella. All characters on screen have lips completely closed and silent.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: warm expressive sweet melodic tone",
           "language": "Malayalam",
-          "line": "അമലിന്റെ ഫോൺ ശബ്ദിച്ചു.",
-          "script": "അമലിന്റെ ഫോൺ ശബ്ദിച്ചു."
+          "script": "വെള്ളക്കെട്ടിലൂടെ സച്ചിൻ കുര്യനെയും താങ്ങി മുന്നോട്ട് നടന്നു.",
+          "line": "വെള്ളക്കെട്ടിലൂടെ സച്ചിൻ കുര്യനെയും താങ്ങി മുന്നോട്ട് നടന്നു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. Characters do not speak. Lips firmly closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Heavy rain ambience and deep water sloshing audio only."
       }
     },
     {
       "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "സച്ചിൻ, ഉടനെ ഓഫീസിലേക്ക് വരണം.",
-      "action_summary": "Amal looks worried while speaking to Sachin.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "അവർ വേഗത്തിൽ അടുത്തുള്ള ചെറുകിട ക്ലിനിക്കിലെത്തി.",
+      "action_summary": "Inside the modest Broadway clinic, Sachin gently lays the soaked Kurian onto the medical examination bed while the doctor rushes forward.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Amal",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_CLINIC_EXAMINATION",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Soft clinical fluorescent tube lighting mixed with warm amber desk lamp and rainy window glow",
+          "weather": "Heavy rain streaking across frosted clinic glass windows",
           "spatial_blocking": {
-            "Amal": "Standing in the middle of the room"
+            "Kurian": "Lying supine on clinic examination bed screen-center, head resting on clean pillow",
+            "Sachin": "Standing beside bed screen-left, panting, gently lowering Kurian's shoulders",
+            "Reenu": "Standing at foot of bed screen-right, hands clasped anxiously"
           },
-          "eyeline_direction": "Amal looking at Sachin",
+          "eyeline_direction": "Sachin and Reenu looking with deep concern at Kurian on the bed",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Clinic stethoscope on side table",
+            "Kurian's muddy sandals placed neatly by Sachin on floor",
+            "Sachin's wet olive t-shirt and cross-bag",
+            "Reenu's silver wrist watch"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, medium shot capturing intimate clinical relief"
         },
-        "location": "Living Room",
-        "camera": "Medium shot",
-        "action": "Amal speaks with lip sync.",
+        "location": "Broadway emergency health clinic interior, Kochi",
+        "camera": "Medium pan following Sachin as he carefully settles Kurian onto the bed",
+        "action": "PURE VISUAL SCENE ACTION. Sachin gently eases Kurian onto the bed and steps back catching his breath, hair dripping wet. Reenu steps beside him. All characters have lips firmly closed. No character speaks.",
         "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal's voice: energetic, urgent, friendly Malayalam",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: warm expressive sweet melodic tone",
           "language": "Malayalam",
-          "line": "സച്ചിൻ, ഉടനെ ഓഫീസിലേക്ക് വരണം.",
-          "script": "സച്ചിൻ, ഉടനെ ഓഫീസിലേക്ക് വരണം."
+          "script": "അവർ വേഗത്തിൽ അടുത്തുള്ള ചെറുകിട ക്ലിനിക്കിലെത്തി.",
+          "line": "അവർ വേഗത്തിൽ അടുത്തുള്ള ചെറുകിട ക്ലിനിക്കിലെത്തി."
         },
-        "audio_directive": "Amal speaks with precise lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. Closed lips on all characters. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Heavy rain patter against clinic window panes and ventilator hum."
       }
     },
     {
@@ -317,299 +362,217 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അമൽ പോയതും കുര്യൻ മേശയിലെ കത്തുകൾ ശ്രദ്ധിച്ചു.",
-      "action_summary": "Kurian notices the London job offer letter on the desk. He looks at it with curiosity.",
+      "dialogue_malayalam": "നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞപ്പോൾ എല്ലാവർക്കും ആശ്വാസമായി.",
+      "action_summary": "The doctor examines Kurian and gives a reassuring nod to Reenu and Annamma, who let out deep sighs of heartfelt relief.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Kurian",
-            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_CLINIC_EXAMINATION",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Soft clinical fluorescent tube lighting with gentle warm interior tones",
+          "weather": "Rain outside window",
           "spatial_blocking": {
-            "Kurian": "Standing by the desk"
+            "Annamma": "Screen-left, touching Reenu's shoulder, smiling with tearful relief",
+            "Reenu": "Screen-center, wiping a joyful tear from her cute cheek",
+            "Sachin": "Screen-right, leaning against wall, letting out a deep relieved sigh"
           },
-          "eyeline_direction": "Kurian looking at the paper on the desk",
+          "eyeline_direction": "Annamma and Reenu looking at Sachin with profound gratitude and warmth",
           "persistent_props": [
-            "Job offer letter",
+            "Annamma's crucifix necklace",
             "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Sachin's wet olive t-shirt"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, warm shallow depth of field focusing on Reenu's emotional smile"
         },
-        "location": "Living Room",
-        "camera": "Close up on Kurian's face",
-        "action": "Kurian reads the letter. Lips are closed.",
+        "location": "Broadway emergency health clinic interior, Kochi",
+        "camera": "Medium two-shot tracking Reenu and Annamma sharing a relieved embrace as Sachin smiles softly",
+        "action": "PURE VISUAL SCENE ACTION. Reenu wipes away a tear and shares a grateful smile with Annamma. Both look toward Sachin with newfound admiration. Characters have closed lips with tender smiles.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: warm expressive sweet melodic tone",
           "language": "Malayalam",
-          "line": "അമൽ പോയതും കുര്യൻ മേശയിലെ കത്തുകൾ ശ്രദ്ധിച്ചു.",
-          "script": "അമൽ പോയതും കുര്യൻ മേശയിലെ കത്തുകൾ ശ്രദ്ധിച്ചു."
+          "script": "നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞപ്പോൾ എല്ലാവർക്കും ആശ്വാസമായി.",
+          "line": "നിർജ്ജലീകരണം മാത്രമാണെന്ന് ഡോക്ടർ പറഞ്ഞപ്പോൾ എല്ലാവർക്കും ആശ്വാസമായി."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. No character speaks on screen. Closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and soft clinical room tone."
       }
     },
     {
       "shot_number": 8,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ആ കത്ത് കണ്ട് കുര്യൻ ഞെട്ടിപ്പോയി.",
-      "action_summary": "Kurian's expression changes to shock as he realizes what the letter says about Reenu.",
+      "character": "Kurian",
+      "dialogue_malayalam": "സച്ചിൻ... നീയാണോ എന്നെ ഇങ്ങോട്ട് ചുമന്നത്?",
+      "action_summary": "Kurian slowly opens his eyes in the clinic bed, noticing Sachin sitting quietly beside him holding Kurian's muddy sandals with tender respect. Kurian speaks with weak, moved lip sync.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue",
         "characters_present": [
           {
             "name": "Kurian",
             "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_CLINIC_EXAMINATION",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Soft clinical lighting with warm bedside glow",
+          "weather": "Rain outside",
           "spatial_blocking": {
-            "Kurian": "Standing by the desk"
+            "Kurian": "Lying on clinic bed screen-left, head tilted toward Sachin",
+            "Sachin": "Sitting on low stool beside bed screen-right, soaking wet, holding Kurian's slippers"
           },
-          "eyeline_direction": "Kurian looking down at the letter",
+          "eyeline_direction": "Kurian looks up into Sachin's shivering, kind face; Sachin looks down warmly",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Kurian's brown leather sandals held by Sachin",
+            "Sachin's wet olive t-shirt"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, intimate close-up on Kurian's softening eyes"
         },
-        "location": "Living Room",
-        "camera": "Extreme close up on Kurian's eyes",
-        "action": "Kurian looks shocked. Lips closed.",
+        "location": "Broadway emergency health clinic interior, Kochi",
+        "camera": "Intimate over-the-shoulder shot from behind Sachin focusing on Kurian's waking expression",
+        "action": "Kurian slowly opens his weary eyes, his stern demeanor melting into genuine vulnerability as he speaks in a faint whisper. Kurian speaks with natural, weak lip movements. Sachin listens with closed lips.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Kurian",
+          "voice_persona": "Soft, frail, dignified elderly Malayalam male voice with Central Travancore inflection",
           "language": "Malayalam",
-          "line": "ആ കത്ത് കണ്ട് കുര്യൻ ഞെട്ടിപ്പോയി.",
-          "script": "ആ കത്ത് കണ്ട് കുര്യൻ ഞെട്ടിപ്പോയി."
+          "script": "സച്ചിൻ... നീയാണോ എന്നെ ഇങ്ങോട്ട് ചുമന്നത്?",
+          "line": "സച്ചിൻ... നീയാണോ എന്നെ ഇങ്ങോട്ട് ചുമന്നത്?"
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "KURIAN SPEAKS IN PRECISE LIP SYNC. Sachin maintains closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and quiet clinic ambience."
       }
     },
     {
       "shot_number": 9,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവൻ സച്ചിനെ സംശയത്തോടെ നോക്കി.",
-      "action_summary": "Kurian looks across the room at Sachin, who is unaware, with a suspicious expression.",
+      "character": "Sachin",
+      "dialogue_malayalam": "അങ്കിളിന് ഒന്നും വരില്ല, ഞാൻ കൂടെയുണ്ട്.",
+      "action_summary": "Sachin offers an earnest, boyish, reassuring smile, gently placing a warm hand near Kurian's arm. Sachin speaks with heartfelt lip sync while Kurian gazes at him in silence.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue",
         "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
           {
             "name": "Kurian",
             "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_FLAT_LIVING",
-          "time_of_day": "Evening",
-          "lighting_palette": "Warm indoor lamp light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_CLINIC_EXAMINATION",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "Soft clinical lighting with warm golden afternoon backlight",
+          "weather": "Rain outside",
           "spatial_blocking": {
-            "Kurian": "Standing by desk",
-            "Sachin": "Standing near the door"
+            "Sachin": "Screen-right, leaning forward, gentle smile illuminating wet face",
+            "Kurian": "Screen-left on bed, staring at Sachin with deep emotional conflict and fatherly warmth"
           },
-          "eyeline_direction": "Kurian looking at Sachin",
+          "eyeline_direction": "Sachin looking directly into Kurian's eyes with filial respect; Kurian gazing back in quiet awe",
           "persistent_props": [
-            "Job offer letter",
-            "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Sachin's brown cross-bag strap",
+            "Clinic white blanket over Kurian"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, warm shallow depth of field capturing Sachin's genuine sincerity"
         },
-        "location": "Living Room",
-        "camera": "Over the shoulder shot from Kurian",
-        "action": "Kurian stares at Sachin. No speaking.",
+        "location": "Broadway emergency health clinic interior, Kochi",
+        "camera": "Close-up on Sachin's tender, wet animated face as he smiles reassuringly",
+        "action": "Sachin offers a warm, sincere, humble cartoon smile, his large brown eyes shining with filial respect as he speaks with clear, expressive lip sync. Kurian remains silent with lips closed, his eyes glistening.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Sachin",
+          "voice_persona": "Warm, gentle, affectionate young South Indian Malayali male voice filled with sincere devotion",
           "language": "Malayalam",
-          "line": "അവൻ സച്ചിനെ സംശയത്തോടെ നോക്കി.",
-          "script": "അവൻ സച്ചിനെ സംശയത്തോടെ നോക്കി."
+          "script": "അങ്കിളിന് ഒന്നും വരില്ല, ഞാൻ കൂടെയുണ്ട്.",
+          "line": "അങ്കിളിന് ഒന്നും വരില്ല, ഞാൻ കൂടെയുണ്ട്."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "SACHIN SPEAKS IN PRECISE LIP SYNC. Kurian maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and gentle clinic atmosphere."
       }
     },
     {
       "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ഉടമസ്ഥൻ രണ്ട് കരാറുകൾ ഉയർത്തിക്കാട്ടി സച്ചിന്റെ മറുപടിക്കായി കാത്തു.",
-      "action_summary": "The property owner stands in front of Sachin, holding two lease agreements. Sachin looks at them, looking conflicted.",
+      "character": "Broker Shaji",
+      "dialogue_malayalam": "സച്ചിൻ, ലണ്ടൻ വിസ കളഞ്ഞാണോ ഫ്ലാറ്റ് വാങ്ങുന്നത്?",
+      "action_summary": "HIGH-STAKES CLIFFHANGER: Broker Shaji bursts into the clinic shaking his wet umbrella, spots Sachin, and loudly blurts out whether Sachin cancelled his London visa for the Kochi flat. Kurian and Reenu freeze in shock!",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue",
         "characters_present": [
           {
+            "name": "Broker Shaji",
+            "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45yo South Indian Malayali broker, energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Bright mustard-yellow casual polo t-shirt, chocolate-brown casual trousers, black rubber slip-on shoes, dripping black compact folding umbrella in hand. Absolutely zero costume variations."
+          },
+          {
             "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_OFFICE_NEGOTIATION",
-          "time_of_day": "Evening",
-          "lighting_palette": "Bright office light",
-          "weather": "Rainy",
+          "scene_id": "SCENE_CLINIC_DOORWAY_HOOK",
+          "time_of_day": "Late Afternoon Monsoon",
+          "lighting_palette": "High-contrast clinical light with dramatic door backlight from stormy grey exterior",
+          "weather": "Thunder flash through open clinic door with rain pouring outside",
           "spatial_blocking": {
-            "Sachin": "Standing in front of the owner"
+            "Broker Shaji": "Standing in clinic entrance doorway screen-left, shaking wet black umbrella, mouth wide open speaking",
+            "Sachin": "Screen-center bedside, whirling around in frozen horror, eyes wide with panic",
+            "Kurian": "Sitting bolt upright on clinic bed screen-right, spectacles dropping onto nose in stunned disbelief",
+            "Reenu": "Beside Kurian screen-right, gasping with hands over mouth in shock"
           },
-          "eyeline_direction": "Sachin looking at the papers",
+          "eyeline_direction": "Broker Shaji points finger at Sachin; Kurian, Reenu, and Sachin all lock eyes in explosive revelation",
           "persistent_props": [
-            "Job offer letter",
+            "Broker Shaji's dripping umbrella",
             "Reenu's silver wrist watch",
-            "Sachin's cross-bag",
-            "Smartphone",
-            "Two lease agreements"
+            "Sachin's wet olive t-shirt"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic wide-angle prime lens, dramatic deep focus capturing all 4 characters frozen in high-stakes confrontation"
         },
-        "location": "Office",
-        "camera": "Close up on the papers",
-        "action": "The owner holds the papers. Sachin stares at them. No speaking.",
+        "location": "Broadway emergency health clinic interior doorway, Kochi",
+        "camera": "Dramatic Dutch-angle medium wide shot as Broker Shaji bursts in and all characters freeze in shock",
+        "action": "Broker Shaji steps inside shaking his dripping umbrella, enthusiastically pointing at Sachin as he speaks loudly with animated mouth movement. Sachin freezes in absolute comedic panic. Kurian bolts upright in bed, eyes blazing with shock. Reenu gasps. All characters except Broker have closed lips.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Charming South Indian Malayalam female storyteller voice",
+          "speaker": "Broker Shaji",
+          "voice_persona": "Lively, booming, uninhibited South Indian Malayalam male voice with energetic theatrical broker cadence",
           "language": "Malayalam",
-          "line": "ഉടമസ്ഥൻ രണ്ട് കരാറുകൾ ഉയർത്തിക്കാട്ടി സച്ചിന്റെ മറുപടിക്കായി കാത്തു.",
-          "script": "ഉടമസ്ഥൻ രണ്ട് കരാറുകൾ ഉയർത്തിക്കാട്ടി സച്ചിന്റെ മറുപടിക്കായി കാത്തു."
+          "script": "സച്ചിൻ, ലണ്ടൻ വിസ കളഞ്ഞാണോ ഫ്ലാറ്റ് വാങ്ങുന്നത്?",
+          "line": "സച്ചിൻ, ലണ്ടൻ വിസ കളഞ്ഞാണോ ഫ്ലാറ്റ് വാങ്ങുന്നത്?"
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "BROKER SHAJI SPEAKS IN PRECISE BOOMING LIP SYNC. All other characters maintain completely frozen, closed lips in shock. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Booming voice echo, thunder crack outside, and dripping umbrella water sound effects only."
       }
-    }
-  ],
-  "season_number": 2,
-  "is_new_season": false,
-  "season_title": "Season 2: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)",
-  "season_arc": [
-    {
-      "episode_number": 1,
-      "title_english": "The Surprise Calling Bell",
-      "title_malayalam": "അപ്രതീക്ഷിത കോളിംഗ് ബെൽ",
-      "status": "Active",
-      "synopsis": "On a lazy Sunday afternoon in Reenu's Kakkanad apartment, Sachin is clumsily helping her hang fairy lights while playfully sharing snacks. The peaceful romance is shattered by an aggressive series of doorbell rings; Reenu opens the door to discover her conservative parents standing in the hallway flanked by heavy VIP suitcases.",
-      "cliffhanger": "Kurian lowers his reading glasses and peers past Reenu, locking eyes with Sachin, who is frozen mid-air atop a wobbly plastic stool holding a tangled ball of lights."
-    },
-    {
-      "episode_number": 2,
-      "title_english": "Living Room Cross-Examination",
-      "title_malayalam": "ലിവിംഗ് റൂം വിചാരണ",
-      "status": "Upcoming",
-      "synopsis": "Sachin tumbles off the stool in comedic slow-motion, scrambling to introduce himself as a polite family friend while Annamma inspects the messy bachelor-tinged living room. Kurian takes the central sofa like a high court judge, firing rapid-fire questions about Sachin's ancestral lineage, family status in Alappuzha, and his career roadmap.",
-      "cliffhanger": "Kurian taps his fingers rhythmically on the glass table and asks with icy calm, 'So, Sachin... what exactly is your 5-year financial vision for supporting a family?'"
-    },
-    {
-      "episode_number": 3,
-      "title_english": "Amal Davis Strikes",
-      "title_malayalam": "അമലിന്റെ എൻട്രി",
-      "status": "Upcoming",
-      "synopsis": "Just as Sachin stammers through an ambitious tech-startup pitch, Amal Davis kicks the door wide open carrying oily beef cutlets and screaming unfiltered gossip about Sachin's unemployment. Realizing the horror before him, Amal desperately attempts to pose as an etiquette-trained butler, serving hot black tea with trembling hands.",
-      "cliffhanger": "Amal trips on the rug, sending a scalding cup of black tea sailing straight toward Kurian's pristine white starched Mundu."
-    },
-    {
-      "episode_number": 4,
-      "title_english": "Marine Drive Inspection Walk",
-      "title_malayalam": "മറൈൻ ഡ്രൈവിലെ ചോദ്യം ചെയ്യൽ",
-      "status": "Upcoming",
-      "synopsis": "Having miraculously deflected the tea spill using a sofa cushion, Sachin is drafted into an early morning brisk walk along Kochi's Marine Drive walkway alone with Kurian. As Chinese fishing nets silhouette against the dawn, Kurian tests Sachin's stamina and character, peeling back his youthful facade to judge his real maturity.",
-      "cliffhanger": "Kurian halts by the railing, pulls out an envelope, and sternly reveals that a settled marine engineer from Dubai has sent a formal marriage proposal for Reenu."
-    },
-    {
-      "episode_number": 5,
-      "title_english": "Mother's Intuition",
-      "title_malayalam": "അമ്മയുടെ കണ്ണ്",
-      "status": "Upcoming",
-      "synopsis": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
-      "cliffhanger": "As Sachin bends to tighten the pipe, a small velvet ring box slips out of his pocket and rolls right to Annamma's feet."
-    },
-    {
-      "episode_number": 6,
-      "title_english": "The Broadway Monsoon Rush",
-      "title_malayalam": "ബ്രോഡ്‌വേയിലെ കുടക്കീഴിൽ",
-      "status": "Upcoming",
-      "synopsis": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour.",
-      "cliffhanger": "Kurian suddenly clutches his chest and stumbles dizzy amidst the chaotic crowded alley, gasping for breath as thunder cracks overhead."
-    },
-    {
-      "episode_number": 7,
-      "title_english": "Through Rain & Ruin",
-      "title_malayalam": "കണ്ണീരും മഴയും",
-      "status": "Upcoming",
-      "synopsis": "Sachin springs into action, carrying Kurian through knee-deep water into a nearby medical clinic where doctors confirm it was merely acute dehydration and low blood sugar. Relieved back at the flat, Kurian accidentally spots Reenu's London job promotion acceptance letter on the desk and misinterprets Sachin's presence as an anchor holding Reenu back.",
-      "cliffhanger": "Kurian confronts Sachin in front of everyone: 'Are you truly loving my daughter, or are you selfishly clipping her wings to keep her in Kerala?'"
-    },
-    {
-      "episode_number": 8,
-      "title_english": "The Unspoken Sacrifice",
-      "title_malayalam": "സച്ചിന്റെ മറുപടി",
-      "status": "Upcoming",
-      "synopsis": "Sachin stands tall with quiet maturity, revealing that he had secretly helped Reenu polish her portfolio for that very promotion and has been preparing for remote global certifications to relocate with her. Reenu breaks down, defending Sachin's unconditional selflessness, while Sachin politely apologizes if his humble background made Kurian anxious.",
-      "cliffhanger": "Kurian stares at the young man in stunned silence, turns around without uttering a single word, and locks himself inside the guest room."
-    },
-    {
-      "episode_number": 9,
-      "title_english": "Departure at Dawn",
-      "title_malayalam": "യാത്രപറച്ചിൽ",
-      "status": "Upcoming",
-      "synopsis": "Dawn breaks over Kochi with a somber atmosphere as Reenu's parents pack their bags for the morning Malabar Express back to Kottayam, convinced the visit was a failure. Reenu weeps quietly in her room, believing her father will never accept Sachin, while Sachin arrives at the platform with freshly packed hot snacks and travel medicine for Kurian.",
-      "cliffhanger": "At Ernakulam South Railway Station, as the train whistle screams, Kurian steps onto the train footboard and beckons Sachin forward with a stern finger."
-    },
-    {
-      "episode_number": 10,
-      "title_english": "The Blessing on Platform 3",
-      "title_malayalam": "പ്ലാറ്റ്‌ഫോം 3-ലെ അനുഗ്രഹം",
-      "status": "Upcoming",
-      "synopsis": "Kurian places a firm, trembling hand on Sachin's shoulder, smiling subtly as he tells him to buy a proper formal suit before visiting their Kottayam house for the official engagement. Annamma lovingly kisses Reenu's forehead as the train pulls away, leaving Sachin and Reenu embracing in joyous Pixar slow-motion under the golden morning light of Platform 3.",
-      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!)."
-    }
-  ],
-  "character_updates": [
-    {
-      "name": "Sachin",
-      "attire": "Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.",
-      "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-    },
-    {
-      "name": "Reenu",
-      "attire": "Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.",
-      "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-    },
-    {
-      "name": "Amal",
-      "attire": "Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers.",
-      "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
     }
   ]
 }
