@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 9,
+  "total_episodes_produced": 10,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -207,37 +207,39 @@
         "Reenu",
         "Sachin"
       ]
+    },
+    {
+      "episode": 10,
+      "title": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ (The Grand Climax: The Revelation)",
+      "summary": "As the train to Kottayam prepares to depart, Kurian finally accepts Sachin, offering a symbolic heirloom. Annamma reconciles with Reenu's choice. The episode concludes with a heartwarming celebration on the platform as the couple embraces their new beginning.",
+      "cliffhanger": "Amal celebrates the engagement success on the platform.",
+      "characters_present": [
+        "Annamma",
+        "Kurian",
+        "Sachin",
+        "Amal"
+      ]
     }
   ],
-  "episode_number": 9,
+  "episode_number": 10,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_RAILWAY_PLATFORM",
+    "scene_id": "SCENE_ERNAKULAM_STATION_PLATFORM",
     "time_of_day": "Early Morning Golden Hour",
-    "lighting_palette": "Bright golden morning light",
-    "weather": "Clear morning",
+    "lighting_palette": "Soft cinematic golden morning sunlight",
+    "weather": "Clear bright morning",
     "spatial_blocking": {
-      "Kurian": "Standing, hand on Sachin's shoulder",
-      "Sachin": "Standing, facing Kurian",
-      "Reenu": "Standing next to Sachin, smiling widely"
+      "Amal": "Standing, shouting with joy"
     },
-    "eyeline_direction": "Kurian looks at Sachin; Sachin looks at Kurian; Reenu looks at both",
+    "eyeline_direction": "Looking at Sachin",
     "persistent_props": [
       "Annamma's gold bangles",
-      "Annamma's green handbag on her lap",
-      "Brown paper bag",
-      "Brown paper bag in Kurian's hands",
-      "Brown paper bag with snacks",
-      "Kurian's Titan watch on his limp wrist",
+      "Banner",
       "Kurian's analog Titan watch",
-      "Kurian's crisp white Jubba",
-      "Kurian's wire-rimmed glasses in his hand",
-      "Medicine strip in Sachin's hand",
-      "Open brown suitcase",
-      "Reenu's silver wrist watch",
       "Sachin's brown cross-bag",
-      "Teak coffee table"
+      "Sachin's cross-bag",
+      "Vintage mechanical watch"
     ],
-    "camera_lens": "Cinematic prime lens, medium shot"
+    "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
   "season_number": 2,
   "season_arc": [
