@@ -42,6 +42,7 @@ function onOpen() {
       .addItem("🧹 Migrate & Clean All Old Prompts_Ep Tabs", "menuMigrateOldPromptsTabs")
       .addSeparator()
       .addItem("🎬 Setup 100-Shot Season Outline Tab", "menuSetupSeasonShotOutline")
+      .addItem("⏪ Reset Sheet: Episodes 1-9 Published (Ep 10 Active)", "resetToSeason2Episode9Published")
       .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
       .addToUi();
@@ -59,6 +60,37 @@ function menuSetupSeasonShotOutline() {
       "Success",
       5
     );
+  } catch (e) {}
+}
+
+/**
+ * Resets Tab 1 [Episode_Story] so Episodes 1-9 are Published, Episode 10 is Active,
+ * and any rows beyond Row 11 (such as Episodes 11 and 12) are completely deleted.
+ */
+function resetToSeason2Episode9Published() {
+  const ss = getStudioSpreadsheet();
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  if (!storySheet) return;
+
+  const lastRow = storySheet.getLastRow();
+  // 1. Delete rows 12 and beyond (Episode 11, Episode 12, etc.)
+  if (lastRow > 11) {
+    storySheet.deleteRows(12, lastRow - 11);
+  }
+
+  // 2. Mark Episodes 1 to 9 as Published
+  for (let r = 2; r <= 10; r++) {
+    storySheet.getRange(r, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+  }
+
+  // 3. Mark Episode 10 as Active
+  storySheet.getRange(11, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+  // Clear any existing published URL / timestamp for Ep 10 so it's fresh for production
+  storySheet.getRange(11, 7).setValue("");
+  storySheet.getRange(11, 8).setValue("");
+
+  try {
+    ss.toast("Sheet reset: Episodes 1-9 Published, Episode 10 Active! Rows 12+ deleted.", "Reset Complete", 5);
   } catch (e) {}
 }
 
@@ -2119,6 +2151,15 @@ function doPost(e) {
       const res = updateSeasonShotOutlineInSheet(body.season_number || 1, body.season_title, body.shots || []);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 12. Reset Sheet: Episodes 1-9 Published, Episode 10 Active, delete rows 12+
+    if (action === "reset_to_season_2_ep9_published" || action === "reset_sheet_ep10_active") {
+      resetToSeason2Episode9Published();
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        message: "Sheet reset: Episodes 1-9 Published, Episode 10 Active, Rows 12+ deleted."
+      })).setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))

@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 12,
+  "total_episodes_produced": 9,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -207,61 +207,23 @@
         "Reenu",
         "Sachin"
       ]
-    },
-    {
-      "episode": 10,
-      "title": "ആ രഹസ്യത്തിന്റെ ചുരുളഴിയുമ്പോൾ (The Grand Climax: The Revelation)",
-      "summary": "As the train to Kottayam prepares to depart, Kurian finally accepts Sachin, offering a symbolic heirloom. Annamma reconciles with Reenu's choice. The episode concludes with a heartwarming celebration on the platform as the couple embraces their new beginning.",
-      "cliffhanger": "Amal celebrates the engagement success on the platform.",
-      "characters_present": [
-        "Annamma",
-        "Kurian",
-        "Sachin",
-        "Amal"
-      ]
-    },
-    {
-      "episode": 11,
-      "title": "നമ്മുടെ സ്വന്തം വീട് (Our Very Own Home)",
-      "summary": "Following the emotional victory at the railway station, the scene shifts to Sachin and Reenu's new beginning. After receiving the heartfelt blessings of Kurian and Annamma, the couple, along with their ever-loyal friend Amal, arrives at their new apartment in Kochi. The episode captures the tender realization of their shared journey, culminating in a beautiful moment on their new balcony where Reenu acknowledges the home they have built together against all odds.",
-      "cliffhanger": "Reenu holds Sachin's hand tight: 'We made our home together, Sachin.' Season 2 Grand Finale concluded!",
-      "characters_present": [
-        "Amal",
-        "Reenu",
-        "Sachin"
-      ]
-    },
-    {
-      "episode": 12,
-      "title": "പുതിയ തുടക്കം (A New Beginning)",
-      "summary": "Following their engagement announcement, Sachin and Reenu return to the apartment to find an unexpected visitor waiting, leading to a series of chaotic yet heartwarming events.",
-      "cliffhanger": "A surprise guest from Kottayam arrives at the apartment door.",
-      "characters_present": [
-        "Reenu",
-        "Sachin"
-      ]
     }
   ],
-  "episode_number": 12,
+  "episode_number": 10,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-    "time_of_day": "Morning",
-    "lighting_palette": "Soft indoor daylight",
-    "weather": "Clear sky",
+    "scene_id": "SCENE_FULL_CAFE_EXTERIOR",
+    "time_of_day": "Late Afternoon Monsoon Dusk",
+    "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+    "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
     "spatial_blocking": {
-      "Sachin": "Standing at the doorway, looking out"
+      "Sachin": "Screen-center reacting expressively to scene action",
+      "Reenu": "Screen-left reacting expressively to scene action"
     },
-    "eyeline_direction": "Looking outside",
+    "eyeline_direction": "Characters looking attentively toward scene focal action",
     "persistent_props": [
-      "Apartment door",
-      "Apartment door in the background",
-      "Handmade 'Just Engaged' cardboard banner",
-      "Kurian's analog Titan watch on Sachin's wrist",
-      "Reenu's silver wrist watch",
-      "Sachin's diagonal brown leather cross-bag",
-      "Two large brown cardboard moving boxes in the background"
+      "Sunset"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field"
+    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
   "season_number": 2,
   "season_arc": [

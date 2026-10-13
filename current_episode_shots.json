@@ -1,186 +1,161 @@
 {
-  "episode_number": 12,
-  "title_malayalam": "പുതിയ തുടക്കം",
-  "title_english": "A New Beginning",
-  "synopsis": "Following their engagement announcement, Sachin and Reenu return to the apartment to find an unexpected visitor waiting, leading to a series of chaotic yet heartwarming events.",
-  "cliffhanger": "A surprise guest from Kottayam arrives at the apartment door.",
+  "episode_number": 10,
+  "season_number": 2,
+  "season_title": "Season 2: Kochi Dreams (കൊച്ചിയിലെ സ്വപ്നങ്ങൾ)",
+  "title_english": "The Grand Opening",
+  "title_malayalam": "മംഗളകരമായ തുടക്കം",
+  "synopsis": "Against all odds, the cafe opens. Sachin and Reenu decide to stay together in Kochi, balancing their dreams and family.",
+  "cliffhanger": "None. The season ends with a celebratory payoff.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
-  "new_characters_introduced": [],
   "shots": [
     {
       "shot_number": 1,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "കൊച്ചിയിലെ ആ പ്രഭാതം അവർക്ക് പുതിയ പ്രതീക്ഷകൾ നൽകി.",
-      "action_summary": "Sachin and Reenu stand on the balcony, hands held tight, looking at the city skyline. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed.",
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു, വേഗം ഒരു ബക്കറ്റ് എടുക്ക്! ഇത് നനയാൻ പാടില്ല.",
+      "action_summary": "Covering the machine with his jacket in the dark.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_BALCONY",
-          "time_of_day": "Morning",
-          "lighting_palette": "Bright morning sunlight with soft golden highlights",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_COUNTER",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Screen-right, facing Sachin, holding his hand",
-            "Sachin": "Screen-left, facing Reenu"
+            "Sachin": "Screen-center reacting expressively to scene action"
           },
-          "eyeline_direction": "Sachin and Reenu look at each other with adoration",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Jacket",
+            "Bucket"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Balcony, Kochi",
-        "camera": "Close-up shot",
-        "action": "Reenu and Sachin hold hands on the balcony. PURE VISUAL SCENE ACTION. No character speaks. No mouth movement. External narrator speaks.",
+        "location": "Cafe Counter",
+        "camera": "Fast-paced handheld in low light.",
+        "action": "Covering the machine with his jacket in the dark. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "speaker": "Sachin",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "കൊച്ചിയിലെ ആ പ്രഭാതം അവർക്ക് പുതിയ പ്രതീക്ഷകൾ നൽകി.",
-          "line": "കൊച്ചിയിലെ ആ പ്രഭാതം അവർക്ക് പുതിയ പ്രതീക്ഷകൾ നൽകി."
+          "script": "റീനു, വേഗം ഒരു ബക്കറ്റ് എടുക്ക്! ഇത് നനയാൻ പാടില്ല.",
+          "line": "റീനു, വേഗം ഒരു ബക്കറ്റ് എടുക്ക്! ഇത് നനയാൻ പാടില്ല."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "ഇനി നമുക്ക് ഒരുമിച്ച് തുടങ്ങാം സച്ചിൻ.",
-      "action_summary": "Reenu looks at Sachin with tears of joy. She speaks. Sachin listens with a smile, mouth closed.",
+      "character": "Kurian",
+      "dialogue_malayalam": "പേടിക്കണ്ടടാ, ഞാൻ ഇത് ശരിയാക്കാം. പഴയ വീടല്ലേ, ചെറിയ പണികൾ കാണും.",
+      "action_summary": "Coming in with a flashlight and tools.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_BALCONY",
-          "time_of_day": "Morning",
-          "lighting_palette": "Bright morning sunlight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_INTERIOR",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Screen-right, facing Sachin",
-            "Sachin": "Screen-left, facing Reenu"
+            "Kurian": "Screen-center reacting expressively to scene action"
           },
-          "eyeline_direction": "Reenu looks at Sachin",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Flashlight",
+            "Wrench"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Balcony, Kochi",
-        "camera": "Close-up",
-        "action": "Reenu speaks to Sachin. Sachin listens with a gentle smile, his mouth remains closed.",
+        "location": "Cafe Interior",
+        "camera": "Reassuring medium shot.",
+        "action": "Coming in with a flashlight and tools. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo Malayalam girl, soft and sweet tone",
+          "speaker": "Kurian",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "ഇനി നമുക്ക് ഒരുമിച്ച് തുടങ്ങാം സച്ചിൻ.",
-          "line": "ഇനി നമുക്ക് ഒരുമിച്ച് തുടങ്ങാം സച്ചിൻ."
+          "script": "പേടിക്കണ്ടടാ, ഞാൻ ഇത് ശരിയാക്കാം. പഴയ വീടല്ലേ, ചെറിയ പണികൾ കാണും.",
+          "line": "പേടിക്കണ്ടടാ, ഞാൻ ഇത് ശരിയാക്കാം. പഴയ വീടല്ലേ, ചെറിയ പണികൾ കാണും."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu's mouth moves in lip sync. Sachin's mouth remains closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 3,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "തീർച്ചയായും, എല്ലാം ശരിയാകും റീനൂ.",
-      "action_summary": "Sachin responds with a warm, reassuring smile. Only Sachin's mouth moves.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "മഴയ്ക്ക് ശേഷം തെളിഞ്ഞ സൂര്യപ്രകാശം പോലെ അവരുടെ മുഖങ്ങളും തിളങ്ങി.",
+      "action_summary": "Morning arrives. The sun is shining, and the cafe looks beautiful.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_BALCONY",
-          "time_of_day": "Morning",
-          "lighting_palette": "Bright morning sunlight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_EXTERIOR",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Screen-right, facing Sachin",
-            "Sachin": "Screen-left, facing Reenu"
+            "Sachin": "Screen-center reacting expressively to scene action",
+            "Reenu": "Screen-left reacting expressively to scene action"
           },
-          "eyeline_direction": "Sachin looks at Reenu",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Sunlight"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Balcony, Kochi",
-        "camera": "Close-up",
-        "action": "Sachin speaks to Reenu. Reenu listens with a smile, her mouth remains closed.",
+        "location": "Cafe Exterior",
+        "camera": "Wide, sweeping crane shot.",
+        "action": "Morning arrives. The sun is shining, and the cafe looks beautiful. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo Malayalam boy, warm and sincere tone",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "തീർച്ചയായും, എല്ലാം ശരിയാകും റീനൂ.",
-          "line": "തീർച്ചയായും, എല്ലാം ശരിയാകും റീനൂ."
+          "script": "മഴയ്ക്ക് ശേഷം തെളിഞ്ഞ സൂര്യപ്രകാശം പോലെ അവരുടെ മുഖങ്ങളും തിളങ്ങി.",
+          "line": "മഴയ്ക്ക് ശേഷം തെളിഞ്ഞ സൂര്യപ്രകാശം പോലെ അവരുടെ മുഖങ്ങളും തിളങ്ങി."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin's mouth moves in lip sync. Reenu's mouth remains closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 4,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവർ സന്തോഷത്തോടെ അകത്തേക്ക് നടന്നു.",
-      "action_summary": "Sachin and Reenu walk into the living room, laughing. PURE VISUAL SCENE ACTION. All characters silent with closed lips.",
+      "character": "Reenu",
+      "dialogue_malayalam": "സ്വാഗതം! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' തുറന്നിരിക്കുന്നു.",
+      "action_summary": "Cutting the ribbon at the entrance.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -189,44 +164,34 @@
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_ENTRANCE",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Walking beside Sachin",
-            "Sachin": "Walking towards the center of the living room"
+            "Reenu": "Screen-center reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking forward",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Ribbon",
+            "Scissors"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Medium shot",
-        "action": "Sachin and Reenu walk into the room, silent. External narrator speaks.",
+        "location": "Cafe Entrance",
+        "camera": "Close-up on the ribbon cutting.",
+        "action": "Cutting the ribbon at the entrance. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "speaker": "Reenu",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അവർ സന്തോഷത്തോടെ അകത്തേക്ക് നടന്നു.",
-          "line": "അവർ സന്തോഷത്തോടെ അകത്തേക്ക് നടന്നു."
+          "script": "സ്വാഗതം! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' തുറന്നിരിക്കുന്നു.",
+          "line": "സ്വാഗതം! 'ഹെറിറ്റേജ് ഹാർട്ട്സ്' തുറന്നിരിക്കുന്നു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -234,63 +199,58 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ മുട്ടിയത്.",
-      "action_summary": "A loud, sharp knock on the apartment door. Sachin and Reenu freeze. PURE VISUAL SCENE ACTION.",
+      "dialogue_malayalam": "കൊച്ചി ആ സ്വപ്നത്തെ ഇരുകൈയ്യും നീട്ടി സ്വീകരിച്ചു.",
+      "action_summary": "Crowds pour in, including friends from Season 1. The cafe is a hit.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_INTERIOR",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Standing near the sofa, looking at the door",
-            "Sachin": "Standing near the table, looking at the door"
+            "Sachin": "Screen-center reacting expressively to scene action",
+            "Reenu": "Screen-left reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking at the apartment door",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Coffee cups",
+            "Pastries"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Close-up",
-        "action": "Sachin and Reenu look towards the door in surprise. External narrator speaks.",
+        "location": "Cafe Interior",
+        "camera": "Bustling wide shot.",
+        "action": "Crowds pour in, including friends from Season 1. The cafe is a hit. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ മുട്ടിയത്.",
-          "line": "പെട്ടെന്നാണ് വാതിലിൽ ആരോ മുട്ടിയത്."
+          "script": "കൊച്ചി ആ സ്വപ്നത്തെ ഇരുകൈയ്യും നീട്ടി സ്വീകരിച്ചു.",
+          "line": "കൊച്ചി ആ സ്വപ്നത്തെ ഇരുകൈയ്യും നീട്ടി സ്വീകരിച്ചു."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 6,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "ആരാണാവോ ഈ നേരത്ത്?",
-      "action_summary": "Sachin walks cautiously towards the door. He speaks, mouth moving.",
+      "character": "Shyam",
+      "dialogue_malayalam": "സമ്മതിച്ചിരിക്കുന്നു. നിങ്ങൾ ജയിച്ചു. ഒരു കാപ്പി കിട്ടുമോ?",
+      "action_summary": "Walking in, looking defeated but respectful.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -299,98 +259,92 @@
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_COUNTER",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Sachin": "Walking towards the apartment door"
+            "Sachin": "Screen-center reacting expressively to scene action",
+            "Reenu": "Screen-left reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking at the door",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Sachin's cross-bag",
+            "Reenu's silver wrist watch"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Medium shot",
-        "action": "Sachin walks towards the door and speaks.",
+        "location": "Cafe Counter",
+        "camera": "Medium shot.",
+        "action": "Walking in, looking defeated but respectful. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo Malayalam boy, curious tone",
+          "speaker": "Shyam",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "ആരാണാവോ ഈ നേരത്ത്?",
-          "line": "ആരാണാവോ ഈ നേരത്ത്?"
+          "script": "സമ്മതിച്ചിരിക്കുന്നു. നിങ്ങൾ ജയിച്ചു. ഒരു കാപ്പി കിട്ടുമോ?",
+          "line": "സമ്മതിച്ചിരിക്കുന്നു. നിങ്ങൾ ജയിച്ചു. ഒരു കാപ്പി കിട്ടുമോ?"
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 7,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "മെല്ലെ തുറക്ക് സച്ചിൻ.",
-      "action_summary": "Reenu whispers, looking at the door with nervousness. Her mouth moves.",
+      "character": "Sachin",
+      "dialogue_malayalam": "തീർച്ചയായും സർ. ഇത് ഞങ്ങളുടെ സ്പെഷ്യൽ ആണ്.",
+      "action_summary": "Serving Shyam with a smile.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_COUNTER",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Reenu": "Standing behind Sachin, looking at the door"
+            "Sachin": "Screen-center reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking at the door",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Coffee"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Close-up",
-        "action": "Reenu speaks to Sachin.",
+        "location": "Cafe Counter",
+        "camera": "Over-the-shoulder shot.",
+        "action": "Serving Shyam with a smile. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo Malayalam girl, whispering tone",
+          "speaker": "Sachin",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "മെല്ലെ തുറക്ക് സച്ചിൻ.",
-          "line": "മെല്ലെ തുറക്ക് സച്ചിൻ."
+          "script": "തീർച്ചയായും സർ. ഇത് ഞങ്ങളുടെ സ്പെഷ്യൽ ആണ്.",
+          "line": "തീർച്ചയായും സർ. ഇത് ഞങ്ങളുടെ സ്പെഷ്യൽ ആണ്."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 8,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിൻ വാതിൽ തുറന്നു.",
-      "action_summary": "Sachin opens the door. PURE VISUAL SCENE ACTION. No character speaks.",
+      "character": "Reenu",
+      "dialogue_malayalam": "സച്ചിൻ, ഞാൻ ആ ലണ്ടൻ ഓഫർ വേണ്ടെന്ന് വെച്ചു. എനിക്ക് ഇവിടെ നിന്റെ കൂടെ ഇരുന്നാൽ മതി.",
+      "action_summary": "Taking Sachin aside to the balcony.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -399,103 +353,93 @@
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_BALCONY",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Sachin": "Opening the door"
+            "Sachin": "Screen-center reacting expressively to scene action",
+            "Reenu": "Screen-left reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking at the door",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Sachin's cross-bag",
+            "Reenu's silver wrist watch"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Medium shot",
-        "action": "Sachin opens the door. PURE VISUAL SCENE ACTION.",
+        "location": "Cafe Balcony",
+        "camera": "Intimate close-up.",
+        "action": "Taking Sachin aside to the balcony. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "speaker": "Reenu",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "സച്ചിൻ വാതിൽ തുറന്നു.",
-          "line": "സച്ചിൻ വാതിൽ തുറന്നു."
+          "script": "സച്ചിൻ, ഞാൻ ആ ലണ്ടൻ ഓഫർ വേണ്ടെന്ന് വെച്ചു. എനിക്ക് ഇവിടെ നിന്റെ കൂടെ ഇരുന്നാൽ മതി.",
+          "line": "സച്ചിൻ, ഞാൻ ആ ലണ്ടൻ ഓഫർ വേണ്ടെന്ന് വെച്ചു. എനിക്ക് ഇവിടെ നിന്റെ കൂടെ ഇരുന്നാൽ മതി."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 9,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "അവിടെ ആരെങ്കിലും ഉണ്ടായിരുന്നോ?",
-      "action_summary": "Sachin and Reenu look outside with shocked expressions. PURE VISUAL SCENE ACTION.",
+      "character": "Sachin",
+      "dialogue_malayalam": "നമ്മൾ ഒരുമിച്ച് ഉണ്ടെങ്കിൽ ഏത് നാടും ലണ്ടൻ പോലെ സുന്ദരമായിരിക്കും.",
+      "action_summary": "Looking at the Kochi sunset with her.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_CAFE_BALCONY",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Sachin": "Standing at the doorway",
-            "Reenu": "Standing behind Sachin"
+            "Sachin": "Screen-center reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking outside the door",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Sachin's cross-bag",
+            "Reenu's silver wrist watch"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Close-up",
-        "action": "Sachin and Reenu look out in shock. PURE VISUAL SCENE ACTION.",
+        "location": "Cafe Balcony",
+        "camera": "Profile shot of the couple.",
+        "action": "Looking at the Kochi sunset with her. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "speaker": "Sachin",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അവിടെ ആരെങ്കിലും ഉണ്ടായിരുന്നോ?",
-          "line": "അവിടെ ആരെങ്കിലും ഉണ്ടായിരുന്നോ?"
+          "script": "നമ്മൾ ഒരുമിച്ച് ഉണ്ടെങ്കിൽ ഏത് നാടും ലണ്ടൻ പോലെ സുന്ദരമായിരിക്കും.",
+          "line": "നമ്മൾ ഒരുമിച്ച് ഉണ്ടെങ്കിൽ ഏത് നാടും ലണ്ടൻ പോലെ സുന്ദരമായിരിക്കും."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അയ്യോ, ഇതെങ്ങനെ വന്നു!",
-      "action_summary": "Sachin gasps in total shock as he sees someone at the door. Only Sachin's mouth moves in lip sync.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "ചില സ്വപ്നങ്ങൾ പൂർത്തിയാകാൻ സ്നേഹം മാത്രം മതി.",
+      "action_summary": "The camera pulls back to show the glowing cafe, the happy family inside, and Sachin and Reenu holding hands on the balcony.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -504,152 +448,39 @@
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Morning",
-          "lighting_palette": "Soft indoor daylight",
-          "weather": "Clear sky",
+          "scene_id": "SCENE_FULL_CAFE_EXTERIOR",
+          "time_of_day": "Late Afternoon Monsoon Dusk",
+          "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
+          "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
           "spatial_blocking": {
-            "Sachin": "Standing at the doorway, looking out"
+            "Sachin": "Screen-center reacting expressively to scene action",
+            "Reenu": "Screen-left reacting expressively to scene action"
           },
-          "eyeline_direction": "Looking outside",
+          "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Apartment door",
-            "Apartment door in the background",
-            "Handmade 'Just Engaged' cardboard banner",
-            "Kurian's analog Titan watch on Sachin's wrist",
-            "Reenu's silver wrist watch",
-            "Sachin's diagonal brown leather cross-bag",
-            "Two large brown cardboard moving boxes in the background"
+            "Sunset"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field"
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Apartment Living Room, Kochi",
-        "camera": "Close-up",
-        "action": "Sachin speaks, shocked.",
+        "location": "Full Cafe Exterior",
+        "camera": "Grand aerial pull-back shot ending on a heart-shaped bokeh.",
+        "action": "The camera pulls back to show the glowing cafe, the happy family inside, and Sachin and Reenu holding hands on the balcony. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
         "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo Malayalam boy, shocked tone",
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
           "language": "Malayalam",
-          "script": "അയ്യോ, ഇതെങ്ങനെ വന്നു!",
-          "line": "അയ്യോ, ഇതെങ്ങനെ വന്നു!"
+          "script": "ചില സ്വപ്നങ്ങൾ പൂർത്തിയാകാൻ സ്നേഹം മാത്രം മതി.",
+          "line": "ചില സ്വപ്നങ്ങൾ പൂർത്തിയാകാൻ സ്നേഹം മാത്രം മതി."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin's mouth moves in lip sync. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
-    }
-  ],
-  "season_number": 2,
-  "is_new_season": false,
-  "season_title": "Season 2: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)",
-  "season_arc": [
-    {
-      "season_number": 2,
-      "episode_number": 1,
-      "title_english": "The Unannounced Guests",
-      "title_malayalam": "വിരുന്നുകാർ",
-      "status": "Published",
-      "synopsis": "Reenu's traditional parents arrive in Kochi without warning, throwing Sachin and Reenu into sudden panic as they scramble to keep their apartment presentable.",
-      "cliffhanger": "Just as Sachin finishes hiding a giant pile of dirty clothes, the doorbell rings, and he opens the door face-to-face with Reenu's stern father."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 2,
-      "title_english": "The Living Room Trial",
-      "title_malayalam": "ലിവിംഗ് റൂമിലെ വിചാരണ",
-      "status": "Published",
-      "synopsis": "Madhavan inspects every corner of the house with a magnifying-glass stare, grilling Sachin on his life choices while Girija lovingly inspects the kitchen spice jars.",
-      "cliffhanger": "Madhavan sternly asks Sachin: 'So, young man... what is your 5-year financial blueprint for my daughter?'"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 3,
-      "title_english": "Chai, Jalebi & A Silent War",
-      "title_malayalam": "ചായയും ജിലേബിയും ഒരു നിശ്ശബ്ദ യുദ്ധവും",
-      "status": "Published",
-      "synopsis": "Reenu nervously serves freshly made tea while Amal bursts in unexpectedly, completely misunderstanding the situation and cracking hilarious jokes at the worst possible moments.",
-      "cliffhanger": "Amal accidentally reveals Sachin's wild secret plan to start a coastal cafe in Fort Kochi!"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 4,
-      "title_english": "A Stroll Along Marine Drive",
-      "title_malayalam": "മറൈൻ ഡ്രൈവിലെ സായാഹ്നം",
-      "status": "Published",
-      "synopsis": "Sachin accompanies Madhavan on an evening walk along Marine Drive walkway, attempting to bridge the generational divide with honest conversations about dreams and love.",
-      "cliffhanger": "Madhavan stops, looks out across the backwaters, and shares a surprising memory of his own rebellious youth."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 5,
-      "title_english": "Mother's Intuition",
-      "title_malayalam": "അമ്മയുടെ മനസ്സും ചില ചോദ്യങ്ങളും",
-      "status": "Published",
-      "synopsis": "Back at the house, Girija has a heart-to-heart talk with Reenu, noticing how happy and confident she looks beside Sachin.",
-      "cliffhanger": "Girija pulls out a traditional family heirloom gold bangle and asks Reenu if she is truly sure about Sachin."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 6,
-      "title_english": "The Fort Kochi Site Discovery",
-      "title_malayalam": "ഫോർട്ട് കൊച്ചിയിലെ പുതിയ താവളം",
-      "status": "Published",
-      "synopsis": "Sachin, Reenu, and Amal take the parents on a sight-seeing trip to Fort Kochi, subtly guiding them past the dream heritage building they want to turn into their cafe.",
-      "cliffhanger": "A rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer!"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 7,
-      "title_english": "Race Against the Clock",
-      "title_malayalam": "സമയവുമായുള്ള ഓട്ടം",
-      "status": "Published",
-      "synopsis": "With Amal creating comical distractions, Sachin and Reenu rush through the rain-slicked heritage streets to reach the cafe property owner before the rival agent.",
-      "cliffhanger": "The owner holds two competing lease agreements in his hands, waiting for Sachin to make his final pitch."
-    },
-    {
-      "season_number": 2,
-      "episode_number": 8,
-      "title_english": "Madhavan Steps In",
-      "title_malayalam": "അച്ഛന്റെ അപ്രതീക്ഷിത ഇടപെടൽ",
-      "status": "Published",
-      "synopsis": "Just as the cafe deal appears slipping away, Madhavan steps forward with unexpected gravitas and sharp negotiating wisdom, standing up for Sachin's integrity.",
-      "cliffhanger": "The property owner smiles and hands the heritage cafe keys directly to Sachin and Reenu!"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 9,
-      "title_english": "A Celebration at the Cafe Portico",
-      "title_malayalam": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം",
-      "status": "Published",
-      "synopsis": "The family gathers on the wooden verandah of the new cafe space overlooking the Chinese fishing nets, sharing sweets and laughter as the evening rain begins.",
-      "cliffhanger": "Madhavan raises his cup and formally gives his blessing to Sachin and Reenu's wedding and dream venture!"
-    },
-    {
-      "season_number": 2,
-      "episode_number": 10,
-      "title_english": "New Horizons & An Unbreakable Promise",
-      "title_malayalam": "പുതിയ തുടക്കവും ആ സത്യവും",
-      "status": "Published",
-      "synopsis": "SEASON 2 GRAND FINALE: As the cafe grand opening banner goes up under fairy lights, Sachin and Reenu share a tender, joyous look toward their bright future together in Kerala.",
-      "cliffhanger": "Reenu holds Sachin's hand tight: 'We made our home together, Sachin.' Season 2 Climax completed!"
-    }
-  ],
-  "character_updates": [
-    {
-      "name": "Sachin",
-      "attire": "Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.",
-      "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-    },
-    {
-      "name": "Reenu",
-      "attire": "Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.",
-      "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-    },
-    {
-      "name": "Amal",
-      "attire": "Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers.",
-      "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
     }
   ]
 }

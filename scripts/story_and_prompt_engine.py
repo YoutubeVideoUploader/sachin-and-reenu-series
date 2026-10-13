@@ -2155,15 +2155,19 @@ def main():
                             break
                 except Exception:
                     pass
-        if season_num == 1 and detected_ep >= 10:
+        if detected_ep >= 10:
             print("\n" + "="*70)
-            print("🎯 SEASON 1 FINALE REACHED (Episode 10).")
+            print(f"🎯 SEASON {season_num} FINALE REACHED (Episode 10).")
             print("Automatic background advancement halted.")
-            print("Please open Creator Portal to launch Season 2 via GitHub Actions!")
+            print(f"Please open Creator Portal to launch Season {season_num + 1} via GitHub Actions!")
             print("="*70 + "\n")
             return
         effective_current_ep = detected_ep
         target_ep = effective_current_ep + 1
+
+    if target_ep > 10:
+        print(f"\n⚠️ Target episode {target_ep} exceeds season limit (10 episodes per season). Halting.")
+        return
 
     # Resolve roadmap & storyline
     active_roadmap = SEASON_2_ROADMAP if season_num == 2 else SEASON_1_ROADMAP
