@@ -1,9 +1,9 @@
 {
-  "episode_number": 8,
-  "title_malayalam": "അച്ഛന്റെ അപ്രതീക്ഷിത ഇടപെടൽ",
-  "title_english": "Madhavan Steps In",
-  "synopsis": "Following the sudden phone call regarding the marriage proposal from Kottayam, Sachin, Reenu, and Annamma rush back to face Kurian. Kurian confronts Sachin, accusing him of holding Reenu back from her career goals in London. Standing tall with quiet maturity, Sachin reveals that he secretly helped polish Reenu's portfolio for that very promotion and has been preparing for global certifications to relocate with her. Reenu defends Sachin's unconditional selflessness, leaving Kurian deeply moved. Impressed by Sachin's integrity, property owner Varghese smiles and hands the heritage cafe keys directly to Sachin and Reenu.",
-  "cliffhanger": "Varghese places the heritage cafe keys into Sachin and Reenu's hands, sealing their dream project with Kurian's emotional blessing!",
+  "episode_number": 9,
+  "title_malayalam": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം",
+  "title_english": "A Celebration at the Cafe Portico",
+  "synopsis": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
+  "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -14,323 +14,142 @@
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "ഫോൺ സന്ദേശം കേട്ട് എല്ലാവരും പരിഭ്രാന്തരായി.",
-      "action_summary": "At the Broadway alley shop entrance, Annamma lowers her glowing smartphone in shock while Sachin and Reenu exchange wide-eyed panic.",
+      "dialogue_malayalam": "കുര്യൻ പെട്ടെന്ന് ബോധരഹിതനായി താഴേക്ക് വീണു.",
+      "action_summary": "Picking up directly from Episode 8, Sachin and Annamma rush to support Kurian as he slumps onto the sofa in the Kakkanad living room. Reenu stands frozen in shock. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
         "perspective": "Third-Person Narrator",
         "characters_present": [
           {
-            "name": "Annamma",
-            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
           },
           {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_BROADWAY_SHELTERED_ENTRANCE",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Soft cool grey rain lighting with warm amber glow from shop lamps",
-          "weather": "Monsoon rain drizzle sliding off shop roof tiles",
+          "scene_id": "SCENE_APARTMENT_EMERGENCY",
+          "time_of_day": "Night",
+          "lighting_palette": "Warm indoor apartment lighting with dramatic shadows",
+          "weather": "Clear night outside apartment window",
           "spatial_blocking": {
-            "Annamma": "Screen-center holding glowing smartphone, lowered near chest, eyes wide in shock",
-            "Reenu": "Screen-left, gasping with hands to mouth in terror",
-            "Sachin": "Screen-right, frozen in comedic panic with mouth wide open"
+            "Kurian": "Slumped on the center of the sofa, eyes closed",
+            "Sachin": "Kneeling on the left, holding Kurian's shoulder",
+            "Annamma": "Kneeling on the right, fanning Kurian with her hand",
+            "Reenu": "Standing behind the sofa, hands over her mouth in terror"
           },
-          "eyeline_direction": "Annamma looks down at phone, Reenu and Sachin look screen-left at Annamma",
+          "eyeline_direction": "All characters looking at Kurian's face",
           "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
             "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
             "Reenu's silver wrist watch",
             "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
+            "Teak coffee table"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, shallow depth of field"
         },
-        "location": "Broadway sheltered shop entrance, Kochi",
-        "camera": "Medium shot framing Annamma in center with Reenu and Sachin on either side reacting in shock",
-        "action": "Annamma slowly lowers her glowing smartphone from her ear with a shocked expression. Reenu gasps, bringing both hands to her mouth, while Sachin stands frozen in comedic shock. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
+        "location": "Kakkanad apartment living room",
+        "camera": "Medium shot, low angle looking up at the group around the sofa",
+        "action": "Sachin checks Kurian's pulse while Annamma looks on with panic. Reenu is crying silently. Character lips remain completely closed. NO mouth movement.",
         "dialogue": {
           "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
           "language": "Malayalam",
-          "script": "ഫോൺ സന്ദേശം കേട്ട് എല്ലാവരും പരിഭ്രാന്തരായി.",
-          "line": "ഫോൺ സന്ദേശം കേട്ട് എല്ലാവരും പരിഭ്രാന്തരായി."
+          "script": "കുര്യൻ പെട്ടെന്ന് ബോധരഹിതനായി താഴേക്ക് വീണു.",
+          "line": "കുര്യൻ പെട്ടെന്ന് ബോധരഹിതനായി താഴേക്ക് വീണു."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
       "shot_number": 2,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Kurian",
-      "dialogue_malayalam": "സച്ചിൻ, നീ റീനുവിന്റെ ഭാവി തടസ്സപ്പെടുത്തുകയാണോ?",
-      "action_summary": "Inside the apartment living room, Kurian stands sternly with hands crossed, confronting Sachin directly about Reenu's London promotion letter.",
+      "character": "Sachin",
+      "dialogue_malayalam": "സമാധാനിക്കൂ, കുഴപ്പമൊന്നുമില്ല, ഇതൊരു തളർച്ചയാണ്.",
+      "action_summary": "Sachin looks up at Annamma and Reenu with a calm, reassuring expression while gently rubbing Kurian's hand. Only Sachin's mouth moves in lip sync. The listening characters' mouths remain closed.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Kurian",
+        "perspective": "Sachin",
         "characters_present": [
-          {
-            "name": "Kurian",
-            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
-          },
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light with subtle grey window daylight",
-          "weather": "Soft rain tapping on glass window balcony",
+          "scene_id": "SCENE_APARTMENT_EMERGENCY",
+          "time_of_day": "Night",
+          "lighting_palette": "Warm indoor lighting focusing on Sachin's face",
+          "weather": "Clear night",
           "spatial_blocking": {
-            "Kurian": "Standing foreground center, stern posture facing Sachin",
-            "Sachin": "Standing opposite Kurian, looking up respectfully"
+            "Sachin": "Kneeling, facing Annamma",
+            "Annamma": "Kneeling, looking at Sachin"
           },
-          "eyeline_direction": "Kurian looks screen-down right at Sachin; Sachin looks screen-up left at Kurian",
+          "eyeline_direction": "Sachin looks up at Annamma; Annamma looks down at Sachin",
           "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
             "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
             "Reenu's silver wrist watch",
             "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
+            "Teak coffee table"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, tight medium shot"
         },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium over-the-shoulder shot looking from behind Sachin towards Kurian's stern face",
-        "action": "Kurian steps forward with a firm brow, crossing his arms and speaking directly to Sachin with serious gravity. Only Kurian's mouth moves in lip sync. Sachin listens silently with mouth firmly closed.",
+        "location": "Kakkanad apartment living room",
+        "camera": "Close-up on Sachin's face as he speaks",
+        "action": "Sachin speaks calmly to reassure the family. Only Sachin's mouth is moving in lip sync. Annamma's mouth is strictly closed.",
         "dialogue": {
-          "speaker": "Kurian",
-          "voice_persona": "Kurian: 55yo authoritative Malayalam father, deep resonant stern voice, calm commanding tone",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Endearing 24yo South Indian Malayali boy, warm, sincere, calm under pressure",
           "language": "Malayalam",
-          "script": "സച്ചിൻ, നീ റീനുവിന്റെ ഭാവി തടസ്സപ്പെടുത്തുകയാണോ?",
-          "line": "സച്ചിൻ, നീ റീനുവിന്റെ ഭാവി തടസ്സപ്പെടുത്തുകയാണോ?"
+          "script": "സമാധാനിക്കൂ, കുഴപ്പമൊന്നുമില്ല, ഇതൊരു തളർച്ചയാണ്.",
+          "line": "സമാധാനിക്കൂ, കുഴപ്പമൊന്നുമില്ല, ഇതൊരു തളർച്ചയാണ്."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Kurian speaks with natural lip sync. Sachin remains completely silent with lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin's lips move in sync with his dialogue. Annamma's mouth remains strictly closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
       }
     },
     {
       "shot_number": 3,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അല്ല അങ്കിൾ, ഞാൻ റീനുവിനെ തടഞ്ഞിട്ടില്ല.",
-      "action_summary": "Sachin steps forward with quiet maturity, placing a hand respectfully over his heart as he looks Kurian in the eyes.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Sachin",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Kurian",
-            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light with soft ambient highlights",
-          "weather": "Soft rain outside window",
-          "spatial_blocking": {
-            "Sachin": "Screen-center, standing tall with hand over heart",
-            "Kurian": "Screen-left, listening sternly"
-          },
-          "eyeline_direction": "Sachin looks screen-left directly at Kurian",
-          "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
-            "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
-            "Reenu's silver wrist watch",
-            "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium close-up shot focusing on Sachin's honest, mature facial expression as he speaks",
-        "action": "Sachin places his right hand over his chest with sincere, calm dignity and speaks softly to Kurian. Only Sachin's mouth moves in precise lip sync. Kurian's mouth remains firmly closed.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo South Indian boy, sincere warm youth voice, respectful earnest tone",
-          "language": "Malayalam",
-          "script": "അല്ല അങ്കിൾ, ഞാൻ റീനുവിനെ തടഞ്ഞിട്ടില്ല.",
-          "line": "അല്ല അങ്കിൾ, ഞാൻ റീനുവിനെ തടഞ്ഞിട്ടില്ല."
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks with clear lip sync. Kurian remains completely silent with lips closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 4,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അവളുടെ പോർട്ട്ഫോളിയോ നന്നാക്കാൻ സഹായിച്ചത് ഞാനാണ്.",
-      "action_summary": "Sachin gently gestures toward Reenu's London promotion portfolio resting on the teak coffee table.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Sachin",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light",
-          "weather": "Soft rain outside window",
-          "spatial_blocking": {
-            "Sachin": "Screen-left, pointing gently down toward coffee table",
-            "Reenu": "Screen-right beside coffee table, looking up at Sachin with teary eyes"
-          },
-          "eyeline_direction": "Sachin looks down at table then at Kurian; Reenu looks screen-left at Sachin",
-          "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
-            "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
-            "Reenu's silver wrist watch",
-            "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium shot including Sachin pointing to the portfolio folder while Reenu looks on emotionally",
-        "action": "Sachin calmly points down toward the neatly arranged portfolio document folder on the table, speaking with proud warmth. Only Sachin's mouth moves in lip sync. Reenu listens tearfully with lips closed.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo South Indian boy, sincere warm youth voice, respectful earnest tone",
-          "language": "Malayalam",
-          "script": "അവളുടെ പോർട്ട്ഫോളിയോ നന്നാക്കാൻ സഹായിച്ചത് ഞാനാണ്.",
-          "line": "അവളുടെ പോർട്ട്ഫോളിയോ നന്നാക്കാൻ സഹായിച്ചത് ഞാനാണ്."
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks with natural lip sync. Reenu maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 5,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "കൂടെ വരാൻ ഞാൻ ഗ്ലോബൽ പരീക്ഷകൾ പഠിക്കുകയാണ്.",
-      "action_summary": "Sachin taps his smartphone screen showing global remote certification progress with a quiet, confident smile.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Sachin",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          },
-          {
-            "name": "Kurian",
-            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light with subtle phone screen ambient glow",
-          "weather": "Soft rain outside window",
-          "spatial_blocking": {
-            "Sachin": "Screen-center, holding up phone showing online certification dashboard",
-            "Kurian": "Screen-left, leaning forward slightly with widening eyes"
-          },
-          "eyeline_direction": "Sachin looks screen-left at Kurian; Kurian looks down at Sachin's phone",
-          "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
-            "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
-            "Reenu's silver wrist watch",
-            "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Apartment living room, Kochi",
-        "camera": "Close-up shot of Sachin showing his phone screen with a gentle confident smile",
-        "action": "Sachin displays his phone showing completed global certification modules, speaking with humble confidence. Only Sachin's mouth moves in lip sync. Kurian remains silent, surprised.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo South Indian boy, sincere warm youth voice, respectful earnest tone",
-          "language": "Malayalam",
-          "script": "കൂടെ വരാൻ ഞാൻ ഗ്ലോബൽ പരീക്ഷകൾ പഠിക്കുകയാണ്.",
-          "line": "കൂടെ വരാൻ ഞാൻ ഗ്ലോബൽ പരീക്ഷകൾ പഠിക്കുകയാണ്."
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin speaks with natural lip sync. Kurian maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
       "character": "Reenu",
-      "dialogue_malayalam": "സച്ചിൻ എന്നും എന്റെ സ്വപ്നങ്ങളെ പിന്തുണച്ചിട്ടേയുള്ളൂ!",
-      "action_summary": "Reenu steps up beside Sachin, tears in her doe eyes, defending Sachin's unconditional selflessness to her father.",
+      "dialogue_malayalam": "പപ്പയ്ക്ക് പെട്ടെന്ന് ഭേദമാകണേ ദൈവമേ.",
+      "action_summary": "Reenu is shown in a tight close-up, her eyes filled with tears as she looks toward Kurian. Only Reenu's mouth moves in lip sync.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -339,68 +158,306 @@
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light",
-          "weather": "Soft rain outside window",
+          "scene_id": "SCENE_APARTMENT_EMERGENCY",
+          "time_of_day": "Night",
+          "lighting_palette": "Soft, emotional lighting on Reenu's face",
+          "weather": "Clear night",
           "spatial_blocking": {
-            "Reenu": "Screen-center, standing next to Sachin, holding his arm emotionally",
-            "Sachin": "Screen-right, standing beside Reenu, looking at her with affection"
+            "Reenu": "Standing, leaning forward"
           },
-          "eyeline_direction": "Reenu looks screen-left towards Kurian; Sachin looks screen-left at Reenu",
+          "eyeline_direction": "Reenu looks down and screen-right toward Kurian",
           "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
             "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
             "Reenu's silver wrist watch",
             "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
+            "Teak coffee table"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, extreme close-up"
         },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium close-up shot capturing Reenu's emotional facial expression as tears glisten in her eyes",
-        "action": "Reenu steps right next to Sachin, holding his arm gently and speaking to Kurian with passionate emotional vulnerability. Only Reenu's mouth moves in lip sync. Sachin remains quiet with lips closed.",
+        "location": "Kakkanad apartment living room",
+        "camera": "Extreme close-up on Reenu's tearful face",
+        "action": "Reenu speaks a short prayer with trembling lips. Only Reenu's mouth moves in lip sync.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo South Indian girl, emotional sweet expressive voice, passionate touching cadence",
+          "voice_persona": "Reenu: Sweet 22yo South Indian Malayali girl, vulnerable, emotional, soft-spoken",
           "language": "Malayalam",
-          "script": "സച്ചിൻ എന്നും എന്റെ സ്വപ്നങ്ങളെ പിന്തുണച്ചിട്ടേയുള്ളൂ!",
-          "line": "സച്ചിൻ എന്നും എന്റെ സ്വപ്നങ്ങളെ പിന്തുണച്ചിട്ടേയുള്ളൂ!"
+          "script": "പപ്പയ്ക്ക് പെട്ടെന്ന് ഭേദമാകണേ ദൈവമേ.",
+          "line": "പപ്പയ്ക്ക് പെട്ടെന്ന് ഭേദമാകണേ ദൈവമേ."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu speaks with precise lip sync. Sachin maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Reenu's lips move in sync with her dialogue. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+      }
+    },
+    {
+      "shot_number": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "പിറ്റേന്ന് പുലർച്ചെ അവർ മടങ്ങാൻ ഒരുങ്ങി.",
+      "action_summary": "Time transition to early dawn. Annamma is seen in the guest room, folding Kurian's white Jubba and placing it into an open suitcase. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Annamma",
+            "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_GUEST_ROOM_PACKING",
+          "time_of_day": "Early Dawn Blue Hour",
+          "lighting_palette": "Soft blue morning light filtering through the window",
+          "weather": "Mist over Kochi morning",
+          "spatial_blocking": {
+            "Annamma": "Standing beside the bed, leaning over an open suitcase"
+          },
+          "eyeline_direction": "Annamma looks down at the suitcase",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
+            "Reenu's silver wrist watch",
+            "Sachin's brown cross-bag",
+            "Teak coffee table"
+          ],
+          "camera_lens": "Cinematic prime lens, medium shot"
+        },
+        "location": "Apartment guest room",
+        "camera": "Medium shot from the side of the bed",
+        "action": "Annamma folds clothes with a somber expression. Her lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "പിറ്റേന്ന് പുലർച്ചെ അവർ മടങ്ങാൻ ഒരുങ്ങി.",
+          "line": "പിറ്റേന്ന് പുലർച്ചെ അവർ മടങ്ങാൻ ഒരുങ്ങി."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+      }
+    },
+    {
+      "shot_number": 5,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടം നിറഞ്ഞുനിന്നു.",
+      "action_summary": "Reenu sits on the edge of her bed, looking out the window at the hazy morning sky. She looks heartbroken. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_REENU_BEDROOM",
+          "time_of_day": "Early Dawn Blue Hour",
+          "lighting_palette": "Soft cool morning light from the window",
+          "weather": "Misty Kochi morning",
+          "spatial_blocking": {
+            "Reenu": "Sitting on the edge of her bed, facing the window"
+          },
+          "eyeline_direction": "Reenu looks out the window, screen-left",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
+            "Reenu's silver wrist watch",
+            "Sachin's brown cross-bag",
+            "Teak coffee table"
+          ],
+          "camera_lens": "Cinematic prime lens, medium close-up"
+        },
+        "location": "Reenu's bedroom",
+        "camera": "Profile shot of Reenu looking out the window",
+        "action": "Reenu blinks back tears, her expression full of longing and sadness. Her lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടം നിറഞ്ഞുനിന്നു.",
+          "line": "റീനുവിന്റെ കണ്ണുകളിൽ സങ്കടം നിറഞ്ഞുനിന്നു."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+      }
+    },
+    {
+      "shot_number": 6,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "സച്ചിനും അമലും സ്റ്റേഷനിൽ നേരത്തെ എത്തി.",
+      "action_summary": "At the Ernakulam South Railway Station, Sachin and Amal are walking along the platform, carrying a brown paper bag and a small water bottle. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_RAILWAY_PLATFORM",
+          "time_of_day": "Early Morning Golden Hour",
+          "lighting_palette": "Golden morning sunlight hitting the platform floor",
+          "weather": "Bright clear morning",
+          "spatial_blocking": {
+            "Sachin": "Walking screen-right, carrying a paper bag",
+            "Amal": "Walking beside Sachin on his left"
+          },
+          "eyeline_direction": "Sachin looks ahead; Amal looks toward the benches",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
+            "Reenu's silver wrist watch",
+            "Sachin's brown cross-bag",
+            "Teak coffee table"
+          ],
+          "camera_lens": "Cinematic prime lens, wide tracking shot"
+        },
+        "location": "Ernakulam South Railway Station Platform",
+        "camera": "Wide tracking shot moving with Sachin and Amal",
+        "action": "Sachin and Amal walk purposefully through the morning crowd. Their lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "സച്ചിനും അമലും സ്റ്റേഷനിൽ നേരത്തെ എത്തി.",
+          "line": "സച്ചിനും അമലും സ്റ്റേഷനിൽ നേരത്തെ എത്തി."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
       }
     },
     {
       "shot_number": 7,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Annamma",
-      "dialogue_malayalam": "ഇത്രയും നല്ല പയ്യനെ വേറെ എവിടെ കാണും?",
-      "action_summary": "Annamma places a gentle, comforting hand on Kurian's shoulder, smiling warmly at Sachin's quiet character.",
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "പ്ലാറ്റ്‌ഫോമിൽ അവർ ട്രെയിൻ കാത്തുനിന്നു.",
+      "action_summary": "Kurian and Annamma are sitting on a metal platform bench. Kurian looks pale but stable, holding his reading glasses. Reenu stands next to them, looking around anxiously. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Annamma",
+        "perspective": "Third-Person Narrator",
         "characters_present": [
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          },
           {
             "name": "Annamma",
             "visual_dna": "Annamma: Soft, rounded Pixar matriarch silhouette, gentle face framed by silver-streaked black hair pinned in a neat traditional bun, expressive eyes that instantly spot domestic flaws. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Handloom bottle-green cotton saree with mustard border, thin gold bangles that clink rhythmically, and a classic gold crucifix necklace. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_RAILWAY_PLATFORM",
+          "time_of_day": "Early Morning Golden Hour",
+          "lighting_palette": "Warm morning sun with long shadows",
+          "weather": "Clear morning",
+          "spatial_blocking": {
+            "Kurian": "Sitting on the bench, center",
+            "Annamma": "Sitting on the bench, left of Kurian",
+            "Reenu": "Standing to the right of the bench"
+          },
+          "eyeline_direction": "Reenu looks screen-left searching the crowd; Kurian looks down",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
+            "Reenu's silver wrist watch",
+            "Sachin's brown cross-bag",
+            "Teak coffee table"
+          ],
+          "camera_lens": "Cinematic prime lens, medium shot"
+        },
+        "location": "Ernakulam South Railway Station Platform",
+        "camera": "Medium shot of the family on the bench",
+        "action": "The family waits quietly. Reenu spots someone off-camera. Their lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "പ്ലാറ്റ്‌ഫോമിൽ അവർ ട്രെയിൻ കാത്തുനിന്നു.",
+          "line": "പ്ലാറ്റ്‌ഫോമിൽ അവർ ട്രെയിൻ കാത്തുനിന്നു."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+      }
+    },
+    {
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "പപ്പയ്ക്ക് കഴിക്കാൻ ലഘുഭക്ഷണവും മരുന്നുമുണ്ട്.",
+      "action_summary": "Sachin approaches Kurian and gently offers him the brown paper bag and a small medicine strip. Only Sachin's mouth moves in lip sync. Kurian looks up in surprise.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Sachin",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
             "name": "Kurian",
@@ -408,53 +465,110 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm indoor teak lamp light",
-          "weather": "Soft rain outside window",
+          "scene_id": "SCENE_RAILWAY_PLATFORM",
+          "time_of_day": "Early Morning Golden Hour",
+          "lighting_palette": "Warm morning sun",
+          "weather": "Clear morning",
           "spatial_blocking": {
-            "Annamma": "Screen-left beside Kurian, resting her hand on Kurian's shoulder",
-            "Kurian": "Screen-right, facing forward, his stern expression visibly melting"
+            "Sachin": "Standing, leaning slightly toward Kurian",
+            "Kurian": "Sitting on the bench, looking up at Sachin"
           },
-          "eyeline_direction": "Annamma looks screen-right at Kurian; Kurian looks down thoughtfully",
+          "eyeline_direction": "Sachin looks down at Kurian; Kurian looks up at Sachin",
           "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
             "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
             "Reenu's silver wrist watch",
             "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
+            "Teak coffee table"
           ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, medium close-up"
         },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium shot of Annamma standing beside Kurian, resting a soft motherly hand on his shoulder",
-        "action": "Annamma touches Kurian's shoulder affectionately and speaks to him with deep motherly warmth. Only Annamma's mouth moves in lip sync. Kurian's mouth remains closed as his eyes soften.",
+        "location": "Ernakulam South Railway Station Platform",
+        "camera": "Over-the-shoulder shot from behind Kurian, focusing on Sachin",
+        "action": "Sachin speaks with genuine care as he hands over the bag. Only Sachin's mouth moves in lip sync.",
         "dialogue": {
-          "speaker": "Annamma",
-          "voice_persona": "Annamma: 48yo South Indian mother, soft maternal comforting tone, warm affectionate cadence",
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: Endearing 24yo South Indian Malayali boy, warm, sincere",
           "language": "Malayalam",
-          "script": "ഇത്രയും നല്ല പയ്യനെ വേറെ എവിടെ കാണും?",
-          "line": "ഇത്രയും നല്ല പയ്യനെ വേറെ എവിടെ കാണും?"
+          "script": "പപ്പയ്ക്ക് കഴിക്കാൻ ലഘുഭക്ഷണവും മരുന്നുമുണ്ട്.",
+          "line": "പപ്പയ്ക്ക് കഴിക്കാൻ ലഘുഭക്ഷണവും മരുന്നുമുണ്ട്."
         },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Annamma speaks with clear lip sync. Kurian maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Sachin's lips move in sync with his dialogue. Kurian's mouth remains strictly closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
       }
     },
     {
-      "shot_number": 8,
+      "shot_number": 9,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Third-Person Narrator",
+      "dialogue_malayalam": "കുര്യൻ സച്ചിനെ ഒരു നിമിഷം നോക്കി.",
+      "action_summary": "Kurian takes the bag and looks up at Sachin. His stern expression softens significantly, his eyes showing a hint of a smile and deep realization. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Third-Person Narrator",
+        "characters_present": [
+          {
+            "name": "Kurian",
+            "visual_dna": "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pepper mustache, wire-rimmed reading glasses resting on a stern nose, piercing observant eyes, and dignified posture. STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp starched white cotton Jubba paired with a double-folded pristine white Mundu featuring a thin gold Kasavu border, brown leather sandals, and an analog Titan watch. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_RAILWAY_PLATFORM",
+          "time_of_day": "Early Morning Golden Hour",
+          "lighting_palette": "Soft morning light highlighting Kurian's face",
+          "weather": "Clear morning",
+          "spatial_blocking": {
+            "Kurian": "Sitting on the bench, looking upward"
+          },
+          "eyeline_direction": "Kurian looks up toward Sachin (off-camera)",
+          "persistent_props": [
+            "Annamma's gold bangles",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
+            "Reenu's silver wrist watch",
+            "Sachin's brown cross-bag",
+            "Teak coffee table"
+          ],
+          "camera_lens": "Cinematic prime lens, close-up"
+        },
+        "location": "Ernakulam South Railway Station Platform",
+        "camera": "Close-up on Kurian's face",
+        "action": "Kurian's face transitions from stern to warm and appreciative. His lips are strictly closed.",
+        "dialogue": {
+          "speaker": "Third-Person Narrator",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice",
+          "language": "Malayalam",
+          "script": "കുര്യൻ സച്ചിനെ ഒരു നിമിഷം നോക്കി.",
+          "line": "കുര്യൻ സച്ചിനെ ഒരു നിമിഷം നോക്കി."
+        },
+        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
+      }
+    },
+    {
+      "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Kurian",
-      "dialogue_malayalam": "എനിക്ക് തെറ്റുപറ്റി സച്ചിൻ, മാപ്പ് ചോദിക്കുന്നു.",
-      "action_summary": "Kurian's stern features completely melt into respect; he nods humbly and offers a genuine apology to Sachin.",
+      "dialogue_malayalam": "അടുത്തയാഴ്ച നീ കോട്ടയത്തെ വീട്ടിലേക്ക് വരണം.",
+      "action_summary": "Kurian stands up, places a hand on Sachin's shoulder, and speaks with a warm, authoritative yet welcoming tone. Only Kurian's mouth moves in lip sync. Sachin and Reenu look on in joyous disbelief. CLIFFHANGER: The official invitation to Kottayam!",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -467,176 +581,52 @@
           {
             "name": "Sachin",
             "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm golden indoor light",
-          "weather": "Soft rain outside window",
-          "spatial_blocking": {
-            "Kurian": "Screen-left, stepping forward with folded hands",
-            "Sachin": "Screen-right, smiling humbly with respect"
-          },
-          "eyeline_direction": "Kurian looks screen-right at Sachin; Sachin looks screen-left at Kurian",
-          "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
-            "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
-            "Reenu's silver wrist watch",
-            "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Apartment living room, Kochi",
-        "camera": "Medium close-up shot focused on Kurian's expressive face softening into humble admiration",
-        "action": "Kurian removes his wire-rimmed glasses slightly, bowing his head in sincere apology and smiling warmly at Sachin. Only Kurian's mouth moves in lip sync. Sachin remains silent with a respectful smile.",
-        "dialogue": {
-          "speaker": "Kurian",
-          "voice_persona": "Kurian: 55yo authoritative Malayalam father, now softened, heartfelt humble tone",
-          "language": "Malayalam",
-          "script": "എനിക്ക് തെറ്റുപറ്റി സച്ചിൻ, മാപ്പ് ചോദിക്കുന്നു.",
-          "line": "എനിക്ക് തെറ്റുപറ്റി സച്ചിൻ, മാപ്പ് ചോദിക്കുന്നു."
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Kurian speaks with natural lip sync. Sachin maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Varghese (Flat Owner)",
-      "dialogue_malayalam": "നിങ്ങളുടെ സ്നേഹത്തിന് എന്റെ കഫേ സമർപ്പിക്കുന്നു!",
-      "action_summary": "Property owner Varghese steps forward from the doorway with a beaming smile, holding out a set of brass heritage cafe keys.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Varghese (Flat Owner)",
-        "characters_present": [
-          {
-            "name": "Varghese (Flat Owner)",
-            "visual_dna": "Varghese (Flat Owner): Stylized 3D Pixar-style cartoon animation character, 62yo South Indian Malayali gentleman, dignified gentle grandfatherly face, rounded tortoiseshell spectacles, receding silver-white cartoon hair, warm observant eyes, calm posture (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm golden indoor ambient glow",
-          "weather": "Soft rain outside window",
-          "spatial_blocking": {
-            "Varghese (Flat Owner)": "Screen-center near doorway entrance, smiling widely, holding brass keys",
-            "Sachin": "Screen-right, turning towards Varghese with joyous surprise"
-          },
-          "eyeline_direction": "Varghese looks screen-right at Sachin and Reenu; Sachin looks screen-left at Varghese",
-          "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
-            "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
-            "Reenu's silver wrist watch",
-            "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Apartment living room doorway, Kochi",
-        "camera": "Medium shot of Varghese stepping into frame with a broad, delightful smile",
-        "action": "Varghese steps forward warmly, extending his right hand holding a shiny ring of traditional brass keys towards Sachin and Reenu. Only Varghese's mouth moves in lip sync. Sachin looks on in astonished delight with lips closed.",
-        "dialogue": {
-          "speaker": "Varghese (Flat Owner)",
-          "voice_persona": "Varghese: 62yo gentle Malayali grandfatherly voice, warm jovial cheerful tone",
-          "language": "Malayalam",
-          "script": "നിങ്ങളുടെ സ്നേഹത്തിന് എന്റെ കഫേ സമർപ്പിക്കുന്നു!",
-          "line": "നിങ്ങളുടെ സ്നേഹത്തിന് എന്റെ കഫേ സമർപ്പിക്കുന്നു!"
-        },
-        "audio_directive": "CHARACTER DIALOGUE ONLY. Varghese speaks with precise lip sync. Sachin maintains strictly closed lips. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 10,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Third-Person Narrator",
-      "dialogue_malayalam": "സച്ചിന്റെ കൈകളിലേക്ക് ആ താക്കോലുകൾ കൈമാറി.",
-      "action_summary": "CLIFFHANGER: Varghese places the brass heritage cafe keys directly into Sachin and Reenu's joined hands as everyone beams with immense happiness!",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Third-Person Narrator",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Solid olive-green plain crewneck t-shirt (strictly solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
           },
           {
             "name": "Reenu",
             "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO FORMAL SHIRTS, NO FORMAL TROUSERS, NO DUPATTAS; STRICT MODERN CASUALS ONLY) (IDENTICAL IN EVERY SHOT): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
-          },
-          {
-            "name": "Varghese (Flat Owner)",
-            "visual_dna": "Varghese (Flat Owner): Stylized 3D Pixar-style cartoon animation character, 62yo South Indian Malayali gentleman, dignified gentle grandfatherly face, rounded tortoiseshell spectacles, receding silver-white cartoon hair, warm observant eyes, calm posture (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders. Absolutely zero costume variations."
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-          "time_of_day": "Late Afternoon Monsoon Dusk",
-          "lighting_palette": "Warm glowing golden sunlight filter through monsoon clouds",
-          "weather": "Soft monsoon rain outside window",
+          "scene_id": "SCENE_RAILWAY_PLATFORM",
+          "time_of_day": "Early Morning Golden Hour",
+          "lighting_palette": "Bright golden morning light",
+          "weather": "Clear morning",
           "spatial_blocking": {
-            "Sachin": "Screen-left, holding Reenu's hand together in center",
-            "Reenu": "Screen-center beside Sachin, hand joined with Sachin's",
-            "Varghese (Flat Owner)": "Screen-right, placing the brass key ring gently onto their palms"
+            "Kurian": "Standing, hand on Sachin's shoulder",
+            "Sachin": "Standing, facing Kurian",
+            "Reenu": "Standing next to Sachin, smiling widely"
           },
-          "eyeline_direction": "All eyes focus on the shiny brass keys resting in Sachin and Reenu's hands",
+          "eyeline_direction": "Kurian looks at Sachin; Sachin looks at Kurian; Reenu looks at both",
           "persistent_props": [
-            "Annamma's glowing smartphone on speaker",
             "Annamma's gold bangles",
-            "Kurian's Titan watch",
-            "Kurian's wire-rimmed glasses",
-            "Reenu's London promotion letter on wooden coffee table",
-            "Reenu's London promotion portfolio document folder on coffee table",
+            "Annamma's green handbag on her lap",
+            "Brown paper bag",
+            "Brown paper bag in Kurian's hands",
+            "Brown paper bag with snacks",
+            "Kurian's Titan watch on his limp wrist",
+            "Kurian's analog Titan watch",
+            "Kurian's crisp white Jubba",
+            "Kurian's wire-rimmed glasses in his hand",
+            "Medicine strip in Sachin's hand",
+            "Open brown suitcase",
             "Reenu's silver wrist watch",
             "Sachin's brown cross-bag",
-            "Sachin's cross-bag",
-            "Sachin's diagonal brown leather cross-bag strap",
-            "Sachin's glowing smartphone",
-            "Set of ornate brass keys on a ring",
-            "Shimmering ornate brass key ring",
-            "Varghese's lease agreement folders under arm"
+            "Teak coffee table"
           ],
-          "camera_lens": "Cinematic prime lens, tight close-up, soft circular bokeh"
+          "camera_lens": "Cinematic prime lens, medium shot"
         },
-        "location": "Apartment living room, Kochi",
-        "camera": "Tight emotional close-up on Varghese placing the polished brass keys into Sachin and Reenu's joined hands",
-        "action": "Varghese carefully lays the brass key ring into Sachin and Reenu's open palms. Sachin and Reenu smile radiantly, overcome with triumph and gratitude. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation. Characters do NOT speak.",
+        "location": "Ernakulam South Railway Station Platform",
+        "camera": "Medium shot of the three characters",
+        "action": "Kurian speaks the invitation. Only Kurian's mouth moves in lip sync. Sachin and Reenu are frozen in happy shock.",
         "dialogue": {
-          "speaker": "Third-Person Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Kurian",
+          "voice_persona": "Kurian: Dignified 55yo South Indian Malayalam father, deep authoritative voice that has now softened with warmth",
           "language": "Malayalam",
-          "script": "സച്ചിന്റെ കൈകളിലേക്ക് ആ താക്കോലുകൾ കൈമാറി.",
-          "line": "സച്ചിന്റെ കൈകളിലേക്ക് ആ താക്കോലുകൾ കൈമാറി."
+          "script": "അടുത്തയാഴ്ച നീ കോട്ടയത്തെ വീട്ടിലേക്ക് വരണം.",
+          "line": "അടുത്തയാഴ്ച നീ കോട്ടയത്തെ വീട്ടിലേക്ക് വരണം."
         },
-        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE ONLY. Kurian's lips move in sync with his dialogue. Sachin and Reenu's mouths remain strictly closed. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE."
       }
     }
   ],
@@ -648,7 +638,7 @@
       "episode_number": 1,
       "title_english": "The Surprise Calling Bell",
       "title_malayalam": "അപ്രതീക്ഷിത കോളിംഗ് ബെൽ",
-      "status": "Active",
+      "status": "Completed",
       "synopsis": "On a lazy Sunday afternoon in Reenu's Kakkanad apartment, Sachin is clumsily helping her hang fairy lights while playfully sharing snacks. The peaceful romance is shattered by an aggressive series of doorbell rings; Reenu opens the door to discover her conservative parents standing in the hallway flanked by heavy VIP suitcases.",
       "cliffhanger": "Kurian lowers his reading glasses and peers past Reenu, locking eyes with Sachin, who is frozen mid-air atop a wobbly plastic stool holding a tangled ball of lights."
     },
@@ -656,7 +646,7 @@
       "episode_number": 2,
       "title_english": "Living Room Cross-Examination",
       "title_malayalam": "ലിവിംഗ് റൂം വിചാരണ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin tumbles off the stool in comedic slow-motion, scrambling to introduce himself as a polite family friend while Annamma inspects the messy bachelor-tinged living room. Kurian takes the central sofa like a high court judge, firing rapid-fire questions about Sachin's ancestral lineage, family status in Alappuzha, and his career roadmap.",
       "cliffhanger": "Kurian taps his fingers rhythmically on the glass table and asks with icy calm, 'So, Sachin... what exactly is your 5-year financial vision for supporting a family?'"
     },
@@ -664,7 +654,7 @@
       "episode_number": 3,
       "title_english": "Amal Davis Strikes",
       "title_malayalam": "അമലിന്റെ എൻട്രി",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Just as Sachin stammers through an ambitious tech-startup pitch, Amal Davis kicks the door wide open carrying oily beef cutlets and screaming unfiltered gossip about Sachin's unemployment. Realizing the horror before him, Amal desperately attempts to pose as an etiquette-trained butler, serving hot black tea with trembling hands.",
       "cliffhanger": "Amal trips on the rug, sending a scalding cup of black tea sailing straight toward Kurian's pristine white starched Mundu."
     },
@@ -672,7 +662,7 @@
       "episode_number": 4,
       "title_english": "Marine Drive Inspection Walk",
       "title_malayalam": "മറൈൻ ഡ്രൈവിലെ ചോദ്യം ചെയ്യൽ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Having miraculously deflected the tea spill using a sofa cushion, Sachin is drafted into an early morning brisk walk along Kochi's Marine Drive walkway alone with Kurian. As Chinese fishing nets silhouette against the dawn, Kurian tests Sachin's stamina and character, peeling back his youthful facade to judge his real maturity.",
       "cliffhanger": "Kurian halts by the railing, pulls out an envelope, and sternly reveals that a settled marine engineer from Dubai has sent a formal marriage proposal for Reenu."
     },
@@ -680,7 +670,7 @@
       "episode_number": 5,
       "title_english": "Mother's Intuition",
       "title_malayalam": "അമ്മയുടെ കണ്ണ്",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
       "cliffhanger": "As Sachin bends to tighten the pipe, a small velvet ring box slips out of his pocket and rolls right to Annamma's feet."
     },
@@ -688,7 +678,7 @@
       "episode_number": 6,
       "title_english": "The Broadway Monsoon Rush",
       "title_malayalam": "ബ്രോഡ്‌വേയിലെ കുടക്കീഴിൽ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour.",
       "cliffhanger": "Kurian suddenly clutches his chest and stumbles dizzy amidst the chaotic crowded alley, gasping for breath as thunder cracks overhead."
     },
@@ -696,7 +686,7 @@
       "episode_number": 7,
       "title_english": "Through Rain & Ruin",
       "title_malayalam": "കണ്ണീരും മഴയും",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin springs into action, carrying Kurian through knee-deep water into a nearby medical clinic where doctors confirm it was merely acute dehydration and low blood sugar. Relieved back at the flat, Kurian accidentally spots Reenu's London job promotion acceptance letter on the desk and misinterprets Sachin's presence as an anchor holding Reenu back.",
       "cliffhanger": "Kurian confronts Sachin in front of everyone: 'Are you truly loving my daughter, or are you selfishly clipping her wings to keep her in Kerala?'"
     },
@@ -704,25 +694,25 @@
       "episode_number": 8,
       "title_english": "The Unspoken Sacrifice",
       "title_malayalam": "സച്ചിന്റെ മറുപടി",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin stands tall with quiet maturity, revealing that he had secretly helped Reenu polish her portfolio for that very promotion and has been preparing for remote global certifications to relocate with her. Reenu breaks down, defending Sachin's unconditional selflessness, while Sachin politely apologizes if his humble background made Kurian anxious.",
       "cliffhanger": "Kurian stares at the young man in stunned silence, turns around without uttering a single word, and locks himself inside the guest room."
     },
     {
       "episode_number": 9,
-      "title_english": "Departure at Dawn",
-      "title_malayalam": "യാത്രപറച്ചിൽ",
-      "status": "Upcoming",
-      "synopsis": "Dawn breaks over Kochi with a somber atmosphere as Reenu's parents pack their bags for the morning Malabar Express back to Kottayam, convinced the visit was a failure. Reenu weeps quietly in her room, believing her father will never accept Sachin, while Sachin arrives at the platform with freshly packed hot snacks and travel medicine for Kurian.",
-      "cliffhanger": "At Ernakulam South Railway Station, as the train whistle screams, Kurian steps onto the train footboard and beckons Sachin forward with a stern finger."
+      "title_english": "A Celebration at the Cafe Portico",
+      "title_malayalam": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം",
+      "status": "Active",
+      "synopsis": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
+      "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance."
     },
     {
       "episode_number": 10,
       "title_english": "The Blessing on Platform 3",
       "title_malayalam": "പ്ലാറ്റ്‌ഫോം 3-ലെ അനുഗ്രഹം",
       "status": "Upcoming",
-      "synopsis": "Kurian places a firm, trembling hand on Sachin's shoulder, smiling subtly as he tells him to buy a proper formal suit before visiting their Kottayam house for the official engagement. Annamma lovingly kisses Reenu's forehead as the train pulls away, leaving Sachin and Reenu embracing in joyous Pixar slow-motion under the golden morning light of Platform 3.",
-      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!)."
+      "synopsis": "As the train to Kottayam whistles for departure, the tension of the past week finally evaporates. Kurian, in a rare display of vulnerability, pulls Sachin into a firm embrace and hands him an old family heirloom—a vintage mechanical watch—telling him that 'time is now on your side.' Annamma tearfully kisses Reenu's forehead, acknowledging her daughter's choice with a warm smile. As the train slowly pulls away, Sachin and Reenu stand together on the platform, bathed in the golden, cinematic glow of the morning sun, realizing their love has finally won the ultimate battle of acceptance. The camera circles them in a sweeping 3D Pixar-style shot, capturing the bustling Kochi station as a backdrop to their quiet triumph.",
+      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!), as a 'Just Engaged' banner he prematurely printed flutters behind him, ending the season on a note of pure, chaotic joy."
     }
   ],
   "character_updates": [

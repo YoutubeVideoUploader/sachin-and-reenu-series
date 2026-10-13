@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 8,
+  "total_episodes_produced": 9,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -196,37 +196,48 @@
         "Kurian",
         "Annamma"
       ]
+    },
+    {
+      "episode": 9,
+      "title": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം (A Celebration at the Cafe Portico)",
+      "summary": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
+      "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance.",
+      "characters_present": [
+        "Kurian",
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 8,
+  "episode_number": 9,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
-    "time_of_day": "Late Afternoon Monsoon Dusk",
-    "lighting_palette": "Warm glowing golden sunlight filter through monsoon clouds",
-    "weather": "Soft monsoon rain outside window",
+    "scene_id": "SCENE_RAILWAY_PLATFORM",
+    "time_of_day": "Early Morning Golden Hour",
+    "lighting_palette": "Bright golden morning light",
+    "weather": "Clear morning",
     "spatial_blocking": {
-      "Sachin": "Screen-left, holding Reenu's hand together in center",
-      "Reenu": "Screen-center beside Sachin, hand joined with Sachin's",
-      "Varghese (Flat Owner)": "Screen-right, placing the brass key ring gently onto their palms"
+      "Kurian": "Standing, hand on Sachin's shoulder",
+      "Sachin": "Standing, facing Kurian",
+      "Reenu": "Standing next to Sachin, smiling widely"
     },
-    "eyeline_direction": "All eyes focus on the shiny brass keys resting in Sachin and Reenu's hands",
+    "eyeline_direction": "Kurian looks at Sachin; Sachin looks at Kurian; Reenu looks at both",
     "persistent_props": [
-      "Annamma's glowing smartphone on speaker",
       "Annamma's gold bangles",
-      "Kurian's Titan watch",
-      "Kurian's wire-rimmed glasses",
-      "Reenu's London promotion letter on wooden coffee table",
-      "Reenu's London promotion portfolio document folder on coffee table",
+      "Annamma's green handbag on her lap",
+      "Brown paper bag",
+      "Brown paper bag in Kurian's hands",
+      "Brown paper bag with snacks",
+      "Kurian's Titan watch on his limp wrist",
+      "Kurian's analog Titan watch",
+      "Kurian's crisp white Jubba",
+      "Kurian's wire-rimmed glasses in his hand",
+      "Medicine strip in Sachin's hand",
+      "Open brown suitcase",
       "Reenu's silver wrist watch",
       "Sachin's brown cross-bag",
-      "Sachin's cross-bag",
-      "Sachin's diagonal brown leather cross-bag strap",
-      "Sachin's glowing smartphone",
-      "Set of ornate brass keys on a ring",
-      "Shimmering ornate brass key ring",
-      "Varghese's lease agreement folders under arm"
+      "Teak coffee table"
     ],
-    "camera_lens": "Cinematic prime lens, tight close-up, soft circular bokeh"
+    "camera_lens": "Cinematic prime lens, medium shot"
   },
   "season_number": 2,
   "season_arc": [
@@ -234,7 +245,7 @@
       "episode_number": 1,
       "title_english": "The Surprise Calling Bell",
       "title_malayalam": "അപ്രതീക്ഷിത കോളിംഗ് ബെൽ",
-      "status": "Active",
+      "status": "Completed",
       "synopsis": "On a lazy Sunday afternoon in Reenu's Kakkanad apartment, Sachin is clumsily helping her hang fairy lights while playfully sharing snacks. The peaceful romance is shattered by an aggressive series of doorbell rings; Reenu opens the door to discover her conservative parents standing in the hallway flanked by heavy VIP suitcases.",
       "cliffhanger": "Kurian lowers his reading glasses and peers past Reenu, locking eyes with Sachin, who is frozen mid-air atop a wobbly plastic stool holding a tangled ball of lights."
     },
@@ -242,7 +253,7 @@
       "episode_number": 2,
       "title_english": "Living Room Cross-Examination",
       "title_malayalam": "ലിവിംഗ് റൂം വിചാരണ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin tumbles off the stool in comedic slow-motion, scrambling to introduce himself as a polite family friend while Annamma inspects the messy bachelor-tinged living room. Kurian takes the central sofa like a high court judge, firing rapid-fire questions about Sachin's ancestral lineage, family status in Alappuzha, and his career roadmap.",
       "cliffhanger": "Kurian taps his fingers rhythmically on the glass table and asks with icy calm, 'So, Sachin... what exactly is your 5-year financial vision for supporting a family?'"
     },
@@ -250,7 +261,7 @@
       "episode_number": 3,
       "title_english": "Amal Davis Strikes",
       "title_malayalam": "അമലിന്റെ എൻട്രി",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Just as Sachin stammers through an ambitious tech-startup pitch, Amal Davis kicks the door wide open carrying oily beef cutlets and screaming unfiltered gossip about Sachin's unemployment. Realizing the horror before him, Amal desperately attempts to pose as an etiquette-trained butler, serving hot black tea with trembling hands.",
       "cliffhanger": "Amal trips on the rug, sending a scalding cup of black tea sailing straight toward Kurian's pristine white starched Mundu."
     },
@@ -258,7 +269,7 @@
       "episode_number": 4,
       "title_english": "Marine Drive Inspection Walk",
       "title_malayalam": "മറൈൻ ഡ്രൈവിലെ ചോദ്യം ചെയ്യൽ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Having miraculously deflected the tea spill using a sofa cushion, Sachin is drafted into an early morning brisk walk along Kochi's Marine Drive walkway alone with Kurian. As Chinese fishing nets silhouette against the dawn, Kurian tests Sachin's stamina and character, peeling back his youthful facade to judge his real maturity.",
       "cliffhanger": "Kurian halts by the railing, pulls out an envelope, and sternly reveals that a settled marine engineer from Dubai has sent a formal marriage proposal for Reenu."
     },
@@ -266,7 +277,7 @@
       "episode_number": 5,
       "title_english": "Mother's Intuition",
       "title_malayalam": "അമ്മയുടെ കണ്ണ്",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
       "cliffhanger": "As Sachin bends to tighten the pipe, a small velvet ring box slips out of his pocket and rolls right to Annamma's feet."
     },
@@ -274,7 +285,7 @@
       "episode_number": 6,
       "title_english": "The Broadway Monsoon Rush",
       "title_malayalam": "ബ്രോഡ്‌വേയിലെ കുടക്കീഴിൽ",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour.",
       "cliffhanger": "Kurian suddenly clutches his chest and stumbles dizzy amidst the chaotic crowded alley, gasping for breath as thunder cracks overhead."
     },
@@ -282,7 +293,7 @@
       "episode_number": 7,
       "title_english": "Through Rain & Ruin",
       "title_malayalam": "കണ്ണീരും മഴയും",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin springs into action, carrying Kurian through knee-deep water into a nearby medical clinic where doctors confirm it was merely acute dehydration and low blood sugar. Relieved back at the flat, Kurian accidentally spots Reenu's London job promotion acceptance letter on the desk and misinterprets Sachin's presence as an anchor holding Reenu back.",
       "cliffhanger": "Kurian confronts Sachin in front of everyone: 'Are you truly loving my daughter, or are you selfishly clipping her wings to keep her in Kerala?'"
     },
@@ -290,25 +301,25 @@
       "episode_number": 8,
       "title_english": "The Unspoken Sacrifice",
       "title_malayalam": "സച്ചിന്റെ മറുപടി",
-      "status": "Upcoming",
+      "status": "Completed",
       "synopsis": "Sachin stands tall with quiet maturity, revealing that he had secretly helped Reenu polish her portfolio for that very promotion and has been preparing for remote global certifications to relocate with her. Reenu breaks down, defending Sachin's unconditional selflessness, while Sachin politely apologizes if his humble background made Kurian anxious.",
       "cliffhanger": "Kurian stares at the young man in stunned silence, turns around without uttering a single word, and locks himself inside the guest room."
     },
     {
       "episode_number": 9,
-      "title_english": "Departure at Dawn",
-      "title_malayalam": "യാത്രപറച്ചിൽ",
-      "status": "Upcoming",
-      "synopsis": "Dawn breaks over Kochi with a somber atmosphere as Reenu's parents pack their bags for the morning Malabar Express back to Kottayam, convinced the visit was a failure. Reenu weeps quietly in her room, believing her father will never accept Sachin, while Sachin arrives at the platform with freshly packed hot snacks and travel medicine for Kurian.",
-      "cliffhanger": "At Ernakulam South Railway Station, as the train whistle screams, Kurian steps onto the train footboard and beckons Sachin forward with a stern finger."
+      "title_english": "A Celebration at the Cafe Portico",
+      "title_malayalam": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം",
+      "status": "Active",
+      "synopsis": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
+      "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance."
     },
     {
       "episode_number": 10,
       "title_english": "The Blessing on Platform 3",
       "title_malayalam": "പ്ലാറ്റ്‌ഫോം 3-ലെ അനുഗ്രഹം",
       "status": "Upcoming",
-      "synopsis": "Kurian places a firm, trembling hand on Sachin's shoulder, smiling subtly as he tells him to buy a proper formal suit before visiting their Kottayam house for the official engagement. Annamma lovingly kisses Reenu's forehead as the train pulls away, leaving Sachin and Reenu embracing in joyous Pixar slow-motion under the golden morning light of Platform 3.",
-      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!)."
+      "synopsis": "As the train to Kottayam whistles for departure, the tension of the past week finally evaporates. Kurian, in a rare display of vulnerability, pulls Sachin into a firm embrace and hands him an old family heirloom—a vintage mechanical watch—telling him that 'time is now on your side.' Annamma tearfully kisses Reenu's forehead, acknowledging her daughter's choice with a warm smile. As the train slowly pulls away, Sachin and Reenu stand together on the platform, bathed in the golden, cinematic glow of the morning sun, realizing their love has finally won the ultimate battle of acceptance. The camera circles them in a sweeping 3D Pixar-style shot, capturing the bustling Kochi station as a backdrop to their quiet triumph.",
+      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!), as a 'Just Engaged' banner he prematurely printed flutters behind him, ending the season on a note of pure, chaotic joy."
     }
   ],
   "season_title": "Season 2: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)"
