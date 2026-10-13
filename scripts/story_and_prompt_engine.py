@@ -522,12 +522,13 @@ Output JSON matching this exact schema:
         ]
     }
 
-def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None, past_timeline_summary="", last_shot_details=None):
+def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None, past_timeline_summary="", last_shot_details=None, upcoming_target_entry=None, season_climax_entry=None):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
     with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
     and rigorous sequence continuity (lighting, weather, spatial blocking, eyelines, persistent props, camera lens).
     Dynamically adheres to the Master Season Roadmap and inherits cliffhanger scene state for episode continuity.
+    Enforces a strict two-way narrative bridge: connects back to previous episode, and actively sets up the upcoming episode!
     """
     next_ep_num = 1 if is_new_season else (current_ep_num + 1)
     client = get_gemini_client()
@@ -562,13 +563,49 @@ def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_s
     # Target premise: use explicitly passed next_ep_premise or planned roadmap synopsis
     effective_premise = next_ep_premise or planned_synopsis or f"Episode {next_ep_num} story continuation."
     target_cliffhanger_guide = planned_cliffhanger or cliffhanger or "Tense romantic cliffhanger."
-    
+
+    upcoming_title_en = upcoming_target_entry.get("title_english", f"Episode {next_ep_num + 1}") if upcoming_target_entry else ""
+    upcoming_title_ml = upcoming_target_entry.get("title_malayalam", "") if upcoming_target_entry else ""
+    upcoming_synopsis = upcoming_target_entry.get("synopsis", "") if upcoming_target_entry else ""
+    climax_synopsis = season_climax_entry.get("synopsis", "") if season_climax_entry else ""
+
+    future_bridge_block = ""
+    if next_ep_num < 10 and upcoming_synopsis:
+        future_bridge_block = f"""
+===================================================================================
+CRITICAL TWO-WAY NARRATIVE BRIDGE MANDATE (CONNECTING EPISODE {next_ep_num} -> EPISODE {next_ep_num + 1}):
+===================================================================================
+You are strictly engineering Episode {next_ep_num} as an intentional bridge between:
+1. THE ORIGIN (Episode {current_ep_num} Ending):
+   - You MUST pick up the narrative and emotional baton cleanly from Episode {current_ep_num}'s closing shot, setting, and dialogue.
+
+2. THE UPCOMING DESTINATION (Episode {next_ep_num + 1} Target):
+   - Upcoming Episode {next_ep_num + 1} Title: {upcoming_title_ml} ({upcoming_title_en})
+   - Upcoming Episode {next_ep_num + 1} Premise: {upcoming_synopsis}
+   - Season Finale Climax (Episode 10): {climax_synopsis}
+
+MANDATORY SHOT 10 OUT-POINT RULE:
+Shot 10's final dialogue, character reaction, and cliffhanger punchline MUST directly and deliberately ignite the premise of Episode {next_ep_num + 1}!
+You are STRICTLY FORBIDDEN from ending arbitrarily or concluding the story in a way that breaks continuity with Episode {next_ep_num + 1}. The ending of Shot 10 MUST act as the direct narrative springboard into Episode {next_ep_num + 1}!
+"""
+    elif next_ep_num >= 10:
+        future_bridge_block = f"""
+===================================================================================
+CRITICAL GRAND FINALE MANDATE (SEASON {season_number} CLIMAX - EPISODE 10):
+===================================================================================
+This is the DEFINITIVE SEASON FINALE (Episode 10)!
+- Resolve all seasonal conflicts, family approvals, and romantic hurdles.
+- Shot 10 MUST deliver a joyful, emotional, unforgettable Disney Pixar romantic climax for Sachin and Reenu!
+"""
+
     print(f"\n=======================================================")
     print(f"✨ GEMINI AUTONOMOUS SCREENPLAY WRITER: SEASON {season_number} EPISODE {next_ep_num} (1-MINUTE REEL)")
     print(f"=======================================================")
     print(f"Target Title: {planned_title_ml} ({planned_title_en})")
     print(f"Previous Episode {current_ep_num} Summary: {previous_story[:100]}...")
     print(f"Target Narrative Beat: {effective_premise[:100]}...")
+    if upcoming_synopsis:
+        print(f"Upcoming Episode {next_ep_num + 1} Destination: {upcoming_synopsis[:100]}...")
     print(f"Target Cliffhanger: {target_cliffhanger_guide[:100]}...")
     if cliffhanger_scene_state:
         print(f"Inheriting Continuity Scene State: {cliffhanger_scene_state.get('scene_id')} ({cliffhanger_scene_state.get('weather')})")
@@ -625,6 +662,7 @@ MASTER ROADMAP GUIDANCE:
 - Expected Episode Title: {planned_title_ml} ({planned_title_en})
 - Target Premise / Narrative Beat: {effective_premise}
 - Target Climax / Cliffhanger: {target_cliffhanger_guide}
+{future_bridge_block}
 
 {past_timeline_block}
 CONTEXT FROM PREVIOUS EPISODE {current_ep_num}:
@@ -1316,6 +1354,209 @@ def update_creator_portal(episode_data):
         subprocess.run([sys.executable, str(updater_script)], check=False)
         print("✓ Creator Portal website updated with new episode prompts!")
 
+def reconcile_and_harmonize_season_arc(season_number, current_ep_num, current_ep_data, existing_arc=None, gas_url=None):
+    """
+    Evaluates the ground truth of what occurred in current_ep_num and dynamically reconciles
+    the remaining roadmap (from current_ep_num + 1 to 10) so the story connects seamlessly
+    and delivers a powerful, satisfying Season 10 finale.
+    Synchronizes the updated arc to story_state.json and Google Sheet Tab 4 (Season_Story_Arc).
+    """
+    if current_ep_num >= 10:
+        print(f"✓ Season {season_number} finale reached (Episode {current_ep_num}). No further arc harmonization needed.")
+        return existing_arc or []
+
+    client = get_gemini_client()
+    candidate_models = [
+        "gemini-3.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-3.1-flash-lite",
+        "gemini-3.1-flash-lite-preview",
+        "gemini-3.8-flash",
+        "gemini-flash-latest"
+    ]
+
+    fallback_map = SEASON_2_ROADMAP if season_number == 2 else (SEASON_1_ROADMAP if season_number == 1 else {})
+    base_arc = []
+    if existing_arc and isinstance(existing_arc, list) and len(existing_arc) >= 1:
+        base_arc = [dict(x) for x in existing_arc]
+    else:
+        base_arc = [
+            {
+                "episode_number": idx,
+                "title_english": info["title_english"],
+                "title_malayalam": info["title_malayalam"],
+                "status": "Completed" if idx < current_ep_num else ("Active" if idx == current_ep_num else "Upcoming"),
+                "synopsis": info["synopsis"],
+                "cliffhanger": info["cliffhanger"]
+            }
+            for idx, info in fallback_map.items()
+        ]
+
+    # Canonical completed history
+    canonical_history = []
+    for idx in range(1, current_ep_num + 1):
+        if idx == current_ep_num:
+            canonical_history.append({
+                "episode_number": current_ep_num,
+                "title_english": current_ep_data.get("title_english", f"Episode {current_ep_num}"),
+                "title_malayalam": current_ep_data.get("title_malayalam", ""),
+                "status": "Active",
+                "synopsis": current_ep_data.get("synopsis", ""),
+                "cliffhanger": current_ep_data.get("cliffhanger", "")
+            })
+        else:
+            entry = next((x for x in base_arc if x.get("episode_number") == idx), None)
+            if entry:
+                entry["status"] = "Completed"
+                canonical_history.append(entry)
+            elif idx in fallback_map:
+                fb = fallback_map[idx]
+                canonical_history.append({
+                    "episode_number": idx,
+                    "title_english": fb["title_english"],
+                    "title_malayalam": fb["title_malayalam"],
+                    "status": "Completed",
+                    "synopsis": fb["synopsis"],
+                    "cliffhanger": fb["cliffhanger"]
+                })
+
+    remaining_start_ep = current_ep_num + 1
+    remaining_existing = [x for x in base_arc if x.get("episode_number") >= remaining_start_ep]
+    if not remaining_existing and fallback_map:
+        remaining_existing = [
+            {
+                "episode_number": idx,
+                "title_english": info["title_english"],
+                "title_malayalam": info["title_malayalam"],
+                "status": "Upcoming",
+                "synopsis": info["synopsis"],
+                "cliffhanger": info["cliffhanger"]
+            }
+            for idx, info in fallback_map.items() if idx >= remaining_start_ep
+        ]
+
+    history_str = "\n".join([
+        f"Episode {e['episode_number']}: {e.get('title_malayalam', '')} ({e.get('title_english', '')})\n- Synopsis: {e.get('synopsis', '')}\n- Ending Cliffhanger: {e.get('cliffhanger', '')}"
+        for e in canonical_history
+    ])
+
+    remaining_str = "\n".join([
+        f"Episode {e['episode_number']}: {e.get('title_malayalam', '')} ({e.get('title_english', '')})\n- Planned Synopsis: {e.get('synopsis', '')}\n- Planned Cliffhanger: {e.get('cliffhanger', '')}"
+        for e in remaining_existing
+    ])
+
+    prompt = f"""You are the Master Showrunner and Screenplay Writer for the viral Disney Pixar 3D animated Malayalam romantic series 'Sachin & Reenu' (സച്ചിൻ & റീനു).
+SEASON {season_number} MASTER ROADMAP RE-HARMONIZATION
+
+GROUND TRUTH CANONICAL HISTORY (EPISODES 1 TO {current_ep_num} ESTABLISHED):
+{history_str}
+
+MOST RECENT EPISODE {current_ep_num} GROUND TRUTH:
+- Title: {current_ep_data.get('title_malayalam')} ({current_ep_data.get('title_english')})
+- Synopsis: {current_ep_data.get('synopsis')}
+- Ending Cliffhanger: {current_ep_data.get('cliffhanger')}
+
+CURRENT REMAINING OUTLINE (EPISODES {remaining_start_ep} TO 10):
+{remaining_str}
+
+MISSION:
+Re-harmonize and adapt the remaining upcoming episodes (from Episode {remaining_start_ep} to Episode 10 Climax).
+CRITICAL RULES:
+1. Episode {remaining_start_ep} MUST pick up directly and logically from Episode {current_ep_num}'s ending cliffhanger.
+2. The remaining episodes must connect in an unbroken, believable cause-and-effect chain.
+3. Episode 10 MUST be the grand emotional climax delivering a conclusive, happy resolution for Sachin & Reenu's relationship.
+4. Output exactly {10 - current_ep_num} episodes (from {remaining_start_ep} to 10).
+
+Output JSON matching this schema:
+{{
+  "season_title": "Season {season_number} Title",
+  "episodes": [
+    {{
+      "episode_number": {remaining_start_ep},
+      "title_english": "...",
+      "title_malayalam": "...",
+      "status": "Upcoming",
+      "synopsis": "...",
+      "cliffhanger": "..."
+    }}
+  ]
+}}
+"""
+
+    system_instruction = (
+        "You are the Showrunner and Head Screenplay Writer for 'Sachin & Reenu'."
+        " Ensure tight narrative continuity leading to a definitive seasonal climax. Output ONLY valid JSON."
+    )
+
+    harmonized_remaining = None
+    for model_name in candidate_models:
+        try:
+            resp = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
+                    response_mime_type="application/json",
+                    temperature=0.7,
+                    max_output_tokens=32768
+                )
+            )
+            if resp and resp.text:
+                raw_text = resp.text.strip()
+                if raw_text.startswith("```"):
+                    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+                    raw_text = re.sub(r"\s*```$", "", raw_text)
+                try:
+                    parsed = json.loads(raw_text)
+                except Exception:
+                    if repair_json:
+                        parsed = repair_json(raw_text, return_objects=True)
+                    else:
+                        parsed = None
+                if parsed and isinstance(parsed, dict) and "episodes" in parsed and len(parsed["episodes"]) > 0:
+                    harmonized_remaining = parsed["episodes"]
+                    break
+        except Exception as e:
+            print(f"Notice during arc harmonization with {model_name}: {e}")
+
+    if not harmonized_remaining:
+        print("Notice: Arc harmonization model unavailable, preserving existing outline.")
+        harmonized_remaining = remaining_existing
+
+    full_arc = list(canonical_history)
+    for ep in harmonized_remaining:
+        ep["status"] = "Upcoming"
+        full_arc.append(ep)
+
+    full_arc.sort(key=lambda x: x.get("episode_number", 0))
+
+    if os.path.exists("story_state.json"):
+        try:
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                st = json.load(f)
+            st["season_arc"] = full_arc
+            with open("story_state.json", "w", encoding="utf-8") as f:
+                json.dump(st, f, ensure_ascii=False, indent=2)
+            print(f"✓ Synchronized harmonized Season {season_number} arc to story_state.json!")
+        except Exception as e:
+            print(f"Notice saving arc to story_state.json: {e}")
+
+    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
+    if target_gas:
+        try:
+            payload_arc = {
+                "action": "update_season_story_arc",
+                "season_number": season_number,
+                "season_title": f"Season {season_number}: Continuous Story Arc",
+                "episodes": full_arc
+            }
+            r = requests.post(target_gas, data=json.dumps(payload_arc), headers={"Content-Type": "text/plain"}, timeout=30)
+            print(f"✓ Google Sheet Tab 4 [Season_Story_Arc] synchronized! (HTTP {r.status_code})")
+        except Exception as e:
+            print(f"Notice updating Sheet Tab 4: {e}")
+
+    return full_arc
+
 def main():
     parser = argparse.ArgumentParser(description="Generate Next Episode Screenplay & Prompts")
     parser.add_argument("--current_ep", type=int, default=None, help="Completed episode number")
@@ -1453,6 +1694,19 @@ def main():
         except Exception as err:
             print(f"Notice querying Past_Episodes_Prompts from Sheet: {err}")
 
+    # Resolve upcoming target (Ep N+1) and Season climax (Ep 10) for two-way narrative bridge
+    upcoming_target_entry = None
+    season_climax_entry = None
+    if season_arc and len(season_arc) >= target_ep + 1:
+        upcoming_target_entry = season_arc[target_ep]  # 0-indexed: target_ep is Ep N+1
+    elif active_roadmap and (target_ep + 1) in active_roadmap:
+        upcoming_target_entry = active_roadmap[target_ep + 1]
+
+    if season_arc and len(season_arc) >= 10:
+        season_climax_entry = season_arc[-1]
+    elif active_roadmap and 10 in active_roadmap:
+        season_climax_entry = active_roadmap[10]
+
     # 1. Generate Episode Screenplay & Long Disney Pixar Prompts
     ep_data = generate_next_episode_screenplay(
         current_ep_num=effective_current_ep,
@@ -1466,7 +1720,9 @@ def main():
         season_title=season_title,
         active_character_dna=active_dna_map,
         past_timeline_summary=past_timeline_summary,
-        last_shot_details=last_shot_details
+        last_shot_details=last_shot_details,
+        upcoming_target_entry=upcoming_target_entry,
+        season_climax_entry=season_climax_entry
     )
 
     if is_new_season:
@@ -1475,9 +1731,22 @@ def main():
         ep_data["character_updates"] = character_updates
         ep_data["new_characters_introduced"] = new_characters
     else:
-        if season_arc:
+        # Re-harmonize the living season arc (Sheet Tab 4) so all remaining episodes adapt to the ground truth
+        if target_ep < 10:
+            print(f"\n✨ Re-harmonizing Living Season Story Arc for remaining episodes ({target_ep + 1} to 10)...")
+            harmonized_arc = reconcile_and_harmonize_season_arc(
+                season_number=season_num,
+                current_ep_num=target_ep,
+                current_ep_data=ep_data,
+                existing_arc=season_arc,
+                gas_url=args.gas_url
+            )
+            if harmonized_arc:
+                ep_data["season_arc"] = harmonized_arc
+                season_arc = harmonized_arc
+        elif season_arc:
             ep_data["season_arc"] = season_arc
-            ep_data["season_title"] = season_title
+
         if os.path.exists("story_state.json"):
             try:
                 with open("story_state.json", "r", encoding="utf-8") as f:
