@@ -872,13 +872,26 @@ Output JSON structure:
                                     parsed_data = repair_json(response.text, return_objects=True)
                                 except Exception:
                                     parsed_data = None
-                            if not parsed_data or not isinstance(parsed_data, dict):
+                            if not parsed_data:
                                 raise pe
 
-                        if "shots" in parsed_data and len(parsed_data["shots"]) >= 10:
+                        if isinstance(parsed_data, list):
+                            parsed_data = {
+                                "episode_number": next_ep_num,
+                                "season_number": season_number,
+                                "title_english": planned_title_en,
+                                "title_malayalam": planned_title_ml,
+                                "synopsis": effective_premise,
+                                "cliffhanger": target_cliffhanger_guide,
+                                "shots": parsed_data,
+                                "total_shots": len(parsed_data)
+                            }
+
+                        if isinstance(parsed_data, dict) and "shots" in parsed_data and len(parsed_data["shots"]) >= 10:
                             break
                         else:
-                            print(f"  Attempt {attempt + 1}: Model returned {len(parsed_data.get('shots', []))} shots instead of required 10 shots. Retrying...")
+                            shot_cnt = len(parsed_data.get("shots", [])) if isinstance(parsed_data, dict) else 0
+                            print(f"  Attempt {attempt + 1}: Model returned {shot_cnt} shots instead of required 10 shots. Retrying...")
                             parsed_data = None
                     except Exception as je:
                         print(f"  Attempt {attempt + 1} JSON parse error: {je}")
@@ -952,6 +965,11 @@ def enforce_prompt_completeness(data, active_dna=None):
     3. Guarantees complete persistent_props across all shots in the sequence.
     4. Guarantees complete MASTER_NEGATIVE_PROMPT.
     """
+    if isinstance(data, list):
+        data = {"shots": data}
+    elif not isinstance(data, dict):
+        data = {}
+
     if active_dna is None:
         active_dna = get_active_character_dna_map(data.get("season_number", 1))
     else:

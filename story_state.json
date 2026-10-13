@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 7,
+  "total_episodes_produced": 8,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -183,26 +183,50 @@
         "Reenu",
         "Annamma"
       ]
+    },
+    {
+      "episode": 8,
+      "title": "അച്ഛന്റെ അപ്രതീക്ഷിത ഇടപെടൽ (Madhavan Steps In)",
+      "summary": "Following the sudden phone call regarding the marriage proposal from Kottayam, Sachin, Reenu, and Annamma rush back to face Kurian. Kurian confronts Sachin, accusing him of holding Reenu back from her career goals in London. Standing tall with quiet maturity, Sachin reveals that he secretly helped polish Reenu's portfolio for that very promotion and has been preparing for global certifications to relocate with her. Reenu defends Sachin's unconditional selflessness, leaving Kurian deeply moved. Impressed by Sachin's integrity, property owner Varghese smiles and hands the heritage cafe keys directly to Sachin and Reenu.",
+      "cliffhanger": "Varghese places the heritage cafe keys into Sachin and Reenu's hands, sealing their dream project with Kurian's emotional blessing!",
+      "characters_present": [
+        "Sachin",
+        "Varghese (Flat Owner)",
+        "Reenu",
+        "Kurian",
+        "Annamma"
+      ]
     }
   ],
-  "episode_number": 7,
+  "episode_number": 8,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_OFFICE_NEGOTIATION",
-    "time_of_day": "Evening",
-    "lighting_palette": "Bright office light",
-    "weather": "Rainy",
+    "scene_id": "SCENE_APARTMENT_LIVING_ROOM",
+    "time_of_day": "Late Afternoon Monsoon Dusk",
+    "lighting_palette": "Warm glowing golden sunlight filter through monsoon clouds",
+    "weather": "Soft monsoon rain outside window",
     "spatial_blocking": {
-      "Sachin": "Standing in front of the owner"
+      "Sachin": "Screen-left, holding Reenu's hand together in center",
+      "Reenu": "Screen-center beside Sachin, hand joined with Sachin's",
+      "Varghese (Flat Owner)": "Screen-right, placing the brass key ring gently onto their palms"
     },
-    "eyeline_direction": "Sachin looking at the papers",
+    "eyeline_direction": "All eyes focus on the shiny brass keys resting in Sachin and Reenu's hands",
     "persistent_props": [
-      "Job offer letter",
+      "Annamma's glowing smartphone on speaker",
+      "Annamma's gold bangles",
+      "Kurian's Titan watch",
+      "Kurian's wire-rimmed glasses",
+      "Reenu's London promotion letter on wooden coffee table",
+      "Reenu's London promotion portfolio document folder on coffee table",
       "Reenu's silver wrist watch",
+      "Sachin's brown cross-bag",
       "Sachin's cross-bag",
-      "Smartphone",
-      "Two lease agreements"
+      "Sachin's diagonal brown leather cross-bag strap",
+      "Sachin's glowing smartphone",
+      "Set of ornate brass keys on a ring",
+      "Shimmering ornate brass key ring",
+      "Varghese's lease agreement folders under arm"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field"
+    "camera_lens": "Cinematic prime lens, tight close-up, soft circular bokeh"
   },
   "season_number": 2,
   "season_arc": [
