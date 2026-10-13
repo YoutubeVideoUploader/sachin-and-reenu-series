@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 10,
+  "total_episodes_produced": 1,
   "characters": {
     "Sachin": {
       "age": 22,
@@ -10,9 +10,9 @@
       "voice": "Fenrir",
       "hair": "Tousled thick wavy textured dark-brown hair with volume",
       "face": "Warm hazel-brown expressive eyes, defined jawline, boyish charming grin",
-      "attire": "Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest.",
+      "attire": "Forest Green solid plain T-shirt, charcoal denim jeans, clean white sneakers, and his signature brown leather cross-bag.",
       "personality": "Warm, emotional, charming, returning from UK after years away",
-      "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO FORMAL COLLARED SHIRTS, NO FORMAL TROUSERS, STRICT MODERN CASUAL STREETWEAR ONLY): Solid olive-green plain crewneck t-shirt (strictly flat solid color, zero patterns or graphics), relaxed-fit dark indigo denim jeans, classic white sneakers, brown leather travel cross-bag worn diagonally across chest. Absolutely zero costume variations."
+      "visual_dna": "Stylized 3D Pixar-style young man with expressive eyes, messy hair, and a lean build. His look is strictly casual and minimalist."
     },
     "Reenu": {
       "age": 22,
@@ -20,9 +20,9 @@
       "voice": "Kore",
       "hair": "Shoulder-length voluminous layered wavy dark-brown hair with soft curtain bangs",
       "face": "Large sparkling hazel-brown doe eyes, expressive emotions, glowing radiant smile",
-      "attire": "Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch.",
+      "attire": "Pastel Yellow T-shirt with a 'Retro Daisy' floral pattern, light blue denim skirt, silver wrist watch, and white sneakers.",
       "personality": "Bubbly, deeply emotional, faithful, reunited with Sachin at Kochi CIAL",
-      "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT, PROHIBIT ALL TRADITIONAL/ETHNIC WEAR: NO KURTIS, NO SAREES, NO SALWARS, NO DUPATTAS, NO JHUMKAS, STRICT MODERN CASUAL STREETWEAR ONLY): Pastel lavender and blush-pink floral-doodle pattern printed oversized t-shirt, high-waisted medium-blue denim skirt, clean white sneakers, silver wrist watch. Absolutely zero costume variations."
+      "visual_dna": "Vibrant 3D character with large soulful eyes, shoulder-length wavy hair, and a bright smile. Her patterns are her visual signature this season."
     },
     "Amal": {
       "age": 22,
@@ -30,9 +30,9 @@
       "voice": "Puck",
       "hair": "Cropped textured curly black hair",
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
-      "attire": "Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers.",
+      "attire": "Terracotta Rust-Orange plain polo T-shirt, dark indigo denim pants, and casual slip-on sneakers.",
       "personality": "Sachin's best friend, supportive, humorous, driving the car",
-      "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Solid terracotta rust-orange plain crewneck t-shirt (strictly solid color, zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers. Absolutely zero costume variations."
+      "visual_dna": "The energetic sidekick with a slightly stockier Pixar-style frame, expressive eyebrows, and a constant mischievous grin."
     },
     "Menon": {
       "age": 54,
@@ -105,221 +105,130 @@
       "role": "Elderly Kochi flat owner holding lease agreements",
       "attire": "Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders.",
       "visual_dna": "Varghese (Flat Owner): Stylized 3D Pixar-style cartoon animation character, 62yo South Indian Malayali gentleman, dignified gentle grandfatherly face, rounded tortoiseshell spectacles, receding silver-white cartoon hair, warm observant eyes, calm posture (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel sea-green short-sleeved casual shirt, charcoal-grey cotton trousers, tan leather sandals, holding two thick paper lease agreement folders. Absolutely zero costume variations."
+    },
+    "Molly": {
+      "age": 54,
+      "gender": "female",
+      "voice": "Gentle, observant, and occasionally witty.",
+      "role": "Reenu's Mother",
+      "attire": "Traditional Kerala Set-Saree with a green blouse and gold bangles.",
+      "visual_dna": "Warm, round-faced Pixar motherly figure with her hair in a traditional bun, wearing a Kerala Set-Saree."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
   "history": [
     {
       "episode": 1,
-      "title": "വിരുന്നുകാർ (The Unannounced Guests)",
-      "summary": "Sachin and Reenu enjoy a cozy Sunday afternoon in her Kakkanad apartment, setting up fairy lights. Their peace is shattered when Reenu's conservative parents arrive unexpectedly at their doorstep.",
-      "cliffhanger": "Sachin is caught in the middle of cleaning up when he opens the door to face Reenu's stern father.",
+      "title": "തിരിച്ചുവരവ് (The Homecoming)",
+      "summary": "Sachin and Amal plan a surprise Munnar getaway for Reenu's birthday. Just as Sachin prepares to reveal the surprise, Reenu's parents arrive unannounced at the Kochi flat, complicating everything.",
+      "cliffhanger": "Sachin's anxiety spikes as he clutches the hidden leather pouch, realizing he must now navigate the uninvited presence of Kurian and Molly.",
       "characters_present": [
-        "Sachin",
-        "Reenu"
-      ]
-    },
-    {
-      "episode": 2,
-      "title": "ലിവിംഗ് റൂമിലെ വിചാരണ (The Living Room Trial)",
-      "summary": "Following the surprise arrival of Reenu's parents at her Kakkanad apartment, Sachin accidentally topples off a stool in a comedic slow-motion tumble. As he scrambles to regain his composure and present himself as a polite family friend, Reenu’s mother Annamma begins a meticulous inspection of the apartment. Meanwhile, Kurian settles onto the sofa like a judge in a high court, launching a barrage of intense questions about Sachin's family roots in Alappuzha and his career stability, leading to a tense, life-altering inquiry.",
-      "cliffhanger": "Madhavan sternly asks Sachin: 'So, young man... what is your 5-year financial blueprint for my daughter?'",
-      "characters_present": [
-        "Sachin",
         "Reenu",
-        "Kurian",
-        "Annamma"
-      ]
-    },
-    {
-      "episode": 3,
-      "title": "ചായയും ജിലേബിയും ഒരു നിശ്ശബ്ദ യുദ്ധവും (Chai, Jalebi & A Silent War)",
-      "summary": "Sachin struggles to present his tech-startup pitch to Kurian in the apartment, but the calm is shattered when Amal bursts in with oily snacks and loud gossip, forcing a chaotic cover-up attempt.",
-      "cliffhanger": "Amal accidentally blurts out Sachin's secret plan to open a coastal cafe in Fort Kochi, leaving Kurian stunned.",
-      "characters_present": [
-        "Sachin",
-        "Kurian",
-        "Amal"
-      ]
-    },
-    {
-      "episode": 4,
-      "title": "മറൈൻ ഡ്രൈവിലെ സായാഹ്നം (A Stroll Along Marine Drive)",
-      "summary": "After the near-disaster with the tea, Sachin finds himself walking along the Kochi Marine Drive walkway, being closely observed by a stoic Kurian. As they watch the Chinese fishing nets against the sunset, Kurian challenges Sachin's intentions, only to reveal a surprising secret from his own past.",
-      "cliffhanger": "Madhavan stops, looks out across the backwaters, and shares a surprising memory of his own rebellious youth.",
-      "characters_present": [
-        "Kurian",
+        "Amal",
         "Sachin"
-      ]
-    },
-    {
-      "episode": 5,
-      "title": "അമ്മയുടെ മനസ്സും ചില ചോദ്യങ്ങളും (Mother's Intuition)",
-      "summary": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
-      "cliffhanger": "Girija pulls out a traditional family heirloom gold bangle and asks Reenu if she is truly sure about Sachin.",
-      "characters_present": [
-        "Annamma",
-        "Reenu"
-      ]
-    },
-    {
-      "episode": 6,
-      "title": "ഫോർട്ട് കൊച്ചിയിലെ പുതിയ താവളം (The Fort Kochi Site Discovery)",
-      "summary": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour. As they seek shelter in a vacant storefront, a rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer.",
-      "cliffhanger": "A rival real estate developer arrives on scene, trying to seal the cafe lease before Sachin can submit his offer!",
-      "characters_present": [
-        "Sachin",
-        "Annamma",
-        "Reenu"
-      ]
-    },
-    {
-      "episode": 7,
-      "title": "സമയവുമായുള്ള ഓട്ടം (Race Against the Clock)",
-      "summary": "Seamlessly picking up from the Broadway market downpour, Kurian suddenly clutches his chest and collapses into Sachin's arms. Panic strikes Annamma and Reenu, but Sachin acts swiftly, carrying Kurian through the flooded streets to a nearby emergency clinic. As Kurian recovers and looks upon Sachin with newfound affection and gratitude, the Broadway real estate broker steps inside seeking shelter from the rain. In a stunning twist, the broker loudly reveals that Sachin forfeited his dream London visa to purchase a Kochi flat, right before the apartment owner enters holding two competing lease agreements.",
-      "cliffhanger": "The apartment owner stands inside the clinic holding two competing lease agreements in his hands, looking directly at Sachin for his final decision while Reenu and Kurian stare in stunned silence.",
-      "characters_present": [
-        "Sachin",
-        "Reenu",
-        "Annamma"
-      ]
-    },
-    {
-      "episode": 8,
-      "title": "അച്ഛന്റെ അപ്രതീക്ഷിത ഇടപെടൽ (Madhavan Steps In)",
-      "summary": "Following the sudden phone call regarding the marriage proposal from Kottayam, Sachin, Reenu, and Annamma rush back to face Kurian. Kurian confronts Sachin, accusing him of holding Reenu back from her career goals in London. Standing tall with quiet maturity, Sachin reveals that he secretly helped polish Reenu's portfolio for that very promotion and has been preparing for global certifications to relocate with her. Reenu defends Sachin's unconditional selflessness, leaving Kurian deeply moved. Impressed by Sachin's integrity, property owner Varghese smiles and hands the heritage cafe keys directly to Sachin and Reenu.",
-      "cliffhanger": "Varghese places the heritage cafe keys into Sachin and Reenu's hands, sealing their dream project with Kurian's emotional blessing!",
-      "characters_present": [
-        "Sachin",
-        "Varghese (Flat Owner)",
-        "Reenu",
-        "Kurian",
-        "Annamma"
-      ]
-    },
-    {
-      "episode": 9,
-      "title": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം (A Celebration at the Cafe Portico)",
-      "summary": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
-      "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance.",
-      "characters_present": [
-        "Kurian",
-        "Reenu",
-        "Sachin"
-      ]
-    },
-    {
-      "episode": 10,
-      "title": "മംഗളകരമായ തുടക്കം (The Grand Opening)",
-      "summary": "Against all odds, the cafe opens. Sachin and Reenu decide to stay together in Kochi, balancing their dreams and family.",
-      "cliffhanger": "None. The season ends with a celebratory payoff.",
-      "characters_present": [
-        "Shyam",
-        "Third-Person Narrator",
-        "Kurian",
-        "Sachin",
-        "Reenu"
       ]
     }
   ],
-  "episode_number": 10,
+  "episode_number": 1,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_FULL_CAFE_EXTERIOR",
-    "time_of_day": "Late Afternoon Monsoon Dusk",
-    "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
-    "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
+    "scene_id": "SCENE_KOCHI_FLAT_DOORWAY",
+    "time_of_day": "Afternoon",
+    "lighting_palette": "Soft warm indoor ambient lighting",
+    "weather": "Sunny",
     "spatial_blocking": {
-      "Sachin": "Screen-center reacting expressively to scene action",
-      "Reenu": "Screen-left reacting expressively to scene action"
+      "Sachin": "Standing in doorway, clutching pouch"
     },
-    "eyeline_direction": "Characters looking attentively toward scene focal action",
+    "eyeline_direction": "Sachin looks at camera/viewer",
     "persistent_props": [
-      "Sunset"
+      "Brown leather pouch hidden behind Sachin",
+      "Brown leather pouch in Sachin's hand",
+      "Brown leather pouch in Sachin's hand behind his back",
+      "Suitcases with Kurian and Molly"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+    "camera_lens": "Cinematic prime lens, shallow depth of field"
   },
-  "season_number": 2,
+  "season_number": 3,
   "season_arc": [
     {
       "episode_number": 1,
-      "title_english": "The Surprise Calling Bell",
-      "title_malayalam": "അപ്രതീക്ഷിത കോളിംഗ് ബെൽ",
-      "status": "Completed",
-      "synopsis": "On a lazy Sunday afternoon in Reenu's Kakkanad apartment, Sachin is clumsily helping her hang fairy lights while playfully sharing snacks. The peaceful romance is shattered by an aggressive series of doorbell rings; Reenu opens the door to discover her conservative parents standing in the hallway flanked by heavy VIP suitcases.",
-      "cliffhanger": "Kurian lowers his reading glasses and peers past Reenu, locking eyes with Sachin, who is frozen mid-air atop a wobbly plastic stool holding a tangled ball of lights."
+      "title_english": "The Surprise Plan",
+      "title_malayalam": "ഒരു സർപ്രൈസ് പ്ലാൻ",
+      "status": "Active",
+      "synopsis": "Sachin and Amal secretly plan a romantic getaway to Munnar for Reenu's birthday. Just as Sachin is about to show Reenu the booking, her parents, Kurian and Molly, arrive unannounced at the Kochi flat with heavy suitcases.",
+      "cliffhanger": "Kurian looks at the travel brochure on the table and asks, 'So, who is going to Munnar?'"
     },
     {
       "episode_number": 2,
-      "title_english": "Living Room Cross-Examination",
-      "title_malayalam": "ലിവിംഗ് റൂം വിചാരണ",
-      "status": "Completed",
-      "synopsis": "Sachin tumbles off the stool in comedic slow-motion, scrambling to introduce himself as a polite family friend while Annamma inspects the messy bachelor-tinged living room. Kurian takes the central sofa like a high court judge, firing rapid-fire questions about Sachin's ancestral lineage, family status in Alappuzha, and his career roadmap.",
-      "cliffhanger": "Kurian taps his fingers rhythmically on the glass table and asks with icy calm, 'So, Sachin... what exactly is your 5-year financial vision for supporting a family?'"
+      "title_english": "The Uninvited Guests",
+      "title_malayalam": "ക്ഷണിക്കാത്ത അതിഥികൾ",
+      "status": "Upcoming",
+      "synopsis": "Thinking quickly, Amal claims the trip was a family pilgrimage he planned for everyone. Kurian, impressed by Amal's 'values', insists that the whole group must go together in one car to bond.",
+      "cliffhanger": "Sachin realizes he has to drive his strict future father-in-law for four hours in a cramped car."
     },
     {
       "episode_number": 3,
-      "title_english": "Amal Davis Strikes",
-      "title_malayalam": "അമലിന്റെ എൻട്രി",
-      "status": "Completed",
-      "synopsis": "Just as Sachin stammers through an ambitious tech-startup pitch, Amal Davis kicks the door wide open carrying oily beef cutlets and screaming unfiltered gossip about Sachin's unemployment. Realizing the horror before him, Amal desperately attempts to pose as an etiquette-trained butler, serving hot black tea with trembling hands.",
-      "cliffhanger": "Amal trips on the rug, sending a scalding cup of black tea sailing straight toward Kurian's pristine white starched Mundu."
+      "title_english": "Luggage Logistics",
+      "title_malayalam": "ലഗേജ് പ്രശ്നങ്ങൾ",
+      "status": "Upcoming",
+      "synopsis": "The morning of the trip becomes chaotic as Amal tries to fit Kurian's massive traditional trunks and Reenu's bags into the small hatchback. Sachin tries to impress Kurian by helping, but accidentally traps Kurian's mundu in the car door.",
+      "cliffhanger": "The car engine makes a strange sputtering sound just as they pull out of the driveway."
     },
     {
       "episode_number": 4,
-      "title_english": "Marine Drive Inspection Walk",
-      "title_malayalam": "മറൈൻ ഡ്രൈവിലെ ചോദ്യം ചെയ്യൽ",
-      "status": "Completed",
-      "synopsis": "Having miraculously deflected the tea spill using a sofa cushion, Sachin is drafted into an early morning brisk walk along Kochi's Marine Drive walkway alone with Kurian. As Chinese fishing nets silhouette against the dawn, Kurian tests Sachin's stamina and character, peeling back his youthful facade to judge his real maturity.",
-      "cliffhanger": "Kurian halts by the railing, pulls out an envelope, and sternly reveals that a settled marine engineer from Dubai has sent a formal marriage proposal for Reenu."
+      "title_english": "The Highway Trial",
+      "title_malayalam": "ഹൈവേയിലെ പരീക്ഷണം",
+      "status": "Upcoming",
+      "synopsis": "On the way to Adimali, Kurian insists on turning off the AC to 'enjoy the natural air' and critiques Sachin's driving style. To break the tension, Molly starts a family sing-along of old melodies, forcing Sachin and Reenu to hide their secret smiles.",
+      "cliffhanger": "A massive fog settles in as they reach the first hairpin curve, and Kurian demands to take the wheel."
     },
     {
       "episode_number": 5,
-      "title_english": "Mother's Intuition",
-      "title_malayalam": "അമ്മയുടെ കണ്ണ്",
-      "status": "Completed",
-      "synopsis": "Back at the apartment, Annamma takes over the kitchen to cook traditional Sunday lunch, using the cooking session to gently probe Reenu about her true feelings for Sachin. While Reenu defensively argues for Sachin's gentle heart, Annamma secretly watches Sachin through the kitchen pass, noting him uncomplainingly repairing a leaking sink pipe.",
-      "cliffhanger": "As Sachin bends to tighten the pipe, a small velvet ring box slips out of his pocket and rolls right to Annamma's feet."
+      "title_english": "Tea and Tension",
+      "title_malayalam": "ചായയും ടെൻഷനും",
+      "status": "Upcoming",
+      "synopsis": "During a tea break at a roadside stall, Sachin spills hot tea near Kurian's feet, leading to a lecture on responsibility. However, Molly pulls Sachin aside and reveals she knows about his feelings for Reenu, offering him a silent nod of encouragement.",
+      "cliffhanger": "Reenu gets a mysterious phone call from an 'old family friend' that makes Kurian look very interested."
     },
     {
       "episode_number": 6,
-      "title_english": "The Broadway Monsoon Rush",
-      "title_malayalam": "ബ്രോഡ്‌വേയിലെ കുടക്കീഴിൽ",
-      "status": "Completed",
-      "synopsis": "The family heads to Broadway market for traditional spice shopping, but sudden torrential Kochi monsoon rains trap them in the labyrinthine narrow alleys. With autorickshaws refusing rides and water levels rising, Sachin takes charge, shielding Annamma with an umbrella and hauling heavy shopping bags through the downpour.",
-      "cliffhanger": "Kurian suddenly clutches his chest and stumbles dizzy amidst the chaotic crowded alley, gasping for breath as thunder cracks overhead."
+      "title_english": "Lost in the Clouds",
+      "title_malayalam": "മഞ്ഞിനുള്ളിൽ ഒളിച്ചവർ",
+      "status": "Upcoming",
+      "synopsis": "The group stops at a scenic tea plantation for photos. Amal, trying to take a panoramic shot, accidentally drops the car keys into a deep thicket of tea bushes just as it starts to rain.",
+      "cliffhanger": "The sun begins to set, and they are stranded in the middle of a remote tea estate with no signal."
     },
     {
       "episode_number": 7,
-      "title_english": "Through Rain & Ruin",
-      "title_malayalam": "കണ്ണീരും മഴയും",
-      "status": "Completed",
-      "synopsis": "Sachin springs into action, carrying Kurian through knee-deep water into a nearby medical clinic where doctors confirm it was merely acute dehydration and low blood sugar. Relieved back at the flat, Kurian accidentally spots Reenu's London job promotion acceptance letter on the desk and misinterprets Sachin's presence as an anchor holding Reenu back.",
-      "cliffhanger": "Kurian confronts Sachin in front of everyone: 'Are you truly loving my daughter, or are you selfishly clipping her wings to keep her in Kerala?'"
+      "title_english": "The Shared Room",
+      "title_malayalam": "ഒരു മുറിയിലെ രണ്ടുപേർ",
+      "status": "Upcoming",
+      "synopsis": "After finding the keys and reaching the resort late, they discover a booking error: only two rooms are available. Reenu and Molly take one, leaving Sachin to share a single bed room with a snoring, grumpy Kurian.",
+      "cliffhanger": "In the middle of the night, Kurian wakes up and starts questioning Sachin about his long-term financial stability."
     },
     {
       "episode_number": 8,
-      "title_english": "The Unspoken Sacrifice",
-      "title_malayalam": "സച്ചിന്റെ മറുപടി",
-      "status": "Completed",
-      "synopsis": "Sachin stands tall with quiet maturity, revealing that he had secretly helped Reenu polish her portfolio for that very promotion and has been preparing for remote global certifications to relocate with her. Reenu breaks down, defending Sachin's unconditional selflessness, while Sachin politely apologizes if his humble background made Kurian anxious.",
-      "cliffhanger": "Kurian stares at the young man in stunned silence, turns around without uttering a single word, and locks himself inside the guest room."
+      "title_english": "The Rescue Mission",
+      "title_malayalam": "രക്ഷാപ്രവർത്തനം",
+      "status": "Upcoming",
+      "synopsis": "During a morning trek, Kurian slips on a damp rock and nearly falls down a slope. Sachin shows incredible reflexes and physical strength to catch him, safely guiding him back while staying calm under pressure.",
+      "cliffhanger": "Kurian stays silent for the rest of the walk, looking at Sachin with a completely new expression."
     },
     {
       "episode_number": 9,
-      "title_english": "A Celebration at the Cafe Portico",
-      "title_malayalam": "പഴയ പോർട്ടിക്കോയിലെ ആഘോഷം",
-      "status": "Active",
-      "synopsis": "Following Kurian's sudden collapse, the atmosphere in the Kochi apartment is heavy with worry. As dawn breaks, Kurian and Annamma prepare to leave for Kottayam, feeling their visit was a disappointment. However, Sachin and Amal arrive at the railway station platform with warm snacks and medicine, showing genuine care. Touched by Sachin's maturity and selflessness during the crisis, Kurian finally has a change of heart, inviting Sachin to their home in Kottayam for an official meeting.",
-      "cliffhanger": "Kurian looks Sachin in the eye and formally invites him to their Kottayam home, signaling the long-awaited acceptance."
+      "title_english": "The Hilltop Heart-to-Heart",
+      "title_malayalam": "മലമുകളിലെ സത്യങ്ങൾ",
+      "status": "Upcoming",
+      "synopsis": "On the final evening at a viewpoint, Kurian finally speaks to Sachin privately. He admits he was testing him the whole trip and confesses that he only wants Reenu to be with someone who can protect her in a crisis.",
+      "cliffhanger": "Kurian asks Sachin, 'So, when do you plan on bringing your parents to our house?'"
     },
     {
       "episode_number": 10,
-      "title_english": "The Blessing on Platform 3",
-      "title_malayalam": "പ്ലാറ്റ്‌ഫോം 3-ലെ അനുഗ്രഹം",
+      "title_english": "Munnar's Blessing",
+      "title_malayalam": "മൂന്നാറിൻ്റെ അനുഗ്രഹം",
       "status": "Upcoming",
-      "synopsis": "As the train to Kottayam whistles for departure, the tension of the past week finally evaporates. Kurian, in a rare display of vulnerability, pulls Sachin into a firm embrace and hands him an old family heirloom—a vintage mechanical watch—telling him that 'time is now on your side.' Annamma tearfully kisses Reenu's forehead, acknowledging her daughter's choice with a warm smile. As the train slowly pulls away, Sachin and Reenu stand together on the platform, bathed in the golden, cinematic glow of the morning sun, realizing their love has finally won the ultimate battle of acceptance. The camera circles them in a sweeping 3D Pixar-style shot, capturing the bustling Kochi station as a backdrop to their quiet triumph.",
-      "cliffhanger": "Amal Davis roars into the station parking lot on his scooter, wildly waving a box of celebratory Laddus and shouting, 'Nammal jaichada Sachin-ey!' (We won, Sachin!), as a 'Just Engaged' banner he prematurely printed flutters behind him, ending the season on a note of pure, chaotic joy."
+      "synopsis": "The season concludes with a beautiful sunrise over the Nilgiris. Kurian and Molly officially give their blessing to Sachin and Reenu. Amal celebrates by finally getting the 'perfect' group photo as they head back to Kochi as one united family.",
+      "cliffhanger": "As they drive back, Sachin's phone rings—it's his parents saying they've already reached Kochi to meet the 'in-laws'."
     }
   ],
-  "season_title": "Season 2: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)"
+  "season_title": "Munnar Magic (മൂന്നാർ മാജിക്)"
 }
