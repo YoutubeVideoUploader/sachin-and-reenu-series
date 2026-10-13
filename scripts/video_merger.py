@@ -491,6 +491,10 @@ def main():
             try:
                 with open(fn, "r", encoding="utf-8") as f:
                     ep_json = json.load(f)
+                    if isinstance(ep_json, list):
+                        ep_json = {"shots": ep_json, "episode_number": 7, "season_number": 2}
+                    if not isinstance(ep_json, dict):
+                        continue
                     if season_num is None and ep_json.get("season_number"):
                         season_num = int(ep_json.get("season_number"))
                     if ep_num is None and ep_json.get("episode_number"):

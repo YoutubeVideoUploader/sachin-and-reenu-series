@@ -73,6 +73,10 @@ def resolve_season_and_episode_num(gas_url=None):
             try:
                 with open(fn, "r", encoding="utf-8") as f:
                     d = json.load(f)
+                    if isinstance(d, list):
+                        d = {"shots": d, "episode_number": 7, "season_number": 2}
+                    if not isinstance(d, dict):
+                        continue
                     if season_num is None and d.get("season_number"):
                         season_num = int(d.get("season_number"))
                     if episode_num is None:

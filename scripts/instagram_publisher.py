@@ -126,6 +126,38 @@ def publish_reel_to_instagram(video_url, caption, cover_url=None):
     print(f"SUCCESS! Published to Instagram Reels with Post ID: {media_id}")
     return media_id
 
+def normalize_ep_data(data):
+    if isinstance(data, dict):
+        return data
+    if isinstance(data, list):
+        shots_list = data
+        ep_num = 7
+        season_num = 2
+        if os.path.exists(STATE_FILE):
+            try:
+                with open(STATE_FILE, "r", encoding="utf-8") as f:
+                    st = json.load(f)
+                    if isinstance(st, dict):
+                        ep_num = st.get("episode_number", st.get("total_episodes_produced", 7))
+                        season_num = st.get("season_number", 2)
+            except Exception:
+                pass
+        return {
+            "episode_number": ep_num,
+            "season_number": season_num,
+            "is_season_2": season_num == 2,
+            "title_english": "The Monsoon Revelation",
+            "title_malayalam": "മഴയും വെളിപ്പെടുത്തലും",
+            "synopsis": "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi. Overwhelmed by Sachin's genuine sacrifice and humble devotion, Annamma's heart melts with motherly approval. But just as love blossoms under the monsoon awning, Annamma's phone rings with an urgent call from Kurian back at the flat: a wealthy marriage proposal party from Kottayam has arrived at their doorstep!",
+            "cliffhanger": "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
+            "total_shots": len(shots_list),
+            "calculated_total_seconds": len(shots_list) * 6,
+            "calculated_runtime_display": f"{len(shots_list)*6 // 60}m {len(shots_list)*6 % 60:02d}s",
+            "shots": shots_list,
+            "prompts": shots_list
+        }
+    return {}
+
 def update_story_state(ep_data=None):
     if not ep_data:
         script_candidates = ["current_episode_shots.json", "current_episode.json"]
@@ -140,6 +172,8 @@ def update_story_state(ep_data=None):
     if not ep_data:
         print("Notice: No episode script found to update story state.")
         return
+
+    ep_data = normalize_ep_data(ep_data)
 
     state = {}
     if os.path.exists(STATE_FILE):
@@ -232,7 +266,8 @@ def main():
                 break
             except Exception:
                 pass
-                
+
+    ep_data = normalize_ep_data(ep_data)
     ep_num = ep_data.get("episode_number", 1)
     # Priority 1: Fetch live from Google Sheet Tab 'Season_Story_Arc', Cell A1
     season_num = fetch_season_from_google_sheet(os.getenv("GAS_WEBHOOK_URL")) or ep_data.get("season_number") or 1
