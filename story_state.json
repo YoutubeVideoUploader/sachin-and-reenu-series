@@ -3058,8 +3058,8 @@
         "duration": "6s",
         "duration_seconds": 6,
         "character": "Amal",
-        "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ.",
-        "action_summary": "Amal sits firmly in the driver's seat with his lean frame, his hands tightly gripping the steering wheel, squinting through the windshield. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+        "action_summary": "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors.",
         "json_prompt": {
           "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
           "duration": "6s",
@@ -3071,36 +3071,31 @@
             }
           ],
           "sequence_continuity": {
-            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
-            "time_of_day": "Late Evening High-Range Monsoon Fog",
-            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
-            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "scene_id": "SCENE_MUNNAR_ROAD_NIGHT",
+            "time_of_day": "Late Evening",
+            "lighting_palette": "Eerie blue moonlight cutting through thick white mountain fog",
+            "weather": "Heavy mountain fog",
             "spatial_blocking": {
-              "Amal": "Driver seat (right side), hands gripping steering wheel tightly, twisting ignition key",
-              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
-              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+              "Amal": "Sitting in the driver's seat gripping the steering wheel tightly"
             },
-            "eyeline_direction": "Amal looks straight ahead into foggy road and down at dashboard ignition",
+            "eyeline_direction": "Looking frantically into the rearview mirror",
             "persistent_props": [
               "Car steering wheel",
-              "Rearview mirror",
-              "Illuminated dashboard dials",
-              "Car ignition key",
-              "Sachin's cross-bag strap"
+              "Rearview mirror"
             ],
-            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+            "camera_lens": "Cinematic prime lens, shallow depth of field"
           },
           "location": "Mountain road car interior",
-          "camera": "Cinematic 3D medium close-up focused on Amal",
-          "action": "Amal sits firmly in the driver's seat with his lean frame, his hands tightly gripping the steering wheel, squinting through the windshield. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "camera": "Medium shot",
+          "action": "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
           "dialogue": {
             "speaker": "Amal",
             "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
             "language": "Malayalam",
-            "script": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ.",
-            "line": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ."
+            "script": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+            "line": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ."
           },
-          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+          "audio_directive": "MALE CHARACTER DIALOGUE (AMAL). Character mouth animates in natural lip-sync with spoken Malayalam dialogue line. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
         }
       },
       {
