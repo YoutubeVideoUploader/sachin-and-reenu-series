@@ -10,9 +10,9 @@
       "voice": "Fenrir",
       "hair": "Tousled thick wavy textured dark-brown hair with volume",
       "face": "Warm hazel-brown expressive eyes, defined jawline, boyish charming grin",
-      "attire": "Forest Green solid plain T-shirt, charcoal denim jeans, clean white sneakers, and his signature brown leather cross-bag.",
+      "attire": "Plain Navy Blue solid T-shirt, charcoal denim jeans, brown leather cross-bag, and clean white sneakers.",
       "personality": "Warm, emotional, charming, returning from UK after years away",
-      "visual_dna": "Stylized 3D Pixar-style young man with expressive eyes, messy hair, and a lean build. His look is strictly casual and minimalist."
+      "visual_dna": "24-year-old Pixar-style male, lean build, messy black hair, expressive eyebrows, optimistic but anxious face."
     },
     "Reenu": {
       "age": 22,
@@ -20,9 +20,9 @@
       "voice": "Kore",
       "hair": "Shoulder-length voluminous layered wavy dark-brown hair with soft curtain bangs",
       "face": "Large sparkling hazel-brown doe eyes, expressive emotions, glowing radiant smile",
-      "attire": "Pastel Yellow T-shirt with a 'Retro Daisy' floral pattern, light blue denim skirt, silver wrist watch, and white sneakers.",
+      "attire": "Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, and white sneakers.",
       "personality": "Bubbly, deeply emotional, faithful, reunited with Sachin at Kochi CIAL",
-      "visual_dna": "Vibrant 3D character with large soulful eyes, shoulder-length wavy hair, and a bright smile. Her patterns are her visual signature this season."
+      "visual_dna": "22-year-old Pixar-style female, big curious eyes, shoulder-length wavy hair, witty smile, confident posture."
     },
     "Amal": {
       "age": 22,
@@ -30,9 +30,9 @@
       "voice": "Puck",
       "hair": "Cropped textured curly black hair",
       "face": "Neat mustache and trim goatee beard, witty relatable Malayali friend energy",
-      "attire": "Terracotta Rust-Orange plain polo T-shirt, dark indigo denim pants, and casual slip-on sneakers.",
+      "attire": "Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, and black slip-on sneakers.",
       "personality": "Sachin's best friend, supportive, humorous, driving the car",
-      "visual_dna": "The energetic sidekick with a slightly stockier Pixar-style frame, expressive eyebrows, and a constant mischievous grin."
+      "visual_dna": "24-year-old Pixar-style male, slightly stocky, short hair, beard stubble, sarcastic facial expressions, comedic body language."
     },
     "Menon": {
       "age": 54,
@@ -113,6 +113,22 @@
       "role": "Reenu's Mother",
       "attire": "Traditional Kerala Set-Saree with a green blouse and gold bangles.",
       "visual_dna": "Warm, round-faced Pixar motherly figure with her hair in a traditional bun, wearing a Kerala Set-Saree."
+    },
+    "Sreedharan (The Caretaker)": {
+      "age": 65,
+      "gender": "male",
+      "voice": "Deep, raspy, and slow-paced Malayalam with a high-range Idukki accent.",
+      "role": "Homestay caretaker with a dark past",
+      "attire": "Traditional white Kerala mundu and a faded grey cotton jubba.",
+      "visual_dna": "Stylized elderly man, slightly hunched, thick grey mustache, mysterious and unblinking eyes."
+    },
+    "Bhadra (The Woman in Mist)": {
+      "age": 28,
+      "gender": "female",
+      "voice": "Echoing, soft, and melancholic whisper.",
+      "role": "The spirit of a woman who disappeared",
+      "attire": "Traditional white Kerala Set-Mundu with a gold border, looking slightly weathered.",
+      "visual_dna": "Ethereal, semi-transparent Pixar-style character with glowing eyes and long flowing hair that mimics the mist."
     }
   },
   "current_arc": "The Monsoon Car Ride & Secret Pouch",
@@ -120,115 +136,2818 @@
     {
       "episode": 1,
       "title": "തിരിച്ചുവരവ് (The Homecoming)",
-      "summary": "Sachin and Amal plan a surprise Munnar getaway for Reenu's birthday. Just as Sachin prepares to reveal the surprise, Reenu's parents arrive unannounced at the Kochi flat, complicating everything.",
-      "cliffhanger": "Sachin's anxiety spikes as he clutches the hidden leather pouch, realizing he must now navigate the uninvited presence of Kurian and Molly.",
+      "summary": "Sachin surprises Reenu with a spontaneous trip to Munnar. However, the journey takes an unexpected turn when Sachin realizes he forgot the travel permits, and Amal relentlessly mocks his navigation skills. As they venture deeper into the high ranges, Sachin mistakenly enters a restricted forest route into the GPS, leading them into unknown territory.",
+      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
       "characters_present": [
+        "Sachin",
         "Reenu",
-        "Amal",
-        "Sachin"
+        "Amal"
       ]
     }
   ],
   "episode_number": 1,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_KOCHI_FLAT_DOORWAY",
-    "time_of_day": "Afternoon",
-    "lighting_palette": "Soft warm indoor ambient lighting",
-    "weather": "Sunny",
+    "scene_id": "SCENE_FOREST_ROAD",
+    "time_of_day": "Mid-morning monsoon",
+    "lighting_palette": "Dull green forest light",
+    "weather": "Dense forest mist",
     "spatial_blocking": {
-      "Sachin": "Standing in doorway, clutching pouch"
+      "Sachin": "Driver seat",
+      "Reenu": "Passenger seat"
     },
-    "eyeline_direction": "Sachin looks at camera/viewer",
+    "eyeline_direction": "Sachin looking ahead",
     "persistent_props": [
-      "Brown leather pouch hidden behind Sachin",
-      "Brown leather pouch in Sachin's hand",
-      "Brown leather pouch in Sachin's hand behind his back",
-      "Suitcases with Kurian and Molly"
+      "Sachin's brown leather cross-bag",
+      "Unopened vintage leather pouch in Sachin's hand"
     ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field"
+    "camera_lens": "Cinematic prime lens"
   },
   "season_number": 3,
   "season_arc": [
     {
       "episode_number": 1,
-      "title_english": "The Surprise Plan",
-      "title_malayalam": "ഒരു സർപ്രൈസ് പ്ലാൻ",
+      "title_english": "The Surprise Itinerary",
+      "title_malayalam": "ഒരു സർപ്രൈസ് യാത്ര",
       "status": "Active",
-      "synopsis": "Sachin and Amal secretly plan a romantic getaway to Munnar for Reenu's birthday. Just as Sachin is about to show Reenu the booking, her parents, Kurian and Molly, arrive unannounced at the Kochi flat with heavy suitcases.",
-      "cliffhanger": "Kurian looks at the travel brochure on the table and asks, 'So, who is going to Munnar?'"
+      "synopsis": "Sachin surprises Reenu with a Munnar trip, but things go south when he forgets the essential permits and Amal mocks his 'perfect' map skills. As they drive into the high ranges, Sachin mistakenly enters a restricted forest route into the GPS.",
+      "cliffhanger": "As the mist thickens, Reenu spots a woman in a white saree standing by the cliffside, but she vanishes the moment Sachin looks back."
     },
     {
       "episode_number": 2,
-      "title_english": "The Uninvited Guests",
-      "title_malayalam": "ക്ഷണിക്കാത്ത അതിഥികൾ",
+      "title_english": "The Tea Shop Warning",
+      "title_malayalam": "ചായക്കടയിലെ മുന്നറിയിപ്പ്",
       "status": "Upcoming",
-      "synopsis": "Thinking quickly, Amal claims the trip was a family pilgrimage he planned for everyone. Kurian, impressed by Amal's 'values', insists that the whole group must go together in one car to bond.",
-      "cliffhanger": "Sachin realizes he has to drive his strict future father-in-law for four hours in a cramped car."
+      "synopsis": "The trio stops at a lonely tea shop where the owner warns them against taking the old forest road after dark. Amal laughs off the 'ghost story' until the car suddenly stalls in the middle of a pitch-black stretch of woods.",
+      "cliffhanger": "While Sachin checks the engine, Reenu looks at the car window's reflection and sees the woman standing right behind Sachin's shoulder."
     },
     {
       "episode_number": 3,
-      "title_english": "Luggage Logistics",
-      "title_malayalam": "ലഗേജ് പ്രശ്നങ്ങൾ",
+      "title_english": "The Locked Room",
+      "title_malayalam": "പൂട്ടിയ മുറി",
       "status": "Upcoming",
-      "synopsis": "The morning of the trip becomes chaotic as Amal tries to fit Kurian's massive traditional trunks and Reenu's bags into the small hatchback. Sachin tries to impress Kurian by helping, but accidentally traps Kurian's mundu in the car door.",
-      "cliffhanger": "The car engine makes a strange sputtering sound just as they pull out of the driveway."
+      "synopsis": "They arrive at a creepy homestay managed by Sreedharan, who strictly forbids them from approaching the locked room at the end of the hallway. Sachin and Amal’s curiosity gets the better of them as they hear rhythmic tapping coming from inside the room at midnight.",
+      "cliffhanger": "As they lean against the door to listen, the heavy iron lock clicks open on its own and the door slowly creaks inward."
     },
     {
       "episode_number": 4,
-      "title_english": "The Highway Trial",
-      "title_malayalam": "ഹൈവേയിലെ പരീക്ഷണം",
+      "title_english": "The Changing Photograph",
+      "title_malayalam": "മാറുന്ന ചിത്രം",
       "status": "Upcoming",
-      "synopsis": "On the way to Adimali, Kurian insists on turning off the AC to 'enjoy the natural air' and critiques Sachin's driving style. To break the tension, Molly starts a family sing-along of old melodies, forcing Sachin and Reenu to hide their secret smiles.",
-      "cliffhanger": "A massive fog settles in as they reach the first hairpin curve, and Kurian demands to take the wheel."
+      "synopsis": "Inside the room, they find an old photograph of the woman they saw on the road standing in front of the same house. Sachin tries to debunk the mystery with logic, but Amal notices the woman in the photo is now looking directly at them.",
+      "cliffhanger": "The lights flicker and die; when they come back on, two more shadowy figures have appeared behind the woman in the photograph."
     },
     {
       "episode_number": 5,
-      "title_english": "Tea and Tension",
-      "title_malayalam": "ചായയും ടെൻഷനും",
+      "title_english": "The Abandoned Factory",
+      "title_malayalam": "ഉപേക്ഷിക്കപ്പെട്ട ഫാക്ടറി",
       "status": "Upcoming",
-      "synopsis": "During a tea break at a roadside stall, Sachin spills hot tea near Kurian's feet, leading to a lecture on responsibility. However, Molly pulls Sachin aside and reveals she knows about his feelings for Reenu, offering him a silent nod of encouragement.",
-      "cliffhanger": "Reenu gets a mysterious phone call from an 'old family friend' that makes Kurian look very interested."
+      "synopsis": "Following a trail in the tea plantation for a photoshoot, the group finds an abandoned tea-processing unit filled with rusted machinery. They discover a dusty notebook belonging to a woman named Bhadra, detailing her fear of someone following her.",
+      "cliffhanger": "A chilling female voice echoes through the hollow metal pipes of the factory, clearly whispering Reenu's name."
     },
     {
       "episode_number": 6,
-      "title_english": "Lost in the Clouds",
-      "title_malayalam": "മഞ്ഞിനുള്ളിൽ ഒളിച്ചവർ",
+      "title_english": "Ghost Detection",
+      "title_malayalam": "പ്രേതത്തെ പിടിക്കാൻ അമൽ",
       "status": "Upcoming",
-      "synopsis": "The group stops at a scenic tea plantation for photos. Amal, trying to take a panoramic shot, accidentally drops the car keys into a deep thicket of tea bushes just as it starts to rain.",
-      "cliffhanger": "The sun begins to set, and they are stranded in the middle of a remote tea estate with no signal."
+      "synopsis": "Amal attempts to lighten the mood by using a 'ghost detector' app on his phone, leading to slapstick comedy as he jumps at his own shadow. However, the humor ends when they find fresh, wet footprints leading from the factory floor directly to their car.",
+      "cliffhanger": "Reenu opens the car door and finds a handwritten note on her seat that reads: 'Don't go to the old bridge tomorrow.'"
     },
     {
       "episode_number": 7,
-      "title_english": "The Shared Room",
-      "title_malayalam": "ഒരു മുറിയിലെ രണ്ടുപേർ",
+      "title_english": "The Forbidden Bridge",
+      "title_malayalam": "വിലക്കപ്പെട്ട പാലം",
       "status": "Upcoming",
-      "synopsis": "After finding the keys and reaching the resort late, they discover a booking error: only two rooms are available. Reenu and Molly take one, leaving Sachin to share a single bed room with a snoring, grumpy Kurian.",
-      "cliffhanger": "In the middle of the night, Kurian wakes up and starts questioning Sachin about his long-term financial stability."
+      "synopsis": "Ignoring the warning, Reenu leads the boys to the dilapidated colonial bridge mentioned in the notebook. They find a broken locket caught in the wooden planks, but the mist becomes so dense they lose sight of each other.",
+      "cliffhanger": "Bhadra appears inches away from Reenu, whispering 'He is still here' just as a massive crash sounds from the nearby woods."
     },
     {
       "episode_number": 8,
-      "title_english": "The Rescue Mission",
-      "title_malayalam": "രക്ഷാപ്രവർത്തനം",
+      "title_english": "The Stormy Night",
+      "title_malayalam": "ഭീതിയുടെ രാത്രി",
       "status": "Upcoming",
-      "synopsis": "During a morning trek, Kurian slips on a damp rock and nearly falls down a slope. Sachin shows incredible reflexes and physical strength to catch him, safely guiding him back while staying calm under pressure.",
-      "cliffhanger": "Kurian stays silent for the rest of the walk, looking at Sachin with a completely new expression."
+      "synopsis": "A sudden landslide traps them in an old estate building for the night with no signal. While searching for a way out, they find a hidden floorboard containing letters that implicate Sreedharan in a decades-old cover-up regarding Bhadra.",
+      "cliffhanger": "The door to their room is violently kicked open from the outside, but no one is standing there—only a cold wind."
     },
     {
       "episode_number": 9,
-      "title_english": "The Hilltop Heart-to-Heart",
-      "title_malayalam": "മലമുകളിലെ സത്യങ്ങൾ",
+      "title_english": "Sreedharan's Truth",
+      "title_malayalam": "ശ്രീധരന്റെ രഹസ്യം",
       "status": "Upcoming",
-      "synopsis": "On the final evening at a viewpoint, Kurian finally speaks to Sachin privately. He admits he was testing him the whole trip and confesses that he only wants Reenu to be with someone who can protect her in a crisis.",
-      "cliffhanger": "Kurian asks Sachin, 'So, when do you plan on bringing your parents to our house?'"
+      "synopsis": "They confront Sreedharan back at the homestay, who breaks down and admits he witnessed Bhadra's accident but was paid to stay silent. He warns them that Bhadra isn't seeking revenge on them, but trying to prevent another 'accident' tonight.",
+      "cliffhanger": "The lights go out completely, and they hear the heavy, dragging footsteps of someone—or something—approaching from the forest."
     },
     {
       "episode_number": 10,
-      "title_english": "Munnar's Blessing",
-      "title_malayalam": "മൂന്നാറിൻ്റെ അനുഗ്രഹം",
+      "title_english": "The Final Escape",
+      "title_malayalam": "മൂന്നാറിലെ അവസാന രാത്രി",
       "status": "Upcoming",
-      "synopsis": "The season concludes with a beautiful sunrise over the Nilgiris. Kurian and Molly officially give their blessing to Sachin and Reenu. Amal celebrates by finally getting the 'perfect' group photo as they head back to Kochi as one united family.",
-      "cliffhanger": "As they drive back, Sachin's phone rings—it's his parents saying they've already reached Kochi to meet the 'in-laws'."
+      "synopsis": "The trio makes a run for the car as the estate structure begins to fail during the storm. Bhadra’s spirit appears one last time, not to scare them, but to point toward the only safe path out of the crumbling plantation before the final landslide hits.",
+      "cliffhanger": "Safe at the city limits, Amal checks his phone gallery; the final selfie shows Bhadra standing behind their car, smiling peacefully as she fades away."
     }
   ],
-  "season_title": "Munnar Magic (മൂന്നാർ മാജിക്)"
+  "season_title": "Season 3: The Munnar Trip (സീസൺ 3: മൂന്നാർ യാത്ര)",
+  "season_shot_outline": {
+    "season_number": 3,
+    "season_title": "Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)",
+    "total_episodes": 10,
+    "total_shots": 100,
+    "episodes": [
+      {
+        "episode_number": 1,
+        "title_english": "The Trip Begins",
+        "title_malayalam": "യാത്ര തുടങ്ങുന്നു",
+        "synopsis": "Sachin surprises Renu with a Munnar trip. Amal is the reluctant driver. Packing chaos ensues as they start their journey.",
+        "cliffhanger": "Renu sees a mysterious woman standing on the road who vanishes instantly.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Narrator",
+            "action": "Sachin holds a map, looking excited. Renu is surprised.",
+            "dialogue_malayalam": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Map",
+              "Suitcase"
+            ],
+            "camera_hint": "Wide tracking shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Sachin shows a romantic itinerary.",
+            "dialogue_malayalam": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Itinerary"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Amal enters, looking annoyed.",
+            "dialogue_malayalam": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
+            "location": "Living Room",
+            "persistent_props": [
+              "Car keys"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Renu",
+            "action": "Renu laughs at Amal.",
+            "dialogue_malayalam": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+            "location": "Living Room",
+            "persistent_props": [
+              "Bag"
+            ],
+            "camera_hint": "Over the shoulder"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Sachin packs unnecessary items.",
+            "dialogue_malayalam": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
+            "location": "Bedroom",
+            "persistent_props": [
+              "Flower bouquet"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Amal checks the GPS map.",
+            "dialogue_malayalam": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
+            "location": "Car",
+            "persistent_props": [
+              "Smartphone"
+            ],
+            "camera_hint": "Low angle"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Sachin looks confident but wrong.",
+            "dialogue_malayalam": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
+            "location": "Car",
+            "persistent_props": [
+              "Steering wheel"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Amal realizes the error.",
+            "dialogue_malayalam": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
+            "location": "Car",
+            "persistent_props": [
+              "Smartphone"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Looking out at the misty mountains.",
+            "dialogue_malayalam": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
+            "location": "Car",
+            "persistent_props": [
+              "Window"
+            ],
+            "camera_hint": "Wide landscape"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Renu",
+            "action": "Renu points at a woman on the road. Sachin looks back.",
+            "dialogue_malayalam": "ആ സ്ത്രീ ആരാണ്?",
+            "location": "Mountain road",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "POV from car window"
+          }
+        ]
+      },
+      {
+        "episode_number": 2,
+        "title_english": "The Woman in the Mist",
+        "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
+        "synopsis": "The group stops at a tea shop. The car breaks down, and Amal panics.",
+        "cliffhanger": "Renu sees the woman's reflection in the window behind Sachin.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Sachin dismisses Renu's claim.",
+            "dialogue_malayalam": "അതൊരു സാധാരണ യാത്രക്കാരിയാകും.",
+            "location": "Tea shop",
+            "persistent_props": [
+              "Tea glass"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Amal acts brave.",
+            "dialogue_malayalam": "ഞാൻ പേടിക്കുന്ന ആളല്ല കേട്ടോ.",
+            "location": "Tea shop",
+            "persistent_props": [
+              "Tea glass"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Shopkeeper",
+            "action": "Warning them about the forest road.",
+            "dialogue_malayalam": "ആ വഴി പോകരുത്, നല്ലതല്ല.",
+            "location": "Tea shop",
+            "persistent_props": [
+              "Warning sign"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Amal laughs.",
+            "dialogue_malayalam": "ഇതൊക്കെ വെറും കഥകളാണ്.",
+            "location": "Road",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Car engine sputters and dies.",
+            "dialogue_malayalam": "അയ്യോ, വണ്ടി സ്റ്റാർട്ട് ആകുന്നില്ല!",
+            "location": "Forest road",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "Close-up on dashboard"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Amal hears a noise from the bushes.",
+            "dialogue_malayalam": "അതവിടെന്താ അനങ്ങുന്നത്?",
+            "location": "Forest road",
+            "persistent_props": [
+              "Bushes"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Sachin tries to fix the engine.",
+            "dialogue_malayalam": "ഞാൻ നോക്കാം.",
+            "location": "Car bonnet",
+            "persistent_props": [
+              "Tools"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Amal hides behind Renu.",
+            "dialogue_malayalam": "റീനു, നീ ഒന്ന് നോക്കിയേ.",
+            "location": "Forest road",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Amal",
+            "action": "Amal pretends he was checking for animals.",
+            "dialogue_malayalam": "ഞാൻ മൃഗങ്ങളെ നോക്കിയതാ.",
+            "location": "Forest road",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Renu",
+            "action": "Renu sees the reflection in the window.",
+            "dialogue_malayalam": "അവൻ പിന്നിൽ!",
+            "location": "Car",
+            "persistent_props": [
+              "Window reflection"
+            ],
+            "camera_hint": "Extreme close-up on eye"
+          }
+        ]
+      },
+      {
+        "episode_number": 3,
+        "title_english": "The Strange Homestay",
+        "title_malayalam": "വിചിത്രമായ ഹോംസ്റ്റേ",
+        "synopsis": "They reach a spooky homestay. A locked room creates curiosity.",
+        "cliffhanger": "The locked room opens by itself at midnight.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Caretaker",
+            "action": "Handing keys, looking suspicious.",
+            "dialogue_malayalam": "ആ മുറി തുറക്കരുത്.",
+            "location": "Homestay hallway",
+            "persistent_props": [
+              "Keys"
+            ],
+            "camera_hint": "Low angle"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Sachin looks at the locked door.",
+            "dialogue_malayalam": "അവിടെ എന്താകും?",
+            "location": "Hallway",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Amal makes up a silly theory.",
+            "dialogue_malayalam": "അവിടെ പഴയ സ്വർണം കാണും.",
+            "location": "Hallway",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Renu",
+            "action": "Renu watches the caretaker.",
+            "dialogue_malayalam": "ഇയാൾ എന്തോ മറയ്ക്കുന്നുണ്ട്.",
+            "location": "Hallway",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Footsteps heard outside.",
+            "dialogue_malayalam": "ആരാ പുറത്ത്?",
+            "location": "Bedroom",
+            "persistent_props": [
+              "Bed"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Amal is terrified.",
+            "dialogue_malayalam": "സച്ചിൻ, പോകണ്ട!",
+            "location": "Bedroom",
+            "persistent_props": [
+              "Blanket"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Sachin creeps to the door.",
+            "dialogue_malayalam": "ഞാൻ ഒന്ന് നോക്കട്ടെ.",
+            "location": "Bedroom",
+            "persistent_props": [
+              "Door handle"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Amal follows clinging to Sachin.",
+            "dialogue_malayalam": "ഞാനും വരുന്നു.",
+            "location": "Hallway",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Sachin",
+            "action": "They hide behind the curtain.",
+            "dialogue_malayalam": "നമുക്ക് ഇവിടെ ഒളിക്കാം.",
+            "location": "Hallway",
+            "persistent_props": [
+              "Curtain"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Narrator",
+            "action": "The door creaks open.",
+            "dialogue_malayalam": "അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.",
+            "location": "Hallway",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Dramatic zoom"
+          }
+        ]
+      },
+      {
+        "episode_number": 4,
+        "title_english": "Room Number Thirteen",
+        "title_malayalam": "പതിമൂന്നാം നമ്പർ മുറി",
+        "synopsis": "They find an old photo. The figures in it start changing.",
+        "cliffhanger": "The photo changes, showing three mysterious figures.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Renu",
+            "action": "Picking up the photo.",
+            "dialogue_malayalam": "ഇത് റോഡിൽ കണ്ട സ്ത്രീയാണ്!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Old photo"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Trying to stay logical.",
+            "dialogue_malayalam": "ഇതൊരു യാദൃശ്ചികത ആകാം.",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Amal wants to leave.",
+            "dialogue_malayalam": "നമുക്ക് ഇവിടുന്ന് പോകാം!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Bag"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Narrator",
+            "action": "The door slams shut.",
+            "dialogue_malayalam": "പെട്ടെന്ന് വാതിൽ അടഞ്ഞു.",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Fast zoom"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "The lights flicker.",
+            "dialogue_malayalam": "ലൈറ്റ് പോയി!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Low light effect"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Voice",
+            "action": "Whispering Sachin's name.",
+            "dialogue_malayalam": "സച്ചിൻ...",
+            "location": "Locked Room",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Audio focus"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Amal",
+            "action": "Grabbing Sachin in fear.",
+            "dialogue_malayalam": "സച്ചിൻ, ഞാൻ നിന്നെ രക്ഷിക്കാം!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Trying to find the switch.",
+            "dialogue_malayalam": "എവിടെയാ സ്വിച്ച്?",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Wall"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Lights return.",
+            "dialogue_malayalam": "നോക്കൂ!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Amal",
+            "action": "Staring at the changed photo.",
+            "dialogue_malayalam": "അവിടെ മൂന്നുപേർ!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Extreme close-up"
+          }
+        ]
+      },
+      {
+        "episode_number": 5,
+        "title_english": "The Missing Path",
+        "title_malayalam": "കാണാതായ വഴി",
+        "synopsis": "They explore the tea plantations and find an abandoned building.",
+        "cliffhanger": "A voice calls out Renu's name from the darkness.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Taking photos of Renu.",
+            "dialogue_malayalam": "ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.",
+            "location": "Plantation",
+            "persistent_props": [
+              "Camera"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Taking photos, complaining.",
+            "dialogue_malayalam": "എത്ര നേരം ഫോട്ടോ എടുക്കും?",
+            "location": "Plantation",
+            "persistent_props": [
+              "Camera"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Renu",
+            "action": "Noticing a trail.",
+            "dialogue_malayalam": "അങ്ങോട്ട് പോയാലോ?",
+            "location": "Plantation",
+            "persistent_props": [
+              "Path"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Following but complaining.",
+            "dialogue_malayalam": "ഇത് ശരിയല്ല.",
+            "location": "Plantation",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Entering the old building.",
+            "dialogue_malayalam": "ഇതെന്താ കെട്ടിടം?",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Old notebook"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Renu",
+            "action": "Opening the notebook.",
+            "dialogue_malayalam": "ഇവിടെ ഒരു സ്ത്രീയെ പറ്റി എഴുതിയിട്ടുണ്ട്.",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Notebook"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Amal",
+            "action": "Looking around nervously.",
+            "dialogue_malayalam": "നമുക്ക് തിരിച്ചു പോകാം.",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Finding a drawing.",
+            "dialogue_malayalam": "ഇത് റോഡിലെ സ്ത്രീ തന്നെ.",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Drawing"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Amal",
+            "action": "Walking deeper unknowingly.",
+            "dialogue_malayalam": "ഇനി ഇത് വെച്ച് നമ്മൾ എന്ത് ചെയ്യും?",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Voice",
+            "action": "Calling Renu.",
+            "dialogue_malayalam": "റീനു...",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Echoing audio"
+          }
+        ]
+      },
+      {
+        "episode_number": 6,
+        "title_english": "Someone is Following Us",
+        "title_malayalam": "ആരോ നമ്മളെ പിന്തുടരുന്നു",
+        "synopsis": "They explore the factory. Amal builds a ghost detector.",
+        "cliffhanger": "A note appears on Renu's pillow warning them.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Amal",
+            "action": "Setting up his phone.",
+            "dialogue_malayalam": "ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ.",
+            "location": "Factory",
+            "persistent_props": [
+              "Phone",
+              "Stick"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Overthinking every sound.",
+            "dialogue_malayalam": "അതൊരു ശബ്ദമായിരുന്നു!",
+            "location": "Factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Renu",
+            "action": "Pointing at wall markings.",
+            "dialogue_malayalam": "ഇത് എന്താ?",
+            "location": "Factory",
+            "persistent_props": [
+              "Wall"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Joking about the ghost.",
+            "dialogue_malayalam": "അവർക്ക് നമ്മുടെ ബില്ല് ഷെയർ ചെയ്യാൻ ആയിരിക്കും.",
+            "location": "Factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "They run out.",
+            "dialogue_malayalam": "ഓടിക്കോ!",
+            "location": "Factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Fast tracking"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Noticing footprints.",
+            "dialogue_malayalam": "ഇതാര് വന്നതാ?",
+            "location": "Outside Factory",
+            "persistent_props": [
+              "Footprints"
+            ],
+            "camera_hint": "Low angle"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Renu",
+            "action": "Returning to homestay.",
+            "dialogue_malayalam": "ഇന്ന് രാത്രി ഒന്ന് ഉറങ്ങണം.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Bed"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Locking the door.",
+            "dialogue_malayalam": "ഇനി ആരും വരില്ല.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Sachin",
+            "action": "Sleeping.",
+            "dialogue_malayalam": "നാളെ നോക്കാം.",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Renu",
+            "action": "Finding the note.",
+            "dialogue_malayalam": "പഴയ പാലത്തിൽ പോകരുത്...",
+            "location": "Homestay",
+            "persistent_props": [
+              "Note"
+            ],
+            "camera_hint": "Extreme close-up"
+          }
+        ]
+      },
+      {
+        "episode_number": 7,
+        "title_english": "The Forbidden Bridge",
+        "title_malayalam": "നിരോധിക്കപ്പെട്ട പാലം",
+        "synopsis": "Renu insists on checking the bridge. They find a locket.",
+        "cliffhanger": "The woman whispers 'He is still here' and a crash is heard.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Renu",
+            "action": "Showing the note.",
+            "dialogue_malayalam": "നമുക്ക് അങ്ങോട്ട് പോകണം.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Note"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Staying inside.",
+            "dialogue_malayalam": "ഞാൻ ഇവിടെ ഫുഡ് ഓർഡർ ചെയ്യാം.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Phone"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Sachin",
+            "action": "Walking to the bridge.",
+            "dialogue_malayalam": "റീനു, സൂക്ഷിക്കണം.",
+            "location": "Bridge",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Renu",
+            "action": "Finding a locket.",
+            "dialogue_malayalam": "ഇത് ആ സ്ത്രീയുടെ ആണ്.",
+            "location": "Bridge",
+            "persistent_props": [
+              "Locket"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Amal",
+            "action": "Panic running.",
+            "dialogue_malayalam": "അയ്യോ, വരുന്നു!",
+            "location": "Bridge",
+            "persistent_props": [
+              "Bag"
+            ],
+            "camera_hint": "Fast tracking"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Sachin",
+            "action": "Amal grabs the wrong bag.",
+            "dialogue_malayalam": "അത് എന്റെ ബാഗാണ്!",
+            "location": "Bridge",
+            "persistent_props": [
+              "Bag"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Mist",
+            "action": "Thick fog descends.",
+            "dialogue_malayalam": "ഒന്നും കാണുന്നില്ല!",
+            "location": "Bridge",
+            "persistent_props": [
+              "Mist"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Shadow",
+            "action": "Pointing to the forest.",
+            "dialogue_malayalam": "അങ്ങോട്ട്...",
+            "location": "Bridge",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "The woman appears.",
+            "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
+            "location": "Bridge",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Narrator",
+            "action": "A loud crash from the forest.",
+            "dialogue_malayalam": "എന്തോ തകർന്നു!",
+            "location": "Forest",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Dramatic audio"
+          }
+        ]
+      },
+      {
+        "episode_number": 8,
+        "title_english": "The Night of Fear",
+        "title_malayalam": "ഭയത്തിന്റെ രാത്രി",
+        "synopsis": "Storm traps them in an estate. They find evidence.",
+        "cliffhanger": "A letter reveals someone led the woman to her fate.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Taking shelter.",
+            "dialogue_malayalam": "ഇവിടെ നിൽക്കാം.",
+            "location": "Estate building",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Attempting a ritual.",
+            "dialogue_malayalam": "ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.",
+            "location": "Estate building",
+            "persistent_props": [
+              "Salt"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Sachin",
+            "action": "Correcting Amal.",
+            "dialogue_malayalam": "അത് തെറ്റാണ് അമൽ.",
+            "location": "Estate building",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Renu",
+            "action": "Finding a box.",
+            "dialogue_malayalam": "ഇവിടെ നോക്കൂ!",
+            "location": "Storage room",
+            "persistent_props": [
+              "Box"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Reading clippings.",
+            "dialogue_malayalam": "ഇതൊരു വലിയ രഹസ്യമാണ്.",
+            "location": "Storage room",
+            "persistent_props": [
+              "Clippings"
+            ],
+            "camera_hint": "Panning shot"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Hearing noises.",
+            "dialogue_malayalam": "ആരാ അത്?",
+            "location": "Storage room",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Renu",
+            "action": "Reading the letter.",
+            "dialogue_malayalam": "ആരോ അവളെ ചതിച്ചു.",
+            "location": "Storage room",
+            "persistent_props": [
+              "Letter"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Determined.",
+            "dialogue_malayalam": "നമുക്ക് സത്യം അറിയണം.",
+            "location": "Storage room",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Amal",
+            "action": "Trying to be brave.",
+            "dialogue_malayalam": "ഞാൻ കൂടെയുണ്ട്.",
+            "location": "Storage room",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Narrator",
+            "action": "Letter text reveal.",
+            "dialogue_malayalam": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+            "location": "Storage room",
+            "persistent_props": [
+              "Letter"
+            ],
+            "camera_hint": "Zoom in"
+          }
+        ]
+      },
+      {
+        "episode_number": 9,
+        "title_english": "The Caretaker's Secret",
+        "title_malayalam": "കെയർടേക്കറുടെ രഹസ്യം",
+        "synopsis": "They confront the caretaker. He reveals the truth about the factory.",
+        "cliffhanger": "Footsteps approach their door at night.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Confronting the caretaker.",
+            "dialogue_malayalam": "ഇതെന്താണെന്ന് പറയൂ.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Caretaker",
+            "action": "Admitting the truth.",
+            "dialogue_malayalam": "അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Renu",
+            "action": "Listening intently.",
+            "dialogue_malayalam": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Trying to solve it.",
+            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി!",
+            "location": "Homestay",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Amal's theory is absurd.",
+            "dialogue_malayalam": "അതല്ല അമൽ.",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Caretaker",
+            "action": "Warning them.",
+            "dialogue_malayalam": "ഇന്ന് രാത്രി അവൾ വരും.",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Lights go out.",
+            "dialogue_malayalam": "ലൈറ്റ് വീണ്ടും പോയി!",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Low light"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Hiding.",
+            "dialogue_malayalam": "എന്നെ രക്ഷിക്കണേ!",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Listening to footsteps.",
+            "dialogue_malayalam": "ആരോ വരുന്നുണ്ട്.",
+            "location": "Homestay",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Narrator",
+            "action": "Door creaks.",
+            "dialogue_malayalam": "വാതിൽ തുറക്കുന്നു.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Dramatic zoom"
+          }
+        ]
+      },
+      {
+        "episode_number": 10,
+        "title_english": "The Last Night in Munnar",
+        "title_malayalam": "മൂന്നാറിലെ അവസാന രാത്രി",
+        "synopsis": "Grand finale at the factory. They solve the mystery and escape.",
+        "cliffhanger": "A photo shows the ghost standing right next to them.",
+        "shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Entering the factory.",
+            "dialogue_malayalam": "ഇവിടെ അവസാന തെളിവുണ്ട്.",
+            "location": "Factory",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Renu",
+            "action": "Approaching the woman.",
+            "dialogue_malayalam": "പേടിക്കണ്ട, നമ്മൾ കൂടെയുണ്ട്.",
+            "location": "Factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Holding the light steady.",
+            "dialogue_malayalam": "ഞാൻ റെഡിയാണ്.",
+            "location": "Factory",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Sachin",
+            "action": "Finding the compartment.",
+            "dialogue_malayalam": "ഇതാ അത്!",
+            "location": "Factory",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Narrator",
+            "action": "Building starts to collapse.",
+            "dialogue_malayalam": "കെട്ടിടം തകരുന്നു!",
+            "location": "Factory",
+            "persistent_props": [
+              "Debris"
+            ],
+            "camera_hint": "Shaky cam"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Helping them out.",
+            "dialogue_malayalam": "വേഗം ഇങ്ങോട്ട്!",
+            "location": "Factory",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Tracking shot"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Holding Renu's hand.",
+            "dialogue_malayalam": "നമുക്ക് പോകാം.",
+            "location": "Outside",
+            "persistent_props": [
+              "None"
+            ],
+            "camera_hint": "Close-up"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Relieved.",
+            "dialogue_malayalam": "ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.",
+            "location": "Car",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "Wide shot"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Sachin",
+            "action": "Looking at the photo.",
+            "dialogue_malayalam": "എല്ലാം കഴിഞ്ഞു.",
+            "location": "Car",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Medium shot"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Amal",
+            "action": "Seeing the ghost in the photo.",
+            "dialogue_malayalam": "അയ്യോ! ഇത് ആരാ?",
+            "location": "Car",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Extreme close-up"
+          }
+        ]
+      }
+    ],
+    "flattened_shots": [
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 1,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Narrator",
+        "action": "Sachin holds a map, looking excited. Renu is surprised.",
+        "dialogue_malayalam": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
+        "location": "Living Room",
+        "persistent_props": [
+          "Map",
+          "Suitcase"
+        ],
+        "camera_hint": "Wide tracking shot",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 2,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Sachin",
+        "action": "Sachin shows a romantic itinerary.",
+        "dialogue_malayalam": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
+        "location": "Living Room",
+        "persistent_props": [
+          "Itinerary"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 3,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Amal",
+        "action": "Amal enters, looking annoyed.",
+        "dialogue_malayalam": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
+        "location": "Living Room",
+        "persistent_props": [
+          "Car keys"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 4,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Renu",
+        "action": "Renu laughs at Amal.",
+        "dialogue_malayalam": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+        "location": "Living Room",
+        "persistent_props": [
+          "Bag"
+        ],
+        "camera_hint": "Over the shoulder",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 5,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Sachin",
+        "action": "Sachin packs unnecessary items.",
+        "dialogue_malayalam": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
+        "location": "Bedroom",
+        "persistent_props": [
+          "Flower bouquet"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 6,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Amal",
+        "action": "Amal checks the GPS map.",
+        "dialogue_malayalam": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
+        "location": "Car",
+        "persistent_props": [
+          "Smartphone"
+        ],
+        "camera_hint": "Low angle",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 7,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Sachin",
+        "action": "Sachin looks confident but wrong.",
+        "dialogue_malayalam": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
+        "location": "Car",
+        "persistent_props": [
+          "Steering wheel"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 8,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Amal",
+        "action": "Amal realizes the error.",
+        "dialogue_malayalam": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
+        "location": "Car",
+        "persistent_props": [
+          "Smartphone"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 9,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Renu",
+        "action": "Looking out at the misty mountains.",
+        "dialogue_malayalam": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
+        "location": "Car",
+        "persistent_props": [
+          "Window"
+        ],
+        "camera_hint": "Wide landscape",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 1,
+        "shot_number": 10,
+        "episode_title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+        "speaker": "Renu",
+        "action": "Renu points at a woman on the road. Sachin looks back.",
+        "dialogue_malayalam": "ആ സ്ത്രീ ആരാണ്?",
+        "location": "Mountain road",
+        "persistent_props": [
+          "Car"
+        ],
+        "camera_hint": "POV from car window",
+        "status": "Active"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 1,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Sachin",
+        "action": "Sachin dismisses Renu's claim.",
+        "dialogue_malayalam": "അതൊരു സാധാരണ യാത്രക്കാരിയാകും.",
+        "location": "Tea shop",
+        "persistent_props": [
+          "Tea glass"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 2,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Amal",
+        "action": "Amal acts brave.",
+        "dialogue_malayalam": "ഞാൻ പേടിക്കുന്ന ആളല്ല കേട്ടോ.",
+        "location": "Tea shop",
+        "persistent_props": [
+          "Tea glass"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 3,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Shopkeeper",
+        "action": "Warning them about the forest road.",
+        "dialogue_malayalam": "ആ വഴി പോകരുത്, നല്ലതല്ല.",
+        "location": "Tea shop",
+        "persistent_props": [
+          "Warning sign"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 4,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Amal",
+        "action": "Amal laughs.",
+        "dialogue_malayalam": "ഇതൊക്കെ വെറും കഥകളാണ്.",
+        "location": "Road",
+        "persistent_props": [
+          "Car"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 5,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Sachin",
+        "action": "Car engine sputters and dies.",
+        "dialogue_malayalam": "അയ്യോ, വണ്ടി സ്റ്റാർട്ട് ആകുന്നില്ല!",
+        "location": "Forest road",
+        "persistent_props": [
+          "Car"
+        ],
+        "camera_hint": "Close-up on dashboard",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 6,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Amal",
+        "action": "Amal hears a noise from the bushes.",
+        "dialogue_malayalam": "അതവിടെന്താ അനങ്ങുന്നത്?",
+        "location": "Forest road",
+        "persistent_props": [
+          "Bushes"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 7,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Sachin",
+        "action": "Sachin tries to fix the engine.",
+        "dialogue_malayalam": "ഞാൻ നോക്കാം.",
+        "location": "Car bonnet",
+        "persistent_props": [
+          "Tools"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 8,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Amal",
+        "action": "Amal hides behind Renu.",
+        "dialogue_malayalam": "റീനു, നീ ഒന്ന് നോക്കിയേ.",
+        "location": "Forest road",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 9,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Amal",
+        "action": "Amal pretends he was checking for animals.",
+        "dialogue_malayalam": "ഞാൻ മൃഗങ്ങളെ നോക്കിയതാ.",
+        "location": "Forest road",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 2,
+        "shot_number": 10,
+        "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+        "speaker": "Renu",
+        "action": "Renu sees the reflection in the window.",
+        "dialogue_malayalam": "അവൻ പിന്നിൽ!",
+        "location": "Car",
+        "persistent_props": [
+          "Window reflection"
+        ],
+        "camera_hint": "Extreme close-up on eye",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 1,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Caretaker",
+        "action": "Handing keys, looking suspicious.",
+        "dialogue_malayalam": "ആ മുറി തുറക്കരുത്.",
+        "location": "Homestay hallway",
+        "persistent_props": [
+          "Keys"
+        ],
+        "camera_hint": "Low angle",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 2,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Sachin",
+        "action": "Sachin looks at the locked door.",
+        "dialogue_malayalam": "അവിടെ എന്താകും?",
+        "location": "Hallway",
+        "persistent_props": [
+          "Door"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 3,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Amal",
+        "action": "Amal makes up a silly theory.",
+        "dialogue_malayalam": "അവിടെ പഴയ സ്വർണം കാണും.",
+        "location": "Hallway",
+        "persistent_props": [
+          "Flashlight"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 4,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Renu",
+        "action": "Renu watches the caretaker.",
+        "dialogue_malayalam": "ഇയാൾ എന്തോ മറയ്ക്കുന്നുണ്ട്.",
+        "location": "Hallway",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 5,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Sachin",
+        "action": "Footsteps heard outside.",
+        "dialogue_malayalam": "ആരാ പുറത്ത്?",
+        "location": "Bedroom",
+        "persistent_props": [
+          "Bed"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 6,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Amal",
+        "action": "Amal is terrified.",
+        "dialogue_malayalam": "സച്ചിൻ, പോകണ്ട!",
+        "location": "Bedroom",
+        "persistent_props": [
+          "Blanket"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 7,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Sachin",
+        "action": "Sachin creeps to the door.",
+        "dialogue_malayalam": "ഞാൻ ഒന്ന് നോക്കട്ടെ.",
+        "location": "Bedroom",
+        "persistent_props": [
+          "Door handle"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 8,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Amal",
+        "action": "Amal follows clinging to Sachin.",
+        "dialogue_malayalam": "ഞാനും വരുന്നു.",
+        "location": "Hallway",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 9,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Sachin",
+        "action": "They hide behind the curtain.",
+        "dialogue_malayalam": "നമുക്ക് ഇവിടെ ഒളിക്കാം.",
+        "location": "Hallway",
+        "persistent_props": [
+          "Curtain"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 3,
+        "shot_number": 10,
+        "episode_title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+        "speaker": "Narrator",
+        "action": "The door creaks open.",
+        "dialogue_malayalam": "അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.",
+        "location": "Hallway",
+        "persistent_props": [
+          "Door"
+        ],
+        "camera_hint": "Dramatic zoom",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 1,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Renu",
+        "action": "Picking up the photo.",
+        "dialogue_malayalam": "ഇത് റോഡിൽ കണ്ട സ്ത്രീയാണ്!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Old photo"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 2,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Sachin",
+        "action": "Trying to stay logical.",
+        "dialogue_malayalam": "ഇതൊരു യാദൃശ്ചികത ആകാം.",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Photo"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 3,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Amal",
+        "action": "Amal wants to leave.",
+        "dialogue_malayalam": "നമുക്ക് ഇവിടുന്ന് പോകാം!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Bag"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 4,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Narrator",
+        "action": "The door slams shut.",
+        "dialogue_malayalam": "പെട്ടെന്ന് വാതിൽ അടഞ്ഞു.",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Door"
+        ],
+        "camera_hint": "Fast zoom",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 5,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Sachin",
+        "action": "The lights flicker.",
+        "dialogue_malayalam": "ലൈറ്റ് പോയി!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Flashlight"
+        ],
+        "camera_hint": "Low light effect",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 6,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Voice",
+        "action": "Whispering Sachin's name.",
+        "dialogue_malayalam": "സച്ചിൻ...",
+        "location": "Locked Room",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Audio focus",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 7,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Amal",
+        "action": "Grabbing Sachin in fear.",
+        "dialogue_malayalam": "സച്ചിൻ, ഞാൻ നിന്നെ രക്ഷിക്കാം!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 8,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Sachin",
+        "action": "Trying to find the switch.",
+        "dialogue_malayalam": "എവിടെയാ സ്വിച്ച്?",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Wall"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 9,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Renu",
+        "action": "Lights return.",
+        "dialogue_malayalam": "നോക്കൂ!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Photo"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 4,
+        "shot_number": 10,
+        "episode_title": "പതിമൂന്നാം നമ്പർ മുറി (Room Number Thirteen)",
+        "speaker": "Amal",
+        "action": "Staring at the changed photo.",
+        "dialogue_malayalam": "അവിടെ മൂന്നുപേർ!",
+        "location": "Locked Room",
+        "persistent_props": [
+          "Photo"
+        ],
+        "camera_hint": "Extreme close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 1,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Sachin",
+        "action": "Taking photos of Renu.",
+        "dialogue_malayalam": "ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.",
+        "location": "Plantation",
+        "persistent_props": [
+          "Camera"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 2,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Amal",
+        "action": "Taking photos, complaining.",
+        "dialogue_malayalam": "എത്ര നേരം ഫോട്ടോ എടുക്കും?",
+        "location": "Plantation",
+        "persistent_props": [
+          "Camera"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 3,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Renu",
+        "action": "Noticing a trail.",
+        "dialogue_malayalam": "അങ്ങോട്ട് പോയാലോ?",
+        "location": "Plantation",
+        "persistent_props": [
+          "Path"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 4,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Amal",
+        "action": "Following but complaining.",
+        "dialogue_malayalam": "ഇത് ശരിയല്ല.",
+        "location": "Plantation",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 5,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Sachin",
+        "action": "Entering the old building.",
+        "dialogue_malayalam": "ഇതെന്താ കെട്ടിടം?",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "Old notebook"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 6,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Renu",
+        "action": "Opening the notebook.",
+        "dialogue_malayalam": "ഇവിടെ ഒരു സ്ത്രീയെ പറ്റി എഴുതിയിട്ടുണ്ട്.",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "Notebook"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 7,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Amal",
+        "action": "Looking around nervously.",
+        "dialogue_malayalam": "നമുക്ക് തിരിച്ചു പോകാം.",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 8,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Sachin",
+        "action": "Finding a drawing.",
+        "dialogue_malayalam": "ഇത് റോഡിലെ സ്ത്രീ തന്നെ.",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "Drawing"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 9,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Amal",
+        "action": "Walking deeper unknowingly.",
+        "dialogue_malayalam": "ഇനി ഇത് വെച്ച് നമ്മൾ എന്ത് ചെയ്യും?",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 5,
+        "shot_number": 10,
+        "episode_title": "കാണാതായ വഴി (The Missing Path)",
+        "speaker": "Voice",
+        "action": "Calling Renu.",
+        "dialogue_malayalam": "റീനു...",
+        "location": "Abandoned factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Echoing audio",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 1,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Amal",
+        "action": "Setting up his phone.",
+        "dialogue_malayalam": "ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ.",
+        "location": "Factory",
+        "persistent_props": [
+          "Phone",
+          "Stick"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 2,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Sachin",
+        "action": "Overthinking every sound.",
+        "dialogue_malayalam": "അതൊരു ശബ്ദമായിരുന്നു!",
+        "location": "Factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 3,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Renu",
+        "action": "Pointing at wall markings.",
+        "dialogue_malayalam": "ഇത് എന്താ?",
+        "location": "Factory",
+        "persistent_props": [
+          "Wall"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 4,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Amal",
+        "action": "Joking about the ghost.",
+        "dialogue_malayalam": "അവർക്ക് നമ്മുടെ ബില്ല് ഷെയർ ചെയ്യാൻ ആയിരിക്കും.",
+        "location": "Factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 5,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Sachin",
+        "action": "They run out.",
+        "dialogue_malayalam": "ഓടിക്കോ!",
+        "location": "Factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Fast tracking",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 6,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Amal",
+        "action": "Noticing footprints.",
+        "dialogue_malayalam": "ഇതാര് വന്നതാ?",
+        "location": "Outside Factory",
+        "persistent_props": [
+          "Footprints"
+        ],
+        "camera_hint": "Low angle",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 7,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Renu",
+        "action": "Returning to homestay.",
+        "dialogue_malayalam": "ഇന്ന് രാത്രി ഒന്ന് ഉറങ്ങണം.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Bed"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 8,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Amal",
+        "action": "Locking the door.",
+        "dialogue_malayalam": "ഇനി ആരും വരില്ല.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Door"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 9,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Sachin",
+        "action": "Sleeping.",
+        "dialogue_malayalam": "നാളെ നോക്കാം.",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 6,
+        "shot_number": 10,
+        "episode_title": "ആരോ നമ്മളെ പിന്തുടരുന്നു (Someone is Following Us)",
+        "speaker": "Renu",
+        "action": "Finding the note.",
+        "dialogue_malayalam": "പഴയ പാലത്തിൽ പോകരുത്...",
+        "location": "Homestay",
+        "persistent_props": [
+          "Note"
+        ],
+        "camera_hint": "Extreme close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 1,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Renu",
+        "action": "Showing the note.",
+        "dialogue_malayalam": "നമുക്ക് അങ്ങോട്ട് പോകണം.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Note"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 2,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Amal",
+        "action": "Staying inside.",
+        "dialogue_malayalam": "ഞാൻ ഇവിടെ ഫുഡ് ഓർഡർ ചെയ്യാം.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Phone"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 3,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Sachin",
+        "action": "Walking to the bridge.",
+        "dialogue_malayalam": "റീനു, സൂക്ഷിക്കണം.",
+        "location": "Bridge",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 4,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Renu",
+        "action": "Finding a locket.",
+        "dialogue_malayalam": "ഇത് ആ സ്ത്രീയുടെ ആണ്.",
+        "location": "Bridge",
+        "persistent_props": [
+          "Locket"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 5,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Amal",
+        "action": "Panic running.",
+        "dialogue_malayalam": "അയ്യോ, വരുന്നു!",
+        "location": "Bridge",
+        "persistent_props": [
+          "Bag"
+        ],
+        "camera_hint": "Fast tracking",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 6,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Sachin",
+        "action": "Amal grabs the wrong bag.",
+        "dialogue_malayalam": "അത് എന്റെ ബാഗാണ്!",
+        "location": "Bridge",
+        "persistent_props": [
+          "Bag"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 7,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Mist",
+        "action": "Thick fog descends.",
+        "dialogue_malayalam": "ഒന്നും കാണുന്നില്ല!",
+        "location": "Bridge",
+        "persistent_props": [
+          "Mist"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 8,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Shadow",
+        "action": "Pointing to the forest.",
+        "dialogue_malayalam": "അങ്ങോട്ട്...",
+        "location": "Bridge",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 9,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Renu",
+        "action": "The woman appears.",
+        "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
+        "location": "Bridge",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 7,
+        "shot_number": 10,
+        "episode_title": "നിരോധിക്കപ്പെട്ട പാലം (The Forbidden Bridge)",
+        "speaker": "Narrator",
+        "action": "A loud crash from the forest.",
+        "dialogue_malayalam": "എന്തോ തകർന്നു!",
+        "location": "Forest",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Dramatic audio",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 1,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Sachin",
+        "action": "Taking shelter.",
+        "dialogue_malayalam": "ഇവിടെ നിൽക്കാം.",
+        "location": "Estate building",
+        "persistent_props": [
+          "Flashlight"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 2,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Amal",
+        "action": "Attempting a ritual.",
+        "dialogue_malayalam": "ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.",
+        "location": "Estate building",
+        "persistent_props": [
+          "Salt"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 3,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Sachin",
+        "action": "Correcting Amal.",
+        "dialogue_malayalam": "അത് തെറ്റാണ് അമൽ.",
+        "location": "Estate building",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 4,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Renu",
+        "action": "Finding a box.",
+        "dialogue_malayalam": "ഇവിടെ നോക്കൂ!",
+        "location": "Storage room",
+        "persistent_props": [
+          "Box"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 5,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Sachin",
+        "action": "Reading clippings.",
+        "dialogue_malayalam": "ഇതൊരു വലിയ രഹസ്യമാണ്.",
+        "location": "Storage room",
+        "persistent_props": [
+          "Clippings"
+        ],
+        "camera_hint": "Panning shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 6,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Amal",
+        "action": "Hearing noises.",
+        "dialogue_malayalam": "ആരാ അത്?",
+        "location": "Storage room",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 7,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Renu",
+        "action": "Reading the letter.",
+        "dialogue_malayalam": "ആരോ അവളെ ചതിച്ചു.",
+        "location": "Storage room",
+        "persistent_props": [
+          "Letter"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 8,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Sachin",
+        "action": "Determined.",
+        "dialogue_malayalam": "നമുക്ക് സത്യം അറിയണം.",
+        "location": "Storage room",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 9,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Amal",
+        "action": "Trying to be brave.",
+        "dialogue_malayalam": "ഞാൻ കൂടെയുണ്ട്.",
+        "location": "Storage room",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 8,
+        "shot_number": 10,
+        "episode_title": "ഭയത്തിന്റെ രാത്രി (The Night of Fear)",
+        "speaker": "Narrator",
+        "action": "Letter text reveal.",
+        "dialogue_malayalam": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+        "location": "Storage room",
+        "persistent_props": [
+          "Letter"
+        ],
+        "camera_hint": "Zoom in",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 1,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Sachin",
+        "action": "Confronting the caretaker.",
+        "dialogue_malayalam": "ഇതെന്താണെന്ന് പറയൂ.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Evidence"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 2,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Caretaker",
+        "action": "Admitting the truth.",
+        "dialogue_malayalam": "അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 3,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Renu",
+        "action": "Listening intently.",
+        "dialogue_malayalam": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 4,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Amal",
+        "action": "Trying to solve it.",
+        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി!",
+        "location": "Homestay",
+        "persistent_props": [
+          "Evidence"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 5,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Sachin",
+        "action": "Amal's theory is absurd.",
+        "dialogue_malayalam": "അതല്ല അമൽ.",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 6,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Caretaker",
+        "action": "Warning them.",
+        "dialogue_malayalam": "ഇന്ന് രാത്രി അവൾ വരും.",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 7,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Sachin",
+        "action": "Lights go out.",
+        "dialogue_malayalam": "ലൈറ്റ് വീണ്ടും പോയി!",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Low light",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 8,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Amal",
+        "action": "Hiding.",
+        "dialogue_malayalam": "എന്നെ രക്ഷിക്കണേ!",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 9,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Renu",
+        "action": "Listening to footsteps.",
+        "dialogue_malayalam": "ആരോ വരുന്നുണ്ട്.",
+        "location": "Homestay",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 9,
+        "shot_number": 10,
+        "episode_title": "കെയർടേക്കറുടെ രഹസ്യം (The Caretaker's Secret)",
+        "speaker": "Narrator",
+        "action": "Door creaks.",
+        "dialogue_malayalam": "വാതിൽ തുറക്കുന്നു.",
+        "location": "Homestay",
+        "persistent_props": [
+          "Door"
+        ],
+        "camera_hint": "Dramatic zoom",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 1,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Sachin",
+        "action": "Entering the factory.",
+        "dialogue_malayalam": "ഇവിടെ അവസാന തെളിവുണ്ട്.",
+        "location": "Factory",
+        "persistent_props": [
+          "Flashlight"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 2,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Renu",
+        "action": "Approaching the woman.",
+        "dialogue_malayalam": "പേടിക്കണ്ട, നമ്മൾ കൂടെയുണ്ട്.",
+        "location": "Factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 3,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Amal",
+        "action": "Holding the light steady.",
+        "dialogue_malayalam": "ഞാൻ റെഡിയാണ്.",
+        "location": "Factory",
+        "persistent_props": [
+          "Flashlight"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 4,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Sachin",
+        "action": "Finding the compartment.",
+        "dialogue_malayalam": "ഇതാ അത്!",
+        "location": "Factory",
+        "persistent_props": [
+          "Evidence"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 5,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Narrator",
+        "action": "Building starts to collapse.",
+        "dialogue_malayalam": "കെട്ടിടം തകരുന്നു!",
+        "location": "Factory",
+        "persistent_props": [
+          "Debris"
+        ],
+        "camera_hint": "Shaky cam",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 6,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Amal",
+        "action": "Helping them out.",
+        "dialogue_malayalam": "വേഗം ഇങ്ങോട്ട്!",
+        "location": "Factory",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Tracking shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 7,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Sachin",
+        "action": "Holding Renu's hand.",
+        "dialogue_malayalam": "നമുക്ക് പോകാം.",
+        "location": "Outside",
+        "persistent_props": [
+          "None"
+        ],
+        "camera_hint": "Close-up",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 8,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Amal",
+        "action": "Relieved.",
+        "dialogue_malayalam": "ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.",
+        "location": "Car",
+        "persistent_props": [
+          "Car"
+        ],
+        "camera_hint": "Wide shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 9,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Sachin",
+        "action": "Looking at the photo.",
+        "dialogue_malayalam": "എല്ലാം കഴിഞ്ഞു.",
+        "location": "Car",
+        "persistent_props": [
+          "Photo"
+        ],
+        "camera_hint": "Medium shot",
+        "status": "Upcoming"
+      },
+      {
+        "season_number": 3,
+        "episode_number": 10,
+        "shot_number": 10,
+        "episode_title": "മൂന്നാറിലെ അവസാന രാത്രി (The Last Night in Munnar)",
+        "speaker": "Amal",
+        "action": "Seeing the ghost in the photo.",
+        "dialogue_malayalam": "അയ്യോ! ഇത് ആരാ?",
+        "location": "Car",
+        "persistent_props": [
+          "Photo"
+        ],
+        "camera_hint": "Extreme close-up",
+        "status": "Upcoming"
+      }
+    ]
+  }
 }
