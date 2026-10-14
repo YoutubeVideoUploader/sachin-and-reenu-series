@@ -1871,6 +1871,28 @@ function handleNextEpisodeFullUpdate(body) {
     Logger.log("Error updating Character_Registry: " + charErr.toString());
   }
 
+  // 6. Synchronize Tab 7: Season_Shot_Outline for active episode shots
+  try {
+    const outlineSheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+    if (outlineSheet && outlineSheet.getLastRow() >= 3 && body.shots && Array.isArray(body.shots)) {
+      for (let sIdx = 0; sIdx < body.shots.length; sIdx++) {
+        const s = body.shots[sIdx];
+        const sNum = s.shot_number || (sIdx + 1);
+        const targetRow = 3 + (epNum - 1) * 10 + (sNum - 1);
+        if (targetRow <= outlineSheet.getLastRow()) {
+          if (s.character) outlineSheet.getRange(targetRow, 5).setValue(s.character);
+          if (s.action_summary) outlineSheet.getRange(targetRow, 6).setValue(s.action_summary);
+          if (s.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(s.dialogue_malayalam);
+          outlineSheet.getRange(targetRow, 10).setValue("Active Episode");
+        }
+      }
+      Logger.log(`Synchronized Episode ${epNum} (${body.shots.length} shots) to Tab 7 [${TAB_SHOT_OUTLINE}]`);
+    }
+  } catch (outErr) {
+    Logger.log("Error synchronizing Tab 7: " + outErr.toString());
+  }
+
+
   // Auto-scan single 'Episode' Drive folder immediately
   try {
     syncDriveToChecklist(epNum);
@@ -2419,6 +2441,7 @@ function updateSingleShotPrompt(episodeNum, shotNum, shotData) {
   const lastRow = sheet.getLastRow();
   const numRows = lastRow - 2;
   const pData = sheet.getRange(3, 1, numRows, 6).getValues();
+  let updatedInTab2 = false;
   
   for (let i = 0; i < pData.length; i++) {
     const currentShotNum = i + 1;
@@ -2431,11 +2454,35 @@ function updateSingleShotPrompt(episodeNum, shotNum, shotData) {
         const jsonStr = typeof shotData.json_prompt === 'string' ? shotData.json_prompt : JSON.stringify(shotData.json_prompt, null, 2);
         sheet.getRange(i + 3, 6).setValue(jsonStr);
       }
-      return {
-        success: true,
-        message: `Shot #${shotNum} updated directly in Tab 2 [Current_JSON_Prompts]!`
-      };
+      updatedInTab2 = true;
+      break;
     }
+  }
+
+  // BIDIRECTIONAL SYNC: Simultaneously update Tab 7 [Season_Shot_Outline]
+  try {
+    const outlineSheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+    if (outlineSheet && outlineSheet.getLastRow() >= 3) {
+      const epN = Number(episodeNum) || 1;
+      const shN = Number(shotNum) || 1;
+      const targetRow = 3 + (epN - 1) * 10 + (shN - 1);
+      if (targetRow <= outlineSheet.getLastRow()) {
+        if (shotData.character) outlineSheet.getRange(targetRow, 5).setValue(shotData.character);
+        if (shotData.action_summary) outlineSheet.getRange(targetRow, 6).setValue(shotData.action_summary);
+        if (shotData.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(shotData.dialogue_malayalam);
+        if (shotData.location) outlineSheet.getRange(targetRow, 8).setValue(shotData.location);
+        outlineSheet.getRange(targetRow, 10).setValue("Prompt Ready");
+      }
+    }
+  } catch (syncErr) {
+    Logger.log("Notice syncing to Tab 7: " + syncErr.toString());
+  }
+
+  if (updatedInTab2) {
+    return {
+      success: true,
+      message: `Shot #${shotNum} updated in Tab 2 [Current_JSON_Prompts] & synchronized with Tab 7 [Season_Shot_Outline]!`
+    };
   }
   return { success: false, error: `Shot #${shotNum} not found in Tab 2` };
 }

@@ -128,114 +128,158 @@
       "episode_number": 2,
       "title_english": "The Woman in the Mist",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
-      "synopsis": "Sachin dismisses Renu's claim. Car engine sputters and dies.",
-      "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'",
+      "synopsis": "Traveling through the heavy mountain fog, Sachin, Reenu, and Amal face an eerie presence when their car sputters to a halt.",
+      "cliffhanger": "A freezing handprint slowly presses against the outer window glass from the dark outside.",
       "shots": [
         {
           "shot_number": 1,
           "speaker": "Sachin",
-          "action": "Sachin dismisses Renu's claim.",
-          "dialogue_malayalam": "അതൊരു സാധാരണ യാത്രക്കാരിയാകും.",
-          "location": "Tea shop",
+          "action": "Sachin peers through the misty passenger-side window in astonishment, noticing the woman disappearing into the thick fog while Amal navigates the car forward.",
+          "dialogue_malayalam": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Tea glass"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Dynamic cinematic 3D medium shot"
+          "camera_hint": "Cinematic 3D medium close-up focused on Sachin looking out window"
         },
         {
           "shot_number": 2,
           "speaker": "Amal",
-          "action": "Amal acts brave.",
-          "dialogue_malayalam": "ഞാൻ പേടിക്കുന്ന ആളല്ല കേട്ടോ.",
-          "location": "Tea shop",
+          "action": "Amal nervously grips the steering wheel tightly in the driver's seat, his eyes darting across the dark rearview mirrors and misted windshield.",
+          "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Tea glass"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Dynamic cinematic 3D medium shot"
+          "camera_hint": "Cinematic 3D medium shot focused on Amal in driver seat"
         },
         {
           "shot_number": 3,
-          "speaker": "Shopkeeper",
-          "action": "Warning them about the forest road.",
-          "dialogue_malayalam": "ആ വഴി പോകരുത്, നല്ലതല്ല.",
-          "location": "Tea shop",
+          "speaker": "Amal",
+          "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+          "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Warning sign"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Dynamic cinematic 3D medium shot"
+          "camera_hint": "Dramatic 3D medium close-up of Amal turning ignition key with worried look"
         },
         {
           "shot_number": 4,
-          "speaker": "Amal",
-          "action": "Amal laughs.",
-          "dialogue_malayalam": "ഇതൊക്കെ വെറും കഥകളാണ്.",
-          "location": "Road",
+          "speaker": "Sachin",
+          "action": "Sachin unbuckles his seatbelt in the front passenger seat and prepares to crack open the passenger door into the biting mountain cold to inspect the car bonnet.",
+          "dialogue_malayalam": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Car"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Wide atmospheric cinematic 3D shot with mist and high-range depth"
+          "camera_hint": "Cinematic 3D medium shot of Sachin unbuckling in passenger seat"
         },
         {
           "shot_number": 5,
-          "speaker": "Sachin",
-          "action": "Car engine sputters and dies.",
-          "dialogue_malayalam": "അയ്യോ, വണ്ടി സ്റ്റാർട്ട് ആകുന്നില്ല!",
-          "location": "Forest road",
+          "speaker": "Reenu",
+          "action": "Reenu leans forward anxiously from the rear seat, clutching the front headrest in dread, warning Sachin not to leave the vehicle as dark shadows drift outside.",
+          "dialogue_malayalam": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Car"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Wide atmospheric cinematic 3D shot with mist and high-range depth"
+          "camera_hint": "Expressive 3D close-up of Reenu leaning between front seats in dread"
         },
         {
           "shot_number": 6,
           "speaker": "Amal",
-          "action": "Amal hears a noise from the bushes.",
-          "dialogue_malayalam": "അതവിടെന്താ അനങ്ങുന്നത്?",
-          "location": "Forest road",
+          "action": "Amal urgently snaps the driver-side door lock down and frantically gestures for Sachin and Reenu to secure all doors as fear grips the cabin.",
+          "dialogue_malayalam": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Bushes"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Wide atmospheric cinematic 3D shot with mist and high-range depth"
+          "camera_hint": "Dynamic 3D medium close-up of Amal snapping lock down"
         },
         {
           "shot_number": 7,
           "speaker": "Sachin",
-          "action": "Sachin tries to fix the engine.",
-          "dialogue_malayalam": "ഞാൻ നോക്കാം.",
-          "location": "Car bonnet",
+          "action": "Sachin pulls his travel jacket tight against the freezing monsoon mountain gust blowing through the cracked window glass, breath misting in the cold air.",
+          "dialogue_malayalam": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Tools"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Interior car medium shot, dynamic angle"
+          "camera_hint": "Cinematic 3D close-up of Sachin shivering by passenger window"
         },
         {
           "shot_number": 8,
           "speaker": "Amal",
-          "action": "Amal hides behind Renu.",
-          "dialogue_malayalam": "റീനു, നീ ഒന്ന് നോക്കിയേ.",
-          "location": "Forest road",
-          "persistent_props": [],
-          "camera_hint": "Wide atmospheric cinematic 3D shot with mist and high-range depth"
+          "action": "Amal recoils in terror in the driver's seat, staring wide-eyed into the illuminated side rearview mirror where an eerie shadowy silhouette looms close.",
+          "dialogue_malayalam": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Over-the-shoulder 3D shot past Amal looking into mirror reflection"
         },
         {
           "shot_number": 9,
-          "speaker": "Amal",
-          "action": "Amal pretends he was checking for animals.",
-          "dialogue_malayalam": "ഞാൻ മൃഗങ്ങളെ നോക്കിയതാ.",
-          "location": "Forest road",
-          "persistent_props": [],
-          "camera_hint": "Wide atmospheric cinematic 3D shot with mist and high-range depth"
+          "speaker": "Sachin",
+          "action": "Sachin quickly pulls his legs back inside the passenger seat, slams the door shut, and urgently turns to Amal in the driver seat, yelling to start the engine.",
+          "dialogue_malayalam": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Tense two-shot of Sachin turning frantically to Amal in driver seat"
         },
         {
           "shot_number": 10,
-          "speaker": "Renu",
-          "action": "Renu sees the reflection in the window.",
-          "dialogue_malayalam": "അവൻ പിന്നിൽ!",
-          "location": "Car",
+          "speaker": "Reenu",
+          "action": "Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.",
+          "dialogue_malayalam": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+          "location": "Mountain road car interior",
           "persistent_props": [
-            "Window reflection"
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
           ],
-          "camera_hint": "Interior car medium shot, dynamic angle"
+          "camera_hint": "Chilling 3D close-up of Reenu's terrified face with glowing handprint on glass"
         }
       ]
     },
@@ -1303,13 +1347,18 @@
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
       "speaker": "Sachin",
-      "action": "Sachin dismisses Renu's claim.",
-      "dialogue_malayalam": "അതൊരു സാധാരണ യാത്രക്കാരിയാകും.",
-      "location": "Tea shop",
+      "action": "Sachin peers through the misty passenger-side window in astonishment, noticing the woman disappearing into the thick fog while Amal navigates the car forward.",
+      "dialogue_malayalam": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Tea glass"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Cinematic 3D medium close-up focused on Sachin looking out window"
     },
     {
       "season_number": 3,
@@ -1319,13 +1368,18 @@
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
       "speaker": "Amal",
-      "action": "Amal acts brave.",
-      "dialogue_malayalam": "ഞാൻ പേടിക്കുന്ന ആളല്ല കേട്ടോ.",
-      "location": "Tea shop",
+      "action": "Amal nervously grips the steering wheel tightly in the driver's seat, his eyes darting across the dark rearview mirrors and misted windshield.",
+      "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Tea glass"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Cinematic 3D medium shot focused on Amal in driver seat"
     },
     {
       "season_number": 3,
@@ -1334,14 +1388,19 @@
       "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
-      "speaker": "Shopkeeper",
-      "action": "Warning them about the forest road.",
-      "dialogue_malayalam": "ആ വഴി പോകരുത്, നല്ലതല്ല.",
-      "location": "Tea shop",
+      "speaker": "Amal",
+      "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+      "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Warning sign"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Dramatic 3D medium close-up of Amal turning ignition key with worried look"
     },
     {
       "season_number": 3,
@@ -1350,14 +1409,19 @@
       "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
-      "speaker": "Amal",
-      "action": "Amal laughs.",
-      "dialogue_malayalam": "ഇതൊക്കെ വെറും കഥകളാണ്.",
-      "location": "Road",
+      "speaker": "Sachin",
+      "action": "Sachin unbuckles his seatbelt in the front passenger seat and prepares to crack open the passenger door into the biting mountain cold to inspect the car bonnet.",
+      "dialogue_malayalam": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Car"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Cinematic 3D medium shot of Sachin unbuckling in passenger seat"
     },
     {
       "season_number": 3,
@@ -1366,14 +1430,19 @@
       "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
-      "speaker": "Sachin",
-      "action": "Car engine sputters and dies.",
-      "dialogue_malayalam": "അയ്യോ, വണ്ടി സ്റ്റാർട്ട് ആകുന്നില്ല!",
-      "location": "Forest road",
+      "speaker": "Reenu",
+      "action": "Reenu leans forward anxiously from the rear seat, clutching the front headrest in dread, warning Sachin not to leave the vehicle as dark shadows drift outside.",
+      "dialogue_malayalam": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Car"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Expressive 3D close-up of Reenu leaning between front seats in dread"
     },
     {
       "season_number": 3,
@@ -1383,13 +1452,18 @@
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
       "speaker": "Amal",
-      "action": "Amal hears a noise from the bushes.",
-      "dialogue_malayalam": "അതവിടെന്താ അനങ്ങുന്നത്?",
-      "location": "Forest road",
+      "action": "Amal urgently snaps the driver-side door lock down and frantically gestures for Sachin and Reenu to secure all doors as fear grips the cabin.",
+      "dialogue_malayalam": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Bushes"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Dynamic 3D medium close-up of Amal snapping lock down"
     },
     {
       "season_number": 3,
@@ -1399,13 +1473,18 @@
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
       "speaker": "Sachin",
-      "action": "Sachin tries to fix the engine.",
-      "dialogue_malayalam": "ഞാൻ നോക്കാം.",
-      "location": "Car bonnet",
+      "action": "Sachin pulls his travel jacket tight against the freezing monsoon mountain gust blowing through the cracked window glass, breath misting in the cold air.",
+      "dialogue_malayalam": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Tools"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Cinematic 3D close-up of Sachin shivering by passenger window"
     },
     {
       "season_number": 3,
@@ -1415,11 +1494,18 @@
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
       "speaker": "Amal",
-      "action": "Amal hides behind Renu.",
-      "dialogue_malayalam": "റീനു, നീ ഒന്ന് നോക്കിയേ.",
-      "location": "Forest road",
-      "persistent_props": [],
-      "status": "Upcoming"
+      "action": "Amal recoils in terror in the driver's seat, staring wide-eyed into the illuminated side rearview mirror where an eerie shadowy silhouette looms close.",
+      "dialogue_malayalam": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+      "location": "Mountain road car interior",
+      "persistent_props": [
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
+      ],
+      "status": "Upcoming",
+      "camera_hint": "Over-the-shoulder 3D shot past Amal looking into mirror reflection"
     },
     {
       "season_number": 3,
@@ -1428,12 +1514,19 @@
       "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
-      "speaker": "Amal",
-      "action": "Amal pretends he was checking for animals.",
-      "dialogue_malayalam": "ഞാൻ മൃഗങ്ങളെ നോക്കിയതാ.",
-      "location": "Forest road",
-      "persistent_props": [],
-      "status": "Upcoming"
+      "speaker": "Sachin",
+      "action": "Sachin quickly pulls his legs back inside the passenger seat, slams the door shut, and urgently turns to Amal in the driver seat, yelling to start the engine.",
+      "dialogue_malayalam": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+      "location": "Mountain road car interior",
+      "persistent_props": [
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
+      ],
+      "status": "Upcoming",
+      "camera_hint": "Tense two-shot of Sachin turning frantically to Amal in driver seat"
     },
     {
       "season_number": 3,
@@ -1442,14 +1535,19 @@
       "episode_title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
       "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
       "title_english": "The Woman in the Mist",
-      "speaker": "Renu",
-      "action": "Renu sees the reflection in the window.",
-      "dialogue_malayalam": "അവൻ പിന്നിൽ!",
-      "location": "Car",
+      "speaker": "Reenu",
+      "action": "Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.",
+      "dialogue_malayalam": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+      "location": "Mountain road car interior",
       "persistent_props": [
-        "Window reflection"
+        "Car steering wheel",
+        "Rearview mirror",
+        "Illuminated dashboard dials",
+        "Car ignition key",
+        "Sachin's cross-bag"
       ],
-      "status": "Upcoming"
+      "status": "Upcoming",
+      "camera_hint": "Chilling 3D close-up of Reenu's terrified face with glowing handprint on glass"
     },
     {
       "season_number": 3,
