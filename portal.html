@@ -858,6 +858,9 @@
         <button class="btn btn-secondary" style="padding: 14px 22px; font-size: 15px;" onclick="syncDriveStatus()">
           🔄 Refresh Drive Status
         </button>
+        <button class="btn btn-secondary" id="manageMusicBtn" style="padding: 14px 22px; font-size: 15px; background: #312e81; border-color: #6366f1; color: #e0e7ff;" onclick="openEpisodeMusicModal()">
+          🎵 Manage Episode Music
+        </button>
         <button class="btn btn-primary" id="bulkUploadBtn" style="padding: 14px 28px; font-size: 15px;" onclick="uploadFilesToDrive()">
           ☁️ Upload All Staged Clips to Google Drive
         </button>
@@ -1423,6 +1426,172 @@
         </button>
         <button id="btnLaunchSeason2" class="btn btn-primary" onclick="launchSeason2Transition()" style="padding: 10px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%); border: none; box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);">
           🎬 Proceed to Next Episode & Rewrite Google Sheets
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Episode Custom Music Manager Modal -->
+  <div class="modal-backdrop" id="episodeMusicModal" onclick="handleEpisodeMusicModalBackdrop(event)" style="display: none;">
+    <div class="modal-card" style="max-width: 680px; background: #0c0f1d; border: 1px solid #4f46e5; box-shadow: 0 20px 60px rgba(79, 70, 229, 0.35);">
+      <!-- Modal Header -->
+      <div style="padding: 18px 24px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1b4b 0%, #0c0f1d 100%);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 26px;">🎵</span>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">Episode Custom Music Manager</h3>
+            <div style="font-size: 12px; color: #a5b4fc;">Google Drive Folder: <span style="font-family: monospace; color: #38bdf8;">Episode_Music</span> • Shuffled in Random Order</div>
+          </div>
+        </div>
+        <button onclick="closeEpisodeMusicModal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 18px; max-height: 70vh; overflow-y: auto;">
+        
+        <!-- Info Alert -->
+        <div style="background: rgba(79, 70, 229, 0.12); border-left: 4px solid #6366f1; border-radius: 0 8px 8px 0; padding: 12px 14px;">
+          <div style="font-size: 12px; font-weight: 800; color: #c7d2fe; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
+            🎧 Random Order Custom Soundtracks
+          </div>
+          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+            Upload one or more custom audio tracks for this episode into Google Drive. When assembling the video, these tracks will be <b>played in randomized sequence</b> underneath the spoken Malayalam dialogue at background volume (vol 0.32).
+          </div>
+        </div>
+
+        <!-- Audio Upload Section -->
+        <div style="background: #111827; border: 2px dashed #374151; border-radius: 12px; padding: 20px; text-align: center; transition: border-color 0.2s;" id="musicDropZone">
+          <input type="file" id="episodeMusicFileInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg" multiple style="display: none;" onchange="handleEpisodeMusicFileSelect(event)">
+          <div style="font-size: 32px; margin-bottom: 8px;">📂</div>
+          <div style="font-size: 14px; font-weight: 700; color: #f3f4f6; margin-bottom: 4px;">Select or Drag Custom Audio Tracks</div>
+          <div style="font-size: 12px; color: #9ca3af; margin-bottom: 14px;">Supports MP3, WAV, M4A, AAC, OGG (Upload single or multiple songs)</div>
+          <button class="btn btn-secondary" onclick="document.getElementById('episodeMusicFileInput').click()" style="padding: 8px 18px; font-size: 13px; background: #1f2937; border-color: #4b5563;">
+            📁 Browse Audio Files
+          </button>
+        </div>
+
+        <!-- Selected Files Queue for Upload -->
+        <div id="stagedMusicContainer" style="display: none; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 14px;">
+          <div style="font-size: 12px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+            <span>Selected Files Ready to Upload:</span>
+            <span id="stagedMusicCount" style="color: #94a3b8; font-weight: 400; font-size: 11px;">0 files</span>
+          </div>
+          <div id="stagedMusicList" style="display: flex; flex-direction: column; gap: 8px; max-height: 140px; overflow-y: auto;"></div>
+          <div style="margin-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
+            <button class="btn btn-secondary" onclick="clearStagedMusic()" style="padding: 6px 14px; font-size: 12px;">Cancel</button>
+            <button class="btn btn-primary" id="btnUploadMusicDrive" onclick="uploadStagedMusicToDrive()" style="padding: 8px 20px; font-size: 13px; font-weight: 700; background: #4f46e5; border-color: #6366f1;">
+              ☁️ Upload to Google Drive (Episode_Music)
+            </button>
+          </div>
+        </div>
+
+        <!-- Uploading Spinner / Progress -->
+        <div id="musicUploadProgress" style="display: none; background: #0b1329; border: 1px solid #3b82f6; border-radius: 8px; padding: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <div class="pulse" style="background: #38bdf8;"></div>
+            <div style="font-size: 13px; font-weight: 800; color: #38bdf8;" id="musicUploadProgressTitle">Uploading Tracks to Google Drive...</div>
+          </div>
+          <div style="width: 100%; background: #1e293b; height: 6px; border-radius: 3px; overflow: hidden;">
+            <div id="musicProgressBar" style="width: 0%; height: 100%; background: #38bdf8; transition: width 0.3s;"></div>
+          </div>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 6px;" id="musicUploadProgressDetail">Encoding & streaming file to Episode_Music folder...</div>
+        </div>
+
+        <!-- Live Drive Tracks List -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div style="font-size: 13px; font-weight: 800; color: #e2e8f0; display: flex; align-items: center; gap: 8px;">
+              <span>📁 Current Tracks in Drive Folder (<span id="driveMusicCount">0</span>)</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary" onclick="fetchEpisodeMusicList(true)" style="padding: 4px 10px; font-size: 11px;">
+                🔄 Refresh
+              </button>
+              <button class="btn btn-secondary" onclick="deleteAllEpisodeMusic()" id="btnDeleteAllMusic" style="padding: 4px 10px; font-size: 11px; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.1);">
+                🗑️ Delete All Tracks
+              </button>
+            </div>
+          </div>
+
+          <div id="driveMusicListContainer" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="text-align: center; padding: 24px; color: #94a3b8; font-size: 13px; background: #090d1a; border-radius: 8px; border: 1px dashed #1e293b;">
+              Loading tracks from Drive...
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="padding: 14px 24px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; color: #94a3b8;" id="musicModalStatusMsg">Ready</span>
+        <button class="btn btn-secondary" onclick="closeEpisodeMusicModal()" style="padding: 8px 20px; font-size: 13px;">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assembly Music Source Selector Modal -->
+  <div class="modal-backdrop" id="musicSelectModal" onclick="handleMusicSelectModalBackdrop(event)" style="display: none;">
+    <div class="modal-card" style="max-width: 580px; background: #0c0f1d; border: 1px solid #06b6d4; box-shadow: 0 20px 60px rgba(6, 182, 212, 0.35);">
+      <!-- Modal Header -->
+      <div style="padding: 18px 24px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #083344 0%, #0c0f1d 100%);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 26px;">🎬</span>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">Instagram Assembly: Choose Soundtrack</h3>
+            <div style="font-size: 12px; color: #67e8f9;" id="musicSelectSubtitle">Episode Soundtrack Selection</div>
+          </div>
+        </div>
+        <button onclick="closeMusicSelectModal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 16px;">
+        <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.5;">
+          Which background music would you like to blend underneath the spoken Malayalam dialogue for this episode?
+        </p>
+
+        <!-- Option 1: Episode Custom Music -->
+        <div id="optEpisodeCustomMusic" onclick="selectMusicSource('episode_custom')" style="border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.1); border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.2s; position: relative;">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="font-size: 28px;">🎵</div>
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 15px; font-weight: 800; color: #e0e7ff;">Use Episode Custom Music</span>
+                <span id="optCustomBadge" style="font-size: 11px; background: #4f46e5; color: #fff; padding: 2px 8px; border-radius: 10px; font-weight: 700;">Drive Folder</span>
+              </div>
+              <div style="font-size: 12px; color: #a5b4fc; line-height: 1.4;">
+                Uses custom music uploaded to Google Drive <span style="font-family: monospace; color: #38bdf8;">Episode_Music</span> folder. Multiple songs will be <b>played in random order</b>.
+              </div>
+              <div id="optCustomMusicStatus" style="font-size: 11px; color: #38bdf8; margin-top: 6px; font-weight: 600;">
+                Checking available tracks in Drive...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option 2: General Series Music -->
+        <div id="optGeneralMusic" onclick="selectMusicSource('general')" style="border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.2s; position: relative;">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="font-size: 28px;">🎼</div>
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 15px; font-weight: 800; color: #f1f5f9;">Use General Series Music</span>
+                <span style="font-size: 11px; background: #334155; color: #cbd5e1; padding: 2px 8px; border-radius: 10px; font-weight: 700;">Default</span>
+              </div>
+              <div style="font-size: 12px; color: #94a3b8; line-height: 1.4;">
+                Uses standard rotating studio romantic BGM tracks from the built-in library (10 rotating soundtracks @ volume 0.18/0.32).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="padding: 14px 24px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn btn-secondary" onclick="closeMusicSelectModal()" style="padding: 8px 18px; font-size: 13px;">Cancel</button>
+        <button class="btn btn-primary" id="btnConfirmTriggerAssembly" onclick="executeTriggerAssemblyWithSelectedMusic()" style="padding: 10px 22px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #0891b2 0%, #0284c7 100%); border: none;">
+          🚀 Proceed & Assemble Episode Now
         </button>
       </div>
     </div>
@@ -2719,16 +2888,392 @@
       });
     }
 
-    async function triggerAssembly() {
+    // =============================================================
+    // EPISODE CUSTOM MUSIC MANAGEMENT (Google Drive: Episode_Music)
+    // =============================================================
+    window.stagedEpisodeMusicFiles = [];
+    window.driveEpisodeMusicFiles = [];
+    window.selectedMusicSource = 'general';
+
+    function openEpisodeMusicModal() {
+      const modal = document.getElementById('episodeMusicModal');
+      if (modal) modal.style.display = 'flex';
+      setupMusicDropZone();
+      fetchEpisodeMusicList();
+    }
+
+    function closeEpisodeMusicModal() {
+      const modal = document.getElementById('episodeMusicModal');
+      if (modal) modal.style.display = 'none';
+      clearStagedMusic();
+    }
+
+    function handleEpisodeMusicModalBackdrop(event) {
+      if (event.target && event.target.id === 'episodeMusicModal') {
+        closeEpisodeMusicModal();
+      }
+    }
+
+    function setupMusicDropZone() {
+      const dropZone = document.getElementById('musicDropZone');
+      if (!dropZone || dropZone._hasDropListeners) return;
+      dropZone._hasDropListeners = true;
+
+      ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.style.borderColor = '#6366f1';
+          dropZone.style.background = 'rgba(99, 102, 241, 0.08)';
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.style.borderColor = '#374151';
+          dropZone.style.background = '#111827';
+        });
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        if (dt && dt.files && dt.files.length > 0) {
+          handleIncomingMusicFiles(dt.files);
+        }
+      });
+    }
+
+    function handleEpisodeMusicFileSelect(event) {
+      if (event.target && event.target.files) {
+        handleIncomingMusicFiles(event.target.files);
+      }
+    }
+
+    function handleIncomingMusicFiles(fileList) {
+      for (let i = 0; i < fileList.length; i++) {
+        const file = fileList[i];
+        if (file.name.match(/\.(mp3|wav|m4a|aac|ogg|flac)$/i) || file.type.startsWith('audio/')) {
+          if (!window.stagedEpisodeMusicFiles.some(f => f.name === file.name && f.size === file.size)) {
+            window.stagedEpisodeMusicFiles.push(file);
+          }
+        }
+      }
+      renderStagedMusicList();
+    }
+
+    function renderStagedMusicList() {
+      const container = document.getElementById('stagedMusicContainer');
+      const listEl = document.getElementById('stagedMusicList');
+      const countEl = document.getElementById('stagedMusicCount');
+      if (!container || !listEl) return;
+
+      if (window.stagedEpisodeMusicFiles.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      if (countEl) countEl.innerText = `${window.stagedEpisodeMusicFiles.length} file(s) selected`;
+
+      listEl.innerHTML = window.stagedEpisodeMusicFiles.map((file, idx) => `
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 8px 12px; border-radius: 6px; font-size: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
+            <span>🎵</span>
+            <span style="color: #f1f5f9; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 320px;">${escapeHtml(file.name)}</span>
+            <span style="color: #94a3b8; font-size: 11px;">(${(file.size / (1024 * 1024)).toFixed(2)} MB)</span>
+          </div>
+          <button onclick="removeStagedMusic(${idx})" style="background: none; border: none; color: #f87171; cursor: pointer; font-size: 14px; padding: 2px 6px;">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function removeStagedMusic(idx) {
+      window.stagedEpisodeMusicFiles.splice(idx, 1);
+      renderStagedMusicList();
+    }
+
+    function clearStagedMusic() {
+      window.stagedEpisodeMusicFiles = [];
+      const fileInput = document.getElementById('episodeMusicFileInput');
+      if (fileInput) fileInput.value = '';
+      renderStagedMusicList();
+    }
+
+    async function uploadStagedMusicToDrive() {
+      if (window.stagedEpisodeMusicFiles.length === 0) return;
+
+      const progressBox = document.getElementById('musicUploadProgress');
+      const progressBar = document.getElementById('musicProgressBar');
+      const progressTitle = document.getElementById('musicUploadProgressTitle');
+      const progressDetail = document.getElementById('musicUploadProgressDetail');
+      const btnUpload = document.getElementById('btnUploadMusicDrive');
+
+      if (btnUpload) btnUpload.disabled = true;
+      if (progressBox) progressBox.style.display = 'block';
+
+      const total = window.stagedEpisodeMusicFiles.length;
+      let uploaded = 0;
+
+      for (let i = 0; i < total; i++) {
+        const file = window.stagedEpisodeMusicFiles[i];
+        if (progressTitle) progressTitle.innerText = `Uploading Track ${i + 1} of ${total}...`;
+        if (progressDetail) progressDetail.innerText = `Reading and uploading "${file.name}" to Episode_Music folder...`;
+        if (progressBar) progressBar.style.width = `${Math.round(((i) / total) * 100)}%`;
+
+        try {
+          const base64Data = await readFileAsBase64(file);
+          const payload = {
+            action: "upload_episode_music",
+            filename: file.name,
+            mime_type: file.type || "audio/mpeg",
+            base64_data: base64Data
+          };
+
+          const res = await fetch(getActiveGasUrl(), {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(payload)
+          });
+          const resJson = await res.json();
+          if (resJson.success) {
+            uploaded++;
+          }
+        } catch (err) {
+          console.error("Failed to upload music track:", file.name, err);
+        }
+      }
+
+      if (progressBar) progressBar.style.width = '100%';
+      if (progressTitle) progressTitle.innerText = `Upload Complete!`;
+      if (progressDetail) progressDetail.innerText = `Successfully uploaded ${uploaded} track(s) to Google Drive.`;
+
+      setTimeout(() => {
+        if (progressBox) progressBox.style.display = 'none';
+        if (btnUpload) btnUpload.disabled = false;
+        clearStagedMusic();
+        fetchEpisodeMusicList(true);
+      }, 1200);
+    }
+
+    async function fetchEpisodeMusicList(isManual = false) {
+      const container = document.getElementById('driveMusicListContainer');
+      const countEl = document.getElementById('driveMusicCount');
+      const statusMsg = document.getElementById('musicModalStatusMsg');
+      const btnDeleteAll = document.getElementById('btnDeleteAllMusic');
+
+      if (statusMsg) statusMsg.innerText = 'Syncing tracks from Google Drive...';
+
+      try {
+        const gasUrl = getActiveGasUrl();
+        const res = await fetch(`${gasUrl}?action=list_episode_music&_t=${Date.now()}`);
+        const data = await res.json();
+
+        if (data && data.success && Array.isArray(data.files)) {
+          window.driveEpisodeMusicFiles = data.files;
+          if (countEl) countEl.innerText = data.files.length;
+
+          if (btnDeleteAll) {
+            btnDeleteAll.style.display = data.files.length > 0 ? 'inline-block' : 'none';
+          }
+
+          if (data.files.length === 0) {
+            if (container) {
+              container.innerHTML = `
+                <div style="text-align: center; padding: 24px; color: #94a3b8; font-size: 13px; background: #090d1a; border-radius: 8px; border: 1px dashed #1e293b;">
+                  No custom music uploaded yet in <span style="color: #38bdf8; font-family: monospace;">Episode_Music</span>.<br>
+                  <span style="font-size: 11px; color: #64748b;">General series music will be used by default when generating this episode.</span>
+                </div>
+              `;
+            }
+            if (statusMsg) statusMsg.innerText = 'Drive folder is empty';
+          } else {
+            if (container) {
+              container.innerHTML = data.files.map((file, idx) => `
+                <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 16px;">🎵</span>
+                      <div>
+                        <div style="font-size: 13px; font-weight: 700; color: #f1f5f9;">${escapeHtml(file.name)}</div>
+                        <div style="font-size: 11px; color: #94a3b8;">${file.size_mb || (file.size / (1024*1024)).toFixed(2)} MB • Added ${file.created_at ? new Date(file.created_at).toLocaleDateString() : 'Recently'}</div>
+                      </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="deleteEpisodeMusic('${file.id}', '${escapeHtml(file.name)}')" style="padding: 4px 10px; font-size: 11px; color: #f87171; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.08);">
+                      🗑️ Delete
+                    </button>
+                  </div>
+                  ${file.download_url ? `
+                    <audio controls preload="none" style="width: 100%; height: 32px; border-radius: 4px;" src="${file.download_url}">
+                      Your browser does not support audio playback.
+                    </audio>
+                  ` : ''}
+                </div>
+              `).join('');
+            }
+            if (statusMsg) statusMsg.innerText = `${data.files.length} track(s) ready in Episode_Music`;
+          }
+
+          updateMusicSelectModalStatus();
+        }
+      } catch (err) {
+        console.error("Error fetching episode music list:", err);
+        if (container) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 20px; color: #f87171; font-size: 12px; background: rgba(239, 68, 68, 0.08); border-radius: 8px;">
+              ⚠️ Could not connect to Google Drive to list music files.
+            </div>
+          `;
+        }
+        if (statusMsg) statusMsg.innerText = 'Connection error';
+      }
+    }
+
+    async function deleteEpisodeMusic(fileId, fileName) {
+      if (!confirm(`Are you sure you want to delete "${fileName}" from Google Drive Episode_Music folder?`)) {
+        return;
+      }
+
+      const statusMsg = document.getElementById('musicModalStatusMsg');
+      if (statusMsg) statusMsg.innerText = `Deleting "${fileName}"...`;
+
+      try {
+        const res = await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ action: "delete_episode_music", file_id: fileId })
+        });
+        const resJson = await res.json();
+        if (resJson.success) {
+          fetchEpisodeMusicList(true);
+        } else {
+          alert(`Could not delete file: ${resJson.error || "Unknown error"}`);
+        }
+      } catch (err) {
+        console.error("Delete error:", err);
+        alert(`Error deleting file: ${err.message}`);
+      }
+    }
+
+    async function deleteAllEpisodeMusic() {
+      const count = (window.driveEpisodeMusicFiles || []).length;
+      if (count === 0) return;
+
+      if (!confirm(`⚠️ ARE YOU SURE?\n\nThis will PERMANENTLY DELETE all (${count}) custom music tracks from the Google Drive 'Episode_Music' folder.\n\nContinue?`)) {
+        return;
+      }
+
+      const statusMsg = document.getElementById('musicModalStatusMsg');
+      if (statusMsg) statusMsg.innerText = `Deleting all ${count} tracks from Drive...`;
+
+      try {
+        const res = await fetch(getActiveGasUrl(), {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ action: "delete_episode_music", delete_all: true })
+        });
+        const resJson = await res.json();
+        if (resJson.success) {
+          fetchEpisodeMusicList(true);
+        } else {
+          alert(`Could not delete files: ${resJson.error || "Unknown error"}`);
+        }
+      } catch (err) {
+        console.error("Delete all error:", err);
+        alert(`Error deleting tracks: ${err.message}`);
+      }
+    }
+
+    // =============================================================
+    // MUSIC SELECTION MODAL BEFORE INSTAGRAM ASSEMBLY
+    // =============================================================
+    function openMusicSelectModal() {
+      const modal = document.getElementById('musicSelectModal');
+      if (modal) modal.style.display = 'flex';
+      const sub = document.getElementById('musicSelectSubtitle');
+      if (sub) sub.innerText = `Episode ${episodeData.episode_number || 1} Soundtrack Selection`;
+
+      // Auto-select custom if tracks exist, else general
+      const hasCustom = (window.driveEpisodeMusicFiles && window.driveEpisodeMusicFiles.length > 0);
+      selectMusicSource(hasCustom ? 'episode_custom' : 'general');
+      updateMusicSelectModalStatus();
+      fetchEpisodeMusicList();
+    }
+
+    function closeMusicSelectModal() {
+      const modal = document.getElementById('musicSelectModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function handleMusicSelectModalBackdrop(event) {
+      if (event.target && event.target.id === 'musicSelectModal') {
+        closeMusicSelectModal();
+      }
+    }
+
+    function selectMusicSource(source) {
+      window.selectedMusicSource = source;
+      const optCustom = document.getElementById('optEpisodeCustomMusic');
+      const optGeneral = document.getElementById('optGeneralMusic');
+
+      if (source === 'episode_custom') {
+        if (optCustom) {
+          optCustom.style.borderColor = '#6366f1';
+          optCustom.style.background = 'rgba(99, 102, 241, 0.15)';
+          optCustom.style.boxShadow = '0 0 20px rgba(99, 102, 241, 0.3)';
+        }
+        if (optGeneral) {
+          optGeneral.style.borderColor = '#334155';
+          optGeneral.style.background = 'rgba(15, 23, 42, 0.6)';
+          optGeneral.style.boxShadow = 'none';
+        }
+      } else {
+        if (optGeneral) {
+          optGeneral.style.borderColor = '#0284c7';
+          optGeneral.style.background = 'rgba(2, 132, 199, 0.15)';
+          optGeneral.style.boxShadow = '0 0 20px rgba(2, 132, 199, 0.3)';
+        }
+        if (optCustom) {
+          optCustom.style.borderColor = '#334155';
+          optCustom.style.background = 'rgba(15, 23, 42, 0.6)';
+          optCustom.style.boxShadow = 'none';
+        }
+      }
+    }
+
+    function updateMusicSelectModalStatus() {
+      const statusEl = document.getElementById('optCustomMusicStatus');
+      const count = (window.driveEpisodeMusicFiles || []).length;
+      if (!statusEl) return;
+
+      if (count > 0) {
+        statusEl.innerHTML = `✓ <b>${count} custom track(s)</b> found in Drive (will play in random order)`;
+        statusEl.style.color = '#34d399';
+      } else {
+        statusEl.innerHTML = `⚠️ No custom tracks currently in Drive 'Episode_Music' (falls back to General BGM)`;
+        statusEl.style.color = '#f59e0b';
+      }
+    }
+
+    function triggerAssembly() {
+      // First prompt the user to choose music source!
+      openMusicSelectModal();
+    }
+
+    async function executeTriggerAssemblyWithSelectedMusic() {
+      closeMusicSelectModal();
+
       const btn = document.getElementById('triggerAssemblyBtn');
       const origHtml = btn ? btn.innerHTML : '⚡ Trigger Instagram Assembly Now';
 
       const epNum = episodeData.episode_number || 1;
       const gasUrl = getActiveGasUrl();
+      const musicSource = window.selectedMusicSource || 'general';
 
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '⏳ Triggering Instagram Assembly...';
+        btn.innerHTML = `⏳ Triggering Assembly (${musicSource === 'episode_custom' ? 'Custom Music' : 'General BGM'})...`;
         btn.style.opacity = '0.7';
       }
 
@@ -2737,7 +3282,7 @@
         fetch(gasUrl, {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({ action: "trigger_workflow", episode_number: epNum })
+          body: JSON.stringify({ action: "trigger_workflow", episode_number: epNum, music_source: musicSource })
         }).catch(e => console.log("GAS notify:", e));
 
         // 2. Dispatch GitHub Actions workflow directly
@@ -2753,10 +3298,15 @@
             ref: "main",
             inputs: {
               force_run: true,
-              advance_to_next: false
+              advance_to_next: false,
+              music_source: musicSource
             }
           })
         });
+
+        const musicDesc = (musicSource === 'episode_custom') 
+          ? "Episode Custom Music (Google Drive Episode_Music folder - randomized)" 
+          : "General Series Music (Standard rotating BGM library)";
 
         if (ghRes.status === 204 || ghRes.status === 200 || ghRes.status === 201) {
           if (btn) {
@@ -2764,7 +3314,7 @@
             btn.style.background = '#059669';
             btn.style.borderColor = '#10b981';
           }
-          alert(`🚀 SUCCESS!\n\nInstagram Assembly has been triggered for Episode ${epNum}!\n\nGitHub Actions is now compiling the video, mixing dialogue + BGM, generating the cover thumbnail, and publishing the Reel.`);
+          alert(`🚀 SUCCESS!\n\nInstagram Assembly has been triggered for Episode ${epNum}!\n\n🎵 Selected Soundtrack: ${musicDesc}\n\nGitHub Actions is now compiling the video, mixing dialogue + ${musicSource === 'episode_custom' ? 'custom music in random order' : 'romantic BGM'}, generating the cover thumbnail, and publishing the Reel.`);
         } else {
           // If GitHub API returned non-204, try repository_dispatch
           const repoRes = await fetch("https://api.github.com/repos/YoutubeVideoUploader/sachin-and-reenu-series/dispatches", {
@@ -2776,7 +3326,7 @@
             },
             body: JSON.stringify({
               event_type: "trigger-assembly",
-              client_payload: { episode_number: epNum, force_run: true }
+              client_payload: { episode_number: epNum, force_run: true, music_source: musicSource }
             })
           });
 
@@ -2786,9 +3336,9 @@
               btn.style.background = '#059669';
               btn.style.borderColor = '#10b981';
             }
-            alert(`🚀 SUCCESS!\n\nInstagram Assembly triggered for Episode ${epNum}!`);
+            alert(`🚀 SUCCESS!\n\nInstagram Assembly triggered for Episode ${epNum}!\n\n🎵 Selected Soundtrack: ${musicDesc}`);
           } else {
-            alert(`🚀 Instagram Assembly triggered for Episode ${epNum}!`);
+            alert(`🚀 Instagram Assembly triggered for Episode ${epNum}!\n\n🎵 Selected Soundtrack: ${musicDesc}`);
           }
         }
 

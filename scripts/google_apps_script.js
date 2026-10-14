@@ -479,6 +479,93 @@ function getEpisodeDriveFolder(episodeNum) {
 }
 
 /**
+ * Gets or creates the dedicated Google Drive folder 'Episode_Music' for custom background music.
+ */
+function getEpisodeMusicDriveFolder() {
+  let iter = DriveApp.getFoldersByName("Episode_Music");
+  if (iter.hasNext()) {
+    return iter.next();
+  }
+  let rootIter = DriveApp.getFoldersByName(DRIVE_ROOT_FOLDER);
+  if (rootIter.hasNext()) {
+    let rootFolder = rootIter.next();
+    let subIter = rootFolder.getFoldersByName("Episode_Music");
+    if (subIter.hasNext()) return subIter.next();
+    return rootFolder.createFolder("Episode_Music");
+  }
+  return DriveApp.createFolder("Episode_Music");
+}
+
+/**
+ * Lists all audio tracks inside the 'Episode_Music' folder.
+ */
+function listEpisodeMusicFiles() {
+  const folder = getEpisodeMusicDriveFolder();
+  const filesIter = folder.getFiles();
+  const musicList = [];
+  while (filesIter.hasNext()) {
+    const file = filesIter.next();
+    if (!file.isTrashed()) {
+      musicList.push({
+        id: file.getId(),
+        name: file.getName(),
+        size: file.getSize(),
+        size_mb: (file.getSize() / (1024 * 1024)).toFixed(2),
+        mime_type: file.getMimeType(),
+        created_at: file.getDateCreated().toISOString(),
+        download_url: file.getDownloadUrl()
+      });
+    }
+  }
+  return {
+    success: true,
+    folder_name: "Episode_Music",
+    count: musicList.length,
+    files: musicList
+  };
+}
+
+/**
+ * Deletes one or all files from the 'Episode_Music' folder.
+ */
+function deleteEpisodeMusicFiles(fileId, deleteAll) {
+  const folder = getEpisodeMusicDriveFolder();
+  let deletedCount = 0;
+  if (deleteAll === true || deleteAll === "true") {
+    const filesIter = folder.getFiles();
+    while (filesIter.hasNext()) {
+      const file = filesIter.next();
+      file.setTrashed(true);
+      deletedCount++;
+    }
+    return {
+      success: true,
+      message: `Deleted all (${deletedCount}) music tracks from Episode_Music.`,
+      deleted_count: deletedCount
+    };
+  } else if (fileId) {
+    try {
+      const file = DriveApp.getFileById(fileId);
+      file.setTrashed(true);
+      return {
+        success: true,
+        message: `File ${fileId} moved to trash.`,
+        deleted_count: 1
+      };
+    } catch (e) {
+      return {
+        success: false,
+        error: e.toString()
+      };
+    }
+  }
+  return {
+    success: false,
+    error: "No fileId or deleteAll specified."
+  };
+}
+
+/**
  * Scans Google Drive 'Episode' folder and syncs with Tab 3 (Video_Checklist).
  * Dynamically detects column headers to support both 5-col and 6-col layouts.
  */
@@ -1817,6 +1904,19 @@ function doGet(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
+  // Episode Music Management
+  if (action === "list_episode_music" || action === "get_episode_music") {
+    const res = listEpisodeMusicFiles();
+    return ContentService.createTextOutput(JSON.stringify(res))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  if (action === "delete_episode_music") {
+    const res = deleteEpisodeMusicFiles(params.file_id, params.delete_all);
+    return ContentService.createTextOutput(JSON.stringify(res))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Tab 4: Season Story Arc
   if (action === "get_season_story" || action === "season_story") {
     const data = getSeasonStoryArcData();
@@ -2033,6 +2133,46 @@ function doPost(e) {
         file_id: file.getId(),
         download_url: file.getDownloadUrl()
       })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 1b. Episode Music Upload
+    if (action === "upload_episode_music") {
+      const fileName = body.filename || `music_${Date.now()}.mp3`;
+      const base64Data = body.base64_data;
+      const mimeType = body.mime_type || "audio/mpeg";
+      const folder = getEpisodeMusicDriveFolder();
+      const decodedBytes = Utilities.base64Decode(base64Data);
+      const blob = Utilities.newBlob(decodedBytes, mimeType, fileName);
+
+      // Overwrite if same file name already exists in Episode_Music
+      const existing = folder.getFilesByName(fileName);
+      while (existing.hasNext()) {
+        existing.next().setTrashed(true);
+      }
+
+      const file = folder.createFile(blob);
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        filename: fileName,
+        file_id: file.getId(),
+        download_url: file.getDownloadUrl()
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 1c. Episode Music Delete
+    if (action === "delete_episode_music") {
+      const res = deleteEpisodeMusicFiles(body.file_id, body.delete_all);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 1d. Episode Music List via POST
+    if (action === "list_episode_music") {
+      const res = listEpisodeMusicFiles();
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     // 2. Creator Story Idea Submission

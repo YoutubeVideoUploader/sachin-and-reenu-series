@@ -239,10 +239,104 @@ def create_title_banner_overlay(output_png_path, episode_num=1, season_num=1, ti
         print(f"Warning: Failed to generate title banner overlay: {e}")
         return False
 
-def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None):
+def fetch_and_prepare_episode_custom_music(gas_url, temp_dir):
+    """
+    Fetches custom episode music from Google Drive folder 'Episode_Music' via Google Apps Script.
+    If multiple tracks are found, randomizes their order and concatenates them into a single audio file.
+    Returns Path to the prepared audio file, or None if no files are found or an error occurs.
+    """
+    import requests
+    import random
+    target_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+    try:
+        print(f"\n🔍 Checking Google Drive 'Episode_Music' folder for custom episode soundtrack...")
+        res = requests.get(f"{target_url}?action=list_episode_music", timeout=30)
+        if res.status_code != 200:
+            print(f"⚠️ GAS returned status {res.status_code} while querying Episode_Music.")
+            return None
+        data = res.json()
+        files = data.get("files", [])
+        if not files:
+            print("ℹ️ No custom music files found in Google Drive 'Episode_Music' folder.")
+            return None
+        
+        print(f"🎵 Found {len(files)} custom music track(s) in Drive 'Episode_Music':")
+        custom_music_dir = temp_dir / "custom_music"
+        custom_music_dir.mkdir(parents=True, exist_ok=True)
+        
+        downloaded_tracks = []
+        for f in files:
+            file_id = f.get("id")
+            name = f.get("name") or f"custom_{file_id}.mp3"
+            dest = custom_music_dir / name
+            print(f"  ⬇️ Downloading custom track: {name} (ID: {file_id})...")
+            dl_urls = [
+                f"https://drive.usercontent.google.com/download?id={file_id}&export=download",
+                f"https://drive.google.com/uc?export=download&id={file_id}",
+                f.get("download_url")
+            ]
+            downloaded = False
+            for u in dl_urls:
+                if not u:
+                    continue
+                try:
+                    r = requests.get(u, stream=True, timeout=60, headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                    })
+                    if r.status_code == 200 and len(r.content) > 1000:
+                        with open(dest, "wb") as out_f:
+                            out_f.write(r.content)
+                        downloaded = True
+                        break
+                except Exception:
+                    pass
+            if downloaded and dest.exists() and dest.stat().st_size > 1000:
+                downloaded_tracks.append(dest)
+                print(f"     ✓ Saved {dest.name} ({dest.stat().st_size / 1024:.1f} KB)")
+            else:
+                print(f"     ❌ Failed to download {name}")
+                
+        if not downloaded_tracks:
+            print("⚠️ No custom tracks were successfully downloaded.")
+            return None
+            
+        # Shuffle tracks randomly as requested: "those musics will be used in random order"
+        random.shuffle(downloaded_tracks)
+        print(f"🔀 Shuffled custom music sequence: {[t.name for t in downloaded_tracks]}")
+        
+        if len(downloaded_tracks) == 1:
+            return downloaded_tracks[0]
+            
+        # If multiple tracks, concatenate them in the shuffled order
+        concat_txt = custom_music_dir / "music_concat.txt"
+        with open(concat_txt, "w", encoding="utf-8") as f_out:
+            for t in downloaded_tracks:
+                f_out.write(f"file '{t.resolve().as_posix()}'\n")
+                
+        combined_audio = custom_music_dir / "combined_custom_music.mp3"
+        cmd = [
+            "ffmpeg", "-y",
+            "-f", "concat",
+            "-safe", "0",
+            "-i", str(concat_txt),
+            "-c:a", "libmp3lame",
+            "-b:a", "192k",
+            str(combined_audio)
+        ]
+        sub_res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if sub_res.returncode == 0 and combined_audio.exists():
+            print(f"✓ Concatenated {len(downloaded_tracks)} custom tracks in random order into {combined_audio.name}")
+            return combined_audio
+        else:
+            return downloaded_tracks[0]
+    except Exception as e:
+        print(f"⚠️ Error preparing custom episode music: {e}")
+        return None
+
+def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", gas_url=None):
     """
     Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
-    Combines spoken dialogue audio with atmospheric romantic background score.
+    Combines spoken dialogue audio with atmospheric romantic background score (general or episode custom).
     """
     shots_path = Path(shots_dir)
     if not shots_path.exists():
@@ -338,20 +432,30 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     ]
     subprocess.run(cmd_concat, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    # Step 3: Select BGM randomly from available tracks in assets/music
+    # Step 3: Select BGM (Custom Episode Music or General Series BGM)
     import random
-    music_dir = Path("assets/music")
-    all_bgm_files = sorted(list(music_dir.glob("*.mp3"))) if music_dir.exists() else []
-
     selected_bgm = None
-    if bgm_num is not None and (music_dir / f"bgm_{bgm_num}.mp3").exists():
-        selected_bgm = music_dir / f"bgm_{bgm_num}.mp3"
-        print(f"🎵 Explicitly Selected Romantic BGM: {selected_bgm.name}")
-    elif all_bgm_files:
-        selected_bgm = random.choice(all_bgm_files)
-        print(f"🎲 Randomly Selected Romantic BGM: {selected_bgm.name} (from {len(all_bgm_files)} tracks: {[f.name for f in all_bgm_files]})")
-    else:
-        print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
+
+    if music_source == "episode_custom":
+        print(f"🎧 Custom Episode Music mode active! Retrieving music from Google Drive 'Episode_Music'...")
+        selected_bgm = fetch_and_prepare_episode_custom_music(gas_url, temp_dir)
+        if selected_bgm and selected_bgm.exists():
+            print(f"🎵 Using Episode Custom Music: {selected_bgm.name}")
+        else:
+            print(f"⚠️ Episode Custom Music not available or empty. Falling back gracefully to General Series BGM.")
+            music_source = "general"
+
+    if music_source == "general" or not selected_bgm:
+        music_dir = Path("assets/music")
+        all_bgm_files = sorted(list(music_dir.glob("*.mp3"))) if music_dir.exists() else []
+        if bgm_num is not None and (music_dir / f"bgm_{bgm_num}.mp3").exists():
+            selected_bgm = music_dir / f"bgm_{bgm_num}.mp3"
+            print(f"🎵 Explicitly Selected Romantic BGM: {selected_bgm.name}")
+        elif all_bgm_files:
+            selected_bgm = random.choice(all_bgm_files)
+            print(f"🎲 Randomly Selected Romantic BGM: {selected_bgm.name} (from {len(all_bgm_files)} tracks: {[f.name for f in all_bgm_files]})")
+        else:
+            print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
 
     # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Title Overlay + Story Watermark
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM), Title Overlay & Watermark...")
@@ -475,6 +579,7 @@ def main():
     parser.add_argument("--title_en", default="", help="Episode English title")
     parser.add_argument("--title_ml", default="", help="Episode Malayalam title")
     parser.add_argument("--bgm", type=int, default=None, help="BGM track index (1-10)")
+    parser.add_argument("--music_source", choices=["general", "episode_custom"], default="general", help="Music source: 'general' (rotating library) or 'episode_custom' (Google Drive Episode_Music folder)")
     args = parser.parse_args()
 
     season_num = args.season
@@ -520,7 +625,9 @@ def main():
         season_num=season_num,
         title_en=title_en,
         title_ml=title_ml,
-        bgm_num=args.bgm
+        bgm_num=args.bgm,
+        music_source=args.music_source,
+        gas_url=args.gas_url
     )
 
 if __name__ == "__main__":
