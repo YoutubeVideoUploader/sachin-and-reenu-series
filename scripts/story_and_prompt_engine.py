@@ -43,7 +43,7 @@ BASE_DNA_REENU = (
     "Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. "
     "Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. "
     "Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 proportions, lively teen posture, strictly non-chibi) "
-    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD)."
 )
 DEFAULT_ATTIRE_REENU = "Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers."
 
@@ -53,16 +53,16 @@ BASE_DNA_SACHIN = (
     "Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. "
     "Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. "
     "Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) "
-    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN)."
 )
 DEFAULT_ATTIRE_SACHIN = "Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers."
 
 BASE_DNA_AMAL = (
     "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. "
-    "Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO MATURE WRINKLES). "
+    "Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). "
     "Messy stylish short curly dark teen cartoon hair with textured volume. "
-    "Energetic, slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) "
-    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) "
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE)."
 )
 DEFAULT_ATTIRE_AMAL = "Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers."
 
@@ -1194,7 +1194,7 @@ def enforce_prompt_completeness(data, active_dna=None):
         # 1. Full style
         jp["style"] = MASTER_STYLE
 
-        # 2. Characters present completeness
+        # 2. Characters present completeness & Immutable Canonical DNA Protection
         raw_chars = jp.get("characters_present", [])
         normalized_chars = []
         for c in raw_chars:
@@ -1203,12 +1203,27 @@ def enforce_prompt_completeness(data, active_dna=None):
                 continue
             # Priority 1: active_dna (season costume changes)
             dna = active_dna.get(cname)
-            # Priority 2: character's own visual_dna from Gemini if complete
+            # Priority 2: character's own visual_dna from Gemini ONLY if not a core canonical character with corruptions
             if not dna and isinstance(c, dict) and c.get("visual_dna") and "STRICTLY LOCKED ATTIRE" in c.get("visual_dna"):
                 dna = c.get("visual_dna")
             # Priority 3: Fallback DNA registry
             if not dna:
                 dna = DNA_REGISTRY.get(cname) or f"{cname}: Stylized 3D Pixar-style cartoon animation character."
+
+            # IMMUTABLE ASSET VAULT: Scrub any AI hallucination of weight/body changes or beard on canonical teens
+            if cname in ["Sachin", "Reenu", "Amal"]:
+                # Always force canonical baseline DNA to avoid AI altering body build
+                canonical_base = active_dna.get(cname) or DNA_REGISTRY.get(cname, "")
+                if canonical_base:
+                    dna = canonical_base
+                # Clean illegal tokens
+                dna = re.sub(r'\b(24-year-old|24yo|22yo)\b', '18-19 year old', dna, flags=re.IGNORECASE)
+                dna = re.sub(r'\b(slightly stocky|stocky|plump|chubby|overweight|heavy-set|fat|bulky build)\b', 'slender athletic', dna, flags=re.IGNORECASE)
+                dna = re.sub(r'\b(beard stubble|stubble|beard)\b', 'clean-shaven', dna, flags=re.IGNORECASE)
+                dna = re.sub(r'\.\.+', '.', dna)
+                if "PROHIBIT OVERWEIGHT" not in dna:
+                    dna = dna.replace("(PROHIBIT", "(PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT BEARD, PROHIBIT STUBBLE, PROHIBIT")
+
             normalized_chars.append({
                 "name": cname,
                 "visual_dna": dna
@@ -1216,7 +1231,7 @@ def enforce_prompt_completeness(data, active_dna=None):
         
         # If characters_present was empty but dialogue character is specified, add them
         char_speaker = s.get("character")
-        if char_speaker and char_speaker != "Third-Person Narrator":
+        if char_speaker and char_speaker not in ["Third-Person Narrator", "Narrator", "Voiceover"]:
             if not any(nc["name"] == char_speaker for nc in normalized_chars):
                 dna = active_dna.get(char_speaker) or DNA_REGISTRY.get(char_speaker, f"{char_speaker}: Stylized 3D Pixar character.")
                 normalized_chars.append({
@@ -1264,11 +1279,101 @@ def enforce_prompt_completeness(data, active_dna=None):
                 dlg["script"] = ml_line
             if ml_line and not dlg.get("line"):
                 dlg["line"] = ml_line
+            if ml_line:
+                s["dialogue_malayalam"] = ml_line
 
-        # 6. Normalize perspective to Prompt 1 benchmark
-        persp = jp.get("perspective", "")
-        if not persp or any(kw in persp.lower() for kw in ["shot", "lens", "close-up", "medium shot", "framing", "angle"]):
-            jp["perspective"] = "Third-Person Narrator"
+        # 6. DYNAMIC FILM GRAMMAR & PERSPECTIVE BINDING (MANDATORY)
+        dlg_speaker = dlg.get("speaker") if isinstance(dlg, dict) else None
+        effective_speaker = dlg_speaker or char_speaker or "Third-Person Narrator"
+
+        if effective_speaker and effective_speaker not in ["Third-Person Narrator", "Narrator", "Voiceover"]:
+            # On-screen character dialogue
+            s["character"] = effective_speaker
+            jp["perspective"] = f"Character Dialogue ({effective_speaker} Speaking)"
+            if isinstance(dlg, dict):
+                dlg["speaker"] = effective_speaker
+            
+            # Action directive lip-sync enforcement
+            act = jp.get("action", "")
+            if not any(k in act.lower() for k in ["lip-sync", "lip sync", "mouth moves", "speaking on screen"]):
+                jp["action"] = f"{act.rstrip('.')}. {effective_speaker} actively speaks dialogue on screen with natural animated lip movement and authentic speech sync. Other character lips remain closed."
+            
+            # Audio directive strictly no BGM
+            jp["audio_directive"] = (
+                f"CHARACTER DIALOGUE SPOKEN BY {effective_speaker.upper()} ON SCREEN. "
+                f"{effective_speaker} speaks directly with clear character voice and synchronized animated lip movement. "
+                f"CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
+                f"Clean character voice dialogue and natural ambient foley sound effects only."
+            )
+        else:
+            # Voiceover Narrator shot
+            s["character"] = "Third-Person Narrator"
+            jp["perspective"] = "Third-Person Cinematic Narration"
+            if isinstance(dlg, dict):
+                dlg["speaker"] = "Third-Person Narrator"
+            
+            act = jp.get("action", "")
+            if not any(k in act.lower() for k in ["lips are firmly closed", "lips remain closed", "zero talking", "closed lips"]):
+                jp["action"] = f"{act.rstrip('.')}. All characters maintain strictly closed lips with zero talking or mouth animation. Pure visual storytelling."
+            
+            jp["audio_directive"] = (
+                "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
+                "All characters maintain strictly closed lips with zero talking or mouth animation. "
+                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
+                "Clean voiceover audio and natural ambient foley sound effects only."
+            )
+
+    # 7. UNIVERSAL SCENE WORLD-STATE & ROLE INVARIANCE ENGINE
+    # Tracks physical role ownership (driver, front passenger, seating axis) across shots within the same scene
+    scene_roles = {}
+    current_active_scene = None
+
+    for s in data.get("shots", []):
+        jp = s.get("json_prompt", {})
+        sc = jp.get("sequence_continuity", {}) if isinstance(jp, dict) else {}
+        if not isinstance(sc, dict):
+            continue
+        scene_id = sc.get("scene_id") or jp.get("location") or "DEFAULT_SCENE"
+
+        if scene_id != current_active_scene:
+            current_active_scene = scene_id
+            scene_roles = {}
+
+        spatial = sc.get("spatial_blocking")
+        if isinstance(spatial, dict):
+            # Check for driver role
+            shot_driver = None
+            shot_passenger = None
+            for cname, b_val in spatial.items():
+                b_str = str(b_val).lower()
+                if "driver" in b_str or "steering wheel" in b_str or "driving" in b_str:
+                    shot_driver = cname
+                elif "passenger" in b_str:
+                    shot_passenger = cname
+
+            if shot_driver:
+                if "driver" not in scene_roles:
+                    # Lock first driver established in this scene
+                    scene_roles["driver"] = shot_driver
+                elif scene_roles["driver"] != shot_driver:
+                    # Check if action explicitly scripts an intentional driver handover
+                    combined_act = (str(jp.get("action", "")) + " " + str(s.get("action_summary", ""))).lower()
+                    if not any(k in combined_act for k in ["swapped", "swapping", "switches seats", "hands keys", "hand over keys", "pulled over"]):
+                        # Auto-correct to established scene driver
+                        locked_driver = scene_roles["driver"]
+                        spatial[locked_driver] = "Driver seat (right side), hands on steering wheel, facing road"
+                        if shot_driver != locked_driver:
+                            spatial[shot_driver] = "Front passenger seat (left side), seated looking toward driver"
+                        # Clean action text
+                        act_str = jp.get("action", "")
+                        act_str = re.sub(rf'\b{shot_driver}\s+grips\s+the\s+steering\s+wheel\b', f"{locked_driver} grips the steering wheel", act_str, flags=re.IGNORECASE)
+                        act_str = re.sub(rf'\b{shot_driver}\s+is\s+driving\b', f"{locked_driver} is driving", act_str, flags=re.IGNORECASE)
+                        act_str = re.sub(rf'\b{shot_driver}\s+in\s+the\s+driver\'?s?\s+seat\b', f"{locked_driver} in the driver's seat", act_str, flags=re.IGNORECASE)
+                        jp["action"] = act_str
+
+            if shot_passenger:
+                if "front_passenger" not in scene_roles:
+                    scene_roles["front_passenger"] = shot_passenger
 
     # Strictly guarantee exactly 10 shots per episode
     shots = data.get("shots", [])
