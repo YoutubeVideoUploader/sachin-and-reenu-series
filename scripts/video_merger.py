@@ -333,10 +333,186 @@ def fetch_and_prepare_episode_custom_music(gas_url, temp_dir):
         print(f"⚠️ Error preparing custom episode music: {e}")
         return None
 
-def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", gas_url=None):
+def parse_shot_music_map(raw_map, total_shots=10):
+    """
+    Parses shot_music_map which can be:
+    - JSON string: '{"1":"default","2":"custom",...}'
+    - Comma-delimited ranges: '1-3:default,4-7:custom,8-10:default'
+    - Comma-delimited pairs: '1:default,2:custom'
+    Returns a dict mapping shot_number (int) -> 'default' | 'custom'
+    """
+    result = {}
+    if not raw_map:
+        return {s: "default" for s in range(1, total_shots + 1)}
+
+    raw_str = str(raw_map).strip()
+    if raw_str.startswith("{") and raw_str.endswith("}"):
+        try:
+            parsed = json.loads(raw_str)
+            for k, v in parsed.items():
+                try:
+                    s_num = int(k)
+                    val = str(v).strip().lower()
+                    result[s_num] = "custom" if "custom" in val else "default"
+                except Exception:
+                    pass
+            for s in range(1, total_shots + 1):
+                if s not in result:
+                    result[s] = "default"
+            return result
+        except Exception:
+            pass
+
+    parts = [p.strip() for p in raw_str.split(",") if p.strip()]
+    for p in parts:
+        sep = ":" if ":" in p else ("=" if "=" in p else None)
+        if sep:
+            k, v = p.split(sep, 1)
+            v_val = "custom" if "custom" in v.strip().lower() else "default"
+            k = k.strip()
+            if "-" in k:
+                sub = k.split("-")
+                try:
+                    s_start = int(sub[0])
+                    s_end = int(sub[1])
+                    for s in range(s_start, s_end + 1):
+                        result[s] = v_val
+                except Exception:
+                    pass
+            else:
+                try:
+                    result[int(k)] = v_val
+                except Exception:
+                    pass
+
+    for s in range(1, total_shots + 1):
+        if s not in result:
+            result[s] = "default"
+
+    return result
+
+def build_mixed_bgm_track(shot_timings, shot_music_map, total_video_duration, total_shots, default_bgm, custom_bgm, temp_dir):
+    """
+    Assembles a continuous background soundtrack honoring the per-shot music map.
+    Applies smooth fade-out and fade-in (crossfade) at each music boundary.
+    """
+    segments = []
+    current_source = None
+    current_start = 0.0
+    current_end = 0.0
+
+    for s in range(1, total_shots + 1):
+        src = shot_music_map.get(s, "default")
+        timing = shot_timings.get(s, {"start": (s - 1) * 6.0, "end": s * 6.0, "duration": 6.0})
+        if current_source is None:
+            current_source = src
+            current_start = timing["start"]
+            current_end = timing["end"]
+        elif src == current_source:
+            current_end = timing["end"]
+        else:
+            segments.append({
+                "source": current_source,
+                "start": current_start,
+                "end": current_end,
+                "duration": max(0.1, current_end - current_start)
+            })
+            current_source = src
+            current_start = timing["start"]
+            current_end = timing["end"]
+
+    if current_source is not None:
+        current_end = max(current_end, total_video_duration)
+        segments.append({
+            "source": current_source,
+            "start": current_start,
+            "end": current_end,
+            "duration": max(0.1, current_end - current_start)
+        })
+
+    print(f"\n🎛️  MIX MUSIC PIPELINE: Grouped into {len(segments)} audio segment(s):")
+    for idx, seg in enumerate(segments, 1):
+        print(f"   • Segment {idx}: {seg['start']:.1f}s - {seg['end']:.1f}s ({seg['duration']:.1f}s) -> [{seg['source'].upper()} BGM]")
+
+    seg_audio_files = []
+    crossfade_sec = 1.2
+
+    for idx, seg in enumerate(segments):
+        src_type = seg["source"]
+        seg_dur = seg["duration"]
+        seg_file = temp_dir / f"mixed_seg_{idx:02d}.wav"
+
+        # Determine which track to play for this segment
+        track = custom_bgm if (src_type == "custom" and custom_bgm and custom_bgm.exists()) else default_bgm
+        if not track or not track.exists():
+            print(f"   ⚠️ Track for segment {idx} not found, falling back...")
+            track = default_bgm or custom_bgm
+
+        if not track or not track.exists():
+            print(f"   ⚠️ No audio track available for segment {idx}, skipping...")
+            continue
+
+        is_first = (idx == 0)
+        is_last = (idx == len(segments) - 1)
+
+        xfade = min(crossfade_sec, seg_dur / 3.0)
+        fade_in_d = 1.5 if is_first else xfade
+        fade_out_d = 2.5 if is_last else xfade
+        fade_out_st = max(0.0, seg_dur - fade_out_d)
+
+        filter_str = (
+            f"aloop=loop=-1:size=2e+09,volume=0.32,"
+            f"afade=t=in:ss=0:d={fade_in_d:.2f},"
+            f"afade=t=out:st={fade_out_st:.2f}:d={fade_out_d:.2f}"
+        )
+
+        cmd_seg = [
+            "ffmpeg", "-y",
+            "-i", str(track),
+            "-filter_complex", filter_str,
+            "-t", f"{seg_dur:.2f}",
+            "-ar", "44100",
+            "-ac", "2",
+            str(seg_file)
+        ]
+        res = subprocess.run(cmd_seg, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if res.returncode == 0 and seg_file.exists():
+            seg_audio_files.append(seg_file)
+        else:
+            print(f"   ⚠️ Error rendering audio segment {idx}")
+
+    if not seg_audio_files:
+        return default_bgm or custom_bgm
+
+    if len(seg_audio_files) == 1:
+        return seg_audio_files[0]
+
+    concat_list = temp_dir / "mixed_bgm_concat.txt"
+    with open(concat_list, "w", encoding="utf-8") as f:
+        for saf in seg_audio_files:
+            safe_p = saf.resolve().as_posix().replace("'", "'\\''")
+            f.write(f"file '{safe_p}'\n")
+
+    master_mixed_bgm = temp_dir / "master_mixed_bgm.wav"
+    cmd_cat = [
+        "ffmpeg", "-y",
+        "-f", "concat",
+        "-safe", "0",
+        "-i", str(concat_list),
+        "-c", "copy",
+        str(master_mixed_bgm)
+    ]
+    res_cat = subprocess.run(cmd_cat, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if res_cat.returncode == 0 and master_mixed_bgm.exists():
+        print(f"✓ Master Mixed Soundtrack created with smooth crossfades! ({master_mixed_bgm.name})")
+        return master_mixed_bgm
+    else:
+        return seg_audio_files[0]
+
+def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", shot_music_map="", gas_url=None):
     """
     Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
-    Combines spoken dialogue audio with atmospheric romantic background score (general or episode custom).
+    Combines spoken dialogue audio with atmospheric romantic background score (general, episode custom, or shot-by-shot mix).
     """
     shots_path = Path(shots_dir)
     if not shots_path.exists():
@@ -369,6 +545,8 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     
     standardized_clips = []
     total_video_duration = 0.0
+    shot_timings = {}
+    current_shot_time = 0.0
 
     print("\n1. Standardizing clips (1080x1920 @ 30fps) with Clean Audio...")
     for i, shot in enumerate(sorted_shots, start=1):
@@ -376,7 +554,14 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
         print(f"   Processing shot {i}/{len(sorted_shots)}: {shot.name} -> {std_name.name}")
         standardize_clip_with_audio(shot, std_name)
         info = get_video_info(std_name)
-        total_video_duration += info["duration"]
+        dur = info["duration"]
+        shot_timings[i] = {
+            "start": current_shot_time,
+            "end": current_shot_time + dur,
+            "duration": dur
+        }
+        current_shot_time += dur
+        total_video_duration += dur
         standardized_clips.append(std_name)
 
     story_duration = total_video_duration
@@ -432,30 +617,50 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     ]
     subprocess.run(cmd_concat, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    # Step 3: Select BGM (Custom Episode Music or General Series BGM)
+    # Step 3: Select BGM (General, Episode Custom, or Shot-by-Shot Mix)
     import random
     selected_bgm = None
+    default_bgm = None
+    custom_bgm = None
 
-    if music_source == "episode_custom":
-        print(f"🎧 Custom Episode Music mode active! Retrieving music from Google Drive 'Episode_Music'...")
-        selected_bgm = fetch_and_prepare_episode_custom_music(gas_url, temp_dir)
-        if selected_bgm and selected_bgm.exists():
+    # Always locate default general romantic BGM
+    music_dir = Path("assets/music")
+    all_bgm_files = sorted(list(music_dir.glob("*.mp3"))) if music_dir.exists() else []
+    if bgm_num is not None and (music_dir / f"bgm_{bgm_num}.mp3").exists():
+        default_bgm = music_dir / f"bgm_{bgm_num}.mp3"
+    elif all_bgm_files:
+        default_bgm = random.choice(all_bgm_files)
+
+    # Fetch custom music from Google Drive if required
+    if music_source in ("episode_custom", "mix"):
+        custom_bgm = fetch_and_prepare_episode_custom_music(gas_url, temp_dir)
+
+    # Assemble track according to chosen music source
+    is_mixed_track = False
+    if music_source == "mix":
+        print(f"\n🎛️ Mix Music Mode: Assembling shot-by-shot soundtrack mix...")
+        parsed_map = parse_shot_music_map(shot_music_map, total_shots=len(sorted_shots))
+        selected_bgm = build_mixed_bgm_track(
+            shot_timings=shot_timings,
+            shot_music_map=parsed_map,
+            total_video_duration=total_video_duration,
+            total_shots=len(sorted_shots),
+            default_bgm=default_bgm,
+            custom_bgm=custom_bgm,
+            temp_dir=temp_dir
+        )
+        is_mixed_track = True
+    elif music_source == "episode_custom":
+        if custom_bgm and custom_bgm.exists():
+            selected_bgm = custom_bgm
             print(f"🎵 Using Episode Custom Music: {selected_bgm.name}")
         else:
-            print(f"⚠️ Episode Custom Music not available or empty. Falling back gracefully to General Series BGM.")
-            music_source = "general"
-
-    if music_source == "general" or not selected_bgm:
-        music_dir = Path("assets/music")
-        all_bgm_files = sorted(list(music_dir.glob("*.mp3"))) if music_dir.exists() else []
-        if bgm_num is not None and (music_dir / f"bgm_{bgm_num}.mp3").exists():
-            selected_bgm = music_dir / f"bgm_{bgm_num}.mp3"
-            print(f"🎵 Explicitly Selected Romantic BGM: {selected_bgm.name}")
-        elif all_bgm_files:
-            selected_bgm = random.choice(all_bgm_files)
-            print(f"🎲 Randomly Selected Romantic BGM: {selected_bgm.name} (from {len(all_bgm_files)} tracks: {[f.name for f in all_bgm_files]})")
-        else:
-            print("Note: No external BGM file found in assets/music. Using clean dialogue audio only.")
+            print("⚠️ Episode Custom Music not available, falling back gracefully to General Series BGM.")
+            selected_bgm = default_bgm
+    else:
+        selected_bgm = default_bgm
+        if selected_bgm:
+            print(f"🎵 Selected General Series Romantic BGM: {selected_bgm.name}")
 
     # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Title Overlay + Story Watermark
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM), Title Overlay & Watermark...")
@@ -511,10 +716,13 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     # 2. Audio Filter Pipeline
     has_audio_mix = (bgm_input_idx is not None)
     if has_audio_mix:
-        filters.append(
-            f"[{bgm_input_idx}:a]aloop=loop=-1:size=2e+09,volume=0.32,"
-            f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm]"
-        )
+        if is_mixed_track:
+            filters.append(f"[{bgm_input_idx}:a]volume=1.0[bgm]")
+        else:
+            filters.append(
+                f"[{bgm_input_idx}:a]aloop=loop=-1:size=2e+09,volume=0.32,"
+                f"afade=t=in:ss=0:d=1.5,afade=t=out:st={fade_out_start:.2f}:d=2.5[bgm]"
+            )
         filters.append(f"[0:a]volume=1.1[voice]")
         filters.append(f"[voice][bgm]amix=inputs=2:duration=first:dropout_transition=2[aout]")
 
@@ -565,7 +773,7 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     print(f"Duration    : {total_video_duration:.2f}s (~{int(total_video_duration//60)}m {int(total_video_duration%60):02d}s)")
     print(f"Resolution  : 1080x1920 (Vertical 9:16)")
     print(f"Dialogue    : Malayalam Spoken Audio Preserved")
-    print(f"BGM         : Romantic Score Mixed (Volume 0.18)")
+    print(f"BGM         : Romantic Score Mixed (Volume 0.18 / 0.32)")
     print(f"=======================================================\n")
     return output_path
 
@@ -579,7 +787,8 @@ def main():
     parser.add_argument("--title_en", default="", help="Episode English title")
     parser.add_argument("--title_ml", default="", help="Episode Malayalam title")
     parser.add_argument("--bgm", type=int, default=None, help="BGM track index (1-10)")
-    parser.add_argument("--music_source", choices=["general", "episode_custom"], default="general", help="Music source: 'general' (rotating library) or 'episode_custom' (Google Drive Episode_Music folder)")
+    parser.add_argument("--music_source", choices=["general", "episode_custom", "mix"], default="general", help="Music source: 'general' (rotating library), 'episode_custom' (Google Drive Episode_Music folder), or 'mix' (shot-by-shot mix)")
+    parser.add_argument("--shot_music_map", default="", help="Per-shot music mapping for mix mode (e.g. '1:default,2:custom...' or JSON)")
     args = parser.parse_args()
 
     season_num = args.season
@@ -627,6 +836,7 @@ def main():
         title_ml=title_ml,
         bgm_num=args.bgm,
         music_source=args.music_source,
+        shot_music_map=args.shot_music_map,
         gas_url=args.gas_url
     )
 

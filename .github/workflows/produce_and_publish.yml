@@ -19,12 +19,17 @@ on:
         type: boolean
         default: false
       music_source:
-        description: "Soundtrack Source: 'episode_custom' (Google Drive Episode_Music folder) or 'general' (Standard rotating BGM library)"
+        description: "Soundtrack Source: 'episode_custom' (Google Drive Episode_Music folder), 'general' (Standard rotating BGM library), or 'mix' (Shot-by-shot mix)"
         type: choice
         options:
           - general
           - episode_custom
+          - mix
         default: general
+      shot_music_map:
+        description: "Per-shot music mapping for mix mode (e.g. '1:default,2:custom...' or JSON)"
+        type: string
+        default: ""
   repository_dispatch:
     types: [trigger-assembly, trigger_assembly]
 
@@ -89,7 +94,9 @@ jobs:
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
           echo "Merging de-watermarked clips with Malayalam dialogue audio & romantic BGM..."
-          python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4 --music_source "${{ inputs.music_source || github.event.client_payload.music_source || 'general' }}"
+          python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4 \
+            --music_source "${{ inputs.music_source || github.event.client_payload.music_source || 'general' }}" \
+            --shot_music_map "${{ inputs.shot_music_map || github.event.client_payload.shot_music_map || '' }}"
 
       # -------------------------------------------------------------
       # STEP 7b: DYNAMIC EPISODE THUMBNAIL COVER GENERATION
