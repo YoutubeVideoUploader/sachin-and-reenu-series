@@ -34,16 +34,33 @@ try:
 except ImportError:
     repair_json = None
 
-# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Animated, Never Human-like)
-BASE_DNA_REENU = "Reenu: Stylized 3D Pixar-style cartoon animation character, 22yo South Indian Malayali girl, big expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, soft rounded cute cartoon cheeks, sweet warm animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, stylized 3D character proportions with smooth vibrant cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Young Adults / Adults, Never Boy/Girl/Child-like)
+BASE_DNA_REENU = (
+    "Reenu: Stylized 3D Pixar-style cartoon animation character, 22-year-old young adult South Indian Malayali woman, "
+    "graceful defined adult female jawline, high elegant cheekbones with subtle warm blush, mature feminine facial structure (STRICTLY ADULT WOMAN, NEVER A GIRL OR CHILD), "
+    "large sparkling expressive hazel-brown animated cartoon doe eyes with lush stylized eyelashes, natural refined feminine arched eyebrows, "
+    "radiant warm genuine animated smile, voluminous bouncy wavy dark-brown cartoon hair with soft curtain bangs, "
+    "elegant slender adult female proportions, natural adult posture with realistic adult head-to-body scale (STRICTLY YOUNG ADULT WOMAN, PROHIBIT GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+)
 # Reenu's preference: Strictly casual T-shirt WITH EYE-CATCHING PATTERNS/PRINTS (clouds, florals, doodles, stripes) + denim skirt/jeans + sneakers + watch
 DEFAULT_ATTIRE_REENU = "Pastel baby-blue and soft yellow cloud-pattern camouflage t-shirt, sky-blue denim skirt, white sneakers, silver wrist watch."
 
-BASE_DNA_SACHIN = "Sachin: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, endearing boyish cartoon features, large expressive warm animated brown eyes, playful genuine contagious cartoon smile, stylized soft textured wavy dark cartoon hair, cute slightly exaggerated 3D character proportions with smooth cartoon shaders (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+BASE_DNA_SACHIN = (
+    "Sachin: Stylized 3D Pixar-style cartoon animation character, 24-year-old young adult South Indian Malayali man, "
+    "handsome defined adult jawline, mature stylized Pixar adult male facial structure, light natural 5 o'clock stubble shadow along jawline and chin (STRICTLY ADULT MALE FACE, NEVER A BOY OR CHILD), "
+    "large expressive warm animated dark-brown eyes, natural masculine eyebrows, confident genuine warm animated smile, "
+    "stylized soft textured wavy dark cartoon hair with volume, tall lean athletic adult male build with broad shoulders and natural adult head-to-body scale "
+    "(STRICTLY YOUNG ADULT MAN, PROHIBIT BOY/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+)
 # Sachin's preference: Strictly casual PLAIN T-shirt (100% solid color, ZERO patterns, ZERO graphics) + casual denim jeans + sneakers + cross-bag
 DEFAULT_ATTIRE_SACHIN = "Solid forest-green plain crewneck t-shirt (strictly zero patterns or graphics), classic dark blue denim jeans, white sneakers, brown leather travel cross-bag worn diagonally across chest."
 
-BASE_DNA_AMAL = "Amal: Stylized 3D Pixar-style cartoon animation character, 24yo South Indian Malayali boy, cheerful animated face, lively expressive cartoon eyes, broad energetic friendly cartoon smile, neat stylized short cartoon hairstyle, warm medium brown cartoon skin tone (STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
+BASE_DNA_AMAL = (
+    "Amal: Stylized 3D Pixar-style cartoon animation character, 24-year-old young adult South Indian Malayali man, "
+    "defined adult square jawline, neatly trimmed adult mustache and trim goatee beard, lively expressive animated dark-brown eyes, energetic witty friendly cartoon smile, "
+    "neat stylized short cartoon hairstyle with clean faded sides, athletic adult male proportions with broad shoulders and natural adult head-to-body scale "
+    "(STRICTLY YOUNG ADULT MAN, PROHIBIT BOY/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+)
 # Amal's preference: Strictly casual PLAIN T-shirt (100% solid color, ZERO patterns, ZERO graphics) in a distinct contrasting color + casual denim jeans/pants
 DEFAULT_ATTIRE_AMAL = "Solid mustard-yellow plain crewneck t-shirt (strictly zero patterns or graphics), slim-fit charcoal-black denim jeans, casual slip-on sneakers."
 
@@ -79,20 +96,20 @@ DNA_SACHIN = format_character_visual_dna("Sachin", BASE_DNA_SACHIN, DEFAULT_ATTI
 DNA_AMAL = format_character_visual_dna("Amal", BASE_DNA_AMAL, DEFAULT_ATTIRE_AMAL)
 
 DNA_MADHAVAN = (
-    "Madhavan (Reenu's Father): Stylized 3D Pixar-style cartoon animation character, 52yo South Indian Malayali gentleman, "
+    "Madhavan (Reenu's Father): Stylized 3D Pixar-style cartoon animation character, 52-year-old mature South Indian Malayali gentleman, "
     "dignified traditional Malayali father features, expressive salt-and-pepper mustache, warm yet stern dark eyes, "
     "slightly greying temples in dark curly hair, gentle grandfatherly warmth beneath traditional composure "
-    "(STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
+    "(STRICTLY 3D ANIMATION ADULT CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
     "STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Crisp traditional Kerala cream-white cotton jubba worn over "
     "a traditional off-white kasavu mundu with thin golden border, black leather sandals, silver vintage wrist watch. "
     "Absolutely zero costume variations."
 )
 
 DNA_GIRIJA = (
-    "Girija (Reenu's Mother): Stylized 3D Pixar-style cartoon animation character, 48yo South Indian Malayali lady, "
+    "Girija (Reenu's Mother): Stylized 3D Pixar-style cartoon animation character, 48-year-old mature South Indian Malayali lady, "
     "kind round motherly face, warm expressive dark-brown eyes, neat traditional hair bun adorned with fresh fragrant "
     "white jasmine flowers (mulla poo), endearing affectionate smile with cute cartoon dimple "
-    "(STRICTLY 3D ANIMATION CARTOON CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
+    "(STRICTLY 3D ANIMATION ADULT CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
     "STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Elegant Kerala traditional cream cotton set-saree with "
     "emerald-green border, delicate gold necklace and small traditional jhumka earrings, gold bangles on right wrist. "
     "Absolutely zero costume variations."
@@ -103,6 +120,7 @@ NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming Sout
 MASTER_STYLE = "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
 MASTER_NEGATIVE_PROMPT = (
+    "child, kid, toddler, baby, boy, girl, infant, chibi, teen, teenager, underage, adolescent, babyface, oversized head, baby cheeks, diminutive body proportions, doll, "
     "kurti, kurta, salwar, saree, dupatta, jhumka, jhumkas, ethnic Indian wear, traditional festive wear, formal collared shirt, button-up shirt, pleated trousers, formal pants, "
     "character mouth moving during voiceover, character lip sync during narration, "
     "open mouth talking during voiceover, character talking during narration, "
@@ -119,22 +137,22 @@ MASTER_NEGATIVE_PROMPT = (
 )
 
 DNA_CARETAKER = (
-    "Sreedharan (The Caretaker): Stylized 3D Pixar-style cartoon animation character, "
-    "65yo South Indian Malayali man, slightly hunched posture, thick expressive grey mustache, "
-    "mysterious observant unblinking cartoon eyes, wearing a traditional white Kerala mundu and "
-    "a faded grey cotton jubba with brown sandals."
+    "Sreedharan (The Caretaker): Stylized 3D Pixar-style cartoon animation character, 65-year-old elderly South Indian Malayali man, "
+    "weathered mature Pixar elderly face, distinguished thick expressive grey mustache, bushy grey eyebrows, deep mysterious observant unblinking cartoon eyes, "
+    "slightly hunched dignified elderly build, thinning salt-and-pepper hair (STRICTLY 3D ANIMATION ELDERLY CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
+    "STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Traditional white Kerala cotton mundu and a faded grey cotton jubba with brown leather sandals. Absolutely zero costume variations."
 )
 
 DNA_SHOPKEEPER = (
-    "Tea Shopkeeper: Stylized 3D Pixar-style cartoon animation character, "
-    "48yo South Indian Malayali man, warm expressive weathered cartoon face, mustache, "
-    "wearing a classic faded blue cotton shirt and cotton lungi."
+    "Tea Shopkeeper: Stylized 3D Pixar-style cartoon animation character, 48-year-old middle-aged South Indian Malayali man, "
+    "warm expressive weathered cartoon face, thick black-and-grey mustache, welcoming dark eyes, sturdy working adult build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
+    "STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Faded blue cotton half-sleeve shirt and traditional checkered cotton lungi. Absolutely zero costume variations."
 )
 
 DNA_WOMAN_IN_MIST = (
-    "Bhadra (The Woman in the Mist): Ethereal stylized 3D Pixar-style cartoon animation character, "
-    "28yo South Indian Malayali woman, enigmatic soft glowing animated eyes, flowing dark hair "
-    "drifting like mountain mist, wearing a traditional Kerala Set-Mundu with dull gold border."
+    "Bhadra (The Woman in the Mist): Ethereal stylized 3D Pixar-style cartoon animation character, 28-year-old adult South Indian Malayali woman, "
+    "enigmatic soft glowing animated eyes, haunting elegant adult female facial features, flowing dark wavy hair drifting like mountain mist, graceful floating adult posture (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES). "
+    "STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Traditional white Kerala Set-Mundu with dull gold border, edges softly dissolving into misty fog. Absolutely zero costume variations."
 )
 
 DNA_REGISTRY = {
@@ -226,20 +244,86 @@ def get_active_character_dna_map(season_num=1, character_updates=None, new_chara
     # 3. Add fresh new characters if introduced
     if new_characters:
         for nc in new_characters:
-            cname = nc.get("name")
-            if not cname:
-                continue
-            v_dna = nc.get("visual_dna", "")
-            attire = nc.get("locked_attire") or nc.get("attire", "")
-            if v_dna and "STRICTLY LOCKED ATTIRE" in v_dna:
-                active_map[cname] = v_dna
-            elif attire:
-                base = v_dna or f"{cname}: Stylized 3D Pixar-style cartoon animation character."
-                active_map[cname] = format_character_visual_dna(cname, base, attire)
-            elif v_dna:
-                active_map[cname] = v_dna
+            entry = register_new_character(nc)
+            if entry:
+                active_map[entry["name"]] = entry["visual_dna"]
 
     return active_map
+
+def register_new_character(character_data, story_state_path="story_state.json"):
+    """
+    Registers a new character with strictly enforced adult/elderly physical specifications,
+    preventing childlike or chibi generation. Updates story_state.json and DNA_REGISTRY.
+    """
+    if not character_data or not isinstance(character_data, dict):
+        return None
+    name = character_data.get("name")
+    if not name:
+        return None
+
+    age = character_data.get("age", 24)
+    gender = str(character_data.get("gender", "male")).lower()
+
+    if age >= 55:
+        age_group = "Elderly"
+        adult_noun = "elderly gentleman" if gender == "male" else "elderly lady"
+    elif age >= 35:
+        age_group = "Middle-Aged"
+        adult_noun = "middle-aged man" if gender == "male" else "middle-aged woman"
+    else:
+        age_group = "Young Adult"
+        adult_noun = "young adult man" if gender == "male" else "young adult woman"
+
+    raw_v_dna = character_data.get("visual_dna", "")
+    sanitized_dna = raw_v_dna
+    # Replace boy/girl terms with explicit adult descriptions
+    sanitized_dna = re.sub(r'\b(boy|young boy)\b', f'{age}-year-old young adult man', sanitized_dna, flags=re.IGNORECASE)
+    sanitized_dna = re.sub(r'\b(girl|young girl)\b', f'{age}-year-old young adult woman', sanitized_dna, flags=re.IGNORECASE)
+
+    if not sanitized_dna or len(sanitized_dna) < 20:
+        sanitized_dna = (
+            f"{name}: Stylized 3D Pixar-style cartoon animation character, {age}-year-old {age_group.lower()} South Indian Malayali {adult_noun}, "
+            f"defined adult facial structure, natural adult proportions (STRICTLY {age_group.upper()} ADULT CHARACTER, "
+            f"PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+        )
+    elif "PROHIBIT" not in sanitized_dna:
+        sanitized_dna += f" (STRICTLY {age_group.upper()} {adult_noun.upper()}, PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+
+    attire = character_data.get("locked_attire") or character_data.get("attire", "Casual modern attire.")
+    voice = character_data.get("voice") or character_data.get("voice_persona", "Expressive Malayalam voice")
+
+    full_dna = format_character_visual_dna(name, sanitized_dna, attire)
+
+    entry = {
+        "name": name,
+        "age": age,
+        "age_group": age_group,
+        "gender": gender,
+        "role": character_data.get("role", "Character"),
+        "height_build": character_data.get("height_build", "Natural adult proportions, head-to-body ratio 1:7.5, broad shoulders, strictly non-chibi"),
+        "face": character_data.get("face", f"Defined mature adult facial structure, expressive Pixar animation features"),
+        "hair": character_data.get("hair", "Stylized dark textured cartoon hair"),
+        "attire": attire,
+        "locked_attire": attire,
+        "voice": voice,
+        "voice_persona": voice,
+        "visual_dna": full_dna
+    }
+
+    # Persist in story_state.json
+    p = Path(story_state_path)
+    if p.exists():
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                st = json.load(f)
+            st.setdefault("characters", {})[name] = entry
+            with open(p, "w", encoding="utf-8") as f:
+                json.dump(st, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"Notice saving character to state: {e}")
+
+    DNA_REGISTRY[name] = full_dna
+    return entry
 
 # Master Season 1 Story Roadmap (10 Episodes)
 SEASON_1_ROADMAP = {
@@ -439,8 +523,14 @@ REQUIREMENTS:
    - MANDATORY COLOR CONTRAST & DIVERSITY (NO MATCHING OR SIMILAR COLORS):
      • Sachin, Reenu, and Amal MUST NEVER wear matching, identical, or similar colors in the same season! (It looks awkward on screen).
      • Each of the 3 characters MUST wear distinctly contrasting, harmonious colors (e.g. Sachin in Olive Green, Amal in Terracotta Rust-Orange, Reenu in Pastel Lavender/Pink pattern).
-   - NEW CHARACTERS (e.g., traditional parents like Reenu's Father or Mother):
-     • Traditional Kerala elderly parents wear traditional attire (mundu, jubba, saree). Younger friends or colleagues follow casuals.
+   - NEW CHARACTERS RULES (STRICTLY ADULT / ELDERLY SPECIFICATIONS):
+     * Every newly created character MUST have full, mature physical specifications.
+     * Age groups: 'Young Adult' (20-35), 'Middle-Aged' (36-55), or 'Elderly' (56+).
+     * NEVER use the words 'boy' or 'girl' for adult characters. Use 'young adult man' or 'young adult woman'.
+     * Specify defined adult facial structure (mature jawline, facial hair for adult men, elegant adult cheekbones for women).
+     * Specify adult body proportions: 'Natural adult proportions, head-to-body ratio 1:7.5, broad shoulders, strictly non-chibi'.
+     * Visual DNA MUST end with: (STRICTLY ADULT CHARACTER, PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES).
+     * Traditional Kerala elderly parents wear traditional attire (mundu, jubba, saree). Younger friends or colleagues follow casuals.
 
 Output JSON matching this exact schema:
 {{
