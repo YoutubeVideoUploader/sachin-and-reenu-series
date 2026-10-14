@@ -84,6 +84,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add story_state.json current_episode_shots.json portal.html scripts/ 2>/dev/null || true
+          git add story_state.json current_episode_shots.json portal.html season_*_shot_outline.json scripts/ 2>/dev/null || true
           git diff-index --quiet HEAD || git commit -m "Advance episode: generated new screenplay & Google Flow prompts [skip ci]"
           git push || true

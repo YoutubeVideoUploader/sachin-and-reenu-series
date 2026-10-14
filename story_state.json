@@ -131,36 +131,36 @@
       "visual_dna": "Ethereal, semi-transparent Pixar-style character with glowing eyes and long flowing hair that mimics the mist."
     }
   },
-  "current_arc": "The Monsoon Car Ride & Secret Pouch",
+  "current_arc": "Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.",
   "history": [
     {
       "episode": 1,
-      "title": "തിരിച്ചുവരവ് (The Homecoming)",
-      "summary": "Sachin surprises Reenu with a spontaneous trip to Munnar. However, the journey takes an unexpected turn when Sachin realizes he forgot the travel permits, and Amal relentlessly mocks his navigation skills. As they venture deeper into the high ranges, Sachin mistakenly enters a restricted forest route into the GPS, leading them into unknown territory.",
-      "cliffhanger": "As Sachin holds Reenu close, his eyes reveal a hidden anxiety while his fingers tightly clutch a secret, unopened leather pouch.",
+      "title": "യാത്ര തുടങ്ങുന്നു (The Trip Begins)",
+      "summary": "Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.",
+      "cliffhanger": "Renu points at a woman on the road. Sachin looks back. Dialogue: 'ആ സ്ത്രീ ആരാണ്?'",
       "characters_present": [
-        "Sachin",
         "Reenu",
-        "Amal"
+        "Sachin",
+        "Amal",
+        "Narrator"
       ]
     }
   ],
   "episode_number": 1,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_FOREST_ROAD",
-    "time_of_day": "Mid-morning monsoon",
-    "lighting_palette": "Dull green forest light",
-    "weather": "Dense forest mist",
+    "scene_id": "SCENE_MOUNTAIN_ROAD",
+    "time_of_day": "Late Afternoon Misty Mountain Atmosphere",
+    "lighting_palette": "Diffused cinematic mountain daylight through cool high-range fog",
+    "weather": "Cool misty high-range fog drifting through pine trees",
     "spatial_blocking": {
-      "Sachin": "Driver seat",
-      "Reenu": "Passenger seat"
+      "Sachin": "Screen-center reacting expressively to scene action",
+      "Reenu": "Screen-left reacting expressively to scene action"
     },
-    "eyeline_direction": "Sachin looking ahead",
+    "eyeline_direction": "Characters looking attentively toward scene focal action",
     "persistent_props": [
-      "Sachin's brown leather cross-bag",
-      "Unopened vintage leather pouch in Sachin's hand"
+      "Car"
     ],
-    "camera_lens": "Cinematic prime lens"
+    "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
   "season_number": 3,
   "season_arc": [
@@ -245,7 +245,7 @@
       "cliffhanger": "Safe at the city limits, Amal checks his phone gallery; the final selfie shows Bhadra standing behind their car, smiling peacefully as she fades away."
     }
   ],
-  "season_title": "Season 3: The Munnar Trip (സീസൺ 3: മൂന്നാർ യാത്ര)",
+  "season_title": "Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)",
   "season_shot_outline": {
     "season_number": 3,
     "season_title": "Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)",
@@ -2949,5 +2949,6 @@
         "status": "Upcoming"
       }
     ]
-  }
+  },
+  "cliffhanger": "Renu points at a woman on the road. Sachin looks back. Dialogue: 'ആ സ്ത്രീ ആരാണ്?'"
 }

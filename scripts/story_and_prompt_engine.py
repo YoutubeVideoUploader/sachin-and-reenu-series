@@ -118,12 +118,34 @@ MASTER_NEGATIVE_PROMPT = (
     "subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
 )
 
+DNA_CARETAKER = (
+    "Sreedharan (The Caretaker): Stylized 3D Pixar-style cartoon animation character, "
+    "65yo South Indian Malayali man, slightly hunched posture, thick expressive grey mustache, "
+    "mysterious observant unblinking cartoon eyes, wearing a traditional white Kerala mundu and "
+    "a faded grey cotton jubba with brown sandals."
+)
+
+DNA_SHOPKEEPER = (
+    "Tea Shopkeeper: Stylized 3D Pixar-style cartoon animation character, "
+    "48yo South Indian Malayali man, warm expressive weathered cartoon face, mustache, "
+    "wearing a classic faded blue cotton shirt and cotton lungi."
+)
+
+DNA_WOMAN_IN_MIST = (
+    "Bhadra (The Woman in the Mist): Ethereal stylized 3D Pixar-style cartoon animation character, "
+    "28yo South Indian Malayali woman, enigmatic soft glowing animated eyes, flowing dark hair "
+    "drifting like mountain mist, wearing a traditional Kerala Set-Mundu with dull gold border."
+)
+
 DNA_REGISTRY = {
     "Reenu": DNA_REENU,
     "Sachin": DNA_SACHIN,
     "Amal": DNA_AMAL,
     "Madhavan": DNA_MADHAVAN,
-    "Girija": DNA_GIRIJA
+    "Girija": DNA_GIRIJA,
+    "Caretaker": DNA_CARETAKER,
+    "Shopkeeper": DNA_SHOPKEEPER,
+    "Bhadra": DNA_WOMAN_IN_MIST
 }
 
 def is_formal_attire(attire_str):
@@ -1820,7 +1842,7 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
     raw_shots = target_ep_obj.get("shots", [])
     active_dna_map = get_active_character_dna_map(season_number)
 
-    known_chars = ["Sachin", "Reenu", "Kurian", "Annamma", "Madhavan", "Girija", "Amal", "Broker Shaji", "Varghese"]
+    known_chars = ["Sachin", "Reenu", "Renu", "Amal", "Caretaker", "Shopkeeper", "Kurian", "Annamma", "Madhavan", "Girija", "Broker Shaji", "Varghese"]
     compiled_shots = []
 
     for idx, s in enumerate(raw_shots, start=1):
@@ -1832,26 +1854,82 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
 
         # Detect characters present
         present_names = []
-        for c in known_chars:
-            if c.lower() in s_action.lower() or c.lower() in s_speaker.lower():
-                present_names.append(c)
+        action_lower = s_action.lower()
+        speaker_lower = s_speaker.lower()
+
+        if "sachin" in action_lower or "sachin" in speaker_lower:
+            present_names.append("Sachin")
+        if "renu" in action_lower or "reenu" in action_lower or "renu" in speaker_lower or "reenu" in speaker_lower:
+            present_names.append("Reenu")
+        if "amal" in action_lower or "amal" in speaker_lower:
+            present_names.append("Amal")
+        if "caretaker" in action_lower or "caretaker" in speaker_lower:
+            present_names.append("Caretaker")
+        if "shopkeeper" in action_lower or "shopkeeper" in speaker_lower:
+            present_names.append("Shopkeeper")
+
+        for c in ["Kurian", "Annamma", "Madhavan", "Girija", "Broker Shaji", "Varghese"]:
+            if c.lower() in action_lower or c.lower() in speaker_lower:
+                if c not in present_names:
+                    present_names.append(c)
+
         if not present_names:
             present_names = ["Sachin", "Reenu"]
 
         characters_present = []
         blocking = {}
-        for b_idx, c in enumerate(present_names):
-            c_dna = active_dna_map.get(c, DNA_REGISTRY.get(c, f"{c}: Stylized 3D Pixar character"))
+        loc_upper = s_loc.upper()
+        
+        # Spatial blocking tailored to car or room
+        if "CAR" in loc_upper:
+            for c in present_names:
+                if c == "Amal":
+                    blocking["Amal"] = "Driver seat, hands on steering wheel / checking phone GPS"
+                elif c == "Sachin":
+                    blocking["Sachin"] = "Front passenger seat, leaning forward with itinerary / looking ahead"
+                elif c == "Reenu":
+                    blocking["Reenu"] = "Rear passenger seat, looking out through misty car window"
+                else:
+                    blocking[c] = "Inside car reacting to journey"
+        else:
+            for b_idx, c in enumerate(present_names):
+                pos = ["Screen-center", "Screen-left", "Screen-right", "Background"][b_idx % 4]
+                blocking[c] = f"{pos} reacting expressively to scene action"
+
+        for c in present_names:
+            if c == "Caretaker":
+                c_dna = DNA_CARETAKER
+            elif c == "Shopkeeper":
+                c_dna = DNA_SHOPKEEPER
+            else:
+                c_dna = active_dna_map.get(c, DNA_REGISTRY.get(c, f"{c}: Stylized 3D Pixar character"))
             characters_present.append({"name": c, "visual_dna": c_dna})
-            pos = ["Screen-center", "Screen-left", "Screen-right", "Background"][b_idx % 4]
-            blocking[c] = f"{pos} reacting expressively to scene action"
 
         scene_clean_loc = re.sub(r'[^A-Za-z0-9]+', '_', s_loc).upper()[:22]
+        
+        if season_number == 3:
+            if any(k in loc_upper for k in ["ROAD", "CAR", "MOUNTAIN", "PLANTATION", "TEA"]):
+                time_of_day = "Late Afternoon Misty Mountain Atmosphere"
+                weather = "Cool misty high-range fog drifting through pine trees"
+                lighting = "Diffused cinematic mountain daylight through cool high-range fog"
+            elif any(k in loc_upper for k in ["HOMESTAY", "LOCKED ROOM", "FACTORY", "BRIDGE", "HALLWAY"]):
+                time_of_day = "Eerie Chilly High-Range Dusk"
+                weather = "Misty drafts filtering through window slats"
+                lighting = "Moody atmospheric amber lampglow with deep cinematic shadows"
+            else:
+                time_of_day = "Warm Ambient Indoor Daytime"
+                weather = "Calm interior ambiance"
+                lighting = "Soft warm domestic ambient lighting with cozy room tones"
+        else:
+            time_of_day = "Late Afternoon Monsoon Dusk"
+            weather = "Continuous Kochi monsoon drizzle with soft humid atmosphere"
+            lighting = "Soft natural overcast exterior daylight with warm interior amber glow"
+
         seq_cont = {
             "scene_id": f"SCENE_{scene_clean_loc}",
-            "time_of_day": "Late Afternoon Monsoon Dusk",
-            "lighting_palette": "Soft natural overcast exterior daylight with warm interior amber glow",
-            "weather": "Continuous Kochi monsoon drizzle with soft humid atmosphere",
+            "time_of_day": time_of_day,
+            "lighting_palette": lighting,
+            "weather": weather,
             "spatial_blocking": blocking,
             "eyeline_direction": "Characters looking attentively toward scene focal action",
             "persistent_props": s.get("persistent_props") or ["Sachin's cross-bag", "Reenu's silver wrist watch"],
@@ -1863,6 +1941,24 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
         if "closed" not in clean_action.lower():
             clean_action += " Character lips are firmly closed. No mouth movement. Pure visual storytelling."
 
+        speaker_display = s_speaker
+        if speaker_display.lower() in ["renu", "reenu"]:
+            speaker_display = "Reenu"
+
+        voice_p = NARRATOR_VOICE
+        if speaker_display == "Sachin":
+            voice_p = "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence"
+        elif speaker_display == "Reenu":
+            voice_p = "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice"
+        elif speaker_display == "Amal":
+            voice_p = "Amal: 24yo witty Malayali friend voice, sarcastic comedic energetic Malayalam tone"
+        elif speaker_display == "Shopkeeper":
+            voice_p = "Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone"
+        elif speaker_display == "Caretaker":
+            voice_p = "Caretaker: Deep raspy mysterious high-range Malayalam tone"
+        elif speaker_display == "Narrator":
+            voice_p = NARRATOR_VOICE
+
         json_prompt = {
             "style": MASTER_STYLE,
             "duration": "6s",
@@ -1873,8 +1969,8 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
             "camera": s_camera,
             "action": clean_action,
             "dialogue": {
-                "speaker": s_speaker,
-                "voice_persona": NARRATOR_VOICE,
+                "speaker": speaker_display,
+                "voice_persona": voice_p,
                 "language": "Malayalam",
                 "script": s_diag,
                 "line": s_diag
@@ -1891,15 +1987,17 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
             "shot_number": idx,
             "duration": "6s",
             "duration_seconds": 6,
-            "character": s_speaker,
+            "character": speaker_display,
             "dialogue_malayalam": s_diag,
             "action_summary": s_action,
             "json_prompt": json_prompt
         })
 
+    is_new = (target_ep == 1 and season_number > 1)
     ep_data = {
         "episode_number": target_ep,
         "season_number": season_number,
+        "is_new_season": is_new,
         "season_title": outline_data.get("season_title", f"Season {season_number}"),
         "title_english": target_ep_obj.get("title_english", f"Episode {target_ep}"),
         "title_malayalam": target_ep_obj.get("title_malayalam", ""),
@@ -1914,7 +2012,23 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
     # Save to disk
     with open("current_episode_shots.json", "w", encoding="utf-8") as f:
         json.dump(ep_data, f, ensure_ascii=False, indent=2)
-    print(f"✓ Compiled {len(compiled_shots)} Disney Pixar JSON prompts for Episode {target_ep} into current_episode_shots.json!")
+    print(f"[SUCCESS] Compiled {len(compiled_shots)} Disney Pixar JSON prompts for Season {season_number} Episode {target_ep} into current_episode_shots.json!")
+
+    # Update story_state.json
+    if os.path.exists("story_state.json"):
+        try:
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                s_state = json.load(f)
+            s_state["episode_number"] = target_ep
+            s_state["season_number"] = season_number
+            s_state["season_title"] = ep_data["season_title"]
+            s_state["current_arc"] = ep_data["synopsis"]
+            s_state["cliffhanger"] = ep_data["cliffhanger"]
+            with open("story_state.json", "w", encoding="utf-8") as f:
+                json.dump(s_state, f, ensure_ascii=False, indent=2)
+            print(f"[SUCCESS] Updated story_state.json to Season {season_number} Episode {target_ep}!")
+        except Exception as e:
+            print(f"Notice updating story_state.json: {e}")
 
     # Update creator portal
     update_creator_portal(ep_data)
@@ -2169,6 +2283,24 @@ def main():
         print(f"\n⚠️ Target episode {target_ep} exceeds season limit (10 episodes per season). Halting.")
         return
 
+    # Check if a Master 100-Shot Outline exists for this season (on disk or in story_state)
+    outline_fn = f"season_{season_num}_shot_outline.json"
+    outline_available = os.path.exists(outline_fn)
+    if not outline_available and os.path.exists("story_state.json"):
+        try:
+            with open("story_state.json", "r", encoding="utf-8") as f:
+                s_st = json.load(f)
+                if "season_shot_outline" in s_st and s_st.get("season_number") == season_num:
+                    outline_available = True
+        except Exception:
+            pass
+
+    if outline_available:
+        print(f"\n[INFO] Master 100-Shot Screenplay Outline detected for Season {season_num}!")
+        print(f"[INFO] Compiling Episode {target_ep} prompts strictly from Tab 7 Master Outline...")
+        ep_data = compile_episode_prompts_from_outline(season_num, target_ep, gas_url=args.gas_url)
+        return
+
     # Resolve roadmap & storyline
     active_roadmap = SEASON_2_ROADMAP if season_num == 2 else SEASON_1_ROADMAP
     dynamic_arc_data = None
@@ -2197,6 +2329,9 @@ def main():
             print(f"\n🎬 Generating 100-Shot Master Screenplay Beat Sheet for Season {season_num}...")
             generate_100_shot_season_outline(season_num, user_premise, gas_url=args.gas_url)
             print(f"✓ 100-Shot Beat Sheet created and synced to Google Sheet Tab 7 [Season_Shot_Outline]!")
+            print(f"\n✨ Compiling Season {season_num} Episode 1 prompts strictly from Tab 7 Master Outline...")
+            ep_data = compile_episode_prompts_from_outline(season_num, 1, gas_url=args.gas_url)
+            return
         except Exception as e:
             print(f"Notice generating 100-shot outline: {e}")
 
