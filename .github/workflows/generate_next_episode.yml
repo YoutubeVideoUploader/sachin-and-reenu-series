@@ -52,22 +52,33 @@ jobs:
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
+          TARGET_EPISODE: ${{ inputs.target_episode }}
+          SEASON_NUMBER: ${{ inputs.season_number }}
+          IS_NEW_SEASON: ${{ inputs.is_new_season }}
+          STORY_PREMISE: ${{ inputs.story_premise }}
         run: |
-          cmd="python scripts/story_and_prompt_engine.py"
-          if [ -n "${{ inputs.target_episode }}" ]; then
-            cmd="$cmd --target_ep ${{ inputs.target_episode }}"
-          fi
-          if [ -n "${{ inputs.season_number }}" ]; then
-            cmd="$cmd --season ${{ inputs.season_number }}"
-          fi
-          if [ "${{ inputs.is_new_season }}" = "true" ]; then
-            cmd="$cmd --is_new_season"
-          fi
-          if [ -n "${{ inputs.story_premise }}" ]; then
-            cmd="$cmd --premise \"${{ inputs.story_premise }}\""
-          fi
-          echo "Running: $cmd"
-          eval $cmd
+          python - << 'EOF'
+          import os, subprocess, sys
+
+          cmd = [sys.executable, "scripts/story_and_prompt_engine.py"]
+          target_ep = os.getenv("TARGET_EPISODE", "").strip()
+          season = os.getenv("SEASON_NUMBER", "").strip()
+          is_new = os.getenv("IS_NEW_SEASON", "").strip().lower()
+          premise = os.getenv("STORY_PREMISE", "").strip()
+
+          if target_ep:
+              cmd += ["--target_ep", target_ep]
+          if season:
+              cmd += ["--season", season]
+          if is_new == "true":
+              cmd += ["--is_new_season"]
+          if premise:
+              cmd += ["--premise", premise]
+
+          print(f"Executing: {' '.join(cmd)}")
+          result = subprocess.run(cmd)
+          sys.exit(result.returncode)
+          EOF
 
       - name: 5. Commit Updated Screenplay, Prompts & Portal to GitHub
         run: |

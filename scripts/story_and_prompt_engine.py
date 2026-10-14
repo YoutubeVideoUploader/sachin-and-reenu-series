@@ -2192,6 +2192,14 @@ def main():
         previous_story = f"Season {season_num - 1} Climax: Sachin cancelled his London visa and decided to stay in Kerala for love. Season {season_num} begins a new chapter in Kochi."
         cliffhanger = "A new beginning awaits in Kochi."
 
+        # Also auto-generate the 100-shot master outline for Tab 7 (Season_Shot_Outline)
+        try:
+            print(f"\n🎬 Generating 100-Shot Master Screenplay Beat Sheet for Season {season_num}...")
+            generate_100_shot_season_outline(season_num, user_premise, gas_url=args.gas_url)
+            print(f"✓ 100-Shot Beat Sheet created and synced to Google Sheet Tab 7 [Season_Shot_Outline]!")
+        except Exception as e:
+            print(f"Notice generating 100-shot outline: {e}")
+
         # Build active character DNA map for new season
         active_dna_map = get_active_character_dna_map(season_num, character_updates=character_updates, new_characters=new_characters)
     else:
