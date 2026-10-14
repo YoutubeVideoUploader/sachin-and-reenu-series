@@ -120,11 +120,12 @@ jobs:
           python scripts/instagram_publisher.py
 
       # -------------------------------------------------------------
-      # STEP 9: AUTONOMOUS NEXT EPISODE GENERATION (GEMINI)
-      # Writes next story, 20-22 JSON prompts, updates 3-tab Sheet & website!
+      # STEP 9: AUTONOMOUS NEXT EPISODE GENERATION (MANUAL ADVANCE)
+      # Triggered only when 'advance_to_next' is explicitly requested
+      # (Normal post-publish progression is handled cleanly in Step 8)
       # -------------------------------------------------------------
       - name: 9. Generate Next Episode Screenplay & Update Google Sheets + Website
-        if: ${{ inputs.advance_to_next || (steps.drive_check.outputs.should_run == 'true' && !inputs.dry_run) }}
+        if: ${{ inputs.advance_to_next }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}

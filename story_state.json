@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 1,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Handing keys, looking suspicious. Footsteps heard outside.",
+  "current_arc": "Sachin dismisses Renu's claim. Car engine sputters and dies.",
   "history": [
     {
       "episode": 1,
@@ -183,47 +183,20 @@
         "Sachin",
         "Amal"
       ]
-    },
-    {
-      "episode": 2,
-      "title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
-      "summary": "Sachin dismisses Renu's claim. Car engine sputters and dies.",
-      "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'",
-      "characters_present": [
-        "Shopkeeper",
-        "Reenu",
-        "Sachin",
-        "Amal"
-      ]
-    },
-    {
-      "episode": 3,
-      "title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
-      "summary": "Handing keys, looking suspicious. Footsteps heard outside.",
-      "cliffhanger": "The door creaks open. Dialogue: 'അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.'",
-      "characters_present": [
-        "Amal",
-        "Sachin",
-        "Narrator",
-        "Reenu",
-        "Caretaker"
-      ]
     }
   ],
-  "episode_number": 3,
+  "episode_number": 2,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_HALLWAY",
-    "time_of_day": "Eerie Chilly High-Range Dusk",
-    "lighting_palette": "Moody atmospheric amber lampglow with deep cinematic shadows",
-    "weather": "Misty drafts filtering through window slats",
+    "scene_id": "SCENE_CAR",
+    "time_of_day": "Late Afternoon Misty Mountain Atmosphere",
+    "lighting_palette": "Diffused cinematic mountain daylight through cool high-range fog",
+    "weather": "Cool misty high-range fog drifting through pine trees",
     "spatial_blocking": {
-      "Sachin": "Screen-center reacting expressively to scene action",
-      "Reenu": "Screen-left reacting expressively to scene action"
+      "Reenu": "Rear passenger seat, looking out through misty car window"
     },
     "eyeline_direction": "Characters looking attentively toward scene focal action",
     "persistent_props": [
-      "Door",
-      "Sachin's brown leather cross-bag",
+      "Misty car passenger window with water droplets",
       "Reenu's silver wrist watch"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
@@ -3016,5 +2989,5 @@
       }
     ]
   },
-  "cliffhanger": "The door creaks open. Dialogue: 'അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.'"
+  "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'"
 }
