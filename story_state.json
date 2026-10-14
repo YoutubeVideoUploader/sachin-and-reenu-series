@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.",
+  "current_arc": "Handing keys, looking suspicious. Footsteps heard outside.",
   "history": [
     {
       "episode": 1,
@@ -183,21 +183,46 @@
         "Sachin",
         "Amal"
       ]
+    },
+    {
+      "episode": 2,
+      "title": "മഞ്ഞിലെ സ്ത്രീ (The Woman in the Mist)",
+      "summary": "Sachin dismisses Renu's claim. Car engine sputters and dies.",
+      "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'",
+      "characters_present": [
+        "Shopkeeper",
+        "Reenu",
+        "Sachin",
+        "Amal"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "വിചിത്രമായ ഹോംസ്റ്റേ (The Strange Homestay)",
+      "summary": "Handing keys, looking suspicious. Footsteps heard outside.",
+      "cliffhanger": "The door creaks open. Dialogue: 'അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.'",
+      "characters_present": [
+        "Amal",
+        "Sachin",
+        "Narrator",
+        "Reenu",
+        "Caretaker"
+      ]
     }
   ],
-  "episode_number": 1,
+  "episode_number": 3,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_MOUNTAIN_ROAD",
-    "time_of_day": "Late Afternoon Misty Mountain Atmosphere",
-    "lighting_palette": "Diffused cinematic mountain daylight through cool high-range fog",
-    "weather": "Cool misty high-range fog drifting through pine trees",
+    "scene_id": "SCENE_HALLWAY",
+    "time_of_day": "Eerie Chilly High-Range Dusk",
+    "lighting_palette": "Moody atmospheric amber lampglow with deep cinematic shadows",
+    "weather": "Misty drafts filtering through window slats",
     "spatial_blocking": {
       "Sachin": "Screen-center reacting expressively to scene action",
       "Reenu": "Screen-left reacting expressively to scene action"
     },
     "eyeline_direction": "Characters looking attentively toward scene focal action",
     "persistent_props": [
-      "Car interior dashboard",
+      "Door",
       "Sachin's brown leather cross-bag",
       "Reenu's silver wrist watch"
     ],
@@ -2991,5 +3016,5 @@
       }
     ]
   },
-  "cliffhanger": "Renu points at a woman on the road. Sachin looks back. Dialogue: 'ആ സ്ത്രീ ആരാണ്?'"
+  "cliffhanger": "The door creaks open. Dialogue: 'അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.'"
 }
