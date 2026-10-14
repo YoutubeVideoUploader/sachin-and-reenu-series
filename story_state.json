@@ -2989,5 +2989,524 @@
       }
     ]
   },
-  "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'"
+  "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'",
+  "current_episode": {
+    "episode_number": 2,
+    "season_number": 3,
+    "title_english": "The Woman in the Mist",
+    "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
+    "synopsis": "As the car mysteriously dies on the foggy Munnar road, Sachin and Amal investigate while Reenu notices a terrifying presence outside the window.",
+    "cliffhanger": "A freezing handprint slowly presses against the outer window glass from the dark outside.",
+    "total_shots": 10,
+    "shots": [
+      {
+        "shot_number": 1,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Sachin",
+        "dialogue_malayalam": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+        "action_summary": "Sachin turns around sharply in the front passenger seat, peering back through the fog-swirled rear window where Reenu is pointing. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Sachin Speaking)",
+          "characters_present": [
+            {
+              "name": "Sachin",
+              "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+            },
+            {
+              "name": "Reenu",
+              "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 proportions, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger seat (left side), turning around sharply to glance at rear window",
+              "Reenu": "Rear seat pointing anxiously toward the mist outside"
+            },
+            "eyeline_direction": "Sachin looks screen-right toward rear seat; Reenu points out rear window",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Sachin",
+          "action": "Sachin turns around sharply in the front passenger seat, peering back through the fog-swirled rear window where Reenu is pointing. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Sachin",
+            "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+            "line": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 2,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Amal",
+        "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ.",
+        "action_summary": "Amal sits firmly in the driver's seat with his lean frame, his hands tightly gripping the steering wheel, squinting through the windshield. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Amal Speaking)",
+          "characters_present": [
+            {
+              "name": "Amal",
+              "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping steering wheel tightly, twisting ignition key",
+              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Amal looks straight ahead into foggy road and down at dashboard ignition",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Amal",
+          "action": "Amal sits firmly in the driver's seat with his lean frame, his hands tightly gripping the steering wheel, squinting through the windshield. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Amal",
+            "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ.",
+            "line": "ഇത്രയും കോടമഞ്ഞിൽ ആരും പെട്ടെന്ന് നടന്നുപോവില്ല സച്ചിൻ."
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 3,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Amal",
+        "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
+        "action_summary": "Suddenly, the car engine gives a violent shudder, sputters loudly, and completely dies on the lonely mountain stretch. Amal twists the ignition key desperately. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Amal Speaking)",
+          "characters_present": [
+            {
+              "name": "Amal",
+              "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping steering wheel tightly, twisting ignition key",
+              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Amal looks straight ahead into foggy road and down at dashboard ignition",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Amal",
+          "action": "Suddenly, the car engine gives a violent shudder, sputters loudly, and completely dies on the lonely mountain stretch. Amal twists the ignition key desperately. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Amal",
+            "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
+            "line": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 4,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Sachin",
+        "dialogue_malayalam": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+        "action_summary": "Sachin pushes his passenger door open against the freezing mountain wind, preparing to step outside into the thick fog. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Sachin Speaking)",
+          "characters_present": [
+            {
+              "name": "Sachin",
+              "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger door pushed ajar, Sachin pausing in doorway against cold wind",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Sachin looks outward into dense white fog, then glances back at Amal",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Sachin",
+          "action": "Sachin pushes his passenger door open against the freezing mountain wind, preparing to step outside into the thick fog. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Sachin",
+            "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+            "line": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം."
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 5,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Reenu",
+        "dialogue_malayalam": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+        "action_summary": "Reenu leans forward from the back seat, her eyes wide with sudden dread as she grabs Sachin's jacket sleeve. Reenu's mouth moves in natural, expressive 3D lip-sync animation corresponding to her spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Reenu Speaking)",
+          "characters_present": [
+            {
+              "name": "Reenu",
+              "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 proportions, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+            },
+            {
+              "name": "Sachin",
+              "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger seat turned toward Reenu",
+              "Reenu": "Rear seat leaning forward, gripping Sachin's arm in dread"
+            },
+            "eyeline_direction": "Reenu looks desperately at Sachin; Sachin looks back at Reenu",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Reenu",
+          "action": "Reenu leans forward from the back seat, her eyes wide with sudden dread as she grabs Sachin's jacket sleeve. Reenu's mouth moves in natural, expressive 3D lip-sync animation corresponding to her spoken Malayalam line. Other character lips remain closed. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Reenu",
+            "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+            "language": "Malayalam",
+            "script": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+            "line": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 6,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Amal",
+        "dialogue_malayalam": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+        "action_summary": "Amal leans across the center console in a flash, locking all the car doors from the inside, his face pale under the dashboard lights. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Amal Speaking)",
+          "characters_present": [
+            {
+              "name": "Amal",
+              "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), leaning toward driver-side window glass",
+              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Amal stares intently through driver window into dark mist",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Amal",
+          "action": "Amal leans across the center console in a flash, locking all the car doors from the inside, his face pale under the dashboard lights. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Amal",
+            "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+            "line": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 7,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Sachin",
+        "dialogue_malayalam": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+        "action_summary": "Sachin stops halfway out of the door, freezing as a strange, icy gust of wind sweeps through the open window, cutting right through his clothes. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Sachin Speaking)",
+          "characters_present": [
+            {
+              "name": "Sachin",
+              "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger door pushed ajar, Sachin pausing in doorway against cold wind",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Sachin looks outward into dense white fog, then glances back at Amal",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Sachin",
+          "action": "Sachin stops halfway out of the door, freezing as a strange, icy gust of wind sweeps through the open window, cutting right through his clothes. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Sachin",
+            "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+            "line": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ..."
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 8,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Amal",
+        "dialogue_malayalam": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+        "action_summary": "Amal presses his face against the driver’s side glass, frantically wiping away the condensation with his sleeve to see outside into the pitch-black pine trees. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Amal Speaking)",
+          "characters_present": [
+            {
+              "name": "Amal",
+              "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), leaning toward driver-side window glass",
+              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Amal stares intently through driver window into dark mist",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Amal",
+          "action": "Amal presses his face against the driver’s side glass, frantically wiping away the condensation with his sleeve to see outside into the pitch-black pine trees. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Amal",
+            "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+            "line": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 9,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Sachin",
+        "dialogue_malayalam": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+        "action_summary": "Pure panic hits Sachin as he quickly pulls his legs back inside and slams the passenger door shut, locking it in a frenzy. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Sachin Speaking)",
+          "characters_present": [
+            {
+              "name": "Sachin",
+              "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger seat, quickly pulling legs in and slamming passenger door shut",
+              "Reenu": "Rear seat directly behind front seats, leaning forward with anxious focus"
+            },
+            "eyeline_direction": "Sachin looks frantically screen-right toward Amal in the driver seat",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Sachin",
+          "action": "Pure panic hits Sachin as he quickly pulls his legs back inside and slams the passenger door shut, locking it in a frenzy. Sachin's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Sachin",
+            "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+            "language": "Malayalam",
+            "script": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+            "line": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      },
+      {
+        "shot_number": 10,
+        "duration": "6s",
+        "duration_seconds": 6,
+        "character": "Reenu",
+        "dialogue_malayalam": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+        "action_summary": "Reenu stares in absolute horror as a freezing handprint slowly presses against the outer window glass from the dark outside. Reenu's mouth moves in natural, expressive 3D lip-sync animation corresponding to her spoken Malayalam line. Other character lips remain closed.",
+        "json_prompt": {
+          "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+          "duration": "6s",
+          "perspective": "Character Dialogue (Reenu Speaking)",
+          "characters_present": [
+            {
+              "name": "Reenu",
+              "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 proportions, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+            }
+          ],
+          "sequence_continuity": {
+            "scene_id": "SCENE_MUNNAR_MOUNTAIN_ROAD_CAR",
+            "time_of_day": "Late Evening High-Range Monsoon Fog",
+            "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber dashboard glow",
+            "weather": "Heavy mountain fog with cool condensation on car windows",
+            "spatial_blocking": {
+              "Amal": "Driver seat (right side), hands gripping the steering wheel, looking through misted windshield and rearview mirror",
+              "Sachin": "Front passenger seat (left side), seated looking toward Amal and passenger window",
+              "Reenu": "Rear seat frozen in horror, staring directly at outer window glass"
+            },
+            "eyeline_direction": "Reenu stares in shock at side windowpane",
+            "persistent_props": [
+              "Car steering wheel",
+              "Rearview mirror",
+              "Illuminated dashboard dials",
+              "Car ignition key",
+              "Sachin's cross-bag strap"
+            ],
+            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+          },
+          "location": "Mountain road car interior",
+          "camera": "Cinematic 3D medium close-up focused on Reenu",
+          "action": "Reenu stares in absolute horror as a freezing handprint slowly presses against the outer window glass from the dark outside. Reenu's mouth moves in natural, expressive 3D lip-sync animation corresponding to her spoken Malayalam line. Other character lips remain closed. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain closed.",
+          "dialogue": {
+            "speaker": "Reenu",
+            "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+            "language": "Malayalam",
+            "script": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+            "line": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!"
+          },
+          "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural car interior ambient foley sound effects only."
+        }
+      }
+    ]
+  }
 }
