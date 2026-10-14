@@ -1879,8 +1879,8 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
         characters_present = []
         blocking = {}
         loc_upper = s_loc.upper()
-        
-        # Spatial blocking tailored to car or room
+        # Contextual spatial blocking and eyeline direction
+        eyeline = "Characters looking attentively toward scene focal action"
         if "CAR" in loc_upper:
             for c in present_names:
                 if c == "Amal":
@@ -1891,6 +1891,28 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
                     blocking["Reenu"] = "Rear passenger seat, looking out through misty car window"
                 else:
                     blocking[c] = "Inside car reacting to journey"
+            if "Amal" in present_names and "Sachin" in present_names:
+                eyeline = "Amal and Sachin exchanging glances over the route, Reenu looking out misty window"
+        elif "LIVING" in loc_upper:
+            for c in present_names:
+                if c == "Sachin":
+                    blocking["Sachin"] = "Screen-center holding travel map / itinerary excitedly"
+                elif c == "Reenu":
+                    blocking["Reenu"] = "Screen-left reacting with surprise and warm smile"
+                elif c == "Amal":
+                    blocking["Amal"] = "Screen-right doorway entering holding car keys with comedic annoyed expression"
+                else:
+                    blocking[c] = "Screen-center reacting to conversation"
+            eyeline = "Characters actively looking at each other during animated conversation"
+        elif "BEDROOM" in loc_upper:
+            for c in present_names:
+                if c == "Sachin":
+                    blocking["Sachin"] = "Screen-center packing suitcase with flower bouquet"
+                elif c == "Reenu":
+                    blocking["Reenu"] = "Screen-left doorway watching affectionately"
+                else:
+                    blocking[c] = "In room reacting"
+            eyeline = "Sachin looking smiling at flower bouquet and suitcase"
         else:
             for b_idx, c in enumerate(present_names):
                 pos = ["Screen-center", "Screen-left", "Screen-right", "Background"][b_idx % 4]
@@ -1925,62 +1947,107 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
             weather = "Continuous Kochi monsoon drizzle with soft humid atmosphere"
             lighting = "Soft natural overcast exterior daylight with warm interior amber glow"
 
+        # Expand persistent props
+        raw_props = s.get("persistent_props") or []
+        expanded_props = []
+        for p in raw_props:
+            p_low = p.lower()
+            if "map" in p_low:
+                expanded_props.append("Sachin's unfolded travel map")
+            elif "suitcase" in p_low:
+                expanded_props.append("Open travel suitcase")
+            elif "itinerary" in p_low:
+                expanded_props.append("Romantic Munnar travel itinerary sheet in Sachin's hand")
+            elif "key" in p_low:
+                expanded_props.append("Set of car keys in Amal's hand")
+            elif "flower" in p_low or "bouquet" in p_low:
+                expanded_props.append("Fresh flower bouquet in Sachin's hand")
+            elif "phone" in p_low or "smart" in p_low:
+                expanded_props.append("Amal's smartphone running GPS navigation app")
+            elif "steer" in p_low:
+                expanded_props.append("Car steering wheel")
+            elif "window" in p_low:
+                expanded_props.append("Misty car passenger window with water droplets")
+            elif "car" in p_low:
+                expanded_props.append("Car interior dashboard")
+            elif "photo" in p_low:
+                expanded_props.append("Mysterious vintage photograph")
+            else:
+                expanded_props.append(p)
+        if "Sachin" in present_names and "Sachin's brown leather cross-bag" not in expanded_props:
+            expanded_props.append("Sachin's brown leather cross-bag")
+        if "Reenu" in present_names and "Reenu's silver wrist watch" not in expanded_props:
+            expanded_props.append("Reenu's silver wrist watch")
+
         seq_cont = {
             "scene_id": f"SCENE_{scene_clean_loc}",
             "time_of_day": time_of_day,
             "lighting_palette": lighting,
             "weather": weather,
             "spatial_blocking": blocking,
-            "eyeline_direction": "Characters looking attentively toward scene focal action",
-            "persistent_props": s.get("persistent_props") or ["Sachin's cross-bag", "Reenu's silver wrist watch"],
+            "eyeline_direction": eyeline,
+            "persistent_props": expanded_props,
             "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         }
 
-        # Enforce closed mouth directive
-        clean_action = s_action.strip()
-        if "closed" not in clean_action.lower():
-            clean_action += " Character lips are firmly closed. No mouth movement. Pure visual storytelling."
-
-        speaker_display = s_speaker
+        speaker_display = s_speaker.strip()
         if speaker_display.lower() in ["renu", "reenu"]:
             speaker_display = "Reenu"
 
-        voice_p = NARRATOR_VOICE
-        if speaker_display == "Sachin":
-            voice_p = "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence"
-        elif speaker_display == "Reenu":
-            voice_p = "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice"
-        elif speaker_display == "Amal":
-            voice_p = "Amal: 24yo witty Malayali friend voice, sarcastic comedic energetic Malayalam tone"
-        elif speaker_display == "Shopkeeper":
-            voice_p = "Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone"
-        elif speaker_display == "Caretaker":
-            voice_p = "Caretaker: Deep raspy mysterious high-range Malayalam tone"
-        elif speaker_display == "Narrator":
-            voice_p = NARRATOR_VOICE
+        is_narrator = speaker_display.lower() in ["narrator", "third-person narrator", "third person narrator", "voiceover", "voice-over"]
+
+        if is_narrator:
+            speaker_name = "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)"
+            voice_p = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
+            perspective = "Third-Person Narrator"
+            action_text = f"{s_action.strip()} PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation."
+            audio_text = (
+                "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
+                "All characters maintain strictly closed lips with zero talking or mouth animation. "
+                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
+                "Clean voiceover audio and natural ambient foley sound effects only."
+            )
+        else:
+            speaker_name = speaker_display
+            perspective = f"Character Dialogue ({speaker_display} Speaking)"
+            if speaker_display == "Sachin":
+                voice_p = "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')"
+            elif speaker_display == "Reenu":
+                voice_p = "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
+            elif speaker_display == "Amal":
+                voice_p = "Amal: 24yo witty relatable Malayali friend voice, comedic energetic Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')"
+            elif speaker_display == "Shopkeeper":
+                voice_p = "Tea Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone"
+            elif speaker_display == "Caretaker":
+                voice_p = "Sreedharan (The Caretaker): Deep raspy mysterious high-range Malayalam tone (Central Travancore / Idukki dialect)"
+            else:
+                voice_p = f"{speaker_display}: Native Malayalam expressive character voice"
+
+            action_text = f"{s_action.strip()} {speaker_display} actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively."
+            audio_text = (
+                f"CHARACTER DIALOGUE SPOKEN BY {speaker_display.upper()} ON SCREEN. "
+                f"{speaker_display} speaks directly with clear character voice and synchronized animated lip movement. "
+                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
+                "Clean character dialogue and natural ambient foley sound effects only."
+            )
 
         json_prompt = {
             "style": MASTER_STYLE,
             "duration": "6s",
-            "perspective": "Third-Person Narrator",
+            "perspective": perspective,
             "characters_present": characters_present,
             "sequence_continuity": seq_cont,
             "location": s_loc,
             "camera": s_camera,
-            "action": clean_action,
+            "action": action_text,
             "dialogue": {
-                "speaker": speaker_display,
+                "speaker": speaker_name,
                 "voice_persona": voice_p,
                 "language": "Malayalam",
                 "script": s_diag,
                 "line": s_diag
             },
-            "audio_directive": (
-                "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
-                "All characters maintain strictly closed lips with zero talking or mouth animation. "
-                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
-                "Clean voiceover audio and natural ambient foley sound effects only."
-            )
+            "audio_directive": audio_text
         }
 
         compiled_shots.append({

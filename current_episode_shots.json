@@ -38,27 +38,29 @@
           "lighting_palette": "Soft warm domestic ambient lighting with cozy room tones",
           "weather": "Calm interior ambiance",
           "spatial_blocking": {
-            "Sachin": "Screen-center reacting expressively to scene action",
-            "Reenu": "Screen-left reacting expressively to scene action"
+            "Sachin": "Screen-center holding travel map / itinerary excitedly",
+            "Reenu": "Screen-left reacting with surprise and warm smile"
           },
-          "eyeline_direction": "Characters looking attentively toward scene focal action",
+          "eyeline_direction": "Characters actively looking at each other during animated conversation",
           "persistent_props": [
-            "Map",
-            "Suitcase"
+            "Sachin's unfolded travel map",
+            "Open travel suitcase",
+            "Sachin's brown leather cross-bag",
+            "Reenu's silver wrist watch"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Living Room",
         "camera": "Cinematic 3D close-up with expressive emotional focus",
-        "action": "Sachin holds a map, looking excited. Renu is surprised. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Sachin holds a map, looking excited. Renu is surprised. PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation.",
         "dialogue": {
-          "speaker": "Narrator",
-          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+          "speaker": "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)",
+          "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
           "language": "Malayalam",
           "script": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
           "line": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }
     },
     {
@@ -71,7 +73,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Sachin Speaking)",
         "characters_present": [
           {
             "name": "Sachin",
@@ -84,25 +86,26 @@
           "lighting_palette": "Soft warm domestic ambient lighting with cozy room tones",
           "weather": "Calm interior ambiance",
           "spatial_blocking": {
-            "Sachin": "Screen-center reacting expressively to scene action"
+            "Sachin": "Screen-center holding travel map / itinerary excitedly"
           },
-          "eyeline_direction": "Characters looking attentively toward scene focal action",
+          "eyeline_direction": "Characters actively looking at each other during animated conversation",
           "persistent_props": [
-            "Itinerary"
+            "Romantic Munnar travel itinerary sheet in Sachin's hand",
+            "Sachin's brown leather cross-bag"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Living Room",
         "camera": "Dynamic cinematic 3D medium shot",
-        "action": "Sachin shows a romantic itinerary. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Sachin shows a romantic itinerary. Sachin actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence",
+          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
           "line": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -115,7 +118,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Amal Speaking)",
         "characters_present": [
           {
             "name": "Amal",
@@ -128,25 +131,25 @@
           "lighting_palette": "Soft warm domestic ambient lighting with cozy room tones",
           "weather": "Calm interior ambiance",
           "spatial_blocking": {
-            "Amal": "Screen-center reacting expressively to scene action"
+            "Amal": "Screen-right doorway entering holding car keys with comedic annoyed expression"
           },
-          "eyeline_direction": "Characters looking attentively toward scene focal action",
+          "eyeline_direction": "Characters actively looking at each other during animated conversation",
           "persistent_props": [
-            "Car keys"
+            "Set of car keys in Amal's hand"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Living Room",
         "camera": "Cinematic 3D close-up with expressive emotional focus",
-        "action": "Amal enters, looking annoyed. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Amal enters, looking annoyed. Amal actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Amal",
-          "voice_persona": "Amal: 24yo witty Malayali friend voice, sarcastic comedic energetic Malayalam tone",
+          "voice_persona": "Amal: 24yo witty relatable Malayali friend voice, comedic energetic Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
           "line": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -159,7 +162,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Reenu Speaking)",
         "characters_present": [
           {
             "name": "Reenu",
@@ -176,26 +179,27 @@
           "lighting_palette": "Soft warm domestic ambient lighting with cozy room tones",
           "weather": "Calm interior ambiance",
           "spatial_blocking": {
-            "Reenu": "Screen-center reacting expressively to scene action",
-            "Amal": "Screen-left reacting expressively to scene action"
+            "Reenu": "Screen-left reacting with surprise and warm smile",
+            "Amal": "Screen-right doorway entering holding car keys with comedic annoyed expression"
           },
-          "eyeline_direction": "Characters looking attentively toward scene focal action",
+          "eyeline_direction": "Characters actively looking at each other during animated conversation",
           "persistent_props": [
-            "Bag"
+            "Bag",
+            "Reenu's silver wrist watch"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Living Room",
         "camera": "Dynamic cinematic 3D medium shot",
-        "action": "Renu laughs at Amal. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Renu laughs at Amal. Reenu actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice",
+          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
           "language": "Malayalam",
           "script": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
           "line": "അമൽ, നീ തന്നെ വേണം നമുക്ക്."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -208,7 +212,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Sachin Speaking)",
         "characters_present": [
           {
             "name": "Sachin",
@@ -221,25 +225,26 @@
           "lighting_palette": "Soft warm domestic ambient lighting with cozy room tones",
           "weather": "Calm interior ambiance",
           "spatial_blocking": {
-            "Sachin": "Screen-center reacting expressively to scene action"
+            "Sachin": "Screen-center packing suitcase with flower bouquet"
           },
-          "eyeline_direction": "Characters looking attentively toward scene focal action",
+          "eyeline_direction": "Sachin looking smiling at flower bouquet and suitcase",
           "persistent_props": [
-            "Flower bouquet"
+            "Fresh flower bouquet in Sachin's hand",
+            "Sachin's brown leather cross-bag"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Bedroom",
         "camera": "Dynamic cinematic 3D medium shot",
-        "action": "Sachin packs unnecessary items. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Sachin packs unnecessary items. Sachin actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence",
+          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
           "line": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -252,7 +257,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Amal Speaking)",
         "characters_present": [
           {
             "name": "Amal",
@@ -269,21 +274,21 @@
           },
           "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Smartphone"
+            "Amal's smartphone running GPS navigation app"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Car",
         "camera": "Interior car medium shot, dynamic angle",
-        "action": "Amal checks the GPS map. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Amal checks the GPS map. Amal actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Amal",
-          "voice_persona": "Amal: 24yo witty Malayali friend voice, sarcastic comedic energetic Malayalam tone",
+          "voice_persona": "Amal: 24yo witty relatable Malayali friend voice, comedic energetic Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
           "line": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -296,7 +301,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Sachin Speaking)",
         "characters_present": [
           {
             "name": "Sachin",
@@ -313,21 +318,22 @@
           },
           "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Steering wheel"
+            "Car steering wheel",
+            "Sachin's brown leather cross-bag"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Car",
         "camera": "Cinematic 3D close-up with expressive emotional focus",
-        "action": "Sachin looks confident but wrong. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Sachin looks confident but wrong. Sachin actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Sachin",
-          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence",
+          "voice_persona": "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
           "line": "എനിക്ക് വഴി കൃത്യമായി അറിയാം."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -340,7 +346,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Amal Speaking)",
         "characters_present": [
           {
             "name": "Amal",
@@ -357,21 +363,21 @@
           },
           "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Smartphone"
+            "Amal's smartphone running GPS navigation app"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Car",
         "camera": "Interior car medium shot, dynamic angle",
-        "action": "Amal realizes the error. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Amal realizes the error. Amal actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Amal",
-          "voice_persona": "Amal: 24yo witty Malayali friend voice, sarcastic comedic energetic Malayalam tone",
+          "voice_persona": "Amal: 24yo witty relatable Malayali friend voice, comedic energetic Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
           "script": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
           "line": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -384,7 +390,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Reenu Speaking)",
         "characters_present": [
           {
             "name": "Reenu",
@@ -401,21 +407,22 @@
           },
           "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Window"
+            "Misty car passenger window with water droplets",
+            "Reenu's silver wrist watch"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Car",
         "camera": "Cinematic 3D close-up with expressive emotional focus",
-        "action": "Looking out at the misty mountains. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Looking out at the misty mountains. Reenu actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice",
+          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
           "language": "Malayalam",
           "script": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
           "line": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്."
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     },
     {
@@ -428,7 +435,7 @@
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Third-Person Narrator",
+        "perspective": "Character Dialogue (Reenu Speaking)",
         "characters_present": [
           {
             "name": "Sachin",
@@ -450,21 +457,23 @@
           },
           "eyeline_direction": "Characters looking attentively toward scene focal action",
           "persistent_props": [
-            "Car"
+            "Car interior dashboard",
+            "Sachin's brown leather cross-bag",
+            "Reenu's silver wrist watch"
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
         "location": "Mountain road",
         "camera": "Cinematic 3D close-up with expressive emotional focus",
-        "action": "Renu points at a woman on the road. Sachin looks back. Character lips are firmly closed. No mouth movement. Pure visual storytelling.",
+        "action": "Renu points at a woman on the road. Sachin looks back. Reenu actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively.",
         "dialogue": {
           "speaker": "Reenu",
-          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice",
+          "voice_persona": "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
           "language": "Malayalam",
           "script": "ആ സ്ത്രീ ആരാണ്?",
           "line": "ആ സ്ത്രീ ആരാണ്?"
         },
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character dialogue and natural ambient foley sound effects only."
       }
     }
   ]

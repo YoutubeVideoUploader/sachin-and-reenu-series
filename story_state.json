@@ -139,10 +139,10 @@
       "summary": "Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.",
       "cliffhanger": "Renu points at a woman on the road. Sachin looks back. Dialogue: 'ആ സ്ത്രീ ആരാണ്?'",
       "characters_present": [
-        "Reenu",
-        "Sachin",
+        "Narrator",
         "Amal",
-        "Narrator"
+        "Reenu",
+        "Sachin"
       ]
     }
   ],
@@ -158,7 +158,9 @@
     },
     "eyeline_direction": "Characters looking attentively toward scene focal action",
     "persistent_props": [
-      "Car"
+      "Car interior dashboard",
+      "Sachin's brown leather cross-bag",
+      "Reenu's silver wrist watch"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
