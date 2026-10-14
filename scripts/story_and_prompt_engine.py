@@ -34,6 +34,8 @@ try:
 except ImportError:
     repair_json = None
 
+DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+
 # Stylized 3D Cartoon Animation Character Visual DNA Constants (Teenagers 18-19yo, Strictly Non-Chibi)
 BASE_DNA_REENU = (
     "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. "
@@ -1295,6 +1297,7 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
     4. Overwrite Tab 4 (Season_Story_Arc) with the full 10-episode continuous roadmap.
     5. Update Tab 5 (Character_Registry) with costume changes and new characters.
     """
+    gas_url = gas_url or os.getenv("GAS_WEBHOOK_URL") or DEFAULT_GAS_URL
     if not gas_url:
         print("Notice: GAS_WEBHOOK_URL not set. Skipping remote Google Sheet sync.")
         return False
@@ -2200,7 +2203,7 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
     update_creator_portal(ep_data)
 
     # Sync to Google Sheet (Tab 2, Tab 1)
-    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
+    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL") or DEFAULT_GAS_URL
     if target_gas:
         sync_new_episode_to_google_sheet(target_gas, ep_data)
 
@@ -2368,7 +2371,7 @@ def main():
     parser.add_argument("--season", type=int, default=None, help="Season number (1 or 2)")
     parser.add_argument("--is_new_season", action="store_true", help="Flag to launch a new season")
     parser.add_argument("--premise", type=str, default="", help="Custom story idea or premise to guide generation")
-    parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
+    parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL") or DEFAULT_GAS_URL, help="Google Apps Script Web App URL")
     parser.add_argument("--mode", type=str, default="auto", choices=["auto", "generate_100_outline", "compile_episode", "reharmonize_outline"], help="Operation mode")
     parser.add_argument("--pivot_ep", type=int, default=None, help="Pivot episode for re-harmonization")
     parser.add_argument("--pivot_shot", type=int, default=None, help="Pivot shot for re-harmonization")

@@ -1765,7 +1765,7 @@ function handleNextEpisodeFullUpdate(body) {
           if (body.cliffhanger) storySheet.getRange(i + 1, 6).setValue(body.cliffhanger);
           epRowFound = true;
         }
-        if (epNum === 1 && rowEp > 1) {
+        if (rowEp > epNum) {
           storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
         }
       }
