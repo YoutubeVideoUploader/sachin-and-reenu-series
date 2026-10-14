@@ -34,37 +34,33 @@ try:
 except ImportError:
     repair_json = None
 
-# Stylized 3D Cartoon Animation Character Visual DNA Constants (Strictly Young Adults / Adults, Never Boy/Girl/Child-like)
+# Stylized 3D Cartoon Animation Character Visual DNA Constants (Teenagers 18-19yo, Strictly Non-Chibi)
 BASE_DNA_REENU = (
-    "Reenu: Stylized 3D Pixar-style cartoon animation character, 22-year-old young adult South Indian Malayali woman. "
-    "Adorable Disney-Pixar heroine facial structure, soft heart-shaped jawline, delicate rounded cheeks with a gentle peach-rose blush, "
-    "warm golden-fair South Indian skin with velvety cartoon subsurface scattering shaders. "
-    "Captivating large expressive hazel-brown animated cartoon doe eyes with luminous clarity, lush defined dark-brown cartoon eyelashes, "
-    "elegantly arched soft feminine dark eyebrows, delicate small sculpted button nose, radiant joyful warm animated smile revealing clean straight white teeth. "
-    "Shoulder-length voluminous rich chocolate-brown wavy hair with soft bouncy curls and cute curtain bangs framing her forehead and temples. "
-    "Slender graceful young adult female proportions (height 5'4\"), elegant upright adult posture with 1:6.5 head-to-body scale "
-    "(STRICTLY YOUNG ADULT WOMAN, PROHIBIT GIRL/CHILD/TEEN/CHIBI/TODDLER ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. "
+    "Adorable Pixar teen heroine face, soft rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). "
+    "Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. "
+    "Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. "
+    "Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 proportions, lively teen posture, strictly non-chibi) "
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
 )
 DEFAULT_ATTIRE_REENU = "Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers."
 
 BASE_DNA_SACHIN = (
-    "Sachin: Stylized 3D Pixar-style cartoon animation character, 24-year-old young adult South Indian Malayali man. "
-    "Handsome defined adult male facial geometry, sculpted masculine jawline with a subtle chin cleft, clean-shaven smooth caramel-tan South Indian skin with soft Pixar subsurface scattering shaders. "
-    "Warm expressive dark-brown almond-shaped animated cartoon eyes, thick dark sculpted masculine eyebrows with a slight expressive arch, "
-    "confident genuine contagious warm animated smile revealing clean straight white upper teeth. "
-    "Voluminous jet-black stylized textured wavy cartoon hair swept back and to the side with sculpted animated clumps and soft glossy sheen. "
-    "Tall lean athletic adult male build (height 5'11\"), broad shoulders narrowing to a slim waist, defined neck and realistic adult proportions with 1:7 head-to-body scale "
-    "(STRICTLY YOUNG ADULT MAN, PROHIBIT BOY/CHILD/TEEN/CHIBI/TODDLER ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. "
+    "Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). "
+    "Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. "
+    "Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. "
+    "Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 proportions, natural teen posture, strictly non-chibi) "
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
 )
 DEFAULT_ATTIRE_SACHIN = "Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers."
 
 BASE_DNA_AMAL = (
-    "Amal: Stylized 3D Pixar-style cartoon animation character, 24-year-old young adult South Indian Malayali man. "
-    "Defined adult square jawline, neatly trimmed stylish dark mustache and short goatee beard, warm dusky South Indian skin tone with smooth cartoon shaders. "
-    "Lively humorous dark-brown animated eyes, dynamic expressive comedic eyebrows, warm energetic friendly cartoon grin. "
-    "Modern textured short dark curls with clean faded sides. "
-    "Sturdy athletic adult male proportions (height 5'10\"), broad shoulders and realistic adult head-to-body scale "
-    "(STRICTLY YOUNG ADULT MAN, PROHIBIT BOY/CHILD/TEEN/CHIBI/TODDLER ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
+    "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. "
+    "Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO MATURE WRINKLES). "
+    "Messy stylish short curly dark teen cartoon hair with textured volume. "
+    "Energetic, slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) "
+    "(PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM)."
 )
 DEFAULT_ATTIRE_AMAL = "Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers."
 
@@ -272,9 +268,12 @@ def register_new_character(character_data, story_state_path="story_state.json"):
     elif age >= 35:
         age_group = "Middle-Aged"
         adult_noun = "middle-aged man" if gender == "male" else "middle-aged woman"
-    else:
+    elif age >= 20:
         age_group = "Young Adult"
         adult_noun = "young adult man" if gender == "male" else "young adult woman"
+    else:
+        age_group = "Teenager"
+        adult_noun = "teenage boy" if gender == "male" else "teenage girl"
 
     raw_v_dna = character_data.get("visual_dna", "")
     # Strip any locked attire that might have leaked into visual_dna
@@ -282,18 +281,22 @@ def register_new_character(character_data, story_state_path="story_state.json"):
         raw_v_dna = raw_v_dna.split("STRICTLY LOCKED ATTIRE")[0].strip()
 
     sanitized_dna = raw_v_dna
-    # Replace boy/girl terms with explicit adult descriptions
-    sanitized_dna = re.sub(r'\b(boy|young boy)\b', f'{age}-year-old young adult man', sanitized_dna, flags=re.IGNORECASE)
-    sanitized_dna = re.sub(r'\b(girl|young girl)\b', f'{age}-year-old young adult woman', sanitized_dna, flags=re.IGNORECASE)
+    if age_group == "Teenager":
+        sanitized_dna = re.sub(r'\b(young boy)\b', f'{age}-year-old teenage boy', sanitized_dna, flags=re.IGNORECASE)
+        sanitized_dna = re.sub(r'\b(young girl)\b', f'{age}-year-old teenage girl', sanitized_dna, flags=re.IGNORECASE)
+        anti_terms = "PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM"
+    else:
+        sanitized_dna = re.sub(r'\b(boy|young boy)\b', f'{age}-year-old young adult man', sanitized_dna, flags=re.IGNORECASE)
+        sanitized_dna = re.sub(r'\b(girl|young girl)\b', f'{age}-year-old young adult woman', sanitized_dna, flags=re.IGNORECASE)
+        anti_terms = "PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES"
 
     if not sanitized_dna or len(sanitized_dna) < 20:
         sanitized_dna = (
             f"{name}: Stylized 3D Pixar-style cartoon animation character, {age}-year-old {age_group.lower()} South Indian Malayali {adult_noun}, "
-            f"defined adult facial structure, natural adult proportions (STRICTLY {age_group.upper()} ADULT CHARACTER, "
-            f"PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+            f"defined youthful facial structure, natural proportions (STRICTLY {age_group.upper()} CHARACTER, {anti_terms})."
         )
     elif "PROHIBIT" not in sanitized_dna:
-        sanitized_dna += f" (STRICTLY {age_group.upper()} {adult_noun.upper()}, PROHIBIT BOY/GIRL/CHILD/TEEN/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES)."
+        sanitized_dna += f" (STRICTLY {age_group.upper()} {adult_noun.upper()}, {anti_terms})."
 
     attire = character_data.get("locked_attire") or character_data.get("attire", "Casual modern attire.")
     voice = character_data.get("voice") or character_data.get("voice_persona", "Expressive Malayalam voice")
@@ -2107,11 +2110,11 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
             speaker_name = speaker_display
             perspective = f"Character Dialogue ({speaker_display} Speaking)"
             if speaker_display == "Sachin":
-                voice_p = "Sachin: 24yo charming South Indian Malayali boy, endearing boyish expressive voice, warm Malayalam cadence (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')"
+                voice_p = "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')"
             elif speaker_display == "Reenu":
-                voice_p = "Reenu: 22yo South Indian Malayali girl, sweet expressive warm feminine Malayalam voice (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
+                voice_p = "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
             elif speaker_display == "Amal":
-                voice_p = "Amal: 24yo witty relatable Malayali friend voice, comedic energetic Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')"
+                voice_p = "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')"
             elif speaker_display == "Shopkeeper":
                 voice_p = "Tea Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone"
             elif speaker_display == "Caretaker":
