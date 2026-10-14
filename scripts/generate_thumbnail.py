@@ -115,18 +115,19 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
 
     im = Image.open(TEMPLATE_PATH).convert("RGB")
     w, h = im.size
-    draw = ImageDraw.Draw(im)
 
-    # Relative coordinates scaled proportionally to template image size
-    cx = int(w * (468.0 / 576.0))
-    sy = int(h * (118.0 / 1024.0))
-    ey = int(h * (275.0 / 1024.0))
-    font_size = int(44 * (h / 1024.0))
+    # Precise relative coordinates of the blank paper areas inside the sticky notes
+    cx = int(w * 0.814)
+    sy = int(h * 0.0903)
+    ey = int(h * 0.1950)
+    font_size = int(72 * (h / 1672.0))
 
     font_candidates = [
         "C:/Windows/Fonts/comicbd.ttf",
+        "C:/Windows/Fonts/comic.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
         "C:/Windows/Fonts/segoeprb.ttf",
         "C:/Windows/Fonts/arialbd.ttf"
     ]
@@ -145,20 +146,32 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
     season_text = str(season_num).zfill(2)
     episode_text = str(episode_num).zfill(2)
 
-    def draw_centered_text(draw, text, center_x, center_y, font, fill_color=(38, 28, 20)):
+    def render_tilted_styled_text(text, font, text_color=(28, 20, 16, 255), shadow_color=(205, 180, 145, 180), angle=0.0):
         bbox = font.getbbox(text)
-        bw = bbox[2] - bbox[0]
-        bh = bbox[3] - bbox[1]
-        x = center_x - bw / 2 - bbox[0]
-        y = center_y - bh / 2 - bbox[1]
-        draw.text((x + 2, y + 2), text, font=font, fill=(185, 155, 125))
-        draw.text((x, y), text, font=font, fill=fill_color)
+        bw = bbox[2] - bbox[0] + 30
+        bh = bbox[3] - bbox[1] + 30
+        canvas = Image.new("RGBA", (bw + 20, bh + 20), (0, 0, 0, 0))
+        d = ImageDraw.Draw(canvas)
+        ox = 10 - bbox[0]
+        oy = 10 - bbox[1]
+        # Soft warm paper shadow
+        for sx, sy_off in [(2, 2), (2, 3), (3, 2), (1, 3)]:
+            d.text((ox + sx, oy + sy_off), text, font=font, fill=shadow_color)
+        # Deep espresso ink
+        d.text((ox, oy), text, font=font, fill=text_color)
+        if angle != 0:
+            canvas = canvas.rotate(angle, resample=Image.BICUBIC, expand=True)
+        return canvas
 
-    draw_centered_text(draw, season_text, cx, sy, font)
-    draw_centered_text(draw, episode_text, cx, ey, font)
+    # Top sticky note (Season) has a -3.5 degree tilt; bottom (Episode) has a -2.0 degree tilt
+    s_img = render_tilted_styled_text(season_text, font, angle=-3.5)
+    e_img = render_tilted_styled_text(episode_text, font, angle=-2.0)
+
+    im.paste(s_img, (cx - s_img.width // 2, sy - s_img.height // 2), s_img)
+    im.paste(e_img, (cx - e_img.width // 2, ey - e_img.height // 2), e_img)
 
     im.save(output_path, "JPEG", quality=95)
-    print(f"[THUMBNAIL] Generated Reel thumbnail: {output_path} (Season {season_text} - Episode {episode_text})")
+    print(f"[THUMBNAIL] Generated Reel thumbnail: {output_path} (Season {season_text} - Episode {episode_text}) in sticky note boxes")
 
     specific_thumb = Path(f"assets/thumbnail_ep{episode_num}.jpg")
     im.save(specific_thumb, "JPEG", quality=95)
