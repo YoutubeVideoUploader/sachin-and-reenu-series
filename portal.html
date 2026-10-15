@@ -2628,6 +2628,7 @@
 
       return {
         episode_number: raw.episode_number || raw.episode || 1,
+        season_number: raw.season_number || (raw.data && raw.data.season_number) || (seasonStoryData && seasonStoryData.season_number) || 1,
         title_english: raw.title_english || 'The Homecoming',
         title_malayalam: raw.title_malayalam || 'തിരിച്ചുവരവ്',
         synopsis: raw.synopsis || episodeData.synopsis || '',
@@ -2671,8 +2672,8 @@
 
       const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
       const epNum = episodeData.episode_number || 1;
-      const isS2 = episodeData.is_season_2 || (seasonStoryData && seasonStoryData.season_number >= 2);
-      document.getElementById('epNumberTag').innerText = isS2 ? `CURRENT PRODUCTION • SEASON 2, EPISODE ${epNum}` : `CURRENT PRODUCTION • EPISODE ${epNum}`;
+      const seasonNum = Number(episodeData.season_number || (seasonStoryData && seasonStoryData.season_number) || 1);
+      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • SEASON ${seasonNum}, EPISODE ${epNum}`;
       document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
       document.getElementById('epSynopsis').innerText = episodeData.synopsis;
       document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
