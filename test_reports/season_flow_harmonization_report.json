@@ -1,18 +1,999 @@
 {
-  "timestamp": "2026-10-15 09:17:26",
+  "timestamp": "2026-10-15 15:37:47",
   "season_number": 3,
   "total_shots_checked": 100,
-  "total_shots_harmonized": 1,
+  "total_shots_harmonized": 99,
+  "elapsed_seconds": 630.3,
   "harmonization_details": [
+    {
+      "shot_id": "S3_E1_S01",
+      "episode": 1,
+      "shot": 1,
+      "reason": "Since this is Episode 1 Shot 1, it serves as the grand opening of the entire series. To establish the Pixar-style visual richness and the distinct character DNA of Sachin (enthusiastic yet slightly anxious) and Reenu (grounded and observant), the action and staging need more dynamic 3D character blocking, warm volumetric lighting characteristic of a cozy Munnar morning, and a more cinematic introduction to the map and suitcase props.",
+      "original_action": "Sachin holds a map, looking excited. Renu is surprised.",
+      "harmonized_action": "A wide, warm Pixar-style cinematic shot of a cozy Munnar living room bathed in golden morning mist filtering through large glass windows. Sachin stands center-stage, bursting with infectious energy, clutching a weathered, hand-drawn map with dramatic flair. He points excitedly at a circled location. Reenu sits on a vintage wooden sofa nearby, sipping chaya from a clay cup, pausing mid-sip with a raised eyebrow and an amused, skeptical smile, looking at a packed suitcase by the door.",
+      "original_dialogue": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
+      "harmonized_dialogue": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!"
+    },
+    {
+      "shot_id": "S3_E1_S02",
+      "episode": 1,
+      "shot": 2,
+      "reason": "The original current shot lacks the specific Pixar-style comedic physical comedy and character interaction that builds on Shot 1's setup. Shot 1 establishes Reenu's skeptical, amused reaction to a 'surprise trip,' so Shot 2 needs Sachin to lean fully into his overly dramatic, enthusiastic salesman persona while Reenu reacts with grounded wit, bridging the visual beat from the map to the itinerary smoothly.",
+      "original_action": "Sachin shows a romantic itinerary.",
+      "harmonized_action": "Close-up on Sachin as he springs across the cozy living room in a exaggerated, theatrical glide, planting both hands on the coffee table right in front of Reenu. He unfurls a glitter-decorated, color-coded 'Couples Adventure Itinerary' that unrolls like a cartoon scroll onto the floor. Sachin flashes a wide, toothy, hyper-optimistic Pixar grin, his expressive eyes wide with desperate romance. Reenu calmly sets her clay chaya cup down on a wooden coaster, her right eyebrow still arched playfully, peering down at the absurdly detailed schedule with a deadpan, unimpressed tilt of her head.",
+      "original_dialogue": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
+      "harmonized_dialogue": "റീനു, നോക്കിക്കേ! നമ്മുടെ റൊമാന്റിക് ഹണിമൂൺ ട്രിപ്പ്... മൂന്നാറിലെ മൂടൽമഞ്ഞിലേക്ക്!"
+    },
+    {
+      "shot_id": "S3_E1_S03",
+      "episode": 1,
+      "shot": 3,
+      "reason": "The current shot abruptly cuts to Amal entering with car keys without acknowledging the massive, hyper-enthusiastic itinerary unfurling right in front of Reenu. To maintain comedic timing and smooth cinematic flow, Amal needs to physically interact with the space established in the previous shot—stepping right over Sachin's absurdly long glittery scroll with a characteristic eye-roll, instantly injecting his cowardly/annoyed persona into the romantic atmosphere.",
+      "original_action": "Amal enters, looking annoyed.",
+      "harmonized_action": "Medium wide shot in the cozy Munnar living room. Amal swaggers in from the hallway, casually tossing his car keys into the air and catching them, his face locked in a grumpy, skeptical scowl. He has to literally step over Sachin’s glitter-decorated, color-coded 'Couples Adventure Itinerary' scroll that is still unrolled across the floor, looking down at it with utter disgust before looking up at Sachin and Reenu.",
+      "original_dialogue": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
+      "harmonized_dialogue": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ. ഈ ഭ്രാന്തിനൊന്നും ഞാൻ ഇല്ല."
+    },
+    {
+      "shot_id": "S3_E1_S04",
+      "episode": 1,
+      "shot": 4,
+      "reason": "Amal just expressed absolute disgust and rejection of the road trip in Shot 3. Reenu simply 'laughing' in Shot 4 is abrupt and lacks comedic or emotional continuity. To maintain character DNA, Reenu shouldn't just laugh—she needs to weaponize her charm and use practical leverage against Amal's grumpiness, turning his reluctance into a comedic dynamic while holding her travel bag ready.",
+      "original_action": "Renu laughs at Amal.",
+      "harmonized_action": "Medium shot, vibrant living room. Reenu stands hip-cocked beside her packed duffel bag, a bright, knowing grin on her face. Instead of being offended by Amal's grumpy rejection, she chuckles warmly, stepping right over Sachin's glittery itinerary scroll. She takes a playful, wheedling step toward him, brandishing a foil-wrapped homemade beef cutlet right under his nose to bribe him, perfectly highlighting her emotionally grounded and sharp-eyed nature.",
+      "original_dialogue": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+      "harmonized_dialogue": "അമൽ, നീ തന്നെ വേണം നമുക്ക്. ആ തണുപ്പിൽ നിന്നൊക്കെ രക്ഷപ്പെടാൻ നിന്റെ ആ വണ്ടിയല്ലാതെ വേറെ ആരുണ്ട്?"
+    },
+    {
+      "shot_id": "S3_E1_S05",
+      "episode": 1,
+      "shot": 5,
+      "reason": "There is a jarring location and spatial jump. Shot 4 ends with Reenu bribing Sachin in the living room with a beef cutlet, but Shot 5 abruptly places Sachin alone in the bedroom packing a flower bouquet without any transition or acknowledgment of Reenu's presence. We need to bridge this by keeping them in the same continuous space (living room/hallway), showing Sachin cracking under the delicious aroma of the cutlet while frantically throwing absurdly unnecessary romantic items (like a giant plush heart or a flower bouquet) into his backpack, maintaining his neurotic, over-prepared comedic persona.",
+      "original_action": "Sachin packs unnecessary items.",
+      "harmonized_action": "Medium tracking shot in the vibrant living room. Caught off guard by the heavenly aroma of the homemade beef cutlet, Sachin's resolve crumbles. With one hand, he takes a bite of the cutlet with wide, blissful eyes, while with the other, he frantically shoves an oversized, pristine bouquet of plastic red roses and a heart-shaped pillow into his already overflowing backpack. He glances defensively at Reenu, gesturing dramatically at the flowers to justify his ridiculous packing choices.",
+      "original_dialogue": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
+      "harmonized_dialogue": "ഇത്... ഇത് അവിടെ ചെന്ന് റോമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടിയാ, വെറുതേയല്ല!"
+    },
+    {
+      "shot_id": "S3_E1_S06",
+      "episode": 1,
+      "shot": 6,
+      "reason": "There is an abrupt spatial and narrative jump from Sachin frantically packing in the living room to Amal sitting in a car looking at a GPS map. The transition completely bypasses the group getting into the vehicle and leaving for Munnar, creating a jarring temporal disconnect.",
+      "original_action": "Amal checks the GPS map.",
+      "harmonized_action": "Medium tracking shot inside the cramped, misty interior of Amal's sputtering hatchback. The windows are fogged up with condensation. In the rearview mirror, Sachin is awkwardly squished in the back seat, desperately trying to keep his oversized plastic rose bouquet from blocking Reenu's view. In the front passenger seat, Amal leans over the glowing smartphone GPS, squinting through thick glasses at a bizarrely twisting digital route that seems to defy logic. Amal's face is illuminated by the eerie blue glow of the screen, looking thoroughly unnerved.",
+      "original_dialogue": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
+      "harmonized_dialogue": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്? ടവർ ലൊക്കേഷൻ മൊത്തം കാടിന്റെ നടുവിലാണല്ലോ കാണിക്കുന്നത്!"
+    },
+    {
+      "shot_id": "S3_E1_S07",
+      "episode": 1,
+      "shot": 7,
+      "reason": "There is a logical contradiction in the current shot: Sachin claims he knows the way ('എനിക്ക് വഴി കൃത്യമായി അറിയാം') and is holding the steering wheel, but the previous shot established that Amal is driving the car while Sachin is squished in the back seat with the bouquet. To fix this continuity error and match Sachin's character DNA (confident yet cluelessly trying to impress Reenu), Sachin should lean forward from the backseat to point up-front with misplaced confidence, rather than driving.",
+      "original_action": "Sachin looks confident but wrong.",
+      "harmonized_action": "Medium closeup in the misty backseat. Sachin leans dramatically over the front headrests, squeezing his face between Amal and Reenu with a reassuring, overly confident grin. He gestures grandly toward the winding, fog-choked road outside the windshield with a plastic-wrapped rose, knocking a tiny cascade of condensation off the glass. His eyes sparkle with misguided optimism while Amal glares back skeptically through his blue-lit glasses.",
+      "original_dialogue": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
+      "harmonized_dialogue": "എനിക്ക് വഴി കൃത്യമായി അറിയാം, നിങ്ങൾ വെറുതെ പേടിക്കാതിരിക്ക്!"
+    },
+    {
+      "shot_id": "S3_E1_S08",
+      "episode": 1,
+      "shot": 8,
+      "reason": "The original current shot is too brief and lacks the physical and comedic transition from Sachin's overconfident grand gesture in Shot 7. To make Amal's realization feel earned and visually engaging, we need to show Amal looking down at his smartphone GPS, panicking as the blue screen flickers into a 'NO SIGNAL' warning, and reacting directly to Sachin's plastic rose blocking the view. This preserves Amal's cowardly, anxious character DNA while maintaining tight spatial and comedic continuity inside the foggy car interior.",
+      "original_action": "Amal realizes the error.",
+      "harmonized_action": "Tight close-up on Amal in the driver's seat, illuminated entirely by the harsh blue glow of his smartphone screen. The GPS map on the phone stutters, glroches, and flashes a stark red 'NO SIGNAL' banner. Amal’s eyes widen behind his glasses in pure terror. He sharply swivels his head back, slapping Sachin's plastic-wrapped rose away from his face with a frantic, trembling hand, nearly dropping the steering wheel.",
+      "original_dialogue": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
+      "harmonized_dialogue": "സച്ചിൻ, നമ്മൾ വഴി തെറ്റി! ഫോണിൽ റേഞ്ചും പോയി!"
+    },
+    {
+      "shot_id": "S3_E1_S09",
+      "episode": 1,
+      "shot": 9,
+      "reason": "There is a severe emotional whiplash and logic gap. In Shot 8, Amal just panicked, screamed that they are lost, lost phone signal, and nearly crashed the car. In the original Shot 9, Reenu is completely oblivious, peacefully gazing at the mountains and poetically remarking on the beauty of the mist, which breaks character and narrative logic. Reenu needs to react to Amal's freak-out first, grounded in her observant nature, before noticing the eerie beauty of the Munnar mist that contrasts with their situation.",
+      "original_action": "Looking out at the misty mountains.",
+      "harmonized_action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
+      "original_dialogue": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
+      "harmonized_dialogue": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും."
+    },
+    {
+      "shot_id": "S3_E1_S10",
+      "episode": 1,
+      "shot": 10,
+      "reason": "The previous shot ended with a chilling, high-tension moment where Reenu noticed unnatural, twisting shapes in the thick fog outside, mixing eerie wonder with dread. Jumping straight to 'Renu points at a woman, Sachin looks back' creates an abrupt emotional and spatial whiplash. We need to bridge the lingering dread of the shifting mist with this new sighting, keeping Reenu sharp and observant while making Sachin's reaction reflect his protective, slightly anxious nature under the eerie Munnar glow.",
+      "original_action": "Renu points at a woman on the road. Sachin looks back.",
+      "harmonized_action": "Medium-Wide Shot from the backseat. The eerie blue phone-light still washes over the cabin as Reenu’s finger presses against the frosty glass, her eyes narrowing at the shifting fog. She abruptly drops her hand and points urgently ahead into the beam of the headlights. Sachin, gripping the steering wheel with white knuckles, startles and violently whips his head back toward the windshield, his eyes wide with a mix of exhaustion and rising panic as the Pixar volumetric lighting catches the cold sweat on his brow.",
+      "original_dialogue": "ആ സ്ത്രീ ആരാണ്?",
+      "harmonized_dialogue": "അമൽ... അങ്ങോട്ട് നോക്ക്, ആ വഴിവിളക്കിന്റെ വെളിച്ചത്തിൽ... ആ സ്ത്രീ ആരാണ് അവിടെ?"
+    },
+    {
+      "shot_id": "S3_E2_S01",
+      "episode": 2,
+      "shot": 1,
+      "reason": "The previous episode ended on a high-adrenaline cliffhanger with Reenu panicking and pointing at a mysterious woman in the fog. In the current draft, the scene cuts directly to Sachin looking out the window while 'Amal navigates', but Amal wasn't established in the car interior in the previous shot (where Sachin was driving). To maintain seamless emotional continuity, Sachin must still be at the wheel reacting to the sudden disappearance, and Amal needs to be integrated naturally into the panic.",
+      "original_action": "Sachin peers through the misty passenger-side window in astonishment, noticing the woman disappearing into the thick fog while Amal navigates the car forward.",
+      "harmonized_action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+      "original_dialogue": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+      "harmonized_dialogue": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?"
+    },
+    {
+      "shot_id": "S3_E2_S02",
+      "episode": 2,
+      "shot": 2,
+      "reason": "There is a continuity error in the character actions: the previous shot established that Sachin is in the passenger/front area leaning across the center console and Amal is cowering in the backseat under a blanket. In the current draft, Amal is suddenly back in the driver's seat gripping the steering wheel without any transition showing him moving there. Furthermore, Amal's cowardice DNA needs to shine through more comedically right after a supernatural scare.",
+      "original_action": "Amal nervously grips the steering wheel tightly in the driver's seat, his eyes darting across the dark rearview mirrors and misted windshield.",
+      "harmonized_action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+      "original_dialogue": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+      "harmonized_dialogue": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?"
+    },
+    {
+      "shot_id": "S3_E2_S04",
+      "episode": 2,
+      "shot": 4,
+      "reason": "While the action logically follows the car breakdown, Sachin's original dialogue ('நீ പേടിക്കാതെടാ') feels a bit too casual right after the engine dies violently on a spooky Munnar road. Furthermore, it doesn't fully capture Sachin's character DNA—he is brave and protective, but also naturally anxious about the eerie atmosphere, while Amal is panicking in the driver's seat. Enhancing the shot to include Amal's frantic reaction and Sachin's cautious, flashlight-ready preparation makes the moment much more grounded, comedic, and visually rich in Pixar style.",
+      "original_action": "Sachin unbuckles his seatbelt in the front passenger seat and prepares to crack open the passenger door into the biting mountain cold to inspect the car bonnet.",
+      "harmonized_action": "Medium Shot (MS) inside the car. As the dashboard lights cast an eerie orange glow, Amal cowers over the steering wheel, hyperventilating. In the passenger seat, Sachin firmly clicks open his seatbelt, his face illuminated by the cold blue light of his phone screen as he turns on the flashlight. He shoots a reassuring yet tense glance at Amal, his thumb instinctively touching the strap of his cross-bag, before pushing the heavy passenger door open into the mist-choked Munnar night.",
+      "original_dialogue": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+      "harmonized_dialogue": "അമൽ, നീ ലൈറ്റ് ഓഫ് ചെയ്യാതെ... ഞാൻ താഴെയിറങ്ങി ബോണറ്റ് ഒന്ന് നോക്കട്ടെ."
+    },
+    {
+      "shot_id": "S3_E2_S05",
+      "episode": 2,
+      "shot": 5,
+      "reason": "The previous shot ends with Sachin pushing the passenger door open to step out into the mist, while Amal cowers over the wheel. For Reenu's line ('Don't get out, someone is following our car!') to feel natural and urgent, the action in Shot 5 must capture that split-second threshold—Sachin's boot hovering just above the damp asphalt outside, as Reenu lunges forward from the back seat, physically grabbing his jacket to pull him back inside as the shadows outside the window shift menacingly.",
+      "original_action": "Reenu leans forward anxiously from the rear seat, clutching the front headrest in dread, warning Sachin not to leave the vehicle as dark shadows drift outside.",
+      "harmonized_action": "Close-Up (CU) on Sachin's foot stepping out into the cold Munnar fog, just as a dense cluster of shadows outside the window violently morphs and presses against the glass. Instantly, Reenu leans forward aggressively from the rear seat, her knuckles whitening as she grips Sachin's shoulder and the front headrest. Her eyes are wide with primal panic, Pixar-style lighting catching the cold blue reflection of the fog in her pupils as she desperately pulls him back toward the safety of the car.",
+      "original_dialogue": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+      "harmonized_dialogue": "സച്ചിൻ, പുറത്തിറങ്ങരുത്! നോക്ക്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!"
+    },
+    {
+      "shot_id": "S3_E2_S06",
+      "episode": 2,
+      "shot": 6,
+      "reason": "The previous shot ends with Reenu violently pulling Sachin back inside the car while a shadow violently presses against the glass. The current draft has Amal casually locking the door, which breaks the panic-driven momentum. To maintain seamless Pixar-style continuity, Amal needs to react directly to Reenu's yank and the shadow hitting the window—fumbling with the lock in absolute terror, adding our signature comedic-horror panic.",
+      "original_action": "Amal urgently snaps the driver-side door lock down and frantically gestures for Sachin and Reenu to secure all doors as fear grips the cabin.",
+      "harmonized_action": "Medium Shot (MS), angled from the backseat. As Reenu yanks Sachin tumbling back into the cabin, the heavy thud of the shadow slams directly against the driver-side window, frosting the glass with a freezing breath effect. Amal shrieks in high-pitched panic, his eyes bulging comically like a startled cartoon owl. He aggressively jams his thumb down on the central locking button, his hand shaking uncontrollably while frantically pointing at the exterior fog with wide-eyed disbelief.",
+      "original_dialogue": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+      "harmonized_dialogue": "അയ്യോ! ദൈവമേ! പെട്ടെന്ന് എല്ലാ വാതിലുകളും ലോക്ക് ചെയ്യ്! അത്... അത് പുറത്തുണ്ട്!"
+    },
+    {
+      "shot_id": "S3_E2_S07",
+      "episode": 2,
+      "shot": 7,
+      "reason": "There is a severe emotional and tonal disconnect between Shot 6 and Shot 7. Shot 6 ends in absolute, high-stakes terror with Amal screaming in panic after a supernatural entity violently slams against the car window. Having Sachin casually complain about 'how cold the wind is' right after this life-or-death jump scare causes jarring emotional whiplash. The current shot must instead capture the immediate aftermath: heavy panting, adrenaline-fueled shock, and Sachin reacting to the terrifying entity outside rather than ignoring the supernatural danger to complain about the weather.",
+      "original_action": "Sachin pulls his travel jacket tight against the freezing monsoon mountain gust blowing through the cracked window glass, breath misting in the cold air.",
+      "harmonized_action": "Close-Up (CU) on Sachin inside the shadowy car interior. Illuminated by the eerie, pulsing blue glow of the dashboard dials. He tumbles completely back into the cabin, chest heaving rapidly as he gasps for air, adrenaline pumping. He shivers violently—not just from the freezing monsoon draft whistling through the cracked window, but from sheer terror. His wide, stunned eyes dart from the frosty driver-side window back to the rear where Reenu is gripping him. He clenches his cross-bag defensively against his chest with white-knuckled grip, staring in horror at the pane of glass.",
+      "original_dialogue": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+      "harmonized_dialogue": "എന്റെ പൊന്നോ... ഇതെന്താ മനുഷ്യന്റെ ദേഹത്തേക്ക് ചാടി വീണത്?! ആ കണ്ണുകൾ... അത്... അതൊരു മനുഷ്യനല്ല!"
+    },
+    {
+      "shot_id": "S3_E2_S08",
+      "episode": 2,
+      "shot": 8,
+      "reason": "While the current shot focuses on Amal reacting to the rearview mirror, it interrupts the immediate aftermath of Sachin's panic and doesn't fully capture Amal's cowardice and specific character voice. To maintain seamless narrative momentum, Amal must react directly to Sachin's frantic warning while looking at the side mirror, keeping the comedic-horror panic escalating synchronously inside the cramped car cabin.",
+      "original_action": "Amal recoils in terror in the driver's seat, staring wide-eyed into the illuminated side rearview mirror where an eerie shadowy silhouette looms close.",
+      "harmonized_action": "Medium Shot (MS) inside the dim, claustrophobic car cabin. Amal, sitting rigidly in the driver's seat, flinches violently as Sachin falls back against him. Illuminated by the eerie, flickering blue dashboard light, Amal's eyes bulge with sheer superstitious dread. He throws his hands up defensively over the steering wheel, his head snapping toward the frost-fogged side rearview mirror where a looming, unnatural shadow presses against the glass.",
+      "original_dialogue": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+      "harmonized_dialogue": "എന്റെ അമ്മോ! കണ്ണാടിയിൽ നോക്കിക്കേ, ആ രൂപം... അത് നമ്മളെത്തന്നെയാ നോക്കുന്നത്!"
+    },
+    {
+      "shot_id": "S3_E2_S09",
+      "episode": 2,
+      "shot": 9,
+      "reason": "While the current shot logically follows the previous beat of panic, the physical blocking can be enhanced to make Sachin's action of pulling his legs in feel more continuous with falling back into the cabin from Shot 8. Additionally, Sachin's character DNA (logical yet anxious under high pressure) needs a sharper, more visceral visual reaction to the shadow seen in the rearview mirror, blending his protective nature with urgent panic.",
+      "original_action": "Sachin quickly pulls his legs back inside the passenger seat, slams the door shut, and urgently turns to Amal in the driver seat, yelling to start the engine.",
+      "harmonized_action": "Close-Up (CU) on Sachin. Shivering from the freezing Munnar air and the shock of the looming shadow, Sachin frantically scrambles the rest of his body inside, his boots scraping the car frame. With a panicked grunt, he violently heaves the heavy passenger door shut, the metal sealing with a loud, echoing thud. He slams the manual door knob down, twists around to face Amal, and grabs Amal's jacket lapel, shaking him out of his superstitious paralysis. Pixar-style lighting highlights Sachin's wide, terror-filled eyes reflecting the flickering dashboard blues.",
+      "original_dialogue": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+      "harmonized_dialogue": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം... വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!"
+    },
+    {
+      "shot_id": "S3_E2_S10",
+      "episode": 2,
+      "shot": 10,
+      "reason": "While the previous shot ends with Sachin slamming the door and demanding Amal start the car, jumping straight to Reenu noticing a handprint without acknowledging Amal's reaction or the immediate panic creates a slight pacing stutter. We need to bridge the frantic door-slamming energy directly into Reenu's realization, keeping the adrenaline pumping in true Pixar comedy-horror fashion.",
+      "original_action": "Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.",
+      "harmonized_action": "Medium Shot (MS) framed from the front passenger side looking into the back seat. As Amal fumbles frantically with the ignition key, the engine sputtering and refusing to catch, Reenu's eyes go wide with absolute terror. She recoils against the opposite door, her breath hitching as a pale, glowing, translucent handprint slowly presses itself onto the freezing condensation of the outer window glass from the pitch-black exterior. Pixar-style volumetric moonlight cuts through the mist, illuminating the horrifying details of the handprint while casting deep, expressive shadows across Reenu's petrified face.",
+      "original_dialogue": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+      "harmonized_dialogue": "ആ കൈപ്പാട്... നോക്ക്, അത് ജനാലയിലാണ്! വണ്ടി സ്റ്റാർട്ട് ചെയ്യ് അമൽ, പെട്ടെന്ന്!"
+    },
+    {
+      "shot_id": "S3_E3_S01",
+      "episode": 3,
+      "shot": 1,
+      "reason": "There is a severe narrative and temporal whiplash. Episode 2 ended on a high-adrenaline cliffhanger inside the car with a supernatural handprint terrifying Reenu and Amal failing to start the engine. Jumping straight to Episode 3 Shot 1 at the homestay hallway with the Caretaker handing keys completely ignores the life-or-death escape and panic from the previous scene. We need to bridge this by either resolving the car incident or showing them arriving breathless and panicked at the homestay, making the Caretaker's ominous warning land with proper narrative weight.",
+      "original_action": "Outside the shadowy colonial homestay, Caretaker Sreedharan hands a heavy ring of iron keys to Sachin with trembling hands, his eyes darting suspiciously toward the locked corridor.",
+      "harmonized_action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
+      "original_dialogue": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'",
+      "harmonized_dialogue": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'"
+    },
+    {
+      "shot_id": "S3_E3_S02",
+      "episode": 3,
+      "shot": 2,
+      "reason": "In Episode 3 Shot 1, Sachin, Reenu, and Amal just sprinted inside terrified because something chased them near the car, and Sreedharan explicitly warned them NOT to open Room 13. Jumping immediately to Sachin being 'curious rather than scared' and staring at the lock creates severe emotional whiplash. Sachin is protective and logical, but he wouldn't instantly ignore a mortal threat outside and a strict warning from a creepy caretaker to casually wonder about a forbidden room. We need to bridge this by having Sachin catch his breath, process Sreedharan's terrifying warning, while Reenu and Amal react to the lingering trauma of what they saw outside, before Sachin's inherent, slightly foolish curiosity gets the better of him.",
+      "original_action": "Standing in the dim timber hallway, Sachin clutches the brass keys and peers curiously at the heavy padlock on Room 13, intrigued rather than scared.",
+      "harmonized_action": "Medium Close-Up (MCU). The warm, flickering glow of the wall sconce catches the cold sweat dripping down Sachin's forehead. He is still heaving for breath, clutching the heavy iron keys so tightly his knuckles are white. Behind him, Reenu is frantically wiping mist off the frosted windowpane to peer into the dark courtyard, while Amal is huddled under a woolen shawl, shivering and muttering prayers. Sachin looks down at the heavy brass padlock of Room 13 right beside him, his panic slowly giving way to a stubborn, bewildered curiosity as he stares at the forbidden door.",
+      "original_dialogue": "സച്ചിൻ: 'പതിമൂന്നാം നമ്പർ മുറിയിൽ എന്തായിരിക്കും? അത്ര വലിയ രഹസ്യമുണ്ടോ ഇവിടെ?'",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതപ്പ് അടക്കിക്കൊണ്ട്) 'പുറത്ത് ആ ഇരുട്ടിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു... എന്നിട്ടും ഇയാൾ ഈ മുറി പൂട്ടി സൂക്ഷിക്കാൻ പറയുന്നു! ഇതിനുള്ളിൽ എന്താ ഇത്ര വലിയ രഹസ്യം?'"
+    },
     {
       "shot_id": "S3_E3_S03",
       "episode": 3,
       "shot": 3,
-      "reason": "Incorporate Amal's trademark comedic relief",
+      "reason": "While Amal's comedic relief is essential to his Character DNA, jumping straight to a casual eye-roll and a joke about British gold creates an abrupt emotional whiplash from Sachin's intense, breathless curiosity about the forbidden room. The transition needs to show Amal's cowardice and defense mechanism in action—he's trembling under his shawl, trying to deflect his own terror with absurd humor right after Sachin questions the locked door.",
       "original_action": "Amal rolls his eyes and leans against the vintage wooden balustrade, offering a ridiculous theory to hide his growing unease.",
-      "harmonized_action": "Amal rolls his eyes and leans against the vintage wooden balustrade, offering a ridiculous theory to hide his growing unease.",
+      "harmonized_action": "Medium Shot (MS), slightly low angle to emphasize the intimidating, towering dark wood of Room 13's door. Amal is still huddled tightly inside his thick woolen shawl like a frightened turtle, his teeth chattering audibly. Hearing Sachin's whispered curiosity, Amal's eyes widen in a panic. He frantically waves his flashlight in a wild arc, casting erratic shadows across the peeling vintage wallpaper, desperately trying to laugh away his own mounting dread as he leans against the wooden balustrade.",
       "original_dialogue": "അമൽ: 'ഒരുപക്ഷേ പഴയ ബ്രിട്ടീഷ് സായിപ്പിന്റെ സ്വർണം ഒളിപ്പിച്ചുവെച്ച റൂം ആയിരിക്കും!'",
-      "harmonized_dialogue": "അമൽ: 'ഒരുപക്ഷേ പഴയ ബ്രിട്ടീഷ് സായിപ്പിന്റെ സ്വർണം ഒളിപ്പിച്ചുവെച്ച റൂം ആയിരിക്കും!' "
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, തമാശയിലൂടെ ഭയം മറക്കാൻ ശ്രമിക്കുന്നു) 'അയ്യോ, അതോ! ഒരുപക്ഷേ ആ പഴയ ബ്രിട്ടീഷ് സായിപ്പിന്റെ കട്ടപ്പാരയും സ്വർണവും ഒളിപ്പിച്ചുവെച്ച രഹസ്യ റൂം ആയിരിക്കും ഇത്!'"
+    },
+    {
+      "shot_id": "S3_E3_S04",
+      "episode": 3,
+      "shot": 4,
+      "reason": "The previous shot ends with Amal frantically waving his flashlight and trying to deflect his terror with a nervous joke about a British ghost. The original current shot abruptly shifts focus to Reenu talking about Caretaker Sreedharan without acknowledging Amal's panicked state or the flashlight beam. To maintain seamless narrative and emotional continuity, Reenu should pull her gaze away from Sreedharan's retreating figure, turn to Amal who is still shivering and swinging his flashlight wildly, and ground the scene with her sharp intuition while reacting directly to Amal's jittery energy.",
+      "original_action": "Reenu watches Caretaker Sreedharan retreat down the hallway with nervous eyes, sensing an unsaid tragedy lingering in the air.",
+      "harmonized_action": "Medium Close-Up (MCU), warm volumetric moonlight mixed with the erratic, jittery yellow beam of Amal's flashlight slicing across the peeling floral wallpaper. Reenu steps smoothly into the frame, ignoring Amal's cowardly joke. She crosses her arms defensively against the Munnar chill, her sharp eyes tracking Caretaker Sreedharan's hunched silhouette disappearing down the staircase at the far end of the hall. She glances back at Amal, who is still cowering inside his woolen shawl like a startled turtle, his teeth chattering. Reenu rolls her eyes at his theatrics, lowering her voice to a tense, analytical whisper.",
+      "original_dialogue": "റീനു: 'അല്ല അമൽ, ആ കെയർടേക്കറുടെ കണ്ണുകളിൽ പേടിയുണ്ട്... അയാൾ എന്തോ നമ്മളിൽ നിന്ന് മറയ്ക്കുന്നുണ്ട്.'",
+      "harmonized_dialogue": "റീനു: 'നീ വെറുതെ ആ ടോർച്ച് അടിച്ച് ഭയപ്പെടാതെ അമൽ... ആ കെയർടേക്കറുടെ കണ്ണുകളിൽ ഒരു വല്ലാത്ത പേടിയുണ്ടായിരുന്നു. അയാൾ നമ്മളിൽ നിന്ന് എന്തോ വലിയ കാര്യം മറയ്ക്കുന്നുണ്ട്.'"
+    },
+    {
+      "shot_id": "S3_E3_S05",
+      "episode": 3,
+      "shot": 5,
+      "reason": "There is a continuity and spatial disconnect between the previous shot (where Reenu and Amal are out in the hallway observing Sreedharan) and the current shot (where Sachin is suddenly inside the bedroom unpacking). We need to bridge this by showing the immediate transition: Reenu rushing back into the bedroom to alert Sachin, who is already on edge unpacking, maintaining the tension of the hallway event.",
+      "original_action": "Late at night inside their bedroom, Sachin pauses while setting down his bag as heavy, rhythmic floorboard creaks echo directly outside their door.",
+      "harmonized_action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
+      "original_dialogue": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+      "harmonized_dialogue": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'"
+    },
+    {
+      "shot_id": "S3_E3_S06",
+      "episode": 3,
+      "shot": 6,
+      "reason": "Continuity and character error: The previous shot (Shot 5) established that *Reenu* entered the room, locked the door, and spoke to Sachin. However, the current shot suddenly introduces *Amal* diving under the bedsheet and giving dialogue, without explaining where Reenu went or how Amal suddenly appeared in the scene. To fix this, we must reconcile the character presence: Reenu is already inside the room warning them, and Amal (who was likely cowering nearby or sharing the room) reacts in blind panic, or we adjust the sequence so Amal's cowardly comedic anchor trait plays out correctly right after Reenu's warning.",
+      "original_action": "Amal dives under the floral bedsheet in absolute terror, grabbing Sachin's elbow desperately to stop him from opening the door.",
+      "harmonized_action": "Medium Close-Up (MCU), dynamic Pixar camera framing. The warm amber lighting from the bedside lamp flickers as the shadow outside the door stretches longer. Amal—eyes wide with absolute, cartoonish terror—dives headfirst under the floral bedsheet on the rustic wooden bed, his foot momentarily tangling in the hem. He frantically reaches out, grabbing Sachin’s elbow with a death grip to yank him back from the door. Meanwhile, Reenu stands right beside Sachin, her expression sharp and watchful, clutching a heavy brass candlestick as a makeshift weapon.",
+      "original_dialogue": "അമൽ: 'സച്ചിൻ, വെറുതെ സാഹസം കാണിക്കാതെ വാതിൽ അടച്ചു കിടക്കാൻ നോക്ക്!'",
+      "harmonized_dialogue": "അമൽ: 'സച്ചിൻ, വെറുതെ സാഹസം കാണിക്കാതെ വാതിൽ അടച്ചു കിടക്കാൻ നോക്ക്!'"
+    },
+    {
+      "shot_id": "S3_E3_S07",
+      "episode": 3,
+      "shot": 7,
+      "reason": "The previous shot ended with Amal in a state of absolute, cartoonish terror pulling Sachin back, while Reenu stood ready with a heavy brass candlestick. A direct jump to Sachin calmly tiptooring to the door creates emotional whiplash. The current shot needs to capture Sachin's momentary hesitation, Reenu's cautious warning as she tracks his movement with her weapon raised, and Amal whimpering from under the blanket to preserve the high-stakes comedic tension before Sachin cautiously turns the knob.",
+      "original_action": "Sachin gently disengages from Amal's grip and tiptoes toward the bedroom door, turning the brass knob with extreme care.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D style. The warm amber lamplight flickers as long, creeping shadows dance across the wooden floorboards. Sachin stumbles backward slightly from Amal's sudden death-grip yank, his eyes wide with a mix of lingering fear and stubborn curiosity. Behind him, Reenu stays locked in her defensive stance, her knuckles white around the heavy brass candlestick, whispering a sharp warning while keeping her eyes fixed on the door. Breaking free from Amal's frantic tug, Sachin exhales a shaky breath, squares his shoulders, and slowly tiptoes toward the door, his hand cautiously reaching out to wrap around the cold brass knob.",
+      "original_dialogue": "സച്ചിൻ: 'പേടിക്കാതെടാ, ഞാൻ പതുക്കെ വാതിൽ തുറന്ന് ഒന്ന് നോക്കട്ടെ.'",
+      "harmonized_dialogue": "സച്ചിൻ: 'അയ്യോ, വിട് അമൽ... പേടിക്കാതെടാ, ഞാൻ പതുക്കെ വാതിൽ തുറന്ന് ഒന്ന് നോക്കട്ടെ.'"
+    },
+    {
+      "shot_id": "S3_E3_S08",
+      "episode": 3,
+      "shot": 8,
+      "reason": "While the current shot correctly captures Amal's cowardly comedic anchor trait, it lacks the rich Pixar 3D visual details (such as the eerie moonlight cutting through the Munnar mist outside the hallway window) and the direct physical reaction to Sachin opening the door in the previous shot. We need to seamlessly connect Sachin turning the cold brass knob to them stepping out together into the chilling hallway.",
+      "original_action": "Amal clings desperately to the back of Sachin's yellow hoodie, tiptoeing behind him like a terrified shadow into the moonlit hallway.",
+      "harmonized_action": "Close-Up (CU) transitioning to Medium Shot (MS), Pixar 3D style. The heavy wooden door creaks open with a spine-chilling sound, revealing the dark, mist-choked hallway bathed in an eerie, pale blue moonlight spilling from the tall colonial window. Sachin peeks out cautiously, but before he can take a full step, Amal—who has been clutching the fabric of Sachin's yellow hoodie with both fists like a frightened koala—peeks out right past Sachin's shoulder, his eyes squeezed half-shut, trembling violently as the cold Munnar draft hits them.",
+      "original_dialogue": "അമൽ: 'എന്നെ ഇവിടെ തനിച്ചാക്കി പോകണ്ട, ഞാനും വരുന്നു!'",
+      "harmonized_dialogue": "അമൽ: 'എന്നെ ഇവിടെ തനിച്ചാക്കി പോകണ്ടടാ... ദൈവമേ, ആ ഇരുട്ടത്തേക്ക് നോക്കണ്ട, എനിക്ക് പേടിയാകുന്നു!'"
+    },
+    {
+      "shot_id": "S3_E3_S09",
+      "episode": 3,
+      "shot": 9,
+      "reason": "The current shot jumps straight into hiding behind a curtain without fully capturing the immediate, high-stakes physical transition from the doorway. Since Amal was just clinging to Sachin's hoodie in absolute terror, Sachin needs to react physically to Amal's dead weight while spotting the shadow, making the duck-and-cover maneuver feel earned, frantic, and rich in Pixar physical comedy.",
+      "original_action": "Seeing a shadow glide across the far wall, Sachin pulls Amal behind a heavy velvet curtain, holding his breath as the cold mountain draft blows through.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D style. Reacting to a sudden, elongated shadow gliding silently across the far colonial wall, Sachin's eyes widen. Stumbling slightly under Amal's frantic, koala-like grip, Sachin uses his weight to pivot them both sharply. He grabs a handful of the heavy, dust-laden velvet window curtain, yanking Amal along with him as they scramble to squeeze behind the thick crimson folds, holding their breath as a chilling gust of Munnar wind billows the fabric around them.",
+      "original_dialogue": "സച്ചിൻ: 'ശബ്ദമുണ്ടാക്കരുത്... ആ കർട്ടന്റെ പിന്നിൽ ഒളിക്കാം.'",
+      "harmonized_dialogue": "സച്ചിൻ: 'ശബ്ദമുണ്ടാക്കരുത്... അനങ്ങാതെ നിൽക്ക്, ആ കർട്ടന്റെ പിന്നിലേക്ക്!'"
+    },
+    {
+      "shot_id": "S3_E3_S10",
+      "episode": 3,
+      "shot": 10,
+      "reason": "While the current shot correctly captures the supernatural reveal of Room 13 opening, it needs tighter integration with the previous shot's frantic hiding action. Specifically, we need to see Sachin and Amal's terrified POV right through the velvet folds, with Amal trembling and clutching Sachin's arm, maintaining the breathless comedic-horror tension established in Shot 9.",
+      "original_action": "Through the curtain gap, they watch in horror as the heavy padlock on Room 13 clicks open by itself and the door creaks inward into pitch darkness.",
+      "harmonized_action": "Close-Up (CU) peering through a narrow gap in the heavy crimson velvet curtain, Pixar 3D style. Sachin and Amal are crammed together, their eyes wide with sheer terror, lit by an eerie, pale moonlight reflecting off the polished wooden floor. Amal's hands are clamped tightly over his own mouth to muffle his heavy breathing, while Sachin cautiously parts the fabric an inch further. Through the gap, they watch in absolute horror as the massive, rusted padlock on the door of Room 13 rattles violently, clicks open by itself, and the heavy wooden door slowly creaks inward, revealing a suffocating, pitch-black void within.",
+      "original_dialogue": "നരേറ്റർ: 'പാതിരാത്രിയുടെ നിശബ്ദതയിൽ, ആ പതിമൂന്നാം നമ്പർ മുറി തനിയെ തുറക്കപ്പെട്ടു!'",
+      "harmonized_dialogue": "നരേറ്റർ: 'പാതിരാത്രിയുടെ നിശബ്ദതയിൽ, ആ പതിമൂന്നാം നമ്പർ മുറി തനിയെ തുറക്കപ്പെട്ടു!'"
+    },
+    {
+      "shot_id": "S3_E4_S01",
+      "episode": 4,
+      "shot": 1,
+      "reason": "There is a severe continuity and logic disconnect. Ep 3 Shot 10 ended with Sachin and Amal terrified in the hallway watching Room 13 open by itself. Ep 4 Shot 1 suddenly cuts to Renu inside the locked room without showing how she got there, bypassing the immediate aftermath of the cliffhanger and violating spatial continuity.",
+      "original_action": "Stepping across the threshold of Room 13, Reenu's flashlight beam illuminates an antique framed black-and-white photograph resting on a dust-covered dresser.",
+      "harmonized_action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
+      "original_dialogue": "റീനു: 'സച്ചിൻ, നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+      "harmonized_dialogue": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'"
+    },
+    {
+      "shot_id": "S3_E4_S02",
+      "episode": 4,
+      "shot": 2,
+      "reason": "The previous shot ends with a high-adrenaline sequence where Sachin and Amal tumble backward out of the crimson curtain in a panic, and Reenu calmly calls them over to look at a spooky antique photograph. The original current shot jumps straight into a calm inspection without acknowledging Sachin and Amal picking themselves up off the dusty floor, catching their breath, or dealing with the lingering physical comedy of their messy tumble. We need to bridge that physical and emotional aftermath to maintain the Pixar comedic timing.",
+      "original_action": "Sachin takes the dusty frame, inspecting the silver border closely while trying to find a rational explanation to calm Reenu.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D style. Sachin is still on his knees, frantically brushing dust off his jacket and gasping for breath while casting nervous glances back at the dark hallway. Amal cowers behind him, clutching Sachin's shoulder with wide, terrified eyes. Stepping past them into the dim, misty light of Room 13, Sachin shakily takes the dusty antique frame from Reenu. He holds it close to his smartphone light, his eyes darting across the silver border and the vintage black-and-white portrait inside, desperately trying to mask his own racing heartbeat with forced logic.",
+      "original_dialogue": "സച്ചിൻ: 'ഇത് പഴയ എസ്റ്റേറ്റ് ഉടമയുടെ കുടുംബചിത്രം ആയിരിക്കാം... വെറുമൊരു സാമ്യം മാത്രമാകും.'",
+      "harmonized_dialogue": "സച്ചിൻ: '(ശ്വാസം കിട്ടാതെ) ഹുഫ്... എന്റെ അമ്മോ, എന്റെ ഹൃദയം നിന്നു പോയേനെ! (ഫോട്ടോ വാങ്ങി നോക്കിക്കൊണ്ട്) ഇത്... ഇത് ആ പഴയ എസ്റ്റേറ്റ് ഉടമയുടെ കുടുംബചിത്രം ആയിരിക്കാം... വെറുമൊരു യാദാർത്ഥ്യം, അല്ലെങ്കിൽ സാമ്യം മാത്രമാകും റീനു.'"
+    },
+    {
+      "shot_id": "S3_E4_S03",
+      "episode": 4,
+      "shot": 3,
+      "reason": "In the previous shot, Sachin and Amal have just burst into Room 13 to escape the dark hallway, with Amal clinging terrified to Sachin's shoulder. In the original Current Shot, Amal is suddenly standing by the open doorway telling Sachin to stop, ignoring the immediate panic and the fact that they are holding the eerie antique photo just discovered. The revision must maintain Amal's cowardly, jittery physical comedy right after the scare—shivering, looking back into the pitch-black corridor, and urgently trying to drag Sachin away while reacting to the cursed object.",
+      "original_action": "Amal stands by the open doorway shivering in the biting mountain breeze, eyes darting at the peeling floral wallpaper.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D style. Amal is still trembling uncontrollably, his back pressed against the doorframe of Room 13 as he frantically looks back and forth between the pitch-black hallway outside and Sachin, who is holding the creepy photo. Amal's teeth chatter loudly in the biting mountain breeze, his knuckles white as he grips his travel bag. He reaches out with a shaking hand to grab Sachin's elbow, trying to physically pull him toward the exit.",
+      "original_dialogue": "അമൽ: 'മതിയാക്ക് സച്ചിൻ! അനാവശ്യ കാര്യങ്ങളിൽ തലയിടാതെ വേഗം നമ്മുടെ മുറിയിലേക്ക് പോകാം!'",
+      "harmonized_dialogue": "അമൽ: '(വിറച്ചുകൊണ്ട്, ഇരുണ്ട ഇടനാഴിയിലേക്ക് നോക്കിക്കൊണ്ട്) മതിയാക്ക് സച്ചിൻ! ആ ഫോട്ടോയും വെച്ച് അവിടെത്തന്നെ നിന്നോ, ഞാൻ പറയുന്നില്ല... വേഗം ആ വാതിലടച്ച് നമ്മുടെ മുറിയിലേക്ക് പോകാം! ഇവിടെ എന്തോ ശരിയല്ല!'"
+    },
+    {
+      "shot_id": "S3_E4_S04",
+      "episode": 4,
+      "shot": 4,
+      "reason": "The transition from Amal's desperate physical attempt to pull Sachin out needs to be cut off mid-action for maximum comedic-horror impact. The current shot description is good, but needs stronger Pixar 3D visual dynamics (lighting shifts from the slamming door, dust motes swirling) and a more punchy, atmospheric narration that matches the series' high-stakes comedy-horror tone.",
+      "original_action": "Before Amal can take a step back into the hallway, a violent gust of wind slams the heavy teak door shut, throwing the bolt into place with a sharp metallic clack.",
+      "harmonized_action": "Close-Up (CU) moving to Medium Shot (MS), Pixar 3D style. Just as Amal’s trembling fingers latch onto Sachin’s elbow, a ferocious, unnatural gale-force wind howls up from the valley floor. With a deafening *BANG*, the heavy teak door slams shut with bone-rattling force, automatically throwing the heavy brass deadbolt into place with a sharp, echoing *CLACK*. Dust and ancient cobwebs explode from the frame, illuminated briefly by the flickering hallway sconces before they plunge into pitch darkness. Amal lets out a high-pitched, cartoonish shriek, dropping his travel bag as he flails blindly in the dark, bumping directly into Sachin's back.",
+      "original_dialogue": "നരേറ്റർ: 'പെട്ടെന്ന് കനത്ത കാറ്റിൽ വാതിൽ കൊട്ടിയടയ്ക്കപ്പെട്ടു!'",
+      "harmonized_dialogue": "നരേറ്റർ: 'അമലിന്റെ കൈകൾ സച്ചിന്റെ ദേഹത്ത് എത്തും മുൻപ്, പെട്ടെന്ന് ഒരു കൊടുംകാറ്റ് ആഞ്ഞുവീശി ഭാരമുള്ള ആ തേക്കുവാതിൽ അലർച്ചയോടെ കൊട്ടിയടയ്ക്കപ്പെട്ടു! ഒപ്പം കുറ്റി സ്വയം വീണു!'"
+    },
+    {
+      "shot_id": "S3_E4_S05",
+      "episode": 4,
+      "shot": 5,
+      "reason": "The previous shot ended in a pitch-black, high-adrenaline jump scare with Amal shrieking and crashing into Sachin's back. While the current shot attempts to start in darkness, the action description immediately jumps to the bulb buzzing *before* dying, missing the immediate breathless, physical panic of the lock-in. Furthermore, Sachin's dialogue needs to better capture his classic Pixar balance of trying to stay logical while secretly terrified, while Amal should be visibly clinging to him in the dark.",
+      "original_action": "The single overhead tungsten filament bulb buzzes furiously, throwing erratic dancing shadows across their panicked faces before dying completely.",
+      "harmonized_action": "Medium Shot (MS) to Close-Up (CU), Pixar 3D style. Total darkness envelopes the screen, pierced only by Amal's frantic, high-pitched hyperventilating and the sound of his fingers clawing desperately at Sachin's jacket like a drowning koala. Suddenly, the single overhead tungsten filament bulb stutters to life with a loud, angry *BUZZ*, casting grotesque, jittery shadows against peeling Victorian wallpaper. Sachin’s eyes widen in sheer terror beneath his glasses, his jaw clenched as he tries to maintain a brave front. With one final, pathetic *POP*, the bulb blows out completely, plunging them back into absolute blackness. Sachin fumbles frantically in his pocket, his hand shaking as he drags out his smartphone.",
+      "original_dialogue": "സച്ചിൻ: 'ലൈറ്റ് പോയി! ആരും പരിഭ്രാന്തരാവരുത്, എന്റെ ഫോൺ ടോർച്ച് ഓൺ ചെയ്യാം!'",
+      "harmonized_dialogue": "സച്ചിൻ: 'ലൈറ്റ് പോയി! ആരും... ആരും പരിഭ്രാന്തരാവരുത്, എന്റെ ഫോൺ ടോർച്ച്... ഒന്ന് നിക്കടേ, ഇത് എവിടെയാ ഓൺ ആവുന്നത്?!'"
+    },
+    {
+      "shot_id": "S3_E4_S06",
+      "episode": 4,
+      "shot": 6,
+      "reason": "The transition from the previous shot captures Sachin frantically trying to switch on his smartphone flashlight in total darkness. To maintain high tension and cinematic rhythm, the current shot must immediately build upon that exact moment of panic. Instead of a sudden cut to a disembodied voice, we need to see Sachin's phone screen finally flicker to life, casting a harsh, pale blue glow on his terrified face and Amal clutching onto him like a frightened barnacle, only for the ghostly whisper to cut through the silence right as the light exposes something chilling in the room.",
+      "original_action": "In the freezing darkness, an ethereal female whisper echoes directly past Sachin's ear, calling his name with sorrowful longing.",
+      "harmonized_action": "Close-Up (CU) on Sachin's trembling hands as the smartphone screen finally stutters to life, casting an eerie, pale blue cinematic glow across his glasses and terrified face. Tucked tightly against his side, Amal is whimpering with his eyes clamped shut, his knuckles white as he grips Sachin's jacket. The sudden blue light reveals dust motes dancing in the freezing air—and right beside them, the peeling wallpaper begins to warp. In the absolute quiet, an ethereal, mournful female whisper brushes directly against Sachin's ear, making the hairs on his arm stand on end.",
+      "original_dialogue": "ശബ്ദം: 'സച്ചിൻ... സച്ചിൻ...'",
+      "harmonized_dialogue": "ശബ്ദം: 'സച്ചിൻ... സച്ചിൻ...'"
+    },
+    {
+      "shot_id": "S3_E4_S07",
+      "episode": 4,
+      "shot": 7,
+      "reason": "While the escalation from hearing the whisper to Amal's panicked jump is correct, the current shot needs stronger Pixar-style visual comedy-horror choreography. Specifically, we need to show the phone falling to the floor, casting a dynamic, distorting up-light that exaggerates their terrified expressions as Amal tackles Sachin, preserving Amal's comedic cowardly DNA while maintaining high cinematic stakes.",
+      "original_action": "Amal screams in absolute terror and leaps onto Sachin, wrapping his arms around Sachin's neck and knocking the flashlight to the floorboards.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: The sudden, ethereal whisper triggers an instant explosion of pure, unadulterated panic. Amal lets out a high-pitched, comical shriek of pure terror and violently launches himself onto Sachin like an over-excited koala, wrapping his arms and legs around Sachin's neck and torso. The sudden impact knocks Sachin off balance, sending the smartphone clattering onto the ancient wooden floorboards. The phone's screen faces upward, casting a dramatic, jittery blue horror-movie up-light across their wide, saucer-like eyes and distorted features against the dark, freezing backdrop of Room 13.",
+      "original_dialogue": "അമൽ: 'അയ്യോ! ആ ശബ്ദം കേട്ടോ?! സച്ചിൻ, എന്നെ രക്ഷിക്കണേ!'",
+      "harmonized_dialogue": "അമൽ: 'അയ്യോ! ആ ശബ്ദം കേട്ടോ?! സച്ചിൻ, എന്നെ ഇവിടെ നിന്നും രക്ഷിക്കണേ! ഭൂതം പിടിച്ചു!'"
+    },
+    {
+      "shot_id": "S3_E4_S08",
+      "episode": 4,
+      "shot": 8,
+      "reason": "The previous shot ends with a violent tackle and the smartphone clattering to the floor casting a dramatic blue up-light. The current shot needs to explicitly pick up that exact moment of kinetic chaos—Sachin staggering under Amal's koala-grip while his eyes desperately scan the floor for the dropped phone and the wall for the switch, maintaining the frantic panic and comedic physical struggle.",
+      "original_action": "Sachin stumbles in the dark under Amal's weight, sweeping his hand along the damp wall to find the switchboard while calming Reenu.",
+      "harmonized_action": "Close-Up to Medium Shot (CU to MS), Pixar 3D Camera: Sachin staggers backward under Amal's crushing, koala-like weight, his eyes wide with a mix of suffocation and absolute terror. He frantically sweeps his hand along the damp, ice-cold timber wall, his fingers desperately grazing old wooden paneling searching for a switchboard. At his feet, the dropped smartphone's screen casts an eerie, flickering blue glow upward, illuminating their distorted, panicked faces while the ethereal whisper echoes faintly in the shadows.",
+      "original_dialogue": "സച്ചിൻ: 'അമൽ, എന്റെ കഴുത്തിൽ നിന്ന് കൈയെടുക്ക്! എനിക്ക് ശ്വാസം മുട്ടുന്നു... എവിടെയാ സ്വിച്ച്?'",
+      "harmonized_dialogue": "സച്ചിൻ: 'അമൽ, എന്റെ കഴുത്തിൽ നിന്ന് കൈയെടുക്ക്! എനിക്ക് ശ്വാസം മുട്ടുന്നു... ആ ഫോൺ താഴെ വീണു, എവിടെയാ സ്വിച്ച്?!'"
+    },
+    {
+      "shot_id": "S3_E4_S09",
+      "episode": 4,
+      "shot": 9,
+      "reason": "The previous shot ends with Sachin frantically searching for a switchboard while pinned down by a terrified Amal. The original current shot abruptly cuts to the light already being on and Reenu pointing at a photo, completely skipping the physical struggle of Sachin throwing Amal off, hitting the switch, and the immediate breathless panic. We need to bridge this by showing Sachin successfully slapping the wooden toggle switch, the harsh amber light flooding the room, and Reenu's petrified realization as she points to the antique dresser.",
+      "original_action": "Sachin snaps the switch, and the yellow light suddenly blinks back on, illuminating Reenu as she points trembling hands at the dresser.",
+      "harmonized_action": "Medium Shot (MS) transitioning to Medium Close-Up (MCU), Pixar 3D Camera: Sachin's palm finally smacks hard against an archaic, heavy brass toggle switch on the damp timber wall. *SNAP.* A single, naked yellow bulb overhead sputters once, then hums to life, casting a harsh, jaundiced glare over the cramped, fog-chilled room. Sachin violently pries Amal's white-knuckled death grip from his neck, stumbling forward into the middle of the room, gasping for oxygen. Chest heaving, sweat glistening on his forehead, he turns to see Reenu. She is frozen stiff against the corner of the antique dresser, her face drained of color, shaking finger extended rigidly toward a tarnished silver-framed photograph resting among the dust.",
+      "original_dialogue": "റീനു: 'സച്ചിൻ... അമൽ... ആ ഫോട്ടോയിലേക്ക് ഒന്നുകൂടി നോക്കൂ!'",
+      "harmonized_dialogue": "റീനു: '(വിറച്ചുകൊണ്ട്, തൊണ്ടയിടറി) സച്ചിൻ... അമൽ... ആ ഫോട്ടോയിലേക്ക് ഒന്നു കൂടി നോക്കൂ! നമ്മൾ... നമ്മൾ പെട്ടു!'"
+    },
+    {
+      "shot_id": "S3_E4_S10",
+      "episode": 4,
+      "shot": 10,
+      "reason": "The previous shot ends with Reenu pointing in absolute terror at the photograph while Sachin is gasping for breath. The current draft jumps straight into Amal and Sachin holding the photo without showing the physical transition of Sachin and Amal rushing over to look at it, creating a spatial and emotional continuity gap. The revision bridges this by capturing Sachin and Amal's chaotic scramble across the cramped room to crowd around Reenu, maintaining the breathless panic before hitting the chilling realization.",
+      "original_action": "Amal and Sachin stare in pure disbelief at the vintage photograph in their hands: where only a solitary woman stood earlier, three distinct human silhouettes are now visible in the frame.",
+      "harmonized_action": "Medium Shot (MS) shifting to Close-Up (CU), Pixar 3D Camera: Sachin stumbles backward, his boots sliding on the dust-caked floorboards. Driven by Reenu's paralyzed panic, he and a whimpering Amal scramble across the cramped room, huddling tightly around her. Sachin's trembling hands reach out to slowly lift the tarnished silver-framed photograph from the dresser. The harsh jaundiced light from the overhead bulb cuts across the glass. In tight CU, their wide, horror-struck eyes reflect the image: where a solitary, ghostly woman stood in faded monochrome just moments ago, three distinct, living human silhouettes are now unmistakably pressed into the background of the frame.",
+      "original_dialogue": "അമൽ: 'എന്റെ കർത്താവേ... അവിടെ ഇപ്പോൾ മൂന്നുപേരുണ്ട്!'",
+      "harmonized_dialogue": "അമൽ: '(വിറയ്ക്കുന്ന ചുണ്ടോടെ, തേങ്ങിക്കൊണ്ട്) എന്റെ കർത്താവേ... അവിടെ ഇപ്പോൾ മൂന്നുപേരുണ്ട്! നമ്മൾ... നമ്മൾ ആ ഫോട്ടോയിൽ കയറിപ്പറ്റിയോ?!'"
+    },
+    {
+      "shot_id": "S3_E5_S01",
+      "episode": 5,
+      "shot": 1,
+      "reason": "Episode 4 ended on an intense, terrifying cliffhanger where Sachin, Reenu, and Amal discovered they were trapped inside the haunted photograph. Opening Episode 5 immediately in broad daylight with Sachin casually talking about taking pictures creates massive emotional whiplash. The transition needs to show them fleeing or stumbling out of Room 13 into the early morning Munnar mist, still breathless, clutching the vintage photo, with Reenu refusing to let go of the camera out of sheer psychological trauma while Sachin tries to ground her.",
+      "original_action": "Morning dawn breaks over Munnar hills. Sachin gently leads a visibly pale Reenu through the lush tea plantation path, trying to comfort her after the terrifying Room 13 photograph reveal by taking daylight photos, while holding the vintage photo in his jacket pocket.",
+      "harmonized_action": "Wide Establishing Shot (WS) shifting to Medium Close-Up (MCU), Pixar 3D Camera: The dense, freezing Munnar morning fog blankets the sprawling tea estate. Sachin, Reenu, and Amal burst out from the heavy wooden doors of the estate bungalow, gasping for breath, their eyes wide with lingering adrenaline-fueled terror. Reenu's hands shake violently as she clutches her digital camera to her chest like a shield, while Sachin frantically pats his jacket pocket where the cold, cursed silver-framed photograph rests. The golden dawn light struggles to pierce the mist, casting an eerie, supernatural chill over the lush green landscape.",
+      "original_dialogue": "സച്ചിൻ: 'റീനു, ഇന്നലത്തെ പേടി മാറ്റാൻ ഈ പ്രഭാത വെളിച്ചം നല്ലതാണ്... ഞാൻ നിന്റെ മനോഹരമായ കുറച്ചു ഫോട്ടോകൾ എടുക്കാം.'",
+      "harmonized_dialogue": "സച്ചിൻ: '(ശ്വാസം കിട്ടാതെ, വിറച്ചുകൊണ്ട്) റീനു... നമ്മൾ... നമ്മൾ ആ റൂമിൽ നിന്ന് പുറത്തിറങ്ങി! ഇനി... ഇനി നമ്മൾ ആ ഫോട്ടോയിലേക്ക നോക്കാനേ പാടില്ല!'"
+    },
+    {
+      "shot_id": "S3_E5_S02",
+      "episode": 5,
+      "shot": 2,
+      "reason": "The previous shot ended in high-adrenaline terror with Sachin gasping for air and warning everyone never to look at the cursed photograph again. The original current shot jumps immediately to Amal yawning and complaining about a 'photoshoot', which creates a jarring emotional whiplash. Since they just fled a terrifying haunted room, Amal should still be trembling, sleep-deprived, and reacting directly to Sachin's panic while dragging his feet through the mist, maintaining the comedic horror balance.",
+      "original_action": "Amal stumbles behind them along the misty green tea rows, yawning exhaustedly and clutching his phone, grumbling about being dragged out for a photoshoot after staying awake in fear all night.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Amal stumbles backward through the wet tea bushes right behind Sachin and Reenu, his oversized hoodie half-zipped and eyes bloodshot from a sleepless night of pure terror. He clutches his phone in one hand while using the other to frantically rub his face, staring incredulously at Sachin's frantic warning. The cold Munnar dew clings to his fuzzy hair as he stammers out his complaint, looking nervously back toward the shadowy bungalow behind them.",
+      "original_dialogue": "അമൽ: 'രാത്രി മുഴുവൻ പേടിച്ച് ഇരുന്നിട്ട് ഇപ്പോൾ രാവിലെ ആറു മണിക്ക് ഫോട്ടോഷൂട്ട് നടത്താൻ ഇറങ്ങിയിരിക്കുന്നു!'",
+      "harmonized_dialogue": "അമൽ: '(വിറച്ചുകൊണ്ട്, ഉറക്കം തൂങ്ങി) രാത്രി മുഴുവൻ ആ പ്രേതാലയത്തിൽ ഇരുന്ന് പേടിച്ച് വിറച്ചിട്ട്... ഇപ്പോൾ നേരം വെളുത്തപ്പോൾ ഒരു ഫോട്ടോഷൂട്ട് നടത്താൻ ഇറങ്ങിയിരിക്കുന്നു! എനിക്ക് ഉറങ്ങണംഡേയ്!'"
+    },
+    {
+      "shot_id": "S3_E5_S03",
+      "episode": 5,
+      "shot": 3,
+      "reason": "The original draft jumps straight from Amal's panic to Reenu casually pointing out a path, ignoring the physical and emotional residue of Amal just stumbling backward into them out of a terrified sleepless night. To maintain Pixar's comedic-horror timing, Reenu must react to Amal crashing into their space first, using her observant nature to notice the path *while* dealing with Amal's exhausted breakdown, bridging his high-adrenaline comedy with her environmental curiosity.",
+      "original_action": "While posing between the tea bushes, Reenu glances beyond the manicured rows and notices an ancient, overgrown stone footpath winding into the dense jungle.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: Reenu flinches as Amal stumbles backward into the bushes right beside her. She quickly regains her composure, shooting an exasperated yet empathetic look at Amal's sleep-deprived state. As Amal continues to mutter complaints about wanting to sleep, Reenu looks past him, her sharp eyes catching something intriguing through a gap in the mist-shrouded tea plants. She steps around Amal, parting the dew-laden leaves to reveal a moss-covered, ancient stone footpath disappearing into the dense, brooding jungle bordering the estate.",
+      "original_dialogue": "റീനു: 'സച്ചിൻ, അങ്ങോട്ട് നോക്കൂ... തോട്ടത്തിന്റെ അപ്പുറത്തേക്ക് പഴയൊരു കൽപ്പാത പോകുന്നുണ്ട്.'",
+      "harmonized_dialogue": "റീനു: 'അമൽ, ഒന്നു മിണ്ടാതിരിക്കൂ... സച്ചിൻ, അങ്ങോട്ട് നോക്കൂ. തോട്ടത്തിന്റെ അപ്പുറത്തേക്ക് പഴയൊരു കൽപ്പാത പോകുന്നുണ്ട്.'"
+    },
+    {
+      "shot_id": "S3_E5_S04",
+      "episode": 5,
+      "shot": 4,
+      "reason": "The previous shot ends with Reenu parting the leaves to reveal the mysterious ancient stone footpath, capturing a moment of discovery and intrigue. In the original current shot, Amal immediately dismisses it, but the transition lacks the specific Pixar-style comedic physical reaction to the creepy, mist-shrouded jungle path right in front of them. Enhancing the action to have Amal recoil in pure terror while clutching a half-eaten breakfast item or hugging himself against the cold mist reinforces his comedic cowardice, creating a richer visual beat that immediately follows Reenu's discovery.",
+      "original_action": "Amal shakes his head emphatically, frantically waving his arms to turn back toward the homestay breakfast table.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Amal instantly recoils backward, tripping over his own slippers as he stares down the eerie, fog-choked stone path. His eyes bulge with cartoonish terror, arms flailing wildly as he clutches an imaginary shield of personal safety. He shakes his head emphatically, backing away toward the safety of the estate bungalow, desperate to be anywhere near the warm breakfast table.",
+      "original_dialogue": "അമൽ: 'നമുക്ക് അങ്ങോട്ട് പോകേണ്ട ഒരു ആവശ്യവുമില്ല! കാട്ടുവഴികളിൽ പോയി അപകടം വരുത്തിവെക്കരുത്.'",
+      "harmonized_dialogue": "അമൽ: 'നമുക്ക് അങ്ങോട്ട് പോകേണ്ട ഒരു ആവശ്യവുമില്ല! ആ മൂടൽമഞ്ഞും കാട്ടുവഴികളും കണ്ടില്ലേ? എനിക്ക് നല്ല പന്തികേട് തോന്നുന്നു, നമുക്ക് തിരിച്ചു നടക്കാം!'"
+    },
+    {
+      "shot_id": "S3_E5_S05",
+      "episode": 5,
+      "shot": 5,
+      "reason": "There is a severe emotional and spatial disconnect between Shot 4 and Shot 5. In Shot 4, Amal is panicking, tripping over his slippers, and refusing to go down the eerie stone path, desperate to return to the breakfast table. Yet, in the original Shot 5, Amal is suddenly right there with Sachin and Reenu at the abandoned factory gates without any bridge showing how he was dragged along or how the group overcame his terror. We need to bridge this by showing Sachin and Reenu actually pulling a resisting, whimpering Amal down the path to the rusty gates.",
+      "original_action": "Following the overgrown foot trail, Sachin, Reenu, and Amal stop in front of the rusted iron gates of an abandoned colonial tea processing factory surrounded by curling white fog.",
+      "harmonized_action": "Wide Shot (WS), Pixar 3D Camera: Sachin and Reenu physically haul a terrified, heel-dragging Amal—whose slippers are half-off—right up to the creaking, rusted iron gates of the colonial tea factory. A thick blanket of curling white fog swirls around their ankles. Sachin firmly lets go of Amal’s collar, adjusting his glasses with an optimistic grin, while Reenu peers cautiously through the rusted bars into the gloomy courtyard. Amal immediately cowers behind Sachin, clutching his own head in pure regret, whimpering as he gazes at the imposing, derelict structure.",
+      "original_dialogue": "സച്ചിൻ: 'ഇത് പഴയ ടീ ഫാക്ടറിയാണ്... ഇവിടെ എന്തൊക്കെയോ വിവരങ്ങൾ ഉണ്ടെന്ന് തോന്നുന്നു.'",
+      "harmonized_dialogue": "സച്ചിൻ: 'കണ്ടില്ലേ അമൽ, നമ്മൾ എത്തി! പേടിക്കേണ്ട, ഇതൊരു പഴയ ടീ ഫാക്ടറിയല്ലേ... ഇവിടെ എന്തൊക്കെയോ വിവരങ്ങൾ കിട്ടും.'"
+    },
+    {
+      "shot_id": "S3_E5_S06",
+      "episode": 5,
+      "shot": 6,
+      "reason": "There is an abrupt spatial and pacing jump from the exterior gates straight into the dusty office without showing the trio breaching the creaking gates, managing Amal's intense reluctance, or stepping into the chilling, mist-choked courtyard. To maintain Pixar-style narrative flow and comedic timing, we need to bridge the transition by showing Reenu pushing past the protesting Amal and Sachin, stepping inside the abandoned facility first to uncover the clue.",
+      "original_action": "Inside the dusty factory office, Reenu blows dust off a decaying leather-bound estate ledger, her eyes widening as she reads an entry from 1994.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+      "original_dialogue": "റീനു: 'ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എഴുതിയിട്ടുണ്ട്!'",
+      "harmonized_dialogue": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'"
+    },
+    {
+      "shot_id": "S3_E5_S07",
+      "episode": 5,
+      "shot": 7,
+      "reason": "While the previous shot establishes Reenu discovering a haunting 1994 ledger entry about 'Bhadra', the current shot jumps straight into Amal holding a pipe without directly reacting to Reenu's discovery or Sachin's presence. To maintain Pixar's character dynamics, Amal's cowardice should be contrasted immediately with Reenu's tension and Sachin's protective stance, creating a tighter comedic-horror beat.",
+      "original_action": "Amal clutches a rusty iron pipe for defense, peering into the shadowy rafters where pigeons flutter noisily.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: Pushing in tight on Amal's wide, panicked eyes illuminated by the cold moonlight. He violently shoves a rusty iron pipe forward like a clumsy spear, swinging wildly at shadows in the dusty rafters where frightened pigeons burst upward with a loud flutter of wings. Sachin immediately steps in front of Reenu, one hand raised to steady Amal's shaking pipe while keeping his eyes locked on the dark doorway, maintaining the protective, grounded anchor of the group.",
+      "original_dialogue": "അമൽ: 'ഡയറി അവിടെ വെച്ചിട്ട് നമുക്ക് തിരിച്ചു പോകാം റീനു, എനിക്ക് ഇവിടുത്തെ പൊരുത്തം ഒട്ടും പിടിക്കുന്നില്ല.'",
+      "harmonized_dialogue": "അമൽ: 'ഡയറി അവിടെ വെച്ചിട്ട് നമുക്ക് തിരിച്ചു പോകാം റീനു, എനിക്ക് ഇവിടുത്തെ പൊരുത്തം ഒട്ടും പിടിക്കുന്നില്ല!'"
+    },
+    {
+      "shot_id": "S3_E5_S08",
+      "episode": 5,
+      "shot": 8,
+      "reason": "There is a severe emotional and temporal whiplash. In Shot 7, Amal is hyperventilating in terror, brandishing a pipe at shadows, while Sachin is actively stepping in front of Reenu in a defensive posture against an imminent threat in the dark doorway. Jumping immediately to Sachin calmly unrolling a sketching ledger without resolving the immediate danger, the adrenaline, or Amal's panic breaks narrative continuity. We need to bridge this by having Sachin lower Amal's weapon, acknowledge the ongoing tension, and then transition to the clue.",
+      "original_action": "Sachin unrolls a moisture-curled charcoal sketch tucked between ledger pages: it is an exact portrait of the woman from the mountain road and Room 13.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Sachin firmly grips the end of Amal's shaking iron pipe, slowly and deliberately pushing it down while keeping his eyes darting toward the dark, echoing doorway. As the sudden flutter of pigeons fades into eerie silence, Sachin uses his free hand to slide open a heavy, dust-covered ledger on the rotting mahogany desk. He pulls out a moisture-curled charcoal sketch, holding it up into the pale beam of his flashlight so Reenu and a trembling Amal can see it. Reenu leans in closely, her breath fogging in the cold air.",
+      "original_dialogue": "സച്ചിൻ: 'ഇത് അവൾ തന്നെയാണ്... റോഡിൽ നമ്മൾ കണ്ട അതേ സ്ത്രീയുടെ ചിത്രം.'",
+      "harmonized_dialogue": "സച്ചിൻ: 'അമൽ, ആ കമ്പി താഴ്ത്തു... ശബ്ദമുണ്ടാക്കാതെ. ഇത് നോക്കൂ, ഇത് അവൾ തന്നെയാണ്... റോഡിൽ നമ്മൾ കണ്ട അതേ സ്ത്രീയുടെ ചിത്രം.'"
+    },
+    {
+      "shot_id": "S3_E5_S09",
+      "episode": 5,
+      "shot": 9,
+      "reason": "The original current shot has Amal backing away into shadows too abruptly without letting him react to the terrifying charcoal sketch Sachin just revealed. To maintain character DNA (Amal as the cowardly comedic anchor) and emotional continuity from the high-tension reveal, Amal must first voice his utter panic at seeing the sketch before scrambling backward into the shadows of the tea-drying machinery.",
+      "original_action": "Amal backs away nervously, unknowingly stepping into the deep shadow of the towering tea-drying machinery.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: The harsh beam of Sachin's flashlight illuminates the charcoal sketch, casting eerie, distorted shadows across Amal's wide, terror-stricken eyes. Amal stumbles backward, his jaw dropping as he recognizes the face from the road, his hands trembling violently as he fends off the air. He instinctively retreats into the deep, inky shadows cast by the towering, rusted iron tea-drying machinery, his boots crunching loudly on broken glass and dried tea leaves. Reenu keeps her eyes locked on the drawing, grabbing Sachin's sleeve.",
+      "original_dialogue": "അമൽ: 'ഇനി ഈ പഴയ കാര്യങ്ങൾ അറിഞ്ഞിട്ട് നമ്മൾ എന്ത് ചെയ്യാനാണ് സച്ചിൻ?'",
+      "harmonized_dialogue": "അമൽ: 'എന്റെ കർത്താവേ... അത്... അത് അന്ന് റോഡിൽ നിന്ന ആ പെൺകുട്ടി തന്നെയാ! ഇനി ഈ പഴയ കാര്യങ്ങൾ അറിഞ്ഞിട്ട് നമ്മൾ എന്ത് ചെയ്യാനാണ് സച്ചിൻ, നമുക്ക് ഇവിടെിന്നും രക്ഷപ്പെടാം!'"
+    },
+    {
+      "shot_id": "S3_E5_S10",
+      "episode": 5,
+      "shot": 10,
+      "reason": "The previous shot ended with Amal in a state of absolute panic, retreating into the shadows, and Reenu tightly gripping Sachin's sleeve in stunned silence. Jumping straight into a disembodied whisper without acknowledging Sachin and Reenu's immediate, startled physical reactions to Amal's panic and the flashlight beam creates an emotional and visual whiplash. We need to ground the transition by showing Sachin and Reenu reacting to Amal bolting into the dark before the eerie whisper pulls their attention upward.",
+      "original_action": "A chilling breeze whistles through the broken factory roof as an ethereal, sorrowful whisper echoes from the rafters directly calling Reenu's name.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Sachin's flashlight swings wildly from Amal disappearing into the shadows to lock onto Reenu's face, her eyes wide with sudden realization. Before either can speak, a freezing gust of wind sweeps through the broken roof, instantly extinguishing Sachin's flashlight with a sharp hiss. In the sudden pitch-black darkness, illuminated only by the faint, eerie blue glow of the phone screen, an ethereal, sorrowful whisper drifts down from the towering iron rafters, directly calling Reenu's name. Reenu freezes, goosebumps rising on her arms, while Sachin instinctively shoves her slightly behind him, his flashlight flickering back to life with a desperate slap against his palm.",
+      "original_dialogue": "ശബ്ദം: 'റീനു... എന്നെ സഹായിക്കൂ...'",
+      "harmonized_dialogue": "ശബ്ദം: 'റീനു... എന്നെ സഹായിക്കൂ...'"
+    },
+    {
+      "shot_id": "S3_E6_S01",
+      "episode": 6,
+      "shot": 1,
+      "reason": "There is a severe narrative and tonal whiplash. Episode 5 ended on a high-stakes, terrifying cliffhanger: Amal vanished into the shadows, a freezing wind blew out Sachin's flashlight, a ghostly whisper called Reenu's name, and Sachin protectively shoved Reenu behind him in pitch darkness. However, Episode 6 Shot 1 currently presents Amal calmly setting up his phone and casually introducing a 'ghost detector' as if nothing happened. This completely ignores the immediate terror, treats Amal's disappearance as a non-event, and creates a massive temporal and emotional disconnect. The new shot must bridge this gap by showing the chaotic, breathless immediate aftermath: Sachin and Reenu reacting to the terrifying darkness and ghostly whisper, only for Amal to suddenly pop back into the frame with his phone-mounted 'ghost detector', completely oblivious to the terror he just caused by wandering off.",
+      "original_action": "Setting up his phone.",
+      "harmonized_action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
+      "original_dialogue": "ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ.",
+      "harmonized_dialogue": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!"
+    },
+    {
+      "shot_id": "S3_E6_S02",
+      "episode": 6,
+      "shot": 2,
+      "reason": "The original current shot is too brief and lacks the physical and emotional bridge from Amal's absurd reveal. Sachin is still reeling from stark terror and holding a shaking flashlight; seeing Amal casually vlogging breaks his nervous system. The action and dialogue need to capture Sachin's exasperated, adrenaline-fueled freak-out reacting directly to Amal's misplaced confidence.",
+      "original_action": "Overthinking every sound.",
+      "harmonized_action": "Close-Up (CU) on Sachin, Pixar 3D Camera: Sachin's face contorts from sheer terror into absolute exasperation. He drops his shaking flashlight beam directly onto Amal's ridiculous makeshift tripod setup, his mouth hanging open in disbelief. Reenu peeks out from behind Sachin's shoulder, her eyes widening at Amal before crossing her arms in a mix of relief and pure annoyance. Volumetric moonlight cuts through the dusty haze, highlighting floating dust motes around Sachin's ruffled hair and wide, panicked eyes.",
+      "original_dialogue": "അതൊരു ശബ്ദമായിരുന്നു!",
+      "harmonized_dialogue": "സച്ചിൻ: അതൊരു ശബ്ദമായിരുന്നു! നീ ഇവിടെ വന്ന് റീൽസ് ഉണ്ടാക്കുകയാണോ കുന്തേ?! ഞങ്ങളിവിടെ പേടിച്ചു ചാവുന്നു!"
+    },
+    {
+      "shot_id": "S3_E6_S03",
+      "episode": 6,
+      "shot": 3,
+      "reason": "The original shot abruptly jumps from Sachin chewing out Amal to Reenu pointing at the wall without letting the comedic deflation of the moment breathe. To maintain Pixar-style pacing, we need Reenu to physically brush past an exasperated Sachin, instantly shifting the scene's tension from their anger at Amal to a spine-chilling discovery on the wall. The camera needs to track this smoothly.",
+      "original_action": "Pointing at wall markings.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Reenu steps firmly past a still-fuming Sachin, her annoyance at Amal instantly evaporating as the beam of her flashlight catches a cluster of strange, glowing tribal markings etched deep into the rusted iron plating of the factory wall. She steps closer, narrowing her eyes in intense concentration. Sachin stammers in the background, still catching his breath, while Amal nervously adjusts his phone camera off-screen.",
+      "original_dialogue": "ഇത് എന്താ?",
+      "harmonized_dialogue": "റീനു: അമലിന്റെ കളി നിർത്തിയിട്ട് ഇങ്ങോട്ട് നോക്ക്. ഇത് എന്താ ഇവിടെ?"
+    },
+    {
+      "shot_id": "S3_E6_S04",
+      "episode": 6,
+      "shot": 4,
+      "reason": "There is a minor emotional disconnect. In the previous shot, Reenu has just discovered mysterious, glowing tribal markings on an iron wall and urgently calls Amal over, shifting the mood from frantic running to eerie mystery. Amal's current dialogue ('They probably want to share our bill') is a great comedic relief line, but the action needs to physically tie him to the moment—stepping into the frame, nervously flashing his phone light on the markings, trying to mask his sheer terror with forced sarcasm.",
+      "original_action": "Joking about the ghost.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: Amal nervously shuffles into the frame beside Reenu, his knees visibly shaking as his phone's camera light illuminates the glowing tribal markings. Instead of looking at the eerie etchings, he keeps his eyes glued to the dark factory shadows, forcing a weak, nervous grin to hide his panic while gesturing dismissively at the wall.",
+      "original_dialogue": "അവർക്ക് നമ്മുടെ ബില്ല് ഷെയർ ചെയ്യാൻ ആയിരിക്കും.",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്) അത് പിന്നെ... ഇവിടെയുള്ള പ്രേതങ്ങൾക്കും നമ്മുടെ ഹോംസ്റ്റേ ബില്ല് ഷെയർ ചെയ്യാൻ താല്പര്യം ഉണ്ടാവും!"
+    },
+    {
+      "shot_id": "S3_E6_S05",
+      "episode": 6,
+      "shot": 5,
+      "reason": "The original current shot ('They run out') is far too abrupt and lacks the detailed Pixar-style comedic-horror blocking and emotional continuity from Amal's nervous joke. A sudden jump to running without a triggering catalyst (like the glowing tribal markings reacting or a sudden sound) creates emotional whiplash. The revision bridges the moment by having the glowing tribal markings flare up violently, prompting Sachin's protective and immediate reaction to yell the warning and lead the frantic escape.",
+      "original_action": "They run out.",
+      "harmonized_action": "Wide Shot (WS), Pixar 3D Camera: The moment Amal finishes his joke, the eerie tribal markings on the rusty machinery violently pulse with an unearthly, blinding blue light, accompanied by a low, mechanical grinding roar from deep beneath the factory floor. Sachin's eyes go wide with sudden alarm; he drops his flashlight, grabs Reenu's hand, and forcefully yanks Amal backward by his backpack. Sachin turns to the camera, his face a mix of raw terror and protective urgency, shouting 'Run!' as all three scramble in a chaotic, limbs-flying stampede toward the broken exit doors.",
+      "original_dialogue": "ഓടിക്കോ!",
+      "harmonized_dialogue": "സച്ചിൻ: (അലറിക്കൊണ്ട്) നിൽക്കാനല്ലേ പറഞ്ഞത്, ഓടിക്കോടോ രക്ഷപെട്!!"
+    },
+    {
+      "shot_id": "S3_E6_S06",
+      "episode": 6,
+      "shot": 6,
+      "reason": "There is a massive emotional and spatial whiplash. In the previous shot, Sachin, Reenu, and Amal were fleeing in absolute terror from a blinding blue light and mechanical roaring inside the factory. Suddenly cutting to Amal calmly noticing footprints outside without showing the breathless escape, the adrenaline dump, or how they got out creates a severe temporal and narrative disconnect.",
+      "original_action": "Noticing footprints.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Bursting head-first through the rusted, swinging doors of the abandoned tea factory, Sachin, Reenu, and Amal tumble out onto the overgrown gravel clearing outside, gasping for air. Amal crashes onto all fours, his chest heaving wildly, eyes wide with residual panic. Mid-gasp, his gaze drops to the damp mud right beside his hand. He freezes, pointing a trembling finger at a fresh, distinct set of massive bare footprints leading straight into the dark mist. Sachin stumbles up behind him, leaning on his knees, panting heavily as he glares down at Amal.",
+      "original_dialogue": "ഇതാര് വന്നതാ?",
+      "harmonized_dialogue": "അമൽ: (കിതച്ചുകൊണ്ട്, വിറയ്ക്കുന്ന കൈ ചൂണ്ടി) ഹേയ്... നോക്ക്... ഇതാര് വന്നതാ ഇവിടെ?"
+    },
+    {
+      "shot_id": "S3_E6_S07",
+      "episode": 6,
+      "shot": 7,
+      "reason": "There is a severe narrative whiplash and spatial contradiction between the previous shot and the current shot. Ep 6 Shot 6 ends with the trio frantically escaping the abandoned tea factory into an overgrown clearing in the mist, staring down at massive mysterious footprints. However, the original Current Shot abruptly teleports them to a homestay bed with a calm line about sleeping, completely ignoring the terrifying cliffhanger and leaving the immediate escape and discovery unresolved.",
+      "original_action": "Returning to homestay.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
+      "original_dialogue": "ഇന്ന് രാത്രി ഒന്ന് ഉറങ്ങണം.",
+      "harmonized_dialogue": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!"
+    },
+    {
+      "shot_id": "S3_E6_S08",
+      "episode": 6,
+      "shot": 8,
+      "reason": "There is a severe continuity and temporal whiplash. Episode 6 Shot 7 ends with Reenu panicking at the abandoned tea factory in the freezing Munnar night, desperately wanting to return to the homestay. However, the original Current Shot abruptly jumps *inside* the homestay with Amal locking the door and saying 'No one else is coming,' completely skipping their escape, the freezing trek back through the misty hills, and the immediate adrenaline-fueled relief of getting indoors. To bridge this gap seamlessly, we need to show the frantic, breathless return to the homestay where Sachin, Reenu, and a terrified Amal burst through the door, and Amal frantically barricades it while trying to catch his breath.",
+      "original_action": "Locking the door.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Inside the warm, dimly lit homestay living room. The heavy wooden door bursts open, and Sachin, Reenu, and Amal stumble inside, panting heavily, chests heaving with white plumes of breath in the cold air. Amal immediately slams the door shut, throwing the heavy deadbolt and sliding a rustic wooden security bar into place with trembling hands. He leans his back against the door, sliding down halfway to the floor in sheer exhaustion and terror, clutching his chest. Sachin and Reenu rush in behind him, frantically scanning the shuttered windows as the wind howls outside.",
+      "original_dialogue": "ഇനി ആരും വരില്ല.",
+      "harmonized_dialogue": "അമൽ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിയിരുന്ന്) ദൈവമേ... നമ്മൾ രക്ഷപ്പെട്ടു! ഇനി... ഇനി ആരും പുറത്തുപോകില്ല, പുറത്തുനിന്നും ആരും അകത്തോട്ടു വരില്ല!"
+    },
+    {
+      "shot_id": "S3_E6_S09",
+      "episode": 6,
+      "shot": 9,
+      "reason": "The previous shot ends in high-octane terror with Amal slamming the door, panting, and screaming that no one is going outside. A sudden transition to Sachin simply sleeping and casually saying 'നാളെ നോക്കാം' (Let's check tomorrow) creates severe emotional whiplash. It ignores the immediate aftermath of the fright and Sachin's protective yet logical DNA. We need to bridge this by showing Sachin's physical exhaustion, his attempt to calm the panicked room, and his reluctant, anxious acceptance that they are trapped for the night before delivering the dialogue.",
+      "original_action": "Sleeping.",
+      "harmonized_action": "Close-Up (CU), Pixar 3D Camera: Tight on Sachin. His face is illuminated only by the faint, eerie blue moonlight filtering through the dusty wooden window slats. Beads of cold sweat glisten on his forehead. He is kneeling beside the trembling Amal, breathing heavily, his chest rising and falling rapidly. Sachin's eyes dart toward the rattling window panes as a chilling gust of wind howls outside, violently shaking the glass. Reenu stands right behind him, tightly gripping a heavy brass candlestick like a weapon, scanning the dark corners of the room. Sachin swallows hard, trying to project a calm he doesn't feel, before rubbing his face in fatigue and waving a dismissive, trembling hand toward the hallway.",
+      "original_dialogue": "നാളെ നോക്കാം.",
+      "harmonized_dialogue": "സച്ചിൻ: (വിറയാർന്ന ശബ്ദത്തിൽ, ചുറ്റും നോക്കിക്കൊണ്ട്) ഇപ്പോൾ പുറത്തിറങ്ങാൻ പറ്റില്ല... ബാക്കി ഒക്കെ നാളെ നോക്കാം."
+    },
+    {
+      "shot_id": "S3_E6_S10",
+      "episode": 6,
+      "shot": 10,
+      "reason": "The previous shot ends with high tension and fatigue as Sachin tells everyone to wait until tomorrow, but the original current shot abruptly jumps to finding a note without bridging the physical action of them moving around the room or noticing the object. We need to bridge the adrenaline drop into the discovery of the mysterious note on the table.",
+      "original_action": "Finding the note.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
+      "original_dialogue": "പഴയ പാലത്തിൽ പോകരുത്...",
+      "harmonized_dialogue": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്..."
+    },
+    {
+      "shot_id": "S3_E7_S01",
+      "episode": 7,
+      "shot": 1,
+      "reason": "Episode 7 Shot 1 must immediately pick up the breathless aftermath of Episode 6 Shot 10's cliffhanger. The previous shot ended with them discovering the chilling handwritten warning ('പഴയ പാലത്തിൽ പോകരുത്' / Don't go to the old bridge) under the flickering oil lamp. The original draft of Episode 7 Shot 1 abruptly shifted to Reenu holding a note 'found under their door' and speaking too calmly, creating a temporal and spatial continuity error. The revision bridges this by maintaining the same tense, freezing moment in the living room: Reenu holding the exact same paper they just uncrumpled, while Sachin shivers from the cold and Amal stumbles in, reacting to the terrifying discovery with high-strung panic.",
+      "original_action": "Reenu holds the cryptic warning note found under their door, her eyes resolute as she insists to Sachin and Amal that the note is not a threat, but a plea to investigate the forbidden suspension bridge before sunset.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+      "original_dialogue": "റീനു: 'ഈ കുറിപ്പ് എഴുതിയത് ആരായാലും... നമ്മൾ ആ പഴയ പാലത്തിലേക്ക് പോകണം സച്ചിൻ.'",
+      "harmonized_dialogue": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം."
+    },
+    {
+      "shot_id": "S3_E7_S02",
+      "episode": 7,
+      "shot": 2,
+      "reason": "There is a massive comedic and emotional whiplash. Reenu just delivered a high-stakes, dramatic line about heading to the haunted bridge before sunset, holding a chilling mystery note. Amal's current response ('I'll order food here') is too abrupt and flat, lacking proper reaction to the tension in the room and missing Pixar-style physical comedy and character voice.",
+      "original_action": "Staying inside.",
+      "harmonized_action": "Close-Up (CU), Pixar 3D Camera: Amal freezes mid-step, his eyes widening in sheer panic beneath his blanket-ghost disguise as he processes Reenu's words. He violently shakes his head, dropping his phone onto the sofa cushion with a loud bounce. He grips Sachin's sleeve frantically, his teeth chattering so hard his jaw clicks, frantically trying to talk them out of the suicide mission.",
+      "original_dialogue": "ഞാൻ ഇവിടെ ഫുഡ് ഓർഡർ ചെയ്യാം.",
+      "harmonized_dialogue": "അമൽ: (കരിഞ്ഞ മുഖത്തോടെ, ഫോൺ താഴെയിട്ട്) പാലത്തിലേക്കോ?! ഭ്രാന്താണോ രേണു നിനക്ക്? സന്ധ്യക്ക് ആ വഴിക്ക് പോയാൽ യക്ഷി നമ്മളെ ചതച്ചരച്ച് പൊറോട്ട അടിക്കും! ഞാൻ ഇവിടുന്ന് ഒരിഞ്ചും അനങ്ങില്ല... വേണമെങ്കിൽ ഞാൻ Zomato-യിൽ വല്ല കുഴിമന്തിയും ഓർഡർ ചെയ്യാം, നിങ്ങൾ പോയി കഴിച്ച് തീർക്ക്!"
+    },
+    {
+      "shot_id": "S3_E7_S03",
+      "episode": 7,
+      "shot": 3,
+      "reason": "There is a severe geographic and emotional disconnect between Shot 2 and the proposed Shot 3. Shot 2 ends with Amal terrified inside the homestay living room, refusing to go anywhere near the bridge. Instantly cutting to Sachin already walking on the bridge ('Walking to the bridge') completely skips the transition, ignoring how they even got past Amal's panic, left the homestay, and traveled through the dark Munnar mist. Furthermore, Sachin's line 'Reenu, സൂക്ഷിക്കണം' is far too brief and lacks the cautious, protective, yet slightly anxious DNA established for him, especially stepping onto a haunted bridge at dusk.",
+      "original_action": "Walking to the bridge.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
+      "original_dialogue": "റീനു, സൂക്ഷിക്കണം.",
+      "harmonized_dialogue": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!"
+    },
+    {
+      "shot_id": "S3_E7_S04",
+      "episode": 7,
+      "shot": 4,
+      "reason": "The previous shot establishes a tense, highly atmospheric mood on a foggy suspension bridge where Sachin is cautious and protective. Shot 4 needs to organically inherit that suspense while shifting focus to Reenu's discovery. The current action is a bit abrupt; we need to show Reenu reacting to the eerie environment first, steadying herself against the swaying ropes, and then noticing the locket illuminated by Sachin's flashlight beam to maintain perfect spatial and emotional continuity.",
+      "original_action": "Halfway across the swaying wooden planks of the suspension bridge, Reenu spots a tarnished silver locket caught in the rusted wire cables.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: The camera tracks low alongside the swaying wooden planks. Reenu stops abruptly, her breath pluming into the freezing night air as the bridge swings gently in the mountain breeze. Her eyes widen as the sweeping beam of Sachin's flashlight catches a glint of metal tangled in the rusted wire mesh of the handrail. She reaches out a gloved hand, her fingers gently brushing past the frost to touch a tarnished silver locket, her expression shifting from apprehension to intense curiosity.",
+      "original_dialogue": "റീനു: 'സച്ചിൻ, നോക്കൂ! ഈ ലോക്കറ്റിൽ പതിച്ചിരിക്കുന്നത് ആ ഫോട്ടോയിലെ അതേ ചിഹ്നമാണ്!'",
+      "harmonized_dialogue": "രേണു: (ശബ്ദം താഴ്ത്തി, വിരൽ ചൂണ്ടി) സച്ചിൻ... ആ വെളിച്ചം ഒന്നു കൂടി ഇങ്ങോട്ട് അടിക്കേ! ഈ ലോക്കറ്റിൽ പതിച്ചിരിക്കുന്നത്... ആ പഴയ ഡയറിയിലെ അതേ ചിഹ്നമല്ലേ?"
+    },
+    {
+      "shot_id": "S3_E7_S05",
+      "episode": 7,
+      "shot": 5,
+      "reason": "There is a massive narrative and emotional whiplash. The previous shot ended in a quiet, tense mystery on the suspension bridge as Reenu discovered a locket matching the diary symbol. The current raw shot abruptly throws Amal into panic running with zero setup or transition explaining what startled him or where Sachin and Reenu are. To maintain cinematic flow, we need to show Amal reacting to whatever threat emerges from the mist just as Reenu touches the locket, perfectly utilizing Amal's comedic cowardly DNA.",
+      "original_action": "Panic running.",
+      "harmonized_action": "Medium Shot (MS), Pixar 3D Camera: The camera whips around from Reenu's discovery on the locket to the bridge's wooden entrance behind them. Amal is caught mid-frantic sprint, his oversized backpack swinging wildly, tangling in a hanging vine. His eyes are popped wide in pure sheer terror, arms flailing as he slips on the frosty planks, scrambling to his feet while pointing frantically back toward the dark tea estates.",
+      "original_dialogue": "അയ്യോ, വരുന്നു!",
+      "harmonized_dialogue": "അയ്യോ നിൽക്കാനൊന്നും പറ്റില്ല! ദാ... അവിടുന്ന് ഏതോ ഒരുത്തൻ നമ്മളെ നോക്കി വരുന്നുണ്ട്! ഓടിക്കോ!"
+    },
+    {
+      "shot_id": "S3_E7_S06",
+      "episode": 7,
+      "shot": 6,
+      "reason": "The previous shot establishes a high-stakes, breathless panic where Amal is frantically trying to escape a pursuer in the dark tea estates. The current unenhanced shot abruptly cuts to a minor comedy beat about a bag without acknowledging the immediate danger, causing severe emotional whiplash. The revision maintains the frantic, comedic chaos by having Amal desperately snatch Sachin's bag mid-escape while Sachin reacts in exasperated panic.",
+      "original_action": "Amal grabs the wrong bag.",
+      "harmonized_action": "Medium Close-Up (MCU), Pixar 3D Camera: In the middle of his desperate scramble, Amal dives past Sachin and grabs a heavy, vibrant red backpack hanging on the post—mistaking it for his own. Sachin, eyes wide in absolute disbelief amidst the howling cold wind, violently yanks it back, his face inches from Amal's in a frantic, comedic tug-of-war while a chilling, unnatural rustling sound echoes menacingly from the tea bushes behind them.",
+      "original_dialogue": "അത് എന്റെ ബാഗാണ്!",
+      "harmonized_dialogue": "അത് എന്റെ ബാഗാണ്, പൊട്ടാ! അവിടുന്ന് ഏതോ പ്രേതം ചാടിവീഴാൻ നിൽക്കുമ്പോഴാ നിന്റെ ഒരു ബാഗ്മാന്തൽ!"
+    },
+    {
+      "shot_id": "S3_E7_S07",
+      "episode": 7,
+      "shot": 7,
+      "reason": "The current shot is too brief and abrupt ('Thick fog descends. ഒന്നും കാണുന്നില്ല!'). Since the previous shot ended in a high-adrenaline tug-of-war amidst a menacing rustling sound in the tea bushes, cutting straight to generic fog loses the comedic panic, the physical momentum of the bag-snatching, and Reenu's grounding presence. The revision maintains the continuity of the terrifying sound, intensifies the Pixar lighting/atmosphere with volumetric fog rolling over the bridge, and gives Amal and Sachin a synchronized reaction of pure dread.",
+      "original_action": "Thick fog descends.",
+      "harmonized_action": "Wide to Medium Shot (MS), Pixar 3D Camera: Sweeping low angle as thick, unnaturally cold mountain mist violently surges across the Old Munnar Suspension Bridge, instantly swallowing the lantern light. Sachin and Amal are frozen mid-tug-of-war, their hands locked on the red backpack. The chilling rustle from the tea bushes explodes into a guttural, whispering wind. Reenu snaps her flashlight beam cutting through the whiteout, her eyes darting toward the bushes in pure alarm.",
+      "original_dialogue": "ഒന്നും കാണുന്നില്ല!",
+      "harmonized_dialogue": "എന്റെ പൊന്നോ... ഇത് സാധാരണ കോടയല്ല! ആന്തലൊക്കെ അനങ്ങുന്നുണ്ട്, വേഗം ഓട്!"
+    },
+    {
+      "shot_id": "S3_E7_S08",
+      "episode": 7,
+      "shot": 8,
+      "reason": "The current shot is too brief and lacks specific Pixar 3D visual direction, character blocking, and emotional continuity. The previous shot establishes an intense moment of terror where the mist swallows the bridge and a whispering wind surges. A generic 'Pointing to the forest' with a one-word dialogue doesn't capture Amal or Sachin's panic, nor does it utilize Reenu's flashlight beam cutting through the whiteout. We need to elevate the cinematic tension, show who is speaking ('Shadow' is vague, it should be Amal or Sachin reacting to a silhouette), and make the action visually rich.",
+      "original_action": "Pointing to the forest.",
+      "harmonized_action": "Close-Up (CU) on Amal, his eyes wide with absolute cartoonish terror, shivering violently. Pixar 3D Camera: Tight angle looking past Reenu's shaking flashlight beam. Amal's trembling, frost-bitten finger stabs frantically into the blinding, churning wall of mist toward the darkened tea bushes, his jaw chattering so hard his teeth click.",
+      "original_dialogue": "അങ്ങോട്ട്...",
+      "harmonized_dialogue": "അങ്ങോട്ട്... അങ്ങോട്ട് എന്തോ നമ്മളെ നോക്കുന്നുണ്ട്! എന്റെ അമ്മോ, എന്നെ തിരിച്ചു വിട്!"
+    },
+    {
+      "shot_id": "S3_E7_S09",
+      "episode": 7,
+      "shot": 9,
+      "reason": "The previous shot ended with Amal pointing in absolute, shivering terror at the swirling mist on the Old Munnar Suspension Bridge. Simply cutting to Reenu saying 'He is here' misses the immediate physical reaction to Amal's warning and fails to build the comedic-horror tension. We need to capture Reenu's sharp, intuitive reaction to the emerging ghostly figure, maintaining the breathless, atmospheric dread before her eerie declaration.",
+      "original_action": "The woman appears.",
+      "harmonized_action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+      "original_dialogue": "അവൻ ഇവിടെയുണ്ട്.",
+      "harmonized_dialogue": "അവൻ ഇവിടെയുണ്ട്."
+    },
+    {
+      "shot_id": "S3_E7_S10",
+      "episode": 7,
+      "shot": 10,
+      "reason": "The previous shot ended with a powerful, intimate cliffhanger focusing on Reenu's chilling realization and her eerie Malayalam line ('He is here'). Cutting immediately to a wide narrative voiceover about the bridge collapsing creates severe emotional whiplash, abruptly abandoning the tension built around Reenu's transformation. We need to bridge this by having the bridge collapse erupt *directly* out of that moment of supernatural dread, showing the physical impact on the characters before transitioning to the narrator.",
+      "original_action": "As dense white fog completely swallows the gorge, a violent snap echoes through the valley as the central support cables of the bridge shear apart in a catastrophic crash.",
+      "harmonized_action": "Wide Shot (WS) shifting to a dramatic high-angle as the suspension bridge violently fractures. Reenu’s eerie calm shatters instantly as the wooden planks beneath them splinter and plunge into the misty gorge. Pixar 3D Camera: Rapid crane down and back, capturing Sachin and Amal grabbing onto the swaying guide ropes while Reenu is jolted back to reality, her flashlight beam spinning wildly into the abyss as the legendary tea-picker vanishes into the rolling whiteout.",
+      "original_dialogue": "നരേറ്റർ: 'കനത്ത ശബ്ദത്തോടെ ആ പഴയ പാലം താഴെ കൊക്കയിലേക്ക് തകർന്നു വീണു!'",
+      "harmonized_dialogue": "നരേറ്റർ: 'കനത്ത ശബ്ദത്തോടെ ആ പഴയ പാലം താഴെ കൊക്കയിലേക്ക് തകർന്നു വീണു!'"
+    },
+    {
+      "shot_id": "S3_E8_S01",
+      "episode": 8,
+      "shot": 1,
+      "reason": "Episode 8 Shot 1 directly follows a massive cliffhanger where the suspension bridge collapsed into a misty gorge and Reenu vanished into the whiteout. Jumping immediately to Sachin inside an 'Estate building' with a calm line 'ഇവിടെ നിൽക്കാം' ('Let's stay here') creates massive emotional whiplash and a severe spatial-temporal disconnect. There is no mention of Reenu's disappearance, no panic, and no transition from the bridge disaster. The revision must show Sachin and Amal scrambling into the safety of an abandoned estate outbuilding, breathless, terrified, and frantically searching for Reenu in the dark.",
+      "original_action": "Taking shelter.",
+      "harmonized_action": "Medium Close-Up (MCU) shifting to a frantic over-the-shoulder shot. Sachin bursts through the rotting wooden door of an abandoned colonial estate outbuilding, slamming it shut behind a terrified Amal. Sachin's chest heaves violently, his face bathed in the erratic, frantic sweeps of his flashlight beam. He shines it back toward the raging mist outside, screaming Reenu's name into the dark. Amal collapses against a dusty tea crate, hyperventilating. Pixar 3D Camera: Fast handheld push-in matching Sachin's rising panic, capturing sweat dripping from his chin and dust motes swirling in the amber flashlight cone.",
+      "original_dialogue": "ഇവിടെ നിൽക്കാം.",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, കരച്ചിലിന്റെ വക്കിൽ) റീനു! റീനു എവിടെ?! നമ്മൾ... നമ്മൾ പെട്ടു!"
+    },
+    {
+      "shot_id": "S3_E8_S02",
+      "episode": 8,
+      "shot": 2,
+      "reason": "There is a severe emotional and pacing disconnect. The previous shot ends with high-adrenaline panic as Sachin and Amal just barely escape into a dark, terrifying outbuilding, screaming for Reenu. Cutting immediately to Amal casually trying a ritual with just the line 'I saw this in a movie' creates jarring comedic whiplash without acknowledging the immediate danger at the door or Sachin's panic. Amal's cowardly and superstitious DNA needs to manifest directly from the terror of the previous moment — frantically fumbling with salt while whimpering.",
+      "original_action": "Attempting a ritual.",
+      "harmonized_action": "Medium Shot (MS), tracking Amal's frantic movements in the dusty, amber-lit interior. Fresh from the terror outside, Amal scrambles backward on the floor, tearing open a packet of old, coarse kitchen salt he found on a shelf. His hands shake so violently he spills half of it on his own lap. He begins frantically pouring a shaky, uneven circle on the rotting wooden floorboards around himself and a hyperventilating Sachin, his eyes wide with cartoonish, desperate terror. Pixar 3D Camera: Low-angle dynamic push-in capturing Amal's sweaty, wide-eyed panic as the beam of Sachin's flashlight cuts wildly across the dusty air in the background.",
+      "original_dialogue": "ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, കരച്ചിൽ കലർന്ന ശബ്ദത്തിൽ) ഇത്... ഇത് സിനിമയിൽ കണ്ടിട്ടുണ്ട്! ഉപ്പ്... ഉപ്പ് ഇട്ടാൽ പ്രേതം വരില്ല! വരാൻ പാടില്ല!"
+    },
+    {
+      "shot_id": "S3_E8_S03",
+      "episode": 8,
+      "shot": 3,
+      "reason": "While Sachin correcting Amal's movie lore fits his logical character DNA, the current action lacks a physical response to the immediate high-adrenaline terror. In the previous shot, Amal is panicking and spilling salt while Sachin is hyperventilating. A direct, deadpan correction without acknowledging the terrifying atmosphere or Sachin's own breathlessness creates emotional whiplash. We need to ground Sachin's logical interjection in his own anxiety—he's scared too, but his nerdy/logical brain overrides his fear to correct a cinematic cliché, all while the ambient sounds of the Munnar estate press in on them.",
+      "original_action": "Correcting Amal.",
+      "harmonized_action": "Close-Up (CU) on Sachin inside the trembling, uneven circle of salt. He is leaning back against a rotting wooden crate, chest heaving and flashlight clutched white-knuckled in one hand. He wipes a bead of cold sweat from his forehead with the back of his other hand, looking down at Amal's botched, lumpy salt circle with sheer exasperation through his wide, terrified eyes. Pixar 3D Camera: Tight medium push-in on Sachin's face as he gasps for air, blinking rapidly before delivering his deadpan correction, the amber light casting long, jittery shadows across his expressive features.",
+      "original_dialogue": "അത് തെറ്റാണ് അമൽ.",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, കണ്ണട നേരെയാക്കി) അത്... അത് സിനിമയിലെ മണ്ടത്തരം... ഹു... ഹു... ഉപ്പിട്ടാലൊന്നും യക്ഷികൾ പോവില്ല, അമൽ! അതൊക്കെ വെറും... ഹു... സിനിമാക്കഥയാ!"
+    },
+    {
+      "shot_id": "S3_E8_S04",
+      "episode": 8,
+      "shot": 4,
+      "reason": "The current shot jumps abruptly from Sachin's high-tension realization in the outbuilding to Reenu finding a box without establishing spatial or emotional continuity. Since Reenu and Amal were outside or nearby during Sachin's panic, we need to bridge the scene by cutting to Reenu's perspective just outside the outbuilding or inside an adjacent storage area, reacting to the eerie atmosphere while making her discovery. This maintains the scene's momentum and keeps the comedic-horror tone balanced.",
+      "original_action": "Finding a box.",
+      "harmonized_action": "Medium Shot (MS) tracking Reenu inside the adjoining dust-choked storage room, illuminated by the bobbing beam of her own flashlight. Cobwebs drape over antique tea chests. She startles slightly at the sound of Sachin's breathless voice echoing from the next room, then immediately shines her light down on a peculiar, half-hidden wooden box marked with faded British-era tea estate stamps. Pixar 3D Camera: Low-angle medium shot pushing in past a dusty doorway as Reenu drops to one knee, her eyes widening with a mix of dread and curiosity before she calls out.",
+      "original_dialogue": "ഇവിടെ നോക്കൂ!",
+      "harmonized_dialogue": "രേണു: (ശബ്ദം താഴ്ത്തി, ആവേശത്തോടെ) സച്ചിൻ, അമൽ... ഇവിടെ വന്നു നോക്കൂ! ഈ പെട്ടിയിൽ എന്തോ ഉണ്ട്!"
+    },
+    {
+      "shot_id": "S3_E8_S05",
+      "episode": 8,
+      "shot": 5,
+      "reason": "The original current shot jumps straight to Sachin reading clippings without showing him entering the room or responding to Reenu's discovery from the previous shot. To maintain cinematic continuity and Sachin's character DNA (curious yet cautious), he needs to physically rush over to Reenu, react to the eerie box, and pick up the historical newspaper clippings inside it.",
+      "original_action": "Reading clippings.",
+      "harmonized_action": "Medium Close-Up (MCU) tracking Sachin as he bursts through the dusty doorway, panting and shining his flashlight over Reenu's shoulder. His eyes widen in the beam's harsh glare as he spots the open wooden box. Kneeling beside her, his gloved fingers trembling slightly, he reaches into the box and pulls out yellowed, brittle British-era newspaper clippings, squinting at the faded headlines under the flickering white light. Pixar 3D Camera: Dynamic push-in over Sachin's shoulder, capturing the dust motes dancing in the flashlight beam and the genuine suspense etched onto his face.",
+      "original_dialogue": "ഇതൊരു വലിയ രഹസ്യമാണ്.",
+      "harmonized_dialogue": "സച്ചിൻ: (ശ്വാസം എടുത്തുക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) ഇത്... ഇത് സാധാരണ ചായത്തോട്ടത്തിന്റെ രേഖകളല്ല. നോക്കൂ, ഇതിൽ എന്തോ വലിയൊരു രഹസ്യമുണ്ട്!"
+    },
+    {
+      "shot_id": "S3_E8_S06",
+      "episode": 8,
+      "shot": 6,
+      "reason": "The current shot is too brief and abrupt ('Hearing noises. ആരാ അത്?'). Since the previous shot ended with Sachin unearthing chilling British-era secrets in a tense, dusty atmosphere, Amal cannot simply react like he's casually asking who is at a doorstep. As our comedic, cowardly anchor, Amal's reaction needs to build directly from the heavy tension of Sachin's discovery. Furthermore, the action lacks Pixar-style visual blocking, lighting details, and character physical comedy.",
+      "original_action": "Hearing noises.",
+      "harmonized_action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+      "original_dialogue": "ആരാ അത്?",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!"
+    },
+    {
+      "shot_id": "S3_E8_S07",
+      "episode": 8,
+      "shot": 7,
+      "reason": "The previous shot ends with Amal in a state of high-adrenaline terror at the doorway, frozen and panicking over a mysterious sound. Jumping straight to Renu calmly reading a letter creates a jarring emotional and narrative disconnect. The transition needs to show Renu stepping past the paralyzed Amal, cutting through his panic with her characteristic cool intuition, and discovering the letter amidst the spooky atmosphere to maintain pacing and Character DNA.",
+      "original_action": "Reading the letter.",
+      "harmonized_action": "Pixar 3D Camera: Medium tracking shot pivoting from Amal's trembling form to Renu. Renu firmly pushes past Amal's shaking shoulder, unfazed by his whimpering. She shines her flashlight down onto a weathered, half-eaten wooden desk covered in dust. With sharp, focused eyes, she picks up a yellowed, handwritten letter resting beside a dried-up old inkwell. Dust motes swirl dramatically in the beam of her flashlight as she scans the faded Malayalam cursive with intense, unblinking concentration.",
+      "original_dialogue": "ആരോ അവളെ ചതിച്ചു.",
+      "harmonized_dialogue": "രേണു: (അമലിന്റെ വടിയും പേടിയും വകവെയ്ക്കാതെ, ഗൗരവത്തോടെ) അമൽ, ഒന്ന് വായും പൊത്തി മിണ്ടാതിരിക്ക്! അവിടുത്തെ പേടിപെട്ടി തുറക്കൽ നിർത്തിയിട്ട് ഇവിടെ വന്നു നോക്ക്... ആരോ അവളെ ചതിച്ചു, ഈ കത്തിൽ വ്യക്തമായി എഴുതിയിട്ടുണ്ട്."
+    },
+    {
+      "shot_id": "S3_E8_S08",
+      "episode": 8,
+      "shot": 8,
+      "reason": "The original current shot is too brief and lacks visual blocking or emotional weight to bridge Renu's discovery of the betrayal letter. Sachin needs physical action—stepping up beside Renu in the beam of the flashlight, looking at the letter with gritty resolve—to match his courageous and logical Character DNA, transitioning smoothly from Renu's revelation.",
+      "original_action": "Determined.",
+      "harmonized_action": "Pixar 3D Camera: Medium two-shot, pushing in slightly as Sachin steps firmly beside Renu, brushing a thick layer of dust off the edge of the desk. The cold moonlight through the cracked window and the harsh beam of the flashlight create a dramatic contrast on their faces. Sachin narrows his eyes, looking intently at the faded Malayalam cursive in Renu's hand, his initial anxiety replaced by a firm, protective resolve.",
+      "original_dialogue": "നമുക്ക് സത്യം അറിയണം.",
+      "harmonized_dialogue": "നമുക്ക് സത്യം അറിയണം. ആത്മഹത്യയല്ല… കൊലപാതകമാണെന്ന് തോന്നുന്നു."
+    },
+    {
+      "shot_id": "S3_E8_S09",
+      "episode": 8,
+      "shot": 9,
+      "reason": "The original current shot is too brief and lacks visual and emotional grounding for Amal's comedic-cowardly character DNA. Since Sachin just expressed grim resolve about a murder, throwing Amal in with a simple 'I'm with you' without showing his physical state (shivering, hiding behind a prop, eyes darting) creates an emotional and comedic disconnect. The enhancement adds classic Pixar physical comedy—Amal trying to look brave while trembling and clinging to a dusty umbrella—making his line much funnier and more authentic.",
+      "original_action": "Trying to be brave.",
+      "harmonized_action": "Pixar 3D Camera: Medium shot tracking Amal as he nervously steps into the sliver of moonlight from behind a towering stack of rotting crates. His eyes are wide with residual terror, his knees visibly knocking together, yet he puffs out his chest with a comically pathetic display of false bravery, clutching a rusty old umbrella like a wizard's staff.",
+      "original_dialogue": "ഞാൻ കൂടെയുണ്ട്.",
+      "harmonized_dialogue": "ഞാൻ... ഞാൻ കൂടെയുണ്ട്! പേടിച്ചിട്ടൊന്നുമല്ല... നിങ്ങളെ ഒറ്റക്ക് വിടാൻ വയ്യാഞ്ഞിട്ടാ!"
+    },
+    {
+      "shot_id": "S3_E8_S10",
+      "episode": 8,
+      "shot": 10,
+      "reason": "There is a severe narrative and visual disconnect. The previous shot left off with Amal nervously entering a storage room with an umbrella. The current shot abruptly cuts to a narrator letter text reveal ('अவளை அങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്') without establishing *who* is reading the letter, *where* they found it, or how it connects to Amal's immediate situation. To maintain seamless Pixar-style cinematic flow, we must anchor the letter's discovery directly into the scene—having Sachin or Reenu find the letter amidst the crates right after Amal's entrance, providing a dramatic atmospheric beat before the narrator delivers the line.",
+      "original_action": "Letter text reveal.",
+      "harmonized_action": "Pixar 3D Camera: Close-up tracking shot. As Amal strikes a ridiculous pose with his umbrella, a sudden, chilly gust of wind blows through a broken window, scattering a cloud of dust. Reenu steps past Amal, shining her phone flashlight onto an old, dust-covered wooden desk. Resting right in the center is a weathered, half-opened envelope. Reenu's small hand reaches down, gently pulling out a yellowed handwritten letter as the camera pushes in sharply on the chilling Malayalam handwriting.",
+      "original_dialogue": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+      "harmonized_dialogue": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്."
+    },
+    {
+      "shot_id": "S3_E9_S01",
+      "episode": 9,
+      "shot": 1,
+      "reason": "The previous episode ended on a chilling cliffhanger with Reenu discovering a terrifying handwritten letter in the abandoned estate at night. Jumping straight to Sachin placing evidence on a dining table at dusk creates a severe temporal and geographical gap. We need to bridge the breathless, terrified aftermath of finding the letter, their frantic escape from the estate, and their immediate confrontation back at the homestay.",
+      "original_action": "Returning to the homestay at dusk, Sachin places the silver locket and the torn betrayal letter directly on the dining table in front of Caretaker Sreedharan.",
+      "harmonized_action": "Pixar 3D Camera: Medium tracking shot, dusk bleeding into dark blue night. The wooden front door of the homestay flies open with a sharp creak. Sachin and Reenu stumble inside, chest heaving, eyes wide with residual adrenaline and terror. Reenu's knuckles are white as she clutches the yellowed letter from the estate. Sachin slams the door shut, turns around, and slams the silver locket and the terrifying Malayalam letter down onto the wooden dining table right in front of a startled, pale-faced Caretaker Sreedharan. Warm lamplight casts long, dramatic shadows across Sreedharan's guilty, sweating face.",
+      "original_dialogue": "സച്ചിൻ: 'ശ്രീധരൻ ചേട്ടാ, ഇനി ഒന്നും മറയ്ക്കരുത്... ഈ ലോക്കറ്റും കത്തും എന്താണെന്ന് സത്യം പറയൂ.'",
+      "harmonized_dialogue": "ശ്രീധരൻ ചേട്ടാ, ഇനി ഒന്നും മറയ്ക്കരുത്... ഈ ലോക്കറ്റും കത്തും എന്താണെന്ന് സത്യം പറയൂ!"
+    },
+    {
+      "shot_id": "S3_E9_S02",
+      "episode": 9,
+      "shot": 2,
+      "reason": "The previous shot ends with high adrenaline, heavy breathing, and Sachin slamming the evidence onto the table in front of Sreedharan. The current action description skips the physical transition—Sachin and Reenu are standing right over Sreedharan, and Sreedharan needs a moment to react to the sudden slam and the physical shock before slumping into the chair. We must bridge the breathless aftermath and the immediate visual impact of the silver locket and letter on Sreedharan's face into his confession.",
+      "original_action": "Cornered in the homestay hallway by the evidence, Caretaker Sreedharan slumps onto an antique wooden chair, voice trembling with long-suppressed guilt as he confesses the tragedy of 1994.",
+      "harmonized_action": "Pixar 3D Camera: Medium-close, dynamic push-in framing Sachin and Reenu leaning over the dining table, chests still heaving from their sprint through the tea estate. Sreedharan flinches violently back at the slam, his wide eyes darting from the blood-stained silver locket to the yellowed Malayalam letter. The warm lamplight highlights the cold sweat beading on his forehead. Trembling, Sreedharan's old hands slide off the table as he slowly slumps backward onto an antique wooden chair, completely cornered by the truth.",
+      "original_dialogue": "കെയർടേക്കർ: 'അന്ന് ആ രാത്രിയിൽ നടന്ന ചതി അവൾ അറിഞ്ഞിരുന്നു... ആ പാപം ഇന്നും ഈ മൂന്നാറിനെ വിട്ടുപോയിട്ടില്ല.'",
+      "harmonized_dialogue": "അന്ന് ആ രാത്രിയിൽ നടന്ന ചതി അവൾ അറിഞ്ഞിരുന്നു... ആ പാപം ഇന്നും ഈ മൂന്നാറിനെ വിട്ടുപോയിട്ടില്ല."
+    },
+    {
+      "shot_id": "S3_E9_S03",
+      "episode": 9,
+      "shot": 3,
+      "reason": "The current shot is too brief and lacks the necessary Pixar-style visual depth, spatial continuity, and breathless physical aftermath following Sreedharan's devastating revelation in the previous shot. Reenu needs active, emotional staging that matches her intuitive character DNA while reacting to the historical horror.",
+      "original_action": "Listening intently.",
+      "harmonized_action": "Pixar 3D Camera: Over-the-shoulder medium shot from Sachin’s perspective, focusing on Reenu. Reenu’s hair is slightly disheveled from their sprint through the tea estate, and her eyes remain fixed with a mix of shock and intuitive realization on the blood-stained locket. She grips the edge of the antique table tightly, her knuckles white, her chest still rising and falling rapidly. In the soft, atmospheric lamplight, she leans forward slightly toward the collapsed caretaker, her voice trembling yet sharp with sudden deduction.",
+      "original_dialogue": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+      "harmonized_dialogue": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?"
+    },
+    {
+      "shot_id": "S3_E9_S04",
+      "episode": 9,
+      "shot": 4,
+      "reason": "The current shot is too brief and lacks emotional and physical continuity from Reenu's intense realization in Shot 3. Amal's sudden realization needs to stem directly from Reenu pointing out the locket, maintaining the frantic, high-stakes comedic-horror atmosphere in the dining room.",
+      "original_action": "Trying to solve it.",
+      "harmonized_action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
+      "original_dialogue": "എനിക്ക് മനസ്സിലായി!",
+      "harmonized_dialogue": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!"
+    },
+    {
+      "shot_id": "S3_E9_S05",
+      "episode": 9,
+      "shot": 5,
+      "reason": "The current shot draft is too abrupt and lacks Pixar-style visual comedy. Amal just had a dramatic, over-the-top realization knocking over his teacup, so Sachin's dismissal needs a matching physical beat and comedic timing. We need to specify the camera angle (over-the-shoulder medium shot) and Sachin's weary, unimpressed expression as he corrects Amal, keeping the warmth and humor of their dynamic alive.",
+      "original_action": "Amal's theory is absurd.",
+      "harmonized_action": "Pixar 3D Camera: Over-the-shoulder medium shot from Amal's frantic perspective. Sachin sits across the cluttered dining table, casually sipping his sulaimani tea, completely unfazed by Amal's theatrical outburst. Sachin lets out a soft, tired sigh, lowering his glass with a tiny *clink* on the brass saucer. He gestures dismissively with one hand toward the messy stack of papers, his brow furrowed in good-natured exasperation.",
+      "original_dialogue": "അതല്ല അമൽ.",
+      "harmonized_dialogue": "അതല്ല അമൽ, നീ വെറുതെ ഓരോന്ന് കൂട്ടി വായിക്കുകയാ."
+    },
+    {
+      "shot_id": "S3_E9_S06",
+      "episode": 9,
+      "shot": 6,
+      "reason": "The previous shot shows Sachin casually sipping sulaimani tea and dismissing Amal's panic, but the current shot abruptly cuts to Sreedharan grabbing Sachin's arm with a heavy lore-heavy exposition about a subterranean vault. To maintain Pixar's cinematic flow and emotional continuity, we need to bridge Sachin's relaxed demeanor and Amal's ongoing meltdown into Sreedharan's sudden, breathless interruption, grounding the caretaker's panic visually and keeping his thick Idukki dialect authentic.",
+      "original_action": "Sreedharan grabs Sachin's arm in desperate panic, warning them that the spirit is heading to the old tea factory where her family's original stolen deed remains concealed in the subterranean vault.",
+      "harmonized_action": "Pixar 3D Camera: Medium-close up, tracking the rapid motion as Caretaker Sreedharan suddenly bursts into the dining room from the kitchen shadows, gasping for breath. He lunges across the cluttered table, his weathered, trembling hands tightly gripping Sachin's forearm. Sachin's eyes widen in mild shock, hot sulaimani tea sloshing slightly over the brim of his glass. Amal shrieks softly and jumps back in his chair, spilling a pencil holder. Sreedharan's face is illuminated by the warm, flickering yellow glow of the dining room's brass lantern, casting long, dramatic shadows against the wood-paneled walls.",
+      "original_dialogue": "കെയർടേക്കർ: 'ഇന്ന് അർദ്ധരാത്രി അവൾ അവിടുത്തെ പഴയ ഫാക്ടറിയിലെ നിലവറയിലേക്ക് വരും... ആ രേഖ നിങ്ങൾ എടുത്തേ പറ്റൂ!'",
+      "harmonized_dialogue": "കെയർടേക്കർ: 'അതല്ല സാറെ... വെറുതെ പറയുന്നതല്ല! ഇന്ന് അർദ്ധരാത്രി അവൾ പഴയ ഫാക്ടറിയിലെ നിലവറയിലേക്ക് പോകും... ആ രേഖ നിങ്ങൾ എടുത്തേ പറ്റൂ, അല്ലെങ്കിൽ പിന്നെ രക്ഷയില്ല!'"
+    },
+    {
+      "shot_id": "S3_E9_S07",
+      "episode": 9,
+      "shot": 7,
+      "reason": "The previous shot ends with an intense, breathless climax where Caretaker Sreedharan grabs Sachin's arm with dire warnings about midnight secrets. Cutting instantly to a flat, basic 'Lights go out' with generic dialogue creates severe emotional whiplash, killing the comedic-horror tension and neglecting Pixar-level atmospheric staging. We need to bridge this by having the ambient lantern flicker and die *because* of Sreedharan's revelation, plunging them into sudden darkness while capturing Sachin's startled logical reaction and Amal's immediate cowardly freak-out.",
+      "original_action": "Lights go out.",
+      "harmonized_action": "Pixar 3D Camera: Medium shot, tracking from Sreedharan's gripping hands to Sachin's face. Suddenly, with a loud electrical pop, the brass lantern's flame is violently extinguished by a sudden, freezing gust of wind whistling through the wooden window shutters. Complete, pitch-black darkness envelops the frame for a split second, broken only by Sachin's wide eyes catching the faint, eerie blue moonlight filtering through the misty glass. Sachin freezes, his breath fogging in the sudden chill, while Amal's frantic hands immediately claw at Sachin's shoulder in the dark, knocking over a ceramic tea plate with a sharp crash.",
+      "original_dialogue": "ലൈറ്റ് വീണ്ടും പോയി!",
+      "harmonized_dialogue": "സച്ചിൻ: 'ഛെ... വീണ്ടും കറന്റ് പോയോ?! കെയർടേക്കറെ, പിടT... കൈ വിടൂ, ഇരുട്ടിൽ തപ്പിക്കളിക്കാതെ!'"
+    },
+    {
+      "shot_id": "S3_E9_S08",
+      "episode": 9,
+      "shot": 8,
+      "reason": "The previous shot ends in pitch-black panic with a sharp crash, a freezing gust, and Amal clawing at Sachin's shoulder. Shot 8 currently lacks spatial context, camera movement, and visual richness (just says 'Hiding'). It needs to immediately pick up the frantic, claustrophobic energy of the dark dining room, showing Amal panicking while clinging to Sachin in the eerie blue moonlight.",
+      "original_action": "Hiding.",
+      "harmonized_action": "Pixar 3D Camera: Close-up, pushing in rapidly on Amal’s terrified face illuminated only by the cold, eerie blue moonlight cutting through the window. Amal is crouched low, eyes squeezed shut, desperately clinging to Sachin's jacket sleeve as ceramic shards from the broken tea plate scatter around their feet. His chest heaves violently, breath fogging in the freezing air.",
+      "original_dialogue": "എന്നെ രക്ഷിക്കണേ!",
+      "harmonized_dialogue": "അമൽ: എന്നെ രക്ഷിക്കണേ! ആരോ... ആവോ എന്തോ കട്ടിലിനടിയിൽ... കാറ്റ്... കാറ്റല്ല, അതൊരു കൈയ്യായിരുന്നു!"
+    },
+    {
+      "shot_id": "S3_E9_S09",
+      "episode": 9,
+      "shot": 9,
+      "reason": "The previous shot ends in a peak moment of chaotic, high-adrenaline terror with Amal screaming about a hand under the bed. The original current shot for Renu was too abrupt and lacked the necessary physical and emotional bridge. We need to show Reenu reacting immediately to Amal's panic, turning sharply from her vantage point, raising her flashlight to cut through the freezing mist, and physically stepping in to anchor the group before delivering her line.",
+      "original_action": "Listening to footsteps.",
+      "harmonized_action": "Pixar 3D Camera: Medium shot, tracking fast with Renu as she whips around from the hallway entrance. Her breath fogs visibly in the plunging temperature. She grips her heavy brass flashlight like a club, her eyes wide with sudden alertness but grounded focus. She thrusts her arm out, cutting a beam of warm yellow light through the chilling blue moonlight to illuminate Amal cowering on the floor and Sachin trying to shield him. She tilts her head sharply, freezing as a heavy, dragging thud echoes from the ceiling directly above them.",
+      "original_dialogue": "ആരോ വരുന്നുണ്ട്.",
+      "harmonized_dialogue": "രേണു: മിണ്ടാതിരിക്കെടാ... ആരോ മുകളിലൂടെ നടക്കുന്നുണ്ട്."
+    },
+    {
+      "shot_id": "S3_E9_S10",
+      "episode": 9,
+      "shot": 10,
+      "reason": "In the previous shot, Renu is actively holding a heavy brass flashlight casting a warm beam, and they are listening to a heavy dragging thud from the ceiling. Going immediately to 'homestay lights abruptly die' creates a lighting contradiction (since they were already dealing with plunging temperatures and flashlight/moonlight) and completely ignores Renu's active flashlight and Sachin/Amal's immediate physical positioning. The narrative needs to integrate Renu's active light source as it gets suddenly swallowed by an unnatural, creeping darkness, while keeping the door rattling as the simultaneous escalation.",
+      "original_action": "The homestay lights abruptly die, leaving the room pitch black as the front door handle slowly rattles and the heavy hinges groan open.",
+      "harmonized_action": "Pixar 3D Camera: Low-angle medium shot, looking past Renu’s shoulder. Her brass flashlight's warm beam suddenly flickers and shrinks, choked by a sudden, unnatural wave of inky blackness rolling across the room from the doorway. The front door handle violently rattles, and the heavy wooden hinges groan open as the freezing mist billows inward, extinguishing the remaining amber glow.",
+      "original_dialogue": "നരേറ്റർ: 'പാതിരാത്രിയുടെ കൊടുംകാറ്റിൽ, വീടിന്റെ മുൻവാതിൽ പതുക്കെ തുറക്കപ്പെട്ടു!'",
+      "harmonized_dialogue": "നരേറ്റർ: 'പാതിരാത്രിയുടെ കൊടുംകാറ്റിൽ, വീടിന്റെ മുൻവാതിൽ പതുക്കെ തുറക്കപ്പെട്ടു!'"
+    },
+    {
+      "shot_id": "S3_E10_S01",
+      "episode": 10,
+      "shot": 1,
+      "reason": "There is a severe temporal and narrative disconnect. Episode 9 Shot 10 ended on a terrifying cliffhanger with the homestay front door violently bursting open under a supernatural wave of inky blackness and freezing mist. However, Episode 10 Shot 1 abruptly cuts to the factory without acknowledging that terrifying escape or transition. To bridge this seamlessly, the opening of Episode 10 must start right after fleeing that supernatural attack at the homestay, showing the trio bursting through the factory doors breathless, panicked, and adrenaline-fueled, directly matching Sreedharan's warning.",
+      "original_action": "Racing against the midnight clock following Sreedharan's warning, Sachin, Reenu, and Amal push open the creaking factory doors into the damp shadows, flashlights cutting through the subterranean chill to find the deed.",
+      "harmonized_action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+      "original_dialogue": "സച്ചിൻ: 'ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
+      "harmonized_dialogue": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'"
+    },
+    {
+      "shot_id": "S3_E10_S02",
+      "episode": 10,
+      "shot": 2,
+      "reason": "There is a severe emotional and pacing whiplash. In Shot 1, the trio literally just crashed through heavy iron doors, gasping for air, leaning against the door in raw, high-adrenaline panic from a homestay ambush. In the original Shot 2, Reenu immediately walks up to the ghost calmly without acknowledging the breathlessness, the slamming of the doors, or Amal's presence. To fix this, we need to bridge the transition by showing the immediate aftermath of the chase: Sachin locking the door, Amal hyperventilating in the background, and Reenu catching her breath before stepping forward with her trademark empathetic courage.",
+      "original_action": "Through the billowing mist inside the machinery floor, the translucent figure of Bhadra appears. Reenu steps forward with gentle, compassionate courage.",
+      "harmonized_action": "Pixar 3D Camera: Medium-wide shot. The heavy iron door rattles violently from an unseen force outside. Sachin frantically throws a rusted iron latch over the handles, sealing it shut, while Amal collapses onto a wooden crate, hyperventilating into a paper bag. Amidst the billowing, sub-zero mist of the massive tea-processing machinery floor, a soft, ethereal turquoise glow cuts through the darkness. The translucent figure of Bhadra materializes, hovering near an ancient brass rolling machine. Reenu, still panting slightly from the run, gently pushes past Sachin's outstretched arm. Her eyes soften with profound empathy. She steps forward, her flashlight lowered, addressing the heartbroken spirit with steady, comforting grace.",
+      "original_dialogue": "റീനു: 'പേടിക്കണ്ട ഭദ്രാ... ഞങ്ങൾ നിങ്ങളെ ഉപദ്രവിക്കാൻ വന്നതല്ല, നീതി നേടിത്തരാൻ വന്നതാണ്.'",
+      "harmonized_dialogue": "റീനു: 'പേടിക്കണ്ട ഭദ്രാ... ഞങ്ങൾ നിങ്ങളെ ഉപദ്രവിക്കാൻ വന്നതല്ല, ആ രേഖകൾ കണ്ടെത്തി നീതി നേടിത്തരാൻ വന്നതാണ്.'"
+    },
+    {
+      "shot_id": "S3_E10_S03",
+      "episode": 10,
+      "shot": 3,
+      "reason": "The current shot as written is far too sparse and abrupt given the high-stakes emotional beat of the previous shot. Reenu has just bravely approached a glowing ghost in a sub-zero, mist-filled haunted factory, while Amal was literally hyperventilating into a paper bag a moment ago. A simple 'I am ready' with just holding a light is emotionally flat and strips Amal of his cowardly, humorous comedic anchor DNA. We need to bridge the breathless, freezing aftermath, maintain Amal's nervous comic relief, and visually tie the camera blocking to Reenu's empathetic approach.",
+      "original_action": "Holding the light steady.",
+      "harmonized_action": "Pixar 3D Camera: Close-up tracking shot on Amal. He's still clutching the crumpled paper bag in one hand while his other hand shakes violently, trying to keep a heavy-duty industrial flashlight steady on the glowing, translucent figure of Bhadra across the misty floor. His wide, terrified eyes dart between the ghost and Sachin. He takes a shaky, hyperventilating gulp of air, adjusting his glasses which are fogging up from the freezing factory mist, forcing a brave front that cracks completely.",
+      "original_dialogue": "ഞാൻ റെഡിയാണ്.",
+      "harmonized_dialogue": "അമൽ: 'ഞാൻ... ഞാൻ റെഡിയാണ്! പക്ഷേ ആ വെളിച്ചം എന്നെ നോക്കി ഒന്നു മീശ പിരിക്കാൻ പറഞ്ഞേക്കരുത് കേട്ടോ!'"
+    },
+    {
+      "shot_id": "S3_E10_S04",
+      "episode": 10,
+      "shot": 4,
+      "reason": "There is a severe emotional and pacing disconnect. Shot 3 ends with Amal in a state of high-adrenaline terror, hyperventilating and shaking while pointing a flashlight at a terrifying ghost (Bhadra). Jumping straight to Sachin calmly finding a hidden brass compartment without acknowledging the immediate paranormal danger, Amal's trembling state, or the tense standoff creates jarring emotional whiplash. The revision bridges this by having Sachin execute a tactical, high-stakes maneuver right under the ghost's glowing nose, while Amal provides a cowardly, panic-stricken cover-fire moment.",
+      "original_action": "Beneath the rusted gears of the primary tea press, Sachin finds a hidden brass compartment and extracts the original wax-sealed 1994 estate deed.",
+      "harmonized_action": "Pixar 3D Camera: Medium-wide dynamic tracking shot. Amidst the freezing, mist-choked factory floor where Bhadra's translucent figure hums with an unearthly blue light, Sachin ignores the terror, diving desperately beneath the dripping, rusted gears of the primary tea press. His hands scramble frantically against the freezing ironwork until they snap open a hidden brass compartment, yanking out the heavy, yellowed, wax-sealed 1994 estate deed. Just feet away, Bhadra's head snaps 180 degrees toward Sachin with a spine-chilling metallic screech. Amal shrieks in absolute terror, accidentally firing his heavy-duty flashlight directly into Sachin's eyes while sobbing uncontrollably.",
+      "original_dialogue": "സച്ചിൻ: 'ഇതാ അത്! മുപ്പതു വർഷമായി ഒളിച്ചുവെച്ച ആ ഒറിജിനൽ രേഖ!'",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, രേഖ ഉയർത്തിക്കാട്ടുന്നു) 'ഇതാ അത്! മുപ്പതു വർഷമായി ഈ ഭൂതത്തിന്റെ കീഴിൽ ഒളിച്ചുവെച്ച ആ ഒറിജിനൽ രേഖ! അമൽ, കണ്ണ് തുറന്ന് പിട്രാ ലൈറ്റ് അങ്ങോട്ട് അടിക്ക്!!'"
+    },
+    {
+      "shot_id": "S3_E10_S05",
+      "episode": 10,
+      "shot": 5,
+      "reason": "The current shot is too brief and abrupt ('Building starts to collapse. കെട്ടിടം തകരുന്നു!'). It causes severe emotional and spatial whiplash from the intense climax of Shot 4, where Sachin just secured the 1994 deed while blinded by Amal's flashlight and facing a hostile Bhadra. The transition needs to dynamically capture the immediate consequence: Bhadra's enraged shriek triggering a structural catastrophe, with Sachin, Reenu, and Amal reacting in synchronized panic as the 1994 machinery caves in around them.",
+      "original_action": "Building starts to collapse.",
+      "harmonized_action": "Pixar 3D Camera: Low-angle chaotic push-in, shaking violently as massive chunks of the rusted tin roof tear away. The unearthly blue glow of Bhadra pulses violently, sending a shockwave that shatters the old factory windows. Sachin stumbles backward out from under the tea press, clutching the yellowed deed to his chest just as a heavy iron beam crashes down right where he was standing. Reenu lunges forward through the swirling mist and debris, grabbing Sachin’s collar and hauling him upright. Amal is on his knees, weeping hysterically and gripping a falling sack of tea leaves as dust and freezing Munnar rain pour through the fractured ceiling.",
+      "original_dialogue": "കെട്ടിടം തകരുന്നു!",
+      "harmonized_dialogue": "രേണു: (ശബ്‌ദമുയർത്തി, ഭയത്തോടെ) 'സച്ചിൻ, സൂക്ഷിച്ച്! മേൽക്കൂര താഴെ വീഴുന്നു! വേഗം പുറത്തേക്ക് ഓടൂ!!'"
+    },
+    {
+      "shot_id": "S3_E10_S06",
+      "episode": 10,
+      "shot": 6,
+      "reason": "The previous shot ended in a chaotic, high-adrenaline life-or-death climax with the roof collapsing and Reenu physically hauling Sachin out of danger. The current shot's action ('Helping them out') is far too simplistic, vague, and emotionally flat to match the extreme peril, freezing Munnar rain, and hysteria of Amal. Amal's original dialogue ('വേഗം ഇങ്ങോട്ട്!') is too brief and lacks his signature cowardly, over-the-top comedic panic. The revision bridges this by showing Amal scrambling from his knees to pull them through the jammed, half-broken emergency exit while screaming in pure terror.",
+      "original_action": "Helping them out.",
+      "harmonized_action": "Pixar 3D Camera: Medium-wide tracking shot, spinning dynamically to capture the howling wind and driving rain lashing into the ruined factory floor. Amal, his clothes caked in white tea dust and trembling violently, lunges toward the jammed side-door. He throws his entire weight against the rusted panic bar, slipping on wet tea leaves before finally popping the heavy iron door open. He extends a frantic, shaking hand back toward Sachin and Reenu, his eyes wide with cartoonish terror as another section of the roof groans above them.",
+      "original_dialogue": "വേഗം ഇങ്ങോട്ട്!",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, കരച്ചിലിന്റെ വക്കിൽ) അയ്യോ ദൈവമേ, നമ്മൾ തീർന്നു! ഇങ്ങോട്ട് ഓടി വാടാ, വേഗം!!"
+    },
+    {
+      "shot_id": "S3_E10_S07",
+      "episode": 10,
+      "shot": 7,
+      "reason": "The current shot is far too brief and lacks the physical urgency, spatial continuity, and emotional weight needed to follow Amal's frantic escape in Shot 6. Sachin and Reenu cannot simply say 'Let's go' casually while a roof is collapsing and wind/rain are lashing them; Sachin needs to physically pull Reenu through the doorway as lightning illuminates the chaotic scene, maintaining the high-adrenaline momentum of the Pixar style.",
+      "original_action": "Holding Renu's hand.",
+      "harmonized_action": "Pixar 3D Camera: Close-up tracking shot moving fast from Amal's outstretched hand to Sachin and Reenu. Sachin's face is illuminated by a sharp flash of Munnar lightning, his eyes wide with protective grit. He grips Reenu's hand so tightly his knuckles turn white, forcefully yanking her forward through the slamming, wind-whipped doorway just as a massive sheet of corrugated iron crashes down right where they were standing a second ago. Reenu stumbles over the wet threshold, gasping for breath.",
+      "original_dialogue": "നമുക്ക് പോകാം.",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, റീനുവിന്റെ കൈയിൽ പിടിച്ച് വലിച്ചുകൊണ്ട്) നിൽക്കാന நேரമില്ല, ഓടിക്കോ!!"
+    },
+    {
+      "shot_id": "S3_E10_S08",
+      "episode": 10,
+      "shot": 8,
+      "reason": "Severe emotional and narrative whiplash. Shot 7 ends with a life-or-death, high-adrenaline escape where Sachin and Reenu narrowly dodge a falling corrugated iron sheet in a storm-ravaged tea factory. Shot 8 abruptly cuts to Amal inside a calm car suggesting a trip to the beach, completely ignoring the terrifying cliffhanger, immediate physical context, and Amal's cowardice/humorous panic.",
+      "original_action": "Relieved.",
+      "harmonized_action": "Pixar 3D Camera: Medium shot inside the cramped, fog-streaked interior of Amal's car. Rain violently lashes the windshield. Amal is slumped over the steering wheel, wiping sweat from his forehead with a shaking hand, breathing heavily. Suddenly, the rear door is yanked open by Sachin, who shoves a drenched, shivering Reenu into the back seat before diving in himself, slamming the door shut against the howling Munnar gale. Amal turns around, eyes wide with residual terror, blinking through his fogged-up glasses.",
+      "original_dialogue": "ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, സ്റ്റിയറിംഗിൽ പിടിമുറുക്കി) ദൈവമേ... നമ്മൾ ജീവനോടെ ഉണ്ടാകുമെന്ന് ഞാൻ കരുതിയില്ല! ഇനി... ഇനി നമുക്ക് എങ്ങനെയെങ്കിലും ഇവിടെനിന്ന് കടന്നുകളയാം!"
+    },
+    {
+      "shot_id": "S3_E10_S09",
+      "episode": 10,
+      "shot": 9,
+      "reason": "The previous shot ended in a high-adrenaline escape into the car, with Amal hyperventilating in sheer terror. Transitioning instantly to Sachin casually looking at a photo with a flat 'എല്ലാം കഴിഞ്ഞു' (It's all over) creates severe emotional whiplash and ignores the physical and psychological toll of the immediate danger. The current shot needs to capture the heavy, breathless aftermath inside the wet car, acknowledging their escape while Sachin reveals a crucial clue.",
+      "original_action": "Looking at the photo.",
+      "harmonized_action": "Pixar 3D Camera: Close-up inside the dark, fogged-up car interior, illuminated only by the amber glow of the dashboard and sudden flashes of lightning through the rain-streaked windows. Sachin is hunched in the front passenger seat, chest heaving, water dripping from his drenched hair onto his jacket. His fingers tremble slightly as he holds up the old, rain-spotted black-and-white photograph. In the background, Reenu is shivering violently, wrapped in a blanket in the back seat, gasping for air. Sachin stares down at the photo with a grim, exhausted expression, trying to process what just happened.",
+      "original_dialogue": "എല്ലാം കഴിഞ്ഞു.",
+      "harmonized_dialogue": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, ശബ്ദം താഴ്ത്തി) ഇല്ല... അമൽ പറയുന്നതാ ശരി. നമ്മൾ വിചാരിച്ചത്ര എളുപ്പമല്ല ഇത്. പക്ഷേ... ഈ ഫോട്ടോയിലുള്ള രഹസ്യം നമ്മൾ കണ്ടുപിടിക്കണം."
+    },
+    {
+      "shot_id": "S3_E10_S10",
+      "episode": 10,
+      "shot": 10,
+      "reason": "There is a severe temporal and atmospheric disconnect. The previous shot (Episode 10, Shot 9) takes place at night in a dark, terrifying, rain-streaked parking lot where Sachin and Reenu are shivering, terrified, and examining a black-and-white photograph. The current shot abruptly shifts to 'sunlit Munnar ghat road' with Amal looking at a 'phone camera roll' instead of the photo, with zero transition from the night terror into daytime safety.",
+      "original_action": "As their car glides safely down the sunlit Munnar ghat road, Amal leans over the front seat looking at the phone camera roll, his eyes widening in comedic shock as the translucent, smiling silhouette of Bhadra is seen sitting peacefully in the rear seat.",
+      "harmonized_action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
+      "original_dialogue": "അമൽ: 'സച്ചിൻ... വണ്ടി നിർത്ത്! ഈ ഫോട്ടോയിൽ നമ്മുടെ കൂടെ വേറെ ആരാ ഈ ഇരിക്കുന്നത്?!'",
+      "harmonized_dialogue": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!"
     }
   ]
 }
