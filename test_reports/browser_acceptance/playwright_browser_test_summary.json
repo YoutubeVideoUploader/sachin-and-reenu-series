@@ -17,16 +17,16 @@
   },
   "file_hashes": {
     "baseline": {
-      "season_3_shot_outline.json": "2254e4d0b44f3aa57571ad63cf06d13a599dba7516a0a5623b8e50c4ba04718a",
-      "story_state.json": "d483bbaff297f3e7d7b14c7d63972f67fdb355e6d151e20c5eafcc48c981d44e"
+      "season_3_shot_outline.json": "dd30d56bd505116784bee946849b48cb29be326a678993f2194c50103cf2e3e7",
+      "story_state.json": "78101ec109d2134961cfead1d582238eb3aa47cece7bc060ed4c250a8d3b2752"
     },
     "committed": {
-      "season_3_shot_outline.json": "22fda53a86dac1367597bb6198428b07f20ab6567fd5deb8703689cae3b8968a",
-      "story_state.json": "e16e3b97be0fdb8915bf1f76061a30bb50fa1f99f408e48c718dda6618bf3340"
+      "season_3_shot_outline.json": "3d90dc94d709286065f47f09fb97307e4c04fe41019c1f2599d587b7aa25b057",
+      "story_state.json": "a2bf1cb7d75e292829d01372a89dfeb39c52d473ef67bf7535186bd9d846c365"
     },
     "restored": {
-      "season_3_shot_outline.json": "2254e4d0b44f3aa57571ad63cf06d13a599dba7516a0a5623b8e50c4ba04718a",
-      "story_state.json": "d483bbaff297f3e7d7b14c7d63972f67fdb355e6d151e20c5eafcc48c981d44e"
+      "season_3_shot_outline.json": "dd30d56bd505116784bee946849b48cb29be326a678993f2194c50103cf2e3e7",
+      "story_state.json": "78101ec109d2134961cfead1d582238eb3aa47cece7bc060ed4c250a8d3b2752"
     }
   }
 }

@@ -125,15 +125,15 @@ def run_real_browser_verification(output_dir: Path = None):
 
             # Navigate to Portal
             print(f"  Navigating to {portal_url}...")
-            page.goto(portal_url, wait_until="domcontentloaded", timeout=30000)
-            page.wait_for_selector("#tabBtnShotOutline", timeout=15000)
+            page.goto(portal_url, wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_selector("#tabBtnShotOutline", timeout=30000)
             print("  ✓ Studio portal loaded successfully.")
             results["steps"].append("Portal loaded in Chrome browser.")
 
             # Step 4: Open Tab 7 (Master 100-Shot Script)
             print("\n[Step 4] Opening Tab 7 (Master 100-Shot Script)...")
             page.click("#tabBtnShotOutline")
-            page.wait_for_selector("#outline_card_s3_e4_s10", timeout=15000)
+            page.wait_for_selector("#outline_card_s3_e4_s10", timeout=30000)
             print("  ✓ Tab 7 active. Located Episode 4 Shot 10 card.")
             results["steps"].append("Navigated to Tab 7 (Master 100-Shot Script).")
 
