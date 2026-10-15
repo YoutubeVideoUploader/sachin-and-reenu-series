@@ -167,14 +167,11 @@ function resetToSeason2Episode9Published() {
 
   // 2. Mark Episodes 1 to 9 as Published
   for (let r = 2; r <= 10; r++) {
-    storySheet.getRange(r, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
+  storySheet.getRange(r, 6).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
   }
 
   // 3. Mark Episode 10 as Active
-  storySheet.getRange(11, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
-  // Clear any existing published URL / timestamp for Ep 10 so it's fresh for production
-  storySheet.getRange(11, 7).setValue("");
-  storySheet.getRange(11, 8).setValue("");
+  storySheet.getRange(11, 6).setValue("In Progress").setBackground("#dbeafe").setFontColor("#1d4ed8");
 
   try {
     ss.toast("Sheet reset: Episodes 1-9 Published, Episode 10 Active! Rows 12+ deleted.", "Reset Complete", 5);
@@ -240,7 +237,7 @@ function menuSyncDrive() {
   if (storySheet) {
     const data = storySheet.getDataRange().getValues();
     for (let i = 1; i < data.length; i++) {
-      if (data[i][2] === "Active") {
+      if (data[i][5] === "In Progress") {
         epNum = parseInt(data[i][0], 10);
         break;
       }
@@ -266,7 +263,7 @@ function menuTriggerGitHubWorkflow() {
   if (storySheet) {
     const data = storySheet.getDataRange().getValues();
     for (let i = 1; i < data.length; i++) {
-      if (data[i][2] === "Active") {
+      if (data[i][5] === "In Progress") {
         epNum = parseInt(data[i][0], 10);
         break;
       }
@@ -313,16 +310,7 @@ function setupStudioSpreadsheet() {
     storySheet = ss.insertSheet(TAB_STORY, 0);
   }
   
-  const storyHeaders = [
-    "Episode", 
-    "Title", 
-    "Status", 
-    "Total Shots", 
-    "Story Arc / Synopsis", 
-    "Cliffhanger", 
-    "Instagram URL", 
-    "Published At (IST)"
-  ];
+  const storyHeaders = ["Episode_Number", "Title_English", "Title_Malayalam", "Synopsis", "Cliffhanger", "Status"];
   
   if (storySheet.getLastRow() === 0) {
     storySheet.appendRow(storyHeaders);
@@ -343,14 +331,7 @@ function setupStudioSpreadsheet() {
     promptSheet = ss.insertSheet(TAB_PROMPTS, 1);
   }
   
-  const promptHeaders = [
-    "Shot #",
-    "Duration",
-    "Character",
-    "Malayalam Dialogue",
-    "Action Summary",
-    "Google Flow JSON Prompt (Direct Copy)"
-  ];
+  const promptHeaders = ["Shot_Number", "Duration", "Character", "Dialogue_Malayalam", "Action_Summary", "JSON_Prompt"];
   
   if (promptSheet.getLastRow() === 0) {
     promptSheet.appendRow(promptHeaders);
@@ -371,14 +352,10 @@ function setupStudioSpreadsheet() {
   }
 
   // -------------------------------------------------------------
-  // 4. TAB 4: Season_Story_Arc (Master Season Story & 10 Summaries)
-  // -------------------------------------------------------------
-  setupSeasonStoryArcSheet(1);
-
-  // -------------------------------------------------------------
-  // 5. TAB 5: Character_Registry (Persistent Cast & Locked DNA)
-  // -------------------------------------------------------------
+  // 4. TAB 4: Character_Registry
   setupCharacterRegistrySheet();
+  // 5. TAB 5: Season_Shot_Outline (master source of truth)
+  setupSeasonShotOutlineSheet(1);
 
   Logger.log("All 5 Google Sheet tabs initialized with clean headers!");
 }
@@ -387,38 +364,8 @@ function setupStudioSpreadsheet() {
  * Initializes Tab 4: Season_Story_Arc headers cleanly without hardcoding any episode story.
  */
 function setupSeasonStoryArcSheet(seasonNum) {
-  const ss = getStudioSpreadsheet();
-  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
-  if (!sheet) {
-    sheet = ss.insertSheet(TAB_SEASON_ARC, 3);
-  }
-
-  if (sheet.getLastRow() > 0) return; // Already initialized
-
-  // Meta Banner
-  sheet.getRange(1, 1).setValue(`MASTER STORY ROADMAP: SEASON ${seasonNum || 1}`).setFontWeight("bold").setFontSize(12);
-  sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
-  sheet.getRange(1, 1, 1, 2).setBackground("#312e81").setFontColor("#ffffff");
-
-  const headers = [
-    "Season #",
-    "Episode #",
-    "Title (English)",
-    "Title (Malayalam)",
-    "Status",
-    "Episode Story Summary / Synopsis",
-    "Episode Climax / Cliffhanger",
-    "Creator Story Suggestion / Notes"
-  ];
-
-  sheet.getRange(2, 1, 1, headers.length).setValues([headers])
-    .setBackground("#1e1b4b")
-    .setFontColor("#e0e7ff")
-    .setFontWeight("bold")
-    .setHorizontalAlignment("center");
-  sheet.setFrozenRows(2);
-  sheet.setColumnWidth(6, 400); // Story summary width
-  sheet.setColumnWidth(7, 300); // Cliffhanger width
+  // Legacy tab removed by reorganizeTo5TabArchitecture. Never recreate it.
+  return { success: true, deprecated: true, canonical_tab: TAB_STORY };
 }
 
 /**
@@ -438,15 +385,7 @@ function setupCharacterRegistrySheet() {
   sheet.getRange(1, 2).setValue("PERSISTENT 3D CARTOON DNA").setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#059669").setFontColor("#ffffff");
 
-  const headers = [
-    "Character Name",
-    "Role in Story",
-    "First Appearance",
-    "Status",
-    "Stylized 3D Pixar Visual DNA (Non-Human)",
-    "Locked Signature Attire (100% Unchanging)",
-    "Voice Persona & Cadence"
-  ];
+  const headers = ["Character_Name", "Role", "3D_Pixar_Visual_DNA", "Locked_Signature_Attire", "Voice_Persona", "First_Appearance"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#064e3b")
@@ -485,12 +424,11 @@ function setupCharacterRegistrySheet() {
     ]
   ];
 
-  sheet.getRange(3, 1, initialCharacters.length, headers.length).setValues(initialCharacters);
-  sheet.getRange(3, 4, 3, 1).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold");
-
-  sheet.setColumnWidth(5, 450); // Visual DNA
-  sheet.setColumnWidth(6, 350); // Locked Attire
-  sheet.setColumnWidth(7, 300); // Voice
+  const registryRows = initialCharacters.map(row => [row[0], row[1], row[4], row[5], row[6], row[2]]);
+  sheet.getRange(3, 1, registryRows.length, headers.length).setValues(registryRows);
+  sheet.setColumnWidth(3, 450);
+  sheet.setColumnWidth(4, 350);
+  sheet.setColumnWidth(5, 300);
   Logger.log("Character_Registry sheet initialized with Reenu, Sachin, and Amal.");
 }
 
@@ -510,20 +448,18 @@ function initVideoChecklist(episodeNum, totalShots, episodeTitle) {
   sheet.getRange(1, 2).setValue(`TARGET SHOTS: ${totalShots}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#2563eb").setFontColor("#ffffff");
   
-  sheet.getRange(2, 1).setValue("Shot Number (Column 1)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
-  sheet.getRange(2, 2).setValue("Video Status (Column 2)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
-  sheet.getRange(2, 3).setValue("Drive File Name").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
-  sheet.getRange(2, 4).setValue("Drive File ID").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
-  sheet.getRange(2, 5).setValue("Last Updated (IST)").setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
+  const checklistHeaders = ["Shot_Number", "Drive_File_ID", "File_Name", "Upload_Status", "Verification_Timestamp"];
+  sheet.getRange(2, 1, 1, checklistHeaders.length).setValues([checklistHeaders])
+    .setFontWeight("bold").setBackground("#0f172a").setFontColor("#ffffff");
   
   const rows = [];
   for (let s = 1; s <= totalShots; s++) {
-    rows.push([`Shot ${s}`, "Pending", "", "", ""]);
+    rows.push([`Shot ${s}`, "", "", "Pending", ""]);
   }
   
   if (rows.length > 0) {
     sheet.getRange(3, 1, rows.length, 5).setValues(rows);
-    sheet.getRange(3, 2, rows.length, 1)
+    sheet.getRange(3, 4, rows.length, 1)
       .setBackground("#fef3c7")
       .setFontColor("#92400e")
       .setHorizontalAlignment("center");
@@ -684,16 +620,16 @@ function syncDriveToChecklist(episodeNum) {
   const headerRow = sheet.getRange(2, 1, 1, headerCols).getValues()[0];
   
   // Dynamic column detection based on header names
-  let colStatus = 2; // Default column 2
-  let colFileId = 4;
-  let colSize = 5;
-  let colTime = 6;
+  let colStatus = 4;
+  let colFileId = 2;
+  let colFileName = 3;
+  let colTime = 5;
   
   for (let c = 0; c < headerRow.length; c++) {
     const h = String(headerRow[c]).toLowerCase();
     if (h.includes("status")) colStatus = c + 1;
     else if (h.includes("id")) colFileId = c + 1;
-    else if (h.includes("size")) colSize = c + 1;
+    else if (h.includes("file_name") || h.includes("filename") || h.includes("file name")) colFileName = c + 1;
     else if (h.includes("time") || h.includes("updated") || h.includes("date")) colTime = c + 1;
   }
   
@@ -729,7 +665,7 @@ function syncDriveToChecklist(episodeNum) {
     if (match) {
       sheet.getRange(rowIdx, colStatus).setValue("Present").setBackground("#dcfce7").setFontColor("#15803d").setHorizontalAlignment("center").setFontWeight("bold");
       if (colFileId <= headerCols) sheet.getRange(rowIdx, colFileId).setValue(match.id);
-      if (colSize <= headerCols) sheet.getRange(rowIdx, colSize).setValue(match.size);
+      if (colFileName <= headerCols) sheet.getRange(rowIdx, colFileName).setValue(match.name);
       if (colTime <= headerCols) sheet.getRange(rowIdx, colTime).setValue(nowIst);
       presentCount++;
       matchedFiles.push({
@@ -742,7 +678,7 @@ function syncDriveToChecklist(episodeNum) {
     } else {
       sheet.getRange(rowIdx, colStatus).setValue("Missing").setBackground("#fee2e2").setFontColor("#991b1b").setHorizontalAlignment("center");
       if (colFileId <= headerCols) sheet.getRange(rowIdx, colFileId).setValue("");
-      if (colSize <= headerCols) sheet.getRange(rowIdx, colSize).setValue("");
+      if (colFileName <= headerCols) sheet.getRange(rowIdx, colFileName).setValue("");
       if (colTime <= headerCols) sheet.getRange(rowIdx, colTime).setValue("");
     }
   }
@@ -790,14 +726,10 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
     for (let i = 1; i < data.length; i++) {
       const rowEp = parseInt(data[i][0], 10);
       if (rowEp === epNum) {
-        storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-        if (instagramUrl) {
-          storySheet.getRange(i + 1, 7).setValue(instagramUrl);
-        }
-        storySheet.getRange(i + 1, 8).setValue(nowIst);
+        storySheet.getRange(i + 1, 6).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
         publishedFound = true;
       } else if (rowEp === epNum + 1 && epNum < 10) {
-        storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
+        storySheet.getRange(i + 1, 6).setValue("In Progress").setBackground("#dbeafe").setFontColor("#1d4ed8");
         nextEpFound = true;
       }
     }
@@ -806,15 +738,13 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
       storySheet.appendRow([
         epNum + 1,
         `Episode ${epNum + 1}`,
-        "Active",
-        10,
         "",
         "",
         "",
-        ""
+        "In Progress"
       ]);
       const newRow = storySheet.getLastRow();
-      storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
+      storySheet.getRange(newRow, 6).setBackground("#dbeafe").setFontColor("#1d4ed8");
     }
   }
 
@@ -1100,14 +1030,8 @@ function updateJsonPromptsSheet(episodeNum, shots) {
   sheet.getRange(1, 2).setValue(`TOTAL SHOTS: ${shots.length}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#4338ca").setFontColor("#ffffff");
 
-  const headers = [
-    "Shot #",
-    "Duration",
-    "Character",
-    "Malayalam Dialogue",
-    "Action Summary",
-    "Google Flow JSON Prompt (Direct Copy)"
-  ];
+  if (!Array.isArray(shots) || shots.length !== 10) throw new Error("Current_JSON_Prompts must contain exactly 10 shots.");
+  const headers = ["Shot_Number", "Duration", "Character", "Dialogue_Malayalam", "Action_Summary", "JSON_Prompt"];
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#1e1b4b")
     .setFontColor("#e0e7ff")
@@ -1140,6 +1064,8 @@ function updateJsonPromptsSheet(episodeNum, shots) {
  * Updates or overwrites Tab 4: Season_Story_Arc with a complete 10-episode roadmap.
  */
 function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
+  // Backward-compatible action name; the canonical roadmap lives in Tab 1.
+  return updateEpisodeStoryFromOutline(seasonNum, episodes);
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SEASON_ARC);
   if (!sheet) {
@@ -1197,6 +1123,28 @@ function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
   };
 }
 
+/** Tab 1 is a direct projection of the ten episode summaries from Tab 5. */
+function updateEpisodeStoryFromOutline(seasonNum, episodes) {
+  const ss = getStudioSpreadsheet();
+  const sheet = ss.getSheetByName(TAB_STORY) || ss.insertSheet(TAB_STORY, 0);
+  const headers = ["Episode_Number", "Title_English", "Title_Malayalam", "Synopsis", "Cliffhanger", "Status"];
+  const items = Array.isArray(episodes) ? episodes : [];
+  if (items.length !== 10) throw new Error(`Episode_Story requires 10 episodes; received ${items.length}.`);
+  const rows = items.map((ep, index) => [
+    Number(ep.episode_number || index + 1), ep.title_english || `Episode ${index + 1}`,
+    ep.title_malayalam || "", ep.synopsis || ep.story_summary || "", ep.cliffhanger || "",
+    index === 0 ? "In Progress" : "Draft"
+  ]);
+  sheet.clear();
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers])
+    .setBackground("#1e1b4b").setFontColor("#e0e7ff").setFontWeight("bold");
+  sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
+  sheet.setFrozenRows(1);
+  sheet.setColumnWidth(4, 420);
+  sheet.setColumnWidth(5, 320);
+  return { success: true, season_number: seasonNum, count: rows.length };
+}
+
 /**
  * Tab 7: Season_Shot_Outline
  * Manages the 100-shot columnar screenplay outline (10 episodes x 10 shots).
@@ -1205,7 +1153,7 @@ function setupSeasonShotOutlineSheet(seasonNum) {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
   if (!sheet) {
-    sheet = ss.insertSheet(TAB_SHOT_OUTLINE, 6);
+    sheet = ss.insertSheet(TAB_SHOT_OUTLINE);
   }
   if (sheet.getLastRow() > 0) return;
 
@@ -1213,18 +1161,7 @@ function setupSeasonShotOutlineSheet(seasonNum) {
   sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = [
-    "Season #",
-    "Episode #",
-    "Shot #",
-    "Episode Title (Malayalam & English)",
-    "Speaker",
-    "Visual Action Beat",
-    "Dialogue (Malayalam Script)",
-    "Location",
-    "Persistent Props",
-    "Status"
-  ];
+  const headers = ["Global_Shot_ID", "Season_Number", "Episode_Number", "Shot_Number", "Speaker", "Action_Description", "Dialogue_Malayalam", "Location", "Persistent_Props", "Camera_Framing"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1241,7 +1178,7 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
   if (!sheet) {
-    sheet = ss.insertSheet(TAB_SHOT_OUTLINE, 6);
+    sheet = ss.insertSheet(TAB_SHOT_OUTLINE);
   }
 
   sheet.clear();
@@ -1249,18 +1186,7 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
   sheet.getRange(1, 2).setValue(seasonTitle || `Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = [
-    "Season #",
-    "Episode #",
-    "Shot #",
-    "Episode Title (Malayalam & English)",
-    "Speaker",
-    "Visual Action Beat",
-    "Dialogue (Malayalam Script)",
-    "Location",
-    "Persistent Props",
-    "Status"
-  ];
+  const headers = ["Global_Shot_ID", "Season_Number", "Episode_Number", "Shot_Number", "Speaker", "Action_Description", "Dialogue_Malayalam", "Location", "Persistent_Props", "Camera_Framing"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1271,29 +1197,29 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
 
   const rows = [];
   const shotsList = Array.isArray(shots) ? shots : [];
+  if (shotsList.length !== 100) throw new Error(`Season_Shot_Outline requires exactly 100 shots; received ${shotsList.length}.`);
   for (let i = 0; i < shotsList.length; i++) {
     const s = shotsList[i];
     const epNum = s.episode_number || Math.floor(i / 10) + 1;
     const shotNum = s.shot_number || (i % 10) + 1;
-    const title = s.episode_title || s.title || `Episode ${epNum}`;
     const speaker = s.speaker || "Third-Person Narrator";
     const action = s.action || s.action_summary || "";
     const dialogue = s.dialogue_malayalam || s.dialogue || "";
     const loc = s.location || "";
     const props = Array.isArray(s.persistent_props) ? s.persistent_props.join(", ") : (s.persistent_props || "");
-    const status = s.status || (epNum === 1 ? "Active" : "Upcoming");
+    const camera = s.camera_framing || s.camera_hint || s.camera || "";
 
     rows.push([
+      i + 1,
       seasonNum || 1,
       epNum,
       shotNum,
-      title,
       speaker,
       action,
       dialogue,
       loc,
       props,
-      status
+      camera
     ]);
   }
 
@@ -1331,16 +1257,10 @@ function getSeasonShotOutlineData(seasonNum) {
   for (let i = 0; i < data.length; i++) {
     const row = data[i];
     shots.push({
-      season_number: row[0],
-      episode_number: row[1],
-      shot_number: row[2],
-      episode_title: row[3],
-      speaker: row[4],
-      action: row[5],
-      dialogue_malayalam: row[6],
-      location: row[7],
+      global_shot_id: row[0], season_number: row[1], episode_number: row[2], shot_number: row[3],
+      speaker: row[4], action: row[5], dialogue_malayalam: row[6], location: row[7],
       persistent_props: typeof row[8] === "string" ? row[8].split(",").map(p => p.trim()).filter(Boolean) : [],
-      status: row[9]
+      camera_hint: row[9]
     });
   }
 
@@ -1367,55 +1287,14 @@ function cleanSlateSeasonTransition(body) {
   const episodes = body.episodes || body.season_arc || [];
   const shots = body.shots || [];
 
-  // 1. Wipe & Rebuild Sheet 1: Episode_Story (TAB_STORY)
-  let storySheet = ss.getSheetByName(TAB_STORY);
-  if (!storySheet) {
-    storySheet = ss.insertSheet(TAB_STORY);
-  }
-  storySheet.clear();
-  const storyHeaders = [
-    "Episode #",
-    "Episode Title (Malayalam & English)",
-    "Status",
-    "Total Shots",
-    "Story Summary / Synopsis",
-    "Ending Cliffhanger / Hook",
-    "Instagram Post URL",
-    "Published Timestamp"
-  ];
-  storySheet.getRange(1, 1, 1, storyHeaders.length).setValues([storyHeaders])
-    .setBackground("#1e1b4b").setFontColor("#e0e7ff").setFontWeight("bold").setHorizontalAlignment("center");
-  storySheet.setFrozenRows(1);
-
-  const storyRows = [];
-  for (let i = 0; i < episodes.length; i++) {
-    const ep = episodes[i];
-    const epN = ep.episode_number || (i + 1);
-    const fullTitle = `${ep.title_malayalam || ''} (${ep.title_english || 'Episode ' + epN})`.trim();
-    storyRows.push([
-      epN,
-      fullTitle,
-      i === 0 ? "Active" : "Upcoming",
-      10,
-      ep.synopsis || "",
-      ep.cliffhanger || "",
-      "", // Blank Instagram URL
-      ""  // Blank Published Timestamp
-    ]);
-  }
-  if (storyRows.length > 0) {
-    storySheet.getRange(2, 1, storyRows.length, storyHeaders.length).setValues(storyRows);
-    storySheet.getRange(2, 3).setBackground("#dbeafe").setFontColor("#1d4ed8"); // Ep 1 Active
-    if (storyRows.length > 1) {
-      storySheet.getRange(3, 3, storyRows.length - 1, 1).setBackground("#fef3c7").setFontColor("#92400e"); // Upcoming
-    }
-  }
+  if (episodes.length !== 10) throw new Error("Season transition requires the ten episode summaries derived from Tab 5.");
+  updateEpisodeStoryFromOutline(seasonNum, episodes);
 
   // 2. Reorganize and ensure clean 5-Tab architecture (Deletes deprecated sheets)
   reorganizeTo5TabArchitecture();
 
   // 3. Populate Tab 5: Season_Shot_Outline (TAB_SHOT_OUTLINE) with Master 100 Shots
-  if (shots && shots.length > 0) {
+  if (shots && shots.length === 100) {
     updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots);
   }
 
@@ -1430,6 +1309,7 @@ function cleanSlateSeasonTransition(body) {
     resetVideoChecklistForEpisode(1);
   } catch (e) {}
 
+  getCharacterRegistryData();
   // 6. Update Tab 4: Character_Registry (TAB_CHARACTERS) - Update costumes & add new characters
   if (body.character_updates || body.new_characters) {
     try {
@@ -1440,8 +1320,8 @@ function cleanSlateSeasonTransition(body) {
           for (const cu of body.character_updates) {
             for (let r = 1; r < cData.length; r++) {
               if (cData[r][0].toString().toLowerCase() === cu.name.toString().toLowerCase()) {
-                if (cu.attire || cu.locked_attire) charSheet.getRange(r + 1, 6).setValue(cu.attire || cu.locked_attire);
-                if (cu.visual_dna) charSheet.getRange(r + 1, 5).setValue(cu.visual_dna);
+                if (cu.attire || cu.locked_attire) charSheet.getRange(r + 1, 4).setValue(cu.attire || cu.locked_attire);
+                if (cu.visual_dna) charSheet.getRange(r + 1, 3).setValue(cu.visual_dna);
               }
             }
           }
@@ -1472,6 +1352,8 @@ function cleanSlateSeasonTransition(body) {
     }
   }
 
+  getCharacterRegistryData(); // Normalize newly appended legacy-shaped rows to the canonical six-column registry.
+
   return {
     success: true,
     season_number: seasonNum,
@@ -1482,26 +1364,20 @@ function cleanSlateSeasonTransition(body) {
 
 function getSeasonStoryArcData() {
   const ss = getStudioSpreadsheet();
-  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
-  if (!sheet || sheet.getLastRow() < 3) {
-    setupSeasonStoryArcSheet(1);
-    sheet = ss.getSheetByName(TAB_SEASON_ARC);
-  }
-
-  const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 8).getValues();
+  const sheet = ss.getSheetByName(TAB_STORY);
+  if (!sheet || sheet.getLastRow() < 2) return { success: true, season_number: 1, total_episodes: 0, episodes: [] };
+  const data = sheet.getRange(2, 1, sheet.getLastRow() - 1, 6).getValues();
   const episodes = [];
 
   for (let i = 0; i < data.length; i++) {
     const row = data[i];
     episodes.push({
-      season_number: row[0] || 1,
-      episode_number: row[1] || (i + 1),
-      title_english: row[2] || `Episode ${i + 1}`,
-      title_malayalam: row[3] || "",
-      status: row[4] || "Upcoming",
-      synopsis: row[5] || "",
-      cliffhanger: row[6] || "",
-      creator_notes: row[7] || ""
+      episode_number: row[0] || (i + 1),
+      title_english: row[1] || `Episode ${i + 1}`,
+      title_malayalam: row[2] || "",
+      status: row[5] || "Draft",
+      synopsis: row[3] || "",
+      cliffhanger: row[4] || ""
     });
   }
 
@@ -1509,10 +1385,11 @@ function getSeasonStoryArcData() {
   let currentSeasonTitle = "Season 1";
   let cellA1Raw = "";
   try {
-    cellA1Raw = (sheet.getRange(1, 1).getValue() || "").toString().trim();
-    const match = cellA1Raw.match(/SEASON\s*(\d+)/i) || cellA1Raw.match(/^(\d+)$/) || cellA1Raw.match(/(\d+)/);
+    const outline = getStudioSpreadsheet().getSheetByName(TAB_SHOT_OUTLINE);
+    cellA1Raw = outline ? String(outline.getRange(1, 1).getValue() || "") : "";
+    const match = cellA1Raw.match(/SEASON\s*(\d+)/i) || cellA1Raw.match(/(\d+)/);
     if (match) currentSeasonNum = parseInt(match[1], 10);
-    currentSeasonTitle = sheet.getRange(1, 2).getValue() || `Season ${currentSeasonNum}`;
+    currentSeasonTitle = outline ? (outline.getRange(1, 2).getValue() || `Season ${currentSeasonNum}`) : `Season ${currentSeasonNum}`;
   } catch (e) {}
 
   return {
@@ -1736,7 +1613,18 @@ function getCharacterRegistryData() {
     sheet = ss.getSheetByName(TAB_CHARACTERS);
   }
 
-  const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 7).getValues();
+  // Migrate legacy seven-column rows lazily without creating a second sheet.
+  if (sheet.getLastColumn() >= 7 && sheet.getLastRow() >= 3) {
+    const legacyRows = sheet.getRange(3, 1, sheet.getLastRow() - 2, 7).getValues();
+    const migratedRows = legacyRows.map(row => String(row[3]).toLowerCase() === "active"
+      ? [row[0], row[1], row[4], row[5], row[6], row[2]]
+      : row.slice(0, 6));
+    sheet.getRange(2, 1, 1, 6).setValues([["Character_Name", "Role", "3D_Pixar_Visual_DNA", "Locked_Signature_Attire", "Voice_Persona", "First_Appearance"]]);
+    sheet.getRange(3, 1, migratedRows.length, 6).setValues(migratedRows);
+    sheet.getRange(1, 7, sheet.getMaxRows(), 1).clearContent();
+  }
+
+  const data = sheet.getRange(3, 1, sheet.getLastRow() - 2, 6).getValues();
   const characters = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -1744,11 +1632,10 @@ function getCharacterRegistryData() {
     characters.push({
       name: row[0],
       role: row[1],
-      first_appearance: row[2],
-      status: row[3],
-      visual_dna: row[4],
-      locked_attire: row[5],
-      voice_persona: row[6]
+      visual_dna: row[2],
+      locked_attire: row[3],
+      voice_persona: row[4],
+      first_appearance: row[5]
     });
   }
 
@@ -1759,38 +1646,56 @@ function getCharacterRegistryData() {
   };
 }
 
+function syncCharacterRegistry(body) {
+  const validateAttire = attire => {
+    if (/\b(saree|sari|kurti|dhoti|traditional|ethnic wear)\b/i.test(String(attire || ""))) {
+      throw new Error("Character Registry attire must use modern casual streetwear.");
+    }
+    return attire;
+  };
+  const ss = getStudioSpreadsheet();
+  let sheet = ss.getSheetByName(TAB_CHARACTERS);
+  if (!sheet) {
+    setupCharacterRegistrySheet();
+    sheet = ss.getSheetByName(TAB_CHARACTERS);
+  }
+  getCharacterRegistryData();
+  const rows = sheet.getLastRow() >= 3 ? sheet.getRange(3, 1, sheet.getLastRow() - 2, 6).getValues() : [];
+  const byName = new Map(rows.map((row, idx) => [String(row[0]).toLowerCase(), idx + 3]));
+  for (const update of (body.character_updates || [])) {
+    const row = byName.get(String(update.name || update.character_name || "").toLowerCase());
+    if (!row) continue;
+    if (update.role) sheet.getRange(row, 2).setValue(update.role);
+    if (update.visual_dna) sheet.getRange(row, 3).setValue(update.visual_dna);
+    if (update.attire || update.locked_attire) sheet.getRange(row, 4).setValue(validateAttire(update.attire || update.locked_attire));
+    if (update.voice_persona) sheet.getRange(row, 5).setValue(update.voice_persona);
+  }
+  for (const character of (body.new_characters || [])) {
+    const name = String(character.name || character.character_name || "").trim();
+    if (!name || byName.has(name.toLowerCase())) continue;
+    const attire = validateAttire(character.locked_attire || character.attire || "Modern casual streetwear, locked for season continuity.");
+    sheet.appendRow([
+      name, character.role || "Supporting Character",
+      character.visual_dna || "Stylized 3D Pixar animated character; no realistic human skin texture.",
+      attire,
+      character.voice_persona || "Malayalam voice persona",
+      `Season ${body.season_number || 1}, Episode 1`
+    ]);
+    byName.set(name.toLowerCase(), sheet.getLastRow());
+  }
+  return { success: true, total_characters: sheet.getLastRow() - 2 };
+}
+
 /**
  * Records a creator story pitch / suggestion into Tab 4.
  */
 function recordCreatorStoryIdea(epNum, idea) {
-  const ss = getStudioSpreadsheet();
-  let sheet = ss.getSheetByName(TAB_SEASON_ARC);
-  if (!sheet) {
-    setupSeasonStoryArcSheet(1);
-    sheet = ss.getSheetByName(TAB_SEASON_ARC);
-  }
-
-  const lastRow = sheet.getLastRow();
-  let found = false;
-
-  for (let r = 3; r <= lastRow; r++) {
-    const rowEp = sheet.getRange(r, 2).getValue();
-    if (rowEp == epNum) {
-      sheet.getRange(r, 8).setValue(idea);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
-    // Append as a general season note
-    sheet.appendRow([1, epNum || 0, "Creator Idea", "", "Pending Review", "", "", idea]);
-  }
-
-  return {
-    success: true,
-    message: `Story idea recorded for Episode ${epNum || 'General'} in Tab 4 [Season_Story_Arc]!`
-  };
+  const key = `CREATOR_STORY_IDEAS_${epNum || "GENERAL"}`;
+  const props = PropertiesService.getScriptProperties();
+  const prior = JSON.parse(props.getProperty(key) || "[]");
+  prior.push({ idea: String(idea || ""), recorded_at: new Date().toISOString() });
+  props.setProperty(key, JSON.stringify(prior.slice(-50)));
+  return { success: true, message: `Story idea recorded for Episode ${epNum || "General"}.` };
 }
 
 /**
@@ -1806,39 +1711,7 @@ function handleNextEpisodeFullUpdate(body) {
   const storySheet = ss.getSheetByName(TAB_STORY);
   if (storySheet) {
     if (isNewSeason) {
-      // ----------------------------------------------------------------------
-      // NEW SEASON RESET FOR TAB 1 (Episode_Story):
-      // 1. Wipe all previous season published timestamps & Instagram URLs
-      // 2. Delete any extra rows > 11 (e.g. Episode 11)
-      // 3. Mark Episode 1 as Active, Episodes 2..10 as Upcoming with empty URLs
-      // ----------------------------------------------------------------------
-      const lastRow = storySheet.getLastRow();
-      if (lastRow > 11) {
-        storySheet.deleteRows(12, lastRow - 11);
-      }
-      for (let r = 2; r <= 11; r++) {
-        const rowEp = r - 1;
-        if (rowEp === 1) {
-          const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || "Episode 1";
-          storySheet.getRange(r, 1).setValue(1);
-          storySheet.getRange(r, 2).setValue(fullTitle);
-          storySheet.getRange(r, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
-          storySheet.getRange(r, 4).setValue(body.total_shots || 10);
-          storySheet.getRange(r, 5).setValue(body.synopsis || "");
-          storySheet.getRange(r, 6).setValue(body.cliffhanger || "");
-          storySheet.getRange(r, 7).setValue(""); // INSTAGRAM URL MUST BE EMPTY
-          storySheet.getRange(r, 8).setValue(""); // PUBLISHED TIMESTAMP MUST BE EMPTY
-        } else {
-          storySheet.getRange(r, 1).setValue(rowEp);
-          storySheet.getRange(r, 2).setValue(`Episode ${rowEp}`);
-          storySheet.getRange(r, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
-          storySheet.getRange(r, 4).setValue(10);
-          storySheet.getRange(r, 5).setValue("");
-          storySheet.getRange(r, 6).setValue("");
-          storySheet.getRange(r, 7).setValue(""); // INSTAGRAM URL MUST BE EMPTY
-          storySheet.getRange(r, 8).setValue(""); // PUBLISHED TIMESTAMP MUST BE EMPTY
-        }
-      }
+      updateEpisodeStoryFromOutline(seasonNum, body.season_arc || body.episodes || []);
     } else {
       // Regular mid-season episode update
       const data = storySheet.getDataRange().getValues();
@@ -1848,38 +1721,32 @@ function handleNextEpisodeFullUpdate(body) {
       for (let i = 1; i < data.length; i++) {
         const rowEp = parseInt(data[i][0], 10);
         if (prevEp > 0 && rowEp <= prevEp) {
-          storySheet.getRange(i + 1, 3).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
-          if (body.instagram_url && rowEp === prevEp) storySheet.getRange(i + 1, 7).setValue(body.instagram_url);
-          if (!data[i][7] && rowEp === prevEp) storySheet.getRange(i + 1, 8).setValue(nowIst);
+          storySheet.getRange(i + 1, 6).setValue("Published").setBackground("#dcfce7").setFontColor("#15803d");
         }
         if (rowEp === epNum) {
-          storySheet.getRange(i + 1, 3).setValue("Active").setBackground("#dbeafe").setFontColor("#1d4ed8");
-          const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim();
-          if (fullTitle) storySheet.getRange(i + 1, 2).setValue(fullTitle);
-          if (body.total_shots) storySheet.getRange(i + 1, 4).setValue(body.total_shots);
-          if (body.synopsis) storySheet.getRange(i + 1, 5).setValue(body.synopsis);
-          if (body.cliffhanger) storySheet.getRange(i + 1, 6).setValue(body.cliffhanger);
+          storySheet.getRange(i + 1, 6).setValue("In Progress").setBackground("#dbeafe").setFontColor("#1d4ed8");
+          if (body.title_english) storySheet.getRange(i + 1, 2).setValue(body.title_english);
+          if (body.title_malayalam) storySheet.getRange(i + 1, 3).setValue(body.title_malayalam);
+          if (body.synopsis) storySheet.getRange(i + 1, 4).setValue(body.synopsis);
+          if (body.cliffhanger) storySheet.getRange(i + 1, 5).setValue(body.cliffhanger);
           epRowFound = true;
         }
         if (rowEp > epNum) {
-          storySheet.getRange(i + 1, 3).setValue("Upcoming").setBackground("#fef3c7").setFontColor("#92400e");
+          storySheet.getRange(i + 1, 6).setValue("Draft").setBackground("#fef3c7").setFontColor("#92400e");
         }
       }
 
       if (!epRowFound) {
-        const fullTitle = `${body.title_malayalam || ''} (${body.title_english || ''})`.trim() || `Episode ${epNum}`;
         storySheet.appendRow([
           epNum,
-          fullTitle,
-          "Active",
-          body.total_shots || (body.shots ? body.shots.length : 10),
+          body.title_english || `Episode ${epNum}`,
+          body.title_malayalam || "",
           body.synopsis || "",
           body.cliffhanger || "",
-          "",
-          ""
+          "In Progress"
         ]);
         const newRow = storySheet.getLastRow();
-        storySheet.getRange(newRow, 3).setBackground("#dbeafe").setFontColor("#1d4ed8");
+        storySheet.getRange(newRow, 6).setBackground("#dbeafe").setFontColor("#1d4ed8");
       }
     }
   }
@@ -1979,7 +1846,7 @@ function handleNextEpisodeFullUpdate(body) {
           if (s.character) outlineSheet.getRange(targetRow, 5).setValue(s.character);
           if (s.action_summary) outlineSheet.getRange(targetRow, 6).setValue(s.action_summary);
           if (s.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(s.dialogue_malayalam);
-          outlineSheet.getRange(targetRow, 10).setValue("Active Episode");
+          if (s.camera_hint) outlineSheet.getRange(targetRow, 10).setValue(s.camera_hint);
         }
       }
       Logger.log(`Synchronized Episode ${epNum} (${body.shots.length} shots) to Tab 7 [${TAB_SHOT_OUTLINE}]`);
@@ -2157,17 +2024,12 @@ function doGet(e) {
   if (storySheet && storySheet.getLastRow() > 1) {
     const storyData = storySheet.getDataRange().getValues();
     for (let i = 1; i < storyData.length; i++) {
-      const st = (storyData[i][2] || "").toString().trim().toLowerCase();
-      if (st === "active") {
+      const st = (storyData[i][5] || "").toString().trim().toLowerCase();
+      if (st === "in progress") {
         activeEp = storyData[i][0];
-        const fullTitle = storyData[i][1] || "";
-        if (fullTitle.includes("(")) {
-          epTitleMl = fullTitle.split("(")[0].trim();
-          epTitleEn = fullTitle.split("(")[1].replace(")", "").trim();
-        } else {
-          epTitleMl = fullTitle;
-        }
-        epSynopsis = storyData[i][4] || epSynopsis;
+        epTitleEn = storyData[i][1] || epTitleEn;
+        epTitleMl = storyData[i][2] || "";
+        epSynopsis = storyData[i][3] || epSynopsis;
         break;
       }
     }
@@ -2408,6 +2270,17 @@ function doPost(e) {
     if (action === "save_season_shot_outline") {
       const res = updateSeasonShotOutlineInSheet(body.season_number || 1, body.season_title, body.shots || []);
       return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "update_episode_story_from_outline") {
+      const res = updateEpisodeStoryFromOutline(body.season_number || 1, body.episodes || []);
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "sync_character_registry") {
+      return ContentService.createTextOutput(JSON.stringify(syncCharacterRegistry(body)))
         .setMimeType(ContentService.MimeType.JSON);
     }
 

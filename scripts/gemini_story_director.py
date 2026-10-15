@@ -38,8 +38,27 @@ GAS_URL = os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AK
 class GeminiStoryDirector:
     def __init__(self, workspace_root: Path = None):
         self.workspace_root = Path(workspace_root) if workspace_root else REPO_ROOT
-        self.outline_path = self.workspace_root / "season_3_shot_outline.json"
         self.state_path = self.workspace_root / "story_state.json"
+        season = 3
+        try:
+            with open(self.state_path, "r", encoding="utf-8") as f:
+                season = int(json.load(f).get("season_number", season))
+        except (OSError, ValueError, TypeError):
+            pass
+        self.season_number = season
+        self.outline_path = self.workspace_root / f"season_{season}_shot_outline.json"
+
+    @staticmethod
+    def _locations_conflict(left: str, right: str) -> bool:
+        """Avoid false alarms for descriptive variants of the same location."""
+        normalize = lambda value: re.sub(r"[^a-z0-9]+", " ", str(value).casefold()).strip()
+        a, b = normalize(left), normalize(right)
+        if not a or not b or a == b:
+            return False
+        a_words, b_words = set(a.split()), set(b.split())
+        if len(a_words & b_words) >= min(2, len(a_words), len(b_words)):
+            return False
+        return True
 
     def load_outline(self) -> dict:
         with open(self.outline_path, "r", encoding="utf-8") as f:
@@ -65,6 +84,7 @@ class GeminiStoryDirector:
         3. Offers dual-path healing options (Episode-Wise Steer vs Season-Wise Ripple).
         """
         current_shot = self.get_shot(episode_number, shot_number)
+        previous_shot = self.get_shot(episode_number, shot_number - 1) if shot_number > 1 else None
         next_shot = self.get_shot(episode_number, shot_number + 1)
         if not next_shot and shot_number == 10:
             next_shot = self.get_shot(episode_number + 1, 1)
@@ -120,17 +140,26 @@ class GeminiStoryDirector:
         recommendation = ""
         can_episode_steer = True
 
+        if previous_shot and self._locations_conflict(previous_shot.get("location", ""), loc):
+            has_inconsistency = True
+            inconsistency_details = (
+                f"Physical Location Fracture Detected: Shot {shot_number - 1} ends at "
+                f"'{previous_shot.get('location', '')}', while the proposed Shot {shot_number} begins at '{loc}'."
+            )
+            recommendation = "EPISODE_STEER_RECOMMENDED"
+
         if next_shot:
             next_loc = next_shot.get("location", "")
             next_act = next_shot.get("action", "")
 
             # Location mismatch (e.g. entering car vs talking in living room)
-            if loc.lower().split()[0] != next_loc.lower().split()[0]:
+            if self._locations_conflict(loc, next_loc):
                 has_inconsistency = True
-                inconsistency_details = (
+                details = (
                     f"⚠️ Physical Location Fracture Detected: Shot {shot_number} places characters in '{loc}', "
                     f"but Shot {shot_number + 1} takes place in '{next_loc}'. Characters cannot instantaneously teleport without a transition."
                 )
+                inconsistency_details = f"{inconsistency_details} {details}".strip()
 
             # Radical change that cannot lead to current episode cliffhanger
             if shot_number >= 8 and "escape" in user_idea_clean.lower() and "Room 13" in next_loc:
@@ -140,11 +169,22 @@ class GeminiStoryDirector:
             elif has_inconsistency:
                 recommendation = "EPISODE_STEER_RECOMMENDED"
 
+            proposed_props = {str(p).casefold() for p in proposed_shot.get("persistent_props", [])}
+            next_text = f"{next_act} {next_shot.get('dialogue_malayalam', '')}".casefold()
+            next_props = {str(p).casefold() for p in next_shot.get("persistent_props", [])}
+            lost_props = [p for p in proposed_props if p not in next_props and p not in next_text]
+            if lost_props:
+                has_inconsistency = True
+                details = f"Persistent prop continuity break: {', '.join(sorted(lost_props))} are carried into Shot {shot_number} but are absent from Shot {shot_number + 1}."
+                inconsistency_details = f"{inconsistency_details} {details}".strip()
+                recommendation = "EPISODE_STEER_RECOMMENDED"
+
         return {
             "success": True,
             "episode_number": episode_number,
             "shot_number": shot_number,
             "current_shot": current_shot,
+            "previous_shot": previous_shot,
             "next_shot": next_shot,
             "proposed_shot": proposed_shot,
             "has_inconsistency": has_inconsistency,
@@ -238,10 +278,12 @@ class GeminiStoryDirector:
 
         # 2. Downstream ripple across remaining shots (K+1 to end)
         new_loc = proposed_shot.get("location")
-        for i in range(target_idx + 1, min(target_idx + 5, len(flattened))):
+        for i in range(target_idx + 1, len(flattened)):
             s = flattened[i]
-            # Adapt immediate downstream shots to new setting
-            s["action"] = f"Pixar 3D Cinematic Shot: Dealing with the aftermath of {proposed_shot.get('speaker')}'s action at {new_loc}. " + s.get("action", "")
+            directive = f"Continuity from Episode {episode_number} Shot {shot_number}: account for {proposed_shot.get('speaker')}'s changed action at {new_loc}."
+            action = str(s.get("action", ""))
+            if directive not in action:
+                s["action"] = f"{directive} {action}".strip()
 
         # Reconstruct episodes structure from flattened
         episodes_map = {}
@@ -271,7 +313,7 @@ class GeminiStoryDirector:
             ep_n = ep.get("episode_number")
             for s in ep.get("shots", []):
                 flat = dict(s)
-                flat["season_number"] = 3
+                flat["season_number"] = self.season_number
                 flat["episode_number"] = ep_n
                 flat["episode_title"] = ep.get("title_malayalam", ep.get("title_english", ""))
                 flattened.append(flat)
@@ -281,9 +323,14 @@ class GeminiStoryDirector:
     def _sync_tab2_and_portals(self, active_episode: int):
         try:
             import subprocess
+            subprocess.run(
+                [sys.executable, str(SCRIPTS_DIR / "story_and_prompt_engine.py"), "--mode", "compile_episode",
+                 "--season", str(self.season_number), "--target_ep", str(active_episode)],
+                cwd=str(self.workspace_root), check=True, timeout=180
+            )
             subprocess.run([sys.executable, str(SCRIPTS_DIR / "update_portals.py")], cwd=str(self.workspace_root), check=True)
         except Exception as e:
-            print(f"[Notice] update_portals: {e}")
+            print(f"[Notice] prompt/portal synchronization: {e}")
 
     def _push_to_tab5_in_sheet(self):
         try:
@@ -291,8 +338,8 @@ class GeminiStoryDirector:
             shots = data.get("flattened_shots", [])
             payload = {
                 "action": "save_season_shot_outline",
-                "season_number": 3,
-                "season_title": "Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)",
+                "season_number": self.season_number,
+                "season_title": f"Season {self.season_number}",
                 "shots": shots
             }
             requests.post(GAS_URL, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=30)

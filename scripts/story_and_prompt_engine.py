@@ -1792,7 +1792,7 @@ Output JSON matching this schema:
 
     return full_arc
 
-def generate_100_shot_season_outline(season_number, season_premise=None, gas_url=None):
+def generate_100_shot_season_outline(season_number, season_premise=None, gas_url=None, character_updates=None, new_characters=None):
     """
     Generates a master 100-shot screenplay beat sheet for the entire season (10 episodes x 10 shots).
     Lightweight, token-efficient, and structured in columns.
@@ -1831,6 +1831,10 @@ CRITICAL ARCHITECTURE RULES:
 6. Episode 10 Shot 10 (Shot 100) MUST be the grand emotional season climax delivering a heartwarming, decisive relationship payoff for Sachin and Reenu.
 7. Dialogue MUST be authentic conversational Malayalam phonetics in Malayalam script with natural emotion.
 8. Visual Actions MUST describe character body language, comedic or tender expressions, and staging clearly.
+9. Keep Sachin, Reenu, and Amal in modern casual streetwear; do not use sarees, kurtis, dhotis, or other traditional/ethnic clothing.
+10. Characters are stylized animated teenagers/young adults: no realistic skin pores, mature facial lines, or facial hair on teenage boys.
+11. Preserve locations, carried props, injuries, clothing, and character positions across adjacent shots; explicitly stage transitions.
+12. Episode 10 Shot 10 is the decisive season grand climax, not an ordinary episode cliffhanger.
 
 OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
 {{
@@ -1899,6 +1903,25 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
         raise RuntimeError("Failed to generate 100-shot season outline with Gemini models.")
 
     episodes = parsed_data.get("episodes", [])
+    # A season transition is destructive in Sheets, so validate the complete
+    # screenplay before writing any local or remote state.
+    if len(episodes) != 10:
+        raise ValueError(f"Gemini returned {len(episodes)} episodes; exactly 10 are required.")
+    for expected_ep, ep in enumerate(episodes, start=1):
+        shots_for_episode = ep.get("shots", [])
+        if int(ep.get("episode_number", expected_ep)) != expected_ep:
+            raise ValueError(f"Season outline episode order is invalid at episode {expected_ep}.")
+        if len(shots_for_episode) != 10:
+            raise ValueError(f"Episode {expected_ep} contains {len(shots_for_episode)} shots; exactly 10 are required.")
+        actual_numbers = [int(s.get("shot_number", idx)) for idx, s in enumerate(shots_for_episode, start=1)]
+        if actual_numbers != list(range(1, 11)):
+            raise ValueError(f"Episode {expected_ep} shot numbers must be exactly 1 through 10 in order.")
+        if not str(ep.get("cliffhanger", "")).strip():
+            raise ValueError(f"Episode {expected_ep} is missing its roadmap cliffhanger.")
+        if any(not str(s.get("action", "")).strip() for s in shots_for_episode):
+            raise ValueError(f"Episode {expected_ep} has a shot without an action description.")
+    if not str(episodes[-1]["shots"][-1].get("action", "")).strip():
+        raise ValueError("Episode 10, Shot 10 must contain the season grand climax.")
     season_title = parsed_data.get("season_title", f"Season {season_number}")
 
     flattened_shots = []
@@ -1941,7 +1964,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
     outline_payload = {
         "season_number": season_number,
         "season_title": season_title,
-        "total_episodes": len(episodes),
+        "total_episodes": 10,
         "total_shots": len(flattened_shots),
         "episodes": episodes,
         "flattened_shots": flattened_shots
@@ -1968,7 +1991,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
     target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
     if target_gas:
         try:
-            # 1. Update Tab 7: Season_Shot_Outline (100 shots)
+            # Tab 5 is the master screenplay source of truth.
             p7 = {
                 "action": "save_season_shot_outline",
                 "season_number": season_number,
@@ -1976,17 +1999,23 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
                 "shots": flattened_shots
             }
             r7 = requests.post(target_gas, data=json.dumps(p7), headers={"Content-Type": "text/plain"}, timeout=45)
-            print(f"✓ Google Sheet Tab 7 [Season_Shot_Outline] updated with {len(flattened_shots)} shots! (HTTP {r7.status_code})")
+            print(f"✓ Google Sheet Tab 5 [Season_Shot_Outline] updated with {len(flattened_shots)} shots! (HTTP {r7.status_code})")
 
-            # 2. Update Tab 4: Season_Story_Arc
+            # Tab 1 is derived from the Tab 5 season outline.
             p4 = {
-                "action": "update_season_story_arc",
+                "action": "update_episode_story_from_outline",
                 "season_number": season_number,
                 "season_title": season_title,
                 "episodes": arc_summaries
             }
             r4 = requests.post(target_gas, data=json.dumps(p4), headers={"Content-Type": "text/plain"}, timeout=30)
-            print(f"✓ Google Sheet Tab 4 [Season_Story_Arc] synchronized! (HTTP {r4.status_code})")
+            print(f"✓ Google Sheet Tab 1 [Episode_Story] synchronized from the outline! (HTTP {r4.status_code})")
+            requests.post(target_gas, data=json.dumps({
+                "action": "sync_character_registry",
+                "season_number": season_number,
+                "character_updates": character_updates or [],
+                "new_characters": new_characters or []
+            }), headers={"Content-Type": "text/plain"}, timeout=30)
         except Exception as e:
             print(f"Notice syncing outline to Sheet: {e}")
 
@@ -2342,7 +2371,10 @@ def main():
         # Also auto-generate the 100-shot master outline for Tab 7 (Season_Shot_Outline)
         try:
             print(f"\n🎬 Generating 100-Shot Master Screenplay Beat Sheet for Season {season_num}...")
-            generate_100_shot_season_outline(season_num, user_premise, gas_url=args.gas_url)
+            generate_100_shot_season_outline(
+                season_num, user_premise, gas_url=args.gas_url,
+                character_updates=character_updates, new_characters=new_characters
+            )
             print(f"✓ 100-Shot Beat Sheet created and synced to Google Sheet Tab 7 [Season_Shot_Outline]!")
             print(f"\n✨ Compiling Season {season_num} Episode 1 prompts strictly from Tab 7 Master Outline...")
             ep_data = compile_episode_prompts_from_outline(season_num, 1, gas_url=args.gas_url)
