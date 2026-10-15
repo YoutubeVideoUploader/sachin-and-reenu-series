@@ -406,8 +406,8 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-            "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+            "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+            "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
             "location": "Car Interior",
             "persistent_props": [
               "Window"
@@ -441,7 +441,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+            "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
             "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -458,7 +458,7 @@
           {
             "shot_number": 2,
             "speaker": "Amal",
-            "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+            "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
             "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -475,9 +475,9 @@
           {
             "shot_number": 3,
             "speaker": "Amal",
-            "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+            "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
             "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-            "location": "Mountain road car interior",
+            "location": "Car Interior / Mountain Road",
             "persistent_props": [
               "Car steering wheel",
               "Rearview mirror",
@@ -620,8 +620,8 @@
           {
             "shot_number": 1,
             "speaker": "Caretaker",
-            "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-            "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+            "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+            "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
             "location": "Homestay hallway",
             "persistent_props": [
               "Keys"
@@ -670,8 +670,8 @@
           {
             "shot_number": 5,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-            "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+            "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+            "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
             "location": "Bedroom",
             "persistent_props": [
               "Bed"
@@ -755,8 +755,8 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+            "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
             "location": "Room 13 Threshold / Hallway",
             "persistent_props": [
               "Old photo"
@@ -953,7 +953,7 @@
           {
             "shot_number": 6,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
             "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
             "location": "Abandoned tea factory - Interior Office",
             "persistent_props": [
@@ -1021,8 +1021,8 @@
           {
             "shot_number": 1,
             "speaker": "Amal",
-            "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-            "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+            "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+            "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
             "location": "Abandoned tea factory - Interior Machinery Floor",
             "persistent_props": [
               "Phone",
@@ -1094,8 +1094,8 @@
           {
             "shot_number": 7,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-            "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+            "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
             "location": "Abandoned tea factory - Exterior Clearing",
             "persistent_props": [
               "Bed"
@@ -1131,8 +1131,8 @@
           {
             "shot_number": 10,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-            "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+            "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
               "Note"
@@ -1153,7 +1153,7 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
             "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
@@ -1179,8 +1179,8 @@
           {
             "shot_number": 3,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-            "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+            "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
             "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -1253,7 +1253,7 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+            "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
             "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
@@ -1347,7 +1347,7 @@
           {
             "shot_number": 6,
             "speaker": "Amal",
-            "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+            "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
             "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
             "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
             "persistent_props": [],
@@ -1450,8 +1450,8 @@
           {
             "shot_number": 4,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+            "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
             "location": "Homestay - Dining Room Interior Night",
             "persistent_props": [
               "Evidence"
@@ -1540,7 +1540,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+            "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
             "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
             "location": "Factory - Interior Night",
             "persistent_props": [
@@ -1651,9 +1651,9 @@
           {
             "shot_number": 10,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-            "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-            "location": "Car - Interior / Night Ghat Road",
+            "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+            "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+            "location": "Car - Interior / Factory Parking Lot - Night",
             "persistent_props": [
               "Photo"
             ],
@@ -1789,8 +1789,8 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-        "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+        "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+        "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
         "location": "Car Interior",
         "persistent_props": [
           "Window"
@@ -1819,7 +1819,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+        "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
         "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -1838,7 +1838,7 @@
       {
         "shot_number": 2,
         "speaker": "Amal",
-        "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+        "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
         "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -1857,9 +1857,9 @@
       {
         "shot_number": 3,
         "speaker": "Amal",
-        "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+        "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
         "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-        "location": "Mountain road car interior",
+        "location": "Car Interior / Mountain Road",
         "persistent_props": [
           "Car steering wheel",
           "Rearview mirror",
@@ -2009,8 +2009,8 @@
       {
         "shot_number": 1,
         "speaker": "Caretaker",
-        "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-        "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+        "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+        "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
         "location": "Homestay hallway",
         "persistent_props": [
           "Keys"
@@ -2067,8 +2067,8 @@
       {
         "shot_number": 5,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-        "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+        "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+        "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
         "location": "Bedroom",
         "persistent_props": [
           "Bed"
@@ -2155,8 +2155,8 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+        "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
         "location": "Room 13 Threshold / Hallway",
         "persistent_props": [
           "Old photo"
@@ -2374,7 +2374,7 @@
       {
         "shot_number": 6,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
         "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
         "location": "Abandoned tea factory - Interior Office",
         "persistent_props": [
@@ -2443,8 +2443,8 @@
       {
         "shot_number": 1,
         "speaker": "Amal",
-        "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-        "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+        "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+        "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
         "location": "Abandoned tea factory - Interior Machinery Floor",
         "persistent_props": [
           "Phone",
@@ -2528,8 +2528,8 @@
       {
         "shot_number": 7,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-        "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+        "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
         "location": "Abandoned tea factory - Exterior Clearing",
         "persistent_props": [
           "Bed"
@@ -2571,8 +2571,8 @@
       {
         "shot_number": 10,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-        "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+        "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
           "Note"
@@ -2586,7 +2586,7 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
         "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
@@ -2616,8 +2616,8 @@
       {
         "shot_number": 3,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-        "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+        "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
         "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -2702,7 +2702,7 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+        "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
         "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
@@ -2801,7 +2801,7 @@
       {
         "shot_number": 6,
         "speaker": "Amal",
-        "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+        "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
         "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
         "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
         "persistent_props": [],
@@ -2911,8 +2911,8 @@
       {
         "shot_number": 4,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+        "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
         "location": "Homestay - Dining Room Interior Night",
         "persistent_props": [
           "Evidence"
@@ -3006,7 +3006,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+        "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
         "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
         "location": "Factory - Interior Night",
         "persistent_props": [
@@ -3135,9 +3135,9 @@
       {
         "shot_number": 10,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-        "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-        "location": "Car - Interior / Night Ghat Road",
+        "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+        "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+        "location": "Car - Interior / Factory Parking Lot - Night",
         "persistent_props": [
           "Photo"
         ],
@@ -3866,8 +3866,8 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-            "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+            "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+            "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
             "location": "Car Interior",
             "persistent_props": [
               "Window"
@@ -3901,7 +3901,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+            "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
             "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -3918,7 +3918,7 @@
           {
             "shot_number": 2,
             "speaker": "Amal",
-            "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+            "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
             "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -3935,9 +3935,9 @@
           {
             "shot_number": 3,
             "speaker": "Amal",
-            "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+            "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
             "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-            "location": "Mountain road car interior",
+            "location": "Car Interior / Mountain Road",
             "persistent_props": [
               "Car steering wheel",
               "Rearview mirror",
@@ -4080,8 +4080,8 @@
           {
             "shot_number": 1,
             "speaker": "Caretaker",
-            "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-            "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+            "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+            "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
             "location": "Homestay hallway",
             "persistent_props": [
               "Keys"
@@ -4130,8 +4130,8 @@
           {
             "shot_number": 5,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-            "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+            "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+            "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
             "location": "Bedroom",
             "persistent_props": [
               "Bed"
@@ -4215,8 +4215,8 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+            "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
             "location": "Room 13 Threshold / Hallway",
             "persistent_props": [
               "Old photo"
@@ -4413,7 +4413,7 @@
           {
             "shot_number": 6,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
             "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
             "location": "Abandoned tea factory - Interior Office",
             "persistent_props": [
@@ -4481,8 +4481,8 @@
           {
             "shot_number": 1,
             "speaker": "Amal",
-            "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-            "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+            "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+            "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
             "location": "Abandoned tea factory - Interior Machinery Floor",
             "persistent_props": [
               "Phone",
@@ -4554,8 +4554,8 @@
           {
             "shot_number": 7,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-            "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+            "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
             "location": "Abandoned tea factory - Exterior Clearing",
             "persistent_props": [
               "Bed"
@@ -4591,8 +4591,8 @@
           {
             "shot_number": 10,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-            "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+            "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
               "Note"
@@ -4613,7 +4613,7 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
             "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
@@ -4639,8 +4639,8 @@
           {
             "shot_number": 3,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-            "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+            "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
             "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -4713,7 +4713,7 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+            "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
             "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
@@ -4807,7 +4807,7 @@
           {
             "shot_number": 6,
             "speaker": "Amal",
-            "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+            "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
             "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
             "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
             "persistent_props": [],
@@ -4910,8 +4910,8 @@
           {
             "shot_number": 4,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+            "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
             "location": "Homestay - Dining Room Interior Night",
             "persistent_props": [
               "Evidence"
@@ -5000,7 +5000,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+            "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
             "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
             "location": "Factory - Interior Night",
             "persistent_props": [
@@ -5111,9 +5111,9 @@
           {
             "shot_number": 10,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-            "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-            "location": "Car - Interior / Night Ghat Road",
+            "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+            "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+            "location": "Car - Interior / Factory Parking Lot - Night",
             "persistent_props": [
               "Photo"
             ],
@@ -5249,8 +5249,8 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-        "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+        "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+        "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
         "location": "Car Interior",
         "persistent_props": [
           "Window"
@@ -5279,7 +5279,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+        "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
         "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -5298,7 +5298,7 @@
       {
         "shot_number": 2,
         "speaker": "Amal",
-        "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+        "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
         "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -5317,9 +5317,9 @@
       {
         "shot_number": 3,
         "speaker": "Amal",
-        "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+        "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
         "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-        "location": "Mountain road car interior",
+        "location": "Car Interior / Mountain Road",
         "persistent_props": [
           "Car steering wheel",
           "Rearview mirror",
@@ -5469,8 +5469,8 @@
       {
         "shot_number": 1,
         "speaker": "Caretaker",
-        "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-        "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+        "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+        "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
         "location": "Homestay hallway",
         "persistent_props": [
           "Keys"
@@ -5527,8 +5527,8 @@
       {
         "shot_number": 5,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-        "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+        "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+        "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
         "location": "Bedroom",
         "persistent_props": [
           "Bed"
@@ -5615,8 +5615,8 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+        "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
         "location": "Room 13 Threshold / Hallway",
         "persistent_props": [
           "Old photo"
@@ -5834,7 +5834,7 @@
       {
         "shot_number": 6,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
         "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
         "location": "Abandoned tea factory - Interior Office",
         "persistent_props": [
@@ -5903,8 +5903,8 @@
       {
         "shot_number": 1,
         "speaker": "Amal",
-        "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-        "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+        "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+        "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
         "location": "Abandoned tea factory - Interior Machinery Floor",
         "persistent_props": [
           "Phone",
@@ -5988,8 +5988,8 @@
       {
         "shot_number": 7,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-        "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+        "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
         "location": "Abandoned tea factory - Exterior Clearing",
         "persistent_props": [
           "Bed"
@@ -6031,8 +6031,8 @@
       {
         "shot_number": 10,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-        "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+        "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
           "Note"
@@ -6046,7 +6046,7 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
         "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
@@ -6076,8 +6076,8 @@
       {
         "shot_number": 3,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-        "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+        "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
         "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -6162,7 +6162,7 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+        "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
         "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
@@ -6261,7 +6261,7 @@
       {
         "shot_number": 6,
         "speaker": "Amal",
-        "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+        "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
         "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
         "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
         "persistent_props": [],
@@ -6371,8 +6371,8 @@
       {
         "shot_number": 4,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+        "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
         "location": "Homestay - Dining Room Interior Night",
         "persistent_props": [
           "Evidence"
@@ -6466,7 +6466,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+        "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
         "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
         "location": "Factory - Interior Night",
         "persistent_props": [
@@ -6595,9 +6595,9 @@
       {
         "shot_number": 10,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-        "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-        "location": "Car - Interior / Night Ghat Road",
+        "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+        "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+        "location": "Car - Interior / Factory Parking Lot - Night",
         "persistent_props": [
           "Photo"
         ],
@@ -6730,8 +6730,8 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-            "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+            "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+            "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
             "location": "Car Interior",
             "persistent_props": [
               "Window"
@@ -6765,7 +6765,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+            "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
             "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -6782,7 +6782,7 @@
           {
             "shot_number": 2,
             "speaker": "Amal",
-            "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+            "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
             "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
             "location": "Car Interior / Mountain Road",
             "persistent_props": [
@@ -6799,9 +6799,9 @@
           {
             "shot_number": 3,
             "speaker": "Amal",
-            "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+            "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
             "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-            "location": "Mountain road car interior",
+            "location": "Car Interior / Mountain Road",
             "persistent_props": [
               "Car steering wheel",
               "Rearview mirror",
@@ -6944,8 +6944,8 @@
           {
             "shot_number": 1,
             "speaker": "Caretaker",
-            "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-            "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+            "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+            "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
             "location": "Homestay hallway",
             "persistent_props": [
               "Keys"
@@ -6994,8 +6994,8 @@
           {
             "shot_number": 5,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-            "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+            "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+            "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
             "location": "Bedroom",
             "persistent_props": [
               "Bed"
@@ -7079,8 +7079,8 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+            "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+            "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
             "location": "Room 13 Threshold / Hallway",
             "persistent_props": [
               "Old photo"
@@ -7277,7 +7277,7 @@
           {
             "shot_number": 6,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
             "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
             "location": "Abandoned tea factory - Interior Office",
             "persistent_props": [
@@ -7345,8 +7345,8 @@
           {
             "shot_number": 1,
             "speaker": "Amal",
-            "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-            "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+            "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+            "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
             "location": "Abandoned tea factory - Interior Machinery Floor",
             "persistent_props": [
               "Phone",
@@ -7418,8 +7418,8 @@
           {
             "shot_number": 7,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-            "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+            "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
             "location": "Abandoned tea factory - Exterior Clearing",
             "persistent_props": [
               "Bed"
@@ -7455,8 +7455,8 @@
           {
             "shot_number": 10,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-            "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+            "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
               "Note"
@@ -7477,7 +7477,7 @@
           {
             "shot_number": 1,
             "speaker": "Renu",
-            "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
             "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
             "location": "Homestay - Interior Living Room",
             "persistent_props": [
@@ -7503,8 +7503,8 @@
           {
             "shot_number": 3,
             "speaker": "Sachin",
-            "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-            "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+            "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+            "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
             "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -7577,7 +7577,7 @@
           {
             "shot_number": 9,
             "speaker": "Renu",
-            "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+            "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
             "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
             "location": "Old Munnar Suspension Bridge - Exterior Night",
             "persistent_props": [],
@@ -7671,7 +7671,7 @@
           {
             "shot_number": 6,
             "speaker": "Amal",
-            "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+            "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
             "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
             "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
             "persistent_props": [],
@@ -7774,8 +7774,8 @@
           {
             "shot_number": 4,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+            "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
             "location": "Homestay - Dining Room Interior Night",
             "persistent_props": [
               "Evidence"
@@ -7864,7 +7864,7 @@
           {
             "shot_number": 1,
             "speaker": "Sachin",
-            "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+            "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
             "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
             "location": "Factory - Interior Night",
             "persistent_props": [
@@ -7975,9 +7975,9 @@
           {
             "shot_number": 10,
             "speaker": "Amal",
-            "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-            "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-            "location": "Car - Interior / Night Ghat Road",
+            "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+            "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+            "location": "Car - Interior / Factory Parking Lot - Night",
             "persistent_props": [
               "Photo"
             ],
@@ -8113,8 +8113,8 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium shot inside the car, bathed in the eerie, shifting blue phone-light and creeping grey mist rolling past the windows. Reenu instantly snaps her head away from the window, her calm demeanor piercing right through Amal's panic. She grabs the dashboard to steady herself, shooting a sharp, intuitive look at Amal before turning her gaze back to the window, where the thick, unnatural fog outside takes on menacing, twisting shapes against the headlights. Pixar lighting emphasizes the stark contrast between the warm cabin atmosphere and the chilling, dense blue-grey mist outside.",
-        "dialogue_malayalam": "അമൽ ഒന്ന് നിർത്തൂ! ഫോൺ തർക്കിക്കാതെ... എന്നാലും നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ എന്ത് ഭംഗിയാ... ഒരു പ്രത്യേക ഭയവും.",
+        "action": "Medium shot inside the car. The harsh blue glow from Amal's dead phone illuminates the cabin, contrasting sharply with the thick, creeping grey mist pressing against the glass outside. Reacting instantly to Amal’s sudden freak-out, Reenu throws a hand out to steady herself against the dashboard. Her eyes dart from Amal’s panicked face to the windshield, where the headlights cut through an unnaturally dense fog that seems to pulse and twist into distorted, claw-like silhouettes. Utilizing classic Pixar character blocking, her expression shifts from irritation at Amal’s hysterics to a quiet, unsettling curiosity as she stares out the glass.",
+        "dialogue_malayalam": "അമൽ, വെറുതെ കിടന്ന് അലറാതെ! ഒന്നു നിർത്ത്... എന്നാലും പുറത്തേക്കൊന്ന് നോക്കിക്കേ, ഈ മൂന്നാർ മഞ്ഞ് കാണാൻ വല്ലാത്തൊരു ഭംഗിയുണ്ട്... അതോടൊപ്പം എന്തോ ഒരു വല്ലാത്ത ഭയവും.",
         "location": "Car Interior",
         "persistent_props": [
           "Window"
@@ -8143,7 +8143,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Close-up inside the car, bathed in the eerie blue glow of the smartphone. Sachin’s eyes widen in sheer disbelief as he stares out the mist-covered passenger window, blinking hard. In the driver's seat, he leans across the center console, jaw slack. In the backseat, Amal cowers, pulling a woolen blanket over his head while shivering. The volumetric headlights cut through the dense Munnar fog, illuminating empty, desolate blacktop where the mysterious woman stood just a second ago.",
+        "action": "Close-up inside the car, illuminated by the harsh white glare of the high-beam headlights and the cold blue phone-light. Sachin slams his foot on the brake—the car jerks to a sudden halt with a sharp squeal of tires. His eyes bulge in sheer disbelief as he stares hard out the mist-covered passenger window, blinking rapidly. In the backseat, Amal lets out a muffled shriek, yanking a thick woolen blanket completely over his head and trembling violently. Sachin leans across the center console, jaw slack, breath fogging the glass as the volumetric headlights cut through swirling Munnar fog, revealing only empty, desolate blacktop where the figure stood a fraction of a second ago.",
         "dialogue_malayalam": "എന്ത് പെട്ടെന്നാ ആ വഴിപോക്കാരായ സ്ത്രീ അപ്രത്യക്ഷയായത്! കണ്ണ് തെറ്റിയ ആ നിമിഷം അവർ എങ്ങോട്ടാ പോയത്?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -8162,7 +8162,7 @@
       {
         "shot_number": 2,
         "speaker": "Amal",
-        "action": "Medium shot inside the misty car, bathed in eerie blue phone light. Amal scrambles frantically from the backseat over the center console, tangling his legs in the woolen blanket, and dives into the driver's seat. He frantically grabs the steering wheel with trembling hands, his wide eyes darting wildly between the pitch-black rearview mirror and the thick condensation on the windshield.",
+        "action": "Medium shot inside the claustrophobic car, drenched in cold, eerie blue phone-light and the harsh glare of headlights. Amal erupts from the backseat like an unspooled ball of yarn, completely wrapped and tangled in the thick woolen blanket. He scrambles frantically over the center console, kicking his plush, slipper-clad feet in panic, and tumbles awkwardly into the front passenger seat/steering area. His wide, cartoonish eyes dart wildly between the pitch-black rearview mirror and the thick condensation on the windshield as he death-grips the steering wheel with trembling hands.",
         "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആ വഴിപോക്കാരായ സ്ത്രീക്ക് നടന്നുപോവാൻ പറ്റില്ല സച്ചിൻ... ദൈവമേ, നമ്മളെയെങ്ങാനും പ്രേതം തട്ടിക്കൊണ്ടുപോകുമോ?",
         "location": "Car Interior / Mountain Road",
         "persistent_props": [
@@ -8181,9 +8181,9 @@
       {
         "shot_number": 3,
         "speaker": "Amal",
-        "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+        "action": "Close-up Pixar-style shot framing Amal's wide, terror-filled eyes reflecting the frantic blinking orange lights of the dashboard. Still hopelessly cocooned in the thick woolen blanket like an oversized caterpillar, he jams the key into the ignition and twists it with manic, vibrating speed. The car engine lets out a pathetic, metallic whimper, shudders violently on its suspension, and completely dies. The dashboard lights flatline into total darkness, save for the eerie blue glow of his phone on the passenger seat. Amal freezes, his jaw dropping in slow motion as a single tear rolls down his cheek.",
         "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
-        "location": "Mountain road car interior",
+        "location": "Car Interior / Mountain Road",
         "persistent_props": [
           "Car steering wheel",
           "Rearview mirror",
@@ -8333,8 +8333,8 @@
       {
         "shot_number": 1,
         "speaker": "Caretaker",
-        "action": "Wide Shot (WS) shifting to Medium Shot (MS) inside the dimly lit, creaking colonial homestay hallway. Sachin bursts through the heavy front wooden door, panting heavily and shielding a trembling Reenu and a pale, hyperventilating Amal behind him. Caretaker Sreedharan stands near the flickering wall sconce, observing their panic with eerie calm. Sreedharan wordlessly steps forward, his old wrinkled hands shaking as he reaches into his pocket and hands a heavy, jangling ring of iron keys directly to Sachin. Sreedharan's eyes dart suspiciously toward the deep shadows of the locked corridor behind him, his expression heavy with grim warning.",
-        "dialogue_malayalam": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'\nസച്ചിൻ: (കിതച്ചുകൊണ്ട്) 'അത്... പുറത്ത് കാറിന് അരികിൽ എന്തോ ഒന്നുണ്ടായിരുന്നു!'",
+        "action": "Wide Shot (WS) rapidly pushing into a tight Medium Shot (MS) inside the creaking, fog-chilled colonial homestay hallway. The heavy wooden front door slams open with a deafening bang. Sachin bursts in first, his arms thrown back to shield a shivering, wide-eyed Reenu and a trembling Amal who trips over his own feet, crashing into Sachin's back. Sachin slams the door shut, locking the deadbolt with frantic, trembling fingers, his chest heaving heavily. Caretaker Sreedharan steps out from the amber glow of a flickering wall sconce, his face carved with deep, cryptic shadows. Without a word of greeting, Sreedharan watches their panic with eerie calm, his old wrinkled hands slowly pulling out a heavy, jangling iron key ring and thrusting it toward Sachin. Sreedharan's eyes dart sideways toward the ink-black corridor behind him, his expression locking into a grim, chilling warning.",
+        "dialogue_malayalam": "സച്ചിൻ: (കിതച്ചുകൊണ്ട്, വാതിലിൽ ചാരിനിന്ന്) 'അത്... കാറിന്റെ ജനാലയിൽ! എന്തോ ഒരു രൂപം... നമ്മളെ നോക്കുന്നുണ്ടായിരുന്നു!'\nകെയർടേക്കർ: (തണുത്ത സ്വരത്തിൽ) 'താക്കോലുകൾ ഇതാ... പക്ഷേ ഓർക്കുക, ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി... ഒരിക്കലും ആരും തുറക്കരുത്.'",
         "location": "Homestay hallway",
         "persistent_props": [
           "Keys"
@@ -8391,8 +8391,8 @@
       {
         "shot_number": 5,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), warm, amber-lit Pixar bedroom with rustic wooden paneling. The room is half-lit by a bedside lamp casting long, distorted shadows. Sachin is mid-motion, holding his travel bag over the rustic wooden bed, when the heavy, rhythmic creaking of floorboards echoes sharply just outside their bedroom door. Suddenly, the door flies open—Reenu slips inside, quickly clicking the latch shut behind her with a breathless, urgent gesture. Sachin freezes, dropping the bag onto the mattress with a soft thud, his eyes locking onto Reenu's tense expression.",
-        "dialogue_malayalam": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+        "action": "Medium Shot (MS), warm amber Pixar-lit bedroom with rustic wooden paneling and a glowing bedside lamp casting long, distorted shadows. Sachin stands by the wooden bed holding a travel bag. Suddenly, the bedroom door bursts open—Reenu slips inside in a single fluid motion, slamming the heavy wooden door shut and throwing the iron latch with a sharp, echoing metallic click. She leans back against the door, breathing heavily, chest rising and falling. Sachin drops his bag onto the mattress with a soft thud, his eyes locking onto her wide, serious eyes, immediately reading the urgency in her posture.",
+        "dialogue_malayalam": "സച്ചിൻ: 'എന്താ റീനു? ആ ഇടനാഴിയിൽ എന്തെങ്കിലും കണ്ടോ? ആ കെയർടേക്കർ എങ്ങോട്ടാ പോയത്?'",
         "location": "Bedroom",
         "persistent_props": [
           "Bed"
@@ -8479,8 +8479,8 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Wide Shot (WS), Pixar 3D style. The heavy wooden door of Room 13 creaks all the way open. Out from the pitch-black void steps Renu, holding her trembling smartphone flashlight high, looking completely unfazed compared to the sheer panic outside. In the foreground, Sachin and Amal tumble backward out of the crimson curtain, gasping for air and tangled in a heap of limbs. Renu looks down at them, unimpressed, and gestures with her flashlight toward the dimly lit, dust-choked interior of the room behind her, where an antique framed black-and-white photograph rests on a dresser.",
-        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
+        "action": "Wide Shot (WS), Pixar 3D style, bridging the cliffhanger. The heavy wooden door of Room 13 is fully open, casting a stark beam of cold light into the hallway. In the foreground, Sachin and Amal trip over each other and crash hard onto the polished wooden floor in a tangled, flailing heap of limbs and wide-eyed panic, gasping for air. Suddenly, Renu steps casually out of the pitch-black void of Room 13, holding her trembling smartphone flashlight high. She looks down at the two groaning boys completely unfazed. With her free hand, she gestures back into the dim, dust-choked interior of the room toward an antique framed black-and-white photograph resting on a weathered dresser.",
+        "dialogue_malayalam": "റീനു: 'നിങ്ങൾ എന്തിനാ അവിടെ ഒളിച്ചിരുന്നത്? സച്ചിൻ, എഴുന്നേറ്റ്‌ ഇങ്ങോട്ട് വന്നു നോക്കൂ... ഈ ഫോട്ടോയിലുള്ള സ്ത്രീ നമ്മൾ റോഡിൽ കണ്ട അതേ ആളല്ലേ?!'",
         "location": "Room 13 Threshold / Hallway",
         "persistent_props": [
           "Old photo"
@@ -8698,7 +8698,7 @@
       {
         "shot_number": 6,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning swiftly from the creaking iron gates, Reenu steps decisively past a trembling Amal—who is still whimpering and clutching Sachin's sleeve—and pushes open a rotting wooden office door inside the decaying factory. Shafts of ethereal moonlight cut through the thick dust motes swirling in the abandoned room. Reenu walks straight to a rotting mahogany desk, brushes a thick layer of dust off a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her eyes widening in the dim light.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: The camera follows Reenu as she forcefully shoves open the heavy, squeaking main factory door, stepping out of the chilly Munnar fog and into the cavernous, shadowy sorting floor. She glances back impatiently at Amal, who is practically glued to Sachin's back, before marching straight toward a semi-collapsed wooden office partition. Pushing open its rotting door, shafts of ethereal moonlight cut through swirling dust motes. Reenu walks up to a rotting mahogany desk, brushes away a thick layer of dust from a decaying leather-bound estate ledger, and gasps as she reads a haunting entry from 1994, her wide eyes catching the pale silver glow.",
         "dialogue_malayalam": "റീനു: 'അമൽ, ആ കൈവിറയൽ ഒന്ന് നിർത്തി ഇങ്ങോട്ട് നോക്ക്! ഇവിടെ നോക്കൂ... ഭദ്ര എന്നൊരു സ്ത്രീയെക്കുറിച്ച് ഈ പഴയ ഡയറിയിൽ എന്തൊക്കെയോ എഴുതിയിട്ടുണ്ട്!'",
         "location": "Abandoned tea factory - Interior Office",
         "persistent_props": [
@@ -8767,8 +8767,8 @@
       {
         "shot_number": 1,
         "speaker": "Amal",
-        "action": "Wide Shot (WS) transitioning to Close-Up (CU), Pixar 3D Camera: Panic still hangs heavy in the air. Sachin holds his flickering flashlight aloft with a trembling hand, his eyes frantically scanning the darkness where Amal vanished. Reenu grips Sachin's jacket sleeve tightly, breathless from the ghostly whisper. Suddenly, the flashlight beam catches Amal casually squatting near a rusted gear shaft, totally unfazed, balancing his smartphone on a makeshift wooden stick. Amal flashes a proud, goofy grin directly into the camera lens, holding up a makeshift tripod rig.",
-        "dialogue_malayalam": "അമൽ: പേടിക്കണ്ട, ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ!",
+        "action": "Wide Shot (WS) shifting rapidly to Close-Up (CU), Pixar 3D Camera: The lingering chill from the previous shot still hangs in the frosty air. Sachin's flashlight beams frantically across the rusted machinery, his chest heaving, while Reenu clings to his jacket, eyes wide and breath fogging in the cold. Suddenly, a bright, cheerful phone-screen light cuts through the gloom. The camera pans down to reveal Amal casually squatting beside a towering iron gear, completely oblivious to the terror. He is happily adjusting a makeshift tripod built from a broken wooden branch and duct tape, holding his phone up like a vlog camera. Amal flashes a proud, goofy grin at them, breaking the palpable tension with utter cluelessness.",
+        "dialogue_malayalam": "അമൽ: അയ്യോ, നിങ്ങളിതുവരെ ഇവിടെയെത്തിയില്ലേ? നോക്കിക്കേ, ഇതാണ് എന്റെ ആത്മ-സംവേദന ഉപകരണം! കിടിലൻ ഐഡിയ അല്ലേ?",
         "location": "Abandoned tea factory - Interior Machinery Floor",
         "persistent_props": [
           "Phone",
@@ -8852,8 +8852,8 @@
       {
         "shot_number": 7,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up on Reenu, her face illuminated by the flickering, cold blue glow of her smartphone flashlight. She drops to her knees beside Amal and Sachin, staring in stunned disbelief at the massive bare footprints fresh in the mud. She pulls her jacket tighter against the freezing Munnar night air, her breath pluming in white puffs as she looks up from the tracks toward the looming, fog-choked tea factory doors. She shakes her head, her voice sharp and resolute through chattering teeth.",
-        "dialogue_malayalam": "രേണു: (വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറിയിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle close-up framing Reenu as she drops to her knees beside Amal and Sachin. Her face is sharply lit by the cold blue glow of her smartphone flashlight. She stares down at the massive bare footprints fresh in the damp mud, her breath pluming in hurried white puffs against the freezing Munnar night air. Shivering violently, she snaps her gaze up from the tracks toward the looming, fog-choked factory doors, her expression hardening with absolute resolve.",
+        "dialogue_malayalam": "രേണു: (പല്ല് കടിച്ചു വിറച്ചുകൊണ്ട്, കാൽപ്പാടുകളിൽ നിന്നും ഫാക്ടറി വാതിലിലേക്ക് നോക്കിക്കൊണ്ട്) ഇന്ന് രാത്രി ഇവിടെ നിൽക്കാൻ പറ്റില്ല... നമുക്ക് എങ്ങനെയെങ്കിലും ഈ ഹോംസ്റ്റേയിൽ തിരിച്ചെത്തിയേ പറ്റൂ!",
         "location": "Abandoned tea factory - Exterior Clearing",
         "persistent_props": [
           "Bed"
@@ -8895,8 +8895,8 @@
       {
         "shot_number": 10,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Panning smoothly from Sachin's exhausted face to Reenu, who steps past him toward the antique writing desk near the rattling window. Her eyes catch a crumpled, yellowed piece of paper lying right under a flickering oil lamp. Kneeling down, Reenu carefully unfolds it with the tip of the brass candlestick, her wide eyes reflecting the candlelight as she reads the chilling warning written in shaky Malayalam script. Sachin leans over her shoulder, his breath fogging slightly in the cold air, his face turning pale.",
-        "dialogue_malayalam": "രേണു: (പഴയ കതയിലേക്ക് ചൂണ്ടിക്കൊണ്ട്, വിറയാർന്ന ശബ്ദത്തിൽ) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഒരു കത്ത് കിടക്കുന്നു. പഴയ പാലത്തിൽ പോകരുത്...",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Maintaining the breathless, high-tension atmosphere from the previous shot, the camera tracks Reenu as she ignores Sachin's dismissal to wait until tomorrow. Her sharp eyes lock onto a crumpled, yellowed piece of paper illuminated by the erratic glow of an old oil lamp on the writing desk. Kneeling swiftly, she uses the tip of her heavy brass candlestick to carefully unfold the paper. Her wide, expressive Pixar eyes reflect the flickering flame as she reads the eerie warning scribbled in frantic Malayalam. Sachin, still kneeling near Amal, crawls over her shoulder, his breath pluming in the freezing mist indoors as his face drains entirely of color.",
+        "dialogue_malayalam": "രേണു: (വിറയാർന്ന ശബ്ദത്തിൽ, കടലാസിലേക്ക് ചൂണ്ടിക്കൊണ്ട്) സച്ചിൻ... ഇവിടെ നോക്കൂ... ഇത് ആരെഴുതിയതാ? 'പഴയ പാലത്തിൽ പോകരുത്' എന്ന്!",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
           "Note"
@@ -8910,7 +8910,7 @@
       {
         "shot_number": 1,
         "speaker": "Renu",
-        "action": "Medium Shot (MS), Pixar 3D Camera: The camera holds the low-lit, chilling atmosphere of the living room from the previous scene. Reenu still holds the crumpled yellowed note, her face illuminated by the flickering oil lamp. Sachin stands close behind her, rubbing his arms against the biting Munnar cold. Suddenly, Amal stumbles into the frame from the hallway wrapped in a blanket like a ghost, teeth chattering. Reenu looks up from the note with fierce determination, clutching the paper tightly, while Amal gasps in sheer terror at the words.",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Seamlessly continuing from the cliffhanger, the camera pushes in slightly on Reenu and Sachin huddled over the yellowed note. Sachin's hands tremble as he reads the Malayalam warning over Reenu's shoulder, his eyes wide with disbelief and cold sweat beading on his forehead. Reenu’s jaw sets with unyielding resolve. Suddenly, a floorboard creaks loudly behind them; Amal stumbles into the frame from the dark hallway, tangled comically in a floral bedsheet like a distressed ghost, teeth chattering so hard it rattles. Reenu snaps her head up, clutching the note to her chest with fierce determination, while Amal points a shaky finger at the paper and lets out a high-pitched squeak of pure dread.",
         "dialogue_malayalam": "രേണു: (വിറയ്ക്കുന്ന കൈകളോടെ കത്ത് മുറുകെപ്പിടിച്ച്, ദൃഢനിശ്ചയത്തോടെ) ഈ കുറിപ്പ് വെറുമൊരു ഭീഷണിയല്ല സച്ചിൻ... ആ പഴയ പാലത്തിൽ എന്തോ രഹസ്യമുണ്ട്. സൂര്യാസ്തമയത്തിന് മുൻപ് നമ്മൾ അവിടേക്ക് പോകണം.",
         "location": "Homestay - Interior Living Room",
         "persistent_props": [
@@ -8940,8 +8940,8 @@
       {
         "shot_number": 3,
         "speaker": "Sachin",
-        "action": "Medium Shot (MS), Pixar 3D Camera: Low-angle volumetric moonlight cutting through dense, creeping Munnar fog. Sachin and Reenu step cautiously onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. He pauses, his boots crunching on frost, turning back over his shoulder to check the dark path behind them before taking Reenu's arm protectively.",
-        "dialogue_malayalam": "സച്ചിൻ: (കുറച്ചു ഭയത്തോടെ ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ ഇവിടെ വെച്ച് അവൻ പേടിച്ചു ചാടിയേനേ. സൂക്ഷിച്ചു നടക്കണേ!",
+        "action": "Medium Shot (MS), Pixar 3D Camera: Sweeping low-angle volumetric moonlight cutting through the thick, creeping Munnar fog over the gorge. Sachin and Reenu carefully step past the rusted warning sign onto the creaking, moss-covered wooden planks of the old suspension bridge. Sachin’s flashlight beam cuts erratically through the mist, illuminating floating dust motes and dripping dew. Shivering slightly from the mountain chill, Sachin looks back at the dark, winding forest path behind them, remembering Amal's panicked face, before turning to firmly take Reenu's arm protectively.",
+        "dialogue_malayalam": "സച്ചിൻ: (ടോർച്ച് അടിച്ച് ചുറ്റും നോക്കി, ശബ്ദം താഴ്ത്തി) രേണു, വഴി വല്ലാതെ തെന്നുന്നുണ്ട്... അമലില്ലാത്തത് നന്നായി, അല്ലെങ്കിൽ അവൻ വഴിയിൽ വെച്ച് തന്നെ പേടിച്ചു ചത്തേനെ. സൂക്ഷിച്ചു നടക്കണേ!",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
         "camera_hint": "Dynamic cinematic 3D medium shot",
@@ -9026,7 +9026,7 @@
       {
         "shot_number": 9,
         "speaker": "Renu",
-        "action": "Medium Shot (MS) tracking Reenu as she abruptly spins around from Amal's pointing finger, her flashlight beam cutting through the dense, swirling Munnar fog. Pixar 3D Camera: Low-angle, dynamic push-in on Reenu's face, her eyes narrowing with chilling realization as the ghostly silhouette of the legendary tea-picker woman slowly materializes out of the whiteout mist behind them. Reenu’s expression shifts from defensive to deeply unsettling calm.",
+        "action": "Medium Shot (MS) tracking Reenu as she violently whirls around from Amal's pointing finger, her breath catching in the freezing mist. Pixar 3D Camera: Dynamic low-angle push-in, catching the beam of her shaking flashlight as it sweeps across the frost-laced tea bushes. Reenu's initial defensive glare instantly falters, her eyes widening as the towering, ethereal silhouette of the legendary Munnar tea-picker materializes from the whiteout fog. Her face freezes in a sudden, unnerving stillness, the warmth draining from her expression.",
         "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
         "location": "Old Munnar Suspension Bridge - Exterior Night",
         "persistent_props": [],
@@ -9125,7 +9125,7 @@
       {
         "shot_number": 6,
         "speaker": "Amal",
-        "action": "Wide Angle (W/A) shifting abruptly to the dark doorway behind them. Amal stands frozen in the doorway, his flashlight shaking wildly, casting erratic beams across the cobwebs. His eyes are squeezed half shut in sheer terror, his jacket pulled up around his neck as if it could protect him. He clutches a rusty garden trowel like a medieval sword, his knees visibly knocking together. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his utter dread against the towering, shadowy doorframe as a sudden cold draft rattles the loose window panes.",
+        "action": "Wide Angle (W/A) framing the dark, rotting doorway behind Sachin and Reenu. Amal is pressed flat against the doorframe, his knees knocking so violently they create a rhythmic clacking sound. He holds his flashlight at an awkward, trembling angle, casting frantic, erratic beams across the cobweb-draped ceiling. Hearing Sachin's urgent voice, Amal lets out a high-pitched squeak, pulling his jacket collar high over his ears while clutching a rusty garden trowel like a medieval broadsword. Pixar 3D Camera: Low-angle medium shot looking up past Amal's trembling frame, emphasizing his comical, exaggerated dread against the looming doorway as a sudden, freezing gust of Munnar mountain wind whips through the broken window panes, making his flashlight beam strobe wildly.",
         "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, തൊണ്ടയിൽ കുടുങ്ങിയ ശബ്ദത്തിൽ) അ... അയ്യോ! ദൈവമേ, അതാര്... ആരാണാ ശബ്ദം ഉണ്ടാക്കുന്നത്? നമ്മൾ ഇവിടെ പെട്ടുപോയി, ഞാൻ പറഞ്ഞതല്ലേ ഇവിടെ വരരുതെന്ന്!",
         "location": "Abandoned Estate Outbuilding - Storage Room Interior Night",
         "persistent_props": [],
@@ -9235,8 +9235,8 @@
       {
         "shot_number": 4,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium close-up tracking shot. Start tight on Reenu pointing at the locket, then whip-pan quickly across the antique dining table to Amal. Amal flinches backward, nearly knocking over his antique brass teacup, his eyes bulging wide behind his round spectacles as a sudden wave of frantic inspiration hits him. He stammers, grabbing a scattered handful of old estate ledger papers, knocking his head lightly against the wooden wall in his haste.",
-        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത് ആ ഡary-യിലെ രണ്ടാമത്തെ പേജുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു!",
+        "action": "Pixar 3D Camera: Medium close-up tracking shot. The camera tracks Reenu’s trembling hand pointing at the locket, then whip-pans across the antique dining table to Amal. Amal flinches backward in terror, nearly tipping over his brass teacup into a spilled pool of chai. His eyes bulge wide behind his round spectacles as he stammers, frantically shuffling through a scattered pile of old estate ledger papers with ink-stained fingers. In his hyperactive panic, he bumps his head against the wood-paneled wall, wincing briefly before his face lights up with sudden, chaotic inspiration.",
+        "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി! ഇത്... ഇത് ആ ഡയറിയിലെ രണ്ടാമത്തെ പേജുമായി എന്തോ ബന്ധമുണ്ട്!",
         "location": "Homestay - Dining Room Interior Night",
         "persistent_props": [
           "Evidence"
@@ -9330,7 +9330,7 @@
       {
         "shot_number": 1,
         "speaker": "Sachin",
-        "action": "Pixar 3D Camera: Medium tracking shot, spinning as Sachin, Reenu, and Amal practically crash through the heavy, rusted iron doors of the damp tea factory, slamming them shut behind themselves. They are gasping for air, clutching their sides, faces illuminated by the frantic, jittery beams of their flashlights cutting through the subterranean chill. Sachin leans against the door, chest heaving, his eyes wide with leftover terror from the homestay ambush, pointing ahead into the dark labyrinth of machinery.",
+        "action": "Pixar 3D Camera: Dynamic, low-angle tracking shot. The heavy iron doors of the damp tea factory burst open, and Sachin, Reenu, and Amal literally crash inside, frantically heaving the rusted bolts shut to lock out the howling mountain wind and the lingering shadows of the homestay. The camera spins rapidly to capture their wide, terrified eyes illuminated only by jittery, crisscrossing flashlight beams cutting through the subterranean chill. Sachin leans heavily against the trembling door, chest heaving for air, his face smeared with cold sweat, pointing a shaking finger deep into the dark, echoing labyrinth of antique tea-processing machinery.",
         "dialogue_malayalam": "സച്ചിൻ: 'ശ്വാസം അടക്കിപ്പിടിച്ച് ഓട്! ശ്രീധരൻ പറഞ്ഞ നിലവറ ഇതാണ്... ആ ഒറിജിനൽ രേഖ കണ്ടെത്തി അവൾക്ക് നീതി വാങ്ങിക്കൊടുക്കണം!'",
         "location": "Factory - Interior Night",
         "persistent_props": [
@@ -9459,9 +9459,9 @@
       {
         "shot_number": 10,
         "speaker": "Amal",
-        "action": "Pixar 3D Camera: Medium shot inside the car, transitioning from the heavy, exhausted quiet of the rainy night. The amber dashboard lights cast a warm glow on Sachin's anxious face as he catches his breath. Suddenly, the car's interior lights click on. In the front passenger seat, Amal leans over from the driver's seat, holding up his glowing smartphone to show the camera roll. His eyes bulge in classic, comedic Pixar terror, his jaw dropping. In the background, Reenu and Sachin lean in, their faces illuminated by the phone screen, gasping as they see a faint, translucent, smiling silhouette of Bhadra sitting right between them in the back seat.",
-        "dialogue_malayalam": "അമൽ: (വിറച്ചുകൊണ്ട്, കണ്ണുകൾ തള്ളി) സച്ചിൻ... വണ്ടി പിന്നേയും സ്റ്റാർട്ടായി! ഈ ഫോട്ടോയിൽ... നമ്മുടെ കൂടെ പിന്നേയും ആ ആരാ ഇരിക്കുന്നത്?!",
-        "location": "Car - Interior / Night Ghat Road",
+        "action": "Pixar 3D Camera: Medium-close shot inside the rain-lashed car. The amber glow from the dashboard reflects off Sachin's exhausted, wet face as he stares at the old photograph. Suddenly, with a sharp *click-hum*, the car's overhead cabin lights flicker violently to life, casting an eerie, harsh white glare over the interior. From the driver's seat, Amal yelps in high-pitched terror, dropping the car keys into the footwell as he fumbles wildly. He snatches up his smartphone, its bright screen illuminating his bulging, cartoonish Pixar eyes and hanging jaw. He shoves the phone toward Sachin and Reenu. In the background, Reenu drops her blanket, and both lean in, their eyes locking onto the phone screen in sheer horror: a faint, translucent, grinning silhouette of Bhadra is digitally photobombed right between them in the backseat mirror reflection.",
+        "dialogue_malayalam": "അമൽ: (തൊണ്ടയിടറി, വെപ്രാളത്തോടെ) അയ്യോ ദൈവമേ! വണ്ടി പെട്ടെന്ന് ഡെഡ് ആയി... പിന്നെന്താ ഈ ഫോണിൽ കാണിക്കുന്നത്?! നമ്മുടെ കൂടെ... ആ കട്ടിലിൽ കിടന്ന ആ കൊച്ച്... പിന്നേയും നമ്മളെ ഫോളോ ചെയ്യുവാ!",
+        "location": "Car - Interior / Factory Parking Lot - Night",
         "persistent_props": [
           "Photo"
         ],
