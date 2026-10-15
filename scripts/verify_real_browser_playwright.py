@@ -82,12 +82,6 @@ def run_real_browser_verification(output_dir: Path = None):
                 shutil.copy2(src, sandbox / f)
         shutil.copytree(SCRIPTS_DIR, sandbox / "scripts")
 
-        # Strip external font links to make sandbox portal 100% offline and load in <100ms
-        sb_portal = sandbox / "portal.html"
-        if sb_portal.exists():
-            import re
-            clean_html = re.sub(r'<link[^>]*fonts\.[^>]*>', '', sb_portal.read_text(encoding="utf-8"))
-            sb_portal.write_text(clean_html, encoding="utf-8")
         clean_dir = sandbox / "clean_shots"
         clean_dir.mkdir(exist_ok=True)
         (clean_dir / "shot_10.mp4").write_text("mock video content for shot 10", encoding="utf-8")
@@ -113,19 +107,19 @@ def run_real_browser_verification(output_dir: Path = None):
         # Step 3: Launch Playwright Chrome
         print("\n[Step 3] Launching Google Chrome via Playwright...")
         with sync_playwright() as p:
-            try:
-                browser = p.chromium.launch(channel="chrome", headless=True, args=["--no-proxy-server"])
-            except Exception:
-                browser = p.chromium.launch(headless=True, args=["--no-proxy-server"])
+            browser = p.chromium.launch(channel="chrome", headless=True, args=["--no-proxy-server", "--disable-extensions"])
             context = browser.new_context(viewport={"width": 1400, "height": 950})
             page = context.new_page()
+
+            page.on("console", lambda msg: print(f"  [Chrome Console] {msg.type}: {msg.text[:80]}"))
+            page.on("pageerror", lambda err: print(f"  [Chrome Error] {err}"))
 
             # Automatically accept confirmation dialogs (for approval and rollback)
             page.on("dialog", lambda dialog: (print(f"  [Browser Dialog] {dialog.message[:60]}... -> ACCEPT"), dialog.accept()))
 
             # Navigate to Portal
             print(f"  Navigating to {portal_url}...")
-            page.goto(portal_url, wait_until="domcontentloaded", timeout=60000)
+            page.goto(portal_url, timeout=30000)
             page.wait_for_selector("#tabBtnShotOutline", timeout=30000)
             print("  ✓ Studio portal loaded successfully.")
             results["steps"].append("Portal loaded in Chrome browser.")

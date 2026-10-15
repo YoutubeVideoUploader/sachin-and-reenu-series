@@ -818,28 +818,25 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Tabs (5-Tab Master Architecture) -->
     <div class="tabs">
       <button class="tab-btn active" id="tabBtnShots" onclick="switchTab('shotsTab')">
-        🎬 Google Flow Shot Director (<span id="shotCountBadge">10 Shots • ⏱️ 1m 00s</span>)
-      </button>
-      <button class="tab-btn" id="tabBtnSeasonStory" onclick="switchTab('seasonStoryTab')">
-        📖 Story of the Series (Season 1 Arc)
+        🎬 Google Flow Shot Director (Tab 2) (<span id="shotCountBadge">10 Shots • ⏱️ 1m 00s</span>)
       </button>
       <button class="tab-btn" id="tabBtnShotOutline" onclick="switchTab('shotOutlineTab'); renderSeasonShotOutline();">
-        🎬 Master 100-Shot Script (Tab 7)
+        🎬 Master 100-Shot Script (Tab 5)
       </button>
       <button class="tab-btn" id="tabBtnCharacters" onclick="switchTab('charactersTab')">
-        👥 Character Cast Registry
+        👥 Character Cast Registry (Tab 4)
       </button>
       <button class="tab-btn" id="tabBtnUpload" onclick="switchTab('uploadTab')">
-        ☁️ Video Vault Uploader & Drive Sync
+        ☁️ Video Vault Uploader & Sync (Tab 3)
+      </button>
+      <button class="tab-btn" id="tabBtnSchedule" onclick="switchTab('scheduleTab')">
+        ⏰ Schedule & Cloud Ledger (Tab 1)
       </button>
       <button class="tab-btn" id="tabBtnMusic" onclick="switchTab('musicTab')">
         🎵 10-Track BGM Soundtracks
-      </button>
-      <button class="tab-btn" id="tabBtnSchedule" onclick="switchTab('scheduleTab')">
-        ⏰ Schedule & Cloud Ledger
       </button>
     </div>
 
@@ -1000,40 +997,63 @@
             </div>
           </div>
 
-          <!-- Target Controls -->
-          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
-            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">🎯 Target Scope:</span>
-            <select id="chatTargetEp" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="current" selected>Current Active Ep (Ep 8)</option>
-              <option value="1">Episode 1</option>
-              <option value="2">Episode 2</option>
-              <option value="3">Episode 3</option>
-              <option value="4">Episode 4</option>
-              <option value="5">Episode 5</option>
-              <option value="6">Episode 6</option>
-              <option value="7">Episode 7</option>
-              <option value="8">Episode 8</option>
-              <option value="9">Episode 9</option>
-              <option value="10">Episode 10 (Climax)</option>
-              <option value="0">General Season 1 Note</option>
-            </select>
-                        <select id="chatTargetShot" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="auto" selected>Auto-Detect (Single Shot or Full Episode)</option>
-              <option value="full_episode">🎬 Full Episode (All 10 Shots)</option>
-              <option value="1">Shot 1</option>
-              <option value="2">Shot 2</option>
-              <option value="3">Shot 3</option>
-              <option value="4">Shot 4</option>
-              <option value="5">Shot 5</option>
-              <option value="6">Shot 6</option>
-              <option value="7">Shot 7</option>
-              <option value="8">Shot 8</option>
-              <option value="9">Shot 9</option>
-              <option value="10">Shot 10</option>
-            </select>
-            <span style="font-size: 11px; color: #94a3b8; margin-left: auto;">
-              🔒 Locked DNA • 🔇 Strictly NO BGM • 💬 Malayalam Voiceover
+          <!-- 3-Mode Scope Selector (5-Tab Architecture: Connected to Tab 2 & Tab 5) -->
+          <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+            <button type="button" id="directorModeShotBtn" onclick="setDirectorScopeMode('single_shot')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #3b82f6; background: rgba(59, 130, 246, 0.2); color: #60a5fa; cursor: pointer; transition: all 0.2s;">
+              🎯 Change Specific Shot (Current Ep)
+            </button>
+            <button type="button" id="directorModeEpBtn" onclick="setDirectorScopeMode('full_episode')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
+              🎬 Change Whole Episode (Current Ep)
+            </button>
+            <button type="button" id="directorModeSeasonBtn" onclick="setDirectorScopeMode('season_arc')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
+              🌊 Change Whole Season
+            </button>
+          </div>
+
+          <!-- Dynamic Controls Bar -->
+          <div id="directorScopeOptions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <!-- Target Episode -->
+            <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Episode:</span>
+              <select id="chatTargetEp" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                <option value="1">Episode 1</option>
+                <option value="2">Episode 2</option>
+                <option value="3" selected>Episode 3 (Active)</option>
+                <option value="4">Episode 4</option>
+                <option value="5">Episode 5</option>
+                <option value="6">Episode 6</option>
+                <option value="7">Episode 7</option>
+                <option value="8">Episode 8</option>
+                <option value="9">Episode 9</option>
+                <option value="10">Episode 10 (Grand Climax)</option>
+              </select>
+            </div>
+
+            <!-- Target Shot -->
+            <div id="directorShotSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Shot:</span>
+              <select id="chatTargetShot" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                <option value="1" selected>Shot 1</option>
+                <option value="2">Shot 2</option>
+                <option value="3">Shot 3</option>
+                <option value="4">Shot 4</option>
+                <option value="5">Shot 5</option>
+                <option value="6">Shot 6</option>
+                <option value="7">Shot 7</option>
+                <option value="8">Shot 8</option>
+                <option value="9">Shot 9</option>
+                <option value="10">Shot 10 (Cliffhanger)</option>
+              </select>
+            </div>
+
+            <span id="directorModeHint" style="font-size: 11px; color: #38bdf8; margin-left: auto;">
+              📌 Connected to Tab 2 (Prompts) & Tab 5 (100-Shot Script) • Evaluates Continuity vs Shot K+1
             </span>
+          </div>
+
+          <!-- Continuity Assessment & Dual-Mode Healing Card -->
+          <div id="directorEvaluationContainer" style="display: none; margin-bottom: 14px; background: #0b1120; border: 1px solid #3b82f6; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+            <!-- Rendered dynamically by evaluateDirectorShotChange() -->
           </div>
 
           <!-- Chat Messages Scroll Log -->
@@ -1042,32 +1062,29 @@
           </div>
 
                     <!-- Quick Suggestion Chips -->
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-            <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Overhaul the whole episode: Sachin reveals the London pouch earlier in the rain, Amal jokes, and Reenu confronts him')">
-              🎬 Rewrite Entire Episode (10 Shots)
+          <div id="directorChipsContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Sachin and Amal quickly climb back into the car and slam the door shut in terror')">
+              🚗 Car Scramble & Door Slam
             </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal about Kochi rain and teasing Sachin')">
-              😂 Add Amal Banter
+            <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal shivering from superstitious Munnar dread')">
+              😂 Add Amal Dread Banter
             </button>
-            <button class="chat-chip" onclick="quickFillPrompt('In Shot 5, heighten Reenu\'s emotional hesitation and expressive worry before stepping out with umbrella')">
-              🌧️ Deepen Reenu\'s Emotion (Shot 5)
+            <button class="chat-chip" onclick="quickFillPrompt('Reenu points trembling fingers at an eerie handprint slowly appearing on the misted condensation')">
+              👻 Condensation Handprint Clue
             </button>
-            <button class="chat-chip" onclick="quickFillPrompt('In Shot 4, add dramatic mystery focus on Sachin\'s London leather pouch')">
-              👜 Focus on Leather Pouch (Shot 4)
+            <button class="chat-chip" onclick="quickFillPrompt('Caretaker Sreedharan abruptly warns the trio never to touch Room 13 before vanishing into mist')">
+              🗝️ Sreedharan Warning (Room 13)
             </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue for Shot 8 in authentic emotional Kochi Malayalam (5-8 words max)')">
-              💬 Kochi Malayalam Polish
-            </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Create a dramatic cliffhanger moment for Shot 10 leading to Marine Drive')">
-              🎯 Marine Drive Climax Twist
+            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue in authentic conversational Munnar-Kochi Malayalam (5-8 words max)')">
+              💬 Authentic Malayalam Dialogue
             </button>
           </div>
 
           <!-- User Input Box -->
           <div style="display: flex; gap: 10px; align-items: flex-end;">
-            <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your story suggestion, scene tweak, or shot change... (e.g., 'In Shot 5, make Reenu look pensively at the rain before leaving her house')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
+            <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your shot idea or story change... (e.g., 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
             <button class="btn btn-primary" id="geminiSendBtn" onclick="sendGeminiDirectorMessage()" style="padding: 14px 22px; font-size: 14px; height: 52px; white-space: nowrap;">
-              🚀 Send Direction
+              🔍 Evaluate & Check Flow
             </button>
           </div>
           <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
@@ -8248,9 +8265,359 @@ The JSON MUST follow this EXACT schema:
       "line": "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച."
     },
     "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-  }
-}
-\`\`\``;
+```;
+    }
+
+    // =============================================================
+    // GEMINI AI STORY & SHOT DIRECTOR: 3-MODE INTERACTIVE ENGINE
+    // Mode 1: Change Specific Shot (with Continuity Alert & Dual Healing)
+    // Mode 2: Change Whole Episode (Intelligent Flow Steer to Climax)
+    // Mode 3: Change Whole Season (Master 100-Shot Screenplay Engine)
+    // =============================================================
+    window.currentDirectorScopeMode = 'single_shot';
+    window.currentDirectorEvaluation = null;
+
+    function setDirectorScopeMode(mode) {
+      window.currentDirectorScopeMode = mode;
+      const shotBtn = document.getElementById('directorModeShotBtn');
+      const epBtn = document.getElementById('directorModeEpBtn');
+      const seasonBtn = document.getElementById('directorModeSeasonBtn');
+      const shotSelectWrapper = document.getElementById('directorShotSelectWrapper');
+      const epSelectWrapper = document.getElementById('directorEpSelectWrapper');
+      const hint = document.getElementById('directorModeHint');
+      const sendBtn = document.getElementById('geminiSendBtn');
+      const input = document.getElementById('geminiChatInput');
+
+      [shotBtn, epBtn, seasonBtn].forEach(btn => {
+        if (btn) {
+          btn.style.border = '1px solid #334155';
+          btn.style.background = '#080d1a';
+          btn.style.color = '#94a3b8';
+        }
+      });
+
+      if (mode === 'single_shot') {
+        if (shotBtn) {
+          shotBtn.style.border = '1px solid #3b82f6';
+          shotBtn.style.background = 'rgba(59, 130, 246, 0.2)';
+          shotBtn.style.color = '#60a5fa';
+        }
+        if (shotSelectWrapper) shotSelectWrapper.style.display = 'flex';
+        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
+        if (hint) hint.innerHTML = '📌 <b>Specific Shot Mode:</b> Updates Tab 2 & Tab 5 • Evaluates continuity vs Shot K+1';
+        if (sendBtn) sendBtn.innerHTML = '🔍 Evaluate & Check Flow';
+        if (input) input.placeholder = "Narrate your shot idea or change... (e.g. 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')";
+      } else if (mode === 'full_episode') {
+        if (epBtn) {
+          epBtn.style.border = '1px solid #6366f1';
+          epBtn.style.background = 'rgba(99, 102, 241, 0.2)';
+          epBtn.style.color = '#a5b4fc';
+        }
+        if (shotSelectWrapper) shotSelectWrapper.style.display = 'none';
+        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
+        if (hint) hint.innerHTML = '📌 <b>Whole Episode Mode:</b> Updates Tab 2 & Tab 5 • Rewrites all 10 shots with Google flow';
+        if (sendBtn) sendBtn.innerHTML = '🎬 Rewrite Episode';
+        if (input) input.placeholder = "Describe direction for the whole episode... (e.g. 'Heighten the supernatural tension at the homestay, Amal finds clues, Sachin confronts Caretaker')";
+      } else if (mode === 'season_arc') {
+        if (seasonBtn) {
+          seasonBtn.style.border = '1px solid #a855f7';
+          seasonBtn.style.background = 'rgba(168, 85, 247, 0.2)';
+          seasonBtn.style.color = '#d8b4fe';
+        }
+        if (shotSelectWrapper) shotSelectWrapper.style.display = 'none';
+        if (epSelectWrapper) epSelectWrapper.style.display = 'none';
+        if (hint) hint.innerHTML = '📌 <b>Whole Season Mode:</b> Updates Tab 5 (100 Shots), Tab 4, Tab 1 & Tab 2';
+        if (sendBtn) sendBtn.innerHTML = '🌊 Overhaul Season Script';
+        if (input) input.placeholder = "Describe overall season direction or new theme... (e.g. 'Munnar haunted heritage tea factory investigation with 10 continuous episodes')";
+      }
+    }
+
+    function onDirectorTargetChanged() {
+      const evalBox = document.getElementById('directorEvaluationContainer');
+      if (evalBox) evalBox.style.display = 'none';
+    }
+
+    async function evaluateDirectorShotChange(userIdea) {
+      const epSelect = document.getElementById('chatTargetEp');
+      const shotSelect = document.getElementById('chatTargetShot');
+      const epNum = epSelect ? parseInt(epSelect.value, 10) || 3 : 3;
+      const shotNum = shotSelect ? parseInt(shotSelect.value, 10) || 1 : 1;
+      const status = document.getElementById('geminiChatStatus');
+
+      if (status) {
+        status.style.display = 'block';
+        status.style.color = '#38bdf8';
+        status.innerText = `🔍 AI Story Director is evaluating Shot ${shotNum} and checking continuity against Shot ${shotNum + 1}...`;
+      }
+
+      let evalData = null;
+
+      // 1. Try Local Backend Bridge (/api/director/evaluate_shot)
+      try {
+        const res = await fetch("/api/director/evaluate_shot", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            episode_number: epNum,
+            shot_number: shotNum,
+            user_idea: userIdea
+          })
+        });
+        if (res.ok) {
+          evalData = await res.json();
+        }
+      } catch (err) {
+        console.warn("Bridge evaluate notice, falling back to local engine:", err);
+      }
+
+      // 2. Client-side fallback if bridge offline
+      if (!evalData || !evalData.success) {
+        evalData = clientSideEvaluateShot(epNum, shotNum, userIdea);
+      }
+
+      window.currentDirectorEvaluation = evalData;
+      renderDirectorEvaluationCard(evalData);
+
+      if (status) {
+        status.style.display = 'none';
+      }
+    }
+
+    function clientSideEvaluateShot(epNum, shotNum, userIdea) {
+      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      const currentShot = allShots.find(s => s.episode_number == epNum && s.shot_number == shotNum) || {};
+      const nextShot = allShots.find(s => s.episode_number == epNum && s.shot_number == (shotNum + 1)) || 
+                       allShots.find(s => s.episode_number == (epNum + 1) && s.shot_number == 1) || {};
+
+      let speaker = currentShot.speaker || 'Sachin';
+      for (const char of ['Sachin', 'Reenu', 'Amal', 'Caretaker', 'Narrator', 'Voice']) {
+        if (userIdea.toLowerCase().includes(char.toLowerCase())) {
+          speaker = char;
+          break;
+        }
+      }
+
+      let loc = currentShot.location || 'Homestay';
+      if (userIdea.toLowerCase().includes('car')) loc = 'Mountain road car interior';
+      else if (userIdea.toLowerCase().includes('bridge')) loc = 'Old Munnar Suspension Bridge';
+      else if (userIdea.toLowerCase().includes('room 13')) loc = 'Homestay hallway, outside Room 13';
+
+      const proposedShot = {
+        episode_number: epNum,
+        shot_number: shotNum,
+        speaker: speaker,
+        action: `Medium Shot (MS), Pixar 3D Camera: ${userIdea}. Atmospheric lighting with cold volumetric mist.`,
+        dialogue_malayalam: `${speaker}: (വെപ്രാളത്തോടെ) '${userIdea.slice(0, 35)}...'`,
+        location: loc,
+        persistent_props: currentShot.persistent_props || []
+      };
+
+      let hasInconsistency = false;
+      let inconsistencyDetails = '';
+      if (nextShot && nextShot.location) {
+        const nextLocFirst = nextShot.location.split(' ')[0].toLowerCase();
+        const curLocFirst = loc.split(' ')[0].toLowerCase();
+        if (curLocFirst !== nextLocFirst) {
+          hasInconsistency = true;
+          inconsistencyDetails = `⚠️ Physical Location Fracture: Shot ${shotNum} places characters in '${loc}', but Shot ${shotNum + 1} takes place in '${nextShot.location}'. Characters cannot instantaneously teleport without a transition.`;
+        }
+      }
+
+      return {
+        success: true,
+        episode_number: epNum,
+        shot_number: shotNum,
+        current_shot: currentShot,
+        next_shot: nextShot,
+        proposed_shot: proposedShot,
+        has_inconsistency: hasInconsistency,
+        inconsistency_details: inconsistencyDetails,
+        can_episode_steer: true,
+        recommendation: hasInconsistency ? 'EPISODE_STEER_RECOMMENDED' : 'FLOW_INTACT'
+      };
+    }
+
+    function renderDirectorEvaluationCard(evalData) {
+      const container = document.getElementById('directorEvaluationContainer');
+      if (!container) return;
+
+      const p = evalData.proposed_shot || {};
+      const epNum = evalData.episode_number;
+      const shotNum = evalData.shot_number;
+      const nextShotNum = (shotNum < 10) ? (shotNum + 1) : 1;
+      const hasInc = evalData.has_inconsistency;
+
+      container.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 16px;">🎬</span>
+            <span style="font-size: 14px; font-weight: 800; color: #fff;">
+              Proposed Revision: Episode ${epNum} • Shot #${shotNum}
+            </span>
+            <span style="font-size: 11px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
+              Speaker: ${p.speaker}
+            </span>
+          </div>
+          <button class="btn btn-secondary" onclick="dismissDirectorEvaluation()" style="padding: 4px 10px; font-size: 11px; background: rgba(255,255,255,0.06);">
+            ✕ Dismiss
+          </button>
+        </div>
+
+        <!-- Shot Action & Dialogue -->
+        <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+          <div style="font-size: 12px; color: #94a3b8; margin-bottom: 4px;">📍 <b>Location:</b> ${p.location}</div>
+          <div style="font-size: 13px; color: #e2e8f0; line-height: 1.5; margin-bottom: 8px;">
+            <b>🎬 Proposed Action:</b> ${p.action}
+          </div>
+          <div style="font-size: 13px; color: #fde047; font-family: 'Noto Sans Malayalam'; line-height: 1.4;">
+            <b>💬 സംഭാഷണം (${p.speaker}):</b> "${p.dialogue_malayalam}"
+          </div>
+        </div>
+
+        <!-- Inconsistency / Continuity Diagnostic Banner -->
+        ${hasInc ? `
+          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="font-weight: 800; color: #f87171; display: flex; align-items: center; gap: 6px; font-size: 13px;">
+              ⚠️ Continuity Fracture Detected against Shot #${nextShotNum}:
+            </div>
+            <div style="font-size: 12px; color: #fca5a5; margin-top: 4px; line-height: 1.4;">
+              ${evalData.inconsistency_details}
+            </div>
+            <div style="font-size: 11px; color: #fde047; margin-top: 6px; font-weight: 600;">
+              💡 <b>Showrunner Recommendation:</b> Use <b>Apply Episode-Wise Change</b> to smoothly reconcile intermediate shots into the Shot 10 cliffhanger, or <b>Apply Season-Wise Change</b> if this is a permanent plot pivot.
+            </div>
+          </div>
+        ` : `
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px;">
+            <div style="font-weight: 800; color: #34d399; display: flex; align-items: center; gap: 6px; font-size: 12px;">
+              ✓ Continuity Flow Intact:
+            </div>
+            <div style="font-size: 12px; color: #cbd5e1; margin-top: 2px;">
+              Transition from Shot #${shotNum} to Shot #${nextShotNum} maintains physical and character continuity.
+            </div>
+          </div>
+        `}
+
+        <!-- Dual-Mode Healing Buttons -->
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button type="button" class="btn btn-primary" onclick="applyEpisodeWiseDirectorChange()" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #2563eb, #3b82f6); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);">
+            <span style="font-size: 13px; color: #fff;">🎬 Apply Episode-Wise Change</span>
+            <span style="font-size: 11px; color: #bfdbfe; font-weight: normal; line-height: 1.3;">
+              Intelligently realigns Shots ${shotNum < 9 ? (shotNum + 1) + '–9' : '10'} to steer into existing Shot 10 cliffhanger. Preserves rest of season in Tab 5 & Tab 2!
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" onclick="applySeasonWiseDirectorChange()" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #7c3aed, #a855f7); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);">
+            <span style="font-size: 13px; color: #fff;">🌊 Apply Season-Wise Change</span>
+            <span style="font-size: 11px; color: #e9d5ff; font-weight: normal; line-height: 1.3;">
+              Modifies Shot ${shotNum} & ripples downstream (${shotNum}..100). Strictly freezes prior shots (1..${shotNum - 1}) in Tab 5 & Tab 2!
+            </span>
+          </button>
+        </div>
+      `;
+
+      container.style.display = 'block';
+    }
+
+    function dismissDirectorEvaluation() {
+      const container = document.getElementById('directorEvaluationContainer');
+      if (container) container.style.display = 'none';
+      window.currentDirectorEvaluation = null;
+    }
+
+    async function applyEpisodeWiseDirectorChange() {
+      if (!window.currentDirectorEvaluation) return;
+      const evalData = window.currentDirectorEvaluation;
+      const status = document.getElementById('geminiChatStatus');
+      if (status) {
+        status.style.display = 'block';
+        status.style.color = '#38bdf8';
+        status.innerText = "⏳ Applying Episode-Wise Change to Tab 5 & Tab 2...";
+      }
+
+      try {
+        const res = await fetch("/api/director/apply_episode_wise", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            episode_number: evalData.episode_number,
+            shot_number: evalData.shot_number,
+            proposed_shot: evalData.proposed_shot
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          alert(data.message || "✓ Successfully applied Episode-Wise Change! Tab 5 & Tab 2 updated.");
+        }
+      } catch (err) {
+        console.warn("Backend apply notice:", err);
+      }
+
+      // Update in-memory Tab 5 outline data
+      if (seasonShotOutlineData && seasonShotOutlineData.flattened_shots) {
+        const shot = seasonShotOutlineData.flattened_shots.find(
+          s => s.episode_number == evalData.episode_number && s.shot_number == evalData.shot_number
+        );
+        if (shot) {
+          Object.assign(shot, evalData.proposed_shot);
+        }
+      }
+      renderSeasonShotOutline();
+      renderShots();
+      dismissDirectorEvaluation();
+
+      if (status) {
+        status.style.color = '#34d399';
+        status.innerText = "✓ Episode-Wise Change committed to Tab 5 & Tab 2!";
+        setTimeout(() => { status.style.display = 'none'; }, 4000);
+      }
+    }
+
+    async function applySeasonWiseDirectorChange() {
+      if (!window.currentDirectorEvaluation) return;
+      const evalData = window.currentDirectorEvaluation;
+      const status = document.getElementById('geminiChatStatus');
+      if (status) {
+        status.style.display = 'block';
+        status.style.color = '#a855f7';
+        status.innerText = "⏳ Applying Season-Wise Ripple across Tab 5 (K..100) & Tab 2...";
+      }
+
+      try {
+        const res = await fetch("/api/director/apply_season_wise", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            episode_number: evalData.episode_number,
+            shot_number: evalData.shot_number,
+            proposed_shot: evalData.proposed_shot
+          })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          alert(data.message || "✓ Successfully applied Season-Wise Ripple! Tab 5 updated K..100 with preceding shots strictly frozen.");
+        }
+      } catch (err) {
+        console.warn("Backend apply notice:", err);
+      }
+
+      // Update in-memory Tab 5 outline data
+      if (seasonShotOutlineData && seasonShotOutlineData.flattened_shots) {
+        const shot = seasonShotOutlineData.flattened_shots.find(
+          s => s.episode_number == evalData.episode_number && s.shot_number == evalData.shot_number
+        );
+        if (shot) {
+          Object.assign(shot, evalData.proposed_shot);
+        }
+      }
+      renderSeasonShotOutline();
+      renderShots();
+      dismissDirectorEvaluation();
+
+      if (status) {
+        status.style.color = '#34d399';
+        status.innerText = "✓ Season-Wise Ripple committed to Tab 5 & Tab 2!";
+        setTimeout(() => { status.style.display = 'none'; }, 4000);
+      }
     }
 
     async function sendGeminiDirectorMessage() {
@@ -8263,8 +8630,15 @@ The JSON MUST follow this EXACT schema:
       const userText = (input ? input.value : '').trim();
       if (!userText) return;
 
+      // In single_shot mode, route immediately to evaluateDirectorShotChange
+      if (window.currentDirectorScopeMode === 'single_shot') {
+        evaluateDirectorShotChange(userText);
+        if (input) input.value = '';
+        return;
+      }
+
       const targetEp = epSelect ? epSelect.value : 'current';
-      let targetScope = shotSelect ? shotSelect.value : 'auto';
+      let targetScope = (window.currentDirectorScopeMode === 'full_episode') ? 'full_episode' : (shotSelect ? shotSelect.value : 'auto');
       const lower = userText.toLowerCase().trim();
 
       // =========================================================

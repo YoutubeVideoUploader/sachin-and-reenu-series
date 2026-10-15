@@ -18,14 +18,23 @@ const GITHUB_WORKFLOW = "produce_and_publish.yml";
 const GITHUB_PAT = PropertiesService.getScriptProperties().getProperty("GH_PAT") || "";
 const DRIVE_ROOT_FOLDER = "Sachin_And_Reenu_Studio";
 
-// TAB NAMES
-const TAB_STORY = "Episode_Story";
-const TAB_PROMPTS = "Current_JSON_Prompts";
-const TAB_CHECKLIST = "Video_Checklist";
-const TAB_SEASON_ARC = "Season_Story_Arc";
-const TAB_CHARACTERS = "Character_Registry";
-const TAB_PAST_PROMPTS = "Past_Episodes_Prompts";
-const TAB_SHOT_OUTLINE = "Season_Shot_Outline";
+// ==============================================================================
+// 5-TAB MASTER ARCHITECTURE
+// ==============================================================================
+// 1. TAB 1: [Episode_Story]       -> Master Episode list & statuses (derived from Tab 5)
+// 2. TAB 2: [Current_JSON_Prompts]-> Active episode Google Flow JSON prompts (compiled from Tab 4 & 5)
+// 3. TAB 3: [Video_Checklist]     -> Drive upload verification & GitHub Actions gate
+// 4. TAB 4: [Character_Registry]  -> Permanent cast database & locked season costumes (was Tab 5)
+// 5. TAB 5: [Season_Shot_Outline] -> The Core 100-Shot Master Screenplay Engine (was Tab 7)
+// ==============================================================================
+
+const TAB_STORY = "Episode_Story";             // Tab 1
+const TAB_PROMPTS = "Current_JSON_Prompts";    // Tab 2
+const TAB_CHECKLIST = "Video_Checklist";       // Tab 3
+const TAB_CHARACTERS = "Character_Registry";   // Tab 4 (formerly Tab 5)
+const TAB_SHOT_OUTLINE = "Season_Shot_Outline";// Tab 5 (formerly Tab 7) - CORE ENGINE
+const TAB_SEASON_ARC = "Season_Story_Arc";     // Deprecated (Removed in 5-tab system)
+const TAB_PAST_PROMPTS = "Past_Episodes_Prompts"; // Deprecated (Removed in 5-tab system)
 
 /**
  * Creates custom studio menu when Google Spreadsheet is opened.
@@ -37,11 +46,8 @@ function onOpen() {
       .addItem("🔄 Sync Drive Uploads Now", "menuSyncDrive")
       .addItem("📋 Re-scan Single 'Episode' Folder", "menuSyncDrive")
       .addSeparator()
-      .addItem("📁 Append Current Prompts to Past_Episodes_Prompts", "menuAppendCurrentPrompts")
-      .addItem("🗑️ Delete Episode 7 from Past_Episodes_Prompts", "menuDeleteEp7FromPastPrompts")
-      .addItem("🧹 Migrate & Clean All Old Prompts_Ep Tabs", "menuMigrateOldPromptsTabs")
-      .addSeparator()
-      .addItem("🎬 Setup 100-Shot Season Outline Tab", "menuSetupSeasonShotOutline")
+      .addItem("🧹 Reorganize to Clean 5-Tab Architecture", "reorganizeTo5TabArchitecture")
+      .addItem("🎬 Setup 100-Shot Season Outline (Tab 5)", "menuSetupSeasonShotOutline")
       .addItem("⏪ Reset Sheet: Episodes 1-9 Published (Ep 10 Active)", "resetToSeason2Episode9Published")
       .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
@@ -50,13 +56,94 @@ function onOpen() {
 }
 
 /**
- * One-click menu action to create and format Tab 7 [Season_Shot_Outline].
+ * Reorganizes the Google Spreadsheet into the clean 5-Tab Master Architecture:
+ * Deletes old Tab 4 (Season_Story_Arc) and old Tab 6 (Past_Episodes_Prompts),
+ * arranges remaining 5 tabs in canonical order:
+ * 1. Episode_Story
+ * 2. Current_JSON_Prompts
+ * 3. Video_Checklist
+ * 4. Character_Registry
+ * 5. Season_Shot_Outline
+ */
+function reorganizeTo5TabArchitecture() {
+  const ss = getStudioSpreadsheet();
+  let deletedSheets = [];
+
+  // 1. Delete deprecated old Tab 4 (Season_Story_Arc)
+  const arcSheet = ss.getSheetByName(TAB_SEASON_ARC);
+  if (arcSheet) {
+    try {
+      ss.deleteSheet(arcSheet);
+      deletedSheets.push(TAB_SEASON_ARC);
+    } catch (e) {
+      Logger.log("Could not delete TAB_SEASON_ARC: " + e);
+    }
+  }
+
+  // 2. Delete deprecated old Tab 6 (Past_Episodes_Prompts)
+  const pastSheet = ss.getSheetByName(TAB_PAST_PROMPTS);
+  if (pastSheet) {
+    try {
+      ss.deleteSheet(pastSheet);
+      deletedSheets.push(TAB_PAST_PROMPTS);
+    } catch (e) {
+      Logger.log("Could not delete TAB_PAST_PROMPTS: " + e);
+    }
+  }
+
+  // 3. Ensure the 5 canonical sheets exist
+  let storySheet = ss.getSheetByName(TAB_STORY);
+  if (!storySheet) storySheet = ss.insertSheet(TAB_STORY);
+
+  let promptSheet = ss.getSheetByName(TAB_PROMPTS);
+  if (!promptSheet) promptSheet = ss.insertSheet(TAB_PROMPTS);
+
+  let checkSheet = ss.getSheetByName(TAB_CHECKLIST);
+  if (!checkSheet) checkSheet = ss.insertSheet(TAB_CHECKLIST);
+
+  let charSheet = ss.getSheetByName(TAB_CHARACTERS);
+  if (!charSheet) charSheet = ss.insertSheet(TAB_CHARACTERS);
+
+  let shotSheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+  if (!shotSheet) shotSheet = ss.insertSheet(TAB_SHOT_OUTLINE);
+
+  // 4. Arrange in tab order 1 to 5
+  try {
+    ss.setActiveSheet(storySheet);
+    ss.moveActiveSheet(1);
+    ss.setActiveSheet(promptSheet);
+    ss.moveActiveSheet(2);
+    ss.setActiveSheet(checkSheet);
+    ss.moveActiveSheet(3);
+    ss.setActiveSheet(charSheet);
+    ss.moveActiveSheet(4);
+    ss.setActiveSheet(shotSheet);
+    ss.moveActiveSheet(5);
+  } catch (e) {
+    Logger.log("Tab order reordering note: " + e);
+  }
+
+  const msg = `Successfully reorganized to 5-Tab Architecture! Deleted [${deletedSheets.join(", ") || "none"}]. Canonical order: 1: Episode_Story, 2: Current_JSON_Prompts, 3: Video_Checklist, 4: Character_Registry, 5: Season_Shot_Outline.`;
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast(msg, "5-Tab Architecture", 6);
+  } catch (e) {}
+
+  return {
+    success: true,
+    deleted_tabs: deletedSheets,
+    tabs: [TAB_STORY, TAB_PROMPTS, TAB_CHECKLIST, TAB_CHARACTERS, TAB_SHOT_OUTLINE],
+    message: msg
+  };
+}
+
+/**
+ * One-click menu action to create and format Tab 5 [Season_Shot_Outline].
  */
 function menuSetupSeasonShotOutline() {
-  setupSeasonShotOutlineSheet(2);
+  setupSeasonShotOutlineSheet(3);
   try {
     SpreadsheetApp.getActiveSpreadsheet().toast(
-      "Tab [Season_Shot_Outline] successfully created & formatted!",
+      "Tab 5 [Season_Shot_Outline] successfully created & formatted!",
       "Success",
       5
     );
@@ -1324,17 +1411,26 @@ function cleanSlateSeasonTransition(body) {
     }
   }
 
-  // 2. Wipe & Rebuild Sheet 4: Season_Story_Arc (TAB_SEASON_ARC)
-  updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes);
+  // 2. Reorganize and ensure clean 5-Tab architecture (Deletes deprecated sheets)
+  reorganizeTo5TabArchitecture();
 
-  // 3. Wipe & Rebuild Sheet 2: Current_JSON_Prompts (TAB_PROMPTS)
+  // 3. Populate Tab 5: Season_Shot_Outline (TAB_SHOT_OUTLINE) with Master 100 Shots
   if (shots && shots.length > 0) {
-    updateJsonPromptsSheet(1, shots);
+    updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots);
   }
 
-  // 4. Sheet 3: Video_Checklist (TAB_CHECKLIST) is UNTOUCHED as requested!
+  // 4. Populate Tab 2: Current_JSON_Prompts (TAB_PROMPTS) for Episode 1
+  if (shots && shots.length > 0) {
+    const ep1Shots = shots.filter(s => (s.episode_number || 1) === 1);
+    updateJsonPromptsSheet(1, ep1Shots.length > 0 ? ep1Shots : shots.slice(0, 10));
+  }
 
-  // 5. Sheet 5: Character_Registry (TAB_CHARACTERS) - Update costumes & add new characters
+  // 5. Reset Tab 3: Video_Checklist for Episode 1
+  try {
+    resetVideoChecklistForEpisode(1);
+  } catch (e) {}
+
+  // 6. Update Tab 4: Character_Registry (TAB_CHARACTERS) - Update costumes & add new characters
   if (body.character_updates || body.new_characters) {
     try {
       let charSheet = ss.getSheetByName(TAB_CHARACTERS);
@@ -1380,7 +1476,7 @@ function cleanSlateSeasonTransition(body) {
     success: true,
     season_number: seasonNum,
     active_episode: 1,
-    message: `Season ${seasonNum} clean transition completed: Sheet 1, 4, 2 updated, Sheet 3 untouched, Sheet 5 updated.`
+    message: `Season ${seasonNum} clean transition completed: Tab 5 (100 shots), Tab 4 (Cast), Tab 1 (Episodes), Tab 2 (Prompts) initialized in clean 5-tab system.`
   };
 }
 
@@ -2322,6 +2418,13 @@ function doPost(e) {
         success: true,
         message: "Sheet reset: Episodes 1-9 Published, Episode 10 Active, Rows 12+ deleted."
       })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // 13. Reorganize Google Sheet to 5-Tab Architecture (Delete Tab 4 & Tab 6, re-order 1-5)
+    if (action === "reorganize_to_5_tabs") {
+      const res = reorganizeTo5TabArchitecture();
+      return ContentService.createTextOutput(JSON.stringify(res))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     return ContentService.createTextOutput(JSON.stringify({ error: "Unknown action" }))

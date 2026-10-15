@@ -32,6 +32,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from season_story_propagation_engine import SeasonStoryPropagationEngine
+from gemini_story_director import GeminiStoryDirector
 
 
 class StudioPortalHandler(SimpleHTTPRequestHandler):
@@ -41,13 +42,21 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
         self.workspace_root = workspace_root or REPO_ROOT
         super().__init__(*args, directory=str(self.workspace_root), **kwargs)
 
-    def _set_headers(self, status=200, content_type="application/json"):
+    def _set_headers(self, status=200, content_type="application/json; charset=utf-8", content_length=None):
         self.send_response(status)
         self.send_header("Content-Type", content_type)
+        if content_length is not None:
+            self.send_header("Content-Length", str(content_length))
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
         self.end_headers()
+
+    def _send_json(self, data, status=200):
+        body = data if isinstance(data, bytes) else json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self._set_headers(status, "application/json; charset=utf-8", len(body))
+        self.wfile.write(body)
+        self.wfile.flush()
 
     def do_OPTIONS(self):
         self._set_headers(200)
@@ -55,14 +64,12 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/api/status":
-            self._set_headers(200)
-            self.wfile.write(json.dumps({"status": "RUNNING", "engine": "SeasonStoryPropagationEngine"}).encode("utf-8"))
+            self._send_json({"status": "RUNNING", "engine": "SeasonStoryPropagationEngine"})
             return
         if parsed.path in ["/api/season_shot_outline", "/exec"] or "action=get_season_shot_outline" in parsed.query:
             outline_file = Path(self.directory) / "season_3_shot_outline.json"
             if outline_file.exists():
-                self._set_headers(200, content_type="application/json; charset=utf-8")
-                self.wfile.write(outline_file.read_bytes())
+                self._send_json(outline_file.read_bytes())
                 return
         if parsed.path in ["/", "/portal.html"]:
             portal_file = Path(self.directory) / "portal.html"
@@ -71,7 +78,7 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(content)))
-                self.send_header("Connection", "close")
+                self.send_header("Connection", "keep-alive")
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
                 self.wfile.write(content)
@@ -166,6 +173,45 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
             return
 
+        # 3c. Gemini AI Story Director: Evaluate Shot Change & Inconsistency
+        if parsed.path == "/api/director/evaluate_shot" or body.get("action") == "director_evaluate_shot":
+            try:
+                director = GeminiStoryDirector(workspace_root=self.workspace_root)
+                ep_num = int(body.get("episode_number", 1))
+                shot_num = int(body.get("shot_number", 1))
+                idea = body.get("user_idea") or body.get("idea") or ""
+                res = director.evaluate_shot_change(ep_num, shot_num, idea)
+                self._send_json(res, 200)
+            except Exception as e:
+                self._send_json({"error": str(e)}, 500)
+            return
+
+        # 3d. Gemini AI Story Director: Apply Episode-Wise Change
+        if parsed.path == "/api/director/apply_episode_wise" or body.get("action") == "director_apply_episode_wise":
+            try:
+                director = GeminiStoryDirector(workspace_root=self.workspace_root)
+                ep_num = int(body.get("episode_number", 1))
+                shot_num = int(body.get("shot_number", 1))
+                proposed = body.get("proposed_shot") or {}
+                res = director.apply_episode_wise_change(ep_num, shot_num, proposed)
+                self._send_json(res, 200)
+            except Exception as e:
+                self._send_json({"error": str(e)}, 500)
+            return
+
+        # 3e. Gemini AI Story Director: Apply Season-Wise Ripple
+        if parsed.path == "/api/director/apply_season_wise" or body.get("action") == "director_apply_season_wise":
+            try:
+                director = GeminiStoryDirector(workspace_root=self.workspace_root)
+                ep_num = int(body.get("episode_number", 1))
+                shot_num = int(body.get("shot_number", 1))
+                proposed = body.get("proposed_shot") or {}
+                res = director.apply_season_wise_change(ep_num, shot_num, proposed)
+                self._send_json(res, 200)
+            except Exception as e:
+                self._send_json({"error": str(e)}, 500)
+            return
+
         # 4. Intercept Portal's update_shot_prompt: Connect save route to propagation engine
         if parsed.path in ("/exec", "/api/save_shot") or body.get("action") == "update_shot_prompt":
             ep_num = int(body.get("episode_number", 1))
@@ -211,6 +257,7 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
 
 class StudioThreadingHTTPServer(ThreadingHTTPServer):
     daemon_threads = True
+    allow_reuse_address = True
 
 
 def create_server(host="127.0.0.1", port=8765, workspace_root=None):

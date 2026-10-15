@@ -36,7 +36,14 @@ class TestPlaywrightBrowserAcceptance(unittest.TestCase):
         - Rolls back and verifies byte-exact baseline restoration
         """
         script_path = SCRIPTS_DIR / "verify_real_browser_playwright.py"
-        res = subprocess.run([sys.executable, str(script_path)], capture_output=True, text=True, cwd=str(REPO_ROOT))
+        res = subprocess.run(
+            [sys.executable, str(script_path)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            cwd=str(REPO_ROOT)
+        )
         self.assertEqual(res.returncode, 0, f"Browser test process failed: {res.stderr}\n{res.stdout}")
 
         summary_file = REPO_ROOT / "test_reports" / "browser_acceptance" / "playwright_browser_test_summary.json"
