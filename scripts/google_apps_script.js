@@ -1124,16 +1124,22 @@ function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
 }
 
 /** Tab 1 is a direct projection of the ten episode summaries from Tab 5. */
-function updateEpisodeStoryFromOutline(seasonNum, episodes) {
+function updateEpisodeStoryFromOutline(seasonNum, episodes, preserveStatuses) {
   const ss = getStudioSpreadsheet();
   const sheet = ss.getSheetByName(TAB_STORY) || ss.insertSheet(TAB_STORY, 0);
   const headers = ["Episode_Number", "Title_English", "Title_Malayalam", "Synopsis", "Cliffhanger", "Status"];
   const items = Array.isArray(episodes) ? episodes : [];
   if (items.length !== 10) throw new Error(`Episode_Story requires 10 episodes; received ${items.length}.`);
+  const priorStatuses = {};
+  if (preserveStatuses && sheet.getLastRow() >= 2) {
+    sheet.getRange(2, 1, sheet.getLastRow() - 1, Math.min(headers.length, sheet.getLastColumn())).getValues().forEach(row => {
+      priorStatuses[Number(row[0])] = row[5] || row[4] || "Draft";
+    });
+  }
   const rows = items.map((ep, index) => [
     Number(ep.episode_number || index + 1), ep.title_english || `Episode ${index + 1}`,
     ep.title_malayalam || "", ep.synopsis || ep.story_summary || "", ep.cliffhanger || "",
-    index === 0 ? "In Progress" : "Draft"
+    preserveStatuses ? (priorStatuses[Number(ep.episode_number || index + 1)] || (index === 0 ? "In Progress" : "Draft")) : (index === 0 ? "In Progress" : "Draft")
   ]);
   sheet.clear();
   sheet.getRange(1, 1, 1, headers.length).setValues([headers])
@@ -1282,84 +1288,93 @@ function getSeasonShotOutlineData(seasonNum) {
  */
 function cleanSlateSeasonTransition(body) {
   const ss = getStudioSpreadsheet();
-  const seasonNum = parseInt(body.season_number || "2", 10);
+  const seasonNum = parseInt(body.season_number || "1", 10);
   const seasonTitle = body.season_title || `Season ${seasonNum}`;
   const episodes = body.episodes || body.season_arc || [];
-  const shots = body.shots || [];
+  const outlineShots = body.outline_shots || [];
+  const promptShots = body.shots || [];
 
-  if (episodes.length !== 10) throw new Error("Season transition requires the ten episode summaries derived from Tab 5.");
-  updateEpisodeStoryFromOutline(seasonNum, episodes);
-
-  // 2. Reorganize and ensure clean 5-Tab architecture (Deletes deprecated sheets)
-  reorganizeTo5TabArchitecture();
-
-  // 3. Populate Tab 5: Season_Shot_Outline (TAB_SHOT_OUTLINE) with Master 100 Shots
-  if (shots && shots.length === 100) {
-    updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots);
+  if (episodes.length !== 10) throw new Error("Season transition requires exactly ten episode summaries.");
+  if (outlineShots.length !== 100) throw new Error(`Season transition requires exactly 100 Tab 5 shots; received ${outlineShots.length}.`);
+  if (promptShots.length !== 10) throw new Error(`Season transition requires exactly 10 Episode 1 prompts; received ${promptShots.length}.`);
+  for (let i = 0; i < 100; i++) {
+    const shot = outlineShots[i];
+    if (Number(shot.episode_number) !== Math.floor(i / 10) + 1 || Number(shot.shot_number) !== (i % 10) + 1 || !String(shot.action || "").trim()) {
+      throw new Error(`Invalid Tab 5 outline at global shot ${i + 1}.`);
+    }
   }
-
-  // 4. Populate Tab 2: Current_JSON_Prompts (TAB_PROMPTS) for Episode 1
-  if (shots && shots.length > 0) {
-    const ep1Shots = shots.filter(s => (s.episode_number || 1) === 1);
-    updateJsonPromptsSheet(1, ep1Shots.length > 0 ? ep1Shots : shots.slice(0, 10));
-  }
-
-  // 5. Reset Tab 3: Video_Checklist for Episode 1
-  try {
-    resetVideoChecklistForEpisode(1);
-  } catch (e) {}
-
-  getCharacterRegistryData();
-  // 6. Update Tab 4: Character_Registry (TAB_CHARACTERS) - Update costumes & add new characters
-  if (body.character_updates || body.new_characters) {
-    try {
-      let charSheet = ss.getSheetByName(TAB_CHARACTERS);
-      if (charSheet && charSheet.getLastRow() >= 2) {
-        const cData = charSheet.getDataRange().getValues();
-        if (body.character_updates && Array.isArray(body.character_updates)) {
-          for (const cu of body.character_updates) {
-            for (let r = 1; r < cData.length; r++) {
-              if (cData[r][0].toString().toLowerCase() === cu.name.toString().toLowerCase()) {
-                if (cu.attire || cu.locked_attire) charSheet.getRange(r + 1, 4).setValue(cu.attire || cu.locked_attire);
-                if (cu.visual_dna) charSheet.getRange(r + 1, 3).setValue(cu.visual_dna);
-              }
-            }
-          }
-        }
-        if (body.new_characters && Array.isArray(body.new_characters)) {
-          const existingNames = cData.slice(1).map(r => r[0].toString().toLowerCase());
-          for (const nc of body.new_characters) {
-            const cName = nc.name || "New Character";
-            if (!existingNames.includes(cName.toLowerCase())) {
-              charSheet.appendRow([
-                cName,
-                nc.role || "Supporting Character",
-                `Season ${seasonNum} • Ep 1`,
-                "Active",
-                nc.visual_dna || "Stylized 3D Pixar cartoon character (Strictly non-human realism)",
-                nc.locked_attire || "Locked signature costume (100% consistent across shots)",
-                nc.voice_persona || "Malayalam voice"
-              ]);
-              const newRowIdx = charSheet.getLastRow();
-              charSheet.getRange(newRowIdx, 4).setBackground("#dcfce7").setFontColor("#15803d").setFontWeight("bold");
-              existingNames.push(cName.toLowerCase());
-            }
-          }
-        }
-      }
-    } catch (e) {
-      Logger.log("Error updating Character_Registry: " + e.toString());
+  const registryChanges = [...(body.character_updates || []), ...(body.new_characters || [])];
+  for (const character of registryChanges) {
+    const attire = character.locked_attire || character.attire || "";
+    if (/\b(saree|sari|kurti|dhoti|traditional|ethnic wear)\b/i.test(String(attire))) {
+      throw new Error(`Character Registry attire for ${character.name || character.character_name || "a character"} must use modern casual streetwear.`);
     }
   }
 
-  getCharacterRegistryData(); // Normalize newly appended legacy-shaped rows to the canonical six-column registry.
+  // Validate first, then clear prior season state before any new season data is written.
+  reorganizeTo5TabArchitecture();
+  [TAB_STORY, TAB_PROMPTS, TAB_SHOT_OUTLINE].forEach(name => {
+    const sheet = ss.getSheetByName(name);
+    if (sheet) sheet.clear();
+  });
+
+  // Required write order: Tab 5, Tab 4, Tab 1, then Tab 2.
+  updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, outlineShots);
+  const castResult = syncCharacterRegistry({
+    season_number: seasonNum,
+    character_updates: body.character_updates || [],
+    new_characters: body.new_characters || []
+  });
+  if (!castResult.success) throw new Error("Character Registry update failed.");
+  updateEpisodeStoryFromOutline(seasonNum, episodes);
+  updateJsonPromptsSheet(1, promptShots);
+  resetVideoChecklistForEpisode(1);
 
   return {
     success: true,
     season_number: seasonNum,
     active_episode: 1,
-    message: `Season ${seasonNum} clean transition completed: Tab 5 (100 shots), Tab 4 (Cast), Tab 1 (Episodes), Tab 2 (Prompts) initialized in clean 5-tab system.`
+    message: `Season ${seasonNum} transition completed: cleared Tabs 1, 2, and 5; wrote Tab 5 outline, Tab 4 cast, Tab 1 episodes, and Tab 2 Episode 1 prompts.`
   };
+}
+
+function applyDirectorOutlineChange(body) {
+  const seasonNum = parseInt(body.season_number || "1", 10);
+  const pivot = Number(body.pivot_global_shot_id || 1);
+  const shots = body.shots || [];
+  const episodes = body.episodes || [];
+  const prompts = body.prompts || [];
+  const activeEpisode = Number(body.active_episode || 1);
+  if (shots.length !== 100 || episodes.length !== 10 || prompts.length !== 10) {
+    throw new Error("Director update requires the full 100-shot outline, ten episode records, and ten active-episode prompts.");
+  }
+  if (pivot < 1 || pivot > 100 || activeEpisode < 1 || activeEpisode > 10) throw new Error("Director pivot or active episode is outside the season.");
+  for (let i = 0; i < 100; i++) {
+    if (Number(shots[i].episode_number) !== Math.floor(i / 10) + 1 || Number(shots[i].shot_number) !== (i % 10) + 1) {
+      throw new Error(`Director update has an invalid Tab 5 position at shot ${i + 1}.`);
+    }
+  }
+  for (let i = 0; i < 10; i++) {
+    if (Number(episodes[i].episode_number) !== i + 1 || Number(prompts[i].shot_number) !== i + 1 || !prompts[i].json_prompt) {
+      throw new Error(`Director update is missing valid Episode ${activeEpisode} prompt or episode data at item ${i + 1}.`);
+    }
+  }
+  const prior = getSeasonShotOutlineData(seasonNum).shots;
+  if (prior.length !== 100) throw new Error("Tab 5 must contain 100 shots before a director edit can be applied.");
+  for (let i = 0; i < pivot - 1; i++) {
+    if (String(shots[i].action || "") !== String(prior[i].action || "") ||
+        String(shots[i].dialogue_malayalam || "") !== String(prior[i].dialogue_malayalam || "") ||
+        String(shots[i].location || "") !== String(prior[i].location || "") ||
+        String(shots[i].speaker || "") !== String(prior[i].speaker || "") ||
+        JSON.stringify(shots[i].persistent_props || []) !== JSON.stringify(prior[i].persistent_props || []) ||
+        String(shots[i].camera_hint || "") !== String(prior[i].camera_hint || "")) {
+      throw new Error(`Director update attempted to alter frozen shot ${i + 1}.`);
+    }
+  }
+  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots);
+  updateEpisodeStoryFromOutline(seasonNum, episodes, true);
+  updateJsonPromptsSheet(activeEpisode, prompts);
+  return { success: true, season_number: seasonNum, active_episode: activeEpisode, pivot_global_shot_id: pivot, message: `Director changes from shot ${pivot} saved to Tab 5, Tab 1, and Tab 2.` };
 }
 
 function getSeasonStoryArcData() {
@@ -2273,6 +2288,11 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
+    if (action === "apply_director_outline_change") {
+      const res = applyDirectorOutlineChange(body);
+      return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
+    }
+
     if (action === "update_episode_story_from_outline") {
       const res = updateEpisodeStoryFromOutline(body.season_number || 1, body.episodes || []);
       return ContentService.createTextOutput(JSON.stringify(res))
@@ -2317,6 +2337,11 @@ function triggerGitHubWorkflowFromAppsScript(params) {
   params = params || {};
   const token = params.gh_token || PropertiesService.getScriptProperties().getProperty("GH_PAT") || GITHUB_PAT;
   const epNum = parseInt(params.episode_number || "1", 10);
+  const workflow = String(params.workflow || "produce_and_publish.yml");
+  const allowedWorkflows = ["generate_next_episode.yml", "produce_and_publish.yml", "harmonize_season_flow.yml"];
+  if (!allowedWorkflows.includes(workflow)) {
+    return { success: false, error: "INVALID_WORKFLOW", message: `Workflow ${workflow} is not allowed.` };
+  }
 
   if (!token || token === "YOUR_GITHUB_PAT_HERE") {
     return {
@@ -2327,7 +2352,7 @@ function triggerGitHubWorkflowFromAppsScript(params) {
   }
 
   // 1. Try workflow_dispatch
-  const dispatchUrl = `https://api.github.com/repos/${GITHUB_REPO}/actions/workflows/${GITHUB_WORKFLOW}/dispatches`;
+  const dispatchUrl = `https://api.github.com/repos/${GITHUB_REPO}/actions/workflows/${workflow}/dispatches`;
   try {
     const res = UrlFetchApp.fetch(dispatchUrl, {
       method: "post",
@@ -2339,7 +2364,15 @@ function triggerGitHubWorkflowFromAppsScript(params) {
       },
       payload: JSON.stringify({
         ref: "main",
-        inputs: {
+        inputs: workflow === "generate_next_episode.yml" ? {
+          target_episode: String(params.target_episode || "1"),
+          season_number: String(params.season_number || "1"),
+          is_new_season: String(params.is_new_season === true || params.is_new_season === "true"),
+          story_premise: String(params.story_premise || "")
+        } : workflow === "harmonize_season_flow.yml" ? {
+          season_number: String(params.season_number || "1"),
+          use_ai_review: String(params.use_ai_review !== false && params.use_ai_review !== "false")
+        } : {
           force_run: true,
           advance_to_next: false
         }
@@ -2353,7 +2386,7 @@ function triggerGitHubWorkflowFromAppsScript(params) {
         success: true,
         method: "workflow_dispatch",
         status_code: code,
-        message: `GitHub Actions workflow [${GITHUB_WORKFLOW}] triggered successfully by Google Apps Script for Episode ${epNum}!`
+        message: `GitHub Actions workflow [${workflow}] triggered successfully by Google Apps Script for Episode ${epNum}!`
       };
     }
 

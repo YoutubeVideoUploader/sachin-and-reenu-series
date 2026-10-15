@@ -1421,6 +1421,15 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
     print(f"\nUpdating Google Sheet with Season {season_num} Episode {episode_data['episode_number']} prompts & roadmap...")
     
     action_name = "clean_slate_season_transition" if is_new_season else "update_next_episode_full"
+    outline_shots = []
+    if is_new_season:
+        outline_path = Path(f"season_{season_num}_shot_outline.json")
+        if not outline_path.exists():
+            raise FileNotFoundError(f"New-season outline missing: {outline_path}")
+        with outline_path.open("r", encoding="utf-8") as outline_file:
+            outline_shots = json.load(outline_file).get("flattened_shots", [])
+        if len(outline_shots) != 100:
+            raise ValueError(f"New-season transition needs 100 Tab 5 shots; found {len(outline_shots)}.")
     payload = {
         "action": action_name,
         "season_number": season_num,
@@ -1428,6 +1437,7 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
         "season_title": season_title,
         "season_arc": season_arc,
         "episodes": season_arc,
+        "outline_shots": outline_shots,
         "character_updates": episode_data.get("character_updates", []),
         "new_characters": episode_data.get("new_characters_introduced", []),
         "episode_number": episode_data["episode_number"],
@@ -1449,34 +1459,17 @@ def sync_new_episode_to_google_sheet(gas_url, episode_data):
         ]
     }
     
-    # 1. Try POST with text/plain
+    # A destructive season transition must fail visibly if Apps Script does not confirm it.
     try:
         res = requests.post(gas_url, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=45)
-        if res.status_code == 200:
-            res_json = {}
-            try:
-                res_json = res.json()
-            except Exception:
-                pass
-            if res_json.get("error") == "Unknown action" and is_new_season:
-                print("clean_slate_season_transition not recognized on older GAS deployment, falling back to update_next_episode_full...")
-                payload["action"] = "update_next_episode_full"
-                res = requests.post(gas_url, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=45)
-            print(f"✓ Google Sheet updated via POST: HTTP {res.status_code}")
-            return True
-        else:
-            print(f"POST returned HTTP {res.status_code}, falling back to GET sync...")
+        res.raise_for_status()
+        result = res.json()
+        if result.get("success") is not True:
+            raise RuntimeError(f"Apps Script did not confirm sheet update: {result}")
+        print(f"? Google Sheet transition confirmed: {result.get('message', 'updated')}")
+        return True
     except Exception as e:
-        print(f"Notice on POST sync: {e}, falling back to GET sync...")
-        
-    # 2. Resilient GET fallback
-    try:
-        sync_url = f"{gas_url}?action=sync_from_github&episode={episode_data['episode_number']}"
-        res2 = requests.get(sync_url, timeout=30)
-        print(f"✓ Google Sheet synced from GitHub via GET: HTTP {res2.status_code}")
-        return res2.status_code == 200
-    except Exception as e:
-        print(f"Warning: Failed to update Google Sheet: {e}")
+        print(f"Warning: Google Sheet update was not confirmed: {e}")
         return False
 
 def update_creator_portal(episode_data):
@@ -1967,7 +1960,9 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
         "total_episodes": 10,
         "total_shots": len(flattened_shots),
         "episodes": episodes,
-        "flattened_shots": flattened_shots
+        "flattened_shots": flattened_shots,
+        "character_updates": character_updates or [],
+        "new_characters": new_characters or []
     }
 
     out_fn = f"season_{season_number}_shot_outline.json"
@@ -1988,36 +1983,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
         except Exception as e:
             print(f"Notice saving outline to story_state.json: {e}")
 
-    target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
-    if target_gas:
-        try:
-            # Tab 5 is the master screenplay source of truth.
-            p7 = {
-                "action": "save_season_shot_outline",
-                "season_number": season_number,
-                "season_title": season_title,
-                "shots": flattened_shots
-            }
-            r7 = requests.post(target_gas, data=json.dumps(p7), headers={"Content-Type": "text/plain"}, timeout=45)
-            print(f"✓ Google Sheet Tab 5 [Season_Shot_Outline] updated with {len(flattened_shots)} shots! (HTTP {r7.status_code})")
-
-            # Tab 1 is derived from the Tab 5 season outline.
-            p4 = {
-                "action": "update_episode_story_from_outline",
-                "season_number": season_number,
-                "season_title": season_title,
-                "episodes": arc_summaries
-            }
-            r4 = requests.post(target_gas, data=json.dumps(p4), headers={"Content-Type": "text/plain"}, timeout=30)
-            print(f"✓ Google Sheet Tab 1 [Episode_Story] synchronized from the outline! (HTTP {r4.status_code})")
-            requests.post(target_gas, data=json.dumps({
-                "action": "sync_character_registry",
-                "season_number": season_number,
-                "character_updates": character_updates or [],
-                "new_characters": new_characters or []
-            }), headers={"Content-Type": "text/plain"}, timeout=30)
-        except Exception as e:
-            print(f"Notice syncing outline to Sheet: {e}")
+    # Sheet writes happen once after validation through the ordered transition action.
 
     return outline_payload
 
@@ -2120,6 +2086,21 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
         "calculated_runtime_display": f"{len(compiled_shots) * 6 // 60}m {len(compiled_shots) * 6 % 60:02d}s",
         "shots": compiled_shots
     }
+    if is_new:
+        ep_data["season_arc"] = [
+            {
+                "season_number": season_number,
+                "episode_number": int(ep.get("episode_number", i + 1)),
+                "title_english": ep.get("title_english", f"Episode {i + 1}"),
+                "title_malayalam": ep.get("title_malayalam", ""),
+                "status": "Active" if i == 0 else "Upcoming",
+                "synopsis": ep.get("synopsis", ""),
+                "cliffhanger": ep.get("cliffhanger", "")
+            }
+            for i, ep in enumerate(episodes)
+        ]
+        ep_data["character_updates"] = outline_data.get("character_updates", [])
+        ep_data["new_characters_introduced"] = outline_data.get("new_characters", [])
 
     # Save to disk
     with open("current_episode_shots.json", "w", encoding="utf-8") as f:
@@ -2148,7 +2129,9 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
     # Sync to Google Sheet (Tab 2, Tab 1)
     target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL") or DEFAULT_GAS_URL
     if target_gas:
-        sync_new_episode_to_google_sheet(target_gas, ep_data)
+        sheet_sync_ok = sync_new_episode_to_google_sheet(target_gas, ep_data)
+        if is_new and not sheet_sync_ok:
+            raise RuntimeError("New-season Google Sheet transition was not confirmed; refusing to report the workflow as complete.")
 
     return ep_data
 
