@@ -7044,7 +7044,22 @@
       const statusBadge = document.getElementById("outlineShotCountDisplay");
       if (statusBadge) statusBadge.innerText = "⏳ Loading from Tab 7...";
       try {
-        const sNum = (seasonStoryData && seasonStoryData.season_number) ? seasonStoryData.season_number : 2;
+        const sNum = (seasonStoryData && seasonStoryData.season_number) ? seasonStoryData.season_number : 3;
+
+        // Try local bridge endpoint first if running
+        try {
+          const bridgeRes = await fetch(getBridgeApiUrl('/api/season_shot_outline'), { signal: AbortSignal.timeout(2000) });
+          if (bridgeRes.ok) {
+            const bData = await bridgeRes.json();
+            if (bData && ((bData.shots && bData.shots.length > 0) || (bData.flattened_shots && bData.flattened_shots.length > 0))) {
+              seasonShotOutlineData = bData;
+              renderSeasonShotOutline();
+              return;
+            }
+          }
+        } catch (_) {}
+
+        // Fetch from Google Apps Script Tab 7 [Season_Shot_Outline]
         const res = await fetch(getActiveGasUrl() + "?action=get_season_shot_outline&season=" + sNum);
         if (res.ok) {
           const data = await res.json();

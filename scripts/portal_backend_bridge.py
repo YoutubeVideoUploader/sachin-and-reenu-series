@@ -58,7 +58,7 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
             self._set_headers(200)
             self.wfile.write(json.dumps({"status": "RUNNING", "engine": "SeasonStoryPropagationEngine"}).encode("utf-8"))
             return
-        if parsed.path == "/exec" or "action=get_season_shot_outline" in parsed.query:
+        if parsed.path in ["/api/season_shot_outline", "/exec"] or "action=get_season_shot_outline" in parsed.query:
             outline_file = Path(self.directory) / "season_3_shot_outline.json"
             if outline_file.exists():
                 self._set_headers(200, content_type="application/json; charset=utf-8")

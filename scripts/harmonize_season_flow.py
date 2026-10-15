@@ -218,6 +218,29 @@ class SeasonFlowHarmonizer:
         except Exception as e:
             print(f"  [Notice] update_portals notice: {e}")
 
+        # 4. Synchronize Google Sheet Tab 7 [Season_Shot_Outline]
+        gas_url = os.getenv("GAS_WEBHOOK_URL") or "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+        try:
+            import requests
+            tab7_payload = {
+                "action": "save_season_shot_outline",
+                "season_number": season_number,
+                "season_title": f"Season {season_number}: The Munnar Trip (മൂന്നാർ യാത്ര)",
+                "shots": flattened
+            }
+            res_tab7 = requests.post(
+                gas_url,
+                data=json.dumps(tab7_payload),
+                headers={"Content-Type": "text/plain"},
+                timeout=45
+            )
+            if res_tab7.status_code == 200:
+                print(f"✓ Synchronized Google Sheet Tab 7 [Season_Shot_Outline] with {len(flattened)} shots!")
+            else:
+                print(f"  [Notice] Google Sheet Tab 7 sync HTTP {res_tab7.status_code}")
+        except Exception as ge:
+            print(f"  [Notice] Google Sheet Tab 7 sync notice: {ge}")
+
         # 4. Save detailed audit report
         report_payload = {
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
