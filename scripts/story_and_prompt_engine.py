@@ -34,6 +34,12 @@ try:
 except ImportError:
     repair_json = None
 
+try:
+    from universal_continuity_engine import compile_single_shot_prompt, UniversalSceneTracker, MASTER_STYLE
+except ImportError:
+    sys.path.append(str(Path(__file__).parent))
+    from universal_continuity_engine import compile_single_shot_prompt, UniversalSceneTracker, MASTER_STYLE
+
 DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
 
 # Stylized 3D Cartoon Animation Character Visual DNA Constants (Teenagers 18-19yo, Strictly Non-Chibi)
@@ -2047,225 +2053,28 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
         }
 
     raw_shots = target_ep_obj.get("shots", [])
-    active_dna_map = get_active_character_dna_map(season_number)
-
-    known_chars = ["Sachin", "Reenu", "Renu", "Amal", "Caretaker", "Shopkeeper", "Kurian", "Annamma", "Madhavan", "Girija", "Broker Shaji", "Varghese"]
+    tracker = UniversalSceneTracker()
     compiled_shots = []
 
     for idx, s in enumerate(raw_shots, start=1):
-        s_action = s.get("action", "")
-        s_speaker = s.get("speaker", "Third-Person Narrator")
+        s_action = s.get("action") or s.get("action_summary") or ""
+        s_speaker = s.get("speaker") or s.get("character") or "Amal"
         s_diag = s.get("dialogue_malayalam") or s.get("dialogue") or ""
-        s_loc = s.get("location", "Kochi, Kerala")
-        s_camera = s.get("camera_hint") or s.get("camera") or "Dynamic cinematic 3D medium shot"
+        s_loc = s.get("location") or "Mountain road car interior"
+        s_props = s.get("persistent_props") or ["Car steering wheel", "Rearview mirror", "Car keys"]
+        s_camera = s.get("camera_hint") or s.get("camera")
 
-        # Detect characters present
-        present_names = []
-        action_lower = s_action.lower()
-        speaker_lower = s_speaker.lower()
-
-        if "sachin" in action_lower or "sachin" in speaker_lower:
-            present_names.append("Sachin")
-        if "renu" in action_lower or "reenu" in action_lower or "renu" in speaker_lower or "reenu" in speaker_lower:
-            present_names.append("Reenu")
-        if "amal" in action_lower or "amal" in speaker_lower:
-            present_names.append("Amal")
-        if "caretaker" in action_lower or "caretaker" in speaker_lower:
-            present_names.append("Caretaker")
-        if "shopkeeper" in action_lower or "shopkeeper" in speaker_lower:
-            present_names.append("Shopkeeper")
-
-        for c in ["Kurian", "Annamma", "Madhavan", "Girija", "Broker Shaji", "Varghese"]:
-            if c.lower() in action_lower or c.lower() in speaker_lower:
-                if c not in present_names:
-                    present_names.append(c)
-
-        if not present_names:
-            present_names = ["Sachin", "Reenu"]
-
-        characters_present = []
-        blocking = {}
-        loc_upper = s_loc.upper()
-        # Contextual spatial blocking and eyeline direction
-        eyeline = "Characters looking attentively toward scene focal action"
-        if "CAR" in loc_upper:
-            for c in present_names:
-                if c == "Amal":
-                    blocking["Amal"] = "Driver seat, hands on steering wheel / checking phone GPS"
-                elif c == "Sachin":
-                    blocking["Sachin"] = "Front passenger seat, leaning forward with itinerary / looking ahead"
-                elif c == "Reenu":
-                    blocking["Reenu"] = "Rear passenger seat, looking out through misty car window"
-                else:
-                    blocking[c] = "Inside car reacting to journey"
-            if "Amal" in present_names and "Sachin" in present_names:
-                eyeline = "Amal and Sachin exchanging glances over the route, Reenu looking out misty window"
-        elif "LIVING" in loc_upper:
-            for c in present_names:
-                if c == "Sachin":
-                    blocking["Sachin"] = "Screen-center holding travel map / itinerary excitedly"
-                elif c == "Reenu":
-                    blocking["Reenu"] = "Screen-left reacting with surprise and warm smile"
-                elif c == "Amal":
-                    blocking["Amal"] = "Screen-right doorway entering holding car keys with comedic annoyed expression"
-                else:
-                    blocking[c] = "Screen-center reacting to conversation"
-            eyeline = "Characters actively looking at each other during animated conversation"
-        elif "BEDROOM" in loc_upper:
-            for c in present_names:
-                if c == "Sachin":
-                    blocking["Sachin"] = "Screen-center packing suitcase with flower bouquet"
-                elif c == "Reenu":
-                    blocking["Reenu"] = "Screen-left doorway watching affectionately"
-                else:
-                    blocking[c] = "In room reacting"
-            eyeline = "Sachin looking smiling at flower bouquet and suitcase"
-        else:
-            for b_idx, c in enumerate(present_names):
-                pos = ["Screen-center", "Screen-left", "Screen-right", "Background"][b_idx % 4]
-                blocking[c] = f"{pos} reacting expressively to scene action"
-
-        for c in present_names:
-            if c == "Caretaker":
-                c_dna = DNA_CARETAKER
-            elif c == "Shopkeeper":
-                c_dna = DNA_SHOPKEEPER
-            else:
-                c_dna = active_dna_map.get(c, DNA_REGISTRY.get(c, f"{c}: Stylized 3D Pixar character"))
-            characters_present.append({"name": c, "visual_dna": c_dna})
-
-        scene_clean_loc = re.sub(r'[^A-Za-z0-9]+', '_', s_loc).upper()[:22]
-        
-        if season_number == 3:
-            if any(k in loc_upper for k in ["ROAD", "CAR", "MOUNTAIN", "PLANTATION", "TEA"]):
-                time_of_day = "Late Afternoon Misty Mountain Atmosphere"
-                weather = "Cool misty high-range fog drifting through pine trees"
-                lighting = "Diffused cinematic mountain daylight through cool high-range fog"
-            elif any(k in loc_upper for k in ["HOMESTAY", "LOCKED ROOM", "FACTORY", "BRIDGE", "HALLWAY"]):
-                time_of_day = "Eerie Chilly High-Range Dusk"
-                weather = "Misty drafts filtering through window slats"
-                lighting = "Moody atmospheric amber lampglow with deep cinematic shadows"
-            else:
-                time_of_day = "Warm Ambient Indoor Daytime"
-                weather = "Calm interior ambiance"
-                lighting = "Soft warm domestic ambient lighting with cozy room tones"
-        else:
-            time_of_day = "Late Afternoon Monsoon Dusk"
-            weather = "Continuous Kochi monsoon drizzle with soft humid atmosphere"
-            lighting = "Soft natural overcast exterior daylight with warm interior amber glow"
-
-        # Expand persistent props
-        raw_props = s.get("persistent_props") or []
-        expanded_props = []
-        for p in raw_props:
-            p_low = p.lower()
-            if "map" in p_low:
-                expanded_props.append("Sachin's unfolded travel map")
-            elif "suitcase" in p_low:
-                expanded_props.append("Open travel suitcase")
-            elif "itinerary" in p_low:
-                expanded_props.append("Romantic Munnar travel itinerary sheet in Sachin's hand")
-            elif "key" in p_low:
-                expanded_props.append("Set of car keys in Amal's hand")
-            elif "flower" in p_low or "bouquet" in p_low:
-                expanded_props.append("Fresh flower bouquet in Sachin's hand")
-            elif "phone" in p_low or "smart" in p_low:
-                expanded_props.append("Amal's smartphone running GPS navigation app")
-            elif "steer" in p_low:
-                expanded_props.append("Car steering wheel")
-            elif "window" in p_low:
-                expanded_props.append("Misty car passenger window with water droplets")
-            elif "car" in p_low:
-                expanded_props.append("Car interior dashboard")
-            elif "photo" in p_low:
-                expanded_props.append("Mysterious vintage photograph")
-            else:
-                expanded_props.append(p)
-        if "Sachin" in present_names and "Sachin's brown leather cross-bag" not in expanded_props:
-            expanded_props.append("Sachin's brown leather cross-bag")
-        if "Reenu" in present_names and "Reenu's silver wrist watch" not in expanded_props:
-            expanded_props.append("Reenu's silver wrist watch")
-
-        seq_cont = {
-            "scene_id": f"SCENE_{scene_clean_loc}",
-            "time_of_day": time_of_day,
-            "lighting_palette": lighting,
-            "weather": weather,
-            "spatial_blocking": blocking,
-            "eyeline_direction": eyeline,
-            "persistent_props": expanded_props,
-            "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        }
-
-        speaker_display = s_speaker.strip()
-        if speaker_display.lower() in ["renu", "reenu"]:
-            speaker_display = "Reenu"
-
-        is_narrator = speaker_display.lower() in ["narrator", "third-person narrator", "third person narrator", "voiceover", "voice-over"]
-
-        if is_narrator:
-            speaker_name = "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)"
-            voice_p = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
-            perspective = "Third-Person Narrator"
-            action_text = f"{s_action.strip()} PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation."
-            audio_text = (
-                "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
-                "All characters maintain strictly closed lips with zero talking or mouth animation. "
-                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
-                "Clean voiceover audio and natural ambient foley sound effects only."
-            )
-        else:
-            speaker_name = speaker_display
-            perspective = f"Character Dialogue ({speaker_display} Speaking)"
-            if speaker_display == "Sachin":
-                voice_p = "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')"
-            elif speaker_display == "Reenu":
-                voice_p = "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
-            elif speaker_display == "Amal":
-                voice_p = "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')"
-            elif speaker_display == "Shopkeeper":
-                voice_p = "Tea Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone"
-            elif speaker_display == "Caretaker":
-                voice_p = "Sreedharan (The Caretaker): Deep raspy mysterious high-range Malayalam tone (Central Travancore / Idukki dialect)"
-            else:
-                voice_p = f"{speaker_display}: Native Malayalam expressive character voice"
-
-            action_text = f"{s_action.strip()} {speaker_display} actively speaks their dialogue on screen with natural animated lip movement, authentic facial expressions, and speech sync. Other characters present listen and react expressively."
-            audio_text = (
-                f"CHARACTER DIALOGUE SPOKEN BY {speaker_display.upper()} ON SCREEN. "
-                f"{speaker_display} speaks directly with clear character voice and synchronized animated lip movement. "
-                "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
-                "Clean character dialogue and natural ambient foley sound effects only."
-            )
-
-        json_prompt = {
-            "style": MASTER_STYLE,
-            "duration": "6s",
-            "perspective": perspective,
-            "characters_present": characters_present,
-            "sequence_continuity": seq_cont,
-            "location": s_loc,
-            "camera": s_camera,
-            "action": action_text,
-            "dialogue": {
-                "speaker": speaker_name,
-                "voice_persona": voice_p,
-                "language": "Malayalam",
-                "script": s_diag,
-                "line": s_diag
-            },
-            "audio_directive": audio_text
-        }
-
-        compiled_shots.append({
-            "shot_number": idx,
-            "duration": "6s",
-            "duration_seconds": 6,
-            "character": speaker_display,
-            "dialogue_malayalam": s_diag,
-            "action_summary": s_action,
-            "json_prompt": json_prompt
-        })
+        c_shot = compile_single_shot_prompt(
+            shot_num=s.get("shot_number", idx),
+            speaker=s_speaker,
+            dialogue_malayalam=s_diag,
+            action=s_action,
+            location=s_loc,
+            persistent_props=s_props,
+            camera_hint=s_camera,
+            scene_tracker=tracker
+        )
+        compiled_shots.append(c_shot)
 
     is_new = (target_ep == 1 and season_number > 1)
     ep_data = {
@@ -2314,160 +2123,92 @@ def compile_episode_prompts_from_outline(season_number, target_ep, outline_file=
 
     return ep_data
 
-def reharmonize_outline_from_pivot(season_number, pivot_ep, pivot_shot, new_action, new_dialogue, outline_file=None, gas_url=None):
+def reharmonize_outline_from_pivot(
+    season_number=3,
+    pivot_ep=1,
+    pivot_shot=1,
+    new_action="",
+    new_dialogue="",
+    outline_file=None,
+    gas_url=None,
+    auto_commit=True,
+    workspace_root=None,
+    pivot_episode=None,
+    pivot_action=None,
+    pivot_dialogue=None
+):
     """
     Ripples a story change at (pivot_ep, pivot_shot) through all subsequent shots
-    up to Episode 10 Climax so the entire season remains causally unbroken.
+    up to Episode 10 Climax using the Season-Wide Butterfly-Effect Story Propagation Engine.
+    Guarantees causal dependency graph reachability, dialogue immutability in unaffected shots,
+    alternative Grand Finale derivation, and pre-commit rollback snapshots.
     """
-    fn = outline_file or f"season_{season_number}_shot_outline.json"
-    if not os.path.exists(fn):
-        raise FileNotFoundError(f"Master outline {fn} not found.")
+    pivot_ep = pivot_episode if pivot_episode is not None else pivot_ep
+    new_action = pivot_action if pivot_action is not None else new_action
+    new_dialogue = pivot_dialogue if pivot_dialogue is not None else new_dialogue
 
-    with open(fn, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    try:
+        from season_story_propagation_engine import SeasonStoryPropagationEngine
+    except ImportError:
+        sys.path.append(str(Path(__file__).parent))
+        from season_story_propagation_engine import SeasonStoryPropagationEngine
 
-    flat_shots = data.get("flattened_shots", [])
-    # Normalize existing shot numbers
-    for s in flat_shots:
-        try:
-            raw_s = int(s.get("shot_number", 1))
-            s["shot_number"] = ((raw_s - 1) % 10) + 1
-        except Exception:
-            pass
+    outline_path = Path(outline_file) if outline_file else None
+    ws_root = Path(workspace_root) if workspace_root else None
+    engine = SeasonStoryPropagationEngine(workspace_root=ws_root, outline_path=outline_path)
 
-    pivot_idx = -1
-    for i, s in enumerate(flat_shots):
-        try:
-            s_ep = int(s.get("episode_number", 0))
-            s_shot = int(s.get("shot_number", 0))
-        except Exception:
-            continue
-        if s_ep == pivot_ep and s_shot == pivot_shot:
-            pivot_idx = i
-            break
+    print(f"\n[SSPE] Proposing season edit for Season {season_number} Episode {pivot_ep} Shot {pivot_shot}...")
+    report = engine.propose_season_edit(
+        season_number=season_number,
+        episode_number=pivot_ep,
+        shot_number=pivot_shot,
+        new_action=new_action,
+        new_dialogue=new_dialogue,
+        user_notes="Re-harmonization from story_and_prompt_engine"
+    )
 
-    if pivot_idx == -1:
-        raise ValueError(f"Shot (Ep {pivot_ep}, Shot {pivot_shot}) not found in outline.")
+    print(engine.format_11_point_report(report))
+    rev_id = report["revision_id"]
 
-    # Apply pivot edit
-    flat_shots[pivot_idx]["action"] = new_action
-    flat_shots[pivot_idx]["dialogue_malayalam"] = new_dialogue
+    if not auto_commit:
+        return {
+            "success": True,
+            "revision_id": rev_id,
+            "report": report
+        }
 
-    locked_history = flat_shots[:pivot_idx + 1]
-    subsequent_shots = flat_shots[pivot_idx + 1:]
+    print(f"\n[SSPE] Committing approved revision `{rev_id}` to canonical season outline...")
+    commit_res = engine.approve_and_commit(rev_id)
+    print(f"✓ {commit_res['message']}")
 
-    if not subsequent_shots:
-        print("Pivot shot is the final shot of the season. No subsequent shots to re-harmonize.")
-        with open(fn, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        return data
-
-    client = get_gemini_client()
-    candidate_models = [
-        "gemini-3.5-flash",
-        "gemini-3-flash-preview",
-        "gemini-3.1-flash-lite",
-        "gemini-3.1-flash-lite-preview",
-        "gemini-3.8-flash",
-        "gemini-flash-latest"
-    ]
-
-    history_summary = "\n".join([
-        f"[Ep {s['episode_number']} Shot {s['shot_number']}]: {s['action']} | Line: '{s['dialogue_malayalam']}'"
-        for s in locked_history[-10:] # last 10 established shots
-    ])
-
-    subsequent_summary = "\n".join([
-        f"[Ep {s['episode_number']} Shot {s['shot_number']}]: {s['action']} | Line: '{s['dialogue_malayalam']}'"
-        for s in subsequent_shots
-    ])
-
-    prompt = f"""You are the Master Showrunner for 'Sachin & Reenu' (Season {season_number}).
-A major story change occurred at Episode {pivot_ep} Shot {pivot_shot}:
-- New Action: {new_action}
-- New Dialogue: {new_dialogue}
-
-RECENT ESTABLISHED HISTORY LEADING UP TO THIS PIVOT:
-{history_summary}
-
-PLANNED SUBSEQUENT SHOTS THAT NEED RE-HARMONIZATION ({len(subsequent_shots)} shots):
-{subsequent_summary}
-
-MISSION:
-Adapt and re-harmonize all {len(subsequent_shots)} subsequent shots so that they logically flow from the new pivot event.
-- Maintain unbroken cause-and-effect.
-- Shot 10 of every episode must remain a strong cliffhanger.
-- Episode 10 Shot 10 MUST deliver the definitive happy emotional climax.
-- Output exactly {len(subsequent_shots)} shots in JSON:
-{{
-  "shots": [
-    {{
-      "episode_number": {subsequent_shots[0]['episode_number']},
-      "shot_number": {subsequent_shots[0]['shot_number']},
-      "action": "...",
-      "dialogue_malayalam": "..."
-    }}
-  ]
-}}
-"""
-
-    system_instruction = "Adapt subsequent screenplay shots to preserve narrative continuity following a pivot change. Output ONLY valid JSON."
-    harmonized = None
-
-    for model_name in candidate_models:
-        try:
-            resp = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    response_mime_type="application/json",
-                    temperature=0.7,
-                    max_output_tokens=32768
-                )
-            )
-            if resp and resp.text:
-                raw_text = resp.text.strip()
-                if raw_text.startswith("```"):
-                    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
-                    raw_text = re.sub(r"\s*```$", "", raw_text)
-                try:
-                    p = json.loads(raw_text)
-                except Exception:
-                    p = repair_json(raw_text, return_objects=True) if repair_json else None
-                if p and isinstance(p, dict) and "shots" in p and len(p["shots"]) > 0:
-                    harmonized = p["shots"]
-                    break
-        except Exception as e:
-            print(f"Notice during pivot re-harmonization with {model_name}: {e}")
-
-    if harmonized:
-        for idx, new_s in enumerate(harmonized):
-            target_idx = pivot_idx + 1 + idx
-            if target_idx < len(flat_shots):
-                flat_shots[target_idx]["action"] = new_s.get("action", flat_shots[target_idx]["action"])
-                flat_shots[target_idx]["dialogue_malayalam"] = new_s.get("dialogue_malayalam", flat_shots[target_idx]["dialogue_malayalam"])
-
-    data["flattened_shots"] = flat_shots
-    with open(fn, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"✓ Re-harmonized {len(subsequent_shots)} subsequent shots following pivot at Ep {pivot_ep} Shot {pivot_shot}!")
-
+    # If Google Sheet webhook is provided, sync Tab 7
     target_gas = gas_url or os.getenv("GAS_WEBHOOK_URL")
     if target_gas:
         try:
+            fn = outline_file or f"season_{season_number}_shot_outline.json"
+            with open(fn, "r", encoding="utf-8") as f:
+                data = json.load(f)
             payload_shots = {
                 "action": "save_season_shot_outline",
                 "season_number": season_number,
                 "season_title": data.get("season_title", f"Season {season_number}"),
-                "shots": flat_shots
+                "shots": data.get("flattened_shots", [])
             }
-            r = requests.post(target_gas, data=json.dumps(payload_shots), headers={"Content-Type": "text/plain"}, timeout=45)
+            r = requests.post(target_gas, data=json.dumps(payload_shots), headers={"Content-Type": "text/plain"}, timeout=60)
             print(f"✓ Google Sheet Tab 7 updated after pivot re-harmonization! (HTTP {r.status_code})")
         except Exception as e:
-            print(f"Notice updating Sheet after pivot: {e}")
+            print(f"Notice syncing Tab 7: {e}")
 
-    return data
+    # Synchronize all workspace portals
+    try:
+        import update_portals
+    except Exception:
+        pass
+
+    fn = outline_file or f"season_{season_number}_shot_outline.json"
+    with open(fn, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Next Episode Screenplay & Prompts")

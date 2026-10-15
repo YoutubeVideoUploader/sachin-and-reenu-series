@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-15 14:23:02",
+  "season_number": 3,
+  "total_shots_checked": 100,
+  "total_shots_harmonized": 1,
+  "harmonization_details": [
+    {
+      "shot_id": "S3_E3_S03",
+      "episode": 3,
+      "shot": 3,
+      "reason": "Incorporate Amal's trademark comedic relief",
+      "original_action": "Amal rolls his eyes and leans against the vintage wooden balustrade, offering a ridiculous theory to hide his growing unease.",
+      "harmonized_action": "Amal rolls his eyes and leans against the vintage wooden balustrade, offering a ridiculous theory to hide his growing unease.",
+      "original_dialogue": "അമൽ: 'ഒരുപക്ഷേ പഴയ ബ്രിട്ടീഷ് സായിപ്പിന്റെ സ്വർണം ഒളിപ്പിച്ചുവെച്ച റൂം ആയിരിക്കും!'",
+      "harmonized_dialogue": "അമൽ: 'ഒരുപക്ഷേ പഴയ ബ്രിട്ടീഷ് സായിപ്പിന്റെ സ്വർണം ഒളിപ്പിച്ചുവെച്ച റൂം ആയിരിക്കും!' "
+    }
+  ]
+}

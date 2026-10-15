@@ -1,0 +1,1057 @@
+{
+  "revision_id": "season_rev_s3_e4_s10_72cce49ab322",
+  "timestamp": "2026-10-15T10:57:47.534750",
+  "status": "PROPOSED_STAGED",
+  "base_version": "v1.0",
+  "proposed_version": "v1.0+rev.72cce4",
+  "edit_payload": {
+    "season_number": 3,
+    "episode_number": 4,
+    "shot_number": 10,
+    "shot_key": "S3_E4_S10",
+    "original_action": "Staring at the changed photo.",
+    "original_dialogue": "അവിടെ മൂന്നുപേർ!",
+    "original_speaker": "Amal",
+    "new_action": "Scratched vintage photo reveals Caretaker Sreedharan standing beside owner in 1994",
+    "new_dialogue": "photo test",
+    "user_notes": "",
+    "removed_fact_ids": [],
+    "added_fact_ids": []
+  },
+  "butterfly_impact": {
+    "pivot_shot": "S3_E4_S10",
+    "pivot_episode": 4,
+    "seed_nodes": [
+      "FACT_VINTAGE_PHOTO_CLUE",
+      "S3_E4_S10"
+    ],
+    "directly_affected_nodes": [
+      "EPISODE_4",
+      "FACT_CARETAKER_CONFESSION",
+      "FACT_FINALE_PHOTO_PEACE_REVEAL",
+      "FACT_TORN_BETRAYAL_LETTER",
+      "FACT_VINTAGE_PHOTO_CLUE",
+      "S3_E10_S10",
+      "S3_E4_S10",
+      "S3_E5_S01"
+    ],
+    "indirectly_affected_nodes": [
+      "EPISODE_10",
+      "FACT_CARETAKER_CONFESSION",
+      "FACT_FINALE_EVIDENCE_RECOVERY",
+      "FACT_FINALE_PHOTO_PEACE_REVEAL",
+      "FACT_TORN_BETRAYAL_LETTER"
+    ],
+    "affected_episodes": [
+      4,
+      5,
+      8,
+      9,
+      10
+    ],
+    "unaffected_episodes": [
+      1,
+      2,
+      3,
+      6,
+      7
+    ],
+    "unaffected_rationale": {
+      "1": "Episode 1 occurs chronologically prior to the pivot edit in Episode 4 and has zero forward causal dependencies on the change.",
+      "2": "Episode 2 occurs chronologically prior to the pivot edit in Episode 4 and has zero forward causal dependencies on the change.",
+      "3": "Episode 3 occurs chronologically prior to the pivot edit in Episode 4 and has zero forward causal dependencies on the change.",
+      "6": "Episode 6 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "7": "Episode 7 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths."
+    },
+    "affected_shots_by_episode": {
+      "4": [
+        "S3_E4_S10"
+      ],
+      "9": [
+        "S3_E9_S02"
+      ],
+      "8": [
+        "S3_E8_S10"
+      ],
+      "10": [
+        "S3_E10_S04",
+        "S3_E10_S10"
+      ],
+      "5": [
+        "S3_E5_S01"
+      ]
+    },
+    "causal_explanations": {
+      "FACT_CARETAKER_CONFESSION": "Indirectly affected via chain: (S3_E4_S10 -> FACT_VINTAGE_PHOTO_CLUE -> FACT_CARETAKER_CONFESSION) - FACT_CARETAKER_CONFESSION requires FACT_VINTAGE_PHOTO_CLUE",
+      "FACT_FINALE_PHOTO_PEACE_REVEAL": "Indirectly affected via chain: (S3_E4_S10 -> FACT_VINTAGE_PHOTO_CLUE -> FACT_FINALE_PHOTO_PEACE_REVEAL) - FACT_FINALE_PHOTO_PEACE_REVEAL requires FACT_VINTAGE_PHOTO_CLUE",
+      "FACT_TORN_BETRAYAL_LETTER": "Indirectly affected via chain: (S3_E4_S10 -> FACT_VINTAGE_PHOTO_CLUE -> FACT_TORN_BETRAYAL_LETTER) - The 3rd person in photo foreshadows identity in betrayal letter",
+      "FACT_FINALE_EVIDENCE_RECOVERY": "Indirectly affected via chain: (S3_E4_S10 -> FACT_VINTAGE_PHOTO_CLUE -> FACT_CARETAKER_CONFESSION -> FACT_FINALE_EVIDENCE_RECOVERY) - FACT_FINALE_EVIDENCE_RECOVERY requires FACT_CARETAKER_CONFESSION",
+      "EPISODE_4": "Directly affected via [PART_OF_EPISODE]: S3_E4_S10 -> EPISODE_4",
+      "FACT_VINTAGE_PHOTO_CLUE": "Directly affected via [INTRODUCES_FACT]: Introduces Discovery of the Three-Person Photograph",
+      "S3_E10_S10": "Directly affected via [PAYS_OFF]: The photo discovered in E4 S10 reveals the smiling spirit in E10 S10",
+      "EPISODE_10": "Indirectly affected via chain: (S3_E4_S10 -> S3_E10_S10 -> EPISODE_10) - PART_OF_EPISODE",
+      "S3_E4_S10": "Pivot edit shot: modified action/dialogue at S3_E4_S10",
+      "S3_E5_S01": "Immediate chronological boundary handshake following S3_E4_S10"
+    },
+    "grand_finale_evaluation": {
+      "is_affected": true,
+      "rationale": "Episode 10 (Grand Finale) IS affected because the edit ripples into 3 finale component(s): S3_E10_S10, FACT_FINALE_EVIDENCE_RECOVERY, FACT_FINALE_PHOTO_PEACE_REVEAL. The climax resolution, clues payoff, and ending scene require re-evaluation.",
+      "affected_elements": [
+        "S3_E10_S10",
+        "FACT_FINALE_EVIDENCE_RECOVERY",
+        "FACT_FINALE_PHOTO_PEACE_REVEAL"
+      ]
+    }
+  },
+  "redevelopment": {
+    "revised_episodes": {
+      "4": {
+        "episode_number": 4,
+        "title_english": "Room Number Thirteen",
+        "title_malayalam": "പതിമൂന്നാം നമ്പർ മുറി",
+        "central_objective_status": "REFINED",
+        "central_objective": "Investigate Room 13 to identify the source of midnight whispers. (Refined by edit at shot 10: Pivot storyline modification)",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "Reenu": [
+            "Woman sighting"
+          ],
+          "Amal": [
+            "Driving car"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 1,
+        "preserved_shots_count": 9,
+        "proposed_revisions": [
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E4_S10",
+            "speaker": "Amal",
+            "action": "Scratched vintage photo reveals Caretaker Sreedharan standing beside owner in 1994",
+            "dialogue_malayalam": "photo test",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "status": "PROPOSED_PIVOT_EDIT",
+            "change_reason": "User initiated scene revision"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E4_S01",
+          "S3_E4_S02",
+          "S3_E4_S03",
+          "S3_E4_S04",
+          "S3_E4_S05",
+          "S3_E4_S06",
+          "S3_E4_S07",
+          "S3_E4_S08",
+          "S3_E4_S09"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Renu",
+            "action": "Picking up the photo.",
+            "dialogue_malayalam": "ഇത് റോഡിൽ കണ്ട സ്ത്രീയാണ്!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Old photo"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S01",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Trying to stay logical.",
+            "dialogue_malayalam": "ഇതൊരു യാദൃശ്ചികത ആകാം.",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S02",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Amal wants to leave.",
+            "dialogue_malayalam": "നമുക്ക് ഇവിടുന്ന് പോകാം!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Bag"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S03",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Narrator",
+            "action": "The door slams shut.",
+            "dialogue_malayalam": "പെട്ടെന്ന് വാതിൽ അടഞ്ഞു.",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S04",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "The lights flicker.",
+            "dialogue_malayalam": "ലൈറ്റ് പോയി!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Voice",
+            "action": "Whispering Sachin's name.",
+            "dialogue_malayalam": "സച്ചിൻ...",
+            "location": "Locked Room",
+            "persistent_props": [],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E4_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Amal",
+            "action": "Grabbing Sachin in fear.",
+            "dialogue_malayalam": "സച്ചിൻ, ഞാൻ നിന്നെ രക്ഷിക്കാം!",
+            "location": "Locked Room",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Trying to find the switch.",
+            "dialogue_malayalam": "എവിടെയാ സ്വിച്ച്?",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Wall"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Lights return.",
+            "dialogue_malayalam": "നോക്കൂ!",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E4_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E4_S10",
+            "speaker": "Amal",
+            "action": "Scratched vintage photo reveals Caretaker Sreedharan standing beside owner in 1994",
+            "dialogue_malayalam": "photo test",
+            "location": "Locked Room",
+            "persistent_props": [
+              "Photo"
+            ],
+            "status": "PROPOSED_PIVOT_EDIT",
+            "change_reason": "User initiated scene revision"
+          }
+        ]
+      },
+      "5": {
+        "episode_number": 5,
+        "title_english": "The Missing Path",
+        "title_malayalam": "കാണാതായ വഴി",
+        "central_objective_status": "VALID",
+        "central_objective": "Explore the tea plantation and uncover the truth of the abandoned factory.",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "Reenu": [
+            "Woman sighting"
+          ],
+          "Amal": [
+            "Driving car"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 1,
+        "preserved_shots_count": 9,
+        "proposed_revisions": [
+          {
+            "shot_number": 1,
+            "shot_key": "S3_E5_S01",
+            "speaker": "Sachin",
+            "original_action": "Taking photos of Renu.",
+            "action": "Taking photos of Renu. (Adapted for chronological narrative continuity with revised story facts)",
+            "original_dialogue": "ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Plantation",
+            "persistent_props": [
+              "Camera"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Immediate chronological boundary handshake following S3_E4_S10"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E5_S02",
+          "S3_E5_S03",
+          "S3_E5_S04",
+          "S3_E5_S05",
+          "S3_E5_S06",
+          "S3_E5_S07",
+          "S3_E5_S08",
+          "S3_E5_S09",
+          "S3_E5_S10"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "shot_key": "S3_E5_S01",
+            "speaker": "Sachin",
+            "original_action": "Taking photos of Renu.",
+            "action": "Taking photos of Renu. (Adapted for chronological narrative continuity with revised story facts)",
+            "original_dialogue": "ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Plantation",
+            "persistent_props": [
+              "Camera"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Immediate chronological boundary handshake following S3_E4_S10"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Taking photos, complaining.",
+            "dialogue_malayalam": "എത്ര നേരം ഫോട്ടോ എടുക്കും?",
+            "location": "Plantation",
+            "persistent_props": [
+              "Camera"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S02",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Renu",
+            "action": "Noticing a trail.",
+            "dialogue_malayalam": "അങ്ങോട്ട് പോയാലോ?",
+            "location": "Plantation",
+            "persistent_props": [
+              "Path"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S03",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Following but complaining.",
+            "dialogue_malayalam": "ഇത് ശരിയല്ല.",
+            "location": "Plantation",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S04",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Entering the old building.",
+            "dialogue_malayalam": "ഇതെന്താ കെട്ടിടം?",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Old notebook"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Renu",
+            "action": "Opening the notebook.",
+            "dialogue_malayalam": "ഇവിടെ ഒരു സ്ത്രീയെ പറ്റി എഴുതിയിട്ടുണ്ട്.",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Notebook"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Amal",
+            "action": "Looking around nervously.",
+            "dialogue_malayalam": "നമുക്ക് തിരിച്ചു പോകാം.",
+            "location": "Abandoned factory",
+            "persistent_props": [],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E5_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Finding a drawing.",
+            "dialogue_malayalam": "ഇത് റോഡിലെ സ്ത്രീ തന്നെ.",
+            "location": "Abandoned factory",
+            "persistent_props": [
+              "Drawing"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Amal",
+            "action": "Walking deeper unknowingly.",
+            "dialogue_malayalam": "ഇനി ഇത് വെച്ച് നമ്മൾ എന്ത് ചെയ്യും?",
+            "location": "Abandoned factory",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Voice",
+            "action": "Calling Renu.",
+            "dialogue_malayalam": "റീനു...",
+            "location": "Abandoned factory",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E5_S10",
+            "status": "APPROVED_PRESERVED"
+          }
+        ]
+      },
+      "8": {
+        "episode_number": 8,
+        "title_english": "The Night of Fear",
+        "title_malayalam": "ഭയത്തിന്റെ രാത്രി",
+        "central_objective_status": "VALID",
+        "central_objective": "Seek shelter from the storm and piece together the tragic betrayal.",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "Reenu": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "Amal": [
+            "Driving car"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 1,
+        "preserved_shots_count": 9,
+        "proposed_revisions": [
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E8_S10",
+            "speaker": "Narrator",
+            "original_action": "Letter text reveal.",
+            "action": "Sachin reads the betrayal letter while Amal shines his phone light on the third person in the vintage photograph.",
+            "original_dialogue": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Storage room",
+            "persistent_props": [
+              "Letter"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E8_S01",
+          "S3_E8_S02",
+          "S3_E8_S03",
+          "S3_E8_S04",
+          "S3_E8_S05",
+          "S3_E8_S06",
+          "S3_E8_S07",
+          "S3_E8_S08",
+          "S3_E8_S09"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Taking shelter.",
+            "dialogue_malayalam": "ഇവിടെ നിൽക്കാം.",
+            "location": "Estate building",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S01",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Amal",
+            "action": "Attempting a ritual.",
+            "dialogue_malayalam": "ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.",
+            "location": "Estate building",
+            "persistent_props": [
+              "Salt"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S02",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Sachin",
+            "action": "Correcting Amal.",
+            "dialogue_malayalam": "അത് തെറ്റാണ് അമൽ.",
+            "location": "Estate building",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S03",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Renu",
+            "action": "Finding a box.",
+            "dialogue_malayalam": "ഇവിടെ നോക്കൂ!",
+            "location": "Storage room",
+            "persistent_props": [
+              "Box"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S04",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Reading clippings.",
+            "dialogue_malayalam": "ഇതൊരു വലിയ രഹസ്യമാണ്.",
+            "location": "Storage room",
+            "persistent_props": [
+              "Clippings"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Hearing noises.",
+            "dialogue_malayalam": "ആരാ അത്?",
+            "location": "Storage room",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Renu",
+            "action": "Reading the letter.",
+            "dialogue_malayalam": "ആരോ അവളെ ചതിച്ചു.",
+            "location": "Storage room",
+            "persistent_props": [
+              "Letter"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Sachin",
+            "action": "Determined.",
+            "dialogue_malayalam": "നമുക്ക് സത്യം അറിയണം.",
+            "location": "Storage room",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Amal",
+            "action": "Trying to be brave.",
+            "dialogue_malayalam": "ഞാൻ കൂടെയുണ്ട്.",
+            "location": "Storage room",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E8_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E8_S10",
+            "speaker": "Narrator",
+            "original_action": "Letter text reveal.",
+            "action": "Sachin reads the betrayal letter while Amal shines his phone light on the third person in the vintage photograph.",
+            "original_dialogue": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Storage room",
+            "persistent_props": [
+              "Letter"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          }
+        ]
+      },
+      "9": {
+        "episode_number": 9,
+        "title_english": "The Caretaker's Secret",
+        "title_malayalam": "കെയർടേക്കറുടെ രഹസ്യം",
+        "central_objective_status": "VALID",
+        "central_objective": "Confront Caretaker Sreedharan and prepare for the midnight reckoning.",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "Reenu": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "Amal": [
+            "Driving car"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 1,
+        "preserved_shots_count": 9,
+        "proposed_revisions": [
+          {
+            "shot_number": 2,
+            "shot_key": "S3_E9_S02",
+            "speaker": "Caretaker",
+            "original_action": "Admitting the truth.",
+            "action": "Sachin holds up the damaged vintage photograph directly before Sreedharan's eyes, demanding an immediate explanation.",
+            "original_dialogue": "അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Homestay",
+            "persistent_props": [],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E9_S01",
+          "S3_E9_S03",
+          "S3_E9_S04",
+          "S3_E9_S05",
+          "S3_E9_S06",
+          "S3_E9_S07",
+          "S3_E9_S08",
+          "S3_E9_S09",
+          "S3_E9_S10"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Confronting the caretaker.",
+            "dialogue_malayalam": "ഇതെന്താണെന്ന് പറയൂ.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S01",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 2,
+            "shot_key": "S3_E9_S02",
+            "speaker": "Caretaker",
+            "original_action": "Admitting the truth.",
+            "action": "Sachin holds up the damaged vintage photograph directly before Sreedharan's eyes, demanding an immediate explanation.",
+            "original_dialogue": "അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Homestay",
+            "persistent_props": [],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Renu",
+            "action": "Listening intently.",
+            "dialogue_malayalam": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S03",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 4,
+            "speaker": "Amal",
+            "action": "Trying to solve it.",
+            "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി!",
+            "location": "Homestay",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S04",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Amal's theory is absurd.",
+            "dialogue_malayalam": "അതല്ല അമൽ.",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Caretaker",
+            "action": "Warning them.",
+            "dialogue_malayalam": "ഇന്ന് രാത്രി അവൾ വരും.",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Lights go out.",
+            "dialogue_malayalam": "ലൈറ്റ് വീണ്ടും പോയി!",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Hiding.",
+            "dialogue_malayalam": "എന്നെ രക്ഷിക്കണേ!",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Listening to footsteps.",
+            "dialogue_malayalam": "ആരോ വരുന്നുണ്ട്.",
+            "location": "Homestay",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Narrator",
+            "action": "Door creaks.",
+            "dialogue_malayalam": "വാതിൽ തുറക്കുന്നു.",
+            "location": "Homestay",
+            "persistent_props": [
+              "Door"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E9_S10",
+            "status": "APPROVED_PRESERVED"
+          }
+        ]
+      },
+      "10": {
+        "episode_number": 10,
+        "title_english": "The Last Night in Munnar",
+        "title_malayalam": "മൂന്നാറിലെ അവസാന രാത്രി",
+        "central_objective_status": "REDEVELOPED",
+        "central_objective": "Grand Finale: Resolve the altered mystery threads, confront the consequences of earlier discoveries, and safely escape.",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "Reenu": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "Amal": [
+            "Driving car"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 2,
+        "preserved_shots_count": 8,
+        "proposed_revisions": [
+          {
+            "shot_number": 4,
+            "shot_key": "S3_E10_S04",
+            "speaker": "Sachin",
+            "original_action": "Finding the compartment.",
+            "action": "Finding the compartment. (Adapted for chronological narrative continuity with revised story facts)",
+            "original_dialogue": "ഇതാ അത്!",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (ഇതാ അത്!) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Factory",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          },
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E10_S10",
+            "speaker": "Amal",
+            "original_action": "Seeing the ghost in the photo.",
+            "action": "Inside Amal's departing car, Sachin and Reenu inspect the vintage photograph where the eerie silhouette has now transformed into a peaceful smiling portrait.",
+            "original_dialogue": "അയ്യോ! ഇത് ആരാ?",
+            "dialogue_malayalam": "അമൽ: 'സച്ചിൻ... ഈ ഫോട്ടോ ഒന്ന് നോക്കിക്കേ! ആ പേടിപ്പിക്കുന്ന രൂപം പോയി, അവൾ ഇപ്പോൾ ചിരിക്കുകയാണല്ലോടാ!' [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Car",
+            "persistent_props": [
+              "Photo"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Directly affected via [PAYS_OFF]: The photo discovered in E4 S10 reveals the smiling spirit in E10 S10"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E10_S01",
+          "S3_E10_S02",
+          "S3_E10_S03",
+          "S3_E10_S05",
+          "S3_E10_S06",
+          "S3_E10_S07",
+          "S3_E10_S08",
+          "S3_E10_S09"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Sachin",
+            "action": "Entering the factory.",
+            "dialogue_malayalam": "ഇവിടെ അവസാന തെളിവുണ്ട്.",
+            "location": "Factory",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S01",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Renu",
+            "action": "Approaching the woman.",
+            "dialogue_malayalam": "പേടിക്കണ്ട, നമ്മൾ കൂടെയുണ്ട്.",
+            "location": "Factory",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S02",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 3,
+            "speaker": "Amal",
+            "action": "Holding the light steady.",
+            "dialogue_malayalam": "ഞാൻ റെഡിയാണ്.",
+            "location": "Factory",
+            "persistent_props": [
+              "Flashlight"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S03",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 4,
+            "shot_key": "S3_E10_S04",
+            "speaker": "Sachin",
+            "original_action": "Finding the compartment.",
+            "action": "Finding the compartment. (Adapted for chronological narrative continuity with revised story facts)",
+            "original_dialogue": "ഇതാ അത്!",
+            "dialogue_malayalam": "സച്ചിൻ: 'പേടിക്കണ്ട, നമുക്ക് ഒരുമിച്ച് ഇതിനൊരു പരിഹാരം കാണാം.' (ഇതാ അത്!) [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Factory",
+            "persistent_props": [
+              "Evidence"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Downstream causal dependency on changed story facts"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Narrator",
+            "action": "Building starts to collapse.",
+            "dialogue_malayalam": "കെട്ടിടം തകരുന്നു!",
+            "location": "Factory",
+            "persistent_props": [
+              "Debris"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Helping them out.",
+            "dialogue_malayalam": "വേഗം ഇങ്ങോട്ട്!",
+            "location": "Factory",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Holding Renu's hand.",
+            "dialogue_malayalam": "നമുക്ക് പോകാം.",
+            "location": "Outside",
+            "persistent_props": [],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E10_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Relieved.",
+            "dialogue_malayalam": "ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.",
+            "location": "Car",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "Interior car medium shot, dynamic angle",
+            "shot_key": "S3_E10_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Sachin",
+            "action": "Looking at the photo.",
+            "dialogue_malayalam": "എല്ലാം കഴിഞ്ഞു.",
+            "location": "Car",
+            "persistent_props": [
+              "Photo"
+            ],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E10_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "shot_key": "S3_E10_S10",
+            "speaker": "Amal",
+            "original_action": "Seeing the ghost in the photo.",
+            "action": "Inside Amal's departing car, Sachin and Reenu inspect the vintage photograph where the eerie silhouette has now transformed into a peaceful smiling portrait.",
+            "original_dialogue": "അയ്യോ! ഇത് ആരാ?",
+            "dialogue_malayalam": "അമൽ: 'സച്ചിൻ... ഈ ഫോട്ടോ ഒന്ന് നോക്കിക്കേ! ആ പേടിപ്പിക്കുന്ന രൂപം പോയി, അവൾ ഇപ്പോൾ ചിരിക്കുകയാണല്ലോടാ!' [PROPOSED REVISION FOR APPROVAL]",
+            "location": "Car",
+            "persistent_props": [
+              "Photo"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Directly affected via [PAYS_OFF]: The photo discovered in E4 S10 reveals the smiling spirit in E10 S10"
+          }
+        ]
+      }
+    },
+    "alternative_grand_finale": {
+      "status": "ALTERNATIVE_FINALE_GENERATED",
+      "is_redeveloped": true,
+      "rationale": "Episode 10 (Grand Finale) IS affected because the edit ripples into 3 finale component(s): S3_E10_S10, FACT_FINALE_EVIDENCE_RECOVERY, FACT_FINALE_PHOTO_PEACE_REVEAL. The climax resolution, clues payoff, and ending scene require re-evaluation.",
+      "alternative_finale_title": "The Last Night in Munnar (Alternative Version)",
+      "climax_setting": "Abandoned colonial tea factory in Munnar",
+      "adapted_climax": "Climax re-aligned to pay off revised events from Episode 4 Shot 10 (Revised narrative). The factory confrontation incorporates the revised evidence and adapted clues.",
+      "character_resolutions": {
+        "Sachin": "Successfully protects Reenu and uncovers the full truth behind the altered mystery.",
+        "Reenu": "Finds closure for Bhadra's spirit through empathetic understanding and intuition.",
+        "Amal": "Heroically guides them out of danger, overcoming his panic with steadfast loyalty."
+      },
+      "final_scene_payoff": "Departing Munnar along the misty Gap Road, looking at the evidence that reflects the resolved mystery.",
+      "proposed_screenplay_changes_count": 2
+    },
+    "total_proposed_dialogue_revisions": 6,
+    "total_preserved_shots": 44,
+    "storyline_coherence_summary": "Successfully propagated butterfly effects across 5 episode(s). Total proposed revisions: 6 shots. Total strictly preserved approved shots: 44 shots. Grand Finale status: REDEVELOPED ALTERNATIVE."
+  },
+  "narrative_coherence": {
+    "is_coherent": false,
+    "violations_count": 1,
+    "violations": [
+      "[S3_E4_S10] Language Violation: Proposed dialogue does not contain authentic Malayalam script."
+    ],
+    "checks_passed": [
+      "Evaluated 5 revised episode screenplay packages.",
+      "Grand Finale coherence verified: 'The Last Night in Munnar (Alternative Version)'"
+    ],
+    "summary": "Found 1 coherence violation(s)."
+  },
+  "stale_asset_audit": {
+    "stale_video_clips": [],
+    "stale_prompts": [],
+    "requires_google_sheet_checklist_reset": false,
+    "requires_master_video_remerge": true
+  },
+  "summary": {
+    "total_episodes_in_season": 10,
+    "affected_episodes_count": 5,
+    "unaffected_episodes_count": 5,
+    "proposed_revisions_shots_count": 6,
+    "strictly_preserved_shots_count": 44,
+    "grand_finale_affected": true,
+    "stale_video_clips_count": 0,
+    "narrative_coherence_passed": false
+  }
+}

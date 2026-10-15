@@ -95,23 +95,28 @@ def publish_reel_to_instagram(video_url, caption, cover_url=None):
     container_id = create_res.json().get("id")
     print(f"Container created with ID: {container_id}. Waiting for processing...")
     
-    # Poll container status until FINISHED
+    # Poll container status until FINISHED (up to 60 iterations * 5s = 300s)
     status_url = f"https://graph.facebook.com/v20.0/{container_id}?fields=status_code&access_token={IG_ACCESS_TOKEN}"
-    for _ in range(30):
+    status_code = None
+    for attempt in range(1, 61):
         time.sleep(5)
-        st_res = requests.get(status_url)
+        st_res = requests.get(status_url, timeout=30)
         if st_res.status_code == 200:
             status_code = st_res.json().get("status_code")
             if status_code == "FINISHED":
-                print("Video successfully processed by Instagram!")
+                print(f"Video successfully processed by Instagram on attempt {attempt} (~{attempt*5}s)!")
                 break
             elif status_code == "ERROR":
-                raise Exception("Instagram video processing failed.")
+                err_detail = st_res.json().get("status_message") or st_res.text
+                raise RuntimeError(f"Instagram video processing failed: {status_code} - {err_detail}")
             else:
-                print(f"Status: {status_code}...")
+                print(f"Status [{attempt}/60]: {status_code}...")
         else:
-            print(f"Status check note: {st_res.status_code}")
-            
+            print(f"Status check note: HTTP {st_res.status_code}")
+
+    if status_code != "FINISHED":
+        raise TimeoutError(f"Instagram video processing timed out after 300s. Last status: {status_code}. Container ID: {container_id}")
+
     # Publish container
     print(f"Publishing container {container_id} to Instagram feed...")
     publish_url = f"https://graph.facebook.com/v20.0/{IG_ACCOUNT_ID}/media_publish"
@@ -121,7 +126,7 @@ def publish_reel_to_instagram(video_url, caption, cover_url=None):
     })
     if pub_res.status_code != 200:
         raise Exception(f"Failed to publish Reel: {pub_res.status_code} {pub_res.text}")
-        
+
     media_id = pub_res.json().get("id")
     print(f"SUCCESS! Published to Instagram Reels with Post ID: {media_id}")
     return media_id
@@ -131,25 +136,34 @@ def normalize_ep_data(data):
         return data
     if isinstance(data, list):
         shots_list = data
-        ep_num = 7
-        season_num = 2
+        ep_num = 1
+        season_num = 3
+        title_en = "Episode 1"
+        title_ml = ""
+        synopsis = ""
+        cliffhanger = ""
         if os.path.exists(STATE_FILE):
             try:
                 with open(STATE_FILE, "r", encoding="utf-8") as f:
                     st = json.load(f)
                     if isinstance(st, dict):
-                        ep_num = st.get("episode_number", st.get("total_episodes_produced", 7))
-                        season_num = st.get("season_number", 2)
+                        ep_num = st.get("episode_number") or st.get("current_episode", {}).get("episode_number", 1)
+                        season_num = st.get("season_number", 3)
+                        cur_ep = st.get("current_episode", {})
+                        title_en = cur_ep.get("title_english") or f"Episode {ep_num}"
+                        title_ml = cur_ep.get("title_malayalam", "")
+                        synopsis = cur_ep.get("synopsis", "")
+                        cliffhanger = cur_ep.get("cliffhanger", "")
             except Exception:
                 pass
         return {
             "episode_number": ep_num,
             "season_number": season_num,
             "is_season_2": season_num == 2,
-            "title_english": "The Monsoon Revelation",
-            "title_malayalam": "മഴയും വെളിപ്പെടുത്തലും",
-            "synopsis": "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi. Overwhelmed by Sachin's genuine sacrifice and humble devotion, Annamma's heart melts with motherly approval. But just as love blossoms under the monsoon awning, Annamma's phone rings with an urgent call from Kurian back at the flat: a wealthy marriage proposal party from Kottayam has arrived at their doorstep!",
-            "cliffhanger": "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
+            "title_english": title_en,
+            "title_malayalam": title_ml,
+            "synopsis": synopsis,
+            "cliffhanger": cliffhanger,
             "total_shots": len(shots_list),
             "calculated_total_seconds": len(shots_list) * 6,
             "calculated_runtime_display": f"{len(shots_list)*6 // 60}m {len(shots_list)*6 % 60:02d}s",
@@ -253,6 +267,13 @@ def fetch_season_from_google_sheet(gas_url=None):
     return None
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Publish master episode to Instagram Reels")
+    parser.add_argument("--season", type=int, default=None, help="Season number (auto-detected if omitted)")
+    parser.add_argument("--episode", type=int, default=None, help="Episode number (auto-detected if omitted)")
+    parser.add_argument("--force", action="store_true", help="Force publish even if episode is recorded in history")
+    args = parser.parse_args()
+
     if not os.path.exists(VIDEO_FILE):
         raise FileNotFoundError(f"Missing master video {VIDEO_FILE}")
     # Support both current_episode.json and current_episode_shots.json
@@ -268,9 +289,25 @@ def main():
                 pass
 
     ep_data = normalize_ep_data(ep_data)
-    ep_num = ep_data.get("episode_number", 1)
-    # Priority 1: Fetch live from Google Sheet Tab 'Season_Story_Arc', Cell A1
-    season_num = fetch_season_from_google_sheet(os.getenv("GAS_WEBHOOK_URL")) or ep_data.get("season_number") or 1
+    ep_num = args.episode if args.episode is not None else ep_data.get("episode_number", 1)
+    
+    # Season resolution priority: CLI -> Sheet Tab 1 Cell A1 -> ep_data -> story_state -> 3
+    season_num = args.season
+    if season_num is None:
+        season_num = fetch_season_from_google_sheet(os.getenv("GAS_WEBHOOK_URL")) or ep_data.get("season_number") or 3
+
+    # Duplicate publication check
+    if not args.force and os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, "r", encoding="utf-8") as f:
+                st = json.load(f)
+                for h in st.get("history", []):
+                    if h.get("episode") == ep_num and h.get("season", season_num) == season_num:
+                        print(f"⚠️ Notice: Season {season_num} Episode {ep_num} is already recorded as published in {STATE_FILE}.")
+                        print("   Pass --force to republish. Stopping execution cleanly to avoid duplicates.")
+                        return
+        except Exception:
+            pass
 
     # Strip any Malayalam characters to guarantee 100% English description
     import re

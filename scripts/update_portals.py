@@ -13,14 +13,33 @@ with open('current_episode_shots.json', 'r', encoding='utf-8') as f:
 # Normalize into full episodeData object
 if isinstance(raw_data, list):
     shots_list = raw_data
+    ep_num = 1
+    season_num = 3
+    title_en = "Episode 1"
+    title_ml = ""
+    synopsis = ""
+    cliffhanger = ""
+    if os.path.exists('story_state.json'):
+        try:
+            with open('story_state.json', 'r', encoding='utf-8') as sf:
+                st = json.load(sf)
+                ep_num = st.get("episode_number") or st.get("current_episode", {}).get("episode_number", 1)
+                season_num = st.get("season_number", 3)
+                cur_ep = st.get("current_episode", {})
+                title_en = cur_ep.get("title_english") or f"Episode {ep_num}"
+                title_ml = cur_ep.get("title_malayalam", "")
+                synopsis = cur_ep.get("synopsis", "")
+                cliffhanger = cur_ep.get("cliffhanger", "")
+        except Exception:
+            pass
     ep_obj = {
-        "episode_number": 7,
-        "season_number": 2,
-        "is_season_2": True,
-        "title_english": "The Monsoon Revelation",
-        "title_malayalam": "മഴയും വെളിപ്പെടുത്തലും",
-        "synopsis": "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi. Overwhelmed by Sachin's genuine sacrifice and humble devotion, Annamma's heart melts with motherly approval. But just as love blossoms under the monsoon awning, Annamma's phone rings with an urgent call from Kurian back at the flat: a wealthy marriage proposal party from Kottayam has arrived at their doorstep!",
-        "cliffhanger": "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
+        "episode_number": ep_num,
+        "season_number": season_num,
+        "is_season_2": season_num == 2,
+        "title_english": title_en,
+        "title_malayalam": title_ml,
+        "synopsis": synopsis,
+        "cliffhanger": cliffhanger,
         "total_shots": len(shots_list),
         "calculated_runtime_display": f"{len(shots_list)*6 // 60}m {len(shots_list)*6 % 60:02d}s",
         "shots": shots_list,
@@ -123,8 +142,8 @@ if state_path.exists():
             )
             print("✓ Updated seasonStoryData and characterRegistryData from story_state.json!")
 
-        outline_obj = state.get("season_shot_outline")
-        if not outline_obj and Path(f"season_{season_num}_shot_outline.json").exists():
+        outline_obj = state.get(f"season_{season_num}_shot_outline") or state.get("season_shot_outline") or state.get("season_outline")
+        if Path(f"season_{season_num}_shot_outline.json").exists():
             try:
                 outline_obj = json.loads(Path(f"season_{season_num}_shot_outline.json").read_text(encoding="utf-8"))
             except Exception:

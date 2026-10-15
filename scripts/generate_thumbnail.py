@@ -73,8 +73,6 @@ def resolve_season_and_episode_num(gas_url=None):
             try:
                 with open(fn, "r", encoding="utf-8") as f:
                     d = json.load(f)
-                    if isinstance(d, list):
-                        d = {"shots": d, "episode_number": 7, "season_number": 2}
                     if not isinstance(d, dict):
                         continue
                     if season_num is None and d.get("season_number"):
@@ -82,6 +80,8 @@ def resolve_season_and_episode_num(gas_url=None):
                     if episode_num is None:
                         if d.get("episode_number"):
                             episode_num = int(d.get("episode_number"))
+                        elif d.get("current_episode", {}).get("episode_number"):
+                            episode_num = int(d["current_episode"]["episode_number"])
                         elif d.get("total_episodes_produced"):
                             episode_num = int(d.get("total_episodes_produced"))
                     if season_num is not None and episode_num is not None:
@@ -90,7 +90,7 @@ def resolve_season_and_episode_num(gas_url=None):
                 pass
 
     if season_num is None:
-        season_num = 1
+        season_num = 3
     if episode_num is None:
         episode_num = 1
     return season_num, episode_num

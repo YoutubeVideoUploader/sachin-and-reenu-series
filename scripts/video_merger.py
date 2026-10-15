@@ -72,6 +72,51 @@ def get_video_info(video_path):
         print(f"Warning: ffprobe failed for {video_path}: {e}")
         return {"width": 1080, "height": 1920, "duration": 4.0, "has_audio": True}
 
+def validate_master_video(video_path, min_duration=5.0):
+    """
+    Validates that the rendered output file is non-empty, playable,
+    contains valid video and audio streams, and meets minimum duration.
+    """
+    vp = Path(video_path)
+    if not vp.exists():
+        raise FileNotFoundError(f"Master output video does not exist: {vp}")
+    file_size = vp.stat().st_size
+    if file_size < 50000:
+        raise ValueError(f"Master output video is corrupt or abnormally small ({file_size} bytes): {vp}")
+
+    cmd = [
+        "ffprobe", "-v", "error",
+        "-show_entries", "stream=width,height,codec_type,duration",
+        "-show_entries", "format=duration,size",
+        "-of", "json",
+        str(vp)
+    ]
+    try:
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+        data = json.loads(res.stdout)
+        streams = data.get("streams", [])
+        fmt = data.get("format", {})
+
+        has_video = any(s.get("codec_type") == "video" for s in streams)
+        has_audio = any(s.get("codec_type") == "audio" for s in streams)
+        v_stream = next((s for s in streams if s.get("codec_type") == "video"), {})
+
+        w = int(v_stream.get("width", 0))
+        h = int(v_stream.get("height", 0))
+        dur = float(v_stream.get("duration") or fmt.get("duration") or 0.0)
+
+        if not has_video or w <= 0 or h <= 0:
+            raise ValueError(f"Master output video has invalid video stream (w={w}, h={h}): {vp}")
+        if not has_audio:
+            raise ValueError(f"Master output video is missing required audio stream: {vp}")
+        if dur < min_duration:
+            raise ValueError(f"Master output duration ({dur:.2f}s) is below required minimum ({min_duration}s): {vp}")
+
+        print(f"✓ Master Video Validated: {w}x{h} ({dur:.2f}s, {file_size} bytes, Audio: OK)")
+        return True
+    except subprocess.CalledProcessError as err:
+        raise RuntimeError(f"ffprobe verification failed for {vp}: {err.stderr}")
+
 def standardize_clip_with_audio(input_path, output_path, target_w=1080, target_h=1920, fps=30):
     """
     Standardizes video to vertical 9:16 (1080x1920), 30fps.
@@ -509,10 +554,10 @@ def build_mixed_bgm_track(shot_timings, shot_music_map, total_video_duration, to
     else:
         return seg_audio_files[0]
 
-def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", shot_music_map="", gas_url=None):
+def _merge_episode_shots_internal(temp_dir, shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", shot_music_map="", gas_url=None):
     """
-    Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
-    Combines spoken dialogue audio with atmospheric romantic background score (general, episode custom, or shot-by-shot mix).
+    Internal shot merger with active temp_dir context.
+    Combines spoken dialogue audio with atmospheric romantic background score.
     """
     shots_path = Path(shots_dir)
     if not shots_path.exists():
@@ -539,10 +584,6 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     for s in sorted_shots:
         print(f"  • {s.name}")
 
-    # Temporary directory for standardized clips
-    temp_dir = Path("temp_merger")
-    temp_dir.mkdir(exist_ok=True)
-    
     standardized_clips = []
     total_video_duration = 0.0
     shot_timings = {}
@@ -767,6 +808,9 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
         ]
         subprocess.run(cmd_fallback, check=True)
 
+    # Validate output with ffprobe before declaring success
+    validate_master_video(output_path, min_duration=min(5.0, total_video_duration * 0.8))
+
     print(f"\n=======================================================")
     print(f"🎉 MASTER EPISODE PRODUCED SUCCESSFULLY!")
     print(f"Output File : {output_path.resolve()}")
@@ -776,6 +820,37 @@ def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, tit
     print(f"BGM         : Romantic Score Mixed (Volume 0.18 / 0.32)")
     print(f"=======================================================\n")
     return output_path
+
+def merge_episode_shots(shots_dir, output_file, episode_num=1, season_num=1, title_en="", title_ml="", bgm_num=None, music_source="general", shot_music_map="", gas_url=None):
+    """
+    Merges all shot clips from shots_dir into a master 9:16 Instagram Reel.
+    Combines spoken dialogue audio with atmospheric romantic background score.
+    Guarantees cleanup of temporary intermediate files via try...finally block.
+    """
+    temp_dir = Path("temp_merger")
+    temp_dir.mkdir(exist_ok=True)
+    try:
+        return _merge_episode_shots_internal(
+            temp_dir=temp_dir,
+            shots_dir=shots_dir,
+            output_file=output_file,
+            episode_num=episode_num,
+            season_num=season_num,
+            title_en=title_en,
+            title_ml=title_ml,
+            bgm_num=bgm_num,
+            music_source=music_source,
+            shot_music_map=shot_music_map,
+            gas_url=gas_url
+        )
+    finally:
+        if temp_dir.exists():
+            import shutil
+            try:
+                shutil.rmtree(temp_dir)
+                print(f"✓ Cleaned up temporary merger directory: {temp_dir}")
+            except Exception as e:
+                print(f"Notice cleaning temp_dir: {e}")
 
 def main():
     parser = argparse.ArgumentParser(description="Sachin & Reenu Video Merger")
@@ -805,14 +880,15 @@ def main():
             try:
                 with open(fn, "r", encoding="utf-8") as f:
                     ep_json = json.load(f)
-                    if isinstance(ep_json, list):
-                        ep_json = {"shots": ep_json, "episode_number": 7, "season_number": 2}
                     if not isinstance(ep_json, dict):
                         continue
                     if season_num is None and ep_json.get("season_number"):
                         season_num = int(ep_json.get("season_number"))
-                    if ep_num is None and ep_json.get("episode_number"):
-                        ep_num = int(ep_json.get("episode_number"))
+                    if ep_num is None:
+                        if ep_json.get("episode_number"):
+                            ep_num = int(ep_json.get("episode_number"))
+                        elif ep_json.get("current_episode", {}).get("episode_number"):
+                            ep_num = int(ep_json["current_episode"]["episode_number"])
                     if not title_en and ep_json.get("title_english"):
                         title_en = ep_json.get("title_english")
                     if not title_ml and ep_json.get("title_malayalam"):
@@ -823,7 +899,7 @@ def main():
                 pass
 
     if season_num is None:
-        season_num = 1
+        season_num = 3
     if ep_num is None:
         ep_num = 1
 

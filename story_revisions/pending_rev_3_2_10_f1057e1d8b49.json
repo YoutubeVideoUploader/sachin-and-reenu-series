@@ -1,0 +1,230 @@
+{
+  "revision_id": "rev_3_2_10_f1057e1d8b49",
+  "timestamp": "2026-10-15T14:35:39.301576",
+  "status": "PENDING_APPROVAL",
+  "edit_payload": {
+    "season_number": 3,
+    "episode_number": 2,
+    "shot_number": 10,
+    "shot_key": "S3_E2_S10",
+    "original_action": "Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.",
+    "original_dialogue": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+    "original_speaker": "Reenu",
+    "new_action": "Amal notices a distant lantern swinging in the dense fog approaching their car.",
+    "new_dialogue": "ഡാ... ആ മഞ്ഞിലൂടെ ആരോ ഒരു റാന്തൽ വിളക്കുമായി വരുന്നുണ്ട്!",
+    "user_notes": "Introduce caretaker lantern arrival narrative bridge"
+  },
+  "impact_analysis": {
+    "pivot_shot": "S3_E2_S10",
+    "affected_scenes": [
+      {
+        "shot_key": "S3_E3_S01",
+        "episode_number": 3,
+        "shot_number": 1,
+        "current_speaker": "Caretaker",
+        "current_dialogue": "കെയർടേക്കർ: 'താക്കോലുകൾ ഇതാ... പക്ഷേ ആ ഇടനാഴിയുടെ അറ്റത്തുള്ള പതിമൂന്നാം നമ്പർ മുറി ആരും തുറക്കരുത്.'",
+        "current_action": "Outside the shadowy colonial homestay, Caretaker Sreedharan hands a heavy ring of iron keys to Sachin with trembling hands, his eyes darting suspiciously toward the locked corridor.",
+        "impact_reasons": [
+          "[LOCATION_TELEPORTATION] Characters teleported from 'mountain road car interior' directly into 'homestay hallway' with zero transit or arrival action."
+        ],
+        "requires_prompt_regeneration": true
+      },
+      {
+        "shot_key": "S3_E3_S02",
+        "episode_number": 3,
+        "shot_number": 2,
+        "current_speaker": "Sachin",
+        "current_dialogue": "സച്ചിൻ: 'പതിമൂന്നാം നമ്പർ മുറിയിൽ എന്തായിരിക്കും? അത്ര വലിയ രഹസ്യമുണ്ടോ ഇവിടെ?'",
+        "current_action": "Standing in the dim timber hallway, Sachin clutches the brass keys and peers curiously at the heavy padlock on Room 13, intrigued rather than scared.",
+        "impact_reasons": [
+          "[LOCATION_TELEPORTATION] Characters teleported from 'homestay hallway' directly into 'hallway' with zero transit or arrival action."
+        ],
+        "requires_prompt_regeneration": true
+      },
+      {
+        "shot_key": "S3_E3_S05",
+        "episode_number": 3,
+        "shot_number": 5,
+        "current_speaker": "Sachin",
+        "current_dialogue": "സച്ചിൻ: 'കേട്ടോ? ആ ഇടനാഴിയിൽ ആരോ നടക്കുന്നുണ്ട്... ഈ പാതിരാത്രിയിൽ ആരാണ്?'",
+        "current_action": "Late at night inside their bedroom, Sachin pauses while setting down his bag as heavy, rhythmic floorboard creaks echo directly outside their door.",
+        "impact_reasons": [
+          "[LOCATION_TELEPORTATION] Characters teleported from 'hallway' directly into 'bedroom' with zero transit or arrival action."
+        ],
+        "requires_prompt_regeneration": true
+      },
+      {
+        "shot_key": "S3_E9_S02",
+        "episode_number": 9,
+        "shot_number": 2,
+        "current_speaker": "Caretaker",
+        "current_dialogue": "കെയർടേക്കർ: 'അന്ന് ആ രാത്രിയിൽ നടന്ന ചതി അവൾ അറിഞ്ഞിരുന്നു... ആ പാപം ഇന്നും ഈ മൂന്നാറിനെ വിട്ടുപോയിട്ടില്ല.'",
+        "current_action": "Cornered in the homestay hallway by the evidence, Caretaker Sreedharan slumps onto an antique wooden chair, voice trembling with long-suppressed guilt as he confesses the tragedy of 1994.",
+        "impact_reasons": [
+          "[LOCATION_TELEPORTATION] Characters teleported from 'homestay' directly into 'homestay' with zero transit or arrival action."
+        ],
+        "requires_prompt_regeneration": true
+      },
+      {
+        "shot_key": "S3_E9_S03",
+        "episode_number": 9,
+        "shot_number": 3,
+        "current_speaker": "Renu",
+        "current_dialogue": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+        "current_action": "Listening intently.",
+        "impact_reasons": [
+          "[LOCATION_TELEPORTATION] Characters teleported from 'homestay' directly into 'homestay' with zero transit or arrival action."
+        ],
+        "requires_prompt_regeneration": true
+      }
+    ],
+    "unaffected_scenes": [
+      "S3_E1_S01",
+      "S3_E1_S02",
+      "S3_E1_S03",
+      "S3_E1_S04",
+      "S3_E1_S05",
+      "S3_E1_S06",
+      "S3_E1_S07",
+      "S3_E1_S08",
+      "S3_E1_S09",
+      "S3_E1_S10",
+      "S3_E2_S01",
+      "S3_E2_S02",
+      "S3_E2_S03",
+      "S3_E2_S04",
+      "S3_E2_S05",
+      "S3_E2_S06",
+      "S3_E2_S07",
+      "S3_E2_S08",
+      "S3_E2_S09",
+      "S3_E3_S03",
+      "S3_E3_S04",
+      "S3_E3_S06",
+      "S3_E3_S07",
+      "S3_E3_S08",
+      "S3_E3_S09",
+      "S3_E3_S10",
+      "S3_E4_S01",
+      "S3_E4_S02",
+      "S3_E4_S03",
+      "S3_E4_S04",
+      "S3_E4_S05",
+      "S3_E4_S06",
+      "S3_E4_S07",
+      "S3_E4_S08",
+      "S3_E4_S09",
+      "S3_E4_S10",
+      "S3_E5_S01",
+      "S3_E5_S02",
+      "S3_E5_S03",
+      "S3_E5_S04",
+      "S3_E5_S05",
+      "S3_E5_S06",
+      "S3_E5_S07",
+      "S3_E5_S08",
+      "S3_E5_S09",
+      "S3_E5_S10",
+      "S3_E6_S01",
+      "S3_E6_S02",
+      "S3_E6_S03",
+      "S3_E6_S04",
+      "S3_E6_S05",
+      "S3_E6_S06",
+      "S3_E6_S07",
+      "S3_E6_S08",
+      "S3_E6_S09",
+      "S3_E6_S10",
+      "S3_E7_S01",
+      "S3_E7_S02",
+      "S3_E7_S03",
+      "S3_E7_S04",
+      "S3_E7_S05",
+      "S3_E7_S06",
+      "S3_E7_S07",
+      "S3_E7_S08",
+      "S3_E7_S09",
+      "S3_E7_S10",
+      "S3_E8_S01",
+      "S3_E8_S02",
+      "S3_E8_S03",
+      "S3_E8_S04",
+      "S3_E8_S05",
+      "S3_E8_S06",
+      "S3_E8_S07",
+      "S3_E8_S08",
+      "S3_E8_S09",
+      "S3_E8_S10",
+      "S3_E9_S01",
+      "S3_E9_S04",
+      "S3_E9_S05",
+      "S3_E9_S06",
+      "S3_E9_S07",
+      "S3_E9_S08",
+      "S3_E9_S09",
+      "S3_E9_S10",
+      "S3_E10_S01",
+      "S3_E10_S02",
+      "S3_E10_S03",
+      "S3_E10_S04",
+      "S3_E10_S05",
+      "S3_E10_S06",
+      "S3_E10_S07",
+      "S3_E10_S08",
+      "S3_E10_S09",
+      "S3_E10_S10"
+    ],
+    "unresolved_conflicts": [
+      {
+        "type": "LOCATION_TELEPORTATION",
+        "severity": "CRITICAL",
+        "source_shot": "S3_E2_S10",
+        "target_shot": "S3_E3_S01",
+        "description": "Characters teleported from 'mountain road car interior' directly into 'homestay hallway' with zero transit or arrival action."
+      },
+      {
+        "type": "LOCATION_TELEPORTATION",
+        "severity": "CRITICAL",
+        "source_shot": "S3_E3_S01",
+        "target_shot": "S3_E3_S02",
+        "description": "Characters teleported from 'homestay hallway' directly into 'hallway' with zero transit or arrival action."
+      },
+      {
+        "type": "LOCATION_TELEPORTATION",
+        "severity": "CRITICAL",
+        "source_shot": "S3_E3_S04",
+        "target_shot": "S3_E3_S05",
+        "description": "Characters teleported from 'hallway' directly into 'bedroom' with zero transit or arrival action."
+      },
+      {
+        "type": "LOCATION_TELEPORTATION",
+        "severity": "CRITICAL",
+        "source_shot": "S3_E9_S01",
+        "target_shot": "S3_E9_S02",
+        "description": "Characters teleported from 'homestay' directly into 'homestay' with zero transit or arrival action."
+      },
+      {
+        "type": "LOCATION_TELEPORTATION",
+        "severity": "CRITICAL",
+        "source_shot": "S3_E9_S02",
+        "target_shot": "S3_E9_S03",
+        "description": "Characters teleported from 'homestay' directly into 'homestay' with zero transit or arrival action."
+      }
+    ],
+    "prompts_requiring_regeneration": [
+      "S3_E2_S10",
+      "S3_E3_S01",
+      "S3_E3_S02",
+      "S3_E3_S05",
+      "S3_E9_S02",
+      "S3_E9_S03"
+    ]
+  },
+  "summary": {
+    "total_shots_in_season": 100,
+    "affected_shots_count": 5,
+    "unaffected_shots_count": 94,
+    "prompts_requiring_regeneration_count": 6,
+    "unresolved_conflicts_count": 5
+  }
+}

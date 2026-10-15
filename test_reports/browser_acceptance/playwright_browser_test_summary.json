@@ -1,0 +1,32 @@
+{
+  "browser": "Google Chrome (via Playwright)",
+  "status": "SUCCESS",
+  "steps": [
+    "Portal loaded in Chrome browser.",
+    "Navigated to Tab 7 (Master 100-Shot Script).",
+    "Opened Butterfly Editor Modal for Episode 4 Shot 10.",
+    "Evaluated season-wide consequences and rendered 11-point report.",
+    "Approved and committed revision via UI.",
+    "Rolled back revision to baseline via UI."
+  ],
+  "screenshots": {
+    "modal_opened": "C:\\Users\\HP\\OneDrive\\Desktop\\VISHNU\\WEB\\Sachin_And_Reenu_Series\\repo_studio\\test_reports\\browser_acceptance\\01_butterfly_modal_opened.png",
+    "report_evaluated": "C:\\Users\\HP\\OneDrive\\Desktop\\VISHNU\\WEB\\Sachin_And_Reenu_Series\\repo_studio\\test_reports\\browser_acceptance\\02_butterfly_report_evaluated.png",
+    "revision_approved": "C:\\Users\\HP\\OneDrive\\Desktop\\VISHNU\\WEB\\Sachin_And_Reenu_Series\\repo_studio\\test_reports\\browser_acceptance\\03_revision_approved_banner.png",
+    "baseline_restored": "C:\\Users\\HP\\OneDrive\\Desktop\\VISHNU\\WEB\\Sachin_And_Reenu_Series\\repo_studio\\test_reports\\browser_acceptance\\04_baseline_restored.png"
+  },
+  "file_hashes": {
+    "baseline": {
+      "season_3_shot_outline.json": "ed8217f9679a4ec2f32322aecb975fafa1b66de3a5f143cb49cba8a5b5ad577b",
+      "story_state.json": "d9b8588aa6fab51b5a098987e0e20098f5b41e7e5c18e2b73f1ce8e9428e95cc"
+    },
+    "committed": {
+      "season_3_shot_outline.json": "d0df89609767e2270fc288694ff5414a1785fa3f107fdbab1598480542f86141",
+      "story_state.json": "9809dcf50ccfdede946b08d937143f2026ab2d065528679585618272f84c16a4"
+    },
+    "restored": {
+      "season_3_shot_outline.json": "ed8217f9679a4ec2f32322aecb975fafa1b66de3a5f143cb49cba8a5b5ad577b",
+      "story_state.json": "d9b8588aa6fab51b5a098987e0e20098f5b41e7e5c18e2b73f1ce8e9428e95cc"
+    }
+  }
+}

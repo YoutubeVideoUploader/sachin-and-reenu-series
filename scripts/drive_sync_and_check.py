@@ -112,16 +112,79 @@ def download_file_from_drive(file_id, download_url, destination_path):
         file_size = dest.stat().st_size if dest.exists() else 0
         raise RuntimeError(f"Downloaded file for ID {file_id} failed video validation (Size: {file_size} bytes, Valid: False)")
 
-def check_and_download(gas_url, episode_num=1, target_dir="uploaded_shots"):
+def resolve_active_season_and_episode(gas_url=None, ep_arg=None, season_arg=None):
+    """
+    Dynamically determines the active season and episode number without hardcoded defaults.
+    Resolution Order:
+    1. Explicit CLI arguments (if provided and > 0)
+    2. Environment variables (EPISODE_NUMBER / ACTIVE_EPISODE, SEASON_NUMBER / ACTIVE_SEASON)
+    3. current_episode_shots.json
+    4. story_state.json
+    5. Live Google Sheet query (Tab 'Season_Story_Arc' Cell A1 for season)
+    6. Default fallback: Season 3, Episode 1 if uninitialized
+    """
+    resolved_season = season_arg
+    resolved_episode = ep_arg
+
+    # Check env vars
+    if not resolved_episode and os.getenv("EPISODE_NUMBER"):
+        try:
+            resolved_episode = int(os.getenv("EPISODE_NUMBER"))
+        except ValueError:
+            pass
+    if not resolved_episode and os.getenv("ACTIVE_EPISODE"):
+        try:
+            resolved_episode = int(os.getenv("ACTIVE_EPISODE"))
+        except ValueError:
+            pass
+
+    if not resolved_season and os.getenv("SEASON_NUMBER"):
+        try:
+            resolved_season = int(os.getenv("SEASON_NUMBER"))
+        except ValueError:
+            pass
+
+    # Check local JSON state files
+    for fn in ["current_episode_shots.json", "story_state.json"]:
+        if os.path.exists(fn):
+            try:
+                with open(fn, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, dict):
+                        if not resolved_season and data.get("season_number"):
+                            resolved_season = int(data.get("season_number"))
+                        if not resolved_episode and data.get("episode_number"):
+                            resolved_episode = int(data.get("episode_number"))
+                        if not resolved_episode and data.get("current_episode", {}).get("episode_number"):
+                            resolved_episode = int(data["current_episode"]["episode_number"])
+            except Exception:
+                pass
+
+    # Check Google Sheet if season still unresolved
+    if not resolved_season:
+        sheet_season = fetch_season_from_google_sheet(gas_url)
+        if sheet_season:
+            resolved_season = sheet_season
+
+    # Final safe fallbacks
+    if not resolved_season:
+        resolved_season = 3
+    if not resolved_episode:
+        resolved_episode = 1
+
+    return resolved_season, resolved_episode
+
+def check_and_download(gas_url, episode_num=None, season_num=None, target_dir="uploaded_shots"):
     """
     Queries Google Apps Script for Google Sheet checklist status.
     If all shots present, downloads them into target_dir.
     """
-    season_num = fetch_season_from_google_sheet(gas_url) or 1
+    season_num, episode_num = resolve_active_season_and_episode(gas_url, episode_num, season_num)
     print(f"\n=======================================================")
     print(f"📊 GOOGLE SHEET & DRIVE PRE-CHECK: SEASON {season_num} • EPISODE {episode_num}")
     print(f"=======================================================")
     set_github_output("season", str(season_num))
+    set_github_output("episode", str(episode_num))
     
     if not gas_url:
         print("⚠️ Warning: GAS_WEBHOOK_URL is not set.")
@@ -244,13 +307,15 @@ def set_github_output(name, value):
 def main():
     parser = argparse.ArgumentParser(description="Google Sheet & Drive Checklist Sync")
     parser.add_argument("--gas_url", default=os.getenv("GAS_WEBHOOK_URL", ""), help="Google Apps Script Web App URL")
-    parser.add_argument("--episode", type=int, default=1, help="Episode number to check")
+    parser.add_argument("--season", type=int, default=None, help="Season number (auto-detected if omitted)")
+    parser.add_argument("--episode", type=int, default=None, help="Episode number to check (auto-detected if omitted)")
     parser.add_argument("--target_dir", default="uploaded_shots", help="Directory to save downloaded shots")
     args = parser.parse_args()
 
     status = check_and_download(
         gas_url=args.gas_url,
         episode_num=args.episode,
+        season_num=args.season,
         target_dir=args.target_dir
     )
     if status == "error":

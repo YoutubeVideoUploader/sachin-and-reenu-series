@@ -1,85 +1,179 @@
 #!/usr/bin/env python3
+"""
+=============================================================================
+push_corrected_shot.py - Integrated Production Episode & Shot Revision Workflow
+Sachin & Reenu AI Animation Studio
+=============================================================================
+Connects episode and scene editing directly to the Season-Wide Butterfly-Effect
+Story Propagation Engine.
+
+Workflow:
+1. Accepts proposed scene action and Malayalam dialogue changes for ANY episode and shot.
+2. Traces direct and indirect season-wide consequences using the Causal Dependency Graph.
+3. Formulates coherent alternative screenplay proposals, adapting downstream scenes and the Grand Finale.
+4. Preserves 100% of Character DNA and approved dialogue in unaffected scenes.
+5. Audits stale video assets and prompts; protects video rendering behind explicit approval.
+6. Stages revisions for user review with full 11-point Change-Impact Reports.
+7. Upon approval (--approve), commits updates transactionally to:
+   - season_3_shot_outline.json (100-shot master roadmap)
+   - current_episode_shots.json (if active episode affected)
+   - story_state.json
+   - workspace portals (via update_portals.py)
+   - optionally Google Sheets (Tab 2, Tab 7) if --sync-gas is set
+8. Supports 1-click instant rollback (--rollback <revision_id>) using pre-commit snapshots.
+=============================================================================
+"""
+
 import sys
+import os
 import json
-import requests
+import argparse
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-url = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
+# Add scripts directory to path
+SCRIPTS_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPTS_DIR.parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 
-# Exact corrected prompt according to specification mistakes (100% keeping dialogue & action)
-clean_prompt = {
-  "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-  "duration": "6s",
-  "perspective": "Character Dialogue (Amal Speaking)",
-  "characters_present": [
-    {
-      "name": "Amal",
-      "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 proportions, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-    }
-  ],
-  "sequence_continuity": {
-    "scene_id": "SCENE_MUNNAR_ROAD_NIGHT",
-    "time_of_day": "Late Evening",
-    "lighting_palette": "Eerie blue moonlight cutting through thick white mountain fog",
-    "weather": "Heavy mountain fog",
-    "spatial_blocking": {
-      "Amal": "Sitting in the driver's seat gripping the steering wheel tightly"
-    },
-    "eyeline_direction": "Looking frantically into the rearview mirror",
-    "persistent_props": [
-      "Car steering wheel",
-      "Rearview mirror"
-    ],
-    "camera_lens": "Cinematic prime lens, shallow depth of field"
-  },
-  "location": "Mountain road car interior",
-  "camera": "Medium shot",
-  "action": "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors. Amal's mouth moves in natural, expressive 3D lip-sync animation corresponding to his spoken Malayalam line. Other character lips remain closed.",
-  "dialogue": {
-    "speaker": "Amal",
-    "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
-    "language": "Malayalam",
-    "script": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
-    "line": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ."
-  },
-  "audio_directive": "MALE CHARACTER DIALOGUE (AMAL). Character mouth animates in natural lip-sync with spoken Malayalam dialogue line. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice audio and natural ambient foley sound effects only."
-}
+try:
+    from season_story_propagation_engine import SeasonStoryPropagationEngine
+except ImportError:
+    from scripts.season_story_propagation_engine import SeasonStoryPropagationEngine
 
-payload = {
-    "action": "update_shot_prompt",
-    "episode_number": 2,
-    "shot_number": 2,
-    "shot_data": {
-        "duration": "6s",
-        "character": "Amal",
-        "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
-        "action_summary": "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors.",
-        "json_prompt": clean_prompt
-    }
-}
+DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbyivkrK_jL1ejwNqUvHe8KVFNkSuJSwZbWSmuE1YATqL5jCneMlqlKbf0EH7mwpc4gybA/exec"
 
-print("Pushing corrected Shot 2 prompt to Google Sheet...")
-res = requests.post(url, data=json.dumps(payload), headers={"Content-Type": "text/plain"}, timeout=45)
-print(f"GAS Response: HTTP {res.status_code} - {res.text}")
 
-# Also update story_state.json
-st_path = Path("story_state.json")
-if st_path.exists():
-    with open(st_path, "r", encoding="utf-8") as f:
-        st = json.load(f)
-    cur_ep = st.get("current_episode", {})
-    shots = cur_ep.get("shots", [])
-    for s in shots:
-        if s.get("shot_number") == 2:
-            s["character"] = "Amal"
-            s["dialogue_malayalam"] = "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ."
-            s["action_summary"] = "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors."
-            s["json_prompt"] = clean_prompt
-            break
-    with open(st_path, "w", encoding="utf-8") as f:
-        json.dump(st, f, ensure_ascii=False, indent=2)
-    print("✓ Updated story_state.json for Shot 2.")
+def main():
+    parser = argparse.ArgumentParser(
+        description="Sachin & Reenu Production Episode Editing & Butterfly Propagation Workflow"
+    )
+    parser.add_argument("--season", type=int, default=3, help="Season number (default: 3)")
+    parser.add_argument("--episode", type=int, default=2, help="Episode number (1 to 10, default: 2)")
+    parser.add_argument("--shot", type=int, default=2, help="Shot number (1 to 10, default: 2)")
+    parser.add_argument("--action", type=str, default="", help="Proposed revised scene action")
+    parser.add_argument("--dialogue", type=str, default="", help="Proposed revised Malayalam dialogue")
+    parser.add_argument("--notes", type=str, default="", help="User intent / rationale for revision")
+    parser.add_argument("--removed-facts", nargs="*", default=None, help="Fact IDs removed by this edit")
+    parser.add_argument("--added-facts", nargs="*", default=None, help="Fact IDs added by this edit")
+    parser.add_argument("--approve", nargs="?", const="AUTO", default=None, help="Approve and commit the staged revision (or pass revision ID)")
+    parser.add_argument("--rollback", type=str, default="", help="Rollback revision ID to its pre-commit snapshot")
+    parser.add_argument("--sync-gas", action="store_true", help="Push committed changes to Google Sheets")
+    parser.add_argument("--gas-url", type=str, default=DEFAULT_GAS_URL, help="Google Apps Script endpoint")
 
-print("Done!")
+    args = parser.parse_args()
+
+    # Initialize Engine pointing to repository root or sandbox
+    ws_root = Path.cwd() if (Path.cwd() / "season_3_shot_outline.json").exists() else REPO_ROOT
+    engine = SeasonStoryPropagationEngine(workspace_root=ws_root)
+
+    # 1. Handle Standalone Approve by ID
+    if args.approve and args.approve != "AUTO" and not args.action:
+        print(f"\n[WORKFLOW] Approving and committing revision: {args.approve}")
+        commit_res = engine.approve_and_commit(args.approve)
+        print(f"✓ {commit_res['message']}")
+        return
+
+    # 2. Handle Rollback Command
+    if args.rollback:
+        print(f"\n[WORKFLOW] Executing 1-Click Rollback for revision: {args.rollback}")
+        res = engine.rollback(args.rollback)
+        print(f"✓ {res['message']}")
+        # Keep portals in sync
+        try:
+            import update_portals
+        except Exception:
+            pass
+        return
+
+    # 2. Determine Action & Dialogue (with sensible defaults for Ep 2 Shot 2 if empty)
+    action = args.action
+    dialogue = args.dialogue
+    notes = args.notes
+
+    if not action and not dialogue and args.episode == 2 and args.shot == 2:
+        action = "Amal nervously grips the steering wheel, his eyes darting across the dark rearview mirrors."
+        dialogue = "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ."
+        notes = "Specification correction for Episode 2 Shot 2"
+
+    if not action:
+        print("Error: --action must be provided.")
+        parser.print_help()
+        sys.exit(1)
+
+    print(f"\n=============================================================================")
+    print(f"🎬 SACHIN & REENU EPISODE EDITING WORKFLOW: Season {args.season} Episode {args.episode} Shot {args.shot}")
+    print(f"=============================================================================")
+    print(f"Proposed Action:   {action}")
+    print(f"Proposed Dialogue: {dialogue}")
+    print(f"Rationale:         {notes or 'Direct scene revision'}")
+    print("-----------------------------------------------------------------------------")
+
+    # Step 1: Trace Season-Wide Butterfly Consequences & Stage Proposal
+    print("\n[STEP 1/3] Tracing season-wide causal dependencies and generating 11-point Change-Impact Report...")
+    proposal = engine.propose_season_edit(
+        season_number=args.season,
+        episode_number=args.episode,
+        shot_number=args.shot,
+        new_action=action,
+        new_dialogue=dialogue,
+        user_notes=notes,
+        removed_fact_ids=args.removed_facts,
+        added_fact_ids=args.added_facts
+    )
+
+    report_text = engine.format_11_point_report(proposal)
+    print("\n" + report_text)
+
+    rev_id = proposal["revision_id"]
+    print(f"\n✓ Revision staged successfully: `{rev_id}`")
+    print(f"  Pending file: story_revisions/pending_{rev_id}.json")
+    print(f"  Canonical baseline on disk remains 100% UNCHANGED until explicit approval.")
+
+    # Step 2: Handle Approval & Commit if requested
+    if args.approve:
+        print(f"\n[STEP 2/3] Approving and committing revision `{rev_id}`...")
+        commit_res = engine.approve_and_commit(rev_id)
+        print(f"✓ {commit_res['message']}")
+        print(f"  Pre-commit rollback snapshot created: {commit_res['snapshot_file']}")
+
+        # Synchronize portals
+        print("\n[STEP 3/3] Synchronizing workspace portals...")
+        try:
+            import update_portals
+            print("✓ Portal HTML files synchronized with updated season canon.")
+        except Exception as e:
+            print(f"Notice updating portals: {e}")
+
+        # Optional Google Sheets push
+        if args.sync_gas:
+            import requests
+            print(f"\nPushing synchronized outline to Google Sheets ({args.gas_url})...")
+            try:
+                with open(REPO_ROOT / "season_3_shot_outline.json", "r", encoding="utf-8") as f:
+                    outline_data = json.load(f)
+                tab7_payload = {
+                    "action": "save_season_shot_outline",
+                    "season_number": args.season,
+                    "season_title": outline_data.get("season_title", "Season 3: The Munnar Trip"),
+                    "shots": outline_data.get("flattened_shots", [])
+                }
+                res = requests.post(args.gas_url, data=json.dumps(tab7_payload), headers={"Content-Type": "text/plain"}, timeout=45)
+                print(f"Google Sheet response: HTTP {res.status_code}")
+            except Exception as ge:
+                print(f"Notice pushing to Google Sheets: {ge}")
+
+    else:
+        print(f"\n[NEXT STEPS]")
+        print(f"To approve and commit this revision, execute:")
+        print(f"  python scripts/push_corrected_shot.py --approve --season {args.season} --episode {args.episode} --shot {args.shot} --action \"{action}\" --dialogue \"{dialogue}\"")
+        print(f"Or via the Master Propagation CLI:")
+        print(f"  python scripts/season_story_propagation_engine.py approve --revision_id {rev_id}")
+
+
+if __name__ == "__main__":
+    main()
+

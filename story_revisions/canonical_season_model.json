@@ -1,0 +1,2048 @@
+{
+  "season_number": 3,
+  "season_title": "Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)",
+  "premise": "Sachin, Reenu, and Amal embark on an adventurous college vacation trip to the misty hills of Munnar, where an eerie urban legend about a woman in the mist entangles them in a thirty-year-old high-range secret.",
+  "central_conflict": "Unraveling the tragic secret of Bhadra (the woman in the mist) and the suspicious motives of homestay caretaker Sreedharan before the spirit traps them forever.",
+  "theme": "Love, courage, and standing up for the forgotten truth in the face of fear.",
+  "version": "v1.0",
+  "plotlines": {
+    "PLOT_WOMAN_IN_MIST": {
+      "name": "The Mystery of Bhadra (Woman in the Mist)",
+      "description": "Apparitions, clues, and revelations regarding Bhadra's tragic past and trapped spirit.",
+      "arc": "Introduction (Ep 1-2) -> Investigation (Ep 4-6) -> Discovery of Betrayal (Ep 7-8) -> Resolution (Ep 10)"
+    },
+    "PLOT_CARETAKER_SECRET": {
+      "name": "Caretaker Sreedharan's Guilt",
+      "description": "The homestay caretaker's warnings, locked room secrets, and eventual confession of guilt.",
+      "arc": "Eerie Welcome (Ep 3) -> Room 13 Warning (Ep 3-4) -> Confrontation (Ep 9) -> Redemption (Ep 10)"
+    },
+    "PLOT_SACHIN_REENU_ROMANCE": {
+      "name": "Sachin & Reenu Emotional Bond",
+      "description": "Growing trust, mutual protection, and deepening romance through shared peril.",
+      "arc": "Carefree romance (Ep 1) -> Protective anxiety (Ep 2-5) -> Bravery together (Ep 7-9) -> Deepened bond (Ep 10)"
+    },
+    "PLOT_AMAL_COMIC_SKEPTIC": {
+      "name": "Amal's Skepticism to Panic",
+      "description": "Amal's journey from witty skeptic and food lover to terrified believer and loyal savior.",
+      "arc": "Jokes & driving (Ep 1-2) -> Reluctant follower (Ep 3-5) -> Panic & ghost detector (Ep 6-7) -> Heroic rescue (Ep 10)"
+    }
+  },
+  "facts": {
+    "FACT_MIST_ROAD_DEPARTURE": {
+      "fact_id": "FACT_MIST_ROAD_DEPARTURE",
+      "name": "Departure to Munnar",
+      "category": "premise",
+      "description": "Sachin, Reenu, and Amal travel by car through the winding high ranges of Munnar.",
+      "introduced_in": "S3_E1_S01",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sachin",
+        "Reenu",
+        "Amal",
+        "Car"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_WOMAN_IN_MIST_SIGHTING": {
+      "fact_id": "FACT_WOMAN_IN_MIST_SIGHTING",
+      "name": "First Sighting of the Woman in the Mist",
+      "category": "mystery",
+      "description": "Reenu spots an ethereal woman standing in the mountain fog who vanishes without a trace.",
+      "introduced_in": "S3_E1_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Reenu",
+        "Sachin",
+        "Bhadra"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_CAR_STALLED_GAP_ROAD": {
+      "fact_id": "FACT_CAR_STALLED_GAP_ROAD",
+      "name": "Car Stalls on Gap Road",
+      "category": "hazard",
+      "description": "Amal's car engine abruptly sputters and dies on a desolate, foggy high-range road.",
+      "introduced_in": "S3_E2_S08",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Amal",
+        "Car"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_FREEZING_HANDPRINT": {
+      "fact_id": "FACT_FREEZING_HANDPRINT",
+      "name": "Icy Handprint on Car Window",
+      "category": "clue",
+      "description": "A freezing paranormal handprint slowly presses against the misted passenger window from outside.",
+      "introduced_in": "S3_E2_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Reenu",
+        "Sachin",
+        "Bhadra"
+      ],
+      "depends_on": [
+        "FACT_CAR_STALLED_GAP_ROAD"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_CARETAKER_MEETING": {
+      "fact_id": "FACT_CARETAKER_MEETING",
+      "name": "Meeting Caretaker Sreedharan",
+      "category": "character",
+      "description": "Elderly caretaker Sreedharan welcomes the shivering trio into the secluded colonial homestay.",
+      "introduced_in": "S3_E3_S02",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sreedharan (The Caretaker)",
+        "Sachin",
+        "Reenu",
+        "Amal"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_LOCKED_ROOM_WARNING": {
+      "fact_id": "FACT_LOCKED_ROOM_WARNING",
+      "name": "Warning About Room 13",
+      "category": "decision",
+      "description": "Sreedharan strictly warns them never to open or enter Room 13 at the end of the hallway.",
+      "introduced_in": "S3_E3_S07",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sreedharan (The Caretaker)",
+        "Room 13"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_VINTAGE_PHOTO_CLUE": {
+      "fact_id": "FACT_VINTAGE_PHOTO_CLUE",
+      "name": "Discovery of the Three-Person Photograph",
+      "category": "clue",
+      "description": "Inside Room 13, Amal discovers an eerie vintage photograph depicting three people instead of two.",
+      "introduced_in": "S3_E4_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Amal",
+        "Sachin",
+        "Reenu",
+        "Vintage Photo",
+        "Room 13"
+      ],
+      "depends_on": [
+        "FACT_LOCKED_ROOM_WARNING"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_ABANDONED_FACTORY_TREK": {
+      "fact_id": "FACT_ABANDONED_FACTORY_TREK",
+      "name": "Trek into the Tea Plantation and Old Factory",
+      "category": "location",
+      "description": "During a morning walk in the tea plantation, they enter an abandoned British-era tea factory.",
+      "introduced_in": "S3_E5_S05",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sachin",
+        "Reenu",
+        "Amal",
+        "Abandoned Factory"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_NOTEBOOK_DRAWING_FOUND": {
+      "fact_id": "FACT_NOTEBOOK_DRAWING_FOUND",
+      "name": "Bhadra's Notebook and Sketch",
+      "category": "clue",
+      "description": "Reenu and Sachin discover an old notebook in the factory containing a sketch matching the woman on the road.",
+      "introduced_in": "S3_E5_S06",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Reenu",
+        "Sachin",
+        "Bhadra"
+      ],
+      "depends_on": [
+        "FACT_ABANDONED_FACTORY_TREK",
+        "FACT_WOMAN_IN_MIST_SIGHTING"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_WARNING_NOTE_DISCOVERED": {
+      "fact_id": "FACT_WARNING_NOTE_DISCOVERED",
+      "name": "Warning Note to Avoid the Bridge",
+      "category": "clue",
+      "description": "Reenu discovers an anonymous note slipped inside the homestay warning: 'Do not go to the old bridge'.",
+      "introduced_in": "S3_E6_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Reenu",
+        "Warning Note"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_BHADRA_LOCKET_FOUND": {
+      "fact_id": "FACT_BHADRA_LOCKET_FOUND",
+      "name": "Discovery of the Antique Locket",
+      "category": "prop",
+      "description": "At the forbidden dilapidated bridge, Reenu recovers an antique silver locket belonging to Bhadra.",
+      "introduced_in": "S3_E7_S04",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Reenu",
+        "Bhadra's Locket"
+      ],
+      "depends_on": [
+        "FACT_WARNING_NOTE_DISCOVERED"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_BRIDGE_COLLAPSE": {
+      "fact_id": "FACT_BRIDGE_COLLAPSE",
+      "name": "Old Bridge Collapses",
+      "category": "hazard",
+      "description": "A structural crash in the dense forest destroys the old bridge walkway, cutting off that route.",
+      "introduced_in": "S3_E7_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Bridge",
+        "Amal",
+        "Sachin"
+      ],
+      "depends_on": [],
+      "status": "ACTIVE"
+    },
+    "FACT_TORN_BETRAYAL_LETTER": {
+      "fact_id": "FACT_TORN_BETRAYAL_LETTER",
+      "name": "Uncovering the Betrayal Letter",
+      "category": "revelation",
+      "description": "In an estate shed, Sachin and Reenu find newspaper clippings and a letter proving Bhadra was deliberately betrayed.",
+      "introduced_in": "S3_E8_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sachin",
+        "Reenu",
+        "Betrayal Letter"
+      ],
+      "depends_on": [
+        "FACT_BRIDGE_COLLAPSE"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_CARETAKER_CONFESSION": {
+      "fact_id": "FACT_CARETAKER_CONFESSION",
+      "name": "Caretaker Sreedharan's Confession",
+      "category": "revelation",
+      "description": "Confronted with the letter, Sreedharan confesses he kept the truth hidden and warns Bhadra's spirit returns tonight.",
+      "introduced_in": "S3_E9_S02",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sreedharan (The Caretaker)",
+        "Sachin",
+        "Reenu"
+      ],
+      "depends_on": [
+        "FACT_TORN_BETRAYAL_LETTER",
+        "FACT_VINTAGE_PHOTO_CLUE"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_FINALE_EVIDENCE_RECOVERY": {
+      "fact_id": "FACT_FINALE_EVIDENCE_RECOVERY",
+      "name": "Final Clue Recovered from Collapsing Factory",
+      "category": "climax",
+      "description": "Sachin recovers the hidden compartment in the factory bringing justice to Bhadra before the building collapses.",
+      "introduced_in": "S3_E10_S04",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sachin",
+        "Reenu",
+        "Amal",
+        "Bhadra"
+      ],
+      "depends_on": [
+        "FACT_CARETAKER_CONFESSION",
+        "FACT_BHADRA_LOCKET_FOUND"
+      ],
+      "status": "ACTIVE"
+    },
+    "FACT_FINALE_PHOTO_PEACE_REVEAL": {
+      "fact_id": "FACT_FINALE_PHOTO_PEACE_REVEAL",
+      "name": "The Ghost in the Photo Smiles in Peace",
+      "category": "payoff",
+      "description": "In the departing car, Sachin and Amal look at the vintage photo and see Bhadra's spirit smiling in peaceful release.",
+      "introduced_in": "S3_E10_S10",
+      "established_in_version": "v1.0",
+      "entities": [
+        "Sachin",
+        "Amal",
+        "Vintage Photo",
+        "Bhadra"
+      ],
+      "depends_on": [
+        "FACT_VINTAGE_PHOTO_CLUE",
+        "FACT_FINALE_EVIDENCE_RECOVERY"
+      ],
+      "status": "ACTIVE"
+    }
+  },
+  "episodes": [
+    {
+      "episode_number": 1,
+      "title_english": "The Trip Begins",
+      "title_malayalam": "യാത്ര തുടങ്ങുന്നു",
+      "synopsis": "Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.",
+      "cliffhanger": "Renu points at a woman on the road. Sachin looks back. Dialogue: 'ആ സ്ത്രീ ആരാണ്?'",
+      "central_objective": "Reach Munnar before dark while enjoying the romantic mountain drive.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Romantic & Excited",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog"
+          ],
+          "relationship_notes": "Cherishing vacation with Reenu",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Cheerful & Romantic",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Jovial & Carefree",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Narrator",
+          "action": "Sachin holds a map, looking excited. Renu is surprised.",
+          "dialogue_malayalam": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
+          "location": "Living Room",
+          "persistent_props": [
+            "Map",
+            "Suitcase"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Sachin",
+          "action": "Sachin shows a romantic itinerary.",
+          "dialogue_malayalam": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
+          "location": "Living Room",
+          "persistent_props": [
+            "Itinerary"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Amal",
+          "action": "Amal enters, looking annoyed.",
+          "dialogue_malayalam": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
+          "location": "Living Room",
+          "persistent_props": [
+            "Car keys"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Renu",
+          "action": "Renu laughs at Amal.",
+          "dialogue_malayalam": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+          "location": "Living Room",
+          "persistent_props": [
+            "Bag"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "Sachin packs unnecessary items.",
+          "dialogue_malayalam": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Flower bouquet"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Amal checks the GPS map.",
+          "dialogue_malayalam": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
+          "location": "Car",
+          "persistent_props": [
+            "Smartphone"
+          ],
+          "camera_hint": "Interior car medium shot, dynamic angle"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Sachin",
+          "action": "Sachin looks confident but wrong.",
+          "dialogue_malayalam": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
+          "location": "Car",
+          "persistent_props": [
+            "Steering wheel"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Amal realizes the error.",
+          "dialogue_malayalam": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
+          "location": "Car",
+          "persistent_props": [
+            "Smartphone"
+          ],
+          "camera_hint": "Interior car medium shot, dynamic angle"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Renu",
+          "action": "Looking out at the misty mountains.",
+          "dialogue_malayalam": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
+          "location": "Car",
+          "persistent_props": [
+            "Window"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Renu",
+          "action": "Renu points at a woman on the road. Sachin looks back.",
+          "dialogue_malayalam": "ആ സ്ത്രീ ആരാണ്?",
+          "location": "Mountain road",
+          "persistent_props": [
+            "Car"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        }
+      ]
+    },
+    {
+      "episode_number": 2,
+      "title_english": "The Woman in the Mist",
+      "title_malayalam": "മഞ്ഞിലെ സ്ത്രീ",
+      "synopsis": "Traveling through the heavy mountain fog, Sachin, Reenu, and Amal face an eerie presence when their car sputters to a halt.",
+      "cliffhanger": "A freezing handprint slowly presses against the outer window glass from the dark outside.",
+      "central_objective": "Survive the engine breakdown and mysterious presence on foggy Gap Road.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_FREEZING_HANDPRINT"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Protective & Anxious",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog"
+          ],
+          "relationship_notes": "Cherishing vacation with Reenu",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone",
+            "Car keys"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Intrigued & Sensitive to spirit",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Gap Road"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Sachin peers through the misty passenger-side window in astonishment, noticing the woman disappearing into the thick fog while Amal navigates the car forward.",
+          "dialogue_malayalam": "ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Cinematic 3D medium close-up focused on Sachin looking out window"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Amal",
+          "action": "Amal nervously grips the steering wheel tightly in the driver's seat, his eyes darting across the dark rearview mirrors and misted windshield.",
+          "dialogue_malayalam": "ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Cinematic 3D medium shot focused on Amal in driver seat"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Amal",
+          "action": "Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.",
+          "dialogue_malayalam": "ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Dramatic 3D medium close-up of Amal turning ignition key with worried look"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Sachin",
+          "action": "Sachin unbuckles his seatbelt in the front passenger seat and prepares to crack open the passenger door into the biting mountain cold to inspect the car bonnet.",
+          "dialogue_malayalam": "നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Cinematic 3D medium shot of Sachin unbuckling in passenger seat"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Reenu",
+          "action": "Reenu leans forward anxiously from the rear seat, clutching the front headrest in dread, warning Sachin not to leave the vehicle as dark shadows drift outside.",
+          "dialogue_malayalam": "സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Expressive 3D close-up of Reenu leaning between front seats in dread"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Amal urgently snaps the driver-side door lock down and frantically gestures for Sachin and Reenu to secure all doors as fear grips the cabin.",
+          "dialogue_malayalam": "വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Dynamic 3D medium close-up of Amal snapping lock down"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Sachin",
+          "action": "Sachin pulls his travel jacket tight against the freezing monsoon mountain gust blowing through the cracked window glass, breath misting in the cold air.",
+          "dialogue_malayalam": "എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Cinematic 3D close-up of Sachin shivering by passenger window"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Amal recoils in terror in the driver's seat, staring wide-eyed into the illuminated side rearview mirror where an eerie shadowy silhouette looms close.",
+          "dialogue_malayalam": "എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Over-the-shoulder 3D shot past Amal looking into mirror reflection"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Sachin",
+          "action": "Sachin quickly pulls his legs back inside the passenger seat, slams the door shut, and urgently turns to Amal in the driver seat, yelling to start the engine.",
+          "dialogue_malayalam": "ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Tense two-shot of Sachin turning frantically to Amal in driver seat"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Reenu",
+          "action": "Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.",
+          "dialogue_malayalam": "ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!",
+          "location": "Mountain road car interior",
+          "persistent_props": [
+            "Car steering wheel",
+            "Rearview mirror",
+            "Illuminated dashboard dials",
+            "Car ignition key",
+            "Sachin's cross-bag"
+          ],
+          "camera_hint": "Chilling 3D close-up of Reenu's terrified face with glowing handprint on glass"
+        }
+      ]
+    },
+    {
+      "episode_number": 3,
+      "title_english": "The Strange Homestay",
+      "title_malayalam": "വിചിത്രമായ ഹോംസ്റ്റേ",
+      "synopsis": "Handing keys, looking suspicious. Footsteps heard outside.",
+      "cliffhanger": "The door creaks open. Dialogue: 'അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.'",
+      "central_objective": "Settle into the eerie colonial homestay and heed the caretaker's rules.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Protective & Anxious",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog"
+          ],
+          "relationship_notes": "Cherishing vacation with Reenu",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Intrigued & Sensitive to spirit",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Caretaker",
+          "action": "Handing keys, looking suspicious.",
+          "dialogue_malayalam": "ആ മുറി തുറക്കരുത്.",
+          "location": "Homestay hallway",
+          "persistent_props": [
+            "Keys"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Sachin",
+          "action": "Sachin looks at the locked door.",
+          "dialogue_malayalam": "അവിടെ എന്താകും?",
+          "location": "Hallway",
+          "persistent_props": [
+            "Door"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Amal",
+          "action": "Amal makes up a silly theory.",
+          "dialogue_malayalam": "അവിടെ പഴയ സ്വർണം കാണും.",
+          "location": "Hallway",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Renu",
+          "action": "Renu watches the caretaker.",
+          "dialogue_malayalam": "ഇയാൾ എന്തോ മറയ്ക്കുന്നുണ്ട്.",
+          "location": "Hallway",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "Footsteps heard outside.",
+          "dialogue_malayalam": "ആരാ പുറത്ത്?",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Bed"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Amal is terrified.",
+          "dialogue_malayalam": "സച്ചിൻ, പോകണ്ട!",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Blanket"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Sachin",
+          "action": "Sachin creeps to the door.",
+          "dialogue_malayalam": "ഞാൻ ഒന്ന് നോക്കട്ടെ.",
+          "location": "Bedroom",
+          "persistent_props": [
+            "Door handle"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Amal follows clinging to Sachin.",
+          "dialogue_malayalam": "ഞാനും വരുന്നു.",
+          "location": "Hallway",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Sachin",
+          "action": "They hide behind the curtain.",
+          "dialogue_malayalam": "നമുക്ക് ഇവിടെ ഒളിക്കാം.",
+          "location": "Hallway",
+          "persistent_props": [
+            "Curtain"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Narrator",
+          "action": "The door creaks open.",
+          "dialogue_malayalam": "അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.",
+          "location": "Hallway",
+          "persistent_props": [
+            "Door"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 4,
+      "title_english": "Room Number Thirteen",
+      "title_malayalam": "പതിമൂന്നാം നമ്പർ മുറി",
+      "synopsis": "Picking up the photo. The lights flicker.",
+      "cliffhanger": "Staring at the changed photo. Dialogue: 'അവിടെ മൂന്നുപേർ!'",
+      "central_objective": "Investigate Room 13 to identify the source of midnight whispers.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_VINTAGE_PHOTO_CLUE"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Protective & Anxious",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "relationship_notes": "Cherishing vacation with Reenu",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Intrigued & Sensitive to spirit",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Renu",
+          "action": "Picking up the photo.",
+          "dialogue_malayalam": "ഇത് റോഡിൽ കണ്ട സ്ത്രീയാണ്!",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Old photo"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Sachin",
+          "action": "Trying to stay logical.",
+          "dialogue_malayalam": "ഇതൊരു യാദൃശ്ചികത ആകാം.",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Photo"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Amal",
+          "action": "Amal wants to leave.",
+          "dialogue_malayalam": "നമുക്ക് ഇവിടുന്ന് പോകാം!",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Bag"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Narrator",
+          "action": "The door slams shut.",
+          "dialogue_malayalam": "പെട്ടെന്ന് വാതിൽ അടഞ്ഞു.",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Door"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "The lights flicker.",
+          "dialogue_malayalam": "ലൈറ്റ് പോയി!",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Voice",
+          "action": "Whispering Sachin's name.",
+          "dialogue_malayalam": "സച്ചിൻ...",
+          "location": "Locked Room",
+          "persistent_props": [],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Amal",
+          "action": "Grabbing Sachin in fear.",
+          "dialogue_malayalam": "സച്ചിൻ, ഞാൻ നിന്നെ രക്ഷിക്കാം!",
+          "location": "Locked Room",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Sachin",
+          "action": "Trying to find the switch.",
+          "dialogue_malayalam": "എവിടെയാ സ്വിച്ച്?",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Wall"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Renu",
+          "action": "Lights return.",
+          "dialogue_malayalam": "നോക്കൂ!",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Photo"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Amal",
+          "action": "Staring at the changed photo.",
+          "dialogue_malayalam": "അവിടെ മൂന്നുപേർ!",
+          "location": "Locked Room",
+          "persistent_props": [
+            "Photo"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 5,
+      "title_english": "The Missing Path",
+      "title_malayalam": "കാണാതായ വഴി",
+      "synopsis": "Taking photos of Renu. Entering the old building.",
+      "cliffhanger": "Calling Renu. Dialogue: 'റീനു...'",
+      "central_objective": "Explore the tea plantation and uncover the truth of the abandoned factory.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_NOTEBOOK_DRAWING_FOUND"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Protective & Anxious",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Intrigued & Sensitive to spirit",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Taking photos of Renu.",
+          "dialogue_malayalam": "ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.",
+          "location": "Plantation",
+          "persistent_props": [
+            "Camera"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Amal",
+          "action": "Taking photos, complaining.",
+          "dialogue_malayalam": "എത്ര നേരം ഫോട്ടോ എടുക്കും?",
+          "location": "Plantation",
+          "persistent_props": [
+            "Camera"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Renu",
+          "action": "Noticing a trail.",
+          "dialogue_malayalam": "അങ്ങോട്ട് പോയാലോ?",
+          "location": "Plantation",
+          "persistent_props": [
+            "Path"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Amal",
+          "action": "Following but complaining.",
+          "dialogue_malayalam": "ഇത് ശരിയല്ല.",
+          "location": "Plantation",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "Entering the old building.",
+          "dialogue_malayalam": "ഇതെന്താ കെട്ടിടം?",
+          "location": "Abandoned factory",
+          "persistent_props": [
+            "Old notebook"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Renu",
+          "action": "Opening the notebook.",
+          "dialogue_malayalam": "ഇവിടെ ഒരു സ്ത്രീയെ പറ്റി എഴുതിയിട്ടുണ്ട്.",
+          "location": "Abandoned factory",
+          "persistent_props": [
+            "Notebook"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Amal",
+          "action": "Looking around nervously.",
+          "dialogue_malayalam": "നമുക്ക് തിരിച്ചു പോകാം.",
+          "location": "Abandoned factory",
+          "persistent_props": [],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Sachin",
+          "action": "Finding a drawing.",
+          "dialogue_malayalam": "ഇത് റോഡിലെ സ്ത്രീ തന്നെ.",
+          "location": "Abandoned factory",
+          "persistent_props": [
+            "Drawing"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Amal",
+          "action": "Walking deeper unknowingly.",
+          "dialogue_malayalam": "ഇനി ഇത് വെച്ച് നമ്മൾ എന്ത് ചെയ്യും?",
+          "location": "Abandoned factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Voice",
+          "action": "Calling Renu.",
+          "dialogue_malayalam": "റീനു...",
+          "location": "Abandoned factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 6,
+      "title_english": "Someone is Following Us",
+      "title_malayalam": "ആരോ നമ്മളെ പിന്തുടരുന്നു",
+      "synopsis": "Setting up his phone. They run out.",
+      "cliffhanger": "Finding the note. Dialogue: 'പഴയ പാലത്തിൽ പോകരുത്...'",
+      "central_objective": "Detect the stalker and decipher the mysterious warning note.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_WARNING_NOTE_DISCOVERED"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Protective & Anxious",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Intrigued & Sensitive to spirit",
+          "knowledge": [
+            "Woman sighting"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car",
+            "Ghost detector"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Amal",
+          "action": "Setting up his phone.",
+          "dialogue_malayalam": "ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ.",
+          "location": "Factory",
+          "persistent_props": [
+            "Phone",
+            "Stick"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Sachin",
+          "action": "Overthinking every sound.",
+          "dialogue_malayalam": "അതൊരു ശബ്ദമായിരുന്നു!",
+          "location": "Factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Renu",
+          "action": "Pointing at wall markings.",
+          "dialogue_malayalam": "ഇത് എന്താ?",
+          "location": "Factory",
+          "persistent_props": [
+            "Wall"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Amal",
+          "action": "Joking about the ghost.",
+          "dialogue_malayalam": "അവർക്ക് നമ്മുടെ ബില്ല് ഷെയർ ചെയ്യാൻ ആയിരിക്കും.",
+          "location": "Factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "They run out.",
+          "dialogue_malayalam": "ഓടിക്കോ!",
+          "location": "Factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Noticing footprints.",
+          "dialogue_malayalam": "ഇതാര് വന്നതാ?",
+          "location": "Outside Factory",
+          "persistent_props": [
+            "Footprints"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Renu",
+          "action": "Returning to homestay.",
+          "dialogue_malayalam": "ഇന്ന് രാത്രി ഒന്ന് ഉറങ്ങണം.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Bed"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Locking the door.",
+          "dialogue_malayalam": "ഇനി ആരും വരില്ല.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Door"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Sachin",
+          "action": "Sleeping.",
+          "dialogue_malayalam": "നാളെ നോക്കാം.",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Renu",
+          "action": "Finding the note.",
+          "dialogue_malayalam": "പഴയ പാലത്തിൽ പോകരുത്...",
+          "location": "Homestay",
+          "persistent_props": [
+            "Note"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 7,
+      "title_english": "The Forbidden Bridge",
+      "title_malayalam": "നിരോധിക്കപ്പെട്ട പാലം",
+      "synopsis": "Showing the note. Panic running.",
+      "cliffhanger": "A loud crash from the forest. Dialogue: 'എന്തോ തകർന്നു!'",
+      "central_objective": "Investigate the forbidden bridge and recover the ghost's lost locket.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_BHADRA_LOCKET_FOUND"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Determined & Brave",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Empathetic to Bhadra",
+          "knowledge": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag",
+            "Antique locket"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Panicked & Skeptical",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Renu",
+          "action": "Showing the note.",
+          "dialogue_malayalam": "നമുക്ക് അങ്ങോട്ട് പോകണം.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Note"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Amal",
+          "action": "Staying inside.",
+          "dialogue_malayalam": "ഞാൻ ഇവിടെ ഫുഡ് ഓർഡർ ചെയ്യാം.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Phone"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Sachin",
+          "action": "Walking to the bridge.",
+          "dialogue_malayalam": "റീനു, സൂക്ഷിക്കണം.",
+          "location": "Bridge",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Renu",
+          "action": "Finding a locket.",
+          "dialogue_malayalam": "ഇത് ആ സ്ത്രീയുടെ ആണ്.",
+          "location": "Bridge",
+          "persistent_props": [
+            "Locket"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Amal",
+          "action": "Panic running.",
+          "dialogue_malayalam": "അയ്യോ, വരുന്നു!",
+          "location": "Bridge",
+          "persistent_props": [
+            "Bag"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Sachin",
+          "action": "Amal grabs the wrong bag.",
+          "dialogue_malayalam": "അത് എന്റെ ബാഗാണ്!",
+          "location": "Bridge",
+          "persistent_props": [
+            "Bag"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Mist",
+          "action": "Thick fog descends.",
+          "dialogue_malayalam": "ഒന്നും കാണുന്നില്ല!",
+          "location": "Bridge",
+          "persistent_props": [
+            "Mist"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Shadow",
+          "action": "Pointing to the forest.",
+          "dialogue_malayalam": "അങ്ങോട്ട്...",
+          "location": "Bridge",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Renu",
+          "action": "The woman appears.",
+          "dialogue_malayalam": "അവൻ ഇവിടെയുണ്ട്.",
+          "location": "Bridge",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Narrator",
+          "action": "A loud crash from the forest.",
+          "dialogue_malayalam": "എന്തോ തകർന്നു!",
+          "location": "Forest",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 8,
+      "title_english": "The Night of Fear",
+      "title_malayalam": "ഭയത്തിന്റെ രാത്രി",
+      "synopsis": "Taking shelter. Reading clippings.",
+      "cliffhanger": "Letter text reveal. Dialogue: 'അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.'",
+      "central_objective": "Seek shelter from the storm and piece together the tragic betrayal.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [
+        "FACT_TORN_BETRAYAL_LETTER"
+      ],
+      "clues_resolved": [],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Determined & Brave",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Empathetic to Bhadra",
+          "knowledge": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag",
+            "Antique locket"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Loyal Defender",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Taking shelter.",
+          "dialogue_malayalam": "ഇവിടെ നിൽക്കാം.",
+          "location": "Estate building",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Amal",
+          "action": "Attempting a ritual.",
+          "dialogue_malayalam": "ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.",
+          "location": "Estate building",
+          "persistent_props": [
+            "Salt"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Sachin",
+          "action": "Correcting Amal.",
+          "dialogue_malayalam": "അത് തെറ്റാണ് അമൽ.",
+          "location": "Estate building",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Renu",
+          "action": "Finding a box.",
+          "dialogue_malayalam": "ഇവിടെ നോക്കൂ!",
+          "location": "Storage room",
+          "persistent_props": [
+            "Box"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "Reading clippings.",
+          "dialogue_malayalam": "ഇതൊരു വലിയ രഹസ്യമാണ്.",
+          "location": "Storage room",
+          "persistent_props": [
+            "Clippings"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Hearing noises.",
+          "dialogue_malayalam": "ആരാ അത്?",
+          "location": "Storage room",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Renu",
+          "action": "Reading the letter.",
+          "dialogue_malayalam": "ആരോ അവളെ ചതിച്ചു.",
+          "location": "Storage room",
+          "persistent_props": [
+            "Letter"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Sachin",
+          "action": "Determined.",
+          "dialogue_malayalam": "നമുക്ക് സത്യം അറിയണം.",
+          "location": "Storage room",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Amal",
+          "action": "Trying to be brave.",
+          "dialogue_malayalam": "ഞാൻ കൂടെയുണ്ട്.",
+          "location": "Storage room",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Narrator",
+          "action": "Letter text reveal.",
+          "dialogue_malayalam": "അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.",
+          "location": "Storage room",
+          "persistent_props": [
+            "Letter"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 9,
+      "title_english": "The Caretaker's Secret",
+      "title_malayalam": "കെയർടേക്കറുടെ രഹസ്യം",
+      "synopsis": "Confronting the caretaker. Amal's theory is absurd.",
+      "cliffhanger": "Door creaks. Dialogue: 'വാതിൽ തുറക്കുന്നു.'",
+      "central_objective": "Confront Caretaker Sreedharan and prepare for the midnight reckoning.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [],
+      "clues_resolved": [
+        "FACT_TORN_BETRAYAL_LETTER",
+        "FACT_CARETAKER_CONFESSION"
+      ],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Determined & Brave",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Empathetic to Bhadra",
+          "knowledge": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag",
+            "Antique locket"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Loyal Defender",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Homestay"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Confronting the caretaker.",
+          "dialogue_malayalam": "ഇതെന്താണെന്ന് പറയൂ.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Evidence"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Caretaker",
+          "action": "Admitting the truth.",
+          "dialogue_malayalam": "അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Renu",
+          "action": "Listening intently.",
+          "dialogue_malayalam": "അവൾ നമ്മളെ സഹായിക്കുകയാണോ?",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Amal",
+          "action": "Trying to solve it.",
+          "dialogue_malayalam": "എനിക്ക് മനസ്സിലായി!",
+          "location": "Homestay",
+          "persistent_props": [
+            "Evidence"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Sachin",
+          "action": "Amal's theory is absurd.",
+          "dialogue_malayalam": "അതല്ല അമൽ.",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Caretaker",
+          "action": "Warning them.",
+          "dialogue_malayalam": "ഇന്ന് രാത്രി അവൾ വരും.",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Sachin",
+          "action": "Lights go out.",
+          "dialogue_malayalam": "ലൈറ്റ് വീണ്ടും പോയി!",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Hiding.",
+          "dialogue_malayalam": "എന്നെ രക്ഷിക്കണേ!",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Renu",
+          "action": "Listening to footsteps.",
+          "dialogue_malayalam": "ആരോ വരുന്നുണ്ട്.",
+          "location": "Homestay",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Narrator",
+          "action": "Door creaks.",
+          "dialogue_malayalam": "വാതിൽ തുറക്കുന്നു.",
+          "location": "Homestay",
+          "persistent_props": [
+            "Door"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        }
+      ]
+    },
+    {
+      "episode_number": 10,
+      "title_english": "The Last Night in Munnar",
+      "title_malayalam": "മൂന്നാറിലെ അവസാന രാത്രി",
+      "synopsis": "Entering the factory. Building starts to collapse.",
+      "cliffhanger": "Seeing the ghost in the photo. Dialogue: 'അയ്യോ! ഇത് ആരാ?'",
+      "central_objective": "Grand Finale: Recover the final evidence, escape the collapsing factory, and grant peace to Bhadra's spirit.",
+      "active_plotlines": [
+        "PLOT_WOMAN_IN_MIST",
+        "PLOT_CARETAKER_SECRET",
+        "PLOT_SACHIN_REENU_ROMANCE",
+        "PLOT_AMAL_COMIC_SKEPTIC"
+      ],
+      "clues_introduced": [],
+      "clues_resolved": [
+        "FACT_VINTAGE_PHOTO_CLUE",
+        "FACT_BHADRA_LOCKET_FOUND",
+        "FACT_FINALE_EVIDENCE_RECOVERY"
+      ],
+      "character_states": {
+        "Sachin": {
+          "character_name": "Sachin",
+          "emotion": "Determined & Brave",
+          "knowledge": [
+            "Munnar route",
+            "Gap road fog",
+            "Photo clue",
+            "Letter clue"
+          ],
+          "relationship_notes": "Deeply bonded with Reenu through shared peril",
+          "props_in_possession": [
+            "Travel cross-bag",
+            "Phone"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Reenu": {
+          "character_name": "Reenu",
+          "emotion": "Empathetic to Bhadra",
+          "knowledge": [
+            "Woman sighting",
+            "Locket clue"
+          ],
+          "relationship_notes": "Trusting Sachin completely",
+          "props_in_possession": [
+            "Silver wristwatch",
+            "Handbag",
+            "Antique locket"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        },
+        "Amal": {
+          "character_name": "Amal",
+          "emotion": "Loyal Defender",
+          "knowledge": [
+            "Driving car"
+          ],
+          "relationship_notes": "Best friend and third wheel",
+          "props_in_possession": [
+            "Car steering wheel",
+            "Smartphone GPS"
+          ],
+          "physical_condition": "Healthy",
+          "location": "Factory/Plantation"
+        }
+      },
+      "shots": [
+        {
+          "shot_number": 1,
+          "speaker": "Sachin",
+          "action": "Entering the factory.",
+          "dialogue_malayalam": "ഇവിടെ അവസാന തെളിവുണ്ട്.",
+          "location": "Factory",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 2,
+          "speaker": "Renu",
+          "action": "Approaching the woman.",
+          "dialogue_malayalam": "പേടിക്കണ്ട, നമ്മൾ കൂടെയുണ്ട്.",
+          "location": "Factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 3,
+          "speaker": "Amal",
+          "action": "Holding the light steady.",
+          "dialogue_malayalam": "ഞാൻ റെഡിയാണ്.",
+          "location": "Factory",
+          "persistent_props": [
+            "Flashlight"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 4,
+          "speaker": "Sachin",
+          "action": "Finding the compartment.",
+          "dialogue_malayalam": "ഇതാ അത്!",
+          "location": "Factory",
+          "persistent_props": [
+            "Evidence"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 5,
+          "speaker": "Narrator",
+          "action": "Building starts to collapse.",
+          "dialogue_malayalam": "കെട്ടിടം തകരുന്നു!",
+          "location": "Factory",
+          "persistent_props": [
+            "Debris"
+          ],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 6,
+          "speaker": "Amal",
+          "action": "Helping them out.",
+          "dialogue_malayalam": "വേഗം ഇങ്ങോട്ട്!",
+          "location": "Factory",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 7,
+          "speaker": "Sachin",
+          "action": "Holding Renu's hand.",
+          "dialogue_malayalam": "നമുക്ക് പോകാം.",
+          "location": "Outside",
+          "persistent_props": [],
+          "camera_hint": "Dynamic cinematic 3D medium shot"
+        },
+        {
+          "shot_number": 8,
+          "speaker": "Amal",
+          "action": "Relieved.",
+          "dialogue_malayalam": "ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.",
+          "location": "Car",
+          "persistent_props": [
+            "Car"
+          ],
+          "camera_hint": "Interior car medium shot, dynamic angle"
+        },
+        {
+          "shot_number": 9,
+          "speaker": "Sachin",
+          "action": "Looking at the photo.",
+          "dialogue_malayalam": "എല്ലാം കഴിഞ്ഞു.",
+          "location": "Car",
+          "persistent_props": [
+            "Photo"
+          ],
+          "camera_hint": "Cinematic 3D close-up with expressive emotional focus"
+        },
+        {
+          "shot_number": 10,
+          "speaker": "Amal",
+          "action": "Seeing the ghost in the photo.",
+          "dialogue_malayalam": "അയ്യോ! ഇത് ആരാ?",
+          "location": "Car",
+          "persistent_props": [
+            "Photo"
+          ],
+          "camera_hint": "Interior car medium shot, dynamic angle"
+        }
+      ]
+    }
+  ]
+}

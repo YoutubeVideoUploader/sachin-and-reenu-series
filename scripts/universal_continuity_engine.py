@@ -536,5 +536,49 @@ def synchronize_master_outline_and_episode(
 
     return ep_obj
 
+# ---------------------------------------------------------------------------
+# 5. DYNAMIC STORY PROPAGATION API INTEGRATION
+# ---------------------------------------------------------------------------
+def edit_episode_event_with_propagation(
+    season_number: int,
+    episode_number: int,
+    shot_number: int,
+    new_action: str,
+    new_dialogue: str,
+    user_notes: str = "",
+    removed_fact_ids: Optional[List[str]] = None,
+    added_fact_ids: Optional[List[str]] = None,
+    auto_approve: bool = False,
+    workspace_root: Optional[Path] = None
+) -> Dict[str, Any]:
+    """
+    Programmatic entry point for workflows, portals, and engines to edit any episode
+    event and propagate butterfly-effect consequences across the full season.
+    """
+    try:
+        from season_story_propagation_engine import SeasonStoryPropagationEngine
+    except ImportError:
+        sys.path.append(str(Path(__file__).parent))
+        from season_story_propagation_engine import SeasonStoryPropagationEngine
+
+    engine = SeasonStoryPropagationEngine(workspace_root=workspace_root)
+    proposal = engine.propose_season_edit(
+        season_number=season_number,
+        episode_number=episode_number,
+        shot_number=shot_number,
+        new_action=new_action,
+        new_dialogue=new_dialogue,
+        user_notes=user_notes,
+        removed_fact_ids=removed_fact_ids,
+        added_fact_ids=added_fact_ids
+    )
+
+    if auto_approve:
+        commit_res = engine.approve_and_commit(proposal["revision_id"])
+        proposal["commit_result"] = commit_res
+
+    return proposal
+
 if __name__ == "__main__":
     print("Universal Scene Continuity Engine initialized.")
+

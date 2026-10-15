@@ -1,0 +1,562 @@
+SEASON: Season 3: The Munnar Trip (മൂന്നാർ യാത്ര)
+TOTAL SHOTS: 100
+
+======================================================================
+EPISODE 1: The Trip Begins (യാത്ര തുടങ്ങുന്നു)
+Synopsis: Sachin holds a map, looking excited. Renu is surprised. Sachin packs unnecessary items.
+----------------------------------------------------------------------
+Shot #01 | [Living Room] | Speaker: Narrator
+  Action: Sachin holds a map, looking excited. Renu is surprised.
+  Dialogue: സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #02 | [Living Room] | Speaker: Sachin
+  Action: Sachin shows a romantic itinerary.
+  Dialogue: റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Living Room] | Speaker: Amal
+  Action: Amal enters, looking annoyed.
+  Dialogue: എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #04 | [Living Room] | Speaker: Renu
+  Action: Renu laughs at Amal.
+  Dialogue: അമൽ, നീ തന്നെ വേണം നമുക്ക്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Bedroom] | Speaker: Sachin
+  Action: Sachin packs unnecessary items.
+  Dialogue: ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Car] | Speaker: Amal
+  Action: Amal checks the GPS map.
+  Dialogue: ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?
+  Camera: Interior car medium shot, dynamic angle
+
+Shot #07 | [Car] | Speaker: Sachin
+  Action: Sachin looks confident but wrong.
+  Dialogue: എനിക്ക് വഴി കൃത്യമായി അറിയാം.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #08 | [Car] | Speaker: Amal
+  Action: Amal realizes the error.
+  Dialogue: സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!
+  Camera: Interior car medium shot, dynamic angle
+
+Shot #09 | [Car] | Speaker: Renu
+  Action: Looking out at the misty mountains.
+  Dialogue: മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #10 | [Mountain road] | Speaker: Renu
+  Action: Renu points at a woman on the road. Sachin looks back.
+  Dialogue: ആ സ്ത്രീ ആരാണ്?
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+
+
+======================================================================
+EPISODE 2: The Woman in the Mist (മഞ്ഞിലെ സ്ത്രീ)
+Synopsis: Traveling through the heavy mountain fog, Sachin, Reenu, and Amal face an eerie presence when their car sputters to a halt.
+----------------------------------------------------------------------
+Shot #01 | [Mountain road car interior] | Speaker: Sachin
+  Action: Sachin peers through the misty passenger-side window in astonishment, noticing the woman disappearing into the thick fog while Amal navigates the car forward.
+  Dialogue: ആ വഴിപോക്കയായ സ്ത്രീയെ പെട്ടെന്ന് കാണാതായല്ലോ!
+  Camera: Cinematic 3D medium close-up focused on Sachin looking out window
+
+Shot #02 | [Mountain road car interior] | Speaker: Amal
+  Action: Amal nervously grips the steering wheel tightly in the driver's seat, his eyes darting across the dark rearview mirrors and misted windshield.
+  Dialogue: ഇത്രയും കോടമഞ്ഞിൽ ആരും നടന്നുപോവില്ല സച്ചിൻ.
+  Camera: Cinematic 3D medium shot focused on Amal in driver seat
+
+Shot #03 | [Mountain road car interior] | Speaker: Amal
+  Action: Amal twists the car ignition key frantically in the driver's seat as the vehicle shudders, the dashboard lights flicker, and the engine sputters dead on the dark mountain road.
+  Dialogue: ചെക്കാ, നമ്മുടെ വണ്ടി ഇപ്പോൾ പണി തന്നു!
+  Camera: Dramatic 3D medium close-up of Amal turning ignition key with worried look
+
+Shot #04 | [Mountain road car interior] | Speaker: Sachin
+  Action: Sachin unbuckles his seatbelt in the front passenger seat and prepares to crack open the passenger door into the biting mountain cold to inspect the car bonnet.
+  Dialogue: നീ പേടിക്കാതെടാ, ഞാൻ ബോണറ്റ് തുറന്ന് നോക്കാം.
+  Camera: Cinematic 3D medium shot of Sachin unbuckling in passenger seat
+
+Shot #05 | [Mountain road car interior] | Speaker: Reenu
+  Action: Reenu leans forward anxiously from the rear seat, clutching the front headrest in dread, warning Sachin not to leave the vehicle as dark shadows drift outside.
+  Dialogue: സച്ചിൻ, പുറത്തിറങ്ങരുത്... ആരോ നമ്മുടെ കാറിനെ പിന്തുടരുന്നുണ്ട്!
+  Camera: Expressive 3D close-up of Reenu leaning between front seats in dread
+
+Shot #06 | [Mountain road car interior] | Speaker: Amal
+  Action: Amal urgently snaps the driver-side door lock down and frantically gestures for Sachin and Reenu to secure all doors as fear grips the cabin.
+  Dialogue: വാതിലുകൾ പെട്ടെന്ന് ലോക്ക് ചെയ്യ്!
+  Camera: Dynamic 3D medium close-up of Amal snapping lock down
+
+Shot #07 | [Mountain road car interior] | Speaker: Sachin
+  Action: Sachin pulls his travel jacket tight against the freezing monsoon mountain gust blowing through the cracked window glass, breath misting in the cold air.
+  Dialogue: എന്തൊരു തണുപ്പാണ് ഈ കാറ്റിൽ...
+  Camera: Cinematic 3D close-up of Sachin shivering by passenger window
+
+Shot #08 | [Mountain road car interior] | Speaker: Amal
+  Action: Amal recoils in terror in the driver's seat, staring wide-eyed into the illuminated side rearview mirror where an eerie shadowy silhouette looms close.
+  Dialogue: എന്റെ അമ്മോ, ആ കണ്ണാടിയിൽ എന്തോ നിഴലിക്കുന്നു!
+  Camera: Over-the-shoulder 3D shot past Amal looking into mirror reflection
+
+Shot #09 | [Mountain road car interior] | Speaker: Sachin
+  Action: Sachin quickly pulls his legs back inside the passenger seat, slams the door shut, and urgently turns to Amal in the driver seat, yelling to start the engine.
+  Dialogue: ഡോർ ലോക്ക് ആയില്ലേ അമൽ, വേഗം വണ്ടി സ്റ്റാർട്ട് ചെയ്യ്!
+  Camera: Tense two-shot of Sachin turning frantically to Amal in driver seat
+
+Shot #10 | [Mountain road car interior] | Speaker: Reenu
+  Action: Reenu freezes in pure shock and horror in the rear seat, pointing trembling fingers at a freezing translucent handprint slowly appearing on the condensation of the outer window glass from the blackness outside.
+  Dialogue: ആ കൈപ്പാട്... അത് ജനാലയിലാണ്!
+  Camera: Chilling 3D close-up of Reenu's terrified face with glowing handprint on glass
+
+
+
+======================================================================
+EPISODE 3: The Strange Homestay (വിചിത്രമായ ഹോംസ്റ്റേ)
+Synopsis: Handing keys, looking suspicious. Footsteps heard outside.
+----------------------------------------------------------------------
+Shot #01 | [Homestay hallway] | Speaker: Caretaker
+  Action: Handing keys, looking suspicious.
+  Dialogue: ആ മുറി തുറക്കരുത്.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #02 | [Hallway] | Speaker: Sachin
+  Action: Sachin looks at the locked door.
+  Dialogue: അവിടെ എന്താകും?
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #03 | [Hallway] | Speaker: Amal
+  Action: Amal makes up a silly theory.
+  Dialogue: അവിടെ പഴയ സ്വർണം കാണും.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Hallway] | Speaker: Renu
+  Action: Renu watches the caretaker.
+  Dialogue: ഇയാൾ എന്തോ മറയ്ക്കുന്നുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Bedroom] | Speaker: Sachin
+  Action: Footsteps heard outside.
+  Dialogue: ആരാ പുറത്ത്?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Bedroom] | Speaker: Amal
+  Action: Amal is terrified.
+  Dialogue: സച്ചിൻ, പോകണ്ട!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Bedroom] | Speaker: Sachin
+  Action: Sachin creeps to the door.
+  Dialogue: ഞാൻ ഒന്ന് നോക്കട്ടെ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Hallway] | Speaker: Amal
+  Action: Amal follows clinging to Sachin.
+  Dialogue: ഞാനും വരുന്നു.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Hallway] | Speaker: Sachin
+  Action: They hide behind the curtain.
+  Dialogue: നമുക്ക് ഇവിടെ ഒളിക്കാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Hallway] | Speaker: Narrator
+  Action: The door creaks open.
+  Dialogue: അർദ്ധരാത്രിയിൽ ആ മുറി തുറന്നു.
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 4: Room Number Thirteen (പതിമൂന്നാം നമ്പർ മുറി)
+Synopsis: Picking up the photo. The lights flicker.
+----------------------------------------------------------------------
+Shot #01 | [Locked Room] | Speaker: Renu
+  Action: Picking up the photo.
+  Dialogue: ഇത് റോഡിൽ കണ്ട സ്ത്രീയാണ്!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Locked Room] | Speaker: Sachin
+  Action: Trying to stay logical.
+  Dialogue: ഇതൊരു യാദൃശ്ചികത ആകാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Locked Room] | Speaker: Amal
+  Action: Amal wants to leave.
+  Dialogue: നമുക്ക് ഇവിടുന്ന് പോകാം!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Locked Room] | Speaker: Narrator
+  Action: The door slams shut.
+  Dialogue: പെട്ടെന്ന് വാതിൽ അടഞ്ഞു.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Locked Room] | Speaker: Sachin
+  Action: The lights flicker.
+  Dialogue: ലൈറ്റ് പോയി!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Locked Room] | Speaker: Voice
+  Action: Whispering Sachin's name.
+  Dialogue: സച്ചിൻ...
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #07 | [Locked Room] | Speaker: Amal
+  Action: Grabbing Sachin in fear.
+  Dialogue: സച്ചിൻ, ഞാൻ നിന്നെ രക്ഷിക്കാം!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Locked Room] | Speaker: Sachin
+  Action: Trying to find the switch.
+  Dialogue: എവിടെയാ സ്വിച്ച്?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Locked Room] | Speaker: Renu
+  Action: Lights return.
+  Dialogue: നോക്കൂ!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Locked Room] | Speaker: Amal
+  Action: Staring at the changed photo.
+  Dialogue: അവിടെ മൂന്നുപേർ!
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 5: The Missing Path (കാണാതായ വഴി)
+Synopsis: Taking photos of Renu. Entering the old building.
+----------------------------------------------------------------------
+Shot #01 | [Plantation] | Speaker: Sachin
+  Action: Taking photos of Renu.
+  Dialogue: ഇവിടെ നല്ല വെളിച്ചമുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Plantation] | Speaker: Amal
+  Action: Taking photos, complaining.
+  Dialogue: എത്ര നേരം ഫോട്ടോ എടുക്കും?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Plantation] | Speaker: Renu
+  Action: Noticing a trail.
+  Dialogue: അങ്ങോട്ട് പോയാലോ?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Plantation] | Speaker: Amal
+  Action: Following but complaining.
+  Dialogue: ഇത് ശരിയല്ല.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Abandoned factory] | Speaker: Sachin
+  Action: Entering the old building.
+  Dialogue: ഇതെന്താ കെട്ടിടം?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Abandoned factory] | Speaker: Renu
+  Action: Opening the notebook.
+  Dialogue: ഇവിടെ ഒരു സ്ത്രീയെ പറ്റി എഴുതിയിട്ടുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Abandoned factory] | Speaker: Amal
+  Action: Looking around nervously.
+  Dialogue: നമുക്ക് തിരിച്ചു പോകാം.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #08 | [Abandoned factory] | Speaker: Sachin
+  Action: Finding a drawing.
+  Dialogue: ഇത് റോഡിലെ സ്ത്രീ തന്നെ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Abandoned factory] | Speaker: Amal
+  Action: Walking deeper unknowingly.
+  Dialogue: ഇനി ഇത് വെച്ച് നമ്മൾ എന്ത് ചെയ്യും?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Abandoned factory] | Speaker: Voice
+  Action: Calling Renu.
+  Dialogue: റീനു...
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 6: Someone is Following Us (ആരോ നമ്മളെ പിന്തുടരുന്നു)
+Synopsis: Setting up his phone. They run out.
+----------------------------------------------------------------------
+Shot #01 | [Factory] | Speaker: Amal
+  Action: Setting up his phone.
+  Dialogue: ഇതാണ് എന്റെ ഗോസ്റ്റ് ഡിറ്റക്ടർ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Factory] | Speaker: Sachin
+  Action: Overthinking every sound.
+  Dialogue: അതൊരു ശബ്ദമായിരുന്നു!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Factory] | Speaker: Renu
+  Action: Pointing at wall markings.
+  Dialogue: ഇത് എന്താ?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Factory] | Speaker: Amal
+  Action: Joking about the ghost.
+  Dialogue: അവർക്ക് നമ്മുടെ ബില്ല് ഷെയർ ചെയ്യാൻ ആയിരിക്കും.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Factory] | Speaker: Sachin
+  Action: They run out.
+  Dialogue: ഓടിക്കോ!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Outside Factory] | Speaker: Amal
+  Action: Noticing footprints.
+  Dialogue: ഇതാര് വന്നതാ?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Homestay] | Speaker: Renu
+  Action: Returning to homestay.
+  Dialogue: ഇന്ന് രാത്രി ഒന്ന് ഉറങ്ങണം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Homestay] | Speaker: Amal
+  Action: Locking the door.
+  Dialogue: ഇനി ആരും വരില്ല.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Homestay] | Speaker: Sachin
+  Action: Sleeping.
+  Dialogue: നാളെ നോക്കാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Homestay] | Speaker: Renu
+  Action: Finding the note.
+  Dialogue: പഴയ പാലത്തിൽ പോകരുത്...
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 7: The Forbidden Bridge (നിരോധിക്കപ്പെട്ട പാലം)
+Synopsis: Showing the note. Panic running.
+----------------------------------------------------------------------
+Shot #01 | [Homestay] | Speaker: Renu
+  Action: Showing the note.
+  Dialogue: നമുക്ക് അങ്ങോട്ട് പോകണം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Homestay] | Speaker: Amal
+  Action: Staying inside.
+  Dialogue: ഞാൻ ഇവിടെ ഫുഡ് ഓർഡർ ചെയ്യാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Bridge] | Speaker: Sachin
+  Action: Walking to the bridge.
+  Dialogue: റീനു, സൂക്ഷിക്കണം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Bridge] | Speaker: Renu
+  Action: Finding a locket.
+  Dialogue: ഇത് ആ സ്ത്രീയുടെ ആണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Bridge] | Speaker: Amal
+  Action: Panic running.
+  Dialogue: അയ്യോ, വരുന്നു!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Bridge] | Speaker: Sachin
+  Action: Amal grabs the wrong bag.
+  Dialogue: അത് എന്റെ ബാഗാണ്!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Bridge] | Speaker: Mist
+  Action: Thick fog descends.
+  Dialogue: ഒന്നും കാണുന്നില്ല!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Bridge] | Speaker: Shadow
+  Action: Pointing to the forest.
+  Dialogue: അങ്ങോട്ട്...
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Bridge] | Speaker: Renu
+  Action: The woman appears.
+  Dialogue: അവൻ ഇവിടെയുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Forest] | Speaker: Narrator
+  Action: A loud crash from the forest.
+  Dialogue: എന്തോ തകർന്നു!
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 8: The Night of Fear (ഭയത്തിന്റെ രാത്രി)
+Synopsis: Taking shelter. Reading clippings.
+----------------------------------------------------------------------
+Shot #01 | [Estate building] | Speaker: Sachin
+  Action: Taking shelter.
+  Dialogue: ഇവിടെ നിൽക്കാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Estate building] | Speaker: Amal
+  Action: Attempting a ritual.
+  Dialogue: ഇതൊരു സിനിമയിൽ കണ്ടതാണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Estate building] | Speaker: Sachin
+  Action: Correcting Amal.
+  Dialogue: അത് തെറ്റാണ് അമൽ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Storage room] | Speaker: Renu
+  Action: Finding a box.
+  Dialogue: ഇവിടെ നോക്കൂ!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Storage room] | Speaker: Sachin
+  Action: Reading clippings.
+  Dialogue: ഇതൊരു വലിയ രഹസ്യമാണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Storage room] | Speaker: Amal
+  Action: Hearing noises.
+  Dialogue: ആരാ അത്?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Storage room] | Speaker: Renu
+  Action: Reading the letter.
+  Dialogue: ആരോ അവളെ ചതിച്ചു.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Storage room] | Speaker: Sachin
+  Action: Determined.
+  Dialogue: നമുക്ക് സത്യം അറിയണം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Storage room] | Speaker: Amal
+  Action: Trying to be brave.
+  Dialogue: ഞാൻ കൂടെയുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Storage room] | Speaker: Narrator
+  Action: Letter text reveal.
+  Dialogue: അവളെ അങ്ങോട്ട് മനപ്പൂർവ്വം കൊണ്ടുവന്നതാണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 9: The Caretaker's Secret (കെയർടേക്കറുടെ രഹസ്യം)
+Synopsis: Confronting the caretaker. Amal's theory is absurd.
+----------------------------------------------------------------------
+Shot #01 | [Homestay] | Speaker: Sachin
+  Action: Confronting the caretaker.
+  Dialogue: ഇതെന്താണെന്ന് പറയൂ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Homestay] | Speaker: Caretaker
+  Action: Admitting the truth.
+  Dialogue: അവൾ അവിടുത്തെ കാര്യങ്ങൾ അറിഞ്ഞു.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Homestay] | Speaker: Renu
+  Action: Listening intently.
+  Dialogue: അവൾ നമ്മളെ സഹായിക്കുകയാണോ?
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Homestay] | Speaker: Amal
+  Action: Trying to solve it.
+  Dialogue: എനിക്ക് മനസ്സിലായി!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Homestay] | Speaker: Sachin
+  Action: Amal's theory is absurd.
+  Dialogue: അതല്ല അമൽ.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Homestay] | Speaker: Caretaker
+  Action: Warning them.
+  Dialogue: ഇന്ന് രാത്രി അവൾ വരും.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Homestay] | Speaker: Sachin
+  Action: Lights go out.
+  Dialogue: ലൈറ്റ് വീണ്ടും പോയി!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Homestay] | Speaker: Amal
+  Action: Hiding.
+  Dialogue: എന്നെ രക്ഷിക്കണേ!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #09 | [Homestay] | Speaker: Renu
+  Action: Listening to footsteps.
+  Dialogue: ആരോ വരുന്നുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #10 | [Homestay] | Speaker: Narrator
+  Action: Door creaks.
+  Dialogue: വാതിൽ തുറക്കുന്നു.
+  Camera: Dynamic cinematic 3D medium shot
+
+
+
+======================================================================
+EPISODE 10: The Last Night in Munnar (മൂന്നാറിലെ അവസാന രാത്രി)
+Synopsis: Entering the factory. Building starts to collapse.
+----------------------------------------------------------------------
+Shot #01 | [Factory] | Speaker: Sachin
+  Action: Entering the factory.
+  Dialogue: ഇവിടെ അവസാന തെളിവുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #02 | [Factory] | Speaker: Renu
+  Action: Approaching the woman.
+  Dialogue: പേടിക്കണ്ട, നമ്മൾ കൂടെയുണ്ട്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #03 | [Factory] | Speaker: Amal
+  Action: Holding the light steady.
+  Dialogue: ഞാൻ റെഡിയാണ്.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #04 | [Factory] | Speaker: Sachin
+  Action: Finding the compartment.
+  Dialogue: ഇതാ അത്!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #05 | [Factory] | Speaker: Narrator
+  Action: Building starts to collapse.
+  Dialogue: കെട്ടിടം തകരുന്നു!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #06 | [Factory] | Speaker: Amal
+  Action: Helping them out.
+  Dialogue: വേഗം ഇങ്ങോട്ട്!
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #07 | [Outside] | Speaker: Sachin
+  Action: Holding Renu's hand.
+  Dialogue: നമുക്ക് പോകാം.
+  Camera: Dynamic cinematic 3D medium shot
+
+Shot #08 | [Car] | Speaker: Amal
+  Action: Relieved.
+  Dialogue: ഇനി നമുക്ക് ബീച്ചിൽ പോകാം.
+  Camera: Interior car medium shot, dynamic angle
+
+Shot #09 | [Car] | Speaker: Sachin
+  Action: Looking at the photo.
+  Dialogue: എല്ലാം കഴിഞ്ഞു.
+  Camera: Cinematic 3D close-up with expressive emotional focus
+
+Shot #10 | [Car] | Speaker: Amal
+  Action: Seeing the ghost in the photo.
+  Dialogue: അയ്യോ! ഇത് ആരാ?
+  Camera: Interior car medium shot, dynamic angle
+
+

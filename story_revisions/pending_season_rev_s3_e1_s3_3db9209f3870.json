@@ -1,0 +1,306 @@
+{
+  "revision_id": "season_rev_s3_e1_s3_3db9209f3870",
+  "timestamp": "2026-10-14T23:38:27.618149",
+  "status": "PROPOSED_STAGED",
+  "base_version": "v1.0",
+  "proposed_version": "v1.0+rev.3db920",
+  "edit_payload": {
+    "season_number": 3,
+    "episode_number": 1,
+    "shot_number": 3,
+    "shot_key": "S3_E1_S03",
+    "original_action": "Amal enters, looking annoyed.",
+    "original_dialogue": "എന്നെ വെറുതെ ഡ്രൈവർ ആക്കണ്ട കേട്ടോ.",
+    "original_speaker": "Amal",
+    "new_action": "Amal makes a funny face in the mirror while drinking tea",
+    "new_dialogue": "ചായ നല്ല ചൂടുണ്ട്!",
+    "user_notes": "Minor tea joke",
+    "removed_fact_ids": [],
+    "added_fact_ids": []
+  },
+  "butterfly_impact": {
+    "pivot_shot": "S3_E1_S03",
+    "pivot_episode": 1,
+    "seed_nodes": [
+      "S3_E1_S03"
+    ],
+    "directly_affected_nodes": [
+      "EPISODE_1",
+      "S3_E1_S03",
+      "S3_E1_S04"
+    ],
+    "indirectly_affected_nodes": [],
+    "affected_episodes": [
+      1
+    ],
+    "unaffected_episodes": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "unaffected_rationale": {
+      "2": "Episode 2 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "3": "Episode 3 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "4": "Episode 4 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "5": "Episode 5 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "6": "Episode 6 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "7": "Episode 7 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "8": "Episode 8 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "9": "Episode 9 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths.",
+      "10": "Episode 10 has independent local story beats with zero graph edges connecting from the changed facts or downstream butterfly paths."
+    },
+    "affected_shots_by_episode": {
+      "1": [
+        "S3_E1_S03",
+        "S3_E1_S04"
+      ]
+    },
+    "causal_explanations": {
+      "EPISODE_1": "Directly affected via [PART_OF_EPISODE]: S3_E1_S03 -> EPISODE_1",
+      "S3_E1_S03": "Pivot edit shot: modified action/dialogue at S3_E1_S03",
+      "S3_E1_S04": "Immediate chronological boundary handshake following S3_E1_S03"
+    },
+    "grand_finale_evaluation": {
+      "is_affected": false,
+      "rationale": "Episode 10 (Grand Finale) is UNAFFECTED. The pivot edit does not alter the essential clues (photo, notebook, locket, letter), the factory confrontation, or the resolution of Bhadra's spirit. The grand finale remains completely valid and causally supported.",
+      "affected_elements": []
+    }
+  },
+  "redevelopment": {
+    "revised_episodes": {
+      "1": {
+        "episode_number": 1,
+        "title_english": "The Trip Begins",
+        "title_malayalam": "യാത്ര തുടങ്ങുന്നു",
+        "central_objective_status": "REFINED",
+        "central_objective": "Reach Munnar before dark while enjoying the romantic mountain drive. (Refined by edit at shot 3: Minor tea joke)",
+        "character_knowledge": {
+          "Sachin": [
+            "Munnar route",
+            "Gap road fog",
+            "Awareness of: Minor tea joke"
+          ],
+          "Reenu": [
+            "Woman sighting",
+            "Awareness of: Minor tea joke"
+          ],
+          "Amal": [
+            "Driving car",
+            "Awareness of: Minor tea joke"
+          ]
+        },
+        "total_shots": 10,
+        "proposed_revisions_count": 2,
+        "preserved_shots_count": 8,
+        "proposed_revisions": [
+          {
+            "shot_number": 3,
+            "shot_key": "S3_E1_S03",
+            "speaker": "Amal",
+            "action": "Amal makes a funny face in the mirror while drinking tea",
+            "dialogue_malayalam": "ചായ നല്ല ചൂടുണ്ട്!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Car keys"
+            ],
+            "status": "PROPOSED_PIVOT_EDIT",
+            "change_reason": "Minor tea joke"
+          },
+          {
+            "shot_number": 4,
+            "shot_key": "S3_E1_S04",
+            "speaker": "Renu",
+            "original_action": "Renu laughs at Amal.",
+            "action": "Renu laughs at Amal. (Adapted for continuity with revised story events)",
+            "original_dialogue": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+            "dialogue_malayalam": "അമൽ, നീ തന്നെ വേണം നമുക്ക്. [PROPOSED HARMONIZATION FOR APPROVAL]",
+            "location": "Living Room",
+            "persistent_props": [
+              "Bag"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Immediate chronological boundary handshake following S3_E1_S03"
+          }
+        ],
+        "preserved_shots": [
+          "S3_E1_S01",
+          "S3_E1_S02",
+          "S3_E1_S05",
+          "S3_E1_S06",
+          "S3_E1_S07",
+          "S3_E1_S08",
+          "S3_E1_S09",
+          "S3_E1_S10"
+        ],
+        "all_shots": [
+          {
+            "shot_number": 1,
+            "speaker": "Narrator",
+            "action": "Sachin holds a map, looking excited. Renu is surprised.",
+            "dialogue_malayalam": "സച്ചിൻ ഒരു വലിയ സർപ്രൈസുമായി എത്തിയിരിക്കുന്നു!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Map",
+              "Suitcase"
+            ],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E1_S01",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 2,
+            "speaker": "Sachin",
+            "action": "Sachin shows a romantic itinerary.",
+            "dialogue_malayalam": "റീനു, നമ്മൾ മൂന്നാറിലേക്ക് പോവുകയാണ്!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Itinerary"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E1_S02",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 3,
+            "shot_key": "S3_E1_S03",
+            "speaker": "Amal",
+            "action": "Amal makes a funny face in the mirror while drinking tea",
+            "dialogue_malayalam": "ചായ നല്ല ചൂടുണ്ട്!",
+            "location": "Living Room",
+            "persistent_props": [
+              "Car keys"
+            ],
+            "status": "PROPOSED_PIVOT_EDIT",
+            "change_reason": "Minor tea joke"
+          },
+          {
+            "shot_number": 4,
+            "shot_key": "S3_E1_S04",
+            "speaker": "Renu",
+            "original_action": "Renu laughs at Amal.",
+            "action": "Renu laughs at Amal. (Adapted for continuity with revised story events)",
+            "original_dialogue": "അമൽ, നീ തന്നെ വേണം നമുക്ക്.",
+            "dialogue_malayalam": "അമൽ, നീ തന്നെ വേണം നമുക്ക്. [PROPOSED HARMONIZATION FOR APPROVAL]",
+            "location": "Living Room",
+            "persistent_props": [
+              "Bag"
+            ],
+            "status": "PROPOSED_DOWNSTREAM_REVISION",
+            "change_reason": "Immediate chronological boundary handshake following S3_E1_S03"
+          },
+          {
+            "shot_number": 5,
+            "speaker": "Sachin",
+            "action": "Sachin packs unnecessary items.",
+            "dialogue_malayalam": "ഇത് റൊമാന്റിക് ഫോട്ടോ എടുക്കാൻ വേണ്ടതാണ്.",
+            "location": "Bedroom",
+            "persistent_props": [
+              "Flower bouquet"
+            ],
+            "camera_hint": "Dynamic cinematic 3D medium shot",
+            "shot_key": "S3_E1_S05",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 6,
+            "speaker": "Amal",
+            "action": "Amal checks the GPS map.",
+            "dialogue_malayalam": "ഇത് എങ്ങോട്ടാ മാപ്പ് വെച്ചിരിക്കുന്നത്?",
+            "location": "Car",
+            "persistent_props": [
+              "Smartphone"
+            ],
+            "camera_hint": "Interior car medium shot, dynamic angle",
+            "shot_key": "S3_E1_S06",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 7,
+            "speaker": "Sachin",
+            "action": "Sachin looks confident but wrong.",
+            "dialogue_malayalam": "എനിക്ക് വഴി കൃത്യമായി അറിയാം.",
+            "location": "Car",
+            "persistent_props": [
+              "Steering wheel"
+            ],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E1_S07",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 8,
+            "speaker": "Amal",
+            "action": "Amal realizes the error.",
+            "dialogue_malayalam": "സച്ചിൻ, ഇത് തെറ്റായ റൂട്ടാണ്!",
+            "location": "Car",
+            "persistent_props": [
+              "Smartphone"
+            ],
+            "camera_hint": "Interior car medium shot, dynamic angle",
+            "shot_key": "S3_E1_S08",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 9,
+            "speaker": "Renu",
+            "action": "Looking out at the misty mountains.",
+            "dialogue_malayalam": "മൂന്നാർ മഞ്ഞ് എത്ര മനോഹരമാണ്.",
+            "location": "Car",
+            "persistent_props": [
+              "Window"
+            ],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E1_S09",
+            "status": "APPROVED_PRESERVED"
+          },
+          {
+            "shot_number": 10,
+            "speaker": "Renu",
+            "action": "Renu points at a woman on the road. Sachin looks back.",
+            "dialogue_malayalam": "ആ സ്ത്രീ ആരാണ്?",
+            "location": "Mountain road",
+            "persistent_props": [
+              "Car"
+            ],
+            "camera_hint": "Cinematic 3D close-up with expressive emotional focus",
+            "shot_key": "S3_E1_S10",
+            "status": "APPROVED_PRESERVED"
+          }
+        ]
+      }
+    },
+    "alternative_grand_finale": {
+      "status": "ORIGINAL_FINALE_PRESERVED",
+      "is_redeveloped": false,
+      "rationale": "Episode 10 (Grand Finale) is UNAFFECTED. The pivot edit does not alter the essential clues (photo, notebook, locket, letter), the factory confrontation, or the resolution of Bhadra's spirit. The grand finale remains completely valid and causally supported.",
+      "original_finale_title": "The Last Night in Munnar",
+      "climax_conflict": "Confrontation in the collapsing factory to recover evidence and grant peace to Bhadra.",
+      "emotional_payoff": "Sachin and Reenu's mutual trust cemented; Amal's loyalty proven.",
+      "ending_resolution": "Spirit at peace, final photo reveal in departing car."
+    },
+    "total_proposed_dialogue_revisions": 2,
+    "total_preserved_shots": 8,
+    "storyline_coherence_summary": "Successfully propagated butterfly effects across 1 episode(s). Total proposed revisions: 2 shots. Total strictly preserved approved shots: 8 shots. Grand Finale status: PRESERVED CANON."
+  },
+  "stale_asset_audit": {
+    "stale_video_clips": [],
+    "stale_prompts": [],
+    "requires_google_sheet_checklist_reset": false,
+    "requires_master_video_remerge": true
+  },
+  "summary": {
+    "total_episodes_in_season": 10,
+    "affected_episodes_count": 1,
+    "unaffected_episodes_count": 9,
+    "proposed_revisions_shots_count": 2,
+    "strictly_preserved_shots_count": 8,
+    "grand_finale_affected": false,
+    "stale_video_clips_count": 0
+  }
+}
