@@ -66,6 +66,7 @@ def run_real_browser_verification(output_dir: Path = None):
     temp_dir = tempfile.TemporaryDirectory()
     sandbox = Path(temp_dir.name)
 
+    server = None
     try:
         # Step 1: Prepare disposable sandbox
         print("\n[Step 1] Preparing isolated disposable sandbox...")
@@ -81,7 +82,12 @@ def run_real_browser_verification(output_dir: Path = None):
                 shutil.copy2(src, sandbox / f)
         shutil.copytree(SCRIPTS_DIR, sandbox / "scripts")
 
-        # Mock rendered video to test stale media audit
+        # Strip external font links to make sandbox portal 100% offline and load in <100ms
+        sb_portal = sandbox / "portal.html"
+        if sb_portal.exists():
+            import re
+            clean_html = re.sub(r'<link[^>]*fonts\.[^>]*>', '', sb_portal.read_text(encoding="utf-8"))
+            sb_portal.write_text(clean_html, encoding="utf-8")
         clean_dir = sandbox / "clean_shots"
         clean_dir.mkdir(exist_ok=True)
         (clean_dir / "shot_10.mp4").write_text("mock video content for shot 10", encoding="utf-8")
@@ -108,22 +114,18 @@ def run_real_browser_verification(output_dir: Path = None):
         print("\n[Step 3] Launching Google Chrome via Playwright...")
         with sync_playwright() as p:
             try:
-                browser = p.chromium.launch(channel="chrome", headless=True)
+                browser = p.chromium.launch(channel="chrome", headless=True, args=["--no-proxy-server"])
             except Exception:
-                browser = p.chromium.launch(headless=True)
+                browser = p.chromium.launch(headless=True, args=["--no-proxy-server"])
             context = browser.new_context(viewport={"width": 1400, "height": 950})
             page = context.new_page()
-
-            # Abort external web fonts to ensure sub-second, network-independent page load in automated sandbox
-            page.route("**/*fonts.googleapis.com*", lambda route: route.abort())
-            page.route("**/*fonts.gstatic.com*", lambda route: route.abort())
 
             # Automatically accept confirmation dialogs (for approval and rollback)
             page.on("dialog", lambda dialog: (print(f"  [Browser Dialog] {dialog.message[:60]}... -> ACCEPT"), dialog.accept()))
 
             # Navigate to Portal
             print(f"  Navigating to {portal_url}...")
-            page.goto(portal_url, wait_until="domcontentloaded", timeout=45000)
+            page.goto(portal_url, wait_until="domcontentloaded", timeout=30000)
             page.wait_for_selector("#tabBtnShotOutline", timeout=15000)
             print("  ✓ Studio portal loaded successfully.")
             results["steps"].append("Portal loaded in Chrome browser.")
@@ -253,16 +255,19 @@ def run_real_browser_verification(output_dir: Path = None):
 
             browser.close()
 
-        server.shutdown()
-        server.server_close()
         results["status"] = "SUCCESS"
-
     except Exception as e:
         results["status"] = "FAILED"
         results["error"] = str(e)
         import traceback
         traceback.print_exc()
     finally:
+        if server:
+            try:
+                server.shutdown()
+                server.server_close()
+            except Exception:
+                pass
         temp_dir.cleanup()
 
     # Save summary report

@@ -64,8 +64,19 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
                 self._set_headers(200, content_type="application/json; charset=utf-8")
                 self.wfile.write(outline_file.read_bytes())
                 return
-        if parsed.path == "/":
-            self.path = "/portal.html"
+        if parsed.path in ["/", "/portal.html"]:
+            portal_file = Path(self.directory) / "portal.html"
+            if portal_file.exists():
+                content = portal_file.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.send_header("Connection", "close")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(content)
+                self.wfile.flush()
+                return
         # Serve static files from workspace root
         super().do_GET()
 
@@ -198,13 +209,17 @@ class StudioPortalHandler(SimpleHTTPRequestHandler):
         self.wfile.write(json.dumps({"error": f"Unknown endpoint: {parsed.path}"}).encode("utf-8"))
 
 
+class StudioThreadingHTTPServer(ThreadingHTTPServer):
+    daemon_threads = True
+
+
 def create_server(host="127.0.0.1", port=8765, workspace_root=None):
     ws_root = Path(workspace_root) if workspace_root else REPO_ROOT
 
     def handler_factory(*args, **kwargs):
         return StudioPortalHandler(*args, workspace_root=ws_root, **kwargs)
 
-    server = ThreadingHTTPServer((host, port), handler_factory)
+    server = StudioThreadingHTTPServer((host, port), handler_factory)
     return server
 
 

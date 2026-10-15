@@ -58,7 +58,7 @@ with open('portal.html', 'r', encoding='utf-8') as f:
 shots_json_str = json.dumps(ep_obj, ensure_ascii=False, indent=2)
 updated_html = re.sub(
     r'let episodeData = (?:\[.*?\]|\{.*?\});\s+// Tracks current state',
-    f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
+    lambda m: f'let episodeData = {shots_json_str};\n\n    // Tracks current state',
     base_html,
     flags=re.DOTALL
 )
@@ -120,7 +120,7 @@ if state_path.exists():
         char_reg_str = json.dumps(registry_list, ensure_ascii=False, indent=2)
         updated_html = re.sub(
             r'let characterRegistryData = \[.*?\];',
-            f'let characterRegistryData = {char_reg_str};',
+            lambda m: f'let characterRegistryData = {char_reg_str};',
             updated_html,
             flags=re.DOTALL
         )
@@ -136,7 +136,7 @@ if state_path.exists():
             season_story_str = json.dumps(season_story_obj, ensure_ascii=False, indent=2)
             updated_html = re.sub(
                 r'let seasonStoryData = \{.*?\};',
-                f'let seasonStoryData = {season_story_str};',
+                lambda m: f'let seasonStoryData = {season_story_str};',
                 updated_html,
                 flags=re.DOTALL
             )
@@ -153,7 +153,7 @@ if state_path.exists():
             if "let seasonShotOutlineData = {" in updated_html:
                 updated_html = re.sub(
                     r'let seasonShotOutlineData = \{.*?\};',
-                    f'let seasonShotOutlineData = {outline_str};',
+                    lambda m: f'let seasonShotOutlineData = {outline_str};',
                     updated_html,
                     flags=re.DOTALL
                 )

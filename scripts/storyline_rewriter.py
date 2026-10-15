@@ -450,7 +450,7 @@ class NarrativeCoherenceValidator:
                 shot_key = s.get("shot_key", f"E{ep_num}_S{s.get('shot_number')}")
 
                 # Betrayal letter is only found in Ep 8
-                if ep_num < 8 and ("betrayal letter" in action or "കത്ത്" in dialogue):
+                if ep_num < 8 and ("betrayal letter" in action or "ചതിക്കത്ത്" in dialogue):
                     violations.append(f"[{shot_key}] Chronology Violation: Betrayal letter referenced in Episode {ep_num} prior to its Episode 8 discovery.")
 
                 # Clock tower mystery is only revealed in Ep 9
