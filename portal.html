@@ -840,8 +840,130 @@
       </button>
     </div>
 
-    <!-- TAB 1: Google Flow Shot Director -->
+    <!-- TAB 2: Google Flow Shot Director (Default Active Tab) -->
     <div id="shotsTab" class="tab-pane">
+      <!-- Gemini AI Story & Shot Director Console (Connected to Tab 2 & Tab 5) -->
+      <div id="geminiDirectorContainer" class="gemini-director-card" style="margin-top: 0; margin-bottom: 24px;">
+        <!-- Console Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #1e293b; padding-bottom: 14px; margin-bottom: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="font-size: 28px;">🎬</div>
+            <div>
+              <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+                Gemini AI Story & Shot Director
+                <span style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 700;" id="geminiActiveModelBadge">
+                  gemini-3.5-flash
+                </span>
+              </h4>
+              <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">
+                Interactive Showrunner • Connected to Tab 2 (Prompts) & Tab 5 (100-Shot Script) • Evaluates Continuity vs Shot K+1
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <div class="badge-status" style="font-size: 11px; padding: 4px 10px;">
+              <div class="pulse"></div>
+              Live Director Engine
+            </div>
+            <button class="btn btn-secondary" onclick="resetGeminiChat()" style="padding: 6px 12px; font-size: 11px; background: rgba(255,255,255,0.06);">
+              🗑️ Clear Chat
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Mode Scope Selector (5-Tab Architecture: Connected to Tab 2 & Tab 5) -->
+        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+          <button type="button" id="directorModeShotBtn" onclick="setDirectorScopeMode('single_shot')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #3b82f6; background: rgba(59, 130, 246, 0.2); color: #60a5fa; cursor: pointer; transition: all 0.2s;">
+            🎯 Change Specific Shot (Current Ep)
+          </button>
+          <button type="button" id="directorModeEpBtn" onclick="setDirectorScopeMode('full_episode')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
+            🎬 Change Whole Episode (Current Ep)
+          </button>
+          <button type="button" id="directorModeSeasonBtn" onclick="setDirectorScopeMode('season_arc')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
+            🌊 Change Whole Season
+          </button>
+        </div>
+
+        <!-- Dynamic Controls Bar -->
+        <div id="directorScopeOptions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
+          <!-- Target Episode -->
+          <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Episode:</span>
+            <select id="chatTargetEp" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+              <option value="1">Episode 1</option>
+              <option value="2">Episode 2</option>
+              <option value="3" selected>Episode 3 (Active)</option>
+              <option value="4">Episode 4</option>
+              <option value="5">Episode 5</option>
+              <option value="6">Episode 6</option>
+              <option value="7">Episode 7</option>
+              <option value="8">Episode 8</option>
+              <option value="9">Episode 9</option>
+              <option value="10">Episode 10 (Grand Climax)</option>
+            </select>
+          </div>
+
+          <!-- Target Shot -->
+          <div id="directorShotSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Shot:</span>
+            <select id="chatTargetShot" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+              <option value="1" selected>Shot 1</option>
+              <option value="2">Shot 2</option>
+              <option value="3">Shot 3</option>
+              <option value="4">Shot 4</option>
+              <option value="5">Shot 5</option>
+              <option value="6">Shot 6</option>
+              <option value="7">Shot 7</option>
+              <option value="8">Shot 8</option>
+              <option value="9">Shot 9</option>
+              <option value="10">Shot 10 (Cliffhanger)</option>
+            </select>
+          </div>
+
+          <span id="directorModeHint" style="font-size: 11px; color: #38bdf8; margin-left: auto;">
+            📌 Connected to Tab 2 (Prompts) & Tab 5 (100-Shot Script) • Evaluates Continuity vs Shot K+1
+          </span>
+        </div>
+
+        <!-- Continuity Assessment & Dual-Mode Healing Card -->
+        <div id="directorEvaluationContainer" style="display: none; margin-bottom: 14px; background: #0b1120; border: 1px solid #3b82f6; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+          <!-- Rendered dynamically by evaluateDirectorShotChange() -->
+        </div>
+
+        <!-- Chat Messages Scroll Log -->
+        <div id="geminiChatMessages" class="gemini-chat-log">
+          <!-- Messages rendered dynamically -->
+        </div>
+
+        <!-- Quick Suggestion Chips -->
+        <div id="directorChipsContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Sachin and Amal quickly climb back into the car and slam the door shut in terror')">
+            🚗 Car Scramble & Door Slam
+          </button>
+          <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal shivering from superstitious Munnar dread')">
+            😂 Add Amal Dread Banter
+          </button>
+          <button class="chat-chip" onclick="quickFillPrompt('Reenu points trembling fingers at an eerie handprint slowly appearing on the misted condensation')">
+            👻 Condensation Handprint Clue
+          </button>
+          <button class="chat-chip" onclick="quickFillPrompt('Caretaker Sreedharan abruptly warns the trio never to touch Room 13 before vanishing into mist')">
+            🗝️ Sreedharan Warning (Room 13)
+          </button>
+          <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue in authentic conversational Munnar-Kochi Malayalam (5-8 words max)')">
+            💬 Authentic Malayalam Dialogue
+          </button>
+        </div>
+
+        <!-- User Input Box -->
+        <div style="display: flex; gap: 10px; align-items: flex-end;">
+          <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your shot idea or story change... (e.g., 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
+          <button class="btn btn-primary" id="geminiSendBtn" onclick="sendGeminiDirectorMessage()" style="padding: 14px 22px; font-size: 14px; height: 52px; white-space: nowrap;">
+            🔍 Evaluate & Check Flow
+          </button>
+        </div>
+        <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
+      </div>
+
       <div class="shots-container" id="shotsContainer">
         <!-- Rendered dynamically via JavaScript -->
       </div>
@@ -967,128 +1089,7 @@
           </div>
         </div>
 
-        
-        <!-- Gemini AI Story & Shot Director Console -->
-        <div id="geminiDirectorContainer" class="gemini-director-card">
-          <!-- Console Header -->
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #1e293b; padding-bottom: 14px; margin-bottom: 14px;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="font-size: 28px;">🎬</div>
-              <div>
-                <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
-                  Gemini AI Story & Shot Director
-                  <span style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 700;" id="geminiActiveModelBadge">
-                    gemini-3.5-flash
-                  </span>
-                </h4>
-                <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">
-                  Interactive Showrunner • Generates Google Flow JSON Prompts • 1-Click Instant Sheet Upload
-                </div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <div class="badge-status" style="font-size: 11px; padding: 4px 10px;">
-                <div class="pulse"></div>
-                Live Director Engine
-              </div>
-              <button class="btn btn-secondary" onclick="resetGeminiChat()" style="padding: 6px 12px; font-size: 11px; background: rgba(255,255,255,0.06);">
-                🗑️ Clear Chat
-              </button>
-            </div>
-          </div>
 
-          <!-- 3-Mode Scope Selector (5-Tab Architecture: Connected to Tab 2 & Tab 5) -->
-          <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-            <button type="button" id="directorModeShotBtn" onclick="setDirectorScopeMode('single_shot')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #3b82f6; background: rgba(59, 130, 246, 0.2); color: #60a5fa; cursor: pointer; transition: all 0.2s;">
-              🎯 Change Specific Shot (Current Ep)
-            </button>
-            <button type="button" id="directorModeEpBtn" onclick="setDirectorScopeMode('full_episode')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
-              🎬 Change Whole Episode (Current Ep)
-            </button>
-            <button type="button" id="directorModeSeasonBtn" onclick="setDirectorScopeMode('season_arc')" style="padding: 8px 16px; font-size: 13px; font-weight: 700; border-radius: 8px; border: 1px solid #334155; background: #080d1a; color: #94a3b8; cursor: pointer; transition: all 0.2s;">
-              🌊 Change Whole Season
-            </button>
-          </div>
-
-          <!-- Dynamic Controls Bar -->
-          <div id="directorScopeOptions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
-            <!-- Target Episode -->
-            <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Episode:</span>
-              <select id="chatTargetEp" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-                <option value="1">Episode 1</option>
-                <option value="2">Episode 2</option>
-                <option value="3" selected>Episode 3 (Active)</option>
-                <option value="4">Episode 4</option>
-                <option value="5">Episode 5</option>
-                <option value="6">Episode 6</option>
-                <option value="7">Episode 7</option>
-                <option value="8">Episode 8</option>
-                <option value="9">Episode 9</option>
-                <option value="10">Episode 10 (Grand Climax)</option>
-              </select>
-            </div>
-
-            <!-- Target Shot -->
-            <div id="directorShotSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Shot:</span>
-              <select id="chatTargetShot" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-                <option value="1" selected>Shot 1</option>
-                <option value="2">Shot 2</option>
-                <option value="3">Shot 3</option>
-                <option value="4">Shot 4</option>
-                <option value="5">Shot 5</option>
-                <option value="6">Shot 6</option>
-                <option value="7">Shot 7</option>
-                <option value="8">Shot 8</option>
-                <option value="9">Shot 9</option>
-                <option value="10">Shot 10 (Cliffhanger)</option>
-              </select>
-            </div>
-
-            <span id="directorModeHint" style="font-size: 11px; color: #38bdf8; margin-left: auto;">
-              📌 Connected to Tab 2 (Prompts) & Tab 5 (100-Shot Script) • Evaluates Continuity vs Shot K+1
-            </span>
-          </div>
-
-          <!-- Continuity Assessment & Dual-Mode Healing Card -->
-          <div id="directorEvaluationContainer" style="display: none; margin-bottom: 14px; background: #0b1120; border: 1px solid #3b82f6; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
-            <!-- Rendered dynamically by evaluateDirectorShotChange() -->
-          </div>
-
-          <!-- Chat Messages Scroll Log -->
-          <div id="geminiChatMessages" class="gemini-chat-log">
-            <!-- Messages rendered dynamically -->
-          </div>
-
-                    <!-- Quick Suggestion Chips -->
-          <div id="directorChipsContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-            <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Sachin and Amal quickly climb back into the car and slam the door shut in terror')">
-              🚗 Car Scramble & Door Slam
-            </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal shivering from superstitious Munnar dread')">
-              😂 Add Amal Dread Banter
-            </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Reenu points trembling fingers at an eerie handprint slowly appearing on the misted condensation')">
-              👻 Condensation Handprint Clue
-            </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Caretaker Sreedharan abruptly warns the trio never to touch Room 13 before vanishing into mist')">
-              🗝️ Sreedharan Warning (Room 13)
-            </button>
-            <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue in authentic conversational Munnar-Kochi Malayalam (5-8 words max)')">
-              💬 Authentic Malayalam Dialogue
-            </button>
-          </div>
-
-          <!-- User Input Box -->
-          <div style="display: flex; gap: 10px; align-items: flex-end;">
-            <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your shot idea or story change... (e.g., 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
-            <button class="btn btn-primary" id="geminiSendBtn" onclick="sendGeminiDirectorMessage()" style="padding: 14px 22px; font-size: 14px; height: 52px; white-space: nowrap;">
-              🔍 Evaluate & Check Flow
-            </button>
-          </div>
-          <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
-        </div>
 
       </div>
 
@@ -1107,7 +1108,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
           <div>
             <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #99f6e4; margin-bottom: 6px;">
-              MASTER SCREENPLAY VAULT • GOOGLE SHEET TAB 7
+              MASTER SCREENPLAY VAULT • GOOGLE SHEET TAB 5
             </div>
             <h2 style="font-size: 24px; font-weight: 800; color: #fff;">
               Master 100-Shot Season Screenplay Outline
@@ -1117,11 +1118,14 @@
             </p>
           </div>
           <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="switchTab('shotsTab'); document.getElementById('geminiDirectorContainer').scrollIntoView({behavior: 'smooth'});" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); border: none; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); display: inline-flex; align-items: center; gap: 6px;">
+              <span>🎬</span> Gemini AI Story & Shot Director
+            </button>
             <button class="btn btn-primary" id="btnHarmonizeFlow" onclick="openHarmonizeFlowModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); display: inline-flex; align-items: center; gap: 6px;">
               <span style="font-size: 15px;">✨</span> Harmonize 100-Shot Flow (AI)
             </button>
             <button class="btn btn-primary" onclick="fetchSeasonShotOutline()" style="background: #0d9488; border-color: #14b8a6;">
-              🔄 Refresh Tab 7
+              🔄 Refresh Tab 5
             </button>
           </div>
         </div>
@@ -2767,9 +2771,10 @@
       const activePane = document.getElementById(tabId);
       if (activePane) activePane.style.display = 'block';
       if (tabId === 'shotsTab') document.getElementById('tabBtnShots').classList.add('active');
-      if (tabId === 'seasonStoryTab') {
-        document.getElementById('tabBtnSeasonStory').classList.add('active');
-        fetchSeasonStoryData();
+      if (tabId === 'shotOutlineTab') {
+        const btn = document.getElementById('tabBtnShotOutline');
+        if (btn) btn.classList.add('active');
+        if (typeof renderSeasonShotOutline === 'function') renderSeasonShotOutline();
       }
       if (tabId === 'charactersTab') {
         document.getElementById('tabBtnCharacters').classList.add('active');
