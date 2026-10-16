@@ -111,6 +111,7 @@ Location: {prev_shot.get('location', '')}
 Action: {prev_shot.get('action', '')}
 Dialogue (Malayalam): {prev_shot.get('dialogue_malayalam', '')}
 Props: {prev_shot.get('persistent_props', [])}
+Camera: {prev_shot.get('camera_hint', '')}
 """
         else:
             prev_context = "PREVIOUS SHOT: (This is the very first shot of the Season - Episode 1 Shot 1. Establish the opening setting and mood.)"
@@ -126,6 +127,7 @@ Location: {curr_shot.get('location', '')}
 Action: {curr_shot.get('action', '')}
 Dialogue (Malayalam): {curr_shot.get('dialogue_malayalam', '')}
 Props: {curr_shot.get('persistent_props', [])}
+Current camera direction: {curr_shot.get('camera_hint', '')}
 
 CRITICAL DIRECTING AUDIT:
 1. Narrative & Emotional Continuity: Does the Current Shot flow naturally from the Previous Shot?
@@ -136,8 +138,10 @@ CRITICAL DIRECTING AUDIT:
    - Reenu: Observant, sharp-eyed, intuitive, emotionally grounded.
    - Amal: Superstitious, cowardly, humorous comedic anchor.
    - Caretaker Sreedharan: Old, burdened with guilt, mysterious Idukki accent.
-3. Authentic Malayalam Dialogue: Natural spoken Malayalam matching character personality.
-4. Visual Richness: Detailed Pixar 3D camera blocking, expressions, and lighting.
+3. Authentic Malayalam Dialogue: Natural, concise spoken Malayalam matching character personality (target 3–8 words, maximum 10). The speaker is stored separately, so output only the spoken line in dialogue_malayalam: no speaker-name prefix/label (such as "Sachin:"), acting directions, parenthetical notes, or quotation marks. Names may appear only when naturally addressed in the dialogue.
+4. Filmability: One primary visible action and one emotional beat per six-second shot; do not pack multiple cuts/events into the action.
+5. Cinematic Camera: Choose a motivated frame/angle and at most one purposeful move (or a deliberate locked frame). Avoid generic or repeated camera directions; preserve screen direction and spatial continuity.
+6. Visual Storytelling: Prefer expression, eyelines, props, environment, silence, and sound bridges over explanatory dialogue. Revise only when a real continuity or clarity improvement is needed.
 
 Does this shot require enhancement to create a seamless, beautiful cinematic flow?
 If YES, rewrite the action, dialogue, and location to bridge the gap perfectly.
@@ -147,8 +151,9 @@ Respond ONLY with valid JSON in this exact structure:
 {{
   "needs_enhancement": true,
   "reason": "Clear explanation of the continuity/emotional gap and how your revision bridges it",
-  "action": "Detailed revised action description with 3D Pixar camera and character blocking",
-  "dialogue_malayalam": "Natural Malayalam dialogue in authentic character voice",
+   "action": "One filmable primary action with a clear emotional read and blocking",
+   "camera_hint": "Motivated frame/angle and one purposeful move, or deliberate locked frame",
+   "dialogue_malayalam": "Only spoken Malayalam, target 3-8 words and never over 10; no speaker label, acting notes, or quotation marks",
   "location": "Consistent location name"
 }}
 OR if no changes needed:
@@ -169,6 +174,15 @@ OR if no changes needed:
                         m = re.search(r'\{.*\}', raw_text, re.DOTALL)
                         if m:
                             parsed = json.loads(m.group(0))
+                            if parsed.get("needs_enhancement"):
+                                revised_dialogue = str(parsed.get("dialogue_malayalam") or "").strip()
+                                if len(revised_dialogue.split()) > 10:
+                                    raise ValueError("Gemini revision exceeded the 10-word dialogue limit")
+                                speaker = str(curr_shot.get("speaker") or "").strip()
+                                if speaker and revised_dialogue.casefold().startswith(f"{speaker.casefold()}:"):
+                                    raise ValueError("Gemini revision repeated the speaker label in dialogue")
+                                if revised_dialogue.startswith(("(", "[")) or any(mark in revised_dialogue for mark in ('"', "“", "”")):
+                                    raise ValueError("Gemini revision put stage directions or quotes in dialogue")
                             return parsed
                 except Exception as e:
                     err_str = str(e)
@@ -235,6 +249,7 @@ OR if no changes needed:
                 orig_action = shot.get("action", "").strip()
                 orig_dialogue = shot.get("dialogue_malayalam", "").strip()
                 orig_location = shot.get("location", "").strip()
+                orig_camera = shot.get("camera_hint", "").strip()
 
                 print(f"  [{total_shots_processed:03d}/100] Evaluating Shot #{shot_num:02d} ({shot_id}) [{speaker}]...", end="", flush=True)
 
@@ -249,6 +264,7 @@ OR if no changes needed:
                         rev_action = ai_review.get("action", "").strip()
                         rev_dialogue = ai_review.get("dialogue_malayalam", orig_dialogue).strip()
                         rev_loc = ai_review.get("location", orig_location).strip()
+                        rev_camera = ai_review.get("camera_hint", shot.get("camera_hint", "")).strip()
                         reason = ai_review.get("reason", "Sequential narrative flow enhancement")
 
                         shot["action"] = rev_action
@@ -256,6 +272,8 @@ OR if no changes needed:
                             shot["dialogue_malayalam"] = rev_dialogue
                         if rev_loc:
                             shot["location"] = rev_loc
+                        if rev_camera:
+                            shot["camera_hint"] = rev_camera
 
                         total_enhanced_count += 1
                         improvements_log.append({
@@ -266,7 +284,9 @@ OR if no changes needed:
                             "original_action": orig_action,
                             "harmonized_action": rev_action,
                             "original_dialogue": orig_dialogue,
-                            "harmonized_dialogue": rev_dialogue
+                            "harmonized_dialogue": rev_dialogue,
+                            "original_camera_hint": orig_camera,
+                            "harmonized_camera_hint": rev_camera
                         })
                         print(f" -> ✨ ENHANCED!\n       Reason: {reason}\n       Action: {rev_action[:95]}...")
                     else:

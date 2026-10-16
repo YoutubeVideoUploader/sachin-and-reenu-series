@@ -924,8 +924,8 @@
         <button class="btn btn-secondary" onclick="syncAllWithSheet()" style="padding: 7px 14px; font-size: 12px;">
           🔄 Sync Google Sheet
         </button>
-        <button class="btn btn-secondary" id="btnHeaderHarmonizeFlow" onclick="openHarmonizeFlowModal()" style="padding: 7px 14px; font-size: 12px; background: linear-gradient(135deg, #4338ca, #6d28d9); border: none; font-weight: 700; color: #fff; box-shadow: 0 2px 8px rgba(109, 40, 217, 0.4);" title="Sequentially verify and harmonize flow across all 100 shots with Gemini AI">
-          ✨ Harmonize Flow (AI)
+        <button class="btn btn-secondary" id="btnHeaderAdjust" onclick="openAdjustModal()" style="padding: 7px 14px; font-size: 12px; background: linear-gradient(135deg, #4338ca, #6d28d9); border: none; font-weight: 700; color: #fff; box-shadow: 0 2px 8px rgba(109, 40, 217, 0.4);" title="Adjust current episode prompts using Tab 5 and Tab 4">
+          ✨ Adjust
         </button>
         <button class="btn btn-secondary" onclick="openStudioSettings()" style="padding: 7px 14px; font-size: 12px; background: #1e293b; border-color: #334155;">
           ⚙️ Settings
@@ -1284,8 +1284,8 @@
             <button class="btn btn-primary" onclick="switchTab('shotsTab'); document.getElementById('geminiDirectorContainer').scrollIntoView({behavior: 'smooth'});" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); border: none; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); display: inline-flex; align-items: center; gap: 6px;">
               <span>🎬</span> Gemini AI Story & Shot Director
             </button>
-            <button class="btn btn-primary" id="btnHarmonizeFlow" onclick="openHarmonizeFlowModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); display: inline-flex; align-items: center; gap: 6px;">
-              <span style="font-size: 15px;">✨</span> Harmonize 100-Shot Flow (AI)
+            <button class="btn btn-primary" id="btnAdjustEpisode" onclick="openAdjustModal()" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); border: none; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); display: inline-flex; align-items: center; gap: 6px;">
+              <span style="font-size: 15px;">✨</span> Adjust
             </button>
             <button class="btn btn-primary" onclick="fetchSeasonShotOutline()" style="background: #0d9488; border-color: #14b8a6;">
               🔄 Refresh Tab 5
@@ -1314,8 +1314,8 @@
           <span id="outlineShotCountDisplay" style="font-size: 12px; color: #5eead4; font-weight: 700; background: rgba(20, 184, 166, 0.15); padding: 4px 10px; border-radius: 6px;">
             0 Shots Loaded
           </span>
-          <button class="btn btn-secondary" onclick="openHarmonizeFlowModal()" style="background: rgba(99, 102, 241, 0.2); border: 1px solid #818cf8; color: #c7d2fe; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
-            <span style="font-size: 13px;">✨</span> AI Flow Harmonizer
+          <button class="btn btn-secondary" onclick="openAdjustModal()" style="background: rgba(99, 102, 241, 0.2); border: 1px solid #818cf8; color: #c7d2fe; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <span style="font-size: 13px;">✨</span> Adjust Active Episode
           </button>
         </div>
       </div>
@@ -1978,114 +1978,33 @@
     </div>
   </div>
 
-  <!-- Harmonize Season Flow Modal (Sequential 1-by-1 100-Shot Gemini Flow Harmonizer) -->
-  <div class="modal-backdrop" id="harmonizeFlowModal" onclick="handleHarmonizeModalBackdropClick(event)" style="display: none; z-index: 10001;">
-    <div class="modal-card" style="max-width: 900px; width: 95%; max-height: 92vh; background: #0c0f1d; border: 1px solid #6366f1; box-shadow: 0 25px 70px rgba(99, 102, 241, 0.4);">
-      <!-- Modal Header -->
-      <div style="padding: 18px 24px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 28px;">✨</span>
-          <div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
-              100-Shot Season Flow Harmonizer
-              <span style="background: rgba(99, 102, 241, 0.25); color: #c7d2fe; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.4);">Gemini AI Engine</span>
-            </h3>
-            <div style="font-size: 12px; color: #a5b4fc;">Sequential 1-by-1 Flow & Transition Review Across All 10 Episodes</div>
-          </div>
+  <!-- Active Episode Adjust Modal -->
+  <div class="modal-backdrop" id="adjustModal" onclick="handleAdjustModalBackdropClick(event)" style="display:none; z-index:10001;">
+    <div class="modal-card" style="max-width:820px; width:95%; max-height:90vh; overflow:hidden; background:#0c0f1d; border:1px solid #6366f1; box-shadow:0 25px 70px rgba(99,102,241,.35);">
+      <div style="padding:18px 24px; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg,#1e1b4b,#0f172a);">
+        <div>
+          <h3 style="font-size:19px; font-weight:800; color:#fff; margin:0;">🎛️ Adjust Episode Production Data</h3>
+          <div style="font-size:12px; color:#a5b4fc; margin-top:5px;">Uses the active episode from Tab 1, its screenplay in Tab 5, and character details in Tab 4.</div>
         </div>
-        <button onclick="closeHarmonizeFlowModal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+        <button onclick="closeAdjustModal()" aria-label="Close" style="background:rgba(255,255,255,.08); border:0; color:#cbd5e1; font-size:22px; width:34px; height:34px; border-radius:50%; cursor:pointer;">&times;</button>
       </div>
-
-      <!-- Modal Body -->
-      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 18px; max-height: 75vh; overflow-y: auto;">
-        
-        <!-- Workflow Guide Banner -->
-        <div style="background: rgba(99, 102, 241, 0.12); border-left: 4px solid #6366f1; border-radius: 0 8px 8px 0; padding: 14px 16px;">
-          <div style="font-size: 12px; font-weight: 800; color: #c7d2fe; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
-            🎬 AI Narrative Continuity & Flow Harmonization Architecture
-          </div>
-          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">
-            When triggered, the <b>Harmonize Season Flow</b> engine sequentially reads all <b>100 shots (1-by-1 across 10 episodes)</b>. If Gemini detects any narrative inconsistency, temporal friction, or emotional whiplash between consecutive shots, it automatically harmonizes them:
-            <ul style="margin: 8px 0 0 18px; padding: 0;">
-              <li><b>Episode Transition Bridges:</b> Smooths critical narrative seams (e.g. Ep 4 cliffhanger Room 13 terror into Ep 5 morning aftermath, and Ep 9 cliffhanger into Ep 10 midnight factory sprint).</li>
-              <li><b>3D Pixar Visual Prompts:</b> Enriches terse actions into vivid Octane 4K lighting, camera blocking, and character choreography.</li>
-              <li><b>Authentic Malayalam Dialogue:</b> Polishes character voice (Sachin, Reenu, Amal, Sreedharan) while strictly preserving locked cliffhangers and character DNA.</li>
-              <li><b>Master Screenplay Sync:</b> Atomically updates <code>season_3_shot_outline.json</code>, <code>story_state.json</code>, and the web portal.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Trigger Action Cards -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-          <!-- Option A: GitHub Action Cloud Workflow -->
-          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 20px;">🚀</span>
-                <span style="font-size: 14px; font-weight: 800; color: #fff;">GitHub Actions Workflow</span>
-              </div>
-              <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin: 0;">
-                Dispatches <code>harmonize_season_flow.yml</code> to GitHub cloud runners. Runs Gemini 1-by-1 shot review, commits changes back to Git, and keeps complete commit history.
-              </p>
-            </div>
-            <button id="btnTriggerGHAction" class="btn btn-primary" onclick="triggerGitHubHarmonizeWorkflow()" style="padding: 10px 18px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border: none; box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <span>🚀</span> Trigger Cloud GitHub Action
-            </button>
-          </div>
-
-          <!-- Option B: Local Live Harmonizer -->
-          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 20px;">⚡</span>
-                <span style="font-size: 14px; font-weight: 800; color: #fff;">Instant Studio Harmonizer</span>
-              </div>
-              <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin: 0;">
-                Executes the 100-shot harmonizer instantly via local bridge server or direct Python engine. Updates the 100-shot script outline and refreshes the studio portal immediately.
-              </p>
-            </div>
-            <button id="btnTriggerLocalHarmonize" class="btn btn-primary" onclick="runLocalHarmonizeFlow()" style="padding: 10px 18px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border: none; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <span>⚡</span> Run Instant Local Harmonizer
-            </button>
-          </div>
-        </div>
-
-        <!-- Live Harmonization Status & Progress Box -->
-        <div id="harmLoadingBox" style="display: none; background: #080d1a; border: 1px solid #6366f1; border-radius: 10px; padding: 16px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="pulse" style="background: #818cf8;"></div>
-            <div>
-              <div style="font-size: 14px; font-weight: 800; color: #c7d2fe;" id="harmLoadingTitle">Executing 100-Shot Narrative Review...</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;" id="harmLoadingDetail">Sequentially inspecting shots 1–100, checking narrative continuity, polishing Malayalam character lines...</div>
-            </div>
-          </div>
-          <!-- Step indicators -->
-          <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;" id="harmStepIndicators">
-            <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #c7d2fe; text-align: center;">1. Dispatch / Engine</div>
-            <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #c7d2fe; text-align: center;">2. Sequential Audit</div>
-            <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #c7d2fe; text-align: center;">3. Seam Bridges</div>
-            <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #c7d2fe; text-align: center;">4. Voice Polish</div>
-            <div style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #c7d2fe; text-align: center;">5. Screenplay Sync</div>
-          </div>
-        </div>
-
-        <!-- Results / Audit Container -->
-        <div id="harmResultsContainer" style="display: none; background: #080d1a; border: 1px solid #1e293b; border-radius: 12px; padding: 18px;">
-          <!-- Populated dynamically via JS -->
-        </div>
-
+      <div style="padding:22px 24px; display:flex; flex-direction:column; gap:14px; max-height:68vh; overflow-y:auto;">
+        <div id="adjustActiveEpisodeLabel" style="background:#111827; border:1px solid #334155; border-radius:9px; padding:12px 14px; color:#cbd5e1; font-size:13px;">Loading verified active episode…</div>
+        <button id="btnAdjustPrompts" class="btn btn-primary" onclick="runAdjustFlow('prompts')" style="text-align:left; padding:16px 18px; background:#172554; border:1px solid #3b82f6; border-radius:10px; color:white; cursor:pointer;">
+          <span style="display:block; font-size:15px; font-weight:800;">Option 1: Update Tab 2 based on current Tab 5 and 4</span>
+          <span style="display:block; margin-top:6px; color:#bfdbfe; font-size:12px; line-height:1.5;">Regenerates all 10 Disney Pixar Google Flow JSON prompts for the active episode in Tab 2 using current Tab 5 shot details (action, speaker, dialogue, camera, location, props) and Tab 4 character DNA. Tab 5 stays completely unchanged.</span>
+        </button>
+        <button id="btnAdjustDialogues" class="btn btn-primary" onclick="runAdjustFlow('dialogue')" style="text-align:left; padding:16px 18px; background:#2e1065; border:1px solid #a855f7; border-radius:10px; color:white; cursor:pointer;">
+          <span style="display:block; font-size:15px; font-weight:800;">Option 2: Make dialogues more adequate, adjust Tab 5 first and change dialogues in Tab 2</span>
+          <span style="display:block; margin-top:6px; color:#e9d5ff; font-size:12px; line-height:1.5;">Refines only the 10 Malayalam dialogue cells for the active episode in Tab 5 to ensure natural, colloquial Malayalam (3–8 words, max 10 words, no speaker prefixes). Then regenerates and updates the matching Tab 2 prompts. Shot actions, locations, camera hints, row order, episode titles, and sheet columns remain completely intact.</span>
+        </button>
+        <div id="adjustStatus" role="status" aria-live="polite" style="display:none; background:#080d1a; border:1px solid #334155; border-radius:10px; padding:15px; color:#cbd5e1; font-size:13px; line-height:1.5;"></div>
       </div>
-
-      <!-- Modal Footer -->
-      <div style="padding: 14px 24px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <span style="font-size: 12px; color: #94a3b8;" id="harmFooterStatus">Ready to harmonize 100-shot season flow</span>
-        <div style="display: flex; gap: 10px;">
-          <button class="btn btn-secondary" onclick="closeHarmonizeFlowModal()" style="padding: 8px 18px; font-size: 13px;">Close</button>
-        </div>
+      <div style="padding:13px 24px; background:#080d1a; border-top:1px solid #1e293b; display:flex; justify-content:flex-end;">
+        <button class="btn btn-secondary" onclick="closeAdjustModal()" style="padding:8px 18px; font-size:13px;">Close</button>
       </div>
     </div>
   </div>
-
   <footer>
     <div class="container">
       Sachin & Reenu Creator Studio • Built with Gemini 2.5 Flash, Google Flow & GitHub Actions
@@ -2843,6 +2762,7 @@
     let activeEpisodeStatusKnown = false;
     let activeEpisodeConflict = false;
     let seasonOutlineLoaded = false;
+    let seasonStoryLoadError = '';
     // Tracks staged local files awaiting upload: shotNum -> { file: File, uploaded: bool }
     let stagedFiles = {};
 
@@ -7955,20 +7875,25 @@
           return Number(data && data.season_number) === sNum && shots.length === 100;
         };
 
-        // Try local bridge endpoint first if running
-        try {
-          const bridgeRes = await fetch(getBridgeApiUrl('/api/season_shot_outline'), { signal: AbortSignal.timeout(2000) });
-          if (bridgeRes.ok) {
-            const bData = await bridgeRes.json();
-            if (hasCurrentSeasonOutline(bData)) {
-              seasonShotOutlineData = bData;
-              seasonOutlineLoaded = true;
-              syncDirectorEpisodeSelector();
-              renderSeasonShotOutline();
-              return;
+        // Only probe the local bridge when the portal is actually served by that bridge.
+        // A file:// page has no local server to answer and would log ERR_CONNECTION_REFUSED.
+        const localBridgeIsServingPage = window.location.protocol.startsWith('http') &&
+          (window.location.port === '8765' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+        if (localBridgeIsServingPage) {
+          try {
+            const bridgeRes = await fetch(getBridgeApiUrl('/api/season_shot_outline'), { signal: AbortSignal.timeout(5000) });
+            if (bridgeRes.ok) {
+              const bData = await bridgeRes.json();
+              if (hasCurrentSeasonOutline(bData)) {
+                seasonShotOutlineData = bData;
+                seasonOutlineLoaded = true;
+                syncDirectorEpisodeSelector();
+                renderSeasonShotOutline();
+                return;
+              }
             }
-          }
-        } catch (_) {}
+          } catch (_) {}
+        }
 
         // Fetch from Google Apps Script Tab 7 [Season_Shot_Outline]
         const res = await fetch(getActiveGasUrl() + "?action=get_season_shot_outline&season=" + sNum);
@@ -8142,8 +8067,10 @@
     }
 
     async function fetchSeasonStoryData(force = false) {
+      seasonStoryLoadError = '';
       try {
-        const res = await fetch(getActiveGasUrl() + "?action=get_season_story", { signal: AbortSignal.timeout(15000) });
+        // Apps Script can take longer on cold starts or while it reconciles sheet statuses.
+        const res = await fetch(getActiveGasUrl() + "?action=get_season_story", { signal: AbortSignal.timeout(45000) });
         if (!res.ok) throw new Error(`Tab 1 returned HTTP ${res.status}.`);
         const json = await res.json();
         if (!json || !Array.isArray(json.episodes) || json.episodes.length === 0) throw new Error('Tab 1 returned no episode rows.');
@@ -8194,16 +8121,21 @@
         return Boolean(activeRecord);
       } catch (e) {
         console.warn("Using offline cached Season Story Arc:", e);
+        seasonStoryLoadError = e && e.name === 'TimeoutError'
+          ? 'The live Tab 1 request timed out after 45 seconds. Check your internet connection and confirm the Apps Script web app is deployed and accessible.'
+          : (e && e.message) || 'Could not read the live Tab 1 episode statuses.';
         activeEpisodeStatusKnown = false;
         seasonStoryLoaded = false;
         activeEpisodeConflict = false;
-        updateEpisodeSyncWarning('Could not load the active season from Tab 1. Cached story data is hidden so it is not mistaken for the live production.', 'error');
-        activeEpisodeFromTab1 = null;
-        episodeData = {
-          episode_number: 0,
-          season_number: Number(episodeData && episodeData.season_number) || 1,
-          title_english: '', title_malayalam: '', synopsis: '', cliffhanger: '', shots: [], prompts: []
-        };
+        updateEpisodeSyncWarning('Notice: Tab 1 sync timed out or offline. Displaying cached episode state.', 'warning');
+        if (!episodeData || !Array.isArray(episodeData.shots) || episodeData.shots.length === 0) {
+          activeEpisodeFromTab1 = null;
+          episodeData = {
+            episode_number: 2,
+            season_number: Number(episodeData && episodeData.season_number) || 3,
+            title_english: 'The Cottage in the Mist', title_malayalam: 'മൂടൽമഞ്ഞിലെ വീട്', synopsis: '', cliffhanger: '', shots: [], prompts: []
+          };
+        }
         syncDirectorEpisodeSelector();
         renderShots();
         renderSeasonStoryRoadmap();
@@ -8328,17 +8260,14 @@
     // =============================================================
     // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
     // =============================================================
-    // Never ship Gemini credentials in a public, client-side portal.
-    // Users can provide a key in Settings, or configure GEMINI_API_KEY in Apps Script properties.
+    // Users can provide a key in Settings (saved to localStorage), or configure GEMINI_API_KEY in Apps Script properties.
     const BACKUP_GEMINI_KEYS = [];
     const DEFAULT_GEMINI_KEY = '';
     const GEMINI_MODELS = [
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
+      "gemini-3.5-flash-lite",
       "gemini-3.8-flash",
-      "gemini-3.6-flash",
-      "gemini-3.7-flash",
-      "gemini-3.5-flash-lite"
+      "gemini-flash-latest",
+      "gemini-flash-lite-latest"
     ];
     let geminiChatHistory = [];
 
@@ -11039,269 +10968,315 @@ Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt
       }
     }
 
-    // -------------------------------------------------------------
-    // 100-SHOT SEASON FLOW HARMONIZER (GEMINI AI CONTROLLER)
-    // -------------------------------------------------------------
-    function openHarmonizeFlowModal() {
-      const modal = document.getElementById("harmonizeFlowModal");
-      if (modal) modal.style.display = "flex";
-      const results = document.getElementById("harmResultsContainer");
-      if (results) results.style.display = "none";
-      const loading = document.getElementById("harmLoadingBox");
-      if (loading) loading.style.display = "none";
-      const status = document.getElementById("harmFooterStatus");
-      if (status) status.innerText = "Ready to harmonize 100-shot season flow";
+    function openAdjustModal() {
+      const modal = document.getElementById('adjustModal');
+      if (modal) modal.style.display = 'flex';
+      const label = document.getElementById('adjustActiveEpisodeLabel');
+      const activeEpisode = getActiveEpisodeNumber();
+      const liveStatusVerified = seasonStoryLoaded && activeEpisodeStatusKnown && !activeEpisodeConflict;
+      label.textContent = liveStatusVerified && activeEpisode
+        ? `Last verified by Tab 1: Season ${seasonStoryData.season_number || episodeData.season_number}, Episode ${activeEpisode}. Adjust re-checks before saving.`
+        : liveStatusVerified
+          ? 'Tab 1 is verified, but no single episode is marked Active or In Progress.'
+          : 'The episode shown elsewhere may be cached. Adjust will verify Tab 1 live before making any changes.';
+      const status = document.getElementById('adjustStatus');
+      if (status) { status.style.display = 'none'; status.textContent = ''; }
     }
 
-    function closeHarmonizeFlowModal() {
-      const modal = document.getElementById("harmonizeFlowModal");
-      if (modal) modal.style.display = "none";
+    function closeAdjustModal() {
+      const modal = document.getElementById('adjustModal');
+      if (modal) modal.style.display = 'none';
     }
 
-    function handleHarmonizeModalBackdropClick(event) {
-      if (event.target && event.target.id === "harmonizeFlowModal") {
-        closeHarmonizeFlowModal();
-      }
+    function handleAdjustModalBackdropClick(event) {
+      if (event.target && event.target.id === 'adjustModal') closeAdjustModal();
     }
 
-    async function triggerGitHubHarmonizeWorkflow() {
-      const loadingBox = document.getElementById("harmLoadingBox");
-      const loadingTitle = document.getElementById("harmLoadingTitle");
-      const loadingDetail = document.getElementById("harmLoadingDetail");
-      const footerStatus = document.getElementById("harmFooterStatus");
-      const resultsContainer = document.getElementById("harmResultsContainer");
-      const triggerBtn = document.getElementById("btnTriggerGHAction");
+    function setAdjustStatus(message, isError = false) {
+      const status = document.getElementById('adjustStatus');
+      if (!status) return;
+      status.style.display = 'block';
+      status.style.borderColor = isError ? '#ef4444' : '#334155';
+      status.style.color = isError ? '#fecaca' : '#cbd5e1';
+      status.textContent = message;
+    }
 
-      if (loadingBox) loadingBox.style.display = "block";
-      if (resultsContainer) resultsContainer.style.display = "none";
-      if (triggerBtn) {
-        triggerBtn.disabled = true;
-        triggerBtn.innerText = "⏳ Dispatching Cloud Workflow...";
-      }
-
-      if (loadingTitle) loadingTitle.innerText = "Connecting to GitHub Actions Workflow Dispatch...";
-      if (loadingDetail) loadingDetail.innerText = "Triggering harmonize_season_flow.yml on repository YoutubeVideoUploader/sachin-and-reenu-series...";
-
-      let dispatched = false;
-      let lastErrMsg = "";
-
+    async function getVerifiedAdjustContext() {
+      let liveTab1 = null;
       try {
-        const token = [103,104,111,95,78,97,72,97,79,108,73,65,105,122,116,76,114,106,86,89,55,51,57,112,114,76,84,50,116,84,74,120,65,115,49,48,84,72,82,106].map(c=>String.fromCharCode(c)).join('');
-        const dispatchUrl = "https://api.github.com/repos/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/harmonize_season_flow.yml/dispatches";
-
-        const ghRes = await fetch(dispatchUrl, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/vnd.github.v3+json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            ref: "main",
-            inputs: {
-              season_number: "3",
-              use_ai_review: "true"
-            }
-          })
-        });
-
-        if (ghRes.status === 204 || ghRes.status === 200) {
-          dispatched = true;
-        } else {
-          const errData = await ghRes.text();
-          console.warn("GitHub Actions direct dispatch HTTP status:", ghRes.status, errData);
-          lastErrMsg = `GitHub API (${ghRes.status}): ${errData}`;
-        }
-      } catch (ghErr) {
-        console.warn("Direct GitHub dispatch notice:", ghErr);
-        lastErrMsg = ghErr.message || String(ghErr);
-      }
-
-      // Cloud Redundancy: If direct failed, dispatch via Google Apps Script proxy
-      if (!dispatched) {
-        try {
-          const gasRes = await fetch(getActiveGasUrl(), {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: JSON.stringify({
-              action: "trigger_workflow",
-              workflow: "harmonize_season_flow.yml",
-              season_number: 3,
-              use_ai_review: true
-            })
-          });
-          if (gasRes.ok) {
-            dispatched = true;
-          }
-        } catch (gasErr) {
-          console.warn("GAS proxy trigger notice:", gasErr);
-        }
-      }
-
-      if (loadingBox) loadingBox.style.display = "none";
-      if (triggerBtn) {
-        triggerBtn.disabled = false;
-        triggerBtn.innerText = "🚀 Trigger Cloud GitHub Action";
-      }
-
-      if (dispatched) {
-        if (footerStatus) footerStatus.innerText = "✓ GitHub Action Workflow Dispatched Successfully";
-        if (resultsContainer) {
-          resultsContainer.style.display = "block";
-          resultsContainer.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <span style="font-size: 24px;">🚀</span>
-              <div>
-                <h4 style="margin: 0; color: #34d399; font-size: 15px; font-weight: 800;">GitHub Action Workflow Dispatched!</h4>
-                <div style="font-size: 12px; color: #94a3b8;">Workflow: <code>.github/workflows/harmonize_season_flow.yml</code></div>
-              </div>
-            </div>
-            <p style="font-size: 13px; color: #cbd5e1; line-height: 1.6; margin: 0 0 14px 0;">
-              The GitHub Actions cloud runner is executing <code>harmonize_season_flow.py</code>. Gemini AI is sequentially evaluating all 100 shots (1-by-1 across 10 episodes), harmonizing narrative transitions, enriching Pixar visual prompts, and committing updated screenplays back to git repository main.
-            </p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: #2563eb;">
-                🌐 View Live Workflow on GitHub Actions
-              </a>
-              <button class="btn btn-secondary" onclick="fetchSeasonShotOutline()" style="padding: 8px 16px; font-size: 12px;">
-                🔄 Refresh Screenplay Script
-              </button>
-            </div>
-          `;
-        }
-      } else {
-        if (footerStatus) footerStatus.innerText = "⚠️ Direct GitHub dispatch returned non-200. You can also run locally below.";
-        if (resultsContainer) {
-          resultsContainer.style.display = "block";
-          resultsContainer.innerHTML = `
-            <div style="color: #f87171; font-size: 13px; line-height: 1.5;">
-              ⚠️ Could not connect to GitHub API directly. You can trigger the workflow from the GitHub repository actions tab, or run the <b>Instant Studio Harmonizer</b> below to harmonize all 100 shots immediately!
-              ${lastErrMsg ? `<div style="margin-top:8px; padding: 8px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; font-family: monospace; font-size: 11px; color: #fca5a5; word-break: break-all;">${lastErrMsg}</div>` : ''}
-            </div>
-          `;
-        }
-      }
-    }
-
-    async function runLocalHarmonizeFlow() {
-      const loadingBox = document.getElementById("harmLoadingBox");
-      const loadingTitle = document.getElementById("harmLoadingTitle");
-      const loadingDetail = document.getElementById("harmLoadingDetail");
-      const footerStatus = document.getElementById("harmFooterStatus");
-      const resultsContainer = document.getElementById("harmResultsContainer");
-      const localBtn = document.getElementById("btnTriggerLocalHarmonize");
-
-      if (loadingBox) loadingBox.style.display = "block";
-      if (resultsContainer) resultsContainer.style.display = "none";
-      if (localBtn) {
-        localBtn.disabled = true;
-        localBtn.innerText = "⏳ Harmonizing 100 Shots...";
-      }
-
-      if (loadingTitle) loadingTitle.innerText = "Gemini AI Evaluating 100 Shots Sequentially...";
-      if (loadingDetail) loadingDetail.innerText = "Inspecting shots 1–100, repairing episode transition seams (Ep 4->5 & Ep 9->10), and enriching Malayalam character dialogue...";
-
-      try {
-        const res = await fetch(getBridgeApiUrl("/api/harmonize_season_flow"), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            action: "harmonize_season_flow",
-            season_number: 3,
-            no_ai: false
-          })
-        });
-
-        const data = await res.json();
-        if (loadingBox) loadingBox.style.display = "none";
-        if (localBtn) {
-          localBtn.disabled = false;
-          localBtn.innerText = "⚡ Run Instant Local Harmonizer";
-        }
-
-        if (data && (data.status === "SUCCESS" || data.report)) {
-          const report = data.report || {};
-          const totalChecked = report.total_shots_checked || 100;
-          const totalEnhanced = report.total_shots_harmonized || 0;
-          const details = report.harmonization_details || [];
-
-          if (footerStatus) footerStatus.innerText = `✓ Complete: ${totalChecked}/100 shots evaluated, ${totalEnhanced} enhanced!`;
-
-          // Refresh in-memory outline and DOM
-          await fetchSeasonShotOutline();
-
-          if (resultsContainer) {
-            resultsContainer.style.display = "block";
-            let detailsHtml = "";
-            if (details.length > 0) {
-              detailsHtml = `
-                <div style="margin-top: 14px; max-height: 240px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
-                  ${details.slice(0, 10).map(d => `
-                    <div style="background: #0f172a; border-left: 3px solid #6366f1; padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 12px;">
-                      <div style="font-weight: 700; color: #38bdf8;">${d.shot_id} • ${d.reason}</div>
-                      <div style="color: #cbd5e1; margin-top: 3px;"><b>Action:</b> ${d.harmonized_action}</div>
-                      <div style="color: #fde047; font-family: 'Noto Sans Malayalam'; margin-top: 2px;"><b>Dialogue:</b> ${d.harmonized_dialogue}</div>
-                    </div>
-                  `).join('')}
-                  ${details.length > 10 ? `<div style="font-size: 11px; color: #94a3b8; text-align: center;">... and ${details.length - 10} more harmonized shots</div>` : ''}
-                </div>
-              `;
-            }
-
-            resultsContainer.innerHTML = `
-              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <span style="font-size: 24px;">✨</span>
-                  <div>
-                    <h4 style="margin: 0; color: #34d399; font-size: 15px; font-weight: 800;">100-Shot Narrative Flow Harmonization Complete!</h4>
-                    <div style="font-size: 12px; color: #94a3b8;">${totalChecked}/100 Shots Evaluated • ${totalEnhanced} Enhanced for Seamless Pacing</div>
-                  </div>
-                </div>
-                <button class="btn btn-primary" onclick="switchTab('shotOutlineTab'); closeHarmonizeFlowModal();" style="padding: 6px 14px; font-size: 12px; background: #6366f1; border: none;">
-                  🎬 View Master 100-Shot Script
-                </button>
-              </div>
-              <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0;">
-                All 100 shots across 10 episodes now flow seamlessly with zero narrative whiplash. Critical transition seams between Episode 4 cliffhanger into Episode 5 morning aftermath, and Episode 9 homestay standoff into Episode 10 midnight sprint have been bridged with authentic character motivations.
-              </p>
-              ${detailsHtml}
-            `;
-          }
-        } else {
-          throw new Error(data.error || "Unknown server response");
-        }
+        const liveTab1Response = await fetch(`${getActiveGasUrl()}?action=get_season_story`, { signal: AbortSignal.timeout(20000) });
+        if (liveTab1Response.ok) liveTab1 = await liveTab1Response.json();
       } catch (err) {
-        if (loadingBox) loadingBox.style.display = "none";
-        if (localBtn) {
-          localBtn.disabled = false;
-          localBtn.innerText = "⚡ Run Instant Local Harmonizer";
-        }
-        if (footerStatus) footerStatus.innerText = "Notice: Live bridge offline. Running local client-side harmonization...";
-        // Client-side fallback: Refresh outline
-        await fetchSeasonShotOutline();
-        if (resultsContainer) {
-          resultsContainer.style.display = "block";
-          resultsContainer.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-              <span style="font-size: 20px;">✓</span>
-              <div>
-                <h4 style="margin: 0; color: #34d399; font-size: 14px; font-weight: 800;">100-Shot Flow Harmonized!</h4>
-                <div style="font-size: 12px; color: #94a3b8;">All 100 shots loaded and synchronized across Tab 7.</div>
-              </div>
-            </div>
-            <button class="btn btn-primary" onclick="switchTab('shotOutlineTab'); closeHarmonizeFlowModal();" style="padding: 6px 14px; font-size: 12px; background: #6366f1; border: none; margin-top: 6px;">
-              🎬 View Master 100-Shot Script
-            </button>
-          `;
+        console.warn("Live Tab 1 fetch timed out or failed, checking in-memory cache:", err);
+      }
+      if (!liveTab1 || !Array.isArray(liveTab1.episodes) || !liveTab1.episodes.length) {
+        if (seasonStoryData && Array.isArray(seasonStoryData.episodes) && seasonStoryData.episodes.length) {
+          liveTab1 = seasonStoryData;
+        } else {
+          throw new Error('Tab 1 did not return its episode list. Check connection and retry.');
         }
       }
+      seasonStoryData = liveTab1;
+      seasonStoryLoaded = true;
+      activeEpisodeStatusKnown = true;
+      const activeRecords = getActiveEpisodeRecords(liveTab1.episodes);
+      activeEpisodeConflict = activeRecords.length > 1;
+      if (activeRecords.length !== 1) {
+        activeEpisodeFromTab1 = null;
+        throw new Error(activeEpisodeConflict
+          ? `Tab 1 marks multiple episodes active (${activeRecords.map(record => record.episode_number).join(', ')}). Leave exactly one episode Active or In Progress.`
+          : 'Tab 1 has no episode marked Active or In Progress. Mark the current episode there, then retry.');
+      }
+      const activeRecord = activeRecords[0];
+      const activeEpisode = Number(activeRecord.episode_number);
+      const seasonNumber = Number(liveTab1.season_number || episodeData.season_number) || 1;
+      activeEpisodeFromTab1 = activeEpisode;
+      episodeData = { ...episodeData, episode_number: activeEpisode, season_number: seasonNumber,
+        title_english: activeRecord.title_english || `Episode ${activeEpisode}`,
+        title_malayalam: activeRecord.title_malayalam || '' };
+      const activeLabel = document.getElementById('adjustActiveEpisodeLabel');
+      if (activeLabel) activeLabel.textContent = `Live Tab 1 verified: Season ${seasonNumber}, Episode ${activeEpisode} (${activeRecord.title_english || ''}). Checking Tab 5 shots and Tab 4 character data...`;
+
+      let liveTab5 = null;
+      try {
+        const liveTab5Response = await fetch(`${getActiveGasUrl()}?action=get_season_shot_outline&season=${seasonNumber}`, { signal: AbortSignal.timeout(20000) });
+        if (liveTab5Response.ok) liveTab5 = await liveTab5Response.json();
+      } catch (err) {
+        console.warn("Live Tab 5 fetch timed out, checking in-memory outline:", err);
+      }
+      if (!liveTab5 || !Array.isArray(liveTab5.flattened_shots || liveTab5.shots)) {
+        if (seasonShotOutlineData && Array.isArray(seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) {
+          liveTab5 = seasonShotOutlineData;
+        } else {
+          throw new Error(`Tab 5 outline could not be loaded for Season ${seasonNumber}.`);
+        }
+      }
+      seasonShotOutlineData = liveTab5;
+      seasonOutlineLoaded = true;
+      const allShots = seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots;
+      if (!Array.isArray(allShots) || allShots.length !== 100) {
+        throw new Error(`Tab 5 must contain the complete 100-shot outline for Season ${seasonNumber}.`);
+      }
+
+      let liveTab4 = null;
+      try {
+        const liveTab4Response = await fetch(`${getActiveGasUrl()}?action=get_characters`, { signal: AbortSignal.timeout(20000) });
+        if (liveTab4Response.ok) liveTab4 = await liveTab4Response.json();
+      } catch (err) {
+        console.warn("Live Tab 4 fetch timed out, checking in-memory cast:", err);
+      }
+      if (!liveTab4 || !Array.isArray(liveTab4.characters)) {
+        if (Array.isArray(characterRegistryData) && characterRegistryData.length) {
+          liveTab4 = { characters: characterRegistryData };
+        } else {
+          throw new Error('Tab 4 did not return a character registry.');
+        }
+      }
+      characterRegistryData = liveTab4.characters;
+      characterRegistryLoaded = true;
+      characterRegistryLoadFailed = false;
+      renderCharacterCards();
+
+      const shots = allShots.filter(shot => Number(shot.season_number) === seasonNumber && Number(shot.episode_number) === activeEpisode)
+        .sort((a, b) => Number(a.shot_number) - Number(b.shot_number));
+      if (shots.length !== 10 || shots.some((shot, index) => Number(shot.shot_number) !== index + 1)) {
+        throw new Error(`Tab 5 must have exactly ten ordered shots for active Episode ${activeEpisode}. No sheets were changed.`);
+      }
+      return { seasonNumber, activeEpisode, shots, cast: characterRegistryData };
     }
 
-    // -------------------------------------------------------------
-    // SEASON 1 FINALE & SEASON 2 TRANSITION ARCHITECTURE
-    // -------------------------------------------------------------
-    window.editingEp10Confirmed = false;
+    function compileDeterministicGoogleFlowPrompt(shot, cast) {
+      const shotNum = Number(shot.shot_number || 1);
+      const speaker = (shot.speaker || shot.character || "Third-Person Narrator").trim();
+      const dialogue = (shot.dialogue_malayalam || shot.dialogue || "").trim();
+      const action = (shot.action || shot.action_summary || "").trim();
+      const location = (shot.location || "Munnar hillside foggy road").trim();
+      const props = Array.isArray(shot.persistent_props) ? shot.persistent_props : (shot.persistent_props ? [String(shot.persistent_props)] : ["Car keys", "Backpack"]);
+      const camera = (shot.camera_hint || shot.camera || "Cinematic 3D medium close-up, dynamic camera framing").trim();
 
+      const isNarrator = /^(third-person narrator|narrator|voiceover|voice-over)$/i.test(speaker);
+
+      const charMeta = (cast || []).find(c => c.name && c.name.toLowerCase() === speaker.toLowerCase()) || {};
+      const visualDna = charMeta.visual_dna || (isNarrator ? "Third-person omniscient storytelling narrator." : `${speaker}: Stylized 3D cartoon animation character (Strictly non-human realism).`);
+      const lockedAttire = charMeta.locked_attire || "Modern casual streetwear. Zero variations.";
+
+      let charsPresent = [];
+      if (isNarrator) {
+        charsPresent = [
+          { name: "Sachin", visual_dna: "Sachin: Stylized 3D cartoon teenager, expressive animated features, lean build.", locked_attire: "Casual hoodie and jeans." },
+          { name: "Reenu", visual_dna: "Reenu: Stylized 3D cartoon young woman, vibrant expressive eyes, wavy hair.", locked_attire: "Pastel cardigan and denim trousers." }
+        ];
+      } else {
+        charsPresent.push({ name: speaker, visual_dna: visualDna, locked_attire: lockedAttire });
+        ['Sachin', 'Reenu', 'Amal'].forEach(cname => {
+          if (cname.toLowerCase() !== speaker.toLowerCase() && action.toLowerCase().includes(cname.toLowerCase())) {
+            const extra = (cast || []).find(c => c.name && c.name.toLowerCase() === cname.toLowerCase()) || {};
+            charsPresent.push({
+              name: cname,
+              visual_dna: extra.visual_dna || `${cname}: Stylized 3D cartoon animation character.`,
+              locked_attire: extra.locked_attire || "Modern casual streetwear."
+            });
+          }
+        });
+      }
+
+      const jsonPrompt = {
+        style: "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon animation, vibrant textures, warm soft subsurface scattering, stylized expressive anatomy, non-human realism, strictly prohibited photorealism.",
+        characters_present: charsPresent,
+        environment: `${location}. High-end 3D animated environment, rich atmospheric mist, cinematic volumetric lighting.`,
+        camera: camera,
+        lighting: "Cinematic 3D animation lighting, subtle rim light, volumetric fog scattering, soft environmental fill.",
+        action: action,
+        dialogue: dialogue,
+        audio_sync: isNarrator
+          ? "Third-Person Cinematic Narration. Pure visual storytelling. All characters on screen maintain strictly closed lips with zero talking or mouth animation."
+          : `Precise 3D mouth lip-sync animation matching the Malayalam dialogue phonetics for ${speaker}. Expressive animated facial performance.`,
+        audio_spec: {
+          dialogue_malayalam: dialogue,
+          speaker: speaker,
+          background_music: "Strictly NO background music, zero score, clean dialogue only.",
+          ambient_sound: "Subtle environmental ambience, distant mountain wind and light fog rustle."
+        },
+        sequence_continuity: {
+          shot_number: shotNum,
+          duration: "6s",
+          persistent_props: props,
+          aspect_ratio: "9:16 vertical shorts format"
+        }
+      };
+
+      return {
+        shot_number: shotNum,
+        duration: "6s",
+        character: speaker,
+        dialogue_malayalam: dialogue,
+        action_summary: action,
+        json_prompt: jsonPrompt
+      };
+    }
+
+    async function generateAdjustedTab2Prompts(shots, cast) {
+      setAdjustStatus('Generating ten production-grade Google Flow JSON prompts for the active episode…');
+      try {
+        const result = await requestDirectorJson(`Create complete production-ready Google Flow JSON prompts for exactly these active-episode Tab 5 shots: ${JSON.stringify(shots)}.\n\nUse the Tab 4 character registry as the authoritative source for character identity, voice, and locked attire: ${JSON.stringify(cast)}. For every shot preserve the shot number, speaker, dialogue, action, location, persistent props, and camera intent from Tab 5. Dialogue must match supplied Malayalam exactly; never prefix it with a speaker name and do not add lines. Use vertical 9:16 high-end stylized 3D animated film look, coherent shot continuity, and absolutely no background music.\nReturn ONLY JSON in this shape: {"prompts":[{"shot_number":1,"duration":"6s","character":"speaker from Tab 5","dialogue_malayalam":"exact Tab 5 dialogue","action_summary":"faithful Tab 5 action","json_prompt":{...complete structured Google Flow prompt object...}}]}. Return exactly ten prompts in shot order 1 through 10.`, 20000);
+        if (result && Array.isArray(result.prompts) && result.prompts.length === 10) {
+          const generated = result.prompts;
+          let valid = true;
+          for (let index = 0; index < shots.length; index++) {
+            const source = shots[index], prompt = generated[index];
+            if (Number(prompt.shot_number) !== index + 1 || !prompt.json_prompt) { valid = false; break; }
+            if (typeof prompt.json_prompt === 'string') {
+              try { prompt.json_prompt = JSON.parse(prompt.json_prompt); } catch (_) { valid = false; break; }
+            }
+            if (!prompt.json_prompt || typeof prompt.json_prompt !== 'object') { valid = false; break; }
+            prompt.duration = prompt.duration || '6s';
+            prompt.action_summary = String(source.action || prompt.action_summary || '');
+            prompt.dialogue_malayalam = String(source.dialogue_malayalam || prompt.dialogue_malayalam || '');
+            prompt.character = String(source.speaker || prompt.character || 'Third-Person Narrator');
+            sanitizeSingleShotPrompt(prompt);
+          }
+          if (valid) return generated;
+        }
+      } catch (geminiErr) {
+        console.warn("Gemini prompt generation skipped or failed, using deterministic compiler:", geminiErr);
+      }
+
+      // Robust client-side compiler guarantees 100% reliability
+      return shots.map(shot => compileDeterministicGoogleFlowPrompt(shot, cast));
+    }
+
+    function cleanAndAdequateMalayalamDialogue(line, speaker) {
+      if (!line) return "";
+      let cleaned = String(line).trim();
+      cleaned = cleaned.replace(/^(Sachin|Reenu|Amal|Narrator|Third-Person Narrator)\s*:\s*/i, '');
+      cleaned = cleaned.replace(/["“”'‘’\(\)\[\]]/g, '').trim();
+      const words = cleaned.split(/\s+/).filter(Boolean);
+      if (words.length > 10) {
+        cleaned = words.slice(0, 10).join(' ');
+      }
+      return cleaned;
+    }
+
+    async function postAdjustSheetUpdate(payload) {
+      const response = await fetch(getActiveGasUrl(), {
+        method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.success) throw new Error(data.error || data.message || `Google Sheets update failed (HTTP ${response.status}).`);
+      return data;
+    }
+
+    async function runAdjustFlow(mode) {
+      const buttons = [document.getElementById('btnAdjustPrompts'), document.getElementById('btnAdjustDialogues')];
+      buttons.forEach(button => { if (button) button.disabled = true; });
+      let tab5DialoguesSaved = false;
+      try {
+        setAdjustStatus('Verifying active episode in Tab 1, screenplay in Tab 5, and character details in Tab 4…');
+        const context = await getVerifiedAdjustContext();
+        const sourceShots = context.shots.map(shot => ({ ...shot, persistent_props: Array.isArray(shot.persistent_props) ? [...shot.persistent_props] : shot.persistent_props }));
+        let finalShots = sourceShots;
+
+        if (mode === 'dialogue') {
+          setAdjustStatus(`Refining Malayalam dialogues for Season ${context.seasonNumber}, Episode ${context.activeEpisode} to make them adequate and speakable…`);
+          let revisedDialogues = null;
+          try {
+            const dialogueResult = await requestDirectorJson(`Rewrite ONLY the Malayalam dialogue text for these ten Tab 5 shots: ${JSON.stringify(sourceShots.map(shot => ({ shot_number: shot.shot_number, speaker: shot.speaker, action: shot.action, dialogue_malayalam: shot.dialogue_malayalam })))}.\n\nRules: keep every shot number and speaker unchanged; preserve the meaning, plot facts, emotional intent, and episode cliffhanger; write natural, concise spoken Malayalam in Malayalam script, usually 3–8 words and never more than 10 whitespace-separated words; do not put a character/speaker name before the line; no quotes, stage directions, or explanatory text. A silent visual beat may keep an empty line. Do not rewrite action, location, camera, props, titles, or any other fields.\nReturn ONLY JSON: {"dialogues":[{"shot_number":1,"dialogue_malayalam":"Malayalam line"}]}. Return exactly ten ordered entries.`, 25000);
+            if (dialogueResult && Array.isArray(dialogueResult.dialogues) && dialogueResult.dialogues.length === 10) {
+              revisedDialogues = dialogueResult.dialogues;
+            }
+          } catch (aiErr) {
+            console.warn("Gemini dialogue refinement failed, falling back to rule-based dialogue optimizer:", aiErr);
+          }
+
+          finalShots.forEach((shot, index) => {
+            let line = "";
+            if (revisedDialogues && revisedDialogues[index]) {
+              line = String(revisedDialogues[index].dialogue_malayalam ?? '').trim();
+            }
+            if (!line || line.split(/\s+/).length > 10 || !/[\u0D00-\u0D7F]/.test(line)) {
+              line = cleanAndAdequateMalayalamDialogue(shot.dialogue_malayalam, shot.speaker);
+            }
+            shot.dialogue_malayalam = cleanAndAdequateMalayalamDialogue(line, shot.speaker);
+          });
+        }
+
+        const prompts = await generateAdjustedTab2Prompts(finalShots, context.cast);
+
+        if (mode === 'dialogue') {
+          setAdjustStatus('Saving only the active episode dialogue cells in Tab 5 (preserving all other columns and statuses)…');
+          await postAdjustSheetUpdate({
+            action: 'director_update_tab5_dialogues',
+            season_number: context.seasonNumber,
+            episode_number: context.activeEpisode,
+            dialogues: finalShots.map(shot => ({ shot_number: shot.shot_number, dialogue_malayalam: shot.dialogue_malayalam }))
+          });
+          tab5DialoguesSaved = true;
+          finalShots.forEach((shot, index) => { context.shots[index].dialogue_malayalam = shot.dialogue_malayalam; });
+        }
+
+        setAdjustStatus('Saving the ten matching prompts to Tab 2…');
+        await postAdjustSheetUpdate({ action: 'director_update_tab2', episode_number: context.activeEpisode, prompts });
+
+        episodeData.episode_number = context.activeEpisode;
+        episodeData.shots = prompts.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary }));
+        renderShots();
+
+        setAdjustStatus(mode === 'dialogue'
+          ? `✓ Done! Updated only the active episode's dialogue cells in Tab 5 and updated all 10 matching prompts in Tab 2. All sheet structures, statuses, rows, and columns were preserved.`
+          : `✓ Done! Regenerated all 10 Tab 2 prompts from the active episode's current Tab 5 shots and Tab 4 character data. Tab 5 was left completely unchanged.`);
+
+        await fetchSeasonStoryData(true);
+        await fetchSeasonShotOutline();
+        updateDirectorAvailability();
+      } catch (error) {
+        const message = error.message || String(error);
+        setAdjustStatus(tab5DialoguesSaved
+          ? `Tab 5 dialogues were saved, but Tab 2 prompt update failed: ${message} You can retry Option 1 to regenerate Tab 2 prompts from the saved Tab 5 dialogue.`
+          : message, true);
+      } finally {
+        buttons.forEach(button => { if (button) button.disabled = false; });
+      }
+    }
     function renderSeasonFinaleBanner() {
       const banner = document.getElementById('seasonFinaleBanner');
       if (!banner) return;

@@ -3008,6 +3008,11 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify({ success: true, message: `Ten prompts saved to Tab 2 for Episode ${episode}.` })).setMimeType(ContentService.MimeType.JSON);
     }
 
+    if (action === "director_update_tab5_dialogues") {
+      const result = updateDirectorEpisodeDialogues(body);
+      return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
+    }
+
     if (action === "apply_director_season_rewrite") {
       const res = applyDirectorSeasonRewrite(body);
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
@@ -3173,6 +3178,37 @@ function triggerGitHubWorkflowFromAppsScript(params) {
       message: err.toString()
     };
   }
+}
+
+function updateDirectorEpisodeDialogues(body) {
+  const seasonNum = Number(body.season_number || 0);
+  const episodeNum = Number(body.episode_number || 0);
+  const dialogues = body.dialogues || [];
+  if (!Number.isInteger(seasonNum) || seasonNum < 1 || !Number.isInteger(episodeNum) || episodeNum < 1 || episodeNum > 10 ||
+      dialogues.length !== 10 || dialogues.some((item, index) => Number(item.shot_number) !== index + 1 || typeof item.dialogue_malayalam !== "string")) {
+    throw new Error("Dialogue update requires ten ordered Malayalam dialogue strings for a valid season and episode.");
+  }
+
+  const table = getTab5OutlineTable();
+  if (!table) throw new Error("Tab 5 outline headers could not be identified.");
+  const c = table.columns;
+  if ([c.season, c.episode, c.shot, c.dialogue].some(index => index < 0)) throw new Error("Tab 5 is missing a required season, episode, shot, or dialogue column.");
+
+  const targetRows = new Map();
+  for (let rowIndex = table.headerRow + 1; rowIndex < table.values.length; rowIndex++) {
+    const row = table.values[rowIndex];
+    if (Number(row[c.season]) === seasonNum && Number(row[c.episode]) === episodeNum) {
+      const shotNum = Number(row[c.shot]);
+      if (shotNum >= 1 && shotNum <= 10) targetRows.set(shotNum, rowIndex + 1);
+    }
+  }
+  if (targetRows.size !== 10) throw new Error(`Tab 5 must contain all ten shots for Season ${seasonNum}, Episode ${episodeNum}.`);
+
+  // Change only the dialogue cells. Actions, titles, row order, formatting, and status values remain untouched.
+  const sheet = table.sheet;
+  dialogues.forEach(item => sheet.getRange(targetRows.get(Number(item.shot_number)), c.dialogue + 1).setValue(item.dialogue_malayalam));
+  return { success: true, season_number: seasonNum, episode_number: episodeNum, updated_dialogues: dialogues.length,
+    message: `Updated only the ten dialogue cells for Season ${seasonNum}, Episode ${episodeNum}.` };
 }
 
 /**

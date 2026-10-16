@@ -64,9 +64,10 @@ STRICT VISUAL, CHARACTER & LOCATION CONSISTENCY RULES:
 1. UNIFIED LOCATION & ATMOSPHERE: The entire episode must maintain strict environment consistency (e.g. Cochin Airport CIAL Terminal Arrivals, morning golden sunbeams streaming through massive glass walls).
 2. CHARACTER CONTINUITY: Every scene must specify `characters_present` as a JSON array containing ["Reenu"], ["Sachin"], ["Sachin", "Reenu"], or ["Amal"].
 3. EMOTION & ACTION: Specify `character_emotion` (e.g. "joyful teary smile", "playful surprise", "affectionate gaze") and `action_description` (e.g. "waving enthusiastically", "pulling luggage trolley").
-4. COLLOQUIAL SPOKEN MALAYALAM: Dialogues must be authentic, natural spoken Kerala colloquial Malayalam (സംഭാഷണ മലയാളം).
-5. Exactly 12 to 14 scenes.
-6. NO WRITTEN TEXT inside the visual prompts.
+4. COLLOQUIAL SPOKEN MALAYALAM: Dialogues must be authentic, natural spoken Kerala colloquial Malayalam (സംഭാഷണ മലയാളം), concise and speakable (usually 3–8 words, maximum 10).
+5. DIALOGUE FIELD: The speaker is stored separately. Put only the spoken Malayalam words in dialogue_malayalam; never add a speaker-name prefix/label (such as "Sachin:"), acting directions, parenthetical notes, or quotation marks. A character's name may appear only when naturally addressed in the spoken line.
+6. Exactly 12 to 14 scenes.
+7. NO WRITTEN TEXT inside the visual prompts.
 
 OUTPUT FORMAT: Return ONLY valid JSON matching this schema:
 {{

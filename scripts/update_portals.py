@@ -168,6 +168,8 @@ target_paths = [
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/Sachin_And_Reenu_Series/repo_studio/portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/portal.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/index.html"),
+    Path("c:/Users/HP/OneDrive/Desktop/VISHNU/WEB/dist/index.html"),
     Path("c:/Users/HP/OneDrive/Desktop/New folder (3)/portal.html"),
     Path("c:/Users/HP/OneDrive/Desktop/New folder (3)/index.html")
 ]

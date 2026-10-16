@@ -503,17 +503,13 @@ CORE USER STORY PREMISE / PLOT:
 "{premise}"
 
 REQUIREMENTS:
-1. STRICT CHRONOLOGICAL CONTINUITY (EVERY EPISODE CONNECTS TO THE NEXT):
-   - Episode 1: Direct opening inciting incident introducing the premise (e.g. if parents arrive, their unexpected arrival at the Kochi flat).
-   - Episode 2: Direct continuation of Episode 1 cliffhanger (e.g. living room interrogation, parents inspecting the flat).
-   - Episode 3: Humorous complication or friend intervention (e.g. Amal barging in unexpectedly, awkward tea conversation).
-   - Episode 4: Growing tension or outdoor interaction (e.g. walk along Marine Drive, testing Sachin's career/intentions).
-   - Episode 5: Secret or emotional vulnerability shared (e.g. mother's intuition, heart-to-heart talk with Reenu).
-   - Episode 6: A major shared challenge or adventure in Kochi (e.g. shopping, visiting Fort Kochi, vehicle trouble).
-   - Episode 7: Misunderstanding or rising conflict (e.g. father disapproving or rival proposal mention).
-   - Episode 8: Turning point / Sachin proving his genuine love, maturity, and responsibility.
-   - Episode 9: Pre-climax high emotion / pivotal decision or parents' impending departure.
-   - Episode 10: Grand Season Finale Climax / full emotional blessing, heartwarming romantic victory directly resolving the plot.
+1. SEASON DRAMATIC ENGINE (PREMISE-LED, NOT A FIXED EPISODE TEMPLATE):
+   - Build a clear season-long dramatic question, the leads? personal wants/flaws, the pressure opposing them, and what is at stake if they fail.
+   - Escalate consequences and emotional choices across the ten episodes. Each episode must change the situation; do not use filler, repeat the same misunderstanding, or resolve a major conflict immediately after introducing it.
+   - Give every episode its own objective, obstacle, turning point, character choice, consequence, and specific cliffhanger. Vary the placement and type of comedy, suspense, tenderness, discovery, and reversal to fit this premise; do not force the same beat into every episode number.
+   - Episode 1 establishes the story engine and makes a consequential promise. Episodes 2?9 develop and complicate it with causally connected events. Episode 10 pays off the season?s central question and character arcs.
+   - Each cliffhanger must be a concrete event, revelation, decision, or urgent unanswered question. The next episode begins by showing its immediate consequence before moving forward.
+   - Include a recurring visual or prop motif that changes meaning as the characters change, where it naturally fits the premise.
 
 2. EPISODE FORMAT:
    - Exactly 10 episodes numbered 1 to 10.
@@ -522,8 +518,8 @@ REQUIREMENTS:
      • "title_english": Catchy English title
      • "title_malayalam": Accurate, natural Malayalam title in Malayalam script (മലയാളം ലിപി)
      • "status": "Active" for Episode 1, "Upcoming" for Episodes 2 through 10. (NONE marked Published).
-     • "synopsis": Clear, detailed 2-3 sentence narrative describing the action of that 1-minute reel.
-     • "cliffhanger": Dramatic ending hook that leads directly into the next episode.
+     • "synopsis": 3-4 concise sentences covering this episode?s objective, obstacle, turning point, consequential choice, and emotional change.
+     • "cliffhanger": A specific visible/actionable ending event that creates a question or consequence the next episode can immediately continue.
 
 3. CHARACTER ATTIRE RULES (STRICT CASUALS ONLY - NO FORMALS):
    - ABSOLUTELY NO FORMALS OR SEMI-FORMALS for the core trio (NO formal shirts, NO formal trousers, NO kurtas, NO cigarette pants, NO button-downs, NO linen formals).
@@ -810,22 +806,18 @@ CRITICAL PRODUCTION RULES:
 3. DURATION LOGIC PER SHOT:
    - Dialogue exchange / action: "6s" (6 seconds per shot) for each of the 10 shots.
    - Total sum of shot durations MUST be exactly 60 seconds (1 minute total).
-4. STRICT CINEMATIC SHOT FLOW & CAUSE-AND-EFFECT CONTINUITY (MANDATORY):
-   - Every episode MUST tell a fluid 10-shot story with CLEAR CAUSE-AND-EFFECT PROGRESSION:
-     • Shot 1: Establishing setting, mood, and initial character activity (Warm atmosphere).
-     • Shot 2: Playful/organic dialogue exchange between characters.
-     • Shot 3: Counter-reaction or continuing conversation beat.
-     • Shot 4: Scenic intimate/humorous bonding moment or action beat.
-     • Shot 5: THE DISRUPTION / HOOK: An external sound, event, phone ring, or knock that shatters the calm.
-     • Shot 6: Investigation / reaction to the disruption (walking toward door/window/source).
-     • Shot 7: Comic panic / preparatory action (hiding mess, whispering, scrambling).
-     • Shot 8: THE REVELATION / CLIMAX ACTION: The door opens / the arrival / the discovery (gasps, shock).
-     • Shot 9: THE REACTION SHOT: Contrasting perspective of the other character frozen/caught red-handed.
-     • Shot 10: THE CLIFFHANGER PUNCHLINE: The definitive line or frozen confrontation that ends the episode.
-   - ZERO REPETITIVE DIALOGUE: Never repeat the same question or line in consecutive shots (e.g. asking "Who is at the door?" twice).
+4. CINEMATIC STORY FLOW (MANDATORY, BUT NEVER A FIXED SHOT-BY-SHOT FORMULA):
+   - Shape these 10 shots around this episode?s objective, obstacle, turning point, choice, consequence, and cliffhanger. Vary pacing and beat placement to fit the story; do not automatically place a disruption at Shot 5 or a reveal at Shot 8.
+   - Every shot must change at least one thing: what a character knows, wants, fears, decides, or physically does. Avoid shots that merely restate the previous beat.
+   - Give each shot one primary, filmable action and one clear emotional read. Keep simultaneous actions to a minimum so a six-second shot can be animated and understood.
+   - Use visual storytelling first: establish geography, use eyelines and reactions, reveal information through props/environment, and let silence or a held reaction carry a beat when dialogue would weaken it.
+   - Motivate camera choice by the beat: specify framing and one purposeful camera movement or locked composition. Vary shot scale and angle across the episode; avoid repeating generic close-ups and avoid stacking multiple camera moves.
+   - Stage transitions explicitly when location, time, screen direction, a carried object, or character blocking changes. Prefer clear action matches, eyeline matches, sound bridges, or motivated cuts.
+   - Shot 10 of Episodes 1?9 ends on a concrete cliffhanger/turning event. The next episode?s Shot 1 directly shows its immediate consequence while preserving location, positions, props, and emotional state. Episode 10 Shot 10 pays off the season?s central dramatic question.
+    - ZERO REPETITIVE DIALOGUE: Never repeat the same question or line in consecutive shots (e.g. asking "Who is at the door?" twice).
    - ZERO REPEATED PHYSICAL ACTIONS: An irreversible physical action can happen ONLY ONCE in a scene (e.g. if the door is opened in Shot 8, do NOT open the door again in Shot 9 or 10; keep it open!).
    - CANONICAL CHARACTER NAMES: Never mix up family names (e.g. Reenu's father is Kurian, NOT Roy; her mother is Annamma, NOT Molly).
-4. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED CASUAL ATTIRE:
+5. STRICT ANIMATION CHARACTER REQUIREMENT & LOCKED CASUAL ATTIRE:
    - All characters MUST be stylized Disney-Pixar 3D animated cartoon models.
    - STRICTLY PROHIBIT photorealistic humans, realistic humans, live-action actors, real people, human skin pores, or uncanny valley realism.
    - STRICT CASUAL ATTIRE RULES FOR SACHIN, REENU & AMAL (ZERO FORMALS):
@@ -835,7 +827,7 @@ CRITICAL PRODUCTION RULES:
      • Contrasting colors: All 3 characters must wear distinctly different colors (never matching or similar colors in the same season).
    - Character visual DNA and locked clothing must be followed 100% identically:
 {dna_guidelines}
-5. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
+6. STRICT SPEAKING & LIP MOVEMENT RULES (MANDATORY):
    - THIRD-PERSON NARRATION SHOTS (VOICEOVER ONLY):
      • The third-person narrator is an EXTERNAL, OFF-SCREEN STORYTELLER. NO on-screen character speaks the narration line!
      • These shots MUST focus on SHOWING THE SCENE ACTION AND CINEMATIC ENVIRONMENT (e.g., car moving on road, rain falling on streetlights, characters walking, looking at scenery, touching props, silent emotional bodily gestures).
@@ -844,25 +836,25 @@ CRITICAL PRODUCTION RULES:
      • In 'audio_directive', state: "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
    - CONVERSATION / CHARACTER DIALOGUE SHOTS:
      • Only the designated speaking character moves their mouth in precise lip sync. The listening character's mouth remains strictly closed.
-6. STRICT MALAYALAM CHARACTER NAMES & PRONUNCIATION ACCURACY (MANDATORY):
+7. STRICT MALAYALAM CHARACTER NAMES & PRONUNCIATION ACCURACY (MANDATORY):
    - EXACT CANONICAL SPELLING FOR NAMES:
      • Reenu: Strictly 'റീനു' with hard 'റ' (NEVER 'രീനു' with soft 'ര', NEVER 'റീന').
      • Amal: Strictly 'അമൽ' with chillu 'ൽ' (FORBIDDEN: NEVER use 'അമലു' / Amalu. Amal's = 'അമലിന്റെ', Amal to = 'അമലിന്', Amal = 'അമലിനെ').
      • Sachin: Strictly 'സച്ചിൻ' with crisp double-cha 'ച്ച' (NEVER 'സചിൻ').
    - DIALOGUE PHONETICS & PRONUNCIATION: Write clean, grammatically sound, standard conversational Malayalam in Malayalam script (മലയാളം ലിപി). Ensure all words are phonetically accurate and easily pronounceable by voice synthesis / voiceover artists without slurring, mangled letters, or mispronunciation.
 
-7. STRICT DIALOGUE LENGTH LIMIT (MANDATORY FOR VIDEO AI & AUDIO PACING):
+8. STRICT DIALOGUE LENGTH LIMIT (MANDATORY FOR VIDEO AI & AUDIO PACING):
    - CRITICAL PACING CONSTRAINT: Each shot is only 5s to 6s long. The video and voice synthesis CANNOT speak long dialogues in this short window without rushing or getting cut off.
-   - MAXIMUM WORDS: Strictly MAXIMUM 5 to 8 WORDS per shot (under 40 Malayalam letters/characters).
-   - SINGLE SHORT SENTENCE: Exactly ONE short, crisp, punchy sentence per shot. FORBIDDEN: NEVER write multiple sentences or compound paragraphs in a single shot.
+   - DIALOGUE LIMIT: Aim for 3?8 Malayalam words; never exceed 10 words in a spoken line. Keep it speakable within 3?4 seconds. A silent visual shot may have an empty dialogue field.
+   - DIALOGUE FIELD: Put only spoken Malayalam words in dialogue_malayalam. Speaker is a separate field; never add a speaker-name prefix, acting direction, parenthetical note, or quotation marks.
    - NATURAL SPEECH: Dialogue must fit comfortably within 3 to 4 seconds of speech, leaving 1.5 to 2 seconds of ambient breathing room.
-   - If a dialogue or narration is longer, split it into 2 separate consecutive shots!
+   - Keep narration and dialogue concise; do not split one sentence across shots unless the dramatic exchange genuinely benefits from the interruption.
 
-8. ABSOLUTELY NO BACKGROUND MUSIC (BGM):
+9. ABSOLUTELY NO BACKGROUND MUSIC (BGM):
    - In every shot, "audio_directive" MUST strictly state: "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voice dialogue and natural ambient foley sound effects only."
-9. NEGATIVE PROMPT:
+10. NEGATIVE PROMPT:
    - Must strictly include: "character mouth moving during voiceover, character lip sync during narration, open mouth talking during voiceover, character talking during narration, character speaking narrator words, speaking animation on character, character mouth moving, real human, realistic human, real person, live-action actor, photorealistic human face, human skin pores, hyperrealistic, uncanny valley, real life photography, realistic skin texture, 2D illustration, deformed faces, distorted anatomy, background music, musical score, instrumental BGM, singing, on-screen text, visible text, typography, fonts, writing, letters, words, alphabet, script, typography overlay, Disney text, Pixar text, Disney Pixar text, Disney logo, Pixar logo, Walt Disney logo, studio watermark, brand name, brand logo, character names on screen, Sachin text, Reenu text, Amal text, character name labels, name tags, name badges, floating names, timestamps, time text, clock numbers, timecode display, 6:30 PM, 4:45 PM, 5s, 6s, duration numbers, countdown timer, digital clock overlay, 4K text, 60fps text, Octane Render text, 9:16 text, aspect ratio labels, camera metadata text, resolution stamps, specification text, subtitles, closed captions, captions, lower thirds, title cards, watermarks, credits, copyright notices, UI text, user interface elements, graphic banners"
-10. STYLE STRING:
+11. STYLE STRING:
    - "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
 11. ORGANIC CHARACTER EXPANSION (OPTIONAL):
@@ -1815,6 +1807,12 @@ SEASON {season_number} COMPLETE 100-SHOT MASTER SCREENPLAY BEAT SHEET
 CORE SEASON PREMISE:
 {premise_text}
 
+SEASON STORY BLUEPRINT (apply before drafting shots):
+- Establish the central dramatic question, the protagonists? distinct wants and flaws, the opposing pressure, and the cost of failure.
+- Shape a season-long escalation with meaningful reversals, consequences, and character choices; Episodes 1?3 establish and complicate, 4?7 deepen pressure and force change, 8?9 drive toward the decisive choice, and Episode 10 pays it off. Treat this as broad momentum, not a rigid beat grid.
+- Give each episode a distinct objective, obstacle, turning point, emotional shift, and cliffhanger. Each episode must alter the story state and carry consequences forward.
+- Plant a recurring visual/prop motif and evolve its meaning when appropriate. Let images, behavior, and props carry emotion instead of explaining every beat.
+
 CRITICAL ARCHITECTURE RULES:
 1. OUTPUT EXACTLY 10 EPISODES (Episodes 1 to 10).
 2. OUTPUT EXACTLY 10 SHOTS PER EPISODE (Shots 1 to 10 for each episode) = 100 SHOTS TOTAL.
@@ -1822,12 +1820,15 @@ CRITICAL ARCHITECTURE RULES:
 4. Shot 10 of EVERY episode (Episodes 1 to 9) MUST be an intense, suspenseful cliffhanger or dramatic turning point.
 5. Shot 1 of EVERY subsequent episode (Episodes 2 to 10) MUST seamlessly resolve and continue from the preceding episode's cliffhanger.
 6. Episode 10 Shot 10 (Shot 100) MUST be the grand emotional season climax delivering a heartwarming, decisive relationship payoff for Sachin and Reenu.
-7. Dialogue MUST be authentic conversational Malayalam phonetics in Malayalam script with natural emotion.
-8. Visual Actions MUST describe character body language, comedic or tender expressions, and staging clearly.
-9. Keep Sachin, Reenu, and Amal in modern casual streetwear; do not use sarees, kurtis, dhotis, or other traditional/ethnic clothing.
-10. Characters are stylized animated teenagers/young adults: no realistic skin pores, mature facial lines, or facial hair on teenage boys.
-11. Preserve locations, carried props, injuries, clothing, and character positions across adjacent shots; explicitly stage transitions.
-12. Episode 10 Shot 10 is the decisive season grand climax, not an ordinary episode cliffhanger.
+7. Dialogue MUST be authentic conversational Malayalam in Malayalam script, emotionally natural and speakable (target 3?8 words, hard maximum 10). `speaker` is separate: `dialogue_malayalam` contains only spoken words, with no speaker-name prefix/label, acting directions, parenthetical notes, or quotation marks. A name may appear only when naturally addressed; a silent visual shot may have an empty dialogue field.
+8. FILMABLE SHOTS: Every shot has one primary visible action and a readable emotional beat that fits roughly six seconds. Avoid multi-event paragraphs that would require several cuts inside one shot. Silence is valid when an image or reaction carries the story.
+9. CINEMATIC CAMERA GRAMMAR: Give each camera_hint a motivated framing/angle and one purposeful movement (or a deliberate locked frame). Vary shot scale and composition across the episode; do not repeat generic camera labels.
+10. TRANSITIONS & MOTIFS: Explicitly stage changes in location, time, screen direction, blocking, and props. Use motivated action/eyeline matches or sound bridges. Track recurring visual motifs and make their meaning evolve.
+11. FINAL SELF-AUDIT BEFORE JSON: Confirm each episode has a distinct objective, obstacle, turn, choice, consequence, and cliffhanger; every Shot 10 cliffhanger is immediately continued by the following episode?s Shot 1; every shot is filmable in its duration; camera choices are varied and motivated; no beats or dialogue are repeated. Revise silently before returning JSON.
+12. Keep Sachin, Reenu, and Amal in modern casual streetwear; do not use sarees, kurtis, dhotis, or other traditional/ethnic clothing.
+13. Characters are stylized animated teenagers/young adults: no realistic skin pores, mature facial lines, or facial hair on teenage boys.
+14. Preserve locations, carried props, injuries, clothing, and character positions across adjacent shots; explicitly stage transitions.
+15. Episode 10 Shot 10 is the decisive season grand climax, not an ordinary episode cliffhanger.
 
 OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
 {{
@@ -1840,7 +1841,7 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
       "episode_number": 1,
       "title_english": "...",
       "title_malayalam": "...",
-      "synopsis": "Full episode summary...",
+      "synopsis": "3-4 sentences: objective, obstacle, turning point, consequential choice, emotional shift...",
       "cliffhanger": "Ending cliffhanger...",
       "shots": [
         {{
@@ -1913,6 +1914,18 @@ OUTPUT STRICTLY VALID JSON MATCHING THIS EXACT SCHEMA:
             raise ValueError(f"Episode {expected_ep} is missing its roadmap cliffhanger.")
         if any(not str(s.get("action", "")).strip() for s in shots_for_episode):
             raise ValueError(f"Episode {expected_ep} has a shot without an action description.")
+        for shot in shots_for_episode:
+            shot_num = int(shot.get("shot_number", 0))
+            dialogue = str(shot.get("dialogue_malayalam") or "").strip()
+            speaker = str(shot.get("speaker") or "").strip()
+            if len(dialogue.split()) > 10:
+                raise ValueError(f"Episode {expected_ep}, Shot {shot_num} dialogue exceeds the 10-word limit.")
+            if speaker and dialogue.casefold().startswith(f"{speaker.casefold()}:"):
+                raise ValueError(f"Episode {expected_ep}, Shot {shot_num} dialogue repeats the speaker label.")
+            if dialogue.startswith(("(", "[")) or any(mark in dialogue for mark in ('"', "“", "”")):
+                raise ValueError(f"Episode {expected_ep}, Shot {shot_num} dialogue contains stage directions or quotation marks.")
+            if not str(shot.get("camera_hint") or "").strip():
+                raise ValueError(f"Episode {expected_ep}, Shot {shot_num} is missing its camera direction.")
     if not str(episodes[-1]["shots"][-1].get("action", "")).strip():
         raise ValueError("Episode 10, Shot 10 must contain the season grand climax.")
     season_title = parsed_data.get("season_title", f"Season {season_number}")
