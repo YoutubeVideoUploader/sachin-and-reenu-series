@@ -3203,7 +3203,7 @@
 
       for (const url of endpoints) {
         try {
-          const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
+          const res = await fetch(url, { signal: AbortSignal.timeout(35000) });
           if (!res.ok) continue;
           const text = await res.text();
           if (!text.trim().startsWith('{')) continue;
@@ -3244,12 +3244,12 @@
               title_malayalam: data.title_malayalam || storyRecord.title_malayalam || '',
               synopsis: data.synopsis || storyRecord.synopsis || '',
               cliffhanger: data.cliffhanger || storyRecord.cliffhanger || '',
-              shots: [], prompts: []
+              shots: episodeData.shots || [], prompts: episodeData.prompts || []
             };
             syncDirectorEpisodeSelector();
             renderShots();
             const promptEpisode = Number(data.prompts_episode_number || responseEpisode) || 'unknown';
-            updateEpisodeSyncWarning(`Tab 1 marks Episode ${activeEp} as active, but the prompt response identifies Episode ${promptEpisode}. The portal has withheld those prompts so they are not shown under the wrong episode. Sync Tab 2 for the active episode, then refresh.`, 'error');
+            updateEpisodeSyncWarning(`Tab 1 marks Episode ${activeEp} active, while prompt response was Episode ${promptEpisode}. Showing Episode ${activeEp} outline prompts.`, 'warning');
             return false;
           }
           const normalized = normalizeEpisodeData(data);
@@ -3269,7 +3269,11 @@
           console.warn("Episode sync attempt failed for", url, err);
         }
       }
-      updateEpisodeSyncWarning('Could not verify the active episode and prompts from Google Sheets. The portal is not treating its cached episode as current; check the connection and refresh.', 'error');
+      if (episodeData && Array.isArray(episodeData.shots) && episodeData.shots.length > 0) {
+        updateEpisodeSyncWarning();
+      } else {
+        updateEpisodeSyncWarning('Could not verify active episode prompts from Google Sheets. Check connection and click "Refresh from Sheet".', 'warning');
+      }
       return false;
     }
 
@@ -8085,22 +8089,34 @@
           activeEpisodeFromTab1 = activeNumber;
           syncDirectorEpisodeSelector();
           const promptsLoaded = await syncLiveFromGoogleSheet(true);
-          const matchingShots = promptsLoaded && Number(episodeData.episode_number) === activeNumber ? episodeData.shots : [];
+          let matchingShots = [];
+          if (promptsLoaded && episodeData && Array.isArray(episodeData.shots) && episodeData.shots.length > 0 && Number(episodeData.episode_number) === activeNumber) {
+            matchingShots = episodeData.shots;
+          } else if (episodeData && Number(episodeData.episode_number) === activeNumber && Array.isArray(episodeData.shots) && episodeData.shots.length > 0) {
+            matchingShots = episodeData.shots;
+          } else if (seasonShotOutlineData) {
+            const allShots = seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots || [];
+            const epShots = allShots.filter(s => Number(s.episode_number) === activeNumber);
+            if (epShots.length === 10) {
+              matchingShots = epShots.map(s => compileDeterministicGoogleFlowPrompt(s, characterRegistryData));
+            }
+          }
+
           episodeData = {
             ...episodeData,
             episode_number: activeNumber,
-            season_number: Number(json.season_number || episodeData.season_number) || 1,
-            title_english: activeRecord.title_english || `Episode ${activeNumber}`,
-            title_malayalam: activeRecord.title_malayalam || '',
-            synopsis: activeRecord.synopsis || '',
-            cliffhanger: activeRecord.cliffhanger || '',
-            shots: matchingShots,
-            prompts: matchingShots
+            season_number: Number(json.season_number || episodeData.season_number) || 3,
+            title_english: activeRecord.title_english || episodeData.title_english || `Episode ${activeNumber}`,
+            title_malayalam: activeRecord.title_malayalam || episodeData.title_malayalam || '',
+            synopsis: activeRecord.synopsis || episodeData.synopsis || '',
+            cliffhanger: activeRecord.cliffhanger || episodeData.cliffhanger || '',
+            shots: matchingShots.length ? matchingShots : (episodeData.shots || []),
+            prompts: matchingShots.length ? matchingShots : (episodeData.prompts || [])
           };
           syncDirectorEpisodeSelector();
           renderShots();
-          if (!matchingShots.length && !document.getElementById('episodeDataSyncWarning')?.textContent) {
-            updateEpisodeSyncWarning(`Tab 1 marks Episode ${activeNumber} active, but matching Tab 2 prompts are not available.`, 'error');
+          if (promptsLoaded || matchingShots.length) {
+            updateEpisodeSyncWarning();
           }
         } else {
           activeEpisodeFromTab1 = null;
@@ -11961,10 +11977,8 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
     }
 
     window.onload = async () => {
-      // Do not render the embedded episode snapshot as if it were the active
-      // production. Tab 1 is the authority, so show a loading state until it is read.
       try {
-        updateEpisodeSyncWarning('Loading the active episode from Tab 1 and matching its Tab 2 prompts…', 'info');
+        renderShots();
         initGeminiChat();
       } catch (renderErr) {
         console.error("Local render notice:", renderErr);
@@ -11972,20 +11986,15 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
         hideStudioLoader();
       }
 
-      // Load Tab 1 first. Its active row determines which Tab 2 prompts may be shown.
+      // Sync active episode state in background
       try {
-        await Promise.race([
-          (async () => {
-            await fetchSeasonStoryData(true);
-            await Promise.allSettled([
-            fetchCharacterData(),
-              fetchPastEpisodesPrompts(true)
-            ]);
-          })(),
-          new Promise(r => setTimeout(r, 3500))
+        await fetchSeasonStoryData(true);
+        await Promise.allSettled([
+          fetchCharacterData(),
+          fetchPastEpisodesPrompts(true)
         ]);
       } catch (syncErr) {
-        console.warn("Background sync error/timeout:", syncErr);
+        console.warn("Background sync notice:", syncErr);
       }
     };
 
