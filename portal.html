@@ -733,6 +733,147 @@
       #directorModeHint { flex-basis: 100%; margin-left: 0 !important; }
       #directorEvaluationContainer { padding: 12px !important; }
     }
+
+    /* =============================================================
+       STUDIO UI REFRESH — clearer hierarchy, calmer surfaces, and
+       predictable navigation without changing production workflows.
+       ============================================================= */
+    :root {
+      --bg-dark: #0b1020;
+      --bg-card: #121a2b;
+      --bg-hover: #1a263b;
+      --primary: #f59e0b;
+      --primary-hover: #d97706;
+      --accent-pink: #c084fc;
+      --accent-blue: #60a5fa;
+      --accent-green: #34d399;
+      --text-main: #f1f5f9;
+      --text-muted: #a4b1c3;
+      --border-color: #26344a;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(ellipse at 50% -20%, rgba(59, 91, 145, .18), transparent 52%),
+        var(--bg-dark);
+      letter-spacing: .005em;
+    }
+    .container { max-width: 1480px; padding: 26px clamp(16px, 3vw, 40px) 40px; }
+    header {
+      position: relative;
+      background: rgba(11, 16, 32, .94);
+      border-bottom-color: rgba(148, 163, 184, .16);
+      padding: 16px 0;
+      backdrop-filter: blur(16px);
+    }
+    .header-content { max-width: 1480px; padding: 0 clamp(16px, 3vw, 40px); margin: 0 auto; }
+    .brand { gap: 12px; }
+    .brand-logo { width: 46px; height: 46px; border-radius: 14px; box-shadow: 0 5px 18px rgba(245, 158, 11, .18); }
+    .brand-titles h1 { font-size: clamp(18px, 2vw, 22px); letter-spacing: -.035em; }
+    .brand-titles p { color: #c4b5fd; font-size: 12px; }
+    .header-content > div:last-child { gap: 8px !important; }
+    .header-content > div:last-child .btn { min-height: 38px; padding: 8px 12px !important; border-radius: 10px; box-shadow: none !important; }
+    .badge-status { background: rgba(16, 185, 129, .08); border-color: rgba(52, 211, 153, .2); font-size: 12px; }
+
+    .ep-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(115deg, #151f34 0%, #17213a 58%, #211a38 100%);
+      border-color: rgba(148, 163, 184, .2);
+      padding: clamp(20px, 3vw, 30px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .2);
+    }
+    .ep-card::after { content: ""; position: absolute; inset: auto -80px -150px auto; width: 320px; height: 250px; background: radial-gradient(ellipse, rgba(96, 165, 250, .1), transparent 70%); pointer-events: none; }
+    .ep-info, .ep-actions { position: relative; z-index: 1; }
+    .ep-tag { color: #c4b5fd; letter-spacing: .12em; }
+    .ep-title { font-size: clamp(23px, 3vw, 32px); letter-spacing: -.03em; }
+    .ep-synopsis { max-width: 740px; font-size: 14px; line-height: 1.7; }
+    .ep-actions { gap: 8px; }
+
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      gap: 4px;
+      padding: 8px;
+      margin: 0 0 22px;
+      background: rgba(15, 23, 42, .94);
+      border: 1px solid rgba(148, 163, 184, .17);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+      scrollbar-width: thin;
+      scrollbar-color: #475569 transparent;
+      backdrop-filter: blur(14px);
+    }
+    .tab-btn {
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #aab7c9;
+      transition: color .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .tab-btn:hover { color: #f8fafc; background: rgba(148, 163, 184, .08); }
+    .tab-btn.active { color: #fff; background: rgba(245, 158, 11, .12); border-color: rgba(245, 158, 11, .24); }
+    .nav-context { color: #8291a7; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 5px; background: rgba(148, 163, 184, .08); }
+    .tab-btn.active .nav-context { color: #fcd34d; background: rgba(245, 158, 11, .1); }
+    .tab-btn:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+    }
+    .tab-pane { min-width: 0; animation: paneEnter .18s ease-out; }
+    @keyframes paneEnter { from { opacity: .65; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+
+    .btn { min-height: 40px; border-radius: 10px; font-size: 13px; letter-spacing: .005em; }
+    .btn-primary { background: linear-gradient(135deg, #f59e0b, #ea790d); box-shadow: 0 4px 12px rgba(245, 158, 11, .16); }
+    .btn-primary:hover { box-shadow: 0 7px 18px rgba(245, 158, 11, .22); }
+    .btn-secondary { background: #18243a; border-color: #33445d; }
+    .shot-card, .upload-item, .modal-card {
+      background: #121a2b;
+      border-color: rgba(148, 163, 184, .18);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .14);
+    }
+    .shot-card { padding: clamp(16px, 2vw, 22px); }
+    .dialogue-box { background: rgba(245, 158, 11, .07); border-left-color: #fbbf24; }
+    .prompt-box, .gemini-chat-log { background: #0c1322; border-color: #26344a; }
+    .gemini-director-card {
+      background: linear-gradient(150deg, #121b2d, #11192a 70%, #17182d);
+      border: 1px solid rgba(96, 165, 250, .32);
+      border-radius: 18px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .2);
+    }
+    .director-help-note { background: rgba(96, 165, 250, .06); border-color: rgba(96, 165, 250, .16); }
+    .director-scope-button { min-height: 40px; background: #111a2b; border-color: #33445d; border-radius: 10px; }
+    .director-scope-button[aria-pressed="true"] { background: rgba(96, 165, 250, .13); border-color: rgba(96, 165, 250, .55); color: #bfdbfe; }
+    select, textarea, input { font: inherit; }
+    select { min-height: 38px; }
+    footer { padding: 22px 16px; }
+
+    @media (max-width: 900px) {
+      .header-content { align-items: flex-start; }
+      .header-content > div:last-child { justify-content: flex-start; }
+      .tabs { top: 0; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 16px 12px 28px; }
+      header { padding: 13px 0; }
+      .header-content { padding: 0 12px; }
+      .brand-logo { width: 40px; height: 40px; }
+      .brand-titles h1 { font-size: 17px; }
+      .brand-titles p { font-size: 11px; }
+      .header-content > div:last-child { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+      .header-content > div:last-child .badge-status { grid-column: 1 / -1; justify-content: center; }
+      .ep-card { margin-top: 16px; padding: 18px; gap: 14px; }
+      .ep-actions { width: 100%; }
+      .ep-actions .btn { flex: 1 1 calc(50% - 8px); justify-content: center; }
+      .tabs { margin-bottom: 16px; padding: 6px; border-radius: 12px; }
+      .tab-btn { padding: 9px 11px; min-height: 38px; font-size: 12px; }
+      .gemini-director-card { padding: 14px !important; }
+      .shot-card { padding: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -802,18 +943,20 @@
     <!-- Episode Headline Banner -->
     <div class="ep-card" id="epCard">
       <div class="ep-info">
-        <div class="ep-tag" id="epNumberTag">CURRENT PRODUCTION • EPISODE 1</div>
-        <h2 class="ep-title" id="epTitle">The Homecoming <span>തിരിച്ചുവരവ്</span></h2>
-        <p class="ep-synopsis" id="epSynopsis"></p>
+      <div class="ep-tag" id="epNumberTag">CURRENT PRODUCTION • LOADING ACTIVE EPISODE</div>
+      <h2 class="ep-title" id="epTitle">Loading episode from Tab 1…</h2>
+      <p class="ep-synopsis" id="epSynopsis">Checking the active episode and prompts in Google Sheets.</p>
       </div>
       <div class="ep-actions">
         <button class="btn btn-secondary" onclick="openSeriesThumbnailModal()" style="background: linear-gradient(135deg, #0284c7, #06b6d4); border: none; font-weight: 700; color: #fff; box-shadow: 0 2px 10px rgba(6, 182, 212, 0.4);" title="Generate Thumbnail Prompt & Manage Series Thumbnail on Drive">
           🖼️ Series Thumbnail
         </button>
-        <button class="btn btn-secondary" onclick="exportJSON()">💾 Export JSON</button>
+        <button class="btn btn-secondary" id="btnExportEpisodeJson" onclick="exportJSON()" disabled title="Episode data loads from Tab 1 and Tab 2">💾 Export JSON</button>
         <button class="btn btn-primary" onclick="syncAllWithSheet()">🔄 Refresh from Sheet</button>
       </div>
     </div>
+
+    <div id="episodeDataSyncWarning" role="status" aria-live="polite" style="display:none; margin:-8px 0 20px; padding:12px 16px; border:1px solid #f59e0b; border-radius:10px; background:rgba(120,53,15,.2); color:#fde68a; font-size:13px;"></div>
 
     <!-- Season Finale & Season Transition Banner (Appears at Episode 10) -->
     <div id="seasonFinaleBanner" style="display: none; background: linear-gradient(135deg, #1e1035 0%, #31135e 50%, #1e1b4b 100%); border: 2px solid #a855f7; border-radius: var(--radius); padding: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);">
@@ -843,22 +986,22 @@
     <!-- Navigation Tabs (5-Tab Master Architecture) -->
     <div class="tabs">
       <button class="tab-btn active" id="tabBtnShots" onclick="switchTab('shotsTab')">
-        🎬 Google Flow Shot Director (Tab 2) (<span id="shotCountBadge">10 Shots • ⏱️ 1m 00s</span>)
+        Episode Prompts <span id="shotCountBadge">Loading active prompts…</span>
       </button>
-      <button class="tab-btn" id="tabBtnShotOutline" onclick="switchTab('shotOutlineTab'); renderSeasonShotOutline();">
-        🎬 Master 100-Shot Script (Tab 5)
+      <button class="tab-btn" id="tabBtnShotOutline" onclick="switchTab('shotOutlineTab'); fetchSeasonShotOutline();">
+        Season Script <span class="nav-context">Tab 5</span>
       </button>
       <button class="tab-btn" id="tabBtnCharacters" onclick="switchTab('charactersTab')">
-        👥 Character Cast Registry (Tab 4)
+        Characters <span class="nav-context">Tab 4</span>
       </button>
       <button class="tab-btn" id="tabBtnUpload" onclick="switchTab('uploadTab')">
-        ☁️ Video Vault Uploader & Sync (Tab 3)
+        Video Uploads <span class="nav-context">Tab 3</span>
       </button>
       <button class="tab-btn" id="tabBtnSchedule" onclick="switchTab('scheduleTab')">
-        ⏰ Schedule & Cloud Ledger (Tab 1)
+        Schedule &amp; Status <span class="nav-context">Tab 1</span>
       </button>
       <button class="tab-btn" id="tabBtnMusic" onclick="switchTab('musicTab')">
-        🎵 10-Track BGM Soundtracks
+        Music
       </button>
     </div>
 
@@ -914,16 +1057,7 @@
           <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
             <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Episode:</span>
             <select id="chatTargetEp" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="1">Episode 1</option>
-              <option value="2">Episode 2</option>
-              <option value="3" selected>Episode 3 (Active)</option>
-              <option value="4">Episode 4</option>
-              <option value="5">Episode 5</option>
-              <option value="6">Episode 6</option>
-              <option value="7">Episode 7</option>
-              <option value="8">Episode 8</option>
-              <option value="9">Episode 9</option>
-              <option value="10">Episode 10 (Grand Climax)</option>
+              <option value="current" selected>Loading active episode…</option>
             </select>
           </div>
 
@@ -2704,13 +2838,128 @@
 
     // Tracks current state of Google Drive: shotNum -> { present: bool, filename: string, id: string }
     let driveStatus = {};
+    let activeEpisodeFromTab1 = null;
+    let activeEpisodePromptsVerified = false;
+    let activeEpisodeStatusKnown = false;
+    let activeEpisodeConflict = false;
+    let seasonOutlineLoaded = false;
     // Tracks staged local files awaiting upload: shotNum -> { file: File, uploaded: bool }
     let stagedFiles = {};
+
+    function getActiveEpisodeRecords(episodes = (seasonStoryData && seasonStoryData.episodes) || []) {
+      const activeStatuses = new Set(['in progress', 'active', 'active episode', 'current', 'current episode']);
+      const candidates = (episodes || []).filter(ep => activeStatuses.has(String(ep.status || '').trim().toLowerCase()));
+      candidates.sort((a, b) => {
+        const priority = ep => String(ep.status || '').trim().toLowerCase() === 'in progress' ? 0 : 1;
+        return priority(a) - priority(b) || Number(a.episode_number || 0) - Number(b.episode_number || 0);
+      });
+      return candidates;
+    }
+
+    function getActiveEpisodeRecord(episodes = (seasonStoryData && seasonStoryData.episodes) || []) {
+      return getActiveEpisodeRecords(episodes)[0] || null;
+    }
+
+    function getActiveEpisodeNumber() {
+      if (activeEpisodeConflict) return 0;
+      if (Number(activeEpisodeFromTab1) > 0) return Number(activeEpisodeFromTab1);
+      const active = getActiveEpisodeRecord();
+      if (activeEpisodeStatusKnown && !seasonStoryLoaded) return 0;
+      if (activeEpisodeStatusKnown && !active) return 0;
+      if (seasonStoryLoaded) return Number(active && active.episode_number) || 0;
+      return Number(active && active.episode_number) || Number(episodeData && episodeData.episode_number) || 1;
+    }
+
+    function updateDirectorAvailability() {
+      const sendButton = document.getElementById('geminiSendBtn');
+      if (!sendButton) return;
+      const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
+      const ready = seasonStoryLoaded && activeEpisodeStatusKnown && !activeEpisodeConflict && getActiveEpisodeNumber() > 0 && activeEpisodePromptsVerified && seasonOutlineLoaded && Number(seasonShotOutlineData && seasonShotOutlineData.season_number) === activeSeason;
+      sendButton.disabled = !ready;
+      sendButton.title = ready ? 'Use the verified active episode and current season outline' : 'Waiting for Tab 1 active episode, matching Tab 2 prompts, and current-season Tab 5 outline';
+    }
+
+    function updateEpisodeSyncWarning(message = '', kind = 'warning') {
+      const warning = document.getElementById('episodeDataSyncWarning');
+      if (!warning) return;
+      warning.textContent = message;
+      warning.style.display = message ? 'block' : 'none';
+      const colors = kind === 'error'
+        ? ['#f87171', 'rgba(127,29,29,.24)', '#fecaca']
+        : kind === 'info'
+          ? ['#60a5fa', 'rgba(30,64,175,.18)', '#bfdbfe']
+          : ['#f59e0b', 'rgba(120,53,15,.2)', '#fde68a'];
+      warning.style.borderColor = colors[0];
+      warning.style.background = colors[1];
+      warning.style.color = colors[2];
+    }
+
+    function syncDirectorEpisodeSelector() {
+      const select = document.getElementById('chatTargetEp');
+      updateDirectorAvailability();
+      if (!select) return;
+      const episodes = (seasonStoryData && seasonStoryData.episodes) || [];
+      const activeRecord = getActiveEpisodeRecord(episodes);
+      if (activeEpisodeConflict) {
+        select.replaceChildren();
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'Multiple active episodes in Tab 1';
+        select.appendChild(option);
+        select.disabled = true;
+        updateDirectorAvailability();
+        return;
+      }
+      if ((!seasonStoryLoaded && !activeEpisodeStatusKnown && !Number(activeEpisodeFromTab1)) || (activeEpisodeStatusKnown && !Number(activeEpisodeFromTab1))) {
+        select.replaceChildren();
+        const option = document.createElement('option');
+        option.value = 'current';
+        option.textContent = activeEpisodeStatusKnown ? 'No active episode marked in Tab 1' : 'Loading active episode from Tab 1…';
+        select.appendChild(option);
+        select.disabled = true;
+        updateDirectorAvailability();
+        return;
+      }
+      if (seasonStoryLoaded && !activeRecord && !Number(activeEpisodeFromTab1)) {
+        select.replaceChildren();
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'No active episode marked in Tab 1';
+        select.appendChild(option);
+        select.disabled = true;
+        return;
+      }
+      select.disabled = false;
+      const activeEpisode = Number(activeEpisodeFromTab1) || Number(activeRecord && activeRecord.episode_number) || getActiveEpisodeNumber();
+      const preserveSelection = select.dataset.userSelected === 'true' && Number(select.value) > 0;
+      const previousValue = preserveSelection ? Number(select.value) : activeEpisode;
+      const rows = episodes.length
+        ? episodes
+        : Array.from({ length: 10 }, (_, index) => ({ episode_number: index + 1, title_english: `Episode ${index + 1}`, status: '' }));
+      select.replaceChildren();
+      rows.forEach((ep, index) => {
+        const number = Number(ep.episode_number) || index + 1;
+        const option = document.createElement('option');
+        option.value = String(number);
+        const active = number === activeEpisode;
+        const title = String((active && episodeData && episodeData.title_english) || ep.title_english || `Episode ${number}`).trim();
+        option.textContent = `Episode ${number}${title && title !== `Episode ${number}` ? ` — ${title}` : ''}${active ? ' (Active)' : ''}`;
+        select.appendChild(option);
+      });
+      const selected = rows.some((ep, index) => (Number(ep.episode_number) || index + 1) === previousValue)
+        ? previousValue
+        : activeEpisode;
+      select.value = String(selected);
+      select.dataset.activeEpisode = String(activeEpisode);
+      updateDirectorAvailability();
+    }
 
     function normalizeEpisodeData(raw) {
       if (!raw) return null;
       let rawShots = raw.shots || raw.prompts || (raw.data && (raw.data.shots || raw.data.prompts)) || [];
       if (!Array.isArray(rawShots) || rawShots.length === 0) return null;
+      const episodeNumber = Number(raw.episode_number || raw.episode || (raw.data && raw.data.episode_number)) || 1;
+      const storyRecord = ((seasonStoryData && seasonStoryData.episodes) || []).find(ep => Number(ep.episode_number) === episodeNumber) || null;
 
       const normalizedShots = rawShots.map((s, idx) => {
         let shotNum = s.shot_number;
@@ -2761,11 +3010,12 @@
       });
 
       return {
-        episode_number: raw.episode_number || raw.episode || 1,
+        episode_number: episodeNumber,
         season_number: raw.season_number || (raw.data && raw.data.season_number) || (seasonStoryData && seasonStoryData.season_number) || 1,
-        title_english: raw.title_english || 'The Homecoming',
-        title_malayalam: raw.title_malayalam || 'തിരിച്ചുവരവ്',
-        synopsis: raw.synopsis || episodeData.synopsis || '',
+        title_english: raw.title_english ?? (storyRecord && storyRecord.title_english) ?? `Episode ${episodeNumber}`,
+        title_malayalam: raw.title_malayalam ?? (storyRecord && storyRecord.title_malayalam) ?? '',
+        synopsis: raw.synopsis ?? (storyRecord && storyRecord.synopsis) ?? '',
+        cliffhanger: raw.cliffhanger ?? (storyRecord && storyRecord.cliffhanger) ?? '',
         calculated_runtime_display: raw.calculated_runtime_display || (Math.floor(normalizedShots.length * 5.6 / 60) + 'm ' + Math.floor((normalizedShots.length * 5.6) % 60) + 's'),
         shots: normalizedShots,
         prompts: normalizedShots
@@ -2778,21 +3028,6 @@
     
     
     function renderShots() {
-      if (Array.isArray(episodeData)) {
-        episodeData = {
-          episode_number: 7,
-          season_number: 2,
-          is_season_2: true,
-          title_english: "The Monsoon Revelation",
-          title_malayalam: "മഴയും വെളിപ്പെടുത്തലും",
-          synopsis: "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi.",
-          cliffhanger: "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
-          total_shots: episodeData.length,
-          calculated_runtime_display: "1m 00s",
-          shots: episodeData,
-          prompts: episodeData
-        };
-      }
       if (!episodeData.shots && episodeData.prompts) {
         episodeData.shots = episodeData.prompts;
       }
@@ -2807,9 +3042,28 @@
       const runtimeStr = episodeData.calculated_runtime_display || '2m 08s';
       const epNum = episodeData.episode_number || 1;
       const seasonNum = Number(episodeData.season_number || (seasonStoryData && seasonStoryData.season_number) || 1);
-      document.getElementById('epNumberTag').innerText = `CURRENT PRODUCTION • SEASON ${seasonNum}, EPISODE ${epNum}`;
-      document.getElementById('epTitle').innerHTML = `${episodeData.title_english} <span>${episodeData.title_malayalam}</span>`;
-      document.getElementById('epSynopsis').innerText = episodeData.synopsis;
+      const hasActiveEpisode = Number(episodeData.episode_number) > 0;
+      const activeStatusVerified = Boolean(activeEpisodeStatusKnown || seasonStoryLoaded);
+      const exportButton = document.getElementById('btnExportEpisodeJson');
+      if (exportButton) exportButton.disabled = !hasActiveEpisode || episodeData.shots.length !== 10 || activeEpisodeConflict;
+      const productionStatusLabel = hasActiveEpisode
+        ? `CURRENT PRODUCTION • SEASON ${seasonNum}, EPISODE ${epNum}`
+        : activeEpisodeConflict
+          ? `CURRENT PRODUCTION • SEASON ${seasonNum} • MULTIPLE ACTIVE EPISODES IN TAB 1`
+          : activeStatusVerified
+            ? `CURRENT PRODUCTION • SEASON ${seasonNum} • NO ACTIVE EPISODE IN TAB 1`
+            : `CURRENT PRODUCTION • SEASON ${seasonNum} • ACTIVE EPISODE UNVERIFIED`;
+      document.getElementById('epNumberTag').innerText = productionStatusLabel;
+      document.getElementById('epTitle').innerHTML = hasActiveEpisode
+        ? `${episodeData.title_english || `Episode ${epNum}`} <span>${episodeData.title_malayalam || ''}</span>`
+        : (activeEpisodeConflict ? 'Choose one active episode in Tab 1' : (activeStatusVerified ? 'No active episode is marked in Tab 1' : 'Active episode unavailable'));
+      document.getElementById('epSynopsis').innerText = hasActiveEpisode
+        ? (episodeData.synopsis || '')
+        : (activeEpisodeConflict
+          ? 'Exactly one row in Tab 1 must be marked In Progress or Active.'
+          : (activeStatusVerified
+            ? 'Set one episode status to In Progress or Active in Tab 1 to load its prompts.'
+            : 'The portal could not verify the active episode from Google Sheets.'));
       document.getElementById('shotCountBadge').innerText = `${episodeData.shots.length} Shots • ⏱️ ${runtimeStr}`;
 
       renderSeasonFinaleBanner();
@@ -2953,6 +3207,10 @@
     }
 
     function exportJSON() {
+      if (!activeEpisodeStatusKnown || activeEpisodeConflict || !Number(episodeData && episodeData.episode_number) || !Array.isArray(episodeData.shots) || episodeData.shots.length !== 10) {
+        alert('Export is unavailable until Tab 1 identifies the active episode and Tab 2 provides its 10 prompts.');
+        return;
+      }
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(episodeData, null, 2));
       const dlAnchor = document.createElement('a');
       dlAnchor.setAttribute("href", dataStr);
@@ -2994,13 +3252,11 @@
       if (actionBtn) actionBtn.innerText = "⏳ Syncing...";
 
       try {
-        await syncDriveStatus();
-        updateStudioLoaderStatus("Fetching active episode prompts & season arc...");
-        await syncLiveFromGoogleSheet(true);
-        await fetchSeasonStoryData(true);
+        updateStudioLoaderStatus("Reading the active episode from Tab 1, then matching Tab 2 prompts...");
+        const activeEpisodeVerified = await fetchSeasonStoryData(true);
         await fetchCharacterData(true);
         await fetchPastEpisodesPrompts(true);
-        updateStudioLoaderStatus("✓ Google Sheet Synced Successfully!");
+        updateStudioLoaderStatus(activeEpisodeVerified ? "✓ Active episode and sheet data refreshed." : "Active episode could not be verified. Check the message above.");
         setTimeout(() => hideStudioLoader(), 650);
       } catch (err) {
         updateStudioLoaderStatus("Sync completed with local studio data.");
@@ -3018,9 +3274,8 @@
     }
 
     async function syncLiveFromGoogleSheet(force = false) {
-      if (episodeData && episodeData.episode_number === 10 && !force) {
-        return;
-      }
+      activeEpisodePromptsVerified = false;
+      updateDirectorAvailability();
       const endpoints = [
         getActiveGasUrl() + "?action=get_prompts",
         getActiveGasUrl() + "?action=get_live_episode_data"
@@ -3028,22 +3283,74 @@
 
       for (const url of endpoints) {
         try {
-          const res = await fetch(url);
+          const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
           if (!res.ok) continue;
           const text = await res.text();
           if (!text.trim().startsWith('{')) continue;
           const data = JSON.parse(text);
+          if (typeof data.active_episode_found === 'boolean') activeEpisodeStatusKnown = true;
+          if (Number.isFinite(Number(data.active_episode_count))) activeEpisodeConflict = Number(data.active_episode_count) > 1;
+          if (Number(data.active_episode_count) > 1) {
+            activeEpisodeFromTab1 = null;
+            episodeData = { episode_number: 0, season_number: Number(data.season_number) || 1, title_english: '', title_malayalam: '', synopsis: '', shots: [], prompts: [] };
+            syncDirectorEpisodeSelector();
+            renderShots();
+            updateEpisodeSyncWarning('Tab 1 marks more than one episode active. Leave exactly one episode marked In Progress or Active, then refresh.', 'error');
+            return false;
+          }
+          if (data.active_episode_found === false) {
+            activeEpisodeFromTab1 = null;
+            episodeData = {
+              episode_number: 0,
+              season_number: Number(data.season_number || (seasonStoryData && seasonStoryData.season_number)) || 1,
+              title_english: '', title_malayalam: '', synopsis: '', cliffhanger: '', shots: [], prompts: []
+            };
+            syncDirectorEpisodeSelector();
+            renderShots();
+            updateEpisodeSyncWarning('Tab 1 has no row marked In Progress or Active. Set the current episode status in Tab 1 before the portal can show production prompts.', 'error');
+            return false;
+          }
+          const responseEpisode = Number(data.episode_number || data.episode) || 0;
+          const reportedActiveEpisode = Number(data.active_episode) || 0;
+          if (reportedActiveEpisode) activeEpisodeFromTab1 = reportedActiveEpisode;
+          const expectedActiveEpisode = Number(activeEpisodeFromTab1) || reportedActiveEpisode;
+          if (data.prompts_match_active_episode === false || (expectedActiveEpisode && responseEpisode && expectedActiveEpisode !== responseEpisode)) {
+            const activeEp = expectedActiveEpisode || responseEpisode || 1;
+            const storyRecord = ((seasonStoryData && seasonStoryData.episodes) || []).find(ep => Number(ep.episode_number) === activeEp) || {};
+            episodeData = {
+              episode_number: activeEp,
+              season_number: Number(data.season_number || (seasonStoryData && seasonStoryData.season_number)) || 1,
+              title_english: data.title_english || storyRecord.title_english || `Episode ${activeEp}`,
+              title_malayalam: data.title_malayalam || storyRecord.title_malayalam || '',
+              synopsis: data.synopsis || storyRecord.synopsis || '',
+              cliffhanger: data.cliffhanger || storyRecord.cliffhanger || '',
+              shots: [], prompts: []
+            };
+            syncDirectorEpisodeSelector();
+            renderShots();
+            const promptEpisode = Number(data.prompts_episode_number || responseEpisode) || 'unknown';
+            updateEpisodeSyncWarning(`Tab 1 marks Episode ${activeEp} as active, but the prompt response identifies Episode ${promptEpisode}. The portal has withheld those prompts so they are not shown under the wrong episode. Sync Tab 2 for the active episode, then refresh.`, 'error');
+            return false;
+          }
           const normalized = normalizeEpisodeData(data);
           if (normalized && normalized.shots && normalized.shots.length > 0) {
+            if (data.active_episode && Number(data.active_episode) !== normalized.episode_number) {
+              throw new Error(`Tab 1 marks Episode ${data.active_episode} active, but the prompt response is for Episode ${normalized.episode_number}.`);
+            }
             episodeData = normalized;
+            activeEpisodePromptsVerified = true;
+            syncDirectorEpisodeSelector();
             renderShots();
+            updateEpisodeSyncWarning();
             await syncDriveStatus();
-            return;
+            return true;
           }
         } catch (err) {
           console.warn("Episode sync attempt failed for", url, err);
         }
       }
+      updateEpisodeSyncWarning('Could not verify the active episode and prompts from Google Sheets. The portal is not treating its cached episode as current; check the connection and refresh.', 'error');
+      return false;
     }
 
     async function syncDriveStatus() {
@@ -4293,6 +4600,7 @@
     // -------------------------------------------------------------
     // SEASON STORY ARC & MASTER ROADMAP (Tab 4)
     // -------------------------------------------------------------
+    let seasonStoryLoaded = false;
     let seasonStoryData = {
   "season_number": 3,
   "season_title": "The Mist of Munnar (മൂന്നാറിലെ മഞ്ഞ്)",
@@ -4385,6 +4693,8 @@
     // -------------------------------------------------------------
     // CHARACTER REGISTRY (Tab 5)
     // -------------------------------------------------------------
+    let characterRegistryLoaded = false;
+    let characterRegistryLoadFailed = false;
     let characterRegistryData = [
   {
     "name": "Reenu",
@@ -4493,6 +4803,11 @@
       grid.innerHTML = '';
 
       const heading = document.getElementById('seasonTitleHeading');
+      if (!seasonStoryLoaded) {
+        if (heading) heading.textContent = 'Loading the active season from Tab 1…';
+        grid.innerHTML = '<div role="status" style="padding:24px; color:#93c5fd;">Waiting for the current season and episode status from Google Sheets.</div>';
+        return;
+      }
       if (heading && seasonStoryData.season_title) {
         heading.innerHTML = `${seasonStoryData.season_title}`;
       }
@@ -4500,7 +4815,7 @@
       const epList = seasonStoryData.episodes || [];
       epList.forEach((ep) => {
         const isClimax = ep.episode_number === 10 || (ep.status || '').toLowerCase() === 'climax';
-        const isActive = (ep.status || '').toLowerCase() === 'active';
+        const isActive = Number(ep.episode_number) === getActiveEpisodeNumber();
         
         let cardBg = '#111827';
         let borderColor = '#1f2937';
@@ -7630,17 +7945,25 @@
 
     async function fetchSeasonShotOutline() {
       const statusBadge = document.getElementById("outlineShotCountDisplay");
-      if (statusBadge) statusBadge.innerText = "⏳ Loading from Tab 7...";
+      if (statusBadge) statusBadge.innerText = "Loading current season from Tab 5…";
+      seasonOutlineLoaded = false;
+      updateDirectorAvailability();
       try {
-        const sNum = (seasonStoryData && seasonStoryData.season_number) ? seasonStoryData.season_number : 3;
+        const sNum = Number((seasonStoryData && seasonStoryData.season_number) || (episodeData && episodeData.season_number)) || 1;
+        const hasCurrentSeasonOutline = data => {
+          const shots = (data && (data.flattened_shots || data.shots)) || [];
+          return Number(data && data.season_number) === sNum && shots.length === 100;
+        };
 
         // Try local bridge endpoint first if running
         try {
           const bridgeRes = await fetch(getBridgeApiUrl('/api/season_shot_outline'), { signal: AbortSignal.timeout(2000) });
           if (bridgeRes.ok) {
             const bData = await bridgeRes.json();
-            if (bData && ((bData.shots && bData.shots.length > 0) || (bData.flattened_shots && bData.flattened_shots.length > 0))) {
+            if (hasCurrentSeasonOutline(bData)) {
               seasonShotOutlineData = bData;
+              seasonOutlineLoaded = true;
+              syncDirectorEpisodeSelector();
               renderSeasonShotOutline();
               return;
             }
@@ -7651,8 +7974,10 @@
         const res = await fetch(getActiveGasUrl() + "?action=get_season_shot_outline&season=" + sNum);
         if (res.ok) {
           const data = await res.json();
-          if (data && ((data.shots && data.shots.length > 0) || (data.flattened_shots && data.flattened_shots.length > 0))) {
+          if (hasCurrentSeasonOutline(data)) {
             seasonShotOutlineData = data;
+            seasonOutlineLoaded = true;
+            syncDirectorEpisodeSelector();
             renderSeasonShotOutline();
             return;
           }
@@ -7660,6 +7985,8 @@
       } catch (e) {
         console.warn("Notice loading Season Shot Outline:", e);
       }
+      if (statusBadge) statusBadge.innerText = "Tab 5 outline not verified for the active season";
+      updateDirectorAvailability();
       renderSeasonShotOutline();
     }
 
@@ -7667,6 +7994,10 @@
       const container = document.getElementById("shotOutlineListContainer");
       if (!container) return;
       container.innerHTML = "";
+      if (!seasonOutlineLoaded) {
+        container.innerHTML = '<div role="status" style="padding:24px; text-align:center; color:#93c5fd;">The current season outline has not been verified from Tab 5. Refresh the outline before using or editing these shots.<br><button class="btn btn-primary" style="margin-top:12px" onclick="fetchSeasonShotOutline()">Refresh Tab 5</button></div>';
+        return;
+      }
 
       const filterSelect = document.getElementById("outlineFilterEp");
       const filterVal = filterSelect ? filterSelect.value : "all";
@@ -7684,7 +8015,7 @@
           <div style="text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; background: #080d1a; border: 1px dashed #334155; border-radius: 12px;">
             No 100-shot script outline loaded yet for this season.<br>
             <button class="btn btn-primary" style="margin-top: 14px; background: #0d9488; border-color: #14b8a6;" onclick="fetchSeasonShotOutline()">
-              🔄 Fetch from Google Sheet Tab 7
+              🔄 Fetch from Google Sheet Tab 5
             </button>
           </div>
         `;
@@ -7743,6 +8074,11 @@
       const countDisplay = document.getElementById('castCountDisplay');
       if (!container) return;
       container.innerHTML = '';
+      if (!characterRegistryLoaded) {
+        if (countDisplay) countDisplay.innerText = 'Character details unavailable';
+        container.innerHTML = `<div role="status" style="padding:24px; color:${characterRegistryLoadFailed ? '#fca5a5' : '#93c5fd'};">${characterRegistryLoadFailed ? 'Could not verify character details from Tab 4. Refresh the Google Sheets connection.' : 'Loading verified character details from Tab 4…'}</div>`;
+        return;
+      }
 
       if (countDisplay) {
         countDisplay.innerText = `${characterRegistryData.length} Characters`;
@@ -7806,39 +8142,91 @@
     }
 
     async function fetchSeasonStoryData(force = false) {
-      if (episodeData && episodeData.episode_number === 10 && !force) {
-        renderSeasonStoryRoadmap();
-        return;
-      }
       try {
-        const res = await fetch(getActiveGasUrl() + "?action=get_season_story");
-        if (res.ok) {
-          const json = await res.json();
-          if (json && json.episodes && json.episodes.length > 0) {
-            seasonStoryData = json;
-            renderSeasonStoryRoadmap();
+        const res = await fetch(getActiveGasUrl() + "?action=get_season_story", { signal: AbortSignal.timeout(15000) });
+        if (!res.ok) throw new Error(`Tab 1 returned HTTP ${res.status}.`);
+        const json = await res.json();
+        if (!json || !Array.isArray(json.episodes) || json.episodes.length === 0) throw new Error('Tab 1 returned no episode rows.');
+        seasonStoryData = json;
+        seasonStoryLoaded = true;
+        activeEpisodeStatusKnown = true;
+        const activeRecords = getActiveEpisodeRecords(json.episodes);
+        activeEpisodeConflict = activeRecords.length > 1;
+        const activeRecord = activeRecords.length === 1 ? activeRecords[0] : null;
+        if (activeRecord) {
+          const activeNumber = Number(activeRecord.episode_number);
+          activeEpisodeFromTab1 = activeNumber;
+          syncDirectorEpisodeSelector();
+          const promptsLoaded = await syncLiveFromGoogleSheet(true);
+          const matchingShots = promptsLoaded && Number(episodeData.episode_number) === activeNumber ? episodeData.shots : [];
+          episodeData = {
+            ...episodeData,
+            episode_number: activeNumber,
+            season_number: Number(json.season_number || episodeData.season_number) || 1,
+            title_english: activeRecord.title_english || `Episode ${activeNumber}`,
+            title_malayalam: activeRecord.title_malayalam || '',
+            synopsis: activeRecord.synopsis || '',
+            cliffhanger: activeRecord.cliffhanger || '',
+            shots: matchingShots,
+            prompts: matchingShots
+          };
+          syncDirectorEpisodeSelector();
+          renderShots();
+          if (!matchingShots.length && !document.getElementById('episodeDataSyncWarning')?.textContent) {
+            updateEpisodeSyncWarning(`Tab 1 marks Episode ${activeNumber} active, but matching Tab 2 prompts are not available.`, 'error');
           }
+        } else {
+          activeEpisodeFromTab1 = null;
+          episodeData = {
+            episode_number: 0,
+            season_number: Number(json.season_number || (episodeData && episodeData.season_number)) || 1,
+            title_english: '', title_malayalam: '', synopsis: '', cliffhanger: '', shots: [], prompts: []
+          };
+          renderShots();
+          syncDirectorEpisodeSelector();
+          updateEpisodeSyncWarning(activeEpisodeConflict
+            ? `Tab 1 has multiple active episodes (${activeRecords.map(ep => ep.episode_number).join(', ')}). Leave exactly one episode marked In Progress or Active.`
+            : 'Tab 1 has no row marked In Progress or Active. Choose the current episode status in Tab 1 before the portal can identify the active production.', 'error');
         }
+        renderSeasonStoryRoadmap();
+        renderSeriesThumbnailPrompt();
+        await fetchSeasonShotOutline();
+        return Boolean(activeRecord);
       } catch (e) {
         console.warn("Using offline cached Season Story Arc:", e);
+        activeEpisodeStatusKnown = false;
+        seasonStoryLoaded = false;
+        activeEpisodeConflict = false;
+        updateEpisodeSyncWarning('Could not load the active season from Tab 1. Cached story data is hidden so it is not mistaken for the live production.', 'error');
+        activeEpisodeFromTab1 = null;
+        episodeData = {
+          episode_number: 0,
+          season_number: Number(episodeData && episodeData.season_number) || 1,
+          title_english: '', title_malayalam: '', synopsis: '', cliffhanger: '', shots: [], prompts: []
+        };
+        syncDirectorEpisodeSelector();
+        renderShots();
+        renderSeasonStoryRoadmap();
+        return false;
       }
-      renderSeasonStoryRoadmap();
     }
 
     async function fetchCharacterData() {
       try {
-        const res = await fetch(getActiveGasUrl() + "?action=get_characters");
-        if (res.ok) {
-          const json = await res.json();
-          if (json && json.characters && json.characters.length > 0) {
-            characterRegistryData = json.characters;
-            renderCharacterCards();
-          }
-        }
+        const res = await fetch(getActiveGasUrl() + "?action=get_characters", { signal: AbortSignal.timeout(15000) });
+        if (!res.ok) throw new Error(`Tab 4 returned HTTP ${res.status}.`);
+        const json = await res.json();
+        if (!json || !Array.isArray(json.characters)) throw new Error('Tab 4 returned no character list.');
+        characterRegistryLoaded = true;
+        characterRegistryLoadFailed = false;
+        characterRegistryData = json.characters;
+        renderCharacterCards();
+        renderSeriesThumbnailPrompt();
       } catch (e) {
-        console.warn("Using offline cached Character Registry:", e);
+        characterRegistryLoadFailed = true;
+        console.warn("Could not verify Character Registry:", e);
+        renderCharacterCards();
       }
-      renderCharacterCards();
     }
 
     let pastEpisodesPromptsData = null;
@@ -8027,8 +8415,8 @@
     }
 
     function buildDirectorSystemPrompt(targetEpNum, targetScope, mode, userText) {
-      const epNum = targetEpNum === 'current' ? (episodeData.episode_number || 2) : parseInt(targetEpNum, 10);
-      const ep = (seasonStoryData.episodes || []).find(e => e.episode_number === epNum) || {
+      const epNum = targetEpNum === 'current' ? getActiveEpisodeNumber() : (parseInt(targetEpNum, 10) || getActiveEpisodeNumber());
+      const ep = ((seasonStoryData && seasonStoryData.episodes) || []).find(e => Number(e.episode_number) === epNum) || {
         episode_number: epNum,
         title_english: episodeData.title_english || `Episode ${epNum}`,
         title_malayalam: episodeData.title_malayalam || "",
@@ -8037,7 +8425,8 @@
       };
 
       // 1. Complete Master Season Story Arc (Tab 4: Season_Story_Arc)
-      const activeSeasonNum = seasonStoryData.season_number || (seasonStoryData.season_title && seasonStoryData.season_title.match(/(\d+)/) ? parseInt(seasonStoryData.season_title.match(/(\d+)/)[1], 10) : 2);
+      const titleSeasonMatch = seasonStoryData && seasonStoryData.season_title && seasonStoryData.season_title.match(/(\d+)/);
+      const activeSeasonNum = Number((seasonStoryData && seasonStoryData.season_number) || (episodeData && episodeData.season_number) || (titleSeasonMatch && titleSeasonMatch[1])) || 1;
       const seasonEpList = (seasonStoryData.episodes || []).map(e => `Episode ${e.episode_number}: ${e.title_english} (${e.title_malayalam || ''}) [Status: ${e.status || 'Planned'}] - Synopsis: ${e.synopsis || ''} | Cliffhanger: ${e.cliffhanger || ''}`).join('\n');
 
       // 2. Multi-Episode Story Continuity & Timeline (Tab 6: Past_Episodes_Prompts)
@@ -8149,8 +8538,10 @@ The creator wants to plan, outline, or rewrite a whole season narrative arc (Sea
 
 CRITICAL INSTRUCTIONS:
 1. DO NOT OUTPUT VIDEO PROMPTS (no json_prompts, no style, no camera keys).
-2. First, write an inspiring Director's Season Pitch explaining the season theme, emotional arc, and progression.
-3. Then, output a single valid JSON block inside \`\`\`json ... \`\`\` with this EXACT schema:
+2. First, write a concise Director's Season Pitch explaining the central dramatic question, the leads' distinct wants/flaws, what opposes them, the emotional stakes, the escalation, and the finale payoff. Include a recurring visual/prop motif that evolves if it naturally fits this premise.
+3. Plan ten distinct episode arcs. Each episode synopsis should establish its immediate objective, obstacle, turning point, consequential choice, and emotional shift. Vary pacing and the placement of reveals, comedy, suspense, and tenderness; do not reuse one episode formula.
+4. Make each cliffhanger a concrete event, revelation, or decision that Episode N+1 can continue from its immediate consequence. Episode 10 must pay off the season's central dramatic question and the character arcs.
+5. Then, output a single valid JSON block inside \`\`\`json ... \`\`\` with this EXACT schema:
 \`\`\`json
 {
   "mode": "season_arc",
@@ -8162,7 +8553,7 @@ CRITICAL INSTRUCTIONS:
       "episode_number": 1,
       "title_english": "Episode 1 Title",
       "title_malayalam": "മലയാളം തലക്കെട്ട്",
-      "synopsis": "Clear 2-sentence story summary of what happens in this episode",
+      "synopsis": "3-4 sentences: objective, obstacle, turning point, consequential choice, and emotional change",
       "cliffhanger": "Ending hook of this episode"
     }
     /* ALL 10 EPISODES FROM EPISODE 1 UP TO EPISODE 10 MUST BE INCLUDED */
@@ -8239,10 +8630,11 @@ Example: "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pe
 2. DIALOGUE OBJECT SPECIFICATION (AUTHENTIC MALAYALAM SCRIPT):
    - 'script' AND 'line' MUST BOTH contain the IDENTICAL, natural Malayalam dialogue/narration line (e.g. "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച.").
    - CRITICAL: NEVER output the literal placeholder words "മലയാളം ലിപി"! Both 'script' and 'line' MUST be the actual spoken Malayalam text in authentic Malayalam script!
-   - 'dialogue_malayalam' at shot level MUST also match 'dialogue.line'.
+   - 'dialogue_malayalam' at shot level MUST also match 'dialogue.line'. Both fields must obey the concise dialogue and no-speaker-prefix rules.
 
 3. DIALOGUE WORD LIMIT & NATURAL CINEMATIC MALAYALAM (CRITICAL):
-   - WORD COUNT: Every single shot's Malayalam line MUST contain strictly between 5 and 8 words (under 40 letters/characters). Exactly ONE natural sentence.
+    - WORD COUNT: Aim for 3?8 Malayalam words; never exceed 10 words in a spoken line. Keep it speakable in 3?4 seconds. Silent visual shots may use an empty line.
+    - DIALOGUE FIELD: speaker is already stored separately. Put only spoken words in dialogue_malayalam/dialogue.line; never prefix a name or role label, and omit acting directions, parenthetical notes, and quotation marks. A name may appear only when naturally addressed.
    - ABSOLUTELY NO ROBOTIC OR MECHANICAL REPETITION:
      * DO NOT mechanically attach the same verb ending (like "-ുകയാണ്") to every shot. Repeating the same grammatical structure line after line sounds completely robotic!
      * Mix natural sentence structures: emotional statements, genuine questions, heartfelt resolves, and conversational cinema voiceover.
@@ -8269,7 +8661,12 @@ Example: "Kurian: Stylized 3D Pixar character with rigid square jaw, salt-and-pe
      * Indian Driving Rules: Right-Hand Drive (RHD). The driver is on the right side of the car, front passenger on the left.
      * Eyeline Continuity: Screen-left character looks toward screen-right; screen-right character looks toward screen-left.
    - Shot 1 MUST seamlessly pick up from the conclusion of Episode ${prevEpNum}!
-   - Every shot must maintain spatial blocking, eyeline direction, persistent props, and lighting consistency.`;
+   - Every shot must maintain spatial blocking, eyeline direction, persistent props, and lighting consistency.
+8. CINEMATIC SHOT DESIGN:
+    - Each six-second shot must show one primary visible action and one readable emotional beat; avoid packing multiple cuts/events into one action description.
+    - Give the camera a motivated framing/angle and at most one purposeful movement (or a deliberately locked frame). Vary shot scale and composition; do not repeat generic close-ups.
+    - Use eyelines, reactions, prop reveals, environment, silence, and sound bridges to tell the story visually. Make each cut's cause/effect and screen direction clear.
+    - Before returning, silently check episode objective/obstacle/turn/choice, the Shot 10 cliffhanger and next-episode Shot 1 handoff, filmability, camera variety, and dialogue rules.`;
 
       if (mode === 'full_episode') {
         return `You are the lead Animation Director and Showrunner for 'Sachin & Reenu', a 3D Disney Pixar-style animated romantic-comedy web series set in Kochi, Kerala, produced in vertical 9:16 format (Season ${activeSeasonNum}, 1-minute episodes, 10 shots per episode).
@@ -8495,6 +8892,8 @@ The JSON MUST follow this EXACT schema:
     }
 
     function onDirectorTargetChanged() {
+      const epSelect = document.getElementById('chatTargetEp');
+      if (epSelect) epSelect.dataset.userSelected = 'true';
       const evalBox = document.getElementById('directorEvaluationContainer');
       if (evalBox) evalBox.style.display = 'none';
     }
@@ -8575,15 +8974,13 @@ The JSON MUST follow this EXACT schema:
       const keys = [...new Set([preferred, ...BACKUP_GEMINI_KEYS].filter(Boolean))];
       let lastError = keys.length ? 'Gemini did not return a valid response.' : 'No Gemini key is saved in Settings and no Apps Script key was available.';
       const deadline = Date.now() + timeoutMs;
-      let attempts = 0;
-      const maxAttempts = Math.min(8, GEMINI_MODELS.length * Math.max(1, keys.length) * 2);
+      const models = GEMINI_MODELS.slice(0, 2);
+      let rateLimited = false;
       for (const key of keys) {
-        if (attempts >= maxAttempts || Date.now() >= deadline) break;
-        for (const model of GEMINI_MODELS) {
-          if (attempts >= maxAttempts || Date.now() >= deadline) break;
-          let moveToNextKey = false;
-          for (let retry = 0; retry < 2 && attempts < maxAttempts && Date.now() < deadline; retry++) {
-            attempts++;
+        if (Date.now() >= deadline) break;
+        for (const model of models) {
+          if (Date.now() >= deadline) break;
+          for (let retry = 0; retry < 3 && Date.now() < deadline; retry++) {
             const attemptTimeout = Math.min(60000, deadline - Date.now());
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), attemptTimeout);
@@ -8599,13 +8996,17 @@ The JSON MUST follow this EXACT schema:
                 const body = await response.text().catch(() => '');
                 let detail = '';
                 try { detail = JSON.parse(body).error?.message || ''; } catch (_) { detail = body.slice(0, 180); }
+                if (response.status === 429) {
+                  lastError = `Gemini is rate limited (HTTP 429)${detail ? `: ${detail}` : ''}. Wait briefly before retrying; switching keys will not clear a project quota limit.`;
+                  rateLimited = true;
+                  break;
+                }
                 lastError = response.status === 403
-                  ? 'Gemini rejected this API key (HTTP 403). Replace it in Settings or configure GEMINI_API_KEY in Apps Script properties.'
+                  ? `Gemini rejected one configured key for ${model} (HTTP 403)${detail ? `: ${detail}` : ''}. Trying the next configured key or model.`
                   : `Gemini ${model} returned HTTP ${response.status}${detail ? `: ${detail}` : ''}`;
-                if (response.status === 403) { moveToNextKey = true; break; }
-                const transient = response.status === 408 || response.status === 429 || response.status >= 500;
-                if (transient && retry === 0) {
-                  const waitMs = 900 + Math.floor(Math.random() * 500);
+                if (response.status === 403 || response.status === 404 || response.status === 400) break;
+                if ((response.status === 408 || response.status >= 500) && retry < 2) {
+                  const waitMs = [1800, 4200][retry] + Math.floor(Math.random() * 500);
                   await new Promise(resolve => setTimeout(resolve, Math.min(waitMs, Math.max(0, deadline - Date.now()))));
                   continue;
                 }
@@ -8619,16 +9020,20 @@ The JSON MUST follow this EXACT schema:
               break;
             } catch (error) {
               lastError = error.name === 'AbortError' ? `Gemini ${model} timed out.` : error.message;
-              if (retry === 0 && Date.now() < deadline) {
-                await new Promise(resolve => setTimeout(resolve, 900 + Math.floor(Math.random() * 500)));
+              if (retry < 2 && Date.now() < deadline) {
+                const waitMs = [1800, 4200][retry] + Math.floor(Math.random() * 500);
+                await new Promise(resolve => setTimeout(resolve, Math.min(waitMs, Math.max(0, deadline - Date.now()))));
                 continue;
               }
               break;
             } finally { clearTimeout(timer); }
           }
-          if (moveToNextKey) break;
+          if (rateLimited) break;
         }
+        if (rateLimited) break;
       }
+
+      if (rateLimited) throw new Error(lastError);
 
       // Use the server-side Apps Script key, if configured. Do not send client keys to the proxy.
       const proxyController = new AbortController();
@@ -8646,8 +9051,8 @@ The JSON MUST follow this EXACT schema:
           if (parsed && typeof parsed === 'object') { updateDirectorProgress(window.directorProgressKind || 'single_shot', text.length, 'complete'); return parsed; }
         }
         const proxyMessage = data.error?.message || data.message || '';
-        if (proxy.status === 403 || /api.?key|permission|forbidden/i.test(proxyMessage)) {
-          lastError = 'Gemini rejected the configured API key. Replace it in Settings or update GEMINI_API_KEY in Apps Script properties.';
+        if (proxy.status === 403 || /api.?key|permission|forbidden|unauthenticated/i.test(proxyMessage)) {
+          lastError = `Gemini proxy rejected its configured key${proxyMessage ? `: ${proxyMessage}` : '.'}`;
         } else if (proxyMessage) {
           lastError = `Apps Script Gemini proxy failed: ${proxyMessage}`;
         }
@@ -8663,6 +9068,18 @@ The JSON MUST follow this EXACT schema:
       const epNum = epSelect ? parseInt(epSelect.value, 10) || 1 : 1;
       const shotNum = shotSelect ? parseInt(shotSelect.value, 10) || 1 : 1;
       const status = document.getElementById('geminiChatStatus');
+      const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
+      if (!activeEpisodePromptsVerified || epNum !== getActiveEpisodeNumber()) {
+        alert('The Director is paused until Tab 2 prompts match the active episode in Tab 1. Refresh the sheet connection before editing.');
+        return;
+      }
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
+        await fetchSeasonShotOutline();
+      }
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
+        alert(`The current Season ${activeSeason} Tab 5 outline could not be verified. Refresh the portal before asking the Director to change a shot.`);
+        return;
+      }
       const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
       const current = allShots.find(s => Number(s.episode_number) === epNum && Number(s.shot_number) === shotNum);
       const previous = allShots.find(s => Number(s.episode_number) === epNum && Number(s.shot_number) === shotNum - 1) || null;
@@ -8672,7 +9089,7 @@ The JSON MUST follow this EXACT schema:
       updateDirectorProgress('single_shot', 0);
       if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = 'Gemini is drafting the shot and checking both neighboring shots for continuity...'; }
       try {
-        const result = await requestDirectorJson(`You are the Sachin and Reenu continuity director. Evaluate this proposed shot edit and return ONLY JSON with keys success, proposed_shot, has_inconsistency, inconsistency_details, can_episode_steer, recommendation. proposed_shot must contain episode_number, shot_number, speaker, action, dialogue_malayalam, location, persistent_props, camera_hint. Write a cinematic action and natural Malayalam dialogue. Compare prior shot, edited shot, and next shot for location, movement, props, clothing, time, and cause-and-effect. Do not flag a deliberate transition if the action stages it. Recommend EPISODE_STEER_RECOMMENDED when the episode can repair it; recommend SEASON_WISE_REQUIRED only when the edit breaks the episode cliffhanger or downstream season arc.
+        const result = await requestDirectorJson(`You are the Sachin and Reenu continuity director. Evaluate this proposed shot edit and return ONLY JSON with keys success, proposed_shot, has_inconsistency, inconsistency_details, can_episode_steer, recommendation. proposed_shot must contain episode_number, shot_number, speaker, action, dialogue_malayalam, location, persistent_props, camera_hint. Give the shot one primary visible action and one readable emotional beat that fits six seconds. Use a motivated framing/angle and at most one purposeful camera move (or a deliberate locked frame); stage a clear handoff to both neighboring shots. Write concise, natural spoken Malayalam (usually 3–8 words, maximum 10); speaker is a separate field, so dialogue contains no name prefix, acting direction, parenthetical note, or quotation marks. A character's name may appear only when naturally addressed. Compare prior shot, edit, and next shot for cause/effect, screen direction, location, movement, props, clothing, time, and emotional state. Don't flag a deliberate transition if staged. Recommend EPISODE_STEER_RECOMMENDED when the episode can repair it; recommend SEASON_WISE_REQUIRED only when the edit breaks the cliffhanger or downstream season arc.
 
 Previous shot: ${JSON.stringify(previous)}
 Current shot: ${JSON.stringify(current)}
@@ -8807,13 +9224,13 @@ Creator's requested change: ${userIdea}`);
         <!-- Dual-Mode Healing Buttons -->
         <div class="director-choice-grid" style="display: flex; gap: 12px; flex-wrap: wrap;">
           ${!hasInc ? `<button type="button" class="btn btn-primary" onclick="applySingleShotDirectorChange()" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #047857, #10b981); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; cursor: pointer;">Apply this shot<br><span style="font-size:11px;font-weight:400">Only this shot changes; other story shots stay as they are.</span></button>` : ''}
-          <button type="button" class="btn btn-primary" onclick="applyEpisodeWiseDirectorChange()" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #2563eb, #3b82f6); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);">
+          <button type="button" data-director-scope="episode" class="btn btn-primary" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #2563eb, #3b82f6); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); position: relative; z-index: 2; pointer-events: auto;">
             <span style="font-size: 13px; color: #fff;">🎬 Rewrite episode from Shot ${shotNum}</span>
             <span style="font-size: 11px; color: #bfdbfe; font-weight: normal; line-height: 1.3;">
               Rewrites from this shot through the episode cliffhanger. Earlier shots and other episodes stay unchanged.
             </span>
           </button>
-          <button type="button" class="btn btn-primary" onclick="applySeasonWiseDirectorChange()" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #7c3aed, #a855f7); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);">
+          <button type="button" data-director-scope="season" class="btn btn-primary" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #7c3aed, #a855f7); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4); position: relative; z-index: 2; pointer-events: auto;">
             <span style="font-size: 13px; color: #fff;">🌊 Rewrite season from Shot ${shotNum}</span>
             <span style="font-size: 11px; color: #e9d5ff; font-weight: normal; line-height: 1.3;">
               Rewrites from this shot through Shot 100. Every earlier shot stays unchanged.
@@ -8821,6 +9238,14 @@ Creator's requested change: ${userIdea}`);
           </button>
         </div>
       `;
+
+      // These cards are rebuilt dynamically; bind fresh listeners after each render.
+      container.querySelector('[data-director-scope="episode"]')?.addEventListener('click', () => {
+        applyGeminiDirectorRewrite('episode');
+      });
+      container.querySelector('[data-director-scope="season"]')?.addEventListener('click', () => {
+        applyGeminiDirectorRewrite('season');
+      });
 
       container.style.display = 'block';
     }
@@ -8838,68 +9263,123 @@ Creator's requested change: ${userIdea}`);
     async function applyGeminiDirectorRewrite(scope) {
       const evaluation = window.currentDirectorEvaluation;
       if (!evaluation) return;
+      if (!activeEpisodePromptsVerified || Number(evaluation.episode_number) !== getActiveEpisodeNumber()) {
+        alert('The rewrite cannot be applied because Tab 2 does not match the active episode in Tab 1. Refresh the sheet connection first.');
+        return;
+      }
       const status = document.getElementById('geminiChatStatus');
       const outline = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
       const original = [...outline].sort((a, b) => (Number(a.episode_number) - Number(b.episode_number)) || (Number(a.shot_number) - Number(b.shot_number)));
       const pivot = original.findIndex(s => Number(s.episode_number) === Number(evaluation.episode_number) && Number(s.shot_number) === Number(evaluation.shot_number));
-      if (pivot < 0 || original.length !== 100) { alert('A complete 100-shot Tab 5 outline is required before applying this rewrite.'); return; }
+      const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason || pivot < 0 || original.length !== 100) { alert(`A verified 100-shot Tab 5 outline for active Season ${activeSeason} is required before applying this rewrite.`); return; }
       const activeEpisode = Number(evaluation.episode_number);
       const end = scope === 'shot' ? pivot + 1 : (scope === 'episode' ? (Number(evaluation.episode_number) * 10) : 100);
-      const changed = original.slice(pivot, end);
-      const episodeSummaries = (seasonStoryData.episodes || []).map(ep => ({
-        episode_number: Number(ep.episode_number), title_english: ep.title_english || '', title_malayalam: ep.title_malayalam || '',
-        synopsis: ep.synopsis || '', cliffhanger: ep.cliffhanger || '', status: ep.status || 'Draft'
-      }));
+      const existingEpisodes = (seasonStoryData && seasonStoryData.episodes) || [];
+      const episodeSummaries = Array.from({ length: 10 }, (_, index) => {
+        const ep = existingEpisodes[index] || {};
+        return {
+          episode_number: index + 1, title_english: ep.title_english || `Episode ${index + 1}`,
+          title_malayalam: ep.title_malayalam || '', synopsis: ep.synopsis || '',
+          cliffhanger: ep.cliffhanger || '', status: ep.status || 'Draft'
+        };
+      });
       const cast = (characterRegistryData || []).map(c => ({ name: c.name, visual_dna: c.visual_dna, locked_attire: c.locked_attire || c.attire, voice_persona: c.voice_persona }));
       window.directorProgressKind = scope;
       updateDirectorProgress(scope, 0);
-      if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = scope === 'shot' ? 'Gemini is revising this shot and regenerating its episode prompts?' : (scope === 'episode' ? 'Gemini is rewriting this episode from the selected shot to its cliffhanger?' : 'Gemini is rewriting the season from the selected shot through Shot 100?'); }
+      if (status) {
+        status.style.display = 'block'; status.style.color = '#38bdf8';
+        status.innerText = scope === 'shot' ? 'Gemini is revising this shot and its prompt...' :
+          (scope === 'episode' ? 'Gemini is rebuilding this episode in smaller continuity checked sections...' : 'Gemini is rebuilding the season episode by episode from the selected shot...');
+      }
       try {
-        const pkg = await requestDirectorJson(`You are the story and shot director for the animated Sachin & Reenu series. Creator request: ${evaluation.user_idea}
-Scope: ${scope}. Selected pivot is Global Shot ${pivot + 1} (Episode ${evaluation.episode_number}, Shot ${evaluation.shot_number}).
-Return JSON only: {"rewritten_shots":[...],"episodes":[10 episode summary objects],"prompts":[10 Google Flow prompt objects],"requires_season_scope":false,"continuity_report":"..."}.
-Rewrite exactly ${changed.length} outline shots, corresponding in order to this range: ${JSON.stringify(changed)}. Each rewritten_shots item must preserve episode_number and shot_number and contain speaker, action, dialogue_malayalam, location, persistent_props, camera_hint. The next episode opening shot is ${JSON.stringify(original[end] || null)}. For shot scope, rewrite only the pivot shot and preserve every other shot. If this single-shot change creates a continuity fracture, set requires_season_scope=true (the UI will keep it unapplied and offer the wider scopes). For episode scope, rewrite only selected episode shots from the pivot to Shot 10; keep that episode's existing Shot 10 cliffhanger as the destination and lead into it naturally. Check the rewritten Shot 10 against the next episode Shot 1; if the seam cannot remain coherent without changing the next episode, set requires_season_scope=true and explain why in continuity_report. For season scope, requires_season_scope must be false. For season scope, rewrite every shot from the pivot through Global Shot 100; preserve all earlier shots exactly, maintain each episode's Shot 10 cliffhanger and next episode Shot 1 continuation, and make Episode 10 Shot 10 the season climax. Do not change any shot before the pivot. Do not add generic continuity notes; actually write each scene. Preserve character identity and Tab 4 costume locks.
-Episode summaries: ${JSON.stringify(episodeSummaries)}
-Tab 4 cast and costume registry: ${JSON.stringify(cast)}
-For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, derived from its final outline shots and the Tab 4 cast details. Each prompt item: shot_number, duration, character, dialogue_malayalam, action_summary, json_prompt (complete production-ready Google Flow prompt object). Episode summaries must contain exactly 10 items and preserve statuses.`);
-        if ((scope === 'episode' || scope === 'shot') && pkg.requires_season_scope === true) {
-          evaluation.has_inconsistency = true;
-          evaluation.inconsistency_details = pkg.continuity_report || 'The episode rewrite cannot preserve the connection to the next episode without changing later season shots.';
-          evaluation.recommendation = 'SEASON_WISE_REQUIRED';
-          window.currentDirectorEvaluation = evaluation;
-          renderDirectorEvaluationCard(evaluation);
-          if (status) { status.style.color = '#fbbf24'; status.innerText = 'Gemini recommends a season-wise rewrite to preserve the next episode connection. Choose either scope below.'; }
-          return;
+        const updatedOutline = [...original];
+        let chunkStart = pivot;
+        let chunkCount = 0;
+        while (chunkStart < end) {
+          const episodeNumber = Math.floor(chunkStart / 10) + 1;
+          const chunkEnd = Math.min(end, episodeNumber * 10);
+          const chunk = original.slice(chunkStart, chunkEnd);
+          const previousShot = chunkStart > 0 ? updatedOutline[chunkStart - 1] : null;
+          const followingShot = original[chunkEnd] || null;
+          chunkCount++;
+          if (status) status.innerText = scope === 'season'
+            ? `Gemini is rewriting Episode ${episodeNumber} (${chunkCount} section${chunkCount === 1 ? '' : 's'} complete)...`
+            : `Gemini is rewriting Episode ${episodeNumber}, shots ${chunk[0].shot_number}–${chunk[chunk.length - 1].shot_number}...`;
+          const chunkResult = await requestDirectorJson(`You are the cinematic story director for Sachin & Reenu. Creator's change: ${evaluation.user_idea}
+Return ONLY JSON with this shape: {"rewritten_shots":[...],"requires_season_scope":false,"continuity_report":""}.
+Rewrite exactly these ${chunk.length} shots in order: ${JSON.stringify(chunk)}. Preserve each episode_number and shot_number. Each item must include speaker, action, dialogue_malayalam, location, persistent_props, and camera_hint. Give each shot one primary visible action and one readable emotion that fits its duration; avoid multi-event paragraphs. Motivate the framing/angle and at most one camera movement (or lock the frame deliberately), vary shot scale, and stage blocking, eyelines, props, and transitions so each cut has a clear cause/effect. Keep every action filmable and consistent with the locked character identities and costumes. Vary dramatic rhythm to serve the creator's idea; do not force a repeated shot-position formula. Keep dialogue concise and naturally speakable in Malayalam (usually 3–8 words, maximum 10); speaker is stored separately, so do not add a speaker-name prefix/label, acting directions, parenthetical notes, or quotation marks to dialogue_malayalam. Before returning JSON, silently check the cliffhanger and next-shot handoff, scene geography, action filmability, motivated camera choice, and dialogue limit.
+Previous shot and handoff context: ${JSON.stringify(previousShot)}
+Next shot after this section: ${JSON.stringify(followingShot)}
+This section is Episode ${episodeNumber}. Make its Shot 10 a strong cliffhanger and make the following episode's Shot 1 continue that moment when it is being rewritten. ${scope === 'episode' ? 'For this episode-only rewrite, land naturally on the existing Shot 10 and preserve the existing next episode opening. Set requires_season_scope=true only if that seam cannot remain coherent without rewriting later episodes.' : ''}${scope === 'shot' ? 'If this single-shot change cannot connect to the following unchanged shot, set requires_season_scope=true.' : ''}${scope === 'season' && episodeNumber === 10 ? 'Make Episode 10 Shot 10 the season grand climax.' : ''}
+Do not return episode summaries or video prompts in this call. Do not change shots outside the supplied list.`);
+          if ((scope === 'episode' || scope === 'shot') && chunkResult.requires_season_scope === true) {
+            evaluation.has_inconsistency = true;
+            evaluation.inconsistency_details = chunkResult.continuity_report || 'This rewrite cannot connect to the unchanged next episode without a season-wide change.';
+            evaluation.recommendation = 'SEASON_WISE_REQUIRED';
+            window.currentDirectorEvaluation = evaluation;
+            renderDirectorEvaluationCard(evaluation);
+            if (status) { status.style.color = '#fbbf24'; status.innerText = 'Gemini recommends a season-wide rewrite to preserve continuity. Choose either scope below.'; }
+            return;
+          }
+          if (!Array.isArray(chunkResult.rewritten_shots) || chunkResult.rewritten_shots.length !== chunk.length) {
+            throw new Error(`Gemini returned ${Array.isArray(chunkResult.rewritten_shots) ? chunkResult.rewritten_shots.length : 0} of ${chunk.length} required shots for Episode ${episodeNumber}. No changes were saved.`);
+          }
+          for (let i = 0; i < chunk.length; i++) {
+            const shot = chunkResult.rewritten_shots[i];
+            if (Number(shot.episode_number) !== Number(chunk[i].episode_number) || Number(shot.shot_number) !== Number(chunk[i].shot_number) || !String(shot.action || '').trim()) {
+              throw new Error(`Gemini returned an invalid Episode ${episodeNumber}, Shot ${chunk[i].shot_number}. No changes were saved.`);
+            }
+            updatedOutline[chunkStart + i] = { ...chunk[i], ...shot, season_number: chunk[i].season_number };
+          }
+          chunkStart = chunkEnd;
         }
-        if (!Array.isArray(pkg.rewritten_shots) || pkg.rewritten_shots.length !== changed.length || !Array.isArray(pkg.episodes) || pkg.episodes.length !== 10 || !Array.isArray(pkg.prompts) || pkg.prompts.length !== 10) throw new Error('Gemini response did not contain the exact required shots, episode list, and 10 prompts.');
-        for (let i = 0; i < changed.length; i++) {
-          const shot = pkg.rewritten_shots[i];
-          if (Number(shot.episode_number) !== Number(changed[i].episode_number) || Number(shot.shot_number) !== Number(changed[i].shot_number) || !String(shot.action || '').trim()) throw new Error(`Gemini returned an invalid shot at rewrite item ${i + 1}.`);
+
+        const pivotEpisode = Math.floor(pivot / 10) + 1;
+        const firstPrompt = activeEpisode === pivotEpisode ? ((pivot % 10) + 1) : 1;
+        const promptTargets = updatedOutline.filter(shot => Number(shot.episode_number) === activeEpisode && Number(shot.shot_number) >= firstPrompt);
+        const generatedPrompts = [];
+        for (let offset = 0; offset < promptTargets.length; offset += 2) {
+          const promptBatch = promptTargets.slice(offset, offset + 2);
+          if (status) status.innerText = `Gemini is creating Google Flow prompts (${Math.min(offset + promptBatch.length, promptTargets.length)} of ${promptTargets.length})...`;
+          const promptResult = await requestDirectorJson(`Create production-ready Google Flow JSON video prompts for these final Tab 5 shots: ${JSON.stringify(promptBatch)}.
+Use the Tab 4 character identity, voice, and costume data: ${JSON.stringify(cast)}. Preserve each shot's story action, speaker, Malayalam dialogue, location, props, and camera intent. Keep Malayalam dialogue concise (usually 3–8 words, maximum 10); speaker is a separate field, so never prefix dialogue with a speaker name or label, and omit acting notes and quotation marks. Use 3D Pixar-style cinematic staging, consistent character DNA, and NO BGM.
+Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt items in order. Each item must have shot_number, duration, character, dialogue_malayalam, action_summary, and json_prompt (a complete structured Google Flow video prompt object).`);
+          if (!Array.isArray(promptResult.prompts) || promptResult.prompts.length !== promptBatch.length) {
+            throw new Error(`Gemini returned an incomplete prompt batch (${Array.isArray(promptResult.prompts) ? promptResult.prompts.length : 0} of ${promptBatch.length}). No changes were saved.`);
+          }
+          for (let i = 0; i < promptBatch.length; i++) {
+            const prompt = promptResult.prompts[i];
+            if (Number(prompt.shot_number) !== Number(promptBatch[i].shot_number) || !prompt.json_prompt) {
+              throw new Error(`Gemini returned an invalid Google Flow prompt for Shot ${promptBatch[i].shot_number}. No changes were saved.`);
+            }
+            generatedPrompts.push(prompt);
+          }
         }
-        const updatedOutline = original.map((shot, index) => index < pivot ? shot : (index < end ? { ...shot, ...pkg.rewritten_shots[index - pivot], season_number: shot.season_number } : (scope === 'season' ? shot : shot)));
-        const firstAffectedEpisode = Math.floor(pivot / 10) + 1;
-        const mergedEpisodes = episodeSummaries.map((ep, i) => {
-          const affected = scope === 'episode' ? (i + 1 === Number(evaluation.episode_number)) : (scope === 'season' && i + 1 >= firstAffectedEpisode);
-          return affected ? { ...ep, ...(pkg.episodes[i] || {}), episode_number: i + 1, status: ep.status } : ep;
-        });
+
+        const previousEpisodePrompts = (episodeData.shots || []).filter(p => Number(p.shot_number) < firstPrompt);
+        const promptsForView = [...previousEpisodePrompts, ...generatedPrompts].sort((a, b) => Number(a.shot_number) - Number(b.shot_number));
+        if (promptsForView.length !== 10 || promptsForView.some((prompt, index) => Number(prompt.shot_number) !== index + 1 || !prompt.json_prompt)) {
+          throw new Error('The existing Tab 2 prompts before the selected shot are not loaded. Refresh the portal from Google Sheet, then retry; no changes were saved.');
+        }
         const response = await fetch(getActiveGasUrl(), {
           method: 'POST', headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({ action: 'apply_director_outline_change', season_number: seasonShotOutlineData.season_number, season_title: seasonShotOutlineData.season_title, pivot_global_shot_id: pivot + 1, active_episode: activeEpisode, shots: updatedOutline, episodes: mergedEpisodes, prompts: pkg.prompts })
+          body: JSON.stringify({ action: 'apply_director_outline_change', season_number: seasonShotOutlineData.season_number, season_title: seasonShotOutlineData.season_title, pivot_global_shot_id: pivot + 1, active_episode: activeEpisode, shots: updatedOutline, episodes: episodeSummaries, prompts: promptsForView })
         });
         const saved = await response.json();
-        if (!response.ok || saved.success !== true) throw new Error(saved.message || 'Google Sheets did not confirm the director update.');
+        const saveError = typeof saved.error === 'string' ? saved.error : (saved.error?.message || saved.message);
+        if (!response.ok || saved.success !== true) throw new Error(saveError || `Google Sheets did not confirm the director update (HTTP ${response.status}).`);
         seasonShotOutlineData.flattened_shots = updatedOutline;
-        seasonStoryData.episodes = mergedEpisodes;
-        const savedEpisode = mergedEpisodes[activeEpisode - 1];
+        const savedEpisode = episodeSummaries[activeEpisode - 1];
         episodeData.episode_number = activeEpisode;
         episodeData.season_number = seasonShotOutlineData.season_number;
         episodeData.title_english = savedEpisode?.title_english || episodeData.title_english;
         episodeData.title_malayalam = savedEpisode?.title_malayalam || episodeData.title_malayalam;
         episodeData.synopsis = savedEpisode?.synopsis || episodeData.synopsis;
         episodeData.cliffhanger = savedEpisode?.cliffhanger || episodeData.cliffhanger;
-        episodeData.shots = pkg.prompts.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary }));
+        episodeData.shots = promptsForView.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary }));
         renderSeasonShotOutline(); renderShots(); dismissDirectorEvaluation();
-        if (status) { status.style.color = '#34d399'; status.innerText = `Saved ${scope === 'shot' ? 'shot' : scope + '-wise'} rewrite to Tab 5, Tab 1, and Tab 2.`; setTimeout(() => { status.style.display = 'none'; }, 5000); }
+        if (status) { status.style.color = '#34d399'; status.innerText = `Saved the ${scope === 'shot' ? 'shot' : scope + '-wise'} rewrite to Tab 5 and refreshed Tab 2 from Shot ${firstPrompt}. Earlier shots stayed unchanged.`; setTimeout(() => { status.style.display = 'none'; }, 5000); }
       } catch (error) {
         updateDirectorProgress(scope, 0, 'error');
         alert(`The rewrite was not applied: ${error.message}`);
@@ -8916,6 +9396,23 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
 
       const userText = (input ? input.value : '').trim();
       if (!userText) return;
+
+      if (!seasonStoryLoaded || !activeEpisodeStatusKnown || activeEpisodeConflict || !getActiveEpisodeNumber()) {
+        alert('The Director is paused until Tab 1 identifies exactly one active episode. Refresh the Google Sheet connection and check its status column.');
+        return;
+      }
+      if (!activeEpisodePromptsVerified) {
+        alert('The Director is paused until Tab 2 prompts match the active episode in Tab 1. Refresh the sheet connection before editing.');
+        return;
+      }
+      const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
+        await fetchSeasonShotOutline();
+      }
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
+        alert(`The Director cannot use a verified Tab 5 outline for active Season ${activeSeason}. Refresh the portal and try again.`);
+        return;
+      }
 
       // In single_shot mode, route immediately to evaluateDirectorShotChange
       if (window.currentDirectorScopeMode === 'single_shot') {
@@ -9075,12 +9572,13 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
         for (const model of GEMINI_MODELS.slice(0, 3)) {
           if (directAttempts >= maxDirectAttempts || Date.now() >= directDeadline) break;
           directAttempts++;
+          let requestTimer = null;
           try {
             usedModel = model;
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?alt=sse&key=${apiKey}`;
             
             const controller = new AbortController();
-            const timer = setTimeout(() => controller.abort(), Math.min(timeoutMs, directDeadline - Date.now()));
+            requestTimer = setTimeout(() => controller.abort(), Math.min(timeoutMs, directDeadline - Date.now()));
 
             const res = await fetch(url, {
               method: "POST",
@@ -9089,7 +9587,6 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
               signal: controller.signal
             });
             if (!res.ok) {
-              clearTimeout(timer);
               const errTxt = await res.text().catch(() => "");
               lastErr = `HTTP ${res.status}: ${errTxt.slice(0, 100)}`;
               console.warn(`Key attempt failed on ${model}:`, lastErr);
@@ -9097,16 +9594,16 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
             }
 
             const streamedText = await readGeminiEventStream(res, partial => updateDirectorProgress(mode, partial.length));
-            clearTimeout(timer);
             if (streamedText.trim()) {
               responseText = streamedText;
               updateDirectorProgress(mode, responseText.length, 'complete');
               break;
             }
           } catch (err) {
-            clearTimeout(timer);
             lastErr = err.name === 'AbortError' ? 'Request timed out' : err.message;
             console.warn(`Attempt with ${model} error:`, err);
+          } finally {
+            if (requestTimer) clearTimeout(requestTimer);
           }
         }
         if (responseText && responseText.trim()) break;
@@ -9152,6 +9649,7 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
       else updateDirectorProgress(mode, 0, 'error');
       removeThinkingBubble();
       if (sendBtn) sendBtn.disabled = false;
+      updateDirectorAvailability();
 
       if (!responseText) {
         if (status) {
@@ -9588,14 +10086,15 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
 
                 ${pkg.logline ? `<p style="font-size: 12px; color: #cbd5e1; margin: 4px 0 10px 0; line-height: 1.4;"><b>Season Logline:</b> ${pkg.logline}</p>` : ''}
 
-                <!-- Explicit approval before the remote season rewrite -->
+                <!-- Apply roadmap metadata or approve the remote season rewrite -->
                 <div style="background: rgba(88, 28, 135, 0.25); border: 1px solid #7c3aed; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                   <div>
-                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Review the roadmap, then confirm the rewrite</div>
-                    <div style="font-size: 11px; color: #c4b5fd;">GitHub Actions rewrites Tab 5 from your selected shot through Shot 100 and rebuilds Tab 2 for the active episode. Earlier shots and Tab 4 stay unchanged.</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Review the roadmap and choose what to update</div>
+                    <div style="font-size: 11px; color: #c4b5fd;">This response contains episode summaries, not 100 shot records. Update Tab 1 now, or generate the Tab 5 rewrite from the selected shot through GitHub Actions.</div>
                   </div>
+                  <button class="btn btn-secondary" id="syncSeasonArcTab1Btn_${idx}" style="padding: 10px 16px; font-size: 13px; font-weight: 800;" onclick="syncSeasonArcTab1(${idx})">Update Tab 1 roadmap</button>
                   <button class="btn btn-primary" id="confirmSeasonRewriteBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: #7c3aed; border-color: #6d28d9; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);" onclick="confirmSeasonRewriteInGitHub(${idx})">
-                    Confirm &amp; Run on GitHub
+                    Generate Tab 5 + active Tab 2 from selected shot
                   </button>
                 </div>
                 <div id="seasonArcStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
@@ -9610,6 +10109,11 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
           // B. FULL 10-SHOT EPISODE PACKAGE (Tab 1 & Tab 2)
           else if (pkg && (pkg.mode === 'full_episode' || (pkg.shots && Array.isArray(pkg.shots) && pkg.shots.length > 1))) {
             const shotsList = pkg.shots || [];
+            const pkgEpisodeNumber = Number(pkg.episode_number || episodeData.episode_number || 1);
+            const tab5Ready = shotsList.length === 10 && Number.isInteger(pkgEpisodeNumber) && pkgEpisodeNumber >= 1 && pkgEpisodeNumber <= 10 &&
+              ((seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || []).length === 100;
+            const tab2Ready = shotsList.length === 10 && shotsList.every((s, i) => Number(s.shot_number || i + 1) === i + 1 && !!s.json_prompt);
+            const tab1Ready = Number.isInteger(pkgEpisodeNumber) && pkgEpisodeNumber >= 1 && pkgEpisodeNumber <= 10 && !!(pkg.synopsis || pkg.cliffhanger || pkg.title_english || pkg.title_malayalam);
             let shotsRowsHtml = '';
 
             shotsList.forEach((s) => {
@@ -9661,17 +10165,17 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
                 ${pkg.synopsis ? `<p style="font-size: 12px; color: #cbd5e1; margin: 4px 0 8px 0; line-height: 1.4;"><b>Synopsis:</b> ${pkg.synopsis}</p>` : ''}
                 ${pkg.cliffhanger ? `<div style="font-size: 11px; color: #fda4af; background: rgba(244, 63, 94, 0.1); padding: 6px 10px; border-radius: 6px; margin-bottom: 10px;"><b>Cliffhanger:</b> ${pkg.cliffhanger}</div>` : ''}
 
-                <!-- Master Sync Button -->
-                <div style="background: rgba(30, 58, 138, 0.3); border: 1px solid #3b82f6; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                  <div>
-                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Push All 10 Shots to Production</div>
-                    <div style="font-size: 11px; color: #94a3b8;">Updates Tab 1, Tab 2 (Current_JSON_Prompts), Tab 3, and your Shot Director cards immediately!</div>
+                <!-- Sheet-specific update actions -->
+                <div style="background: rgba(30, 58, 138, 0.3); border: 1px solid #3b82f6; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px;">
+                  <div style="font-size: 13px; font-weight: 800; color: #fff;">Episode ${pkg.episode_number || 'current'} · Shots 1–10</div>
+                  <div style="font-size: 11px; color: #94a3b8; margin: 3px 0 10px;">Choose individual sheets or apply the complete package. Tab 3 and Tab 4 are not changed.</div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button class="btn btn-secondary" id="applyTab5Btn_${idx}" ${tab5Ready ? '' : 'disabled title="Requires the loaded 100-shot Tab 5 outline and ten ordered shots"'} onclick="applyDirectorEpisodeSheet(${idx}, 'tab5')">Update Tab 5 · shots ${(pkgEpisodeNumber - 1) * 10 + 1}–${pkgEpisodeNumber * 10}</button>
+                    <button class="btn btn-secondary" id="applyTab1Btn_${idx}" ${tab1Ready ? '' : 'disabled title="Requires episode details"'} onclick="applyDirectorEpisodeSheet(${idx}, 'tab1')">Update Tab 1 · episode details</button>
+                    <button class="btn btn-secondary" id="applyTab2Btn_${idx}" ${tab2Ready ? '' : 'disabled title="Requires ten ordered shots with JSON prompts"'} onclick="applyDirectorEpisodeSheet(${idx}, 'tab2')">Update Tab 2 · 10 prompts</button>
+                    <button class="btn btn-primary" id="syncFullEpBtn_${idx}" style="font-weight:800;" ${tab5Ready && tab1Ready && tab2Ready ? '' : 'disabled title="Requires a complete episode, loaded Tab 5 outline, episode details, and ten JSON prompts"'} onclick="syncFullEpisodeToSheet(${idx})">Apply recommended · Tab 5 → Tab 1 → Tab 2</button>
                   </div>
-                  <button class="btn btn-primary" id="syncFullEpBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4);" onclick="syncFullEpisodeToSheet(${idx})">
-                    📤 Sync ENTIRE Episode (All 10 Shots) to Sheet
-                  </button>
-                </div>
-                <div id="fullEpStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
+                </div>                <div id="fullEpStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
 
                 <!-- Accordion of All 10 Shots -->
                 <div style="display: flex; flex-direction: column; gap: 8px; max-height: 380px; overflow-y: auto; padding-right: 4px;">
@@ -10380,6 +10884,89 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
       }
     }
 
+    function buildDirectorEpisodeWritePackage(pkg) {
+      if (!pkg || !Array.isArray(pkg.shots) || pkg.shots.length !== 10) throw new Error('A complete ten-shot episode package is required.');
+      const epNum = Number(pkg.episode_number || episodeData.episode_number || 1);
+      if (epNum < 1 || epNum > 10) throw new Error('The proposal episode number is outside the season.');
+      const original = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      const episodeOutline = original.filter(s => Number(s.episode_number) === epNum).sort((a, b) => Number(a.shot_number) - Number(b.shot_number));
+      if (original.length === 100 && episodeOutline.length !== 10) throw new Error(`Tab 5 does not contain ten shots for Episode ${epNum}.`);
+      const prompts = pkg.shots.map((shot, i) => ({
+        shot_number: Number(shot.shot_number || i + 1), duration: shot.duration || '6s', character: shot.character || shot.speaker || 'Third-Person Narrator',
+        dialogue_malayalam: shot.dialogue_malayalam || '', action_summary: shot.action_summary || shot.action || '', json_prompt: shot.json_prompt || null
+      }));
+      const replacements = episodeOutline.length === 10 ? pkg.shots.map((shot, i) => {
+        const prior = episodeOutline[i]; let prompt = shot.json_prompt || {};
+        if (typeof prompt === 'string') { try { prompt = JSON.parse(prompt); } catch (_) { prompt = {}; } }
+        return { ...prior, speaker: shot.character || shot.speaker || prior.speaker, action: shot.action_summary || shot.action || prior.action,
+          dialogue_malayalam: shot.dialogue_malayalam || '', location: prompt.location || prior.location,
+          persistent_props: prompt.sequence_continuity?.persistent_props || prior.persistent_props,
+          camera_hint: prompt.camera_framing || prompt.camera || prior.camera_hint };
+      }) : [];
+      const firstGlobal = (epNum - 1) * 10 + 1;
+      const updatedOutline = original.length === 100 ? original.map((shot, index) => index >= firstGlobal - 1 && index < firstGlobal + 9 ? replacements[index - (firstGlobal - 1)] : shot) : [];
+      const episodes = (seasonStoryData.episodes || []).map((ep, i) => ({
+        episode_number: i + 1, title_english: ep.title_english || `Episode ${i + 1}`, title_malayalam: ep.title_malayalam || '',
+        synopsis: ep.synopsis || '', cliffhanger: ep.cliffhanger || '', status: ep.status || 'Draft'
+      }));
+      const target = episodes[epNum - 1] || { episode_number: epNum, title_english: '', title_malayalam: '', synopsis: '', cliffhanger: '', status: 'Draft' };
+      if (!episodes[epNum - 1]) episodes[epNum - 1] = target;
+      target.title_english = pkg.title_english || target.title_english; target.title_malayalam = pkg.title_malayalam || target.title_malayalam;
+      target.synopsis = pkg.synopsis || target.synopsis; target.cliffhanger = pkg.cliffhanger || target.cliffhanger;
+      return { epNum, original, prompts, updatedOutline, episodes, target, pivot: firstGlobal };
+    }
+
+    async function applyDirectorEpisodeSheet(idx, sheetKey) {
+      const msg = geminiChatHistory[idx], pkg = msg && msg.packageData;
+      const buttonId = { tab5: 'applyTab5Btn', tab1: 'applyTab1Btn', tab2: 'applyTab2Btn' }[sheetKey];
+      const button = document.getElementById(`${buttonId}_${idx}`);
+      const status = document.getElementById(`fullEpStatus_${idx}`);
+      if (!pkg) return;
+      try {
+        const data = buildDirectorEpisodeWritePackage(pkg);
+        const action = sheetKey === 'tab5' ? 'director_update_tab5' : sheetKey === 'tab1' ? 'director_update_tab1' : 'director_update_tab2';
+        if (sheetKey === 'tab5' && data.updatedOutline.length !== 100) throw new Error('Tab 5 requires the complete 100-shot outline to be loaded.');
+        if (sheetKey === 'tab2' && data.prompts.some((p, i) => p.shot_number !== i + 1 || !p.json_prompt)) throw new Error('Tab 2 is unavailable: every shot needs a valid Google Flow JSON prompt.');
+        if (sheetKey === 'tab5' && !confirm(`Update Tab 5 for Episode ${data.epNum}, Global Shots ${data.pivot}–${data.pivot + 9}? Earlier shots will be preserved.`)) return;
+        if (button) { button.disabled = true; button.dataset.label = button.innerText; button.innerText = 'Saving…'; }
+        if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = `Saving only ${sheetKey.toUpperCase()}…`; }
+        const body = sheetKey === 'tab5'
+          ? { action, season_number: seasonShotOutlineData.season_number, season_title: seasonShotOutlineData.season_title, pivot_global_shot_id: data.pivot, shots: data.updatedOutline, episodes: data.episodes }
+          : sheetKey === 'tab1'
+            ? { action, season_number: seasonShotOutlineData.season_number, episode_number: data.epNum, episode: data.target }
+            : { action, episode_number: data.epNum, prompts: data.prompts };
+        const response = await fetch(getActiveGasUrl(), { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) });
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error(result.message || 'Google Sheets did not confirm the write.');
+        if (sheetKey === 'tab5') { seasonShotOutlineData.flattened_shots = data.updatedOutline; renderSeasonShotOutline(); }
+        if (sheetKey === 'tab1') { data.target.title_english = (seasonStoryData.episodes?.[data.epNum - 1]?.title_english || data.target.title_english); }
+        if (sheetKey === 'tab2') { episodeData.episode_number = data.epNum; episodeData.shots = data.prompts.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary })); renderShots(); }
+        if (status) { status.style.color = '#34d399'; status.innerText = result.message; }
+        if (button) button.innerText = 'Saved ✓';
+      } catch (error) {
+        if (status) { status.style.display = 'block'; status.style.color = '#f87171'; status.innerText = `Not applied: ${error.message}`; }
+        if (button) button.innerText = button.dataset.label || 'Retry';
+      } finally { if (button) button.disabled = false; }
+    }
+
+    async function syncSeasonArcTab1(idx) {
+      const msg = geminiChatHistory[idx], pkg = msg && msg.packageData;
+      const button = document.getElementById(`syncSeasonArcTab1Btn_${idx}`), status = document.getElementById(`seasonArcStatus_${idx}`);
+      if (!pkg || !Array.isArray(pkg.episodes) || pkg.episodes.length !== 10) return;
+      try {
+        if (button) { button.disabled = true; button.innerText = 'Saving Tab 1…'; }
+        if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = 'Saving roadmap summaries to Tab 1; existing statuses will be kept…'; }
+        const response = await fetch(getActiveGasUrl(), { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ action: 'director_update_roadmap_tab1', season_number: pkg.season_number || seasonStoryData.season_number || 1, episodes: pkg.episodes }) });
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error(result.message || 'Google Sheets did not confirm the update.');
+        if (status) { status.style.color = '#34d399'; status.innerText = result.message; }
+        if (button) button.innerText = 'Tab 1 updated ✓';
+      } catch (error) {
+        if (status) { status.style.display = 'block'; status.style.color = '#f87171'; status.innerText = `Tab 1 not updated: ${error.message}`; }
+        if (button) button.innerText = 'Retry Tab 1 update';
+      } finally { if (button) button.disabled = false; }
+    }
+
     async function syncFullEpisodeToSheet(idx) {
       const msg = geminiChatHistory[idx];
       if (!msg || !msg.packageData || !Array.isArray(msg.packageData.shots)) return;
@@ -10424,8 +11011,8 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
       target.synopsis = pkg.synopsis || target.synopsis;
       target.cliffhanger = pkg.cliffhanger || target.cliffhanger;
       showStudioLoader(`Saving Episode ${epNum} in Tab 5, Tab 1, and Tab 2...`);
-      if (syncBtn) { syncBtn.disabled = true; syncBtn.innerText = 'Saving to five-tab studio?'; }
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.style.color = '#38bdf8'; statusEl.innerText = `Saving the updated episode outline and ten Flow prompts?`; }
+      if (syncBtn) { syncBtn.disabled = true; syncBtn.innerText = 'Applying complete package…'; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.style.color = '#38bdf8'; statusEl.innerText = `Saving Tab 5, Tab 1, and Tab 2. Tab 3 and Tab 4 are unchanged…`; }
       try {
         const response = await fetch(getActiveGasUrl(), {
           method: 'POST', headers: { 'Content-Type': 'text/plain' },
@@ -11163,8 +11750,13 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
     function renderSeriesThumbnailPrompt() {
       const epData = (typeof episodeData !== 'undefined' && episodeData) ? episodeData : {};
       const sStory = (typeof seasonStoryData !== 'undefined' && seasonStoryData) ? seasonStoryData : {};
-      const seasonNum = epData.season_number || sStory.season_number || 2;
-      const seasonTitle = epData.season_title || sStory.season_title || `Season ${seasonNum}: The Unexpected Guests (അപ്രതീക്ഷിത അതിഥികൾ)`;
+      const promptEl = document.getElementById('seriesThumbnailPromptText');
+      if (!seasonStoryLoaded || !characterRegistryLoaded) {
+        if (promptEl) promptEl.value = 'Load the current season from Tab 1 and character details from Tab 4 before generating a thumbnail prompt.';
+        return;
+      }
+      const seasonNum = Number(sStory.season_number || epData.season_number) || 1;
+      const seasonTitle = sStory.season_title || `Season ${seasonNum}`;
       
       const seasonBadge = document.getElementById('thumbPromptSeasonBadge');
       if (seasonBadge) seasonBadge.innerText = `Season ${seasonNum}`;
@@ -11220,7 +11812,6 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
 [RENDER QUALITY]:
 - Disney Pixar 3D animation movie render, smooth velvety cartoon shaders, Octane 3D render, vertical 9:16 aspect ratio, clean vibrant 4K resolution.`;
 
-      const promptEl = document.getElementById('seriesThumbnailPromptText');
       if (promptEl) {
         promptEl.value = prompt;
         promptEl.innerText = prompt;
@@ -11395,44 +11986,27 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
     }
 
     window.onload = async () => {
-      // 1. Instant local render (Zero blocking, 0ms load time)
+      // Do not render the embedded episode snapshot as if it were the active
+      // production. Tab 1 is the authority, so show a loading state until it is read.
       try {
-        if (Array.isArray(episodeData)) {
-          episodeData = {
-            episode_number: 7,
-            season_number: 2,
-            is_season_2: true,
-            title_english: "The Monsoon Revelation",
-            title_malayalam: "മഴയും വെളിപ്പെടുത്തലും",
-            synopsis: "Picking up right at the Broadway shop doorway from Episode 6, Broker Shaji steps out of the monsoon rain and cheerfully reveals to Annamma that Sachin forfeited his dream London visa to buy a permanent flat in Kochi.",
-            cliffhanger: "Kurian's agitated voice blares over Annamma's phone speaker announcing that a marriage proposal party from Kottayam has arrived at the flat for Reenu, freezing Sachin and Reenu in utter shock!",
-            total_shots: episodeData.length,
-            calculated_runtime_display: "1m 00s",
-            shots: episodeData,
-            prompts: episodeData
-          };
-        }
+        updateEpisodeSyncWarning('Loading the active episode from Tab 1 and matching its Tab 2 prompts…', 'info');
         initGeminiChat();
-        renderShots();
-        renderSeasonStoryRoadmap();
-        renderCharacterCards();
-        renderSeriesThumbnailPrompt();
       } catch (renderErr) {
         console.error("Local render notice:", renderErr);
       } finally {
         hideStudioLoader();
       }
 
-      // 2. Non-blocking background sync with strict 3.5s timeout
+      // Load Tab 1 first. Its active row determines which Tab 2 prompts may be shown.
       try {
         await Promise.race([
-          Promise.allSettled([
-            syncDriveStatus(),
-            syncLiveFromGoogleSheet(),
-            fetchSeasonStoryData(),
+          (async () => {
+            await fetchSeasonStoryData(true);
+            await Promise.allSettled([
             fetchCharacterData(),
-            fetchPastEpisodesPrompts()
-          ]),
+              fetchPastEpisodesPrompts(true)
+            ]);
+          })(),
           new Promise(r => setTimeout(r, 3500))
         ]);
       } catch (syncErr) {

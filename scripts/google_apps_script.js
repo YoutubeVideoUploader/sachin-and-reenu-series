@@ -1216,15 +1216,15 @@ function getTab5OutlineTable() {
 const CANONICAL_SEASON_TITLES = {
   3: {
     1: { title_english: "The Trip Begins", title_malayalam: "യാത്ര തുടങ്ങുന്നു" },
-    2: { title_english: "The Woman in the Mist", title_malayalam: "മഞ്ഞിലെ സ്ത്രീ" },
-    3: { title_english: "The Strange Homestay", title_malayalam: "വിചിത്രമായ ഹോംസ്റ്റേ" },
-    4: { title_english: "Room Number Thirteen", title_malayalam: "പതിമൂന്നാം നമ്പർ മുറി" },
-    5: { title_english: "The Missing Path", title_malayalam: "കാണാതായ വഴി" },
-    6: { title_english: "Someone is Following Us", title_malayalam: "ആരോ നമ്മളെ പിന്തുടരുന്നു" },
-    7: { title_english: "The Forbidden Bridge", title_malayalam: "നിരോധിക്കപ്പെട്ട പാലം" },
-    8: { title_english: "The Night of Fear", title_malayalam: "ഭയത്തിന്റെ രാത്രി" },
-    9: { title_english: "The Caretaker's Secret", title_malayalam: "കെയർടേക്കറുടെ രഹസ്യം" },
-    10: { title_english: "The Last Night in Munnar", title_malayalam: "മൂന്നാറിലെ അവസാന രാത്രി" }
+    2: { title_english: "The Cottage in the Mist", title_malayalam: "മൂടൽമഞ്ഞിലെ വീട്" },
+    3: { title_english: "Whispers in the Dark", title_malayalam: "ഇരുട്ടിലെ മന്ത്രിപ്പുകൾ" },
+    4: { title_english: "The Portrait's Secret", title_malayalam: "ചിത്രത്തിലെ രഹസ്യം" },
+    5: { title_english: "Shattered Logic", title_malayalam: "തകർന്ന യുക്തി" },
+    6: { title_english: "The Estate Ruins", title_malayalam: "എസ്റ്റേറ്റ് അവശിഷ്ടങ്ങൾ" },
+    7: { title_english: "Voices in the Tea Bushes", title_malayalam: "തേയിലച്ചെടികൾക്കിടയിലെ ശബ്ദങ്ങൾ" },
+    8: { title_english: "The Locket's Curse", title_malayalam: "മാലയുടെ ശാപം" },
+    9: { title_english: "Dawn's Breaking Light", title_malayalam: "പുലർച്ചെയുടെ വെളിച്ചം" },
+    10: { title_english: "The Road Back to Kochi", title_malayalam: "കൊച്ചിയിലേക്കുള്ള മടക്കയാത്ര" }
   },
   2: {
     1: { title_english: "The New Beginning", title_malayalam: "പുതിയൊരു തുടക്കം" },
