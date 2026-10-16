@@ -48,6 +48,9 @@ function onOpen() {
       .addSeparator()
       .addItem("🧹 Reorganize to Clean 5-Tab Architecture", "reorganizeTo5TabArchitecture")
       .addItem("🎬 Setup 100-Shot Season Outline (Tab 5)", "menuSetupSeasonShotOutline")
+      .addItem("🛠️ Repair Corrupted Episode Titles", "menuRepairCorruptedEpisodeTitles")
+      .addItem("🔄 Sync Tab 1 Episode Titles from Tab 5", "menuSyncEpisodeTitlesFromTab5")
+      .addItem("🔁 Sync Tab 1 & Tab 5 Episode Statuses", "menuSyncEpisodeStatuses")
       .addItem("⏪ Reset Sheet: Episodes 1-9 Published (Ep 10 Active)", "resetToSeason2Episode9Published")
       .addSeparator()
       .addItem("⚡ Trigger Instagram Assembly via GitHub Actions", "menuTriggerGitHubWorkflow")
@@ -148,6 +151,33 @@ function menuSetupSeasonShotOutline() {
       5
     );
   } catch (e) {}
+}
+
+function menuRepairCorruptedEpisodeTitles() {
+  const result = repairCorruptedEpisodeTitles(3);
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    result.message,
+    "Titles Repaired",
+    8
+  );
+}
+
+function menuSyncEpisodeTitlesFromTab5() {
+  const result = syncEpisodeTitlesFromTab5();
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    result.updated ? `Updated ${result.updated} episode title(s) in Tab 1 from Tab 5.` : (result.message || "No Tab 1 titles needed updating."),
+    "Episode Titles Synced",
+    6
+  );
+}
+
+function menuSyncEpisodeStatuses() {
+  const result = repairEpisodeStatusesFromCurrentPrompts();
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    result && result.success ? result.message : ((result && result.message) || "Status sync could not identify the active episode."),
+    result && result.success ? "Episode Statuses Synced" : "Status Sync Needs Attention",
+    8
+  );
 }
 
 /**
@@ -748,6 +778,12 @@ function markEpisodePublishedInStorySheet(epNum, instagramUrl) {
     }
   }
 
+  try {
+    setEpisodeStatusesFromProduction(epNum < 10 ? epNum + 1 : 0, epNum);
+  } catch (statusErr) {
+    Logger.log("Notice updating Tab 5/Tab 1 episode statuses after publish: " + statusErr);
+  }
+
   // Also update Tab 4 (Season_Story_Arc)
   try {
     const seasonSheet = ss.getSheetByName(TAB_SEASON_ARC);
@@ -1055,6 +1091,7 @@ function updateJsonPromptsSheet(episodeNum, shots) {
     sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
     sheet.getRange(3, 6, rows.length, 1).setFontFamily("Consolas").setFontSize(9);
   }
+  try { repairEpisodeStatusesFromCurrentPrompts(); } catch (statusErr) { Logger.log("Episode status sync after Tab 2 write: " + statusErr); }
 }
 
 /**
@@ -1123,7 +1160,218 @@ function updateSeasonStoryArcInSheet(seasonNum, seasonTitle, episodes) {
   };
 }
 
-/** Tab 1 is a direct projection of the ten episode summaries from Tab 5. */
+function normalizeSheetHeader(value) {
+  return String(value || "").trim().toLowerCase().replace(/[_#()]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function getTab5OutlineTable() {
+  const sheet = getStudioSpreadsheet().getSheetByName(TAB_SHOT_OUTLINE);
+  if (!sheet || sheet.getLastRow() < 3) return null;
+  const values = sheet.getDataRange().getDisplayValues();
+  let headerRow = -1;
+  let headers = [];
+  for (let r = 0; r < Math.min(values.length, 8); r++) {
+    const candidate = values[r].map(normalizeSheetHeader);
+    const hasSeason = candidate.some(v => /^season(?: number| no)?$/.test(v));
+    const hasEpisode = candidate.some(v => /^episode(?: number| no)?$/.test(v));
+    const hasShot = candidate.some(v => /^shot(?: number| no)?$/.test(v));
+    if (hasSeason && hasEpisode && hasShot) {
+      headerRow = r;
+      headers = candidate;
+      break;
+    }
+  }
+  if (headerRow < 0) return null;
+  const find = pattern => headers.findIndex(value => pattern.test(value));
+  const isCombined = v => /malayalam.*english|english.*malayalam/i.test(v) || /episode\s*title/i.test(v);
+  const titleCol = find(/episode title|^title(?: malayalam.*english| english.*malayalam)?$/);
+  let englishCol = headers.findIndex(v => !isCombined(v) && /^(?:english.*title|title.*english)$/i.test(v));
+  let malayalamCol = headers.findIndex(v => !isCombined(v) && /^(?:malayalam.*title|title.*malayalam)$/i.test(v));
+  if (englishCol === titleCol) englishCol = -1;
+  if (malayalamCol === titleCol) malayalamCol = -1;
+
+  return {
+    sheet,
+    values,
+    headerRow,
+    columns: {
+      season: find(/^season(?: number| no)?$/),
+      episode: find(/^episode(?: number| no)?$/),
+      shot: find(/^shot(?: number| no)?$/),
+      global: find(/global.*shot.*id/),
+      title: titleCol,
+      english: englishCol,
+      malayalam: malayalamCol,
+      speaker: find(/^speaker$/),
+      action: find(/visual action beat|action description|action summary|^action$/),
+      dialogue: find(/dialogue/),
+      location: find(/^location$/),
+      props: find(/persistent props|^props$/),
+      camera: find(/camera|framing/),
+      status: find(/^status$/)
+    }
+  };
+}
+
+const CANONICAL_SEASON_TITLES = {
+  3: {
+    1: { title_english: "The Trip Begins", title_malayalam: "യാത്ര തുടങ്ങുന്നു" },
+    2: { title_english: "The Woman in the Mist", title_malayalam: "മഞ്ഞിലെ സ്ത്രീ" },
+    3: { title_english: "The Strange Homestay", title_malayalam: "വിചിത്രമായ ഹോംസ്റ്റേ" },
+    4: { title_english: "Room Number Thirteen", title_malayalam: "പതിമൂന്നാം നമ്പർ മുറി" },
+    5: { title_english: "The Missing Path", title_malayalam: "കാണാതായ വഴി" },
+    6: { title_english: "Someone is Following Us", title_malayalam: "ആരോ നമ്മളെ പിന്തുടരുന്നു" },
+    7: { title_english: "The Forbidden Bridge", title_malayalam: "നിരോധിക്കപ്പെട്ട പാലം" },
+    8: { title_english: "The Night of Fear", title_malayalam: "ഭയത്തിന്റെ രാത്രി" },
+    9: { title_english: "The Caretaker's Secret", title_malayalam: "കെയർടേക്കറുടെ രഹസ്യം" },
+    10: { title_english: "The Last Night in Munnar", title_malayalam: "മൂന്നാറിലെ അവസാന രാത്രി" }
+  },
+  2: {
+    1: { title_english: "The New Beginning", title_malayalam: "പുതിയൊരു തുടക്കം" },
+    2: { title_english: "The Uninvited Guest", title_malayalam: "ക്ഷണിക്കപ്പെടാത്ത അതിഥി" },
+    3: { title_english: "The Cafe Dream", title_malayalam: "കഫേ സ്വപ്നം" },
+    4: { title_english: "Kitchen Chaos", title_malayalam: "അടുക്കളയിലെ പുകില്" },
+    5: { title_english: "The Rivalry", title_malayalam: "മത്സരം" },
+    6: { title_english: "Decisions, Decisions", title_malayalam: "തീരുമാനങ്ങൾ" },
+    7: { title_english: "The Heritage Hunt", title_malayalam: "പൈതൃക വേട്ട" },
+    8: { title_english: "Financial Woes", title_malayalam: "സാമ്പത്തിക പ്രതിസന്ധി" },
+    9: { title_english: "The Grand Opening Prep", title_malayalam: "ഉദ്ഘാടന ഒരുക്കങ്ങൾ" },
+    10: { title_english: "The Grand Opening", title_malayalam: "മംഗളകരമായ തുടക്കം" }
+  }
+};
+
+function splitEpisodeTitle(title, english, malayalam, epNum, seasonNum) {
+  let raw = [title, english, malayalam].map(v => String(v || "").trim()).filter(Boolean).join(" ");
+  const targetSeason = Number(seasonNum || 3);
+  const targetEp = Number(epNum || 0);
+
+  if (!raw && targetEp && CANONICAL_SEASON_TITLES[targetSeason] && CANONICAL_SEASON_TITLES[targetSeason][targetEp]) {
+    return Object.assign({}, CANONICAL_SEASON_TITLES[targetSeason][targetEp]);
+  }
+  if (!raw) return { title_english: "", title_malayalam: "" };
+
+  // 1. Extract pure Malayalam (unicode range \u0D00-\u0D7F)
+  const mlMatch = raw.match(/[\u0D00-\u0D7F][\u0D00-\u0D7F\s,.'-]*/);
+  let titleMalayalam = mlMatch ? mlMatch[0].trim() : "";
+
+  // 2. Extract English title (look inside parentheses first, avoiding Malayalam characters)
+  let titleEnglish = "";
+  const parenMatches = raw.match(/\(([^()]+)\)/g);
+  if (parenMatches) {
+    for (let i = 0; i < parenMatches.length; i++) {
+      const inner = parenMatches[i].replace(/[()]/g, "").trim();
+      if (/[a-zA-Z]/.test(inner) && !/[\u0D00-\u0D7F]/.test(inner)) {
+        titleEnglish = inner;
+        break;
+      }
+    }
+  }
+
+  // 3. If English wasn't found in parentheses, look outside parentheses
+  if (!titleEnglish) {
+    const withoutMl = raw.replace(/[\u0D00-\u0D7F]+/g, " ").replace(/[()]+/g, " ").replace(/\s+/g, " ").trim();
+    if (/[a-zA-Z]/.test(withoutMl)) {
+      titleEnglish = withoutMl;
+    }
+  }
+
+  // 4. De-duplicate consecutive repeated phrases in English title
+  if (titleEnglish) {
+    let prev = "";
+    while (prev !== titleEnglish) {
+      prev = titleEnglish;
+      titleEnglish = titleEnglish.replace(/^(.+?)\s+\1$/i, "$1").trim();
+    }
+  }
+
+  // 5. De-duplicate consecutive repeated phrases in Malayalam title
+  if (titleMalayalam) {
+    let prev = "";
+    while (prev !== titleMalayalam) {
+      prev = titleMalayalam;
+      titleMalayalam = titleMalayalam.replace(/^(.+?)\s+\1$/i, "$1").trim();
+    }
+  }
+
+  // 6. Canonical lookup fallback if either title is missing or if epNum is specified
+  if (targetEp && CANONICAL_SEASON_TITLES[targetSeason] && CANONICAL_SEASON_TITLES[targetSeason][targetEp]) {
+    const canon = CANONICAL_SEASON_TITLES[targetSeason][targetEp];
+    if (!titleEnglish) titleEnglish = canon.title_english;
+    if (!titleMalayalam) titleMalayalam = canon.title_malayalam;
+  }
+
+  return { title_english: titleEnglish, title_malayalam: titleMalayalam };
+}
+
+function formatTab5Title(malayalam, english, epNum, seasonNum) {
+  const clean = splitEpisodeTitle("", english, malayalam, epNum, seasonNum);
+  const ml = clean.title_malayalam;
+  const en = clean.title_english;
+  if (ml && en) return `${ml} (${en})`;
+  if (ml) return ml;
+  if (en) return en;
+  return `Episode ${epNum || 1}`;
+}
+
+function getTab5EpisodeTitles() {
+  const table = getTab5OutlineTable();
+  if (!table) return {};
+  const c = table.columns;
+  const titleMap = {};
+  const heading = String(table.values[0] && table.values[0][0] || "");
+  const headingSeason = Number((heading.match(/season\s*(\d+)/i) || [])[1]) || 3;
+  for (let r = table.headerRow + 1; r < table.values.length; r++) {
+    const row = table.values[r];
+    const episode = Number(row[c.episode]);
+    if (!episode) continue;
+    const season = c.season >= 0 ? Number(row[c.season]) || headingSeason : headingSeason;
+    const key = `${season || 1}:${episode}`;
+    const title = splitEpisodeTitle(c.title >= 0 ? row[c.title] : "", c.english >= 0 ? row[c.english] : "", c.malayalam >= 0 ? row[c.malayalam] : "", episode, season);
+    if ((title.title_english || title.title_malayalam) && !titleMap[key]) titleMap[key] = title;
+  }
+  return titleMap;
+}
+
+function syncEpisodeTitlesFromTab5() {
+  const ss = getStudioSpreadsheet();
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  const table = getTab5OutlineTable();
+  const titleMap = getTab5EpisodeTitles();
+  if (!storySheet || storySheet.getLastRow() < 2 || !table || !Object.keys(titleMap).length) {
+    return { success: false, updated: 0, message: "Tab 1, or Tab 5 episode-title rows, could not be found." };
+  }
+  const values = storySheet.getDataRange().getValues();
+  let headerIndex = values.slice(0, 8).findIndex(row => {
+    const headers = row.map(normalizeSheetHeader);
+    return headers.some(v => /^episode(?: number| no)?$/.test(v)) && headers.some(v => /status/.test(v));
+  });
+  if (headerIndex < 0) return { success: false, updated: 0, message: "Tab 1 headers could not be identified." };
+  const headers = values[headerIndex].map(normalizeSheetHeader);
+  const episodeCol = headers.findIndex(v => /^episode(?: number| no)?$/.test(v));
+  const englishCol = headers.findIndex(v => /english.*title|title.*english|^title$/i.test(v));
+  const malayalamCol = headers.findIndex(v => /malayalam.*title|title.*malayalam/i.test(v));
+  if (englishCol < 0 && malayalamCol < 0) return { success: false, updated: 0, message: "Tab 1 title columns could not be identified." };
+  const seasonHeading = String(table.values[0] && table.values[0][0] || "");
+  const season = Number((seasonHeading.match(/season\s*(\d+)/i) || [])[1]) || 3;
+  let updated = 0;
+  for (let r = headerIndex + 1; r < values.length; r++) {
+    const episode = Number(values[r][episodeCol]);
+    const tab5Title = titleMap[`${season}:${episode}`] || titleMap[`1:${episode}`] || (CANONICAL_SEASON_TITLES[season] && CANONICAL_SEASON_TITLES[season][episode]);
+    if (!episode || !tab5Title) continue;
+    const clean = splitEpisodeTitle("", tab5Title.title_english, tab5Title.title_malayalam, episode, season);
+    if (englishCol >= 0 && clean.title_english && String(values[r][englishCol] || "").trim() !== clean.title_english) {
+      storySheet.getRange(r + 1, englishCol + 1).setValue(clean.title_english);
+      updated++;
+    }
+    if (malayalamCol >= 0 && clean.title_malayalam && String(values[r][malayalamCol] || "").trim() !== clean.title_malayalam) {
+      storySheet.getRange(r + 1, malayalamCol + 1).setValue(clean.title_malayalam);
+      updated++;
+    }
+  }
+  return { success: true, updated, message: updated ? "Tab 1 episode titles now match Tab 5." : "Tab 1 episode titles already match Tab 5." };
+}
+
+/** Tab 1 episode titles are projected from the authoritative Tab 5 episode titles. */
 function updateEpisodeStoryFromOutline(seasonNum, episodes, preserveStatuses) {
   const ss = getStudioSpreadsheet();
   const sheet = ss.getSheetByName(TAB_STORY) || ss.insertSheet(TAB_STORY, 0);
@@ -1132,15 +1380,37 @@ function updateEpisodeStoryFromOutline(seasonNum, episodes, preserveStatuses) {
   if (items.length !== 10) throw new Error(`Episode_Story requires 10 episodes; received ${items.length}.`);
   const priorStatuses = {};
   if (preserveStatuses && sheet.getLastRow() >= 2) {
-    sheet.getRange(2, 1, sheet.getLastRow() - 1, Math.min(headers.length, sheet.getLastColumn())).getValues().forEach(row => {
-      priorStatuses[Number(row[0])] = row[5] || row[4] || "Draft";
+    const existing = sheet.getDataRange().getValues();
+    const headerIndex = existing.slice(0, 8).findIndex(row => {
+      const normalized = row.map(normalizeSheetHeader);
+      return normalized.some(v => /^episode(?: number| no)?$/.test(v)) && normalized.some(v => /^status$/.test(v));
     });
+    if (headerIndex >= 0) {
+      const normalized = existing[headerIndex].map(normalizeSheetHeader);
+      const episodeCol = normalized.findIndex(v => /^episode(?: number| no)?$/.test(v));
+      const statusCol = normalized.findIndex(v => /^status$/.test(v));
+      for (let r = headerIndex + 1; r < existing.length; r++) {
+        const episode = Number(existing[r][episodeCol]);
+        if (episode) priorStatuses[episode] = existing[r][statusCol] || "Draft";
+      }
+    }
   }
-  const rows = items.map((ep, index) => [
-    Number(ep.episode_number || index + 1), ep.title_english || `Episode ${index + 1}`,
-    ep.title_malayalam || "", ep.synopsis || ep.story_summary || "", ep.cliffhanger || "",
-    preserveStatuses ? (priorStatuses[Number(ep.episode_number || index + 1)] || (index === 0 ? "In Progress" : "Draft")) : (index === 0 ? "In Progress" : "Draft")
-  ]);
+  const tab5Titles = getTab5EpisodeTitles();
+  const rows = items.map((ep, index) => {
+    const episodeNumber = Number(ep.episode_number || index + 1);
+    const tab5Title = tab5Titles[`${seasonNum}:${episodeNumber}`] || (CANONICAL_SEASON_TITLES[seasonNum] && CANONICAL_SEASON_TITLES[seasonNum][episodeNumber]) || {};
+    const cleanEp = splitEpisodeTitle(ep.episode_title || ep.title || "", ep.title_english || "", ep.title_malayalam || "", episodeNumber, seasonNum);
+    const finalEn = cleanEp.title_english || tab5Title.title_english || `Episode ${index + 1}`;
+    const finalMl = cleanEp.title_malayalam || tab5Title.title_malayalam || "";
+    return [
+      episodeNumber,
+      finalEn,
+      finalMl,
+      ep.synopsis || ep.story_summary || "",
+      ep.cliffhanger || "",
+      preserveStatuses ? (priorStatuses[episodeNumber] || (index === 0 ? "In Progress" : "Draft")) : (index === 0 ? "In Progress" : "Draft")
+    ];
+  });
   sheet.clear();
   sheet.getRange(1, 1, 1, headers.length).setValues([headers])
     .setBackground("#1e1b4b").setFontColor("#e0e7ff").setFontWeight("bold");
@@ -1167,7 +1437,7 @@ function setupSeasonShotOutlineSheet(seasonNum) {
   sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = ["Global_Shot_ID", "Season_Number", "Episode_Number", "Shot_Number", "Speaker", "Action_Description", "Dialogue_Malayalam", "Location", "Persistent_Props", "Camera_Framing"];
+  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1180,19 +1450,26 @@ function setupSeasonShotOutlineSheet(seasonNum) {
   sheet.setColumnWidth(7, 300);
 }
 
-function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
+function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSummaries) {
   const ss = getStudioSpreadsheet();
   let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_SHOT_OUTLINE);
   }
 
+  const priorTitles = getTab5EpisodeTitles();
+  const episodeTitleMap = {};
+  (Array.isArray(episodeSummaries) ? episodeSummaries : []).forEach((ep, index) => {
+    const n = Number(ep.episode_number || index + 1);
+    episodeTitleMap[n] = splitEpisodeTitle(ep.episode_title || "", ep.title_english || "", ep.title_malayalam || "", n, seasonNum);
+  });
+
   sheet.clear();
   sheet.getRange(1, 1).setValue(`MASTER 100-SHOT SCREENPLAY OUTLINE: SEASON ${seasonNum || 1}`).setFontWeight("bold").setFontSize(12);
   sheet.getRange(1, 2).setValue(seasonTitle || `Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = ["Global_Shot_ID", "Season_Number", "Episode_Number", "Shot_Number", "Speaker", "Action_Description", "Dialogue_Malayalam", "Location", "Persistent_Props", "Camera_Framing"];
+  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1213,28 +1490,35 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
     const dialogue = s.dialogue_malayalam || s.dialogue || "";
     const loc = s.location || "";
     const props = Array.isArray(s.persistent_props) ? s.persistent_props.join(", ") : (s.persistent_props || "");
-    const camera = s.camera_framing || s.camera_hint || s.camera || "";
+    const shotTitle = splitEpisodeTitle(s.episode_title || s.title || "", s.title_english || "", s.title_malayalam || "", epNum, seasonNum);
+    const titleEn = shotTitle.title_english || episodeTitleMap[epNum]?.title_english || priorTitles[`${seasonNum}:${epNum}`]?.title_english || "";
+    const titleMl = shotTitle.title_malayalam || episodeTitleMap[epNum]?.title_malayalam || priorTitles[`${seasonNum}:${epNum}`]?.title_malayalam || "";
+    const titleCell = formatTab5Title(titleMl, titleEn, epNum, seasonNum);
 
     rows.push([
-      i + 1,
       seasonNum || 1,
       epNum,
       shotNum,
+      titleCell,
       speaker,
       action,
       dialogue,
       loc,
       props,
-      camera
+      s.status || "Outline Ready"
     ]);
   }
 
   if (rows.length > 0) {
     sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
-    sheet.setColumnWidth(4, 250);
+    sheet.setColumnWidth(4, 280);
     sheet.setColumnWidth(6, 400);
     sheet.setColumnWidth(7, 300);
   }
+
+  syncEpisodeTitlesFromTab5();
+
+  try { repairEpisodeStatusesFromCurrentPrompts(); } catch (statusErr) { Logger.log("Episode status sync after Tab 5 write: " + statusErr); }
 
   return {
     success: true,
@@ -1245,36 +1529,142 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots) {
 }
 
 function getSeasonShotOutlineData(seasonNum) {
-  const ss = getStudioSpreadsheet();
-  let sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
-  if (!sheet || sheet.getLastRow() < 3) {
+  const table = getTab5OutlineTable();
+  const requestedSeason = parseInt(seasonNum, 10) || 1;
+  if (!table) {
     return {
-      success: true,
-      season_number: seasonNum || 1,
+      success: false,
+      season_number: requestedSeason,
       total_shots: 0,
       shots: []
     };
   }
 
-  const lastRow = sheet.getLastRow();
-  const data = sheet.getRange(3, 1, lastRow - 2, 10).getValues();
+  const heading = String(table.values[0] && table.values[0][0] || "");
+  const headingMatch = heading.match(/SEASON\s*(\d+)/i);
+  const c = table.columns;
+  const data = table.values.slice(table.headerRow + 1);
+  const firstSeason = data.map(row => parseInt(row[c.season], 10)).find(Number.isFinite);
+  const actualSeason = (headingMatch && parseInt(headingMatch[1], 10)) || firstSeason || requestedSeason;
+  if (actualSeason !== requestedSeason) {
+    return { success: false, season_number: actualSeason, requested_season: requestedSeason, total_shots: 0, shots: [] };
+  }
   const shots = [];
 
   for (let i = 0; i < data.length; i++) {
     const row = data[i];
+    if (parseInt(row[c.season], 10) !== actualSeason) continue;
+    const epNum = Number(row[c.episode]) || 0;
+    const episodeTitle = splitEpisodeTitle(c.title >= 0 ? row[c.title] : "", c.english >= 0 ? row[c.english] : "", c.malayalam >= 0 ? row[c.malayalam] : "", epNum, actualSeason);
+    const propsCell = c.props >= 0 ? row[c.props] : "";
     shots.push({
-      global_shot_id: row[0], season_number: row[1], episode_number: row[2], shot_number: row[3],
-      speaker: row[4], action: row[5], dialogue_malayalam: row[6], location: row[7],
-      persistent_props: typeof row[8] === "string" ? row[8].split(",").map(p => p.trim()).filter(Boolean) : [],
-      camera_hint: row[9]
+      global_shot_id: c.global >= 0 ? row[c.global] : shots.length + 1,
+      season_number: Number(row[c.season]) || actualSeason,
+      episode_number: epNum,
+      shot_number: Number(row[c.shot]) || 0,
+      episode_title: formatTab5Title(episodeTitle.title_malayalam, episodeTitle.title_english, epNum, actualSeason),
+      title_english: episodeTitle.title_english,
+      title_malayalam: episodeTitle.title_malayalam,
+      speaker: c.speaker >= 0 ? row[c.speaker] : "",
+      action: c.action >= 0 ? row[c.action] : "",
+      dialogue_malayalam: c.dialogue >= 0 ? row[c.dialogue] : "",
+      location: c.location >= 0 ? row[c.location] : "",
+      persistent_props: typeof propsCell === "string" ? propsCell.split(",").map(p => p.trim()).filter(Boolean) : [],
+      camera_hint: c.camera >= 0 ? row[c.camera] : "",
+      status: c.status >= 0 ? row[c.status] : ""
     });
   }
 
   return {
     success: true,
-    season_number: seasonNum || 1,
+    season_number: actualSeason,
     total_shots: shots.length,
     shots: shots
+  };
+}
+
+/**
+ * Repairs and sanitizes corrupted, duplicated, or nested episode titles in Tab 1 and Tab 5.
+ * Strictly guarantees:
+ * - Tab 1 Column B (Title_English): pure English only (e.g. "The Trip Begins").
+ * - Tab 1 Column C (Title_Malayalam): pure Malayalam only (e.g. "യാത്ര തുടങ്ങുന്നു").
+ * - Tab 5 Column D: single clean format `${Malayalam} (${English})` without nested parentheses.
+ */
+function repairCorruptedEpisodeTitles(seasonNum) {
+  const ss = getStudioSpreadsheet();
+  const season = Number(seasonNum || 3);
+  let tab1Repaired = 0;
+  let tab5Repaired = 0;
+
+  // 1. Repair Tab 5 (Season_Shot_Outline)
+  const tab5Sheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
+  if (tab5Sheet && tab5Sheet.getLastRow() >= 3) {
+    const lastRow = tab5Sheet.getLastRow();
+    const values = tab5Sheet.getRange(1, 1, lastRow, tab5Sheet.getLastColumn()).getValues();
+    const headerRow = values.slice(0, 8).findIndex(row => {
+      const h = row.map(normalizeSheetHeader);
+      return h.some(v => /^episode(?: number| no)?$/.test(v)) && h.some(v => /^shot(?: number| no)?$/.test(v));
+    });
+    if (headerRow >= 0) {
+      const headers = values[headerRow].map(normalizeSheetHeader);
+      const epCol = headers.findIndex(v => /^episode(?: number| no)?$/.test(v));
+      const titleCol = headers.findIndex(v => /episode title|^title(?: malayalam.*english| english.*malayalam)?$/.test(v));
+      if (titleCol >= 0 && epCol >= 0) {
+        for (let r = headerRow + 1; r < values.length; r++) {
+          const epNum = Number(values[r][epCol]);
+          if (!epNum) continue;
+          const currentCell = String(values[r][titleCol] || "").trim();
+          const clean = splitEpisodeTitle(currentCell, "", "", epNum, season);
+          const targetCell = formatTab5Title(clean.title_malayalam, clean.title_english, epNum, season);
+          if (currentCell !== targetCell) {
+            tab5Sheet.getRange(r + 1, titleCol + 1).setValue(targetCell);
+            tab5Repaired++;
+          }
+        }
+      }
+    }
+  }
+
+  // 2. Repair Tab 1 (Episode_Story)
+  const storySheet = ss.getSheetByName(TAB_STORY);
+  if (storySheet && storySheet.getLastRow() >= 2) {
+    const lastRow = storySheet.getLastRow();
+    const values = storySheet.getRange(1, 1, lastRow, storySheet.getLastColumn()).getValues();
+    const headerRow = values.slice(0, 8).findIndex(row => {
+      const h = row.map(normalizeSheetHeader);
+      return h.some(v => /^episode(?: number| no)?$/.test(v)) && h.some(v => /status/.test(v));
+    });
+    if (headerRow >= 0) {
+      const headers = values[headerRow].map(normalizeSheetHeader);
+      const epCol = headers.findIndex(v => /^episode(?: number| no)?$/.test(v));
+      const enCol = headers.findIndex(v => /english.*title|title.*english|^title$/i.test(v));
+      const mlCol = headers.findIndex(v => /malayalam.*title|title.*malayalam/i.test(v));
+      if (epCol >= 0 && (enCol >= 0 || mlCol >= 0)) {
+        for (let r = headerRow + 1; r < values.length; r++) {
+          const epNum = Number(values[r][epCol]);
+          if (!epNum) continue;
+          const rawEn = enCol >= 0 ? String(values[r][enCol] || "").trim() : "";
+          const rawMl = mlCol >= 0 ? String(values[r][mlCol] || "").trim() : "";
+          const clean = splitEpisodeTitle("", rawEn, rawMl, epNum, season);
+          if (enCol >= 0 && clean.title_english && rawEn !== clean.title_english) {
+            storySheet.getRange(r + 1, enCol + 1).setValue(clean.title_english);
+            tab1Repaired++;
+          }
+          if (mlCol >= 0 && clean.title_malayalam && rawMl !== clean.title_malayalam) {
+            storySheet.getRange(r + 1, mlCol + 1).setValue(clean.title_malayalam);
+            tab1Repaired++;
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    success: true,
+    season_number: season,
+    tab1_cells_repaired: tab1Repaired,
+    tab5_cells_repaired: tab5Repaired,
+    message: `Episode titles successfully repaired: ${tab1Repaired} Tab 1 cells, ${tab5Repaired} Tab 5 rows.`
   };
 }
 
@@ -1319,7 +1709,7 @@ function cleanSlateSeasonTransition(body) {
   });
 
   // Required write order: Tab 5, Tab 4, Tab 1, then Tab 2.
-  updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, outlineShots);
+  updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, outlineShots, episodes);
   const castResult = syncCharacterRegistry({
     season_number: seasonNum,
     character_updates: body.character_updates || [],
@@ -1371,7 +1761,7 @@ function applyDirectorOutlineChange(body) {
       throw new Error(`Director update attempted to alter frozen shot ${i + 1}.`);
     }
   }
-  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots);
+  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots, episodes);
   updateEpisodeStoryFromOutline(seasonNum, episodes, true);
   updateJsonPromptsSheet(activeEpisode, prompts);
   return { success: true, season_number: seasonNum, active_episode: activeEpisode, pivot_global_shot_id: pivot, message: `Director changes from shot ${pivot} saved to Tab 5, Tab 1, and Tab 2.` };
@@ -1437,29 +1827,153 @@ function applyDirectorSeasonRewrite(body) {
     throw new Error("Tab 2 prompts must remain unchanged when the active episode is before the rewrite pivot.");
   }
 
-  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots);
+  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots, body.episodes || body.season_arc || []);
   if (finalPrompts.length) updateJsonPromptsSheet(activeEpisode, finalPrompts);
   return { success: true, season_number: seasonNum, pivot_global_shot_id: pivot, active_episode: activeEpisode,
     message: finalPrompts.length ? `GitHub rewrite saved to Tab 5 from Global Shot ${pivot}; Tab 2 refreshed from Shot ${finalPrompts[0].shot_number}. Tab 1 and Tab 4 were left unchanged.` : `GitHub rewrite saved to Tab 5 from Global Shot ${pivot}. Tab 2 was before the pivot, so it stayed unchanged; Tab 1 and Tab 4 were left unchanged.` };
 }
 
+function getCompleteTab2EpisodeNumber() {
+  const prompts = getStudioSpreadsheet().getSheetByName(TAB_PROMPTS);
+  if (!prompts || prompts.getLastRow() < 12 || prompts.getLastColumn() < 6) return 0;
+  const heading = String(prompts.getRange(1, 1).getDisplayValue() || "");
+  const matchHeading = heading.match(/(?:CURRENT\s+EPISODE\s+PROMPTS\s*:\s*)?EPISODE\s*#?\s*(\d+)/i);
+  const episode = matchHeading ? Number(matchHeading[1]) : 0;
+  if (episode < 1 || episode > 10) return 0;
+  const rows = prompts.getRange(3, 1, 10, 6).getDisplayValues();
+  return rows.every((row, index) => {
+    const matchShot = String(row[0] || "").match(/(\d+)/);
+    return matchShot && Number(matchShot[1]) === index + 1 && String(row[5] || "").trim();
+  }) ? episode : 0;
+}
+
+/** Set all ten shot statuses per episode, then mirror that state to Tab 1. */
+function setEpisodeStatusesFromProduction(activeEpisode, publishedThrough) {
+  const table = getTab5OutlineTable();
+  if (!table || table.columns.status < 0) throw new Error("Tab 5 Status column (J) was not found.");
+  const data = table.values.slice(table.headerRow + 1);
+  const seasonCol = table.columns.season, episodeCol = table.columns.episode;
+  const season = Number((String(table.values[0][0]).match(/SEASON\s*(\d+)/i) || [])[1]) || 1;
+  const shotRows = data.filter(row => Number(row[seasonCol]) === season && Number(row[episodeCol]) >= 1 && Number(row[episodeCol]) <= 10);
+  const counts = {};
+  shotRows.forEach(row => { const ep = Number(row[episodeCol]); counts[ep] = (counts[ep] || 0) + 1; });
+  if (shotRows.length !== 100 || Array.from({ length: 10 }, (_, i) => counts[i + 1] === 10).some(ok => !ok)) {
+    throw new Error("Tab 5 must contain exactly ten shots for each of the ten episodes before statuses can sync.");
+  }
+  if (activeEpisode < 0 || activeEpisode > 10 || publishedThrough < 0 || publishedThrough > 10) throw new Error("Episode status transition is outside the season.");
+
+  const statusesByEpisode = {};
+  for (let ep = 1; ep <= 10; ep++) {
+    statusesByEpisode[ep] = ep <= publishedThrough ? "Published" : (ep === activeEpisode ? "Active" : "Upcoming");
+  }
+  const statusValues = data.map(row => {
+    if (Number(row[seasonCol]) !== season) return [row[table.columns.status] || ""];
+    const ep = Number(row[episodeCol]);
+    return [statusesByEpisode[ep] || row[table.columns.status] || ""];
+  });
+  table.sheet.getRange(table.headerRow + 2, table.columns.status + 1, statusValues.length, 1).setValues(statusValues);
+
+  const story = getStudioSpreadsheet().getSheetByName(TAB_STORY);
+  if (story && story.getLastRow() >= 2) {
+    const values = story.getDataRange().getValues();
+    const headerRow = values.slice(0, 8).findIndex(row => {
+      const normalized = row.map(normalizeSheetHeader);
+      return normalized.some(v => /^episode(?: number| no)?$/.test(v)) && normalized.some(v => /^status$/.test(v));
+    });
+    if (headerRow >= 0) {
+      const headers = values[headerRow].map(normalizeSheetHeader);
+      const epCol = headers.findIndex(v => /^episode(?: number| no)?$/.test(v));
+      const statusCol = headers.findIndex(v => /^status$/.test(v));
+      for (let r = headerRow + 1; r < values.length; r++) {
+        const ep = Number(values[r][epCol]);
+        if (statusesByEpisode[ep]) story.getRange(r + 1, statusCol + 1).setValue(statusesByEpisode[ep]);
+      }
+    }
+  }
+  return { success: true, season_number: season, active_episode: activeEpisode || null, published_through: publishedThrough, message: "Tab 5 and Tab 1 episode statuses synchronized." };
+}
+
+/** Preserve a correct Tab 5 state. If it is corrupt, initialize from Tab 2. */
+function repairEpisodeStatusesFromCurrentPrompts() {
+  const table = getTab5OutlineTable();
+  if (!table || table.columns.status < 0) return { success: false, repaired: 0, message: "Tab 5 status column is unavailable." };
+  const data = table.values.slice(table.headerRow + 1);
+  const seasonCol = table.columns.season, episodeCol = table.columns.episode, statusCol = table.columns.status;
+  const headingSeason = Number((String(table.values[0][0]).match(/SEASON\s*(\d+)/i) || [])[1]) || 1;
+  const relevant = data.filter(row => Number(row[seasonCol]) === headingSeason && Number(row[episodeCol]) >= 1 && Number(row[episodeCol]) <= 10);
+  const groups = {};
+  relevant.forEach(row => {
+    const ep = Number(row[episodeCol]);
+    if (!groups[ep]) groups[ep] = [];
+    groups[ep].push(String(row[statusCol] || "").trim());
+  });
+  const complete = relevant.length === 100 && Array.from({ length: 10 }, (_, i) => (groups[i + 1] || []).length === 10).every(Boolean);
+  const activeEpisodes = Object.keys(groups).map(Number).filter(ep => groups[ep].every(status => status === "Active"));
+  const validLabels = new Set(["Published", "Active", "Upcoming"]);
+  const labelsValid = complete && relevant.every(row => validLabels.has(String(row[statusCol] || "").trim()));
+  const orderedState = labelsValid && activeEpisodes.length === 1 && Array.from({ length: 10 }, (_, i) => {
+    const ep = i + 1, expected = ep < activeEpisodes[0] ? "Published" : (ep === activeEpisodes[0] ? "Active" : "Upcoming");
+    return groups[ep].every(status => status === expected);
+  }).every(Boolean);
+  const completedState = labelsValid && activeEpisodes.length === 0 && Array.from({ length: 10 }, (_, i) => groups[i + 1].every(status => status === "Published")).every(Boolean);
+  if (orderedState) {
+    const active = activeEpisodes[0];
+    return setEpisodeStatusesFromProduction(active, active - 1);
+  }
+  if (completedState) return setEpisodeStatusesFromProduction(0, 10);
+  let activeEpisode = getCompleteTab2EpisodeNumber();
+  let source = "Tab 2";
+  if (!activeEpisode) {
+    const inProgress = Object.keys(groups).map(Number).filter(ep =>
+      groups[ep].length === 10 && groups[ep].every(status => /^(active episode|in progress|current episode)$/i.test(status))
+    );
+    if (inProgress.length === 1) { activeEpisode = inProgress[0]; source = "Tab 5 active marker"; }
+  }
+  if (!activeEpisode) return { success: false, repaired: 0, message: "Tab 2 needs ten ordered JSON prompts, or Tab 5 needs one unambiguous Active Episode marker." };
+  const result = setEpisodeStatusesFromProduction(activeEpisode, activeEpisode - 1);
+  result.message = `Statuses initialized from ${source}: Episode ${activeEpisode} Active; earlier episodes Published; later episodes Upcoming.`;
+  return result;
+}
+
 function getSeasonStoryArcData() {
   const ss = getStudioSpreadsheet();
+  try { syncEpisodeTitlesFromTab5(); } catch (syncErr) { Logger.log("Tab 1 title sync note: " + syncErr); }
+  try { repairEpisodeStatusesFromCurrentPrompts(); } catch (statusErr) { Logger.log("Episode status sync note: " + statusErr); }
   const sheet = ss.getSheetByName(TAB_STORY);
   if (!sheet || sheet.getLastRow() < 2) return { success: true, season_number: 1, total_episodes: 0, episodes: [] };
-  const data = sheet.getRange(2, 1, sheet.getLastRow() - 1, 6).getValues();
+  const rows = sheet.getDataRange().getValues();
+  const headerIndex = rows.slice(0, 8).findIndex(row => {
+    const cells = row.map(value => String(value || "").trim().toLowerCase());
+    return cells.some(value => /episode(?:\s|_|#|$)/.test(value)) && cells.some(value => /status/.test(value));
+  });
   const episodes = [];
 
-  for (let i = 0; i < data.length; i++) {
-    const row = data[i];
-    episodes.push({
-      episode_number: row[0] || (i + 1),
-      title_english: row[1] || `Episode ${i + 1}`,
-      title_malayalam: row[2] || "",
-      status: row[5] || "Draft",
-      synopsis: row[3] || "",
-      cliffhanger: row[4] || ""
-    });
+  if (headerIndex >= 0) {
+    const headers = rows[headerIndex].map(value => String(value || "").trim().toLowerCase().replace(/[_\s]+/g, " "));
+    const findHeader = pattern => headers.findIndex(value => pattern.test(value));
+    const episodeCol = findHeader(/^episode(?: number| no\.?| #)?$/);
+    const englishCol = findHeader(/(?:english.*title|title.*english)/);
+    const genericTitleCol = englishCol >= 0 ? englishCol : findHeader(/episode.*title|^title$/);
+    const malayalamCol = findHeader(/malayalam.*title|title.*malayalam/);
+    const synopsisCol = findHeader(/synopsis|summary|description/);
+    const cliffhangerCol = findHeader(/cliff\s*hanger/);
+    const statusCol = findHeader(/status/);
+    for (let i = headerIndex + 1; i < rows.length; i++) {
+      const row = rows[i];
+      const episodeNumber = parseInt(row[episodeCol], 10);
+      if (!Number.isFinite(episodeNumber)) continue;
+      const rawEn = genericTitleCol >= 0 ? String(row[genericTitleCol] || "").trim() : "";
+      const rawMl = malayalamCol >= 0 ? String(row[malayalamCol] || "").trim() : "";
+      const clean = splitEpisodeTitle("", rawEn, rawMl, episodeNumber, 3);
+      episodes.push({
+        episode_number: episodeNumber,
+        title_english: clean.title_english || `Episode ${episodeNumber}`,
+        title_malayalam: clean.title_malayalam || "",
+        status: statusCol >= 0 ? String(row[statusCol] || "Draft").trim() : "Draft",
+        synopsis: synopsisCol >= 0 ? (row[synopsisCol] || "") : "",
+        cliffhanger: cliffhangerCol >= 0 ? (row[cliffhangerCol] || "") : ""
+      });
+    }
   }
 
   let currentSeasonNum = 1;
@@ -1927,7 +2441,7 @@ function handleNextEpisodeFullUpdate(body) {
           if (s.character) outlineSheet.getRange(targetRow, 5).setValue(s.character);
           if (s.action_summary) outlineSheet.getRange(targetRow, 6).setValue(s.action_summary);
           if (s.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(s.dialogue_malayalam);
-          if (s.camera_hint) outlineSheet.getRange(targetRow, 10).setValue(s.camera_hint);
+          // Tab 5 column 10 is Status; camera guidance has no column in this table.
         }
       }
       Logger.log(`Synchronized Episode ${epNum} (${body.shots.length} shots) to Tab 7 [${TAB_SHOT_OUTLINE}]`);
@@ -2111,28 +2625,46 @@ function doGet(e) {
       promptSheet = ss.getSheetByName(TAB_PROMPTS);
     } catch (err) {}
   }
+  const seasonData = getSeasonStoryArcData();
 
   let activeEp = 1;
   let epTitleEn = "Episode 1";
   let epTitleMl = "";
   let epSynopsis = "";
+  let epCliffhanger = "";
+  let activeEpisodeFound = false;
+  let activeEpisodeCount = 0;
 
-  if (storySheet && storySheet.getLastRow() > 1) {
-    const storyData = storySheet.getDataRange().getValues();
-    for (let i = 1; i < storyData.length; i++) {
-      const st = (storyData[i][5] || "").toString().trim().toLowerCase();
-      if (st === "in progress") {
-        activeEp = storyData[i][0];
-        epTitleEn = storyData[i][1] || epTitleEn;
-        epTitleMl = storyData[i][2] || "";
-        epSynopsis = storyData[i][3] || epSynopsis;
-        break;
-      }
+  if (seasonData && Array.isArray(seasonData.episodes)) {
+    const activeRows = seasonData.episodes.filter(ep => /^(in\s+progress|active|active\s+episode|current|current\s+episode)$/i.test(String(ep.status || "").trim()))
+      .sort((a, b) => {
+        const priority = ep => /^in\s+progress$/i.test(String(ep.status || "").trim()) ? 0 : 1;
+        return priority(a) - priority(b) || Number(a.episode_number) - Number(b.episode_number);
+      });
+    activeEpisodeCount = activeRows.length;
+    if (activeRows.length) {
+      const row = activeRows[0];
+      activeEpisodeFound = true;
+      activeEp = parseInt(row.episode_number, 10) || 1;
+      epTitleEn = row.title_english || `Episode ${activeEp}`;
+      epTitleMl = row.title_malayalam || "";
+      epSynopsis = row.synopsis || "";
+      epCliffhanger = row.cliffhanger || "";
     }
   }
 
+  // Tab 2 is a single-episode prompt sheet. Never label stale prompts as the
+  // active episode when its own title row identifies a different episode.
+  let promptsEpisode = null;
+  if (promptSheet && promptSheet.getLastRow() > 0) {
+    const promptHeading = String(promptSheet.getRange(1, 1).getDisplayValue() || "");
+    const promptMatch = promptHeading.match(/(?:CURRENT\s+EPISODE\s+PROMPTS\s*:\s*)?EPISODE\s*#?\s*(\d+)/i);
+    if (promptMatch) promptsEpisode = parseInt(promptMatch[1], 10);
+  }
+  const promptsMatchActiveEpisode = promptsEpisode === activeEp;
+
   const shots = [];
-  if (promptSheet && promptSheet.getLastRow() > 2) {
+  if (promptsMatchActiveEpisode && promptSheet && promptSheet.getLastRow() > 2) {
     const pData = promptSheet.getRange(3, 1, promptSheet.getLastRow() - 2, 6).getValues();
     for (let i = 0; i < pData.length; i++) {
       const row = pData[i];
@@ -2156,16 +2688,23 @@ function doGet(e) {
     }
   }
 
-  const seasonData = getSeasonStoryArcData();
   const characterData = getCharacterRegistryData();
 
   const response = {
     success: true,
     episode: activeEp,
     episode_number: activeEp,
+    season_number: seasonData.season_number,
+    season_title: seasonData.season_title,
     title_english: epTitleEn,
     title_malayalam: epTitleMl,
     synopsis: epSynopsis,
+    cliffhanger: epCliffhanger,
+    active_episode: activeEp,
+    active_episode_found: activeEpisodeFound,
+    active_episode_count: activeEpisodeCount,
+    prompts_episode_number: promptsEpisode,
+    prompts_match_active_episode: promptsMatchActiveEpisode,
     total_shots: shots.length,
     shots: shots,
     prompts: shots,
@@ -2346,7 +2885,7 @@ function doPost(e) {
       const props = PropertiesService.getScriptProperties();
       const keys = ["GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"]
         .map(name => props.getProperty(name) || "").filter(Boolean);
-      const models = [...new Set([body.model, "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-3.8-flash", "gemini-3.5-flash"].filter(Boolean))];
+      const models = [...new Set([body.model || "gemini-flash-latest", "gemini-flash-lite-latest"].filter(Boolean))];
       if (!keys.length) {
         return ContentService.createTextOutput(JSON.stringify({ error: { message: "No Gemini keys are configured in Apps Script properties." } }))
           .setMimeType(ContentService.MimeType.JSON);
@@ -2362,7 +2901,15 @@ function doPost(e) {
             muteHttpExceptions: true
           });
           lastBody = gRes.getContentText();
-          if (gRes.getResponseCode() >= 200 && gRes.getResponseCode() < 300) {
+          const status = gRes.getResponseCode();
+          if (status >= 200 && status < 300) {
+            return ContentService.createTextOutput(lastBody).setMimeType(ContentService.MimeType.JSON);
+          }
+          // Quotas are commonly project-wide; do not hammer every key and model after a 429.
+          if (status === 429) {
+            return ContentService.createTextOutput(lastBody).setMimeType(ContentService.MimeType.JSON);
+          }
+          if (status !== 401 && status !== 403 && status !== 404) {
             return ContentService.createTextOutput(lastBody).setMimeType(ContentService.MimeType.JSON);
           }
         }
@@ -2380,7 +2927,7 @@ function doPost(e) {
 
     // 11. Tab 7: Save 100-Shot Master Screenplay Outline
     if (action === "save_season_shot_outline") {
-      const res = updateSeasonShotOutlineInSheet(body.season_number || 1, body.season_title, body.shots || []);
+      const res = updateSeasonShotOutlineInSheet(body.season_number || 1, body.season_title, body.shots || [], body.episodes || body.season_arc || []);
       return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
@@ -2388,6 +2935,77 @@ function doPost(e) {
     if (action === "apply_director_outline_change") {
       const res = applyDirectorOutlineChange(body);
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "director_update_tab5") {
+      const seasonNum = Number(body.season_number || 1), pivot = Number(body.pivot_global_shot_id || 1);
+      const shots = body.shots || [];
+      if (shots.length !== 100 || pivot < 1 || pivot > 100) throw new Error("Tab 5 update needs the complete ordered 100-shot outline and a valid pivot.");
+      const prior = getSeasonShotOutlineData(seasonNum).shots;
+      if (prior.length !== 100) throw new Error("Tab 5 must already contain 100 shots.");
+      for (let i = 0; i < pivot - 1; i++) {
+        const a = shots[i], b = prior[i];
+        if (Number(a.episode_number) !== Number(b.episode_number) || Number(a.shot_number) !== Number(b.shot_number) ||
+            ["action", "dialogue_malayalam", "location", "speaker", "camera_hint"].some(k => String(a[k] || "") !== String(b[k] || "")) ||
+            JSON.stringify(a.persistent_props || []) !== JSON.stringify(b.persistent_props || [])) throw new Error(`Tab 5 update changed frozen Global Shot ${i + 1}.`);
+      }
+      updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots, body.episodes || []);
+      return ContentService.createTextOutput(JSON.stringify({ success: true, message: `Tab 5 saved from Global Shot ${pivot} through Shot 100.` })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "director_update_tab1") {
+      const seasonNum = Number(body.season_number || 1), episode = Number(body.episode_number || 0), ep = body.episode;
+      if (episode < 1 || episode > 10 || !ep) throw new Error("Tab 1 update needs a valid episode record.");
+      const ss = getStudioSpreadsheet(), sheet = ss.getSheetByName(TAB_STORY);
+      if (!sheet || sheet.getLastRow() < 2) throw new Error("Tab 1 episode records are not available.");
+      const values = sheet.getDataRange().getValues();
+      const headers = values[0].map(v => String(v).trim().toLowerCase());
+      const epCol = headers.findIndex(v => /episode[_ ]?number|episode[_ ]?num/.test(v));
+      if (epCol < 0) throw new Error("Tab 1 episode number column was not found.");
+      const find = (re) => headers.findIndex(v => re.test(v));
+      const enCol = find(/english.*title|title.*english|^title$/i), mlCol = find(/malayalam.*title|title.*malayalam/i);
+      const synCol = find(/^synopsis$|story.*summary/i), cliffCol = find(/^cliffhanger$/i);
+      const titles = getTab5EpisodeTitles();
+      const tab5Title = titles[`${seasonNum}:${episode}`] || {};
+      const cleanEp = splitEpisodeTitle(ep.episode_title || ep.title || "", ep.title_english || "", ep.title_malayalam || "", episode, seasonNum);
+      const finalEn = cleanEp.title_english || tab5Title.title_english || (CANONICAL_SEASON_TITLES[seasonNum] && CANONICAL_SEASON_TITLES[seasonNum][episode]?.title_english) || "";
+      const finalMl = cleanEp.title_malayalam || tab5Title.title_malayalam || (CANONICAL_SEASON_TITLES[seasonNum] && CANONICAL_SEASON_TITLES[seasonNum][episode]?.title_malayalam) || "";
+      let rowIndex = values.findIndex((row, i) => i > 0 && Number(row[epCol]) === episode);
+      if (rowIndex < 1) throw new Error(`Episode ${episode} was not found in Tab 1.`);
+      const rowNum = rowIndex + 1;
+      if (enCol >= 0 && finalEn) sheet.getRange(rowNum, enCol + 1).setValue(finalEn);
+      if (mlCol >= 0 && finalMl) sheet.getRange(rowNum, mlCol + 1).setValue(finalMl);
+      if (synCol >= 0) sheet.getRange(rowNum, synCol + 1).setValue(ep.synopsis || values[rowIndex][synCol]);
+      if (cliffCol >= 0) sheet.getRange(rowNum, cliffCol + 1).setValue(ep.cliffhanger || values[rowIndex][cliffCol]);
+      return ContentService.createTextOutput(JSON.stringify({ success: true, message: `Episode ${episode} details saved to Tab 1; its existing status was preserved.` })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "director_update_roadmap_tab1") {
+      const episodes = body.episodes || [];
+      if (episodes.length !== 10 || episodes.some((ep, i) => Number(ep.episode_number || i + 1) !== i + 1)) throw new Error("Tab 1 roadmap update requires ten ordered episode summaries.");
+      const sheet = getStudioSpreadsheet().getSheetByName(TAB_STORY);
+      if (!sheet || sheet.getLastRow() < 2) throw new Error("Tab 1 episode records are not available.");
+      const values = sheet.getDataRange().getValues(), headers = values[0].map(v => String(v).trim().toLowerCase());
+      const epCol = headers.findIndex(v => /episode[_ ]?number|episode[_ ]?num/.test(v));
+      const synCol = headers.findIndex(v => /^synopsis$|story.*summary/.test(v));
+      const cliffCol = headers.findIndex(v => /^cliffhanger$/.test(v));
+      if (epCol < 0) throw new Error("Tab 1 episode number column was not found.");
+      let updated = 0;
+      episodes.forEach((ep, i) => {
+        const n = Number(ep.episode_number || i + 1), rowIndex = values.findIndex((row, r) => r > 0 && Number(row[epCol]) === n);
+        if (rowIndex < 1) return;
+        if (synCol >= 0 && ep.synopsis) sheet.getRange(rowIndex + 1, synCol + 1).setValue(ep.synopsis);
+        if (cliffCol >= 0 && ep.cliffhanger) sheet.getRange(rowIndex + 1, cliffCol + 1).setValue(ep.cliffhanger);
+        updated++;
+      });
+      return ContentService.createTextOutput(JSON.stringify({ success: true, updated, message: `Updated Tab 1 roadmap details for ${updated} episodes. Titles and statuses were preserved.` })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (action === "director_update_tab2") {
+      const episode = Number(body.episode_number || 0), prompts = body.prompts || [];
+      if (episode < 1 || episode > 10 || prompts.length !== 10 || prompts.some((p, i) => Number(p.shot_number) !== i + 1 || !p.json_prompt)) throw new Error("Tab 2 update needs ten ordered shots, each with a JSON prompt.");
+      updateJsonPromptsSheet(episode, prompts);
+      return ContentService.createTextOutput(JSON.stringify({ success: true, message: `Ten prompts saved to Tab 2 for Episode ${episode}.` })).setMimeType(ContentService.MimeType.JSON);
     }
 
     if (action === "apply_director_season_rewrite") {
@@ -2403,6 +3021,13 @@ function doPost(e) {
 
     if (action === "sync_character_registry") {
       return ContentService.createTextOutput(JSON.stringify(syncCharacterRegistry(body)))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Repair and sanitize corrupted episode titles across Tab 1 & Tab 5
+    if (action === "repair_corrupted_episode_titles" || action === "repair_episode_titles") {
+      const res = repairCorruptedEpisodeTitles(body.season_number || 3);
+      return ContentService.createTextOutput(JSON.stringify(res))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
