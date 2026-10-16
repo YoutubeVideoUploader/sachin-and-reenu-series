@@ -118,7 +118,7 @@ VOICE_MAP = {
     "Amal": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
     "Shopkeeper": "Tea Shopkeeper: Local Malayali tea vendor, cautionary rustic high-range tone",
     "Caretaker": "Sreedharan (The Caretaker): Deep raspy mysterious high-range Malayalam tone (Central Travancore / Idukki dialect)",
-    "Narrator": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')"
+    "Narrator": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')"
 }
 
 # ---------------------------------------------------------------------------
@@ -360,7 +360,7 @@ def compile_single_shot_prompt(
             f"All characters on screen maintain strictly closed lips with zero talking or mouth animation."
         )
         audio_directive = (
-            "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
+            "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
             "All characters maintain strictly closed lips with zero talking or mouth animation. "
             "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
             "Clean voiceover audio and natural ambient foley sound effects only."

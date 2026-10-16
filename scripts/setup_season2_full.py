@@ -216,12 +216,12 @@ EPISODE_1_DATA = {
                 "action": "Sachin pours coffee into a mug, while Reenu takes a sip and laughs softly. Both characters have completely closed lips. Pure visual storytelling. No talking animation.",
                 "dialogue": {
                     "speaker": "Third-Person Narrator",
-                    "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
+                    "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                     "language": "Malayalam",
                     "script": "മലയാളം ലിപി",
                     "line": "കൊച്ചിയിലെ പുതിയ പ്രഭാതം സന്തോഷത്തോടെ തുടങ്ങി."
                 },
-                "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient morning foley sound effects only."
+                "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient morning foley sound effects only."
             }
         },
         {
@@ -339,12 +339,12 @@ EPISODE_1_DATA = {
                 "action": "The phone vibrates across the table. Reenu gasps softly with eyes wide in shock. Reenu's lips are firmly closed. No mouth movement. Pure visual storytelling.",
                 "dialogue": {
                     "speaker": "Third-Person Narrator",
-                    "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone",
+                    "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                     "language": "Malayalam",
                     "script": "മലയാളം ലിപി",
                     "line": "പെട്ടെന്നാണ് ആ ഫോൺ കോൾ വന്നത്."
                 },
-                "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient phone ringtone foley only."
+                "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient phone ringtone foley only."
             }
         },
         {
@@ -504,12 +504,12 @@ EPISODE_1_DATA = {
                 "action": "Sachin slides across the hardwood floor stuffing clothes under the couch. Reenu straightens cushions. Both characters have closed lips. No speaking animation. Pure visual slapstick comedy.",
                 "dialogue": {
                     "speaker": "Third-Person Narrator",
-                    "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, energetic playful melodic tone",
+                    "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                     "language": "Malayalam",
                     "script": "മലയാളം ലിപി",
                     "line": "അവിടെയൊരു വലിയ ബഹളം തുടങ്ങി."
                 },
-                "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and comedic rustling foley sound effects only."
+                "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and comedic rustling foley sound effects only."
             }
         },
         {
@@ -548,12 +548,12 @@ EPISODE_1_DATA = {
                 "action": "Sachin and Reenu stand completely motionless like statues. A loud doorbell chime sounds. Both characters keep strictly closed lips. Zero mouth movement.",
                 "dialogue": {
                     "speaker": "Third-Person Narrator",
-                    "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, suspenseful evocative tone",
+                    "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                     "language": "Malayalam",
                     "script": "മലയാളം ലിപി",
                     "line": "അവസാനം ആ കോളിംഗ് ബെൽ അടിച്ചു."
                 },
-                "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and loud realistic doorbell chime foley only."
+                "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and loud realistic doorbell chime foley only."
             }
         },
         {
@@ -591,12 +591,12 @@ EPISODE_1_DATA = {
                 "action": "The door swings open. Madhavan stands outside with arms folded, giving a piercing, stern inspection. Sachin freezes in sheer awe. Both characters have firmly closed lips. No mouth movement. High dramatic cliffhanger.",
                 "dialogue": {
                     "speaker": "Third-Person Narrator",
-                    "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, intense dramatic cliffhanger cadence",
+                    "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                     "language": "Malayalam",
                     "script": "മലയാളം ലിപി",
                     "line": "വാതിലിന് മുന്നിൽ അച്ഛൻ നിന്നു."
                 },
-                "audio_directive": "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+                "audio_directive": "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
             }
         }
     ]

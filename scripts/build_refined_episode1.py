@@ -421,12 +421,12 @@ shots_data = [
             "action": "PURE VISUAL SCENE ACTION. Sachin frozen completely motionless. Pure comedic tension. Closed lips.",
             "dialogue": {
                 "speaker": "Third-Person Narrator",
-                "voice_persona": "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth",
+                "voice_persona": "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth",
                 "language": "Malayalam",
                 "script": "മുന്നിൽ സ്യൂട്ട്കേസുമായി മാതാപിതാക്കൾ... ഉള്ളിൽ പതറി സച്ചിൻ!",
                 "line": "മുന്നിൽ സ്യൂട്ട്കേസുമായി മാതാപിതാക്കൾ... ഉള്ളിൽ പതറി സച്ചിൻ!"
             },
-            "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+            "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
         }
     },
     # Shot 10 (Cliffhanger: Kurian delivers killer question)

@@ -124,7 +124,7 @@ BASE_DNA_GIRIJA = (
 )
 DNA_GIRIJA = format_character_visual_dna("Girija", BASE_DNA_GIRIJA, "Elegant Kerala traditional cream cotton set-saree with emerald-green border, delicate gold necklace and small traditional jhumka earrings, gold bangles on right wrist.")
 
-NARRATOR_VOICE = "Consistent Third-Person Female Narrator: 22-24yo charming South Indian Malayalam female storyteller voice, warm expressive sweet melodic tone, gentle youthful evocative Malayalam cadence, clear acoustic studio warmth"
+NARRATOR_VOICE = "Consistent Third-Person Male Narrator: Deep, resonant, warm South Indian Malayalam male storyteller voice, atmospheric cinematic Malayalam cadence, clear acoustic studio warmth"
 
 MASTER_STYLE = "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps"
 
@@ -650,7 +650,7 @@ Output JSON matching this exact schema:
 def generate_next_episode_screenplay(current_ep_num, season_number=1, previous_story="", cliffhanger="", next_ep_premise="", cliffhanger_scene_state=None, is_new_season=False, target_entry=None, season_title="", active_character_dna=None, past_timeline_summary="", last_shot_details=None, upcoming_target_entry=None, season_climax_entry=None):
     """
     Calls Gemini to generate a captivating 1-minute next episode screenplay (10-11 shots)
-    with locked character dress, strict lip-movement rules, female narrator, pure Malayalam dialogue,
+    with locked character dress, strict lip-movement rules, male narrator, pure Malayalam dialogue,
     and rigorous sequence continuity (lighting, weather, spatial blocking, eyelines, persistent props, camera lens).
     Dynamically adheres to the Master Season Roadmap and inherits cliffhanger scene state for episode continuity.
     Enforces a strict two-way narrative bridge: connects back to previous episode, and actively sets up the upcoming episode!
@@ -752,7 +752,7 @@ This is the DEFINITIVE SEASON FINALE (Episode 10)!
         "2. Accurate Dialogue Phonetics: "
         "   - Use authentic, grammatically correct, beautifully spoken Malayalam written in clean Malayalam script (മലയാളം ലിപി). "
         "   - Every word must be written with precise orthography so that text-to-speech voice generators and voice actors pronounce every syllable clearly without stumbling, slurring, or mispronouncing. "
-        "NARRATOR VOICE: The third-person narrator is a young, expressive female narrator with a melodic, charming Malayalam storytelling voice. "
+        "NARRATOR VOICE: The third-person narrator is an expressive male storyteller with a deep, resonant, warm Malayalam storytelling voice. "
         "AUDIO RESTRICTION: STRICTLY NO BACKGROUND MUSIC, NO INSTRUMENTAL BGM, NO MUSIC SCORE. Clean voice audio and natural ambient foley effects only. "
         "STRICT NO-TEXT RESTRICTION: ABSOLUTELY NO VISIBLE ON-SCREEN TEXT, TYPOGRAPHY, WORDS, LETTERS, LABELS, WATERMARKS, TIMESTAMPS, OR LOGOS. The video frame must be completely clean of any written text, specifications, or graphic overlays. "
         "You will output ONLY valid JSON according to the specified schema."
@@ -833,7 +833,7 @@ CRITICAL PRODUCTION RULES:
      • These shots MUST focus on SHOWING THE SCENE ACTION AND CINEMATIC ENVIRONMENT (e.g., car moving on road, rain falling on streetlights, characters walking, looking at scenery, touching props, silent emotional bodily gestures).
      • In 'action', explicitly describe the physical scene action and state: "PURE VISUAL SCENE ACTION. All characters on screen are completely silent with lips firmly closed and relaxed. Absolutely NO character speaking, lip movement, or mouth animation. Characters do NOT speak."
      • In 'dialogue', the speaker MUST be: "Off-Screen Third-Person Narrator (Voiceover Only - Characters Do Not Speak)".
-     • In 'audio_directive', state: "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+     • In 'audio_directive', state: "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
    - CONVERSATION / CHARACTER DIALOGUE SHOTS:
      • Only the designated speaking character moves their mouth in precise lip sync. The listening character's mouth remains strictly closed.
 7. STRICT MALAYALAM CHARACTER NAMES & PRONUNCIATION ACCURACY (MANDATORY):
@@ -972,7 +972,7 @@ Output JSON structure:
           "script": "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച.",
           "line": "കൊച്ചിയിലെ ഒരു മനോഹരമായ ഞായറാഴ്ച ഉച്ച."
         }},
-        "audio_directive": "EXTERNAL FEMALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
+        "audio_directive": "EXTERNAL MALE VOICEOVER ONLY. The characters do NOT speak. Character lips remain completely closed with NO lip sync animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
       }}
     }}
   ]
@@ -1315,7 +1315,7 @@ def enforce_prompt_completeness(data, active_dna=None):
                 jp["action"] = f"{act.rstrip('.')}. All characters maintain strictly closed lips with zero talking or mouth animation. Pure visual storytelling."
             
             jp["audio_directive"] = (
-                "OFF-SCREEN FEMALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
+                "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. "
                 "All characters maintain strictly closed lips with zero talking or mouth animation. "
                 "CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. "
                 "Clean voiceover audio and natural ambient foley sound effects only."
