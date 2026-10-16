@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 1,
+  "total_episodes_produced": 3,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "The Munnar Trip / The Cottage in the Mist",
+  "current_arc": "As the elderly woman panics and barricades the back door, Sachin tries to demand answers about who is outside. The old woman reveals a dark local tragedy from decades ago involving a tea picker wronged by the estate owners. Amal panics and tries to sneak out the front window to find help.",
   "history": [
     {
       "episode": 1,
@@ -183,21 +183,48 @@
         "Sachin",
         "Amal"
       ]
+    },
+    {
+      "episode": 2,
+      "title": "മൂടൽമഞ്ഞിലെ വീട് (The Cottage in the Mist)",
+      "summary": "Stranded in the dense fog, Amal spots a dim light from an old cottage tucked away in the tea plantations. An elderly woman welcomes them inside to wait out the night. The tension spikes when the old woman instantly guesses that Reenu saw the woman on the road and warns them never to travel there after sunset.",
+      "cliffhanger": "A freezing handprint slowly presses against the outer window glass from the dark outside.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Third-Person Narrator",
+        "Sachin"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "ഇരുട്ടിലെ മന്ത്രിപ്പുകൾ (Whispers in the Dark)",
+      "summary": "As the elderly woman panics and barricades the back door, Sachin tries to demand answers about who is outside. The old woman reveals a dark local tragedy from decades ago involving a tea picker wronged by the estate owners. Amal panics and tries to sneak out the front window to find help.",
+      "cliffhanger": "Amal opens the front window, only to find the cottage surrounded by an impenetrable wall of glowing white mist and echoing footsteps.",
+      "characters_present": [
+        "Amal",
+        "Sreedharan",
+        "Sachin",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 2,
+  "episode_number": 3,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_CAR",
-    "time_of_day": "Late Afternoon Misty Mountain Atmosphere",
-    "lighting_palette": "Diffused cinematic mountain daylight through cool high-range fog",
-    "weather": "Cool misty high-range fog drifting through pine trees",
+    "scene_id": "SCENE_OUTDOOR_COTTAGE_FRONT_PARLOR",
+    "time_of_day": "Late Evening High-Range Monsoon Fog",
+    "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+    "weather": "Heavy mountain fog with cool condensation on glass",
     "spatial_blocking": {
-      "Reenu": "Rear passenger seat, looking out through misty car window"
+      "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
+      "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+      "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
     },
-    "eyeline_direction": "Characters looking attentively toward scene focal action",
+    "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
     "persistent_props": [
-      "Misty car passenger window with water droplets",
-      "Reenu's silver wrist watch"
+      "Sachin's cross-bag",
+      "Reenu's silver wristwatch",
+      "Foggy mountain road"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
@@ -3351,7 +3378,7 @@
       }
     ]
   },
-  "cliffhanger": "Renu sees the reflection in the window. Dialogue: 'അവൻ പിന്നിൽ!'",
+  "cliffhanger": "Amal opens the front window, only to find the cottage surrounded by an impenetrable wall of glowing white mist and echoing footsteps.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
