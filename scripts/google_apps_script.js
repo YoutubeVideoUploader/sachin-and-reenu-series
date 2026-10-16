@@ -1377,6 +1377,72 @@ function applyDirectorOutlineChange(body) {
   return { success: true, season_number: seasonNum, active_episode: activeEpisode, pivot_global_shot_id: pivot, message: `Director changes from shot ${pivot} saved to Tab 5, Tab 1, and Tab 2.` };
 }
 
+function applyDirectorSeasonRewrite(body) {
+  const seasonNum = parseInt(body.season_number || "1", 10);
+  const pivot = Number(body.pivot_global_shot_id || 1);
+  const activeEpisode = Number(body.active_episode || 1);
+  const shots = body.shots || [];
+  const generatedPrompts = body.prompts || [];
+  if (shots.length !== 100 || pivot < 1 || pivot > 100 || activeEpisode < 1 || activeEpisode > 10) {
+    throw new Error("Season rewrite requires 100 ordered shots, a valid pivot, and an active episode.");
+  }
+  const prior = getSeasonShotOutlineData(seasonNum).shots;
+  if (prior.length !== 100) throw new Error("Tab 5 must contain all 100 shots before a season rewrite.");
+  for (let i = 0; i < 100; i++) {
+    if (Number(shots[i].episode_number) !== Math.floor(i / 10) + 1 || Number(shots[i].shot_number) !== (i % 10) + 1) {
+      throw new Error(`Season rewrite returned an invalid position at Global Shot ${i + 1}.`);
+    }
+    if (i < pivot - 1) {
+      const a = shots[i], b = prior[i];
+      if (String(a.action || "") !== String(b.action || "") ||
+          String(a.dialogue_malayalam || "") !== String(b.dialogue_malayalam || "") ||
+          String(a.location || "") !== String(b.location || "") ||
+          String(a.speaker || "") !== String(b.speaker || "") ||
+          JSON.stringify(a.persistent_props || []) !== JSON.stringify(b.persistent_props || []) ||
+          String(a.camera_hint || "") !== String(b.camera_hint || "")) {
+        throw new Error(`Season rewrite changed frozen Global Shot ${i + 1}.`);
+      }
+    }
+  }
+
+  const pivotEpisode = Math.floor((pivot - 1) / 10) + 1;
+  const pivotShot = ((pivot - 1) % 10) + 1;
+  let finalPrompts = [];
+  if (activeEpisode >= pivotEpisode) {
+    const firstChangedPrompt = activeEpisode === pivotEpisode ? pivotShot : 1;
+    const promptSheet = getStudioSpreadsheet().getSheetByName(TAB_PROMPTS);
+    const existingRows = promptSheet && promptSheet.getLastRow() >= 3
+      ? promptSheet.getRange(3, 1, Math.min(10, promptSheet.getLastRow() - 2), 6).getValues() : [];
+    const priorByNumber = {};
+    existingRows.forEach(row => {
+      const match = String(row[0] || "").match(/(\d+)/);
+      if (!match) return;
+      let jsonPrompt = row[5] || "{}";
+      try { if (typeof jsonPrompt === "string") jsonPrompt = JSON.parse(jsonPrompt); } catch (e) { throw new Error(`Existing Tab 2 prompt ${match[1]} is invalid JSON.`); }
+      priorByNumber[Number(match[1])] = { shot_number: Number(match[1]), duration: row[1] || "6s", character: row[2] || "Reenu", dialogue_malayalam: row[3] || "", action_summary: row[4] || "", json_prompt: jsonPrompt };
+    });
+    for (let n = 1; n < firstChangedPrompt; n++) {
+      if (!priorByNumber[n]) throw new Error(`Cannot preserve Tab 2 Shot ${n}; it is missing from the current prompt sheet.`);
+      finalPrompts.push(priorByNumber[n]);
+    }
+    const expectedGenerated = 11 - firstChangedPrompt;
+    if (generatedPrompts.length !== expectedGenerated) throw new Error(`Tab 2 rewrite must contain ${expectedGenerated} prompts from Shot ${firstChangedPrompt} through Shot 10.`);
+    generatedPrompts.forEach((prompt, index) => {
+      if (Number(prompt.shot_number) !== firstChangedPrompt + index || !prompt.json_prompt) {
+        throw new Error(`Tab 2 generated prompt sequence is invalid at Shot ${firstChangedPrompt + index}.`);
+      }
+      finalPrompts.push(prompt);
+    });
+  } else if (generatedPrompts.length !== 0) {
+    throw new Error("Tab 2 prompts must remain unchanged when the active episode is before the rewrite pivot.");
+  }
+
+  updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots);
+  if (finalPrompts.length) updateJsonPromptsSheet(activeEpisode, finalPrompts);
+  return { success: true, season_number: seasonNum, pivot_global_shot_id: pivot, active_episode: activeEpisode,
+    message: finalPrompts.length ? `GitHub rewrite saved to Tab 5 from Global Shot ${pivot}; Tab 2 refreshed from Shot ${finalPrompts[0].shot_number}. Tab 1 and Tab 4 were left unchanged.` : `GitHub rewrite saved to Tab 5 from Global Shot ${pivot}. Tab 2 was before the pivot, so it stayed unchanged; Tab 1 and Tab 4 were left unchanged.` };
+}
+
 function getSeasonStoryArcData() {
   const ss = getStudioSpreadsheet();
   const sheet = ss.getSheetByName(TAB_STORY);
@@ -1981,6 +2047,21 @@ function doGet(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
+  if (action === "get_current_episode_prompts") {
+    const sheet = getStudioSpreadsheet().getSheetByName(TAB_PROMPTS);
+    const rows = sheet && sheet.getLastRow() >= 3
+      ? sheet.getRange(3, 1, Math.min(10, sheet.getLastRow() - 2), 6).getValues() : [];
+    const shots = rows.map(row => {
+      const match = String(row[0] || "").match(/(\d+)/);
+      let jsonPrompt = row[5] || "{}";
+      try { if (typeof jsonPrompt === "string") jsonPrompt = JSON.parse(jsonPrompt); } catch (e) {}
+      return match ? { shot_number: Number(match[1]), duration: row[1] || "6s", character: row[2] || "Reenu",
+        dialogue_malayalam: row[3] || "", action_summary: row[4] || "", json_prompt: jsonPrompt } : null;
+    }).filter(Boolean);
+    return ContentService.createTextOutput(JSON.stringify({ success: true, shots }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   // Get Series Thumbnail details
   if (action === "get_series_thumbnail" || action === "thumbnail") {
     const thumbData = getSeriesThumbnailData();
@@ -2293,6 +2374,11 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
+    if (action === "apply_director_season_rewrite") {
+      const res = applyDirectorSeasonRewrite(body);
+      return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
+    }
+
     if (action === "update_episode_story_from_outline") {
       const res = updateEpisodeStoryFromOutline(body.season_number || 1, body.episodes || []);
       return ContentService.createTextOutput(JSON.stringify(res))
@@ -2338,7 +2424,7 @@ function triggerGitHubWorkflowFromAppsScript(params) {
   const token = params.gh_token || PropertiesService.getScriptProperties().getProperty("GH_PAT") || GITHUB_PAT;
   const epNum = parseInt(params.episode_number || "1", 10);
   const workflow = String(params.workflow || "produce_and_publish.yml");
-  const allowedWorkflows = ["generate_next_episode.yml", "produce_and_publish.yml", "harmonize_season_flow.yml"];
+  const allowedWorkflows = ["generate_next_episode.yml", "produce_and_publish.yml", "harmonize_season_flow.yml", "rewrite_season_from_shot.yml"];
   if (!allowedWorkflows.includes(workflow)) {
     return { success: false, error: "INVALID_WORKFLOW", message: `Workflow ${workflow} is not allowed.` };
   }
@@ -2369,6 +2455,12 @@ function triggerGitHubWorkflowFromAppsScript(params) {
           season_number: String(params.season_number || "1"),
           is_new_season: String(params.is_new_season === true || params.is_new_season === "true"),
           story_premise: String(params.story_premise || "")
+        } : workflow === "rewrite_season_from_shot.yml" ? {
+          season_number: String(params.season_number || "1"),
+          pivot_global_shot_id: String(params.pivot_global_shot_id || "1"),
+          active_episode: String(params.active_episode || "1"),
+          story_idea: String(params.story_idea || ""),
+          roadmap_json: String(params.roadmap_json || "")
         } : workflow === "harmonize_season_flow.yml" ? {
           season_number: String(params.season_number || "1"),
           use_ai_review: String(params.use_ai_review !== false && params.use_ai_review !== "false")
@@ -2388,6 +2480,11 @@ function triggerGitHubWorkflowFromAppsScript(params) {
         status_code: code,
         message: `GitHub Actions workflow [${workflow}] triggered successfully by Google Apps Script for Episode ${epNum}!`
       };
+    }
+
+    if (workflow === "rewrite_season_from_shot.yml") {
+      return { success: false, method: "workflow_dispatch", status_code: code,
+        message: `GitHub rejected the season rewrite dispatch (HTTP ${code}); no fallback production workflow was started.` };
     }
 
     // 2. Try repository_dispatch as fallback

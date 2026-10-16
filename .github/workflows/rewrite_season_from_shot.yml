@@ -1,0 +1,69 @@
+﻿name: "Rewrite Season from Selected Shot (Gemini)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      season_number:
+        description: "Season number"
+        required: true
+        type: string
+      pivot_global_shot_id:
+        description: "First global shot to rewrite (1–100)"
+        required: true
+        type: string
+      active_episode:
+        description: "Episode currently shown in Tab 2"
+        required: true
+        type: string
+      story_idea:
+        description: "Creator's confirmed story direction"
+        required: true
+        type: string
+      roadmap_json:
+        description: "Confirmed 10-episode proposal JSON"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite-season:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install generation dependencies
+        run: pip install google-genai requests
+
+      - name: Generate confirmed season rewrite and sync Tab 5/Tab 2
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+          GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
+          SEASON_NUMBER: ${{ inputs.season_number }}
+          PIVOT_GLOBAL_SHOT_ID: ${{ inputs.pivot_global_shot_id }}
+          ACTIVE_EPISODE: ${{ inputs.active_episode }}
+          STORY_IDEA: ${{ inputs.story_idea }}
+          ROADMAP_JSON: ${{ inputs.roadmap_json }}
+        run: python scripts/rewrite_season_from_shot.py
+
+      - name: Refresh the GitHub portal with the updated canonical data
+        run: python scripts/update_portals.py
+
+      - name: Commit confirmed rewrite
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add season_*_shot_outline.json story_state.json current_episode_shots.json portal.html
+          git diff --cached --quiet || git commit -m "Apply confirmed director season rewrite [skip ci]"
+          git push

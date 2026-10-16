@@ -8363,9 +8363,9 @@ The JSON MUST follow this EXACT schema:
           seasonBtn.style.background = 'rgba(168, 85, 247, 0.2)';
           seasonBtn.style.color = '#d8b4fe';
         }
-        if (shotSelectWrapper) shotSelectWrapper.style.display = 'none';
-        if (epSelectWrapper) epSelectWrapper.style.display = 'none';
-        if (hint) hint.innerHTML = '📌 <b>Season roadmap:</b> Preview a season-wide story direction before applying a rewrite.';
+        if (shotSelectWrapper) shotSelectWrapper.style.display = 'flex';
+        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
+        if (hint) hint.innerHTML = '<b>Season roadmap:</b> Preview the 10-episode direction, choose the starting shot, then confirm the GitHub rewrite.';
         if (sendBtn) sendBtn.innerHTML = '🌊 Overhaul Season Script';
         if (input) input.placeholder = "Describe overall season direction or new theme... (e.g. 'Munnar haunted heritage tea factory investigation with 10 continuous episodes')";
       }
@@ -8815,7 +8815,9 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
         (lower.startsWith('in shot') && (lower.includes('make') || lower.includes('change') || lower.includes('add'))))
       );
 
-      if (isSeasonArcRequest) {
+      if (window.currentDirectorScopeMode === 'season_arc') {
+        mode = 'season_arc';
+      } else if (isSeasonArcRequest) {
         mode = 'season_arc';
       } else if (isPromptCreationRequest || (targetScope === 'full_episode' && !isQuestionOrInquiry)) {
         if (targetScope === 'full_episode' || lower.includes('whole episode') || lower.includes('entire episode') || lower.includes('all shots') || lower.includes('10 shots') || lower.includes('all 10') || lower.includes('total 10') || lower.includes('rewrite episode') || lower.includes('change episode') || lower.includes('change of whole episode')) {
@@ -9029,6 +9031,10 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
         packageData: extractedData,
         model: usedModel,
         mode: mode,
+        creatorIdea: userText,
+        proposalTargetEpisode: parseInt(targetEp, 10) || Number(episodeData.episode_number) || 1,
+        proposalTargetShot: parseInt(shotSelect ? shotSelect.value : '1', 10) || 1,
+        proposalActiveEpisode: Number(episodeData.episode_number) || 1,
         timestamp: new Date()
       });
 
@@ -9418,20 +9424,20 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
                     </h4>
                   </div>
                   <span class="badge" style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; font-size: 11px; font-weight: 700;">
-                    Tab 4 Ready
+                    Proposal only
                   </span>
                 </div>
 
                 ${pkg.logline ? `<p style="font-size: 12px; color: #cbd5e1; margin: 4px 0 10px 0; line-height: 1.4;"><b>Season Logline:</b> ${pkg.logline}</p>` : ''}
 
-                <!-- Master Sync Button for Tab 4 -->
+                <!-- Explicit approval before the remote season rewrite -->
                 <div style="background: rgba(88, 28, 135, 0.25); border: 1px solid #7c3aed; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                   <div>
-                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Push 10-Episode Roadmap to Production</div>
-                    <div style="font-size: 11px; color: #c4b5fd;">Updates Google Sheet Tab 4 [Season_Story_Arc] and your Season Roadmap grid immediately!</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #fff;">Review the roadmap, then confirm the rewrite</div>
+                    <div style="font-size: 11px; color: #c4b5fd;">GitHub Actions rewrites Tab 5 from your selected shot through Shot 100 and rebuilds Tab 2 for the active episode. Earlier shots and Tab 4 stay unchanged.</div>
                   </div>
-                  <button class="btn btn-primary" id="syncSeasonArcBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: #7c3aed; border-color: #6d28d9; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);" onclick="syncSeasonArcToSheet(${idx})">
-                    📤 Sync Season Arc to Google Sheet (Tab 4)
+                  <button class="btn btn-primary" id="confirmSeasonRewriteBtn_${idx}" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: #7c3aed; border-color: #6d28d9; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);" onclick="confirmSeasonRewriteInGitHub(${idx})">
+                    Confirm &amp; Run on GitHub
                   </button>
                 </div>
                 <div id="seasonArcStatus_${idx}" style="font-size: 12px; margin-bottom: 10px; display: none;"></div>
@@ -9580,6 +9586,53 @@ For prompts, provide exactly 10 prompts for active Episode ${activeEpisode}, der
       });
 
       container.scrollTop = container.scrollHeight;
+    }
+
+    async function confirmSeasonRewriteInGitHub(idx) {
+      const msg = geminiChatHistory[idx];
+      const proposal = msg && msg.packageData;
+      const button = document.getElementById(`confirmSeasonRewriteBtn_${idx}`);
+      const status = document.getElementById(`seasonArcStatus_${idx}`);
+      const episodes = proposal && Array.isArray(proposal.episodes) ? proposal.episodes.slice(0, 10) : [];
+      const outline = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      const targetEpisode = Number(msg && msg.proposalTargetEpisode);
+      const targetShot = Number(msg && msg.proposalTargetShot);
+      const pivot = (targetEpisode - 1) * 10 + targetShot;
+      if (!msg || proposal.mode !== 'season_arc' || episodes.length !== 10) {
+        if (status) { status.style.display = 'block'; status.style.color = '#f87171'; status.innerText = 'This proposal is incomplete. Ask Gemini to draft the 10-episode roadmap again.'; }
+        return;
+      }
+      if (outline.length !== 100 || pivot < 1 || pivot > 100) {
+        if (status) { status.style.display = 'block'; status.style.color = '#f87171'; status.innerText = 'A complete 100-shot Tab 5 outline and valid starting shot are required.'; }
+        return;
+      }
+      if (!confirm(`Run the confirmed Season ${proposal.season_number} rewrite on GitHub?\n\nIt will regenerate Tab 5 from Global Shot ${pivot} through Shot 100 and rebuild Tab 2 for the active episode. Shots 1–${pivot - 1} and Tab 4 will remain unchanged.`)) return;
+
+      if (button) { button.disabled = true; button.innerText = 'Dispatching GitHub workflow…'; }
+      if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = 'Sending the confirmed proposal to GitHub Actions…'; }
+      try {
+        const response = await fetch(getActiveGasUrl(), {
+          method: 'POST', headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({
+            action: 'trigger_workflow', workflow: 'rewrite_season_from_shot.yml',
+            season_number: Number(proposal.season_number || seasonShotOutlineData.season_number || episodeData.season_number),
+            pivot_global_shot_id: pivot,
+            active_episode: Number(msg.proposalActiveEpisode || episodeData.episode_number || 1),
+            story_idea: msg.creatorIdea || '',
+            roadmap_json: JSON.stringify({ season_number: proposal.season_number, season_title: proposal.season_title, logline: proposal.logline, episodes })
+          })
+        });
+        const result = await response.json();
+        if (!response.ok || result.success !== true) throw new Error(result.message || 'GitHub did not confirm the workflow dispatch.');
+        if (status) {
+          status.style.color = '#34d399';
+          status.innerHTML = `Confirmed and sent to GitHub Actions. Tab 5 and Tab 2 will update after the workflow succeeds. <a href="https://github.com/YoutubeVideoUploader/sachin-and-reenu-series/actions" target="_blank" rel="noopener" style="color:#67e8f9;text-decoration:underline;">View workflow progress</a>`;
+        }
+        if (button) button.innerText = 'Workflow dispatched';
+      } catch (error) {
+        if (status) { status.style.color = '#f87171'; status.innerText = `Dispatch failed; no rewrite was applied: ${error.message}`; }
+        if (button) { button.disabled = false; button.innerText = 'Confirm & Run on GitHub'; }
+      }
     }
 
     async function syncSeasonArcToSheet(idx) {
