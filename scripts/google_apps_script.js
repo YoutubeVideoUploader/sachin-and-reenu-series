@@ -2343,16 +2343,32 @@ function doPost(e) {
     }
 
     if (action === "gemini_proxy") {
-      const model = body.model || "gemini-3.5-flash";
-      const token = body.key || PropertiesService.getScriptProperties().getProperty("GEMINI_API_KEY") || "";
-      const gUrl = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + token;
-      const gRes = UrlFetchApp.fetch(gUrl, {
-        method: "post",
-        contentType: "application/json",
-        payload: JSON.stringify({ contents: body.contents }),
-        muteHttpExceptions: true
-      });
-      return ContentService.createTextOutput(gRes.getContentText()).setMimeType(ContentService.MimeType.JSON);
+      const props = PropertiesService.getScriptProperties();
+      const keys = ["GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"]
+        .map(name => props.getProperty(name) || "").filter(Boolean);
+      const models = [...new Set([body.model, "gemini-flash-latest", "gemini-flash-lite-latest", "gemini-3.8-flash", "gemini-3.5-flash"].filter(Boolean))];
+      if (!keys.length) {
+        return ContentService.createTextOutput(JSON.stringify({ error: { message: "No Gemini keys are configured in Apps Script properties." } }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+      let lastBody = "";
+      for (const token of keys) {
+        for (const model of models) {
+          const gUrl = "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent?key=" + token;
+          const gRes = UrlFetchApp.fetch(gUrl, {
+            method: "post",
+            contentType: "application/json",
+            payload: JSON.stringify({ contents: body.contents }),
+            muteHttpExceptions: true
+          });
+          lastBody = gRes.getContentText();
+          if (gRes.getResponseCode() >= 200 && gRes.getResponseCode() < 300) {
+            return ContentService.createTextOutput(lastBody).setMimeType(ContentService.MimeType.JSON);
+          }
+        }
+      }
+      return ContentService.createTextOutput(lastBody || JSON.stringify({ error: { message: "All configured Gemini key and model combinations failed." } }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     // 10. Upload Series Thumbnail to Google Drive (Deletes any old series thumbnail and saves the new one)
