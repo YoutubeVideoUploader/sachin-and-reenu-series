@@ -11187,17 +11187,26 @@ Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt
       const baseKey = Object.keys(CANONICAL_TAB4_REGISTRY).find(k => k.toLowerCase() === lower);
       const fromBase = baseKey ? CANONICAL_TAB4_REGISTRY[baseKey] : null;
 
-      const visualDna = (fromCast && fromCast.visual_dna && fromCast.visual_dna.length > 50)
-        ? fromCast.visual_dna
-        : (fromBase ? fromBase.visual_dna : `${cleanName}: Stylized 3D Pixar-style cartoon animation character (Strictly non-human realism).`);
+      let visualDna = (fromBase && (lower === "sachin" || lower === "reenu" || lower === "amal"))
+        ? fromBase.visual_dna
+        : ((fromCast && fromCast.visual_dna && fromCast.visual_dna.length > 50)
+            ? fromCast.visual_dna
+            : (fromBase ? fromBase.visual_dna : `${cleanName}: Stylized 3D Pixar-style cartoon animation character (Strictly non-human realism).`));
 
-      const lockedAttire = (fromCast && fromCast.locked_attire)
-        ? fromCast.locked_attire
-        : (fromBase ? fromBase.locked_attire : "Modern casual signature attire. Absolutely zero costume variations.");
+      // Sanitize any legacy 24yo / 22yo age mentions if custom string used
+      visualDna = visualDna.replace(/\b(24-year-old|24yo|22-year-old|22yo)\b/gi, '18-19 year old');
 
-      const voicePersona = (fromCast && fromCast.voice_persona)
-        ? fromCast.voice_persona
-        : (fromBase ? fromBase.voice_persona : `${cleanName} character voice`);
+      let lockedAttire = (fromBase && (lower === "sachin" || lower === "reenu" || lower === "amal"))
+        ? fromBase.locked_attire
+        : ((fromCast && fromCast.locked_attire)
+            ? fromCast.locked_attire
+            : (fromBase ? fromBase.locked_attire : "Modern casual signature attire. Absolutely zero costume variations."));
+
+      const voicePersona = (fromBase && (lower === "sachin" || lower === "reenu" || lower === "amal"))
+        ? fromBase.voice_persona
+        : ((fromCast && fromCast.voice_persona)
+            ? fromCast.voice_persona
+            : (fromBase ? fromBase.voice_persona : `${cleanName} character voice`));
 
       return {
         name: (fromBase ? fromBase.name : (fromCast ? fromCast.name : cleanName)),
