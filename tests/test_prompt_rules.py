@@ -57,10 +57,24 @@ class TestPromptRules(unittest.TestCase):
             self.assertIn('strictly closed lips', jp['action'])
             self.assertIn('strictly closed lips', jp['audio_sync'])
 
-            # 5. Camera check
+            # 5. Visual DNA Teenager & Negative Prompt Boundaries check
+            self.assertIn('18-19 year old', sachin['visual_dna'])
+            self.assertNotIn('24-year-old', sachin['visual_dna'])
+            self.assertIn('ZERO FACIAL HAIR', sachin['visual_dna'])
+            self.assertIn('PROHIBIT REALISTIC HUMAN SKIN PORES', sachin['visual_dna'])
+
+            self.assertIn('18-19 year old', reenu['visual_dna'])
+            self.assertNotIn('22-year-old', reenu['visual_dna'])
+            self.assertIn('PROHIBIT REALISTIC HUMAN SKIN PORES', reenu['visual_dna'])
+
+            self.assertIn('18-19 year old', amal['visual_dna'])
+            self.assertIn('ZERO BEARD', amal['visual_dna'])
+            self.assertIn('PROHIBIT REALISTIC HUMAN SKIN PORES', amal['visual_dna'])
+
+            # 6. Camera check
             self.assertEqual(jp['camera'], 'Wide tracking shot pulling back slowly in front of the crawling car.')
 
-            # 6. Audio spec BGM check
+            # 7. Audio spec BGM check
             self.assertEqual(jp['audio_spec']['background_music'], 'Strictly NO background music, zero score, clean dialogue only.')
 
             browser.close()
