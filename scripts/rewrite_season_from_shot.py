@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json, os, re, sys
+import json, os, re, sys, time
 from pathlib import Path
 import requests
 from google import genai
@@ -28,30 +28,68 @@ def get_json(action: str, **params):
 
 
 def gemini_json(prompt: str, schema: dict, label: str):
-    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY_2") or os.getenv("GEMINI_API_KEY_3")
-    if not api_key:
+    api_keys = []
+    for name in ("GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"):
+        key = os.getenv(name, "").strip()
+        if key and key not in api_keys:
+            api_keys.append(key)
+    if not api_keys:
         raise RuntimeError("No Gemini API key is configured in GitHub Actions secrets.")
-    client = genai.Client(api_key=api_key)
+
+    # Start with Google's current stable Flash model. Keep fallbacks because model
+    # availability and capacity can vary by project and over time.
+    models = ("gemini-3.8-flash", "gemini-3.5-flash", "gemini-3-flash-preview", "gemini-flash-latest")
     errors = []
-    for model in ("gemini-3.5-flash", "gemini-3-flash-preview", "gemini-2.5-flash"):
-        try:
-            result = client.models.generate_content(
-                model=model,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json",
-                    response_schema=schema,
-                    temperature=0.65,
-                    max_output_tokens=65536,
-                ),
-            )
-            if result.text:
-                parsed = json.loads(result.text)
-                print(f"{label} generated with {model}")
-                return parsed
-        except Exception as exc:
-            errors.append(f"{model}: {exc}")
-            print(f"{label} attempt failed on {model}: {exc}")
+    retryable_statuses = {429, 500, 502, 503, 504}
+    for model in models:
+        for key_index, api_key in enumerate(api_keys):
+            client = genai.Client(api_key=api_key)
+            for attempt in range(3):
+                try:
+                    result = client.models.generate_content(
+                        model=model,
+                        contents=prompt,
+                        config=types.GenerateContentConfig(
+                            response_mime_type="application/json",
+                            response_schema=schema,
+                            max_output_tokens=65536,
+                        ),
+                    )
+                    if result.text:
+                        parsed = json.loads(result.text)
+                        print(f"{label} generated with {model} (key slot {key_index + 1})")
+                        return parsed
+                    raise RuntimeError("Gemini returned an empty response.")
+                except Exception as exc:
+                    status = getattr(exc, "code", None) or getattr(exc, "status_code", None)
+                    if callable(status):
+                        try:
+                            status = status()
+                        except Exception:
+                            status = None
+                    if status is None:
+                        match = re.search(r"\b(400|401|403|404|429|500|502|503|504)\b", str(exc))
+                        status = int(match.group(1)) if match else None
+                    errors.append(f"{model} key-slot-{key_index + 1} attempt-{attempt + 1}: {exc}")
+                    print(f"{label} attempt failed on {model} (key slot {key_index + 1}, attempt {attempt + 1}): {exc}")
+
+                    # Invalid credentials/permissions are key-specific; try the next
+                    # configured key without repeatedly sending the same bad request.
+                    if status in {401, 403}:
+                        break
+                    # An unavailable/retired model should be skipped immediately.
+                    if status == 404:
+                        break
+                    if status in retryable_statuses and attempt < 2:
+                        delay = 2 ** (attempt + 1)
+                        print(f"Retrying {model} in {delay}s after a temporary Gemini service error.")
+                        time.sleep(delay)
+                        continue
+                    # Capacity/rate limits may differ by key; try the next configured key.
+                    if status == 429:
+                        break
+                    # Don't spend more quota retrying permanent request/schema errors.
+                    break
     raise RuntimeError(f"Gemini could not generate {label}: {' | '.join(errors)}")
 
 
