@@ -80,12 +80,13 @@ def main():
     prompt = f'''You are the showrunner for the Malayalam cinematic animated series Sachin & Reenu.
 The creator has CONFIRMED this whole-season direction: {IDEA}
 Confirmed 10-episode season roadmap (story guidance): {json.dumps(proposal_episodes, ensure_ascii=False)}
+Before drafting, infer the season's central dramatic question, each lead's want/flaw, the opposing pressure, and the emotional stakes from this confirmed premise and roadmap. Escalate consequences and character choices across the affected episodes; give each episode a distinct objective, obstacle, turning point, emotional shift, and cliffhanger. Use the roadmap as guidance, not a beat-by-beat template.
 Rewrite only the following Tab 5 range: Global Shot {PIVOT} through Global Shot 100 ({len(tail)} shots).
 The current shot at the pivot is the story starting point, and all preceding shots are frozen context.
 Frozen preceding shots for continuity only: {json.dumps(current[:PIVOT-1], ensure_ascii=False)}
 Current shots to replace in order: {json.dumps(tail, ensure_ascii=False)}
 Use the existing Tab 4 character registry without changing it: {json.dumps(cast, ensure_ascii=False)}. Do not introduce new characters; speaker must be a character in that registry or Third-Person Narrator.
-Return JSON object {{"shots":[...]}} with EXACTLY {len(tail)} shots. Each shot must have global_shot_id, episode_number, shot_number, speaker, action, dialogue_malayalam, location, persistent_props (array), camera_hint. Preserve the same global_shot_id, episode_number, shot_number positions. Make every episode Shot 10 a strong cliffhanger for episodes 1–9; each next episode Shot 1 directly continues that prior Shot 10; Episode 10 Shot 10 is the season's grand climax. Keep character identity and the existing Tab 4 attire consistent. Use authentic Malayalam script dialogue. Keep physical, prop, location, time, and emotional continuity. Never change the frozen shots.'''
+Return JSON object {{"shots":[...]}} with EXACTLY {len(tail)} shots. Each shot must have global_shot_id, episode_number, shot_number, speaker, action, dialogue_malayalam, location, persistent_props (array), camera_hint. Preserve the same global_shot_id, episode_number, and shot_number positions. Give each shot one primary visible action and one readable emotion that can be staged in about six seconds; avoid packing several actions/cuts into one beat. Use visual behavior, eyelines, silence, environment, and props to reveal information. Each camera_hint must give a motivated frame/angle and at most one purposeful move (or a deliberate locked frame); vary shot scale and composition. Stage transitions with clear screen direction, positions, props, and cause-and-effect. Give each affected episode a distinct dramatic rhythm rather than repeating a fixed shot template. Make every episode Shot 10 a specific, earned cliffhanger/turn in Episodes 1–9; the next episode's Shot 1 must show its immediate consequence and preserve the scene state. Episode 10 Shot 10 must pay off the season's central dramatic question and character arcs. Keep character identity and the existing Tab 4 attire consistent. Use natural spoken Malayalam: target 3–8 words and never exceed 10 words per spoken line; a silent visual shot may have an empty dialogue field. The speaker is already in its own field, so dialogue_malayalam must contain only spoken words: never prefix it with the speaker's name/label (such as "Sachin:"), acting directions, parenthetical notes, or quotation marks. A character's name may appear only when naturally addressed in the spoken line. Before returning, silently audit every affected episode's dramatic progression, Shot 10-to-Shot 1 handoff, filmability, camera variation, and dialogue rules. Never change the frozen shots.'''
     schema = {"type": "OBJECT", "properties": {"shots": {"type": "ARRAY", "items": {"type": "OBJECT", "properties": {
         "global_shot_id": {"type": "INTEGER"}, "episode_number": {"type": "INTEGER"}, "shot_number": {"type": "INTEGER"},
         "speaker": {"type": "STRING"}, "action": {"type": "STRING"}, "dialogue_malayalam": {"type": "STRING"}, "location": {"type": "STRING"},
@@ -96,16 +97,47 @@ Return JSON object {{"shots":[...]}} with EXACTLY {len(tail)} shots. Each shot m
     if len(rewritten) != len(tail):
         raise ValueError(f"Gemini returned {len(rewritten)} shots; expected {len(tail)}.")
     final = [dict(s) for s in current[:PIVOT-1]]
+    position_repairs = []
     for offset, shot in enumerate(rewritten):
         expected_id = PIVOT + offset
         expected_ep, expected_shot = divmod(expected_id - 1, 10)
-        if (int(shot.get("global_shot_id", -1)) != expected_id or int(shot.get("episode_number", -1)) != expected_ep + 1
-            or int(shot.get("shot_number", -1)) != expected_shot + 1 or not str(shot.get("action", "")).strip()):
-            raise ValueError(f"Gemini returned invalid shot position/content at Global Shot {expected_id}.")
+        # The response array is requested in strict shot order. Gemini occasionally
+        # mislabels an otherwise valid row's position (often at episode boundaries).
+        # The array index is the stable source of truth, so repair the three position
+        # fields deterministically instead of aborting the entire season rewrite.
+        if not isinstance(shot, dict):
+            raise ValueError(f"Gemini returned a non-object at expected Global Shot {expected_id}.")
+        returned_position = (shot.get("global_shot_id"), shot.get("episode_number"), shot.get("shot_number"))
+        expected_position = (expected_id, expected_ep + 1, expected_shot + 1)
+        if tuple(str(value) for value in returned_position) != tuple(str(value) for value in expected_position):
+            position_repairs.append(f"{expected_id}: {returned_position} -> {expected_position}")
+        shot["global_shot_id"], shot["episode_number"], shot["shot_number"] = expected_position
+        if not str(shot.get("action") or "").strip():
+            raise ValueError(f"Gemini returned empty action content at Global Shot {expected_id}.")
+        if not isinstance(shot.get("persistent_props"), list):
+            raise ValueError(f"Gemini returned invalid persistent_props at Global Shot {expected_id}; expected an array.")
+        for field in ("speaker", "dialogue_malayalam", "location", "camera_hint"):
+            if not isinstance(shot.get(field), str):
+                raise ValueError(f"Gemini returned invalid {field} content at Global Shot {expected_id}.")
         shot["season_number"] = SEASON
         shot["global_shot_id"] = expected_id
         shot["persistent_props"] = shot.get("persistent_props") or []
+        dialogue = str(shot.get("dialogue_malayalam") or "").strip()
+        dialogue_words = dialogue.split()
+        if len(dialogue_words) > 10:
+            raise ValueError(f"Dialogue at Global Shot {expected_id} exceeds the 10-word limit; no update was saved.")
+        speaker = str(shot.get("speaker") or "").strip()
+        if speaker and dialogue.casefold().startswith(f"{speaker.casefold()}:"):
+            raise ValueError(f"Dialogue at Global Shot {expected_id} repeats the speaker label; no update was saved.")
+        if dialogue.startswith(("(", "[") ) or '"' in dialogue or "“" in dialogue or "”" in dialogue:
+            raise ValueError(f"Dialogue at Global Shot {expected_id} contains stage directions or quotation marks; no update was saved.")
+        if not str(shot.get("camera_hint") or "").strip():
+            raise ValueError(f"Global Shot {expected_id} is missing a motivated camera hint; no update was saved.")
         final.append(shot)
+    if position_repairs:
+        print(f"Normalized {len(position_repairs)} Gemini shot-position label(s) using the requested output order:")
+        for repair in position_repairs:
+            print(f"  {repair}")
 
     # Keep all prefix rows byte-for-byte as received and rebuild episode structures.
     outline_path = ROOT / f"season_{SEASON}_shot_outline.json"
