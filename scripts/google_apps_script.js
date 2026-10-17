@@ -1204,6 +1204,7 @@ function getTab5OutlineTable() {
       malayalam: malayalamCol,
       speaker: find(/^speaker$/),
       action: find(/visual action beat|action description|action summary|^action$/),
+      positions: find(/character.*position|spatial.*staging|positions/i),
       dialogue: find(/dialogue/),
       location: find(/^location$/),
       props: find(/persistent props|^props$/),
@@ -1437,7 +1438,7 @@ function setupSeasonShotOutlineSheet(seasonNum) {
   sheet.getRange(1, 2).setValue(`Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
+  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Character Positions", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1446,8 +1447,9 @@ function setupSeasonShotOutlineSheet(seasonNum) {
     .setHorizontalAlignment("center");
   sheet.setFrozenRows(2);
   sheet.setColumnWidth(4, 250);
-  sheet.setColumnWidth(6, 400);
+  sheet.setColumnWidth(6, 350);
   sheet.setColumnWidth(7, 300);
+  sheet.setColumnWidth(8, 300);
 }
 
 function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSummaries) {
@@ -1469,7 +1471,7 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSu
   sheet.getRange(1, 2).setValue(seasonTitle || `Season ${seasonNum || 1}`).setFontWeight("bold");
   sheet.getRange(1, 1, 1, 2).setBackground("#0f766e").setFontColor("#ffffff");
 
-  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
+  const headers = ["Season #", "Episode #", "Shot #", "Episode Title (Malayalam & English)", "Speaker", "Visual Action Beat", "Character Positions", "Dialogue (Malayalam Script)", "Location", "Persistent Props", "Status"];
 
   sheet.getRange(2, 1, 1, headers.length).setValues([headers])
     .setBackground("#134e4a")
@@ -1487,6 +1489,7 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSu
     const shotNum = s.shot_number || (i % 10) + 1;
     const speaker = s.speaker || "Third-Person Narrator";
     const action = s.action || s.action_summary || "";
+    const positions = s.character_positions || s.positions || "";
     const dialogue = s.dialogue_malayalam || s.dialogue || "";
     const loc = s.location || "";
     const props = Array.isArray(s.persistent_props) ? s.persistent_props.join(", ") : (s.persistent_props || "");
@@ -1502,6 +1505,7 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSu
       titleCell,
       speaker,
       action,
+      positions,
       dialogue,
       loc,
       props,
@@ -1512,8 +1516,9 @@ function updateSeasonShotOutlineInSheet(seasonNum, seasonTitle, shots, episodeSu
   if (rows.length > 0) {
     sheet.getRange(3, 1, rows.length, headers.length).setValues(rows);
     sheet.setColumnWidth(4, 280);
-    sheet.setColumnWidth(6, 400);
+    sheet.setColumnWidth(6, 350);
     sheet.setColumnWidth(7, 300);
+    sheet.setColumnWidth(8, 300);
   }
 
   syncEpisodeTitlesFromTab5();
@@ -1567,6 +1572,7 @@ function getSeasonShotOutlineData(seasonNum) {
       title_malayalam: episodeTitle.title_malayalam,
       speaker: c.speaker >= 0 ? row[c.speaker] : "",
       action: c.action >= 0 ? row[c.action] : "",
+      character_positions: c.positions >= 0 ? row[c.positions] : "",
       dialogue_malayalam: c.dialogue >= 0 ? row[c.dialogue] : "",
       location: c.location >= 0 ? row[c.location] : "",
       persistent_props: typeof propsCell === "string" ? propsCell.split(",").map(p => p.trim()).filter(Boolean) : [],
@@ -1753,6 +1759,7 @@ function applyDirectorOutlineChange(body) {
   if (prior.length !== 100) throw new Error("Tab 5 must contain 100 shots before a director edit can be applied.");
   for (let i = 0; i < pivot - 1; i++) {
     if (String(shots[i].action || "") !== String(prior[i].action || "") ||
+        String(shots[i].character_positions || "") !== String(prior[i].character_positions || "") ||
         String(shots[i].dialogue_malayalam || "") !== String(prior[i].dialogue_malayalam || "") ||
         String(shots[i].location || "") !== String(prior[i].location || "") ||
         String(shots[i].speaker || "") !== String(prior[i].speaker || "") ||
@@ -1785,6 +1792,7 @@ function applyDirectorSeasonRewrite(body) {
     if (i < pivot - 1) {
       const a = shots[i], b = prior[i];
       if (String(a.action || "") !== String(b.action || "") ||
+          String(a.character_positions || "") !== String(b.character_positions || "") ||
           String(a.dialogue_malayalam || "") !== String(b.dialogue_malayalam || "") ||
           String(a.location || "") !== String(b.location || "") ||
           String(a.speaker || "") !== String(b.speaker || "") ||
@@ -2429,25 +2437,28 @@ function handleNextEpisodeFullUpdate(body) {
     Logger.log("Error updating Character_Registry: " + charErr.toString());
   }
 
-  // 6. Synchronize Tab 7: Season_Shot_Outline for active episode shots
+  // 6. Synchronize Tab 5: Season_Shot_Outline for active episode shots
   try {
-    const outlineSheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
-    if (outlineSheet && outlineSheet.getLastRow() >= 3 && body.shots && Array.isArray(body.shots)) {
+    const table = getTab5OutlineTable();
+    if (table && table.sheet.getLastRow() >= 3 && body.shots && Array.isArray(body.shots)) {
+      const c = table.columns;
+      const outlineSheet = table.sheet;
       for (let sIdx = 0; sIdx < body.shots.length; sIdx++) {
         const s = body.shots[sIdx];
         const sNum = s.shot_number || (sIdx + 1);
         const targetRow = 3 + (epNum - 1) * 10 + (sNum - 1);
         if (targetRow <= outlineSheet.getLastRow()) {
-          if (s.character) outlineSheet.getRange(targetRow, 5).setValue(s.character);
-          if (s.action_summary) outlineSheet.getRange(targetRow, 6).setValue(s.action_summary);
-          if (s.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(s.dialogue_malayalam);
-          // Tab 5 column 10 is Status; camera guidance has no column in this table.
+          if (s.character && c.speaker >= 0) outlineSheet.getRange(targetRow, c.speaker + 1).setValue(s.character);
+          if (s.action_summary && c.action >= 0) outlineSheet.getRange(targetRow, c.action + 1).setValue(s.action_summary);
+          if ((s.character_positions || s.positions) && c.positions >= 0) outlineSheet.getRange(targetRow, c.positions + 1).setValue(s.character_positions || s.positions);
+          if (s.dialogue_malayalam && c.dialogue >= 0) outlineSheet.getRange(targetRow, c.dialogue + 1).setValue(s.dialogue_malayalam);
+          if (s.location && c.location >= 0) outlineSheet.getRange(targetRow, c.location + 1).setValue(s.location);
         }
       }
-      Logger.log(`Synchronized Episode ${epNum} (${body.shots.length} shots) to Tab 7 [${TAB_SHOT_OUTLINE}]`);
+      Logger.log(`Synchronized Episode ${epNum} (${body.shots.length} shots) to Tab 5 [${TAB_SHOT_OUTLINE}]`);
     }
   } catch (outErr) {
-    Logger.log("Error synchronizing Tab 7: " + outErr.toString());
+    Logger.log("Error synchronizing Tab 5: " + outErr.toString());
   }
 
 
@@ -2946,7 +2957,7 @@ function doPost(e) {
       for (let i = 0; i < pivot - 1; i++) {
         const a = shots[i], b = prior[i];
         if (Number(a.episode_number) !== Number(b.episode_number) || Number(a.shot_number) !== Number(b.shot_number) ||
-            ["action", "dialogue_malayalam", "location", "speaker", "camera_hint"].some(k => String(a[k] || "") !== String(b[k] || "")) ||
+            ["action", "character_positions", "dialogue_malayalam", "location", "speaker", "camera_hint"].some(k => String(a[k] || "") !== String(b[k] || "")) ||
             JSON.stringify(a.persistent_props || []) !== JSON.stringify(b.persistent_props || [])) throw new Error(`Tab 5 update changed frozen Global Shot ${i + 1}.`);
       }
       updateSeasonShotOutlineInSheet(seasonNum, body.season_title || `Season ${seasonNum}`, shots, body.episodes || []);
@@ -3112,7 +3123,9 @@ function triggerGitHubWorkflowFromAppsScript(params) {
           use_ai_review: String(params.use_ai_review !== false && params.use_ai_review !== "false")
         } : {
           force_run: true,
-          advance_to_next: false
+          advance_to_next: false,
+          music_source: String(params.music_source || "auto"),
+          shot_music_map: String(params.shot_music_map || "")
         }
       }),
       muteHttpExceptions: true
@@ -3147,7 +3160,9 @@ function triggerGitHubWorkflowFromAppsScript(params) {
         event_type: "trigger-assembly",
         client_payload: {
           episode_number: epNum,
-          force_run: true
+          force_run: true,
+          music_source: String(params.music_source || "auto"),
+          shot_music_map: String(params.shot_music_map || "")
         }
       }),
       muteHttpExceptions: true
@@ -3242,23 +3257,26 @@ function updateSingleShotPrompt(episodeNum, shotNum, shotData) {
     }
   }
 
-  // BIDIRECTIONAL SYNC: Simultaneously update Tab 7 [Season_Shot_Outline]
+  // BIDIRECTIONAL SYNC: Simultaneously update Tab 5 [Season_Shot_Outline]
   try {
-    const outlineSheet = ss.getSheetByName(TAB_SHOT_OUTLINE);
-    if (outlineSheet && outlineSheet.getLastRow() >= 3) {
+    const table = getTab5OutlineTable();
+    if (table && table.sheet.getLastRow() >= 3) {
+      const c = table.columns;
+      const outlineSheet = table.sheet;
       const epN = Number(episodeNum) || 1;
       const shN = Number(shotNum) || 1;
       const targetRow = 3 + (epN - 1) * 10 + (shN - 1);
       if (targetRow <= outlineSheet.getLastRow()) {
-        if (shotData.character) outlineSheet.getRange(targetRow, 5).setValue(shotData.character);
-        if (shotData.action_summary) outlineSheet.getRange(targetRow, 6).setValue(shotData.action_summary);
-        if (shotData.dialogue_malayalam) outlineSheet.getRange(targetRow, 7).setValue(shotData.dialogue_malayalam);
-        if (shotData.location) outlineSheet.getRange(targetRow, 8).setValue(shotData.location);
-        outlineSheet.getRange(targetRow, 10).setValue("Prompt Ready");
+        if (shotData.character && c.speaker >= 0) outlineSheet.getRange(targetRow, c.speaker + 1).setValue(shotData.character);
+        if (shotData.action_summary && c.action >= 0) outlineSheet.getRange(targetRow, c.action + 1).setValue(shotData.action_summary);
+        if ((shotData.character_positions || shotData.positions) && c.positions >= 0) outlineSheet.getRange(targetRow, c.positions + 1).setValue(shotData.character_positions || shotData.positions);
+        if (shotData.dialogue_malayalam && c.dialogue >= 0) outlineSheet.getRange(targetRow, c.dialogue + 1).setValue(shotData.dialogue_malayalam);
+        if (shotData.location && c.location >= 0) outlineSheet.getRange(targetRow, c.location + 1).setValue(shotData.location);
+        if (c.status >= 0) outlineSheet.getRange(targetRow, c.status + 1).setValue("Prompt Ready");
       }
     }
   } catch (syncErr) {
-    Logger.log("Notice syncing to Tab 7: " + syncErr.toString());
+    Logger.log("Notice syncing to Tab 5: " + syncErr.toString());
   }
 
   if (updatedInTab2) {

@@ -352,10 +352,20 @@ def fetch_and_prepare_episode_custom_music(gas_url, temp_dir):
         if len(downloaded_tracks) == 1:
             return downloaded_tracks[0]
             
-        # If multiple tracks, concatenate them in the shuffled order
+        # If multiple tracks, standardize and concatenate them in the shuffled order
+        std_tracks = []
+        for idx_t, t in enumerate(downloaded_tracks):
+            std_t = custom_music_dir / f"std_track_{idx_t}.mp3"
+            c_cmd = ["ffmpeg", "-y", "-i", str(t), "-ar", "44100", "-ac", "2", "-c:a", "libmp3lame", "-b:a", "192k", str(std_t)]
+            res_c = subprocess.run(c_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if res_c.returncode == 0 and std_t.exists():
+                std_tracks.append(std_t)
+            else:
+                std_tracks.append(t)
+
         concat_txt = custom_music_dir / "music_concat.txt"
         with open(concat_txt, "w", encoding="utf-8") as f_out:
-            for t in downloaded_tracks:
+            for t in std_tracks:
                 f_out.write(f"file '{t.resolve().as_posix()}'\n")
                 
         combined_audio = custom_music_dir / "combined_custom_music.mp3"
@@ -673,7 +683,8 @@ def _merge_episode_shots_internal(temp_dir, shots_dir, output_file, episode_num=
         default_bgm = random.choice(all_bgm_files)
 
     # Fetch custom music from Google Drive if required
-    if music_source in ("episode_custom", "mix"):
+    # Modes 'auto', 'episode_custom', 'mix', and 'general' inspect Drive for uploaded custom tracks
+    if music_source in ("auto", "episode_custom", "mix", "general"):
         custom_bgm = fetch_and_prepare_episode_custom_music(gas_url, temp_dir)
 
     # Assemble track according to chosen music source
@@ -691,17 +702,29 @@ def _merge_episode_shots_internal(temp_dir, shots_dir, output_file, episode_num=
             temp_dir=temp_dir
         )
         is_mixed_track = True
-    elif music_source == "episode_custom":
+    elif music_source in ("auto", "episode_custom"):
         if custom_bgm and custom_bgm.exists():
             selected_bgm = custom_bgm
-            print(f"🎵 Using Episode Custom Music: {selected_bgm.name}")
+            print(f"🎵 Using Episode Custom Music from Google Drive: {selected_bgm.name}")
         else:
-            print("⚠️ Episode Custom Music not available, falling back gracefully to General Series BGM.")
+            if music_source == "episode_custom":
+                print("⚠️ Episode Custom Music not available in Drive, falling back gracefully to General Series BGM.")
+            else:
+                print("ℹ️ No custom music in Drive 'Episode_Music', using General Series Romantic BGM.")
             selected_bgm = default_bgm
-    else:
+    elif music_source == "force_general":
         selected_bgm = default_bgm
         if selected_bgm:
-            print(f"🎵 Selected General Series Romantic BGM: {selected_bgm.name}")
+            print(f"🎵 Forced General Series Romantic BGM: {selected_bgm.name}")
+    else:
+        # music_source == "general" (Auto-prioritize custom track if creator uploaded one to Drive)
+        if custom_bgm and custom_bgm.exists():
+            selected_bgm = custom_bgm
+            print(f"🎵 Auto-detected active Episode Custom Music in Drive: {selected_bgm.name}")
+        else:
+            selected_bgm = default_bgm
+            if selected_bgm:
+                print(f"🎵 Selected General Series Romantic BGM: {selected_bgm.name}")
 
     # Step 4: Final Mix — Spoken Dialogue + Ambient Romantic BGM + Title Overlay + Story Watermark
     print("\n3. Mastering Audio Mix (Dialogue + Romantic BGM), Title Overlay & Watermark...")
@@ -862,7 +885,7 @@ def main():
     parser.add_argument("--title_en", default="", help="Episode English title")
     parser.add_argument("--title_ml", default="", help="Episode Malayalam title")
     parser.add_argument("--bgm", type=int, default=None, help="BGM track index (1-10)")
-    parser.add_argument("--music_source", choices=["general", "episode_custom", "mix"], default="general", help="Music source: 'general' (rotating library), 'episode_custom' (Google Drive Episode_Music folder), or 'mix' (shot-by-shot mix)")
+    parser.add_argument("--music_source", choices=["auto", "general", "episode_custom", "mix", "force_general"], default="auto", help="Music source: 'auto' (prefers Google Drive Episode_Music if present, else general), 'episode_custom' (Drive), 'mix' (shot-by-shot), or 'general' / 'force_general'")
     parser.add_argument("--shot_music_map", default="", help="Per-shot music mapping for mix mode (e.g. '1:default,2:custom...' or JSON)")
     args = parser.parse_args()
 

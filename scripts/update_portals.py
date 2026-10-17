@@ -1,3 +1,4 @@
+import os
 import json
 import re
 import sys
@@ -161,6 +162,18 @@ if state_path.exists():
 
     except Exception as e:
         print(f"Notice updating character registry from story_state.json: {e}")
+
+# Keep API keys clean for GitHub push protection (loaded via localStorage in browser)
+updated_html = re.sub(
+    r'const BACKUP_GEMINI_KEYS = \[.*?\];',
+    'const BACKUP_GEMINI_KEYS = [];',
+    updated_html
+)
+updated_html = re.sub(
+    r'const DEFAULT_GEMINI_KEY = \'.*?\';',
+    'const DEFAULT_GEMINI_KEY = \'\';',
+    updated_html
+)
 
 # Target paths across project workspace
 target_paths = [

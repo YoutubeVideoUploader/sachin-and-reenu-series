@@ -19,13 +19,14 @@ on:
         type: boolean
         default: false
       music_source:
-        description: "Soundtrack Source: 'episode_custom' (Google Drive Episode_Music folder), 'general' (Standard rotating BGM library), or 'mix' (Shot-by-shot mix)"
+        description: "Soundtrack Source: 'auto' (prioritize Google Drive Episode_Music folder if tracks exist, falls back to general BGM), 'episode_custom', 'general', or 'mix'"
         type: choice
         options:
-          - general
+          - auto
           - episode_custom
+          - general
           - mix
-        default: general
+        default: auto
       shot_music_map:
         description: "Per-shot music mapping for mix mode (e.g. '1:default,2:custom...' or JSON)"
         type: string
@@ -107,7 +108,7 @@ jobs:
           python scripts/video_merger.py --shots_dir clean_shots --output master_episode.mp4 \
             --season "${{ steps.drive_check.outputs.season }}" \
             --episode "${{ steps.drive_check.outputs.episode }}" \
-            --music_source "${{ inputs.music_source || github.event.client_payload.music_source || 'general' }}" \
+            --music_source "${{ inputs.music_source || github.event.client_payload.music_source || 'auto' }}" \
             --shot_music_map "${{ inputs.shot_music_map || github.event.client_payload.shot_music_map || '' }}"
 
       # -------------------------------------------------------------
@@ -128,7 +129,7 @@ jobs:
       # STEP 8: INSTAGRAM PUBLISHING
       # -------------------------------------------------------------
       - name: 8. Publish to Instagram Reels
-        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' && !inputs.dry_run && hashFiles('master_episode.mp4') != '' }}
+        if: ${{ !inputs.advance_to_next && steps.drive_check.outputs.should_run == 'true' && !inputs.dry_run }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
@@ -138,9 +139,14 @@ jobs:
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
           echo "Publishing master episode to Instagram Reels..."
-          python scripts/instagram_publisher.py \
-            --season "${{ steps.drive_check.outputs.season }}" \
-            --episode "${{ steps.drive_check.outputs.episode }}"
+          if [ -f master_episode.mp4 ]; then
+            python scripts/instagram_publisher.py \
+              --season "${{ steps.drive_check.outputs.season }}" \
+              --episode "${{ steps.drive_check.outputs.episode }}"
+          else
+            echo "Error: master_episode.mp4 was not generated!"
+            exit 1
+          fi
 
       # -------------------------------------------------------------
       # STEP 9: AUTONOMOUS NEXT EPISODE GENERATION (MANUAL ADVANCE)
@@ -166,6 +172,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add story_state.json current_episode_shots.json portal.html 2>/dev/null || true
-          git diff-index --quiet HEAD || git commit -m "Advance to next episode: new screenplay, JSON prompts & portal [skip ci]"
-          git push || true
+          git add story_state.json current_episode_shots.json portal.html assets/thumbnail*.jpg 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Advance to next episode: new screenplay, JSON prompts & portal [skip ci]"
+            git push || true
+          else
+            echo "No staged changes to commit. Skipping commit cleanly."
+          fi
