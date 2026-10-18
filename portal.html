@@ -4244,19 +4244,7 @@
       }
 
       try {
-        // 1. Notify Google Apps Script in background
-        fetch(gasUrl, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({
-            action: "trigger_workflow",
-            episode_number: epNum,
-            music_source: musicSource,
-            shot_music_map: shotMusicMapJson
-          })
-        }).catch(e => console.log("GAS notify:", e));
-
-        // 2. Dispatch GitHub Actions workflow directly
+        // Dispatch GitHub Actions workflow directly
         const token = [103,104,111,95,78,97,72,97,79,108,73,65,105,122,116,76,114,106,86,89,55,51,57,112,114,76,84,50,116,84,74,120,65,115,49,48,84,72,82,106].map(c=>String.fromCharCode(c)).join('');
         const ghRes = await fetch("https://api.github.com/repos/YoutubeVideoUploader/sachin-and-reenu-series/actions/workflows/produce_and_publish.yml/dispatches", {
           method: "POST",

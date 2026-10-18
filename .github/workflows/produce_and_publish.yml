@@ -150,10 +150,15 @@ jobs:
           GAS_WEBHOOK_URL: ${{ secrets.GAS_WEBHOOK_URL }}
         run: |
           echo "Publishing master episode to Instagram Reels..."
+          FORCE_ARG=""
+          if [ "${{ inputs.force_run }}" = "true" ] || [ "${{ github.event.client_payload.force_run }}" = "true" ]; then
+            FORCE_ARG="--force"
+          fi
           if [ -f master_episode.mp4 ]; then
             python scripts/instagram_publisher.py \
               --season "${{ steps.drive_check.outputs.season }}" \
-              --episode "${{ steps.drive_check.outputs.episode }}"
+              --episode "${{ steps.drive_check.outputs.episode }}" \
+              $FORCE_ARG
           else
             echo "Error: master_episode.mp4 was not generated!"
             exit 1
@@ -186,6 +191,7 @@ jobs:
           git add story_state.json current_episode_shots.json portal.html assets/thumbnail*.jpg assets/thumbnail_box_overlay.png 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "Advance to next episode: new screenplay, JSON prompts & portal [skip ci]"
+            git pull --rebase origin main 2>/dev/null || true
             git push || true
           else
             echo "No staged changes to commit. Skipping commit cleanly."
