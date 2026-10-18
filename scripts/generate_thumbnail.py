@@ -116,10 +116,30 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
     im = Image.open(TEMPLATE_PATH).convert("RGB")
     w, h = im.size
 
+    # Auto-composite sticky note background box overlay if present
+    overlay_path = Path("assets/thumbnail_box_overlay.png")
+    if overlay_path.exists():
+        try:
+            overlay = Image.open(overlay_path).convert("RGBA")
+            target_ov_w = int(overlay.width * (w / 941.0))
+            target_ov_h = int(overlay.height * (h / 1672.0))
+            if target_ov_w != overlay.width or target_ov_h != overlay.height:
+                overlay = overlay.resize((target_ov_w, target_ov_h), Image.LANCZOS)
+            ov_x = int(w * (620.0 / 941.0))
+            ov_y = int(h * (15.0 / 1672.0))
+            im.paste(overlay, (ov_x, ov_y), overlay)
+        except Exception as oe:
+            print(f"[THUMBNAIL] Notice applying box overlay: {oe}")
+
     # Precise relative coordinates of the blank paper areas inside the sticky notes
-    cx = int(w * 0.814)
-    sy = int(h * 0.0903)
-    ey = int(h * 0.1950)
+    cx_top = int(w * 0.8055)
+    cy_top = int(h * 0.0885)
+    angle_top = -5.5
+
+    cx_bot = int(w * 0.8268)
+    cy_bot = int(h * 0.1842)
+    angle_bot = -6.5
+
     font_size = int(72 * (h / 1672.0))
 
     font_candidates = [
@@ -148,12 +168,13 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
 
     def render_tilted_styled_text(text, font, text_color=(28, 20, 16, 255), shadow_color=(205, 180, 145, 180), angle=0.0):
         bbox = font.getbbox(text)
-        bw = bbox[2] - bbox[0] + 30
-        bh = bbox[3] - bbox[1] + 30
-        canvas = Image.new("RGBA", (bw + 20, bh + 20), (0, 0, 0, 0))
+        bw = bbox[2] - bbox[0]
+        bh = bbox[3] - bbox[1]
+        pad = 20
+        canvas = Image.new("RGBA", (bw + pad * 2, bh + pad * 2), (0, 0, 0, 0))
         d = ImageDraw.Draw(canvas)
-        ox = 10 - bbox[0]
-        oy = 10 - bbox[1]
+        ox = pad - bbox[0]
+        oy = pad - bbox[1]
         # Soft warm paper shadow
         for sx, sy_off in [(2, 2), (2, 3), (3, 2), (1, 3)]:
             d.text((ox + sx, oy + sy_off), text, font=font, fill=shadow_color)
@@ -163,12 +184,12 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
             canvas = canvas.rotate(angle, resample=Image.BICUBIC, expand=True)
         return canvas
 
-    # Top sticky note (Season) has a -3.5 degree tilt; bottom (Episode) has a -2.0 degree tilt
-    s_img = render_tilted_styled_text(season_text, font, angle=-3.5)
-    e_img = render_tilted_styled_text(episode_text, font, angle=-2.0)
+    # Top sticky note (Season) has a -5.5 degree tilt; bottom (Episode) has a -6.5 degree tilt
+    s_img = render_tilted_styled_text(season_text, font, angle=angle_top)
+    e_img = render_tilted_styled_text(episode_text, font, angle=angle_bot)
 
-    im.paste(s_img, (cx - s_img.width // 2, sy - s_img.height // 2), s_img)
-    im.paste(e_img, (cx - e_img.width // 2, ey - e_img.height // 2), e_img)
+    im.paste(s_img, (cx_top - s_img.width // 2, cy_top - s_img.height // 2), s_img)
+    im.paste(e_img, (cx_bot - e_img.width // 2, cy_bot - e_img.height // 2), e_img)
 
     im.save(output_path, "JPEG", quality=95)
     print(f"[THUMBNAIL] Generated Reel thumbnail: {output_path} (Season {season_text} - Episode {episode_text}) in sticky note boxes")
