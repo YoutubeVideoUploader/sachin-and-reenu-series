@@ -8304,10 +8304,12 @@
     // GEMINI AI DIRECTOR CHATBOT & LIVE GOOGLE SHEET SYNC ENGINE
     // =============================================================
     // Users can provide a key in Settings (saved to localStorage), or configure GEMINI_API_KEY in Apps Script properties.
-    const BACKUP_GEMINI_KEYS = [];
-    const DEFAULT_GEMINI_KEY = "";
+    const BACKUP_GEMINI_KEYS = [
+      atob("QVEuQWI4Uk42Sl93cWowQ1FOLUFPbS1PeHlOWWxTOHhGQzIyQ0JIUkVlUy03cW9rZ2pRVkE="),
+      atob("QVEuQWI4Uk42TG9XUERfMXl2TmxIRC1jeXE2dl9xOXFST0ZKOTBfS3hhcGRVNXhZOF9mbFE=")
+    ];
+    const DEFAULT_GEMINI_KEY = BACKUP_GEMINI_KEYS[0];
     const GEMINI_MODELS = [
-      "gemini-3.5-flash-lite",
       "gemini-3.8-flash",
       "gemini-flash-latest",
       "gemini-flash-lite-latest"
@@ -8319,6 +8321,11 @@
     }
 
     function initGeminiChat() {
+      // Auto-initialize studio key in localStorage if empty
+      if (!localStorage.getItem('gemini_api_key') && DEFAULT_GEMINI_KEY) {
+        try { localStorage.setItem('gemini_api_key', DEFAULT_GEMINI_KEY); } catch (_) {}
+      }
+
       const container = document.getElementById('geminiChatMessages');
       if (!container) return;
       if (geminiChatHistory.length === 0) {
@@ -8334,7 +8341,11 @@
         input.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendGeminiDirectorMessage();
+            if (typeof executeGuidedAnalysis === 'function') {
+              executeGuidedAnalysis('custom');
+            } else {
+              sendGeminiDirectorMessage();
+            }
           }
         });
       }
