@@ -381,6 +381,20 @@
       padding: 20px;
     }
 
+    .editor-section-card {
+      flex-shrink: 0 !important;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .editor-section-header {
+      user-select: none;
+      transition: background 0.15s ease;
+    }
+    .editor-section-header:hover {
+      background: #25334d !important;
+    }
     .modal-card {
       background: #121727;
       border: 1px solid #2d3858;
@@ -2001,10 +2015,10 @@
   <!-- Butterfly Story Propagation & Review Modal -->
     <!-- Structured Shot Detail Inspector & Prompt Compiler Modal -->
   <div class="modal-backdrop" id="butterflyEditorModal" onclick="handleShotDetailModalBackdropClick(event)" style="display: none; z-index: 10000;">
-    <div class="modal-card" style="max-width: 980px; width: 95%; max-height: 94vh; background: #0c0f1d; border: 1px solid #6366f1; border-radius: 14px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85); display: flex; flex-direction: column;">
+    <div class="modal-card" style="max-width: 980px; width: 95%; height: 90vh; max-height: 94vh; background: #0c0f1d; border: 1px solid #6366f1; border-radius: 14px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85); display: flex; flex-direction: column; overflow: hidden;">
       
       <!-- Modal Header -->
-      <div style="padding: 16px 22px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);">
+      <div style="flex-shrink: 0; padding: 16px 22px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);">
         <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
           <span style="font-size: 24px;">✏️</span>
           <div>
@@ -2032,10 +2046,10 @@
       </div>
 
       <!-- Modal Body (Scrollable) -->
-      <div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex: 1;">
+      <div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch;">
         
         <!-- Continuity Guardrail Context Bar -->
-        <div id="shotEditContinuityBar" style="background: #080d1a; border: 1px solid #1e293b; border-radius: 10px; padding: 10px 14px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div id="shotEditContinuityBar" style="flex-shrink: 0; background: #080d1a; border: 1px solid #1e293b; border-radius: 10px; padding: 10px 14px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
           <div id="shotEditPrevContext" style="color: #94a3b8; flex: 1; min-width: 200px;">
             ⬅️ <b>Shot K-1:</b> <span id="shotEditPrevSummary">Loading prior shot...</span>
           </div>
@@ -2050,7 +2064,7 @@
         <!-- 4 Collapsible Accordion Sections -->
 
         <!-- SECTION 1: Action & Acting -->
-        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+        <div class="editor-section-card" style="flex-shrink: 0; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
           <div class="editor-section-header" onclick="toggleEditorSection('secAction')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 14px;">🎬</span>
@@ -2094,7 +2108,7 @@
         </div>
 
         <!-- SECTION 2: Characters & Blocking -->
-        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+        <div class="editor-section-card" style="flex-shrink: 0; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
           <div class="editor-section-header" onclick="toggleEditorSection('secChars')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 14px;">👥</span>
@@ -2140,7 +2154,7 @@
         </div>
 
         <!-- SECTION 3: Camera & Setting -->
-        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+        <div class="editor-section-card" style="flex-shrink: 0; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
           <div class="editor-section-header" onclick="toggleEditorSection('secCam')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 14px;">🎥</span>
@@ -2190,7 +2204,7 @@
         </div>
 
         <!-- SECTION 4: Dialogue & Sound -->
-        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+        <div class="editor-section-card" style="flex-shrink: 0; background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
           <div class="editor-section-header" onclick="toggleEditorSection('secDial')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="font-size: 14px;">💬</span>
@@ -2247,7 +2261,7 @@
         </div>
 
         <!-- GENERATE PROMPT BUTTON & DUAL EXACT PREVIEW -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2px;">
+        <div style="flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; margin-top: 2px;">
           <button type="button" class="btn btn-primary" onclick="generateShotCompiledPrompt()" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); font-weight: 800; font-size: 12px; padding: 8px 18px; border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35); display: inline-flex; align-items: center; gap: 6px;">
             <span>⚡</span> Re-Compile Prompt
           </button>
@@ -2255,7 +2269,7 @@
         </div>
 
         <!-- DUAL EXACT SAVE PREVIEW CARD -->
-        <div style="background: #080d1a; border: 1px solid #334155; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="flex-shrink: 0; background: #080d1a; border: 1px solid #334155; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
           <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #38bdf8;">
             📋 Exact Save Preview (What will be written)
           </div>
@@ -2289,7 +2303,7 @@
       </div>
 
       <!-- Modal Footer -->
-      <div style="padding: 12px 22px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="flex-shrink: 0; padding: 12px 22px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <span style="font-size: 11px; color: #94a3b8;" id="shotEditFooterStatus">Ready</span>
         <div style="display: flex; gap: 10px;">
           <button type="button" class="btn btn-secondary" onclick="closeShotDetailEditor()" style="padding: 7px 16px; font-size: 12px;">✕ Cancel</button>
@@ -11281,6 +11295,14 @@ Return ONLY JSON:
 
       const activeEpNum = (typeof getActiveEpisodeNumber === 'function') ? getActiveEpisodeNumber() : (Number(episodeData && episodeData.episode_number) || 1);
       const isTargetActive = (activeEditEp === activeEpNum);
+
+      // Reset accordion sections to open
+      ['secAction', 'secChars', 'secCam', 'secDial'].forEach(id => {
+        const body = document.getElementById(id + '_body');
+        const arrow = document.getElementById(id + '_arrow');
+        if (body) body.style.display = 'flex';
+        if (arrow) arrow.innerText = '▼';
+      });
 
       // 1. Header Badges & Destination Impact Pill
       const badgeEl = document.getElementById("shotEditTargetBadge");
