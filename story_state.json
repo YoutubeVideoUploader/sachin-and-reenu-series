@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 4,
+  "total_episodes_produced": 5,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Driven back inside by the freezing, unnatural fog, Amal joins Sachin and Reenu as they inspect the cottage's interior. Reenu notices an old, dust-covered oil painting on the wall that depicts the exact woman standing outside in the mist. The old woman confesses a chilling truth: the spirit is looking for a descendant of the estate owners, and she believes Reenu holds her face.",
+  "current_arc": "Desperate for a rational explanation, Sachin tries to check the cottage's fuse box in the dark hallway, refusing to believe the supernatural threat. Shadows stretch unnaturally along the walls, and the old tea estate's historical logbook flies open by itself. Reenu pulls a terrified Sachin away just as the hallway ceiling collapses in a cloud of dust.",
   "history": [
     {
       "episode": 1,
@@ -219,21 +219,32 @@
         "Sreedharan",
         "Sachin"
       ]
+    },
+    {
+      "episode": 5,
+      "title": "തകർന്ന യുക്തി (Shattered Logic)",
+      "summary": "Desperate for a rational explanation, Sachin tries to check the cottage's fuse box in the dark hallway, refusing to believe the supernatural threat. Shadows stretch unnaturally along the walls, and the old tea estate's historical logbook flies open by itself. Reenu pulls a terrified Sachin away just as the hallway ceiling collapses in a cloud of dust.",
+      "cliffhanger": "Flipped pages of the logbook reveal a final entry written in fresh red ink with Reenu's exact name.",
+      "characters_present": [
+        "Sachin",
+        "Reenu",
+        "Amal"
+      ]
     }
   ],
-  "episode_number": 4,
+  "episode_number": 5,
   "cliffhanger_scene_state": {
     "scene_id": "SCENE_DOMESTIC_COTTAGE_LIVING_ROOM",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
     "spatial_blocking": {
-      "Sachin": "Screen-Center in room interior, standing alert near wooden doorway",
       "Reenu": "Screen-Left in room, clutching travel bag, observing cautiously",
+      "Sachin": "Screen-Center in room interior, standing alert near wooden doorway",
       "Amal": "Screen-Right in room, huddled nervously behind Sachin",
       "Caretaker": "Standing in doorway on Screen-Center, holding old brass key and lantern"
     },
-    "eyeline_direction": "Characters looking attentively toward Third-Person Narrator",
+    "eyeline_direction": "Characters looking attentively toward Reenu",
     "persistent_props": [
       "Brass door key",
       "Old lantern",
@@ -3393,7 +3404,7 @@
       }
     ]
   },
-  "cliffhanger": "The painting's eyes in the portrait suddenly shift to look directly at Sachin, and the room's temperature drops to freezing.",
+  "cliffhanger": "Flipped pages of the logbook reveal a final entry written in fresh red ink with Reenu's exact name.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
