@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 5,
+  "total_episodes_produced": 6,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Desperate for a rational explanation, Sachin tries to check the cottage's fuse box in the dark hallway, refusing to believe the supernatural threat. Shadows stretch unnaturally along the walls, and the old tea estate's historical logbook flies open by itself. Reenu pulls a terrified Sachin away just as the hallway ceiling collapses in a cloud of dust.",
+  "current_arc": "The old woman tells them the only way to appease the spirit before dawn is to find her locket buried at the nearby abandoned tea factory ruins. Sachin, Reenu, and Amal brave the terrifying fog-filled path outside, holding a single flickering lantern. Every shadow looks like a moving figure as whispers call out their names from the tea bushes.",
   "history": [
     {
       "episode": 1,
@@ -230,27 +230,36 @@
         "Reenu",
         "Amal"
       ]
+    },
+    {
+      "episode": 6,
+      "title": "എസ്റ്റേറ്റ് അവശിഷ്ടങ്ങൾ (The Estate Ruins)",
+      "summary": "The old woman tells them the only way to appease the spirit before dawn is to find her locket buried at the nearby abandoned tea factory ruins. Sachin, Reenu, and Amal brave the terrifying fog-filled path outside, holding a single flickering lantern. Every shadow looks like a moving figure as whispers call out their names from the tea bushes.",
+      "cliffhanger": "Amal steps into a hidden ditch, and when Sachin and Reenu turn around to pull him up, Amal has completely vanished.",
+      "characters_present": [
+        "Reenu",
+        "Amal",
+        "Sreedharan",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 5,
+  "episode_number": 6,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_DOMESTIC_COTTAGE_LIVING_ROOM",
+    "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
     "spatial_blocking": {
-      "Reenu": "Screen-Left in room, clutching travel bag, observing cautiously",
-      "Sachin": "Screen-Center in room interior, standing alert near wooden doorway",
-      "Amal": "Screen-Right in room, huddled nervously behind Sachin",
-      "Caretaker": "Standing in doorway on Screen-Center, holding old brass key and lantern"
+      "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+      "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+      "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
     },
-    "eyeline_direction": "Characters looking attentively toward Reenu",
+    "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
     "persistent_props": [
-      "Brass door key",
-      "Old lantern",
-      "Travel suitcase",
       "Sachin's cross-bag",
-      "Reenu's wristwatch"
+      "Reenu's silver wristwatch",
+      "Foggy mountain road"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
@@ -3404,7 +3413,7 @@
       }
     ]
   },
-  "cliffhanger": "Flipped pages of the logbook reveal a final entry written in fresh red ink with Reenu's exact name.",
+  "cliffhanger": "Amal steps into a hidden ditch, and when Sachin and Reenu turn around to pull him up, Amal has completely vanished.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
