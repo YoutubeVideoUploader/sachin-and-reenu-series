@@ -1999,90 +1999,302 @@
   </div>
 
   <!-- Butterfly Story Propagation & Review Modal -->
-  <div class="modal-backdrop" id="butterflyEditorModal" onclick="handleButterflyModalBackdropClick(event)" style="display: none;">
-    <div class="modal-card" style="max-width: 920px; width: 95%; max-height: 92vh; background: #0c0f1d; border: 1px solid #8b5cf6; box-shadow: 0 25px 70px rgba(139, 92, 246, 0.4);">
+    <!-- Structured Shot Detail Inspector & Prompt Compiler Modal -->
+  <div class="modal-backdrop" id="butterflyEditorModal" onclick="handleShotDetailModalBackdropClick(event)" style="display: none; z-index: 10000;">
+    <div class="modal-card" style="max-width: 980px; width: 95%; max-height: 94vh; background: #0c0f1d; border: 1px solid #6366f1; border-radius: 14px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85); display: flex; flex-direction: column;">
+      
       <!-- Modal Header -->
-      <div style="padding: 18px 24px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #2e1065 0%, #0f172a 100%);">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 28px;">🦋</span>
+      <div style="padding: 16px 22px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);">
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span style="font-size: 24px;">✏️</span>
           <div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
-              Butterfly Story Propagation Engine
-              <span id="bfTargetBadge" style="background: rgba(139, 92, 246, 0.25); color: #c4b5fd; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.4);">Ep 4 • Shot #10</span>
-            </h3>
-            <div style="font-size: 12px; color: #a78bfa;">Season-Wide Butterfly-Effect Ripple Evaluation & Screenplay Re-Harmonization</div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <h3 style="font-size: 17px; font-weight: 800; color: #fff; margin: 0;">
+                Shot Detail Inspector & Prompt Editor
+              </h3>
+              <span id="shotEditTargetBadge" style="background: rgba(99, 102, 241, 0.25); color: #c7d2fe; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(99, 102, 241, 0.4);">
+                Ep 4 • Shot #10
+              </span>
+            </div>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">
+              Granular Continuity Controls & Instant Deterministic Prompt Compilation
+            </div>
           </div>
         </div>
-        <button onclick="closeButterflyEditorModal()" style="background: rgba(255,255,255,0.08); border: none; color: #94a3b8; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <!-- Destination Impact Pill -->
+          <div id="shotEditDestinationBadge" style="font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+            🟢 Active Episode: Will update Tab 5 Outline & Tab 2 Active Prompts
+          </div>
+          <button type="button" onclick="closeShotDetailEditor()" style="background: rgba(255,255,255,0.08); border: none; color: #cbd5e1; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+        </div>
       </div>
 
-      <!-- Modal Body -->
-      <div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 18px; max-height: 75vh; overflow-y: auto;">
+      <!-- Modal Body (Scrollable) -->
+      <div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; flex: 1;">
         
-        <!-- Guardrail Alert -->
-        <div style="background: rgba(139, 92, 246, 0.12); border-left: 4px solid #8b5cf6; border-radius: 0 8px 8px 0; padding: 12px 14px;">
-          <div style="font-size: 12px; font-weight: 800; color: #ddd6fe; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
-            🛡️ Season-Wide Narrative Invariant Gates
+        <!-- Continuity Guardrail Context Bar -->
+        <div id="shotEditContinuityBar" style="background: #080d1a; border: 1px solid #1e293b; border-radius: 10px; padding: 10px 14px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <div id="shotEditPrevContext" style="color: #94a3b8; flex: 1; min-width: 200px;">
+            ⬅️ <b>Shot K-1:</b> <span id="shotEditPrevSummary">Loading prior shot...</span>
           </div>
-          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
-            Editing this shot traverses forward causal dependency chains, dynamically re-harmonizes subsequent screenplays, and re-assesses the <b>Episode 10 Grand Finale alternative climax and resolution</b>. Character DNA, locked wardrobes, and approved Malayalam dialogues in unaffected scenes remain strictly preserved. Staged revisions require explicit approval before commit.
+          <div style="color: #6366f1; font-weight: 800; padding: 2px 8px; border-radius: 4px; background: rgba(99, 102, 241, 0.15);">
+            🎯 CURRENT SHOT
           </div>
-        </div>
-
-        <!-- Section 1: Shot Edit Inputs -->
-        <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 13px; font-weight: 800; color: #fde047;">✏️ Edit Shot Action & Dialogue</span>
-            <span id="bfShotMetaDetails" style="font-size: 11px; color: #94a3b8;">Location: Forest Trail | Speaker: Narrator</span>
-          </div>
-
-          <div>
-            <label style="font-size: 12px; font-weight: 700; color: #38bdf8; display: block; margin-bottom: 6px;">
-              🎬 Action Description:
-            </label>
-            <textarea id="bfInputNewAction" rows="3" class="search-input" style="width: 100%; box-sizing: border-box; resize: vertical; font-size: 13px; line-height: 1.4; padding: 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 8px;"></textarea>
-          </div>
-
-          <div>
-            <label style="font-size: 12px; font-weight: 700; color: #facc15; display: block; margin-bottom: 6px;">
-              💬 Malayalam Dialogue:
-            </label>
-            <textarea id="bfInputNewDialogue" rows="2" class="search-input" style="width: 100%; box-sizing: border-box; resize: vertical; font-size: 13px; line-height: 1.4; padding: 10px; background: #080d1a; color: #fde047; font-family: 'Noto Sans Malayalam', sans-serif; border: 1px solid #334155; border-radius: 8px;"></textarea>
-          </div>
-
-          <div>
-            <label style="font-size: 12px; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 6px;">
-              📝 Director Notes / Plot Motivation (Optional):
-            </label>
-            <input type="text" id="bfInputRationale" class="search-input" style="width: 100%; box-sizing: border-box; font-size: 12px; padding: 8px 12px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 8px;" placeholder="e.g. Scratched photo reveals Caretaker Sreedharan was present in 1994...">
-          </div>
-
-          <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px;">
-            <button id="btnEvaluateButterfly" class="btn btn-primary" onclick="evaluateButterflyEdit()" style="padding: 10px 20px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); border: none; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);">
-              🔮 Evaluate Season-Wide Butterfly Consequences
-            </button>
+          <div id="shotEditNextContext" style="color: #94a3b8; flex: 1; min-width: 200px; text-align: right;">
+            ➡️ <b>Shot K+1:</b> <span id="shotEditNextSummary">Loading next shot...</span>
           </div>
         </div>
 
-        <!-- Evaluation Spinner / Status -->
-        <div id="bfLoadingBox" style="display: none; background: #080d1a; border: 1px solid #8b5cf6; border-radius: 10px; padding: 14px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="pulse" style="background: #a78bfa;"></div>
-            <div style="font-size: 13px; font-weight: 800; color: #c4b5fd;" id="bfLoadingTitle">Evaluating Season Dependency Graph...</div>
+        <!-- 4 Collapsible Accordion Sections -->
+
+        <!-- SECTION 1: Action & Acting -->
+        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+          <div class="editor-section-header" onclick="toggleEditorSection('secAction')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px;">🎬</span>
+              <span style="font-size: 12px; font-weight: 800; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px;">1. Action & Acting</span>
+              <span class="tab-badge-both" style="font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 4px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">Tab 5 + Tab 2</span>
+            </div>
+            <span id="secAction_arrow" style="font-size: 12px; color: #94a3b8;">▼</span>
           </div>
-          <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px;" id="bfLoadingDetail">Traversing causal edges, re-evaluating narrative beats, adapting Grand Finale...</div>
+          <div id="secAction_body" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-size: 11px; font-weight: 700; color: #38bdf8;">Primary Physical Action Beat (6s) [Tab 5 + Tab 2]:</label>
+                <span style="font-size: 10px; color: #94a3b8;">What character physically does</span>
+              </div>
+              <textarea id="shotEditPrimaryAction" oninput="generateShotCompiledPrompt()" rows="2" style="width: 100%; box-sizing: border-box; resize: vertical; font-size: 12px; line-height: 1.4; padding: 8px 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px;" placeholder="e.g. Sachin rushes over and slams the front window shut, latching it tight as freezing mist rushes through."></textarea>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-size: 11px; font-weight: 700; color: #cbd5e1;">Facial Expression & Emotional Beat <span style="font-size: 10px; color: #c084fc;">[Tab 2 Prompt Only]</span>:</label>
+                <span style="font-size: 10px; color: #94a3b8;">Micro-expression & character emotion</span>
+              </div>
+              <input type="text" id="shotEditEmotion" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 12px; padding: 7px 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px;" placeholder="e.g. Eyes wide with tense protective urgency, breath visible in freezing air, jaw clenched.">
+            </div>
+            <!-- Advanced Sub-section -->
+            <div style="border-top: 1px dashed #334155; padding-top: 8px; margin-top: 2px;">
+              <span onclick="toggleEditorAdvanced('secAction_adv')" style="font-size: 11px; font-weight: 700; color: #a5b4fc; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                <span id="secAction_adv_arrow">▶</span> Advanced: Secondary reactions & environment interaction
+              </span>
+              <div id="secAction_adv_body" style="display: none; margin-top: 8px; flex-direction: column; gap: 8px;">
+                <div>
+                  <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Secondary Characters' In-Scene Reactions [Tab 2]:</label>
+                  <input type="text" id="shotEditSecondaryReactions" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Amal collapses onto dusty rug shivering comically; Reenu clutches shoulder bag alertly.">
+                </div>
+                <div>
+                  <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Environmental Interaction / Mist / Weather [Tab 2]:</label>
+                  <input type="text" id="shotEditEnvironmentInteraction" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Dense mountain fog billows through the cracked pane, rustling curtains; cool condensation on glass.">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Reviewable 11-Point Change-Impact Report Container -->
-        <div id="butterflyReportContainer" style="display: none;"></div>
+        <!-- SECTION 2: Characters & Blocking -->
+        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+          <div class="editor-section-header" onclick="toggleEditorSection('secChars')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px;">👥</span>
+              <span style="font-size: 12px; font-weight: 800; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px;">2. Characters & Blocking</span>
+              <span class="tab-badge-both" style="font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 4px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">Tab 5 + Tab 2</span>
+            </div>
+            <span id="secChars_arrow" style="font-size: 12px; color: #94a3b8;">▼</span>
+          </div>
+          <div id="secChars_body" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+            <div>
+              <label style="font-size: 11px; font-weight: 700; color: #38bdf8; display: block; margin-bottom: 6px;">
+                Characters Present in Shot (Click to Toggle — Injects Tab 4 Visual DNA):
+              </label>
+              <div id="shotEditCharChipsContainer" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <!-- Dynamically rendered character tags -->
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px;">
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: #fde047; display: block; margin-bottom: 4px;">
+                  Active Speaker [Tab 5 + Tab 2]:
+                </label>
+                <select id="shotEditSpeaker" onchange="onShotSpeakerChanged()" style="width: 100%; box-sizing: border-box; background: #080d1a; color: #fff; border: 1px solid #334155; padding: 7px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                  <option value="Sachin">Sachin</option>
+                  <option value="Reenu">Reenu</option>
+                  <option value="Amal">Amal</option>
+                  <option value="Caretaker">Caretaker Sreedharan</option>
+                  <option value="Annamma">Annamma</option>
+                  <option value="Kurian">Kurian</option>
+                  <option value="Broker Shaji">Broker Shaji</option>
+                  <option value="Off-Screen Narrator">Off-Screen Third-Person Narrator</option>
+                  <option value="None">None (Silent / Pure Visual Action)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+                  Spatial Staging & Character Placement [Tab 2]:
+                </label>
+                <input type="text" id="shotEditSpatialBlocking" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 12px; padding: 7px 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px;" placeholder="e.g. Sachin Screen-Left at wooden window, Reenu Screen-Center, Amal Screen-Right huddled on rug">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: Camera & Setting -->
+        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+          <div class="editor-section-header" onclick="toggleEditorSection('secCam')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px;">🎥</span>
+              <span style="font-size: 12px; font-weight: 800; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px;">3. Camera & Setting</span>
+              <span class="tab-badge-both" style="font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 4px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">Tab 5 + Tab 2</span>
+            </div>
+            <span id="secCam_arrow" style="font-size: 12px; color: #94a3b8;">▼</span>
+          </div>
+          <div id="secCam_body" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: #38bdf8; display: block; margin-bottom: 4px;">
+                  Scene Location / Set [Tab 5 + Tab 2]:
+                </label>
+                <input type="text" id="shotEditLocation" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 12px; padding: 7px 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px;" placeholder="e.g. Cottage Living Room">
+              </div>
+              <div>
+                <label style="font-size: 11px; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+                  Camera Framing & Motion [Tab 2]:
+                </label>
+                <input type="text" id="shotEditCameraFraming" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 12px; padding: 7px 10px; background: #080d1a; color: #f8fafc; border: 1px solid #334155; border-radius: 6px;" placeholder="e.g. Medium shot tracking Sachin shoving the heavy wooden shutters closed.">
+              </div>
+            </div>
+            <!-- Advanced Sub-section -->
+            <div style="border-top: 1px dashed #334155; padding-top: 8px; margin-top: 2px;">
+              <span onclick="toggleEditorAdvanced('secCam_adv')" style="font-size: 11px; font-weight: 700; color: #a5b4fc; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                <span id="secCam_adv_arrow">▶</span> Advanced: Lens bokeh, lighting palette & persistent props
+              </span>
+              <div id="secCam_adv_body" style="display: none; margin-top: 8px; flex-direction: column; gap: 8px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Lens & Depth-of-Field [Tab 2]:</label>
+                    <input type="text" id="shotEditCameraLens" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Cinematic prime lens, shallow depth of field, soft circular bokeh">
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Persistent Props [Tab 5 + Tab 2]:</label>
+                    <input type="text" id="shotEditProps" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Brass door key, Old lantern, Sachin's cross-bag, Reenu's wristwatch">
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Lighting Palette & Time of Day [Tab 2]:</label>
+                  <input type="text" id="shotEditLighting" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: Dialogue & Sound -->
+        <div class="editor-section-card" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden;">
+          <div class="editor-section-header" onclick="toggleEditorSection('secDial')" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #1e293b; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 14px;">💬</span>
+              <span style="font-size: 12px; font-weight: 800; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px;">4. Dialogue & Sound</span>
+              <span class="tab-badge-both" style="font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: 4px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4);">Tab 5 + Tab 2</span>
+            </div>
+            <span id="secDial_arrow" style="font-size: 12px; color: #94a3b8;">▼</span>
+          </div>
+          <div id="secDial_body" style="padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <label style="font-size: 11px; font-weight: 700; color: #fde047;">Spoken Line (Malayalam Script) [Tab 5 + Tab 2]:</label>
+                <span id="shotEditWordCountBadge" style="font-size: 11px; font-weight: 700; color: #34d399;">0 words (3–8 words ideal)</span>
+              </div>
+              <textarea id="shotEditDialogue" oninput="onShotDialogueInput()" rows="2" style="width: 100%; box-sizing: border-box; resize: vertical; font-size: 13px; line-height: 1.4; padding: 8px 10px; background: #080d1a; color: #fde047; font-family: 'Noto Sans Malayalam', sans-serif; border: 1px solid #334155; border-radius: 6px;" placeholder="അമൽ, ജനൽ അടയ്ക്ക് പെട്ടെന്ന്!"></textarea>
+              
+              <!-- Speaker Prefix Warning & Clean Preview -->
+              <div id="shotEditPrefixWarning" style="display: none; margin-top: 6px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 6px; padding: 6px 10px; font-size: 11px; color: #fde68a;">
+                ℹ️ Speaker prefix detected. Clean line used for spoken dialogue: <b id="shotEditCleanedPreview"></b>
+              </div>
+            </div>
+
+            <div>
+              <label style="font-size: 11px; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+                Dialogue Delivery & Lip-Sync Mode [Tab 2]:
+              </label>
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; color: #cbd5e1;">
+                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                  <input type="radio" name="shotEditDeliveryMode" value="lip_sync" checked onchange="generateShotCompiledPrompt()">
+                  <span>🗣️ Character Speaks On-Screen (Lip-Sync)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                  <input type="radio" name="shotEditDeliveryMode" value="silent" onchange="generateShotCompiledPrompt()">
+                  <span>🤐 Pure Visual Storytelling (Lips Closed)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                  <input type="radio" name="shotEditDeliveryMode" value="voiceover" onchange="generateShotCompiledPrompt()">
+                  <span>🎙️ Off-Screen Voiceover (Characters Silent)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Advanced Sub-section -->
+            <div style="border-top: 1px dashed #334155; padding-top: 8px; margin-top: 2px;">
+              <span onclick="toggleEditorAdvanced('secDial_adv')" style="font-size: 11px; font-weight: 700; color: #a5b4fc; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                <span id="secDial_adv_arrow">▶</span> Advanced: Foley & Audio Directive
+              </span>
+              <div id="secDial_adv_body" style="display: none; margin-top: 8px;">
+                <label style="font-size: 11px; font-weight: 600; color: #94a3b8; display: block; margin-bottom: 2px;">Audio & Foley Directive [Tab 2]:</label>
+                <input type="text" id="shotEditAudioDirective" oninput="generateShotCompiledPrompt()" style="width: 100%; box-sizing: border-box; font-size: 11px; padding: 6px 8px; background: #080d1a; color: #e2e8f0; border: 1px solid #1e293b; border-radius: 6px;" placeholder="e.g. Clean character voice dialogue and natural ambient foley sound effects only. STRICTLY NO BGM. NO MUSIC.">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GENERATE PROMPT BUTTON & DUAL EXACT PREVIEW -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2px;">
+          <button type="button" class="btn btn-primary" onclick="generateShotCompiledPrompt()" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); font-weight: 800; font-size: 12px; padding: 8px 18px; border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35); display: inline-flex; align-items: center; gap: 6px;">
+            <span>⚡</span> Re-Compile Prompt
+          </button>
+          <span style="font-size: 11px; color: #94a3b8;">Deterministic compilation (&lt; 10ms, 0 tokens)</span>
+        </div>
+
+        <!-- DUAL EXACT SAVE PREVIEW CARD -->
+        <div style="background: #080d1a; border: 1px solid #334155; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #38bdf8;">
+            📋 Exact Save Preview (What will be written)
+          </div>
+          
+          <!-- Tab 5 Table Row Preview -->
+          <div style="background: #0c1424; border: 1px solid #1e293b; border-radius: 6px; padding: 8px 10px; font-size: 11px;">
+            <div style="font-weight: 700; color: #60a5fa; margin-bottom: 4px; display: flex; justify-content: space-between;">
+              <span>📊 Tab 5 Screenplay Row (Google Sheets):</span>
+              <span style="color: #94a3b8; font-weight: normal;">7 fixed columns</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; color: #cbd5e1; font-family: monospace; font-size: 11px;">
+              <div><b>Ep:</b> <span id="previewTab5Ep">-</span></div>
+              <div><b>Shot:</b> <span id="previewTab5Shot">-</span></div>
+              <div><b>Speaker:</b> <span id="previewTab5Speaker">-</span></div>
+              <div><b>Location:</b> <span id="previewTab5Location">-</span></div>
+              <div style="grid-column: 1 / -1;"><b>Action:</b> <span id="previewTab5Action" style="color: #e2e8f0; font-family: inherit;">-</span></div>
+              <div style="grid-column: 1 / -1; font-family: 'Noto Sans Malayalam'; color: #fde047;"><b>Dialogue:</b> <span id="previewTab5Dialogue">-</span></div>
+            </div>
+          </div>
+
+          <!-- Tab 2 Prompt Preview -->
+          <div style="background: #0c1424; border: 1px solid #1e293b; border-radius: 6px; padding: 8px 10px; font-size: 11px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span style="font-weight: 700; color: #c084fc;">📦 Tab 2 Production JSON Prompt:</span>
+              <span id="previewTab2Status" style="font-size: 10px; font-weight: 700; color: #34d399;">Will update Tab 2</span>
+            </div>
+            <pre id="previewTab2Json" style="margin: 0; max-height: 160px; overflow-y: auto; background: #050811; color: #7dd3fc; padding: 8px; border-radius: 6px; font-size: 11px; line-height: 1.35; white-space: pre-wrap; word-break: break-all;"></pre>
+          </div>
+        </div>
 
       </div>
 
       <!-- Modal Footer -->
-      <div style="padding: 14px 24px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <span style="font-size: 12px; color: #94a3b8;" id="bfFooterStatus">Ready</span>
+      <div style="padding: 12px 22px; background: #080d1a; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="font-size: 11px; color: #94a3b8;" id="shotEditFooterStatus">Ready</span>
         <div style="display: flex; gap: 10px;">
-          <button class="btn btn-secondary" onclick="closeButterflyEditorModal()" style="padding: 8px 18px; font-size: 13px;">Close</button>
+          <button type="button" class="btn btn-secondary" onclick="closeShotDetailEditor()" style="padding: 7px 16px; font-size: 12px;">✕ Cancel</button>
+          <button type="button" class="btn btn-secondary" id="btnCopyShotPrompt" onclick="copyEditedShotPrompt(this)" style="padding: 7px 16px; font-size: 12px; background: rgba(249, 115, 22, 0.2); border-color: rgba(249, 115, 22, 0.4); color: #fb923c;">📋 Copy JSON Prompt</button>
+          <button type="button" class="btn btn-primary" id="btnReviewAndSaveShot" onclick="saveEditedShotDetails()" style="padding: 7px 20px; font-size: 12px; font-weight: 800; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border: none; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);">💾 Review & Save</button>
         </div>
       </div>
     </div>
@@ -3038,8 +3250,8 @@
               <button class="copy-btn" style="background: linear-gradient(135deg, #f97316, #ea580c); font-weight: 700; border: none; padding: 10px 18px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);" onclick="copyJsonPrompt(${shot.shot_number}, this)">
                 📋 Copy JSON Prompt
               </button>
-              <button class="btn btn-secondary" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openButterflyEditorModal(${episodeData.episode_number || 1}, ${shot.shot_number})">
-                🦋 Butterfly Edit
+              <button class="btn btn-secondary" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openShotDetailEditor(${episodeData.episode_number || 1}, ${shot.shot_number})">
+                ✏️ Edit
               </button>
             </div>
           </div>
@@ -8004,8 +8216,8 @@
             </div>
             <div style="display: flex; align-items: center; gap: 8px;">
               ${isCliffhanger ? '<span style="background: rgba(244, 63, 94, 0.2); color: #fda4af; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(244, 63, 94, 0.4);">🎯 EPISODE CLIFFHANGER</span>' : ''}
-              <button class="btn btn-secondary" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openButterflyEditorModal(${s.episode_number}, ${s.shot_number})">
-                🦋 Butterfly Edit
+              <button class="btn btn-secondary" style="background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" onclick="openShotDetailEditor(${s.episode_number}, ${s.shot_number})">
+                ✏️ Edit
               </button>
             </div>
           </div>
@@ -11027,434 +11239,521 @@ Return ONLY JSON:
     }
 
     // =========================================================================
-    // BUTTERFLY STORY PROPAGATION ENGINE & BROWSER PORTAL INTEGRATION
     // =========================================================================
-    let activeBfSeason = 3;
-    let activeBfEp = 1;
-    let activeBfShot = 1;
-    let activeBfProposal = null;
+    // STRUCTURED SHOT DETAIL INSPECTOR & PROMPT COMPILER ENGINE
+    // =========================================================================
+    let activeEditEp = 1;
+    let activeEditShot = 1;
+    let activeEditSeason = 3;
+    let activeEditSelectedChars = new Set();
+    let currentCompiledShotPrompt = null;
+    let currentCompiledShotPackage = null;
 
-    function openButterflyEditorModal(epNum, shotNum, preloadedProposal, preloadedMarkdown) {
-      activeBfEp = parseInt(epNum, 10) || 1;
-      activeBfShot = parseInt(shotNum, 10) || 1;
-      activeBfSeason = (seasonShotOutlineData && seasonShotOutlineData.season_number) ? parseInt(seasonShotOutlineData.season_number, 10) : 3;
+    const ROSTER_CHARACTERS = [
+      "Sachin", "Reenu", "Amal", "Caretaker", "Annamma", "Kurian", "Broker Shaji", "Bhadra"
+    ];
+
+    function toggleEditorSection(sectionId) {
+      const body = document.getElementById(sectionId + '_body');
+      const arrow = document.getElementById(sectionId + '_arrow');
+      if (!body) return;
+      const isHidden = (body.style.display === 'none');
+      body.style.display = isHidden ? 'flex' : 'none';
+      if (arrow) arrow.innerText = isHidden ? '▼' : '▶';
+    }
+
+    function toggleEditorAdvanced(advId) {
+      const body = document.getElementById(advId + '_body');
+      const arrow = document.getElementById(advId + '_arrow');
+      if (!body) return;
+      const isHidden = (body.style.display === 'none');
+      body.style.display = isHidden ? 'flex' : 'none';
+      if (arrow) arrow.innerText = isHidden ? '▼' : '▶';
+    }
+
+    function openShotDetailEditor(epNum, shotNum) {
+      activeEditEp = parseInt(epNum, 10) || 1;
+      activeEditShot = parseInt(shotNum, 10) || 1;
+      activeEditSeason = (seasonShotOutlineData && seasonShotOutlineData.season_number) ? parseInt(seasonShotOutlineData.season_number, 10) : 3;
 
       const modal = document.getElementById("butterflyEditorModal");
       if (!modal) return;
 
-      document.getElementById("bfTargetBadge").innerText = `Ep ${activeBfEp} • Shot #${activeBfShot}`;
+      const activeEpNum = (typeof getActiveEpisodeNumber === 'function') ? getActiveEpisodeNumber() : (Number(episodeData && episodeData.episode_number) || 1);
+      const isTargetActive = (activeEditEp === activeEpNum);
 
-      // Find current shot in outline or current episode
+      // 1. Header Badges & Destination Impact Pill
+      const badgeEl = document.getElementById("shotEditTargetBadge");
+      if (badgeEl) badgeEl.innerText = `Ep ${activeEditEp} • Shot #${activeEditShot}${activeEditShot === 10 ? ' (Cliffhanger)' : ''}`;
+
+      const destEl = document.getElementById("shotEditDestinationBadge");
+      if (destEl) {
+        if (isTargetActive) {
+          destEl.className = "";
+          destEl.style.background = "rgba(16, 185, 129, 0.15)";
+          destEl.style.color = "#34d399";
+          destEl.style.border = "1px solid rgba(16, 185, 129, 0.3)";
+          destEl.innerText = `🟢 Active Episode ${activeEditEp}: Will update Tab 5 Outline & Tab 2 Active Prompts`;
+        } else {
+          destEl.className = "";
+          destEl.style.background = "rgba(56, 189, 248, 0.15)";
+          destEl.style.color = "#38bdf8";
+          destEl.style.border = "1px solid rgba(56, 189, 248, 0.3)";
+          destEl.innerText = `🔵 Upcoming Episode ${activeEditEp}: Will update Tab 5 Outline ONLY (Tab 2 Active Prompts remain untouched)`;
+        }
+      }
+
+      // 2. Fetch Shot Data from Tab 5 and Tab 2
       let foundShot = null;
+      let promptShot = null;
       const allOutlineShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
-      if (allOutlineShots.length > 0) {
-        foundShot = allOutlineShots.find(s => s.episode_number == activeBfEp && s.shot_number == activeBfShot);
+      const globalIdx = (activeEditEp - 1) * 10 + (activeEditShot - 1);
+      if (allOutlineShots.length > 0 && globalIdx >= 0 && globalIdx < allOutlineShots.length) {
+        foundShot = allOutlineShots[globalIdx];
       }
-      if (!foundShot && episodeData && episodeData.shots && (episodeData.episode_number == activeBfEp)) {
-        foundShot = episodeData.shots.find(s => s.shot_number == activeBfShot);
-      }
-
-      const curAction = foundShot ? (foundShot.action || foundShot.action_summary || "") : "";
-      const curDial = foundShot ? (foundShot.dialogue_malayalam || "") : "";
-      const curLoc = foundShot ? (foundShot.location || "Munnar") : "Munnar";
-      const curSpeaker = foundShot ? (foundShot.speaker || foundShot.character || "Narrator") : "Narrator";
-
-      document.getElementById("bfShotMetaDetails").innerText = `Location: ${curLoc} | Speaker: ${curSpeaker}`;
-      document.getElementById("bfInputNewAction").value = curAction;
-      document.getElementById("bfInputNewDialogue").value = curDial;
-      document.getElementById("bfInputRationale").value = "";
-
-      const reportCont = document.getElementById("butterflyReportContainer");
-      if (preloadedProposal) {
-        activeBfProposal = preloadedProposal;
-        renderButterflyReport(preloadedProposal, preloadedMarkdown);
-      } else {
-        activeBfProposal = null;
-        reportCont.innerHTML = "";
-        reportCont.style.display = "none";
-        document.getElementById("bfFooterStatus").innerText = "Ready to evaluate butterfly reach.";
+      if (isTargetActive && episodeData && Array.isArray(episodeData.shots)) {
+        promptShot = episodeData.shots.find(s => Number(s.shot_number) === activeEditShot) || episodeData.shots[activeEditShot - 1];
       }
 
+      // Prior & Next Shot Context for Continuity Bar
+      const prevShot = (globalIdx > 0 && allOutlineShots.length > 0) ? allOutlineShots[globalIdx - 1] : null;
+      const nextShot = (globalIdx + 1 < allOutlineShots.length) ? allOutlineShots[globalIdx + 1] : null;
+
+      const prevSummaryEl = document.getElementById("shotEditPrevSummary");
+      if (prevSummaryEl) {
+        if (prevShot) {
+          prevSummaryEl.innerText = `[${prevShot.location || 'Munnar'} | ${prevShot.speaker || 'Narrator'}] ${((prevShot.action || '').slice(0, 50))}...`;
+        } else {
+          prevSummaryEl.innerText = "Season Opener (No prior shot)";
+        }
+      }
+
+      const nextSummaryEl = document.getElementById("shotEditNextSummary");
+      if (nextSummaryEl) {
+        if (nextShot) {
+          const isNextEp = (nextShot.episode_number !== activeEditEp);
+          nextSummaryEl.innerText = `${isNextEp ? '🌉 Handoff to Ep ' + nextShot.episode_number + ' Shot 1: ' : ''}[${nextShot.location || 'Munnar'} | ${nextShot.speaker || 'Narrator'}] ${((nextShot.action || '').slice(0, 50))}...`;
+        } else {
+          nextSummaryEl.innerText = "Season Finale Climax";
+        }
+      }
+
+      // 3. Extract and Clean Shot Attributes
+      const rawAction = (foundShot ? (foundShot.action || foundShot.action_summary) : (promptShot ? promptShot.action_summary : "")) || "";
+      const rawDialogue = (foundShot ? foundShot.dialogue_malayalam : (promptShot ? promptShot.dialogue_malayalam : "")) || "";
+      const location = (foundShot ? foundShot.location : (promptShot ? promptShot.location : "")) || "Cottage Living Room";
+      const speaker = (foundShot ? (foundShot.speaker || foundShot.character) : (promptShot ? (promptShot.character || promptShot.speaker) : "")) || "Sachin";
+
+      // Parse Spatial Staging from action beat if formatted as [Spatial Staging: ...]
+      let spatialStaging = (foundShot && foundShot.character_positions) || "";
+      let cleanedAction = rawAction;
+      const stagingMatch = rawAction.match(/^\[Spatial Staging:\s*([^\]]+)\]\.?\s*(.*)/i);
+      if (stagingMatch) {
+        spatialStaging = stagingMatch[1].trim();
+        cleanedAction = stagingMatch[2].trim();
+      }
+      if (!spatialStaging && promptShot && promptShot.json_prompt && promptShot.json_prompt.sequence_continuity) {
+        const sb = promptShot.json_prompt.sequence_continuity.spatial_blocking;
+        if (typeof sb === 'object') {
+          spatialStaging = Object.entries(sb).map(([k, v]) => `${k}: ${v}`).join(' | ');
+        }
+      }
+
+      // Populate Inputs
+      document.getElementById("shotEditPrimaryAction").value = cleanedAction;
+      document.getElementById("shotEditEmotion").value = (promptShot && promptShot.emotion) || "Eyes wide with alert curiosity, natural teenage composure.";
+      document.getElementById("shotEditSecondaryReactions").value = (promptShot && promptShot.secondary_reactions) || "Other characters observing alertly in scene.";
+      document.getElementById("shotEditEnvironmentInteraction").value = (promptShot && promptShot.environment) || "Cool mountain fog visible through glass with soft ambient condensation.";
+      document.getElementById("shotEditLocation").value = location;
+      document.getElementById("shotEditCameraFraming").value = (promptShot && promptShot.json_prompt && promptShot.json_prompt.camera) || `Dynamic 3D cinematic medium shot tracking ${speaker}`;
+      document.getElementById("shotEditCameraLens").value = "Cinematic prime lens, shallow depth of field, soft circular bokeh";
+      document.getElementById("shotEditLighting").value = "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow";
+      
+      const propsVal = (foundShot && foundShot.persistent_props) || (promptShot && promptShot.persistent_props) || ["Brass door key", "Old lantern", "Sachin's cross-bag"];
+      document.getElementById("shotEditProps").value = Array.isArray(propsVal) ? propsVal.join(", ") : String(propsVal);
+
+      // Populate Speaker Dropdown
+      const speakerSelect = document.getElementById("shotEditSpeaker");
+      if (speakerSelect) {
+        let matched = false;
+        for (let i = 0; i < speakerSelect.options.length; i++) {
+          if (speakerSelect.options[i].value.toLowerCase() === speaker.toLowerCase()) {
+            speakerSelect.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          speakerSelect.value = "Sachin";
+        }
+      }
+
+      // Populate Characters Present Chips
+      activeEditSelectedChars = new Set();
+      const fullText = (cleanedAction + " " + rawDialogue + " " + spatialStaging + " " + speaker).toLowerCase();
+      ROSTER_CHARACTERS.forEach(c => {
+        if (fullText.includes(c.toLowerCase()) || (c.toLowerCase() === speaker.toLowerCase())) {
+          activeEditSelectedChars.add(c);
+        }
+      });
+      if (activeEditSelectedChars.size === 0) {
+        activeEditSelectedChars.add("Sachin");
+        activeEditSelectedChars.add("Reenu");
+      }
+      renderCharacterChips();
+
+      // Populate Dialogue
+      document.getElementById("shotEditDialogue").value = rawDialogue;
+      onShotDialogueInput();
+
+      // Set Delivery Mode
+      const isNarrator = /^(narrator|third-person narrator|voiceover)$/i.test(speaker);
+      const deliveryRadios = document.getElementsByName("shotEditDeliveryMode");
+      if (deliveryRadios.length > 0) {
+        if (isNarrator) deliveryRadios[2].checked = true;
+        else if (speaker.toLowerCase() === "none") deliveryRadios[1].checked = true;
+        else deliveryRadios[0].checked = true;
+      }
+
+      // Generate initial prompt preview
+      generateShotCompiledPrompt();
+
+      document.getElementById("shotEditFooterStatus").innerText = `Ready to edit Shot #${activeEditShot}`;
       modal.style.display = "flex";
     }
 
-    function closeButterflyEditorModal() {
+    function closeShotDetailEditor() {
       const modal = document.getElementById("butterflyEditorModal");
       if (modal) modal.style.display = "none";
     }
 
-    function handleButterflyModalBackdropClick(event) {
+    function handleShotDetailModalBackdropClick(event) {
       if (event && event.target && event.target.id === "butterflyEditorModal") {
-        closeButterflyEditorModal();
+        closeShotDetailEditor();
       }
     }
 
-    async function evaluateButterflyEdit() {
-      const newAction = document.getElementById("bfInputNewAction").value.trim();
-      const newDialogue = document.getElementById("bfInputNewDialogue").value.trim();
-      const rationale = document.getElementById("bfInputRationale").value.trim() || "Portal browser shot edit";
+    function renderCharacterChips() {
+      const container = document.getElementById("shotEditCharChipsContainer");
+      if (!container) return;
+      container.innerHTML = "";
 
-      const loadBox = document.getElementById("bfLoadingBox");
-      const reportCont = document.getElementById("butterflyReportContainer");
-      const btnEval = document.getElementById("btnEvaluateButterfly");
+      ROSTER_CHARACTERS.forEach(name => {
+        const isSelected = activeEditSelectedChars.has(name);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "char-tag-chip" + (isSelected ? " active" : "");
+        btn.style.cssText = `padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all .15s ease; border: 1px solid ${isSelected ? '#10b981' : '#334155'}; background: ${isSelected ? 'rgba(16, 185, 129, 0.2)' : '#080d1a'}; color: ${isSelected ? '#34d399' : '#94a3b8'};`;
+        btn.innerText = (isSelected ? "✓ " : "+ ") + name;
+        btn.onclick = () => {
+          if (activeEditSelectedChars.has(name)) {
+            if (activeEditSelectedChars.size > 1) activeEditSelectedChars.delete(name);
+          } else {
+            activeEditSelectedChars.add(name);
+          }
+          renderCharacterChips();
+          generateShotCompiledPrompt();
+        };
+        container.appendChild(btn);
+      });
+    }
 
-      if (btnEval) btnEval.disabled = true;
-      if (loadBox) loadBox.style.display = "block";
-      if (reportCont) reportCont.style.display = "none";
-      document.getElementById("bfFooterStatus").innerText = "Evaluating season dependency graph...";
+    function onShotSpeakerChanged() {
+      const spk = document.getElementById("shotEditSpeaker").value;
+      if (spk && !["Off-Screen Narrator", "None"].includes(spk)) {
+        activeEditSelectedChars.add(spk);
+        renderCharacterChips();
+      }
+      const radios = document.getElementsByName("shotEditDeliveryMode");
+      if (spk === "Off-Screen Narrator" && radios[2]) radios[2].checked = true;
+      else if (spk === "None" && radios[1]) radios[1].checked = true;
+      else if (radios[0]) radios[0].checked = true;
 
+      onShotDialogueInput();
+      generateShotCompiledPrompt();
+    }
+
+    function onShotDialogueInput() {
+      const dialText = (document.getElementById("shotEditDialogue").value || "").trim();
+      const badge = document.getElementById("shotEditWordCountBadge");
+      const warningBox = document.getElementById("shotEditPrefixWarning");
+      const cleanEl = document.getElementById("shotEditCleanedPreview");
+
+      // Count Malayalam Words (split by whitespace)
+      const words = dialText ? dialText.split(/\s+/).filter(Boolean) : [];
+      const wordCount = words.length;
+
+      if (badge) {
+        if (wordCount >= 3 && wordCount <= 8) {
+          badge.style.color = "#34d399";
+          badge.innerText = `✓ ${wordCount} words (Optimal 3–8 words)`;
+        } else if (wordCount > 8 && wordCount <= 10) {
+          badge.style.color = "#fbbf24";
+          badge.innerText = `⚠️ ${wordCount} words (Approaching 10-word limit)`;
+        } else if (wordCount > 10) {
+          badge.style.color = "#f87171";
+          badge.innerText = `⚠️ ${wordCount} words (Guideline: max 10 words for 6s shot)`;
+        } else if (wordCount > 0) {
+          badge.style.color = "#60a5fa";
+          badge.innerText = `${wordCount} words`;
+        } else {
+          badge.style.color = "#94a3b8";
+          badge.innerText = "0 words (3–8 words ideal)";
+        }
+      }
+
+      // Check Speaker Prefix
+      const prefixRegex = /^(?:റീനു|സച്ചിൻ|അമൽ|ശ്രീധരൻ|കാര്ടേക്കർ|അമ്മ|അച്ഛൻ|ഷാജി|ഭദ്ര|Reenu|Sachin|Amal|Caretaker|Sreedharan|Annamma|Kurian|Broker Shaji|Narrator)\s*[:：\-–—]\s*/i;
+      const match = dialText.match(prefixRegex);
+      if (match && warningBox && cleanEl) {
+        warningBox.style.display = "block";
+        const cleaned = dialText.replace(prefixRegex, "").trim();
+        cleanEl.innerText = `"${cleaned}"`;
+      } else if (warningBox) {
+        warningBox.style.display = "none";
+      }
+
+      generateShotCompiledPrompt();
+    }
+
+    function generateShotCompiledPrompt() {
+      const activeEpNum = (typeof getActiveEpisodeNumber === 'function') ? getActiveEpisodeNumber() : (Number(episodeData && episodeData.episode_number) || 1);
+      const isTargetActive = (activeEditEp === activeEpNum);
+
+      let actionText = (document.getElementById("shotEditPrimaryAction").value || "").trim();
+      let dialogueText = (document.getElementById("shotEditDialogue").value || "").trim();
+      const speaker = document.getElementById("shotEditSpeaker").value;
+      const spatialBlocking = (document.getElementById("shotEditSpatialBlocking").value || "").trim();
+      const location = (document.getElementById("shotEditLocation").value || "Cottage Living Room").trim();
+      const cameraFraming = (document.getElementById("shotEditCameraFraming").value || "").trim();
+      const cameraLens = (document.getElementById("shotEditCameraLens").value || "").trim();
+      const lighting = (document.getElementById("shotEditLighting").value || "").trim();
+      const propsStr = (document.getElementById("shotEditProps").value || "").trim();
+      const emotion = (document.getElementById("shotEditEmotion").value || "").trim();
+      const secondaryReactions = (document.getElementById("shotEditSecondaryReactions").value || "").trim();
+      const envInteraction = (document.getElementById("shotEditEnvironmentInteraction").value || "").trim();
+
+      // Clean prefix from dialogue for spoken output
+      const prefixRegex = /^(?:റീനു|സച്ചിൻ|അമൽ|ശ്രീധരൻ|കാര്ടേക്കർ|അമ്മ|അച്ഛൻ|ഷാജി|ഭദ്ര|Reenu|Sachin|Amal|Caretaker|Sreedharan|Annamma|Kurian|Broker Shaji|Narrator)\s*[:：\-–—]\s*/i;
+      const cleanedDialogue = dialogueText.replace(prefixRegex, "").trim();
+
+      // Determine Speech Mode
+      let deliveryMode = "lip_sync";
+      const radios = document.getElementsByName("shotEditDeliveryMode");
+      for (const r of radios) { if (r.checked) { deliveryMode = r.value; break; } }
+
+      // Build structured shot representation
+      const propsArray = propsStr ? propsStr.split(",").map(p => p.trim()).filter(Boolean) : ["Brass door key", "Old lantern"];
+      
+      const shotObj = {
+        shot_number: activeEditShot,
+        episode_number: activeEditEp,
+        speaker: speaker,
+        character: speaker,
+        dialogue_malayalam: cleanedDialogue,
+        action: spatialBlocking ? `[Spatial Staging: ${spatialBlocking}]. ${actionText}` : actionText,
+        action_summary: actionText,
+        character_positions: spatialBlocking,
+        location: location,
+        persistent_props: propsArray,
+        camera_hint: cameraFraming,
+        camera: cameraFraming,
+        camera_lens: cameraLens,
+        lighting: lighting,
+        emotion: emotion,
+        secondary_reactions: secondaryReactions,
+        environment: envInteraction,
+        characters_present: Array.from(activeEditSelectedChars),
+        delivery_mode: deliveryMode
+      };
+
+      // Compile deterministic JSON prompt using Tab 4 Character Registry
+      const cast = (typeof characterRegistryData !== 'undefined' && Array.isArray(characterRegistryData)) ? characterRegistryData : [];
+      let compiledJson = null;
+      if (typeof compileDeterministicGoogleFlowPrompt === 'function') {
+        compiledJson = compileDeterministicGoogleFlowPrompt(shotObj, cast);
+      } else {
+        compiledJson = {
+          style: "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render",
+          duration: "6s",
+          camera: cameraFraming,
+          action: actionText,
+          dialogue: { speaker: speaker, line: cleanedDialogue }
+        };
+      }
+
+      // If speech mode is silent, enforce closed lips
+      if (deliveryMode === "silent" && compiledJson) {
+        compiledJson.perspective = "Pure Visual Storytelling (No Character Speaks)";
+        compiledJson.audio_directive = "PURE VISUAL STORYTELLING. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. Natural ambient foley sound effects only.";
+        if (compiledJson.action && !compiledJson.action.includes("closed lips")) {
+          compiledJson.action += " PURE VISUAL STORYTELLING. All characters on screen maintain strictly closed lips with zero talking or mouth animation.";
+        }
+      } else if (deliveryMode === "voiceover" && compiledJson) {
+        compiledJson.perspective = "Off-Screen Storyteller Voiceover";
+        compiledJson.audio_directive = "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. Clean voiceover audio and natural ambient foley sound effects only.";
+      }
+
+      // Update Dual Preview UI
+      // 1. Tab 5 Table Row Preview
+      document.getElementById("previewTab5Ep").innerText = activeEditEp;
+      document.getElementById("previewTab5Shot").innerText = activeEditShot;
+      document.getElementById("previewTab5Speaker").innerText = speaker;
+      document.getElementById("previewTab5Location").innerText = location;
+      document.getElementById("previewTab5Action").innerText = spatialBlocking ? `[Spatial Staging: ${spatialBlocking}]. ${actionText}` : actionText;
+      document.getElementById("previewTab5Dialogue").innerText = cleanedDialogue ? `"${cleanedDialogue}"` : "(No dialogue)";
+
+      // 2. Tab 2 Prompt Preview
+      const jsonPreviewEl = document.getElementById("previewTab2Json");
+      if (jsonPreviewEl) {
+        jsonPreviewEl.innerText = JSON.stringify(compiledJson, null, 2);
+      }
+      const tab2StatusEl = document.getElementById("previewTab2Status");
+      if (tab2StatusEl) {
+        if (isTargetActive) {
+          tab2StatusEl.style.color = "#34d399";
+          tab2StatusEl.innerText = "🟢 Will write to Tab 2 Active Prompts";
+        } else {
+          tab2StatusEl.style.color = "#38bdf8";
+          tab2StatusEl.innerText = "🔵 Upcoming Episode: Tab 2 Skipped (Untouched)";
+        }
+      }
+
+      currentCompiledShotPrompt = compiledJson;
+      currentCompiledShotPackage = {
+        shotObj: shotObj,
+        compiledJson: compiledJson,
+        isTargetActive: isTargetActive
+      };
+    }
+
+    async function saveEditedShotDetails() {
+      if (!currentCompiledShotPackage) {
+        generateShotCompiledPrompt();
+      }
+      const pkg = currentCompiledShotPackage;
+      if (!pkg) return;
+
+      const btn = document.getElementById("btnReviewAndSaveShot");
+      const statusEl = document.getElementById("shotEditFooterStatus");
+
+      if (btn) { btn.disabled = true; btn.innerText = "⏳ Saving..."; }
+      if (statusEl) { statusEl.style.color = "#38bdf8"; statusEl.innerText = "Applying changes in memory and syncing to sheets..."; }
+
+      const shotObj = pkg.shotObj;
+      const compiledJson = pkg.compiledJson;
+      const isAct = pkg.isTargetActive;
+
+      // 1. Update Tab 5 (seasonShotOutlineData) in memory
+      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      const globalIdx = (activeEditEp - 1) * 10 + (activeEditShot - 1);
+      if (allShots.length > 0 && globalIdx >= 0 && globalIdx < allShots.length) {
+        allShots[globalIdx] = {
+          ...allShots[globalIdx],
+          speaker: shotObj.speaker,
+          action: shotObj.action,
+          dialogue_malayalam: shotObj.dialogue_malayalam,
+          location: shotObj.location,
+          character_positions: shotObj.character_positions,
+          persistent_props: shotObj.persistent_props,
+          camera_hint: shotObj.camera_hint
+        };
+      }
+
+      // Update Tab 5 UI card if visible in DOM
+      const domOutlineAction = document.getElementById(`outline_action_s3_e${activeEditEp}_s${activeEditShot}`);
+      if (domOutlineAction) domOutlineAction.innerText = shotObj.action;
+      const domOutlineDial = document.getElementById(`outline_dialogue_s3_e${activeEditEp}_s${activeEditShot}`);
+      if (domOutlineDial) domOutlineDial.innerText = `"${shotObj.dialogue_malayalam}"`;
+
+      // 2. If Active Episode, update Tab 2 (episodeData.shots) in memory & DOM
+      if (isAct && episodeData && Array.isArray(episodeData.shots)) {
+        const shotIdx = activeEditShot - 1;
+        if (episodeData.shots[shotIdx]) {
+          episodeData.shots[shotIdx] = {
+            ...episodeData.shots[shotIdx],
+            character: shotObj.speaker,
+            speaker: shotObj.speaker,
+            action_summary: shotObj.action_summary,
+            dialogue_malayalam: shotObj.dialogue_malayalam,
+            location: shotObj.location,
+            persistent_props: shotObj.persistent_props,
+            json_prompt: compiledJson,
+            prompt: compiledJson
+          };
+
+          // Update Tab 2 DOM Card
+          const domAction = document.getElementById(`shot_action_${activeEditShot}`);
+          if (domAction) domAction.innerText = shotObj.action_summary;
+          const domDial = document.getElementById(`shot_dialogue_${activeEditShot}`);
+          if (domDial) domDial.innerText = `"${shotObj.dialogue_malayalam}"`;
+          const domJsonBox = document.getElementById(`jsonPromptBox_${activeEditShot}`);
+          if (domJsonBox) domJsonBox.innerText = JSON.stringify(compiledJson, null, 2);
+        }
+      }
+
+      // 3. Backup to localStorage
       try {
-        const payload = {
-          season_number: activeBfSeason,
-          episode_number: activeBfEp,
-          shot_number: activeBfShot,
-          new_action: newAction,
-          new_dialogue: newDialogue,
-          user_notes: rationale
+        localStorage.setItem(`studio_shot_backup_${activeEditEp}_${activeEditShot}`, JSON.stringify({
+          timestamp: Date.now(),
+          shotObj: shotObj,
+          compiledJson: compiledJson
+        }));
+      } catch (_) {}
+
+      // 4. Send background sync to Google Apps Script
+      try {
+        const payload = isAct ? {
+          action: "update_shot_prompt",
+          episode_number: activeEditEp,
+          shot_number: activeEditShot,
+          shot_data: {
+            duration: "6s",
+            character: shotObj.speaker,
+            dialogue_malayalam: shotObj.dialogue_malayalam,
+            action_summary: shotObj.action_summary,
+            json_prompt: compiledJson
+          }
+        } : {
+          action: "update_single_outline_shot",
+          season_number: activeEditSeason,
+          episode_number: activeEditEp,
+          shot_number: activeEditShot,
+          shot_data: shotObj
         };
 
-        const res = await fetch(getBridgeApiUrl("/api/propagate_edit"), {
+        fetch(getActiveGasUrl(), {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain" },
           body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-        if (!data || !data.success || !data.proposal) {
-          throw new Error(data.error || "Failed to evaluate butterfly ripple");
-        }
-
-        activeBfProposal = data.proposal;
-        renderButterflyReport(data.proposal, data.report_markdown);
-        document.getElementById("bfFooterStatus").innerText = `✓ Staged Revision: ${data.proposal.revision_id}`;
-      } catch (err) {
-        console.error("Evaluation error:", err);
-        alert("Notice evaluating Butterfly consequences: " + (err.message || err));
-        document.getElementById("bfFooterStatus").innerText = `Error: ${err.message || err}`;
-      } finally {
-        if (loadBox) loadBox.style.display = "none";
-        if (btnEval) btnEval.disabled = false;
+        }).catch(err => console.warn("Background GAS sync note:", err));
+      } catch (gasErr) {
+        console.warn("GAS call notice:", gasErr);
       }
+
+      if (btn) { btn.disabled = false; btn.innerText = "💾 Review & Save"; }
+      if (statusEl) { statusEl.style.color = "#34d399"; statusEl.innerText = "✓ Saved successfully!"; }
+
+      closeShotDetailEditor();
+      alert(`✓ Shot #${activeEditShot} (Episode ${activeEditEp}) updated & saved successfully!\n${isAct ? 'Tab 5 Outline & Tab 2 Production Prompts synchronized.' : 'Tab 5 Screenplay Outline synchronized.'}`);
     }
 
-    function renderButterflyReport(proposal, reportMarkdown) {
-      const cont = document.getElementById("butterflyReportContainer");
-      if (!cont) return;
-
-      const impact = proposal.butterfly_impact || {};
-      const redev = proposal.redevelopment || {};
-      const stale = proposal.stale_asset_audit || {};
-      const finale = redev.alternative_grand_finale || {};
-      const revId = proposal.revision_id;
-
-      const affectedEps = (impact.affected_episodes || impact.causally_affected_episodes || []).join(", ") || "None";
-      const proposedCount = impact.proposed_shot_revisions_count || 0;
-      const preservedCount = impact.strictly_preserved_shots_count || 0;
-      const isFinaleRedev = (finale && finale.is_redeveloped) || impact.grand_finale_affected || false;
-
-      // Build Chronological Screenplay Revisions HTML
-      let revisionsHtml = "";
-      const revisedEps = redev.revised_episodes || {};
-      const sortedEpNums = Object.keys(revisedEps).map(n => parseInt(n, 10)).sort((a,b) => a - b);
-
-      sortedEpNums.forEach(epNum => {
-        const epData = revisedEps[epNum] || {};
-        revisionsHtml += `
-          <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; margin-bottom: 10px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #1e2640; padding-bottom: 6px;">
-              <span style="font-weight: 800; color: #38bdf8; font-size: 13px;">
-                Episode ${epNum}: ${epData.title_english || ''}
-              </span>
-              <span style="font-size: 11px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight: 700;">
-                ${epData.proposed_revisions_count || (epData.proposed_revisions || []).length} Revisions | ${epData.preserved_shots_count || 0} Preserved
-              </span>
-            </div>
-            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">
-              <b>Objective:</b> <code>${epData.central_objective_status || 'VALID'}</code> — ${epData.central_objective || ''}
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-        `;
-        (epData.proposed_revisions || []).forEach(r => {
-          revisionsHtml += `
-            <div style="background: #0d1527; border-left: 3px solid #8b5cf6; padding: 8px 12px; border-radius: 0 6px 6px 0;">
-              <div style="font-size: 11px; font-weight: 700; color: #c4b5fd; margin-bottom: 2px;">
-                Shot #${r.shot_number} [${r.speaker}] • <span style="color: #94a3b8; font-weight: 400;">${r.change_reason || 'Narrative consequence'}</span>
-              </div>
-              <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 4px;">
-                <b>Action:</b> ${r.action}
-              </div>
-              <div style="font-size: 12px; color: #fde047; font-family: 'Noto Sans Malayalam', sans-serif;">
-                <b>Proposed Dialogue:</b> ${r.dialogue_malayalam}
-              </div>
-            </div>
-          `;
-        });
-        revisionsHtml += `</div></div>`;
+    function copyEditedShotPrompt(btn) {
+      if (!currentCompiledShotPrompt) generateShotCompiledPrompt();
+      const textToCopy = JSON.stringify(currentCompiledShotPrompt, null, 2);
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const orig = btn ? btn.innerText : "";
+        if (btn) { btn.innerText = "✓ Copied!"; btn.style.background = "#059669"; }
+        setTimeout(() => { if (btn) { btn.innerText = orig; btn.style.background = ""; } }, 2000);
+      }).catch(() => {
+        alert("Prompt copied to clipboard!");
       });
-
-      // Build Stale Assets HTML
-      const staleClips = (stale.stale_video_clips || []).length;
-      const stalePrompts = (stale.stale_prompts || []).length;
-
-      cont.innerHTML = `
-        <div style="background: #111827; border: 1px solid #8b5cf6; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-          
-          <!-- Report Header -->
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid #1f293d; padding-bottom: 12px;">
-            <div>
-              <span style="font-size: 11px; font-weight: 800; color: #a78bfa; text-transform: uppercase; letter-spacing: 1px;">
-                11-Point Change-Impact Audit Report
-              </span>
-              <h4 style="font-size: 16px; font-weight: 800; color: #fff; margin: 4px 0 0 0;">
-                Revision: <code style="color: #38bdf8;">${revId}</code>
-              </h4>
-            </div>
-            <div style="display: flex; gap: 8px; align-items: center;">
-              <span style="font-size: 11px; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
-                Target: ${proposal.target_version || 'v1.0+rev'}
-              </span>
-              <span style="font-size: 11px; background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
-                Status: PROPOSED_STAGED
-              </span>
-            </div>
-          </div>
-
-          <!-- 4 Metrics Cards -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
-            <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px;">
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">AFFECTED EPISODES</div>
-              <div style="font-size: 18px; font-weight: 800; color: #38bdf8; margin-top: 4px;">Ep ${affectedEps}</div>
-            </div>
-            <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px;">
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">SHOT REVISIONS</div>
-              <div style="font-size: 18px; font-weight: 800; color: #f59e0b; margin-top: 4px;">${proposedCount} Proposed</div>
-            </div>
-            <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px;">
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">PRESERVED SHOTS</div>
-              <div style="font-size: 18px; font-weight: 800; color: #34d399; margin-top: 4px;">${preservedCount} Canon Shots</div>
-            </div>
-            <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px;">
-              <div style="font-size: 11px; color: #94a3b8; font-weight: 700;">EPISODE 10 FINALE</div>
-              <div style="font-size: 18px; font-weight: 800; color: ${isFinaleRedev ? '#ec4899' : '#34d399'}; margin-top: 4px;">
-                ${isFinaleRedev ? 'REDEVELOPED 💥' : 'VALID ✓'}
-              </div>
-            </div>
-          </div>
-
-          <!-- Screenplay Revisions Section -->
-          <div>
-            <div style="font-size: 13px; font-weight: 800; color: #facc15; margin-bottom: 8px;">
-              📜 Chronologically Coherent Screenplay Revisions:
-            </div>
-            ${revisionsHtml || '<div style="font-size: 12px; color: #94a3b8;">No downstream shot changes required.</div>'}
-          </div>
-
-          <!-- Episode 10 Grand Finale Section -->
-          <div style="background: linear-gradient(135deg, #1e1035 0%, #0c0f1d 100%); border: 1px solid #a855f7; border-radius: 10px; padding: 14px;">
-            <div style="font-size: 13px; font-weight: 800; color: #d8b4fe; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-              <span>🎭</span> Episode 10 Grand Finale Re-Assessment:
-              <span style="font-size: 11px; background: rgba(236, 72, 153, 0.2); color: #f472b6; padding: 2px 6px; border-radius: 4px;">
-                ${isFinaleRedev ? 'Alternative Climax & Payoff' : 'Preserved'}
-              </span>
-            </div>
-            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-bottom: 6px;">
-              <b>Adapted Climax Conflict:</b> ${finale.adapted_climax || finale.climax_conflict || 'Standard resolution.'}
-            </div>
-            <div style="font-size: 12px; color: #fde047; line-height: 1.5;">
-              <b>Ending Scene Payoff:</b> ${finale.final_scene_payoff || finale.ending_resolution || 'Standard ending.'}
-            </div>
-          </div>
-
-          <!-- Stale Media & Execution Gating Alert -->
-          <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 12px;">
-            <div style="font-size: 12px; font-weight: 800; color: #f87171; margin-bottom: 4px;">
-              ⚠️ Asset Invalidation & Render Protection Gate
-            </div>
-            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
-              Identified ${staleClips} stale video clips and ${stalePrompts} prompt files requiring re-render. <b>All video rendering and Instagram publication are strictly blocked</b> until this revision is explicitly approved.
-            </div>
-          </div>
-
-          <!-- Action Buttons Bar -->
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #1f293d; padding-top: 14px;">
-            <div style="font-size: 11px; color: #94a3b8;">
-              Character DNA, locked costumes, and unaffected scenes: <b>100% Protected</b>.
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button id="btnBfRollback" class="btn btn-secondary" onclick="rollbackButterflyRevision('${revId}')" style="padding: 10px 18px; font-size: 13px; color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.1);">
-                ⏪ Rollback Baseline
-              </button>
-              <button id="btnBfApprove" class="btn btn-primary" onclick="approveButterflyRevision('${revId}')" style="padding: 10px 24px; font-size: 13px; font-weight: 800; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border: none; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);">
-                ✓ Approve & Commit Revision
-              </button>
-            </div>
-          </div>
-
-        </div>
-      `;
-      cont.style.display = "block";
     }
 
-    async function approveButterflyRevision(revId) {
-      if (!revId) return;
-      const btnApprove = document.getElementById("btnBfApprove");
-      if (btnApprove) {
-        btnApprove.disabled = true;
-        btnApprove.innerText = "⏳ Committing Revision...";
-      }
-      document.getElementById("bfFooterStatus").innerText = `Committing revision ${revId}...`;
-
-      try {
-        const res = await fetch(getBridgeApiUrl("/api/approve_revision"), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ revision_id: revId })
-        });
-        const data = await res.json();
-        if (!data || data.status !== "SUCCESS") {
-          throw new Error(data.error || "Failed to commit revision");
-        }
-
-        // Apply revisions to in-memory shot outline & current episode
-        if (activeBfProposal && activeBfProposal.redevelopment) {
-          const revEps = activeBfProposal.redevelopment.revised_episodes || {};
-          Object.keys(revEps).forEach(epN => {
-            const epData = revEps[epN];
-            (epData.proposed_revisions || []).forEach(r => {
-              // Update seasonShotOutlineData
-              const targetList = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
-              const targetShot = targetList.find(s => s.episode_number == epN && s.shot_number == r.shot_number);
-              if (targetShot) {
-                targetShot.action = r.action;
-                targetShot.dialogue_malayalam = r.dialogue_malayalam;
-                targetShot.dialogue = r.dialogue_malayalam;
-              }
-              // Update episodeData if matching current episode
-              if (episodeData && (episodeData.episode_number == epN) && episodeData.shots) {
-                const targetEpShot = episodeData.shots.find(s => s.shot_number == r.shot_number);
-                if (targetEpShot) {
-                  targetEpShot.action = r.action;
-                  targetEpShot.action_summary = r.action;
-                  targetEpShot.dialogue_malayalam = r.dialogue_malayalam;
-                  targetEpShot.dialogue = r.dialogue_malayalam;
-                }
-              }
-            });
-          });
-        }
-
-        // Re-render UI
-        renderSeasonShotOutline();
-        renderShots();
-
-        // Flag stale assets in DOM
-        if (activeBfProposal && activeBfProposal.stale_asset_audit) {
-          const staleClips = activeBfProposal.stale_asset_audit.stale_video_clips || [];
-          staleClips.forEach(clipId => {
-            let key = clipId.toLowerCase();
-            const m = clipId.match(/S\d+_E\d+_S\d+/i);
-            if (m) key = m[0].toLowerCase();
-            const el1 = document.getElementById(`stale_badge_${key}`);
-            if (el1) el1.style.display = "block";
-            const parts = key.toUpperCase().split("_");
-            if (parts.length >= 3) {
-              const shotNum = parseInt(parts[2].replace("S", ""), 10);
-              const el2 = document.getElementById(`shot_stale_badge_${shotNum}`);
-              if (el2 && (episodeData.episode_number == parseInt(parts[1].replace("E", ""), 10))) {
-                el2.style.display = "block";
-              }
-            }
-          });
-        }
-
-        document.getElementById("bfFooterStatus").innerText = `✓ Revision COMMITTED & APPROVED! Version ${data.version}. Snapshot: ${data.snapshot_file}`;
-
-        const banner = document.getElementById("activeButterflyBanner");
-        if (banner) {
-          banner.style.display = "flex";
-          document.getElementById("bannerRevId").innerText = revId;
-          document.getElementById("bannerRevDetail").innerText = `Target Version: ${data.version} | Snapshot: ${data.snapshot_file}`;
-          window.currentActiveRevId = revId;
-        }
-
-        alert(`✓ Butterfly Revision COMMITTED & APPROVED!\nCanonical outline, story state, current shots, and portal display are synchronized.\nTarget Version: ${data.version}`);
-        closeButterflyEditorModal();
-      } catch (err) {
-        console.error("Commit error:", err);
-        alert("Notice committing revision: " + (err.message || err));
-        document.getElementById("bfFooterStatus").innerText = `Commit failed: ${err.message || err}`;
-      } finally {
-        if (btnApprove) {
-          btnApprove.disabled = false;
-          btnApprove.innerText = "✓ Approve & Commit Revision";
-        }
-      }
-    }
-
-    async function rollbackButterflyRevision(revId) {
-      if (!revId) return;
-      if (!confirm(`Are you sure you want to rollback revision ${revId} to its exact pre-commit baseline?`)) {
-        return;
-      }
-
-      const btnRollback = document.getElementById("btnBfRollback");
-      if (btnRollback) {
-        btnRollback.disabled = true;
-        btnRollback.innerText = "⏳ Rolling back...";
-      }
-      document.getElementById("bfFooterStatus").innerText = `Rolling back revision ${revId}...`;
-
-      try {
-        const res = await fetch(getBridgeApiUrl("/api/rollback_revision"), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ revision_id: revId })
-        });
-        const data = await res.json();
-        if (!data || data.status !== "SUCCESS") {
-          throw new Error(data.error || "Failed to rollback revision");
-        }
-
-        // Re-fetch or reload outline to reset in-memory DOM
-        if (data.outline_data) {
-          seasonShotOutlineData = data.outline_data;
-          renderSeasonShotOutline();
-          renderShots();
-        } else if (typeof fetchSeasonShotOutline === 'function') {
-          await fetchSeasonShotOutline();
-        } else {
-          renderSeasonShotOutline();
-          renderShots();
-        }
-
-        // Clear stale badges
-        document.querySelectorAll("[id^='stale_badge_']").forEach(el => el.style.display = "none");
-        document.querySelectorAll("[id^='shot_stale_badge_']").forEach(el => el.style.display = "none");
-
-        const banner = document.getElementById("activeButterflyBanner");
-        if (banner) banner.style.display = "none";
-        window.currentActiveRevId = null;
-
-        document.getElementById("bfFooterStatus").innerText = `✓ Restored baseline byte-for-byte!`;
-        alert(`✓ Rollback Complete!\n${data.message}`);
-        closeButterflyEditorModal();
-      } catch (err) {
-        console.error("Rollback error:", err);
-        alert("Notice rolling back revision: " + (err.message || err));
-        document.getElementById("bfFooterStatus").innerText = `Rollback failed: ${err.message || err}`;
-      } finally {
-        if (btnRollback) {
-          btnRollback.disabled = false;
-          btnRollback.innerText = "⏪ Rollback Baseline";
-        }
-      }
-    }
-
-    function rollbackActiveButterflyRevision() {
-      if (window.currentActiveRevId) {
-        rollbackButterflyRevision(window.currentActiveRevId);
-      }
-    }
+    // Backwards-compatibility alias
+    window.openButterflyEditorModal = function(epNum, shotNum) {
+      openShotDetailEditor(epNum, shotNum);
+    };
 
     function buildDirectorEpisodeWritePackage(pkg) {
       if (!pkg || !Array.isArray(pkg.shots) || pkg.shots.length !== 10) throw new Error('A complete ten-shot episode package is required.');
