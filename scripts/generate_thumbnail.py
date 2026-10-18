@@ -134,11 +134,11 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
     # Precise relative coordinates of the blank paper areas inside the sticky notes
     cx_top = int(w * 0.8055)
     cy_top = int(h * 0.0885)
-    angle_top = 5.5
+    angle_top = 5.7
 
     cx_bot = int(w * 0.8268)
     cy_bot = int(h * 0.1920)
-    angle_bot = 6.5
+    angle_bot = 6.7
 
     font_size = int(72 * (h / 1672.0))
 
@@ -184,7 +184,7 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
             canvas = canvas.rotate(angle, resample=Image.BICUBIC, expand=True)
         return canvas
 
-    # Top sticky note (Season) has a 5.5 degree tilt; bottom (Episode) has a 6.5 degree tilt
+    # Top sticky note (Season) has a 5.7 degree tilt; bottom (Episode) has a 6.7 degree tilt
     s_img = render_tilted_styled_text(season_text, font, angle=angle_top)
     e_img = render_tilted_styled_text(episode_text, font, angle=angle_bot)
 
