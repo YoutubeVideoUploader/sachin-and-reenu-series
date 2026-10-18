@@ -137,7 +137,7 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
     angle_top = 5.5
 
     cx_bot = int(w * 0.8268)
-    cy_bot = int(h * 0.1842)
+    cy_bot = int(h * 0.1920)
     angle_bot = 6.5
 
     font_size = int(72 * (h / 1672.0))
