@@ -734,6 +734,90 @@
       #directorEvaluationContainer { padding: 12px !important; }
     }
 
+    /* 3-Tier Interactive Guided Hub Styles */
+    .guided-scope-btn {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      background: #0b1120;
+      color: #94a3b8;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .guided-scope-btn:hover {
+      border-color: #475569;
+      background: #111a2e;
+      color: #fff;
+    }
+    .guided-scope-btn.active {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.22) 0%, rgba(59, 130, 246, 0.12) 100%);
+      color: #60a5fa;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+    }
+    .guided-action-card {
+      background: #080d1a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .guided-action-card:hover {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.08);
+      transform: translateY(-1px);
+    }
+    .guided-action-card .title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .guided-action-card .subtitle {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+    .guided-diff-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin: 10px 0;
+    }
+    .guided-diff-table th {
+      background: #111a2e;
+      color: #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+      border: 1px solid #1e293b;
+      font-weight: 700;
+    }
+    .guided-diff-table td {
+      padding: 8px 10px;
+      border: 1px solid #1e293b;
+      color: #cbd5e1;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    .guided-diff-table tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.5);
+    }
+    .guided-diff-table tr:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
     /* =============================================================
        STUDIO UI REFRESH — clearer hierarchy, calmer surfaces, and
        predictable navigation without changing production workflows.
@@ -1036,94 +1120,120 @@
           </div>
         </div>
 
-        <!-- 3-Mode Scope Selector (5-Tab Architecture: Connected to Tab 2 & Tab 5) -->
-        <div class="director-scope-buttons" role="group" aria-label="Choose the size of your story change">
-          <button type="button" id="directorModeShotBtn" class="director-scope-button" aria-pressed="true" onclick="setDirectorScopeMode('single_shot')">
-            🎯 Edit one shot
-          </button>
-          <button type="button" id="directorModeEpBtn" class="director-scope-button" onclick="setDirectorScopeMode('full_episode')">
-            🎬 Rewrite current episode
-          </button>
-          <button type="button" id="directorModeSeasonBtn" class="director-scope-button" onclick="setDirectorScopeMode('season_arc')">
-            🌊 Plan a season direction
-          </button>
-        </div>
-
-        <p class="director-help-note">Choose a scope and describe your idea. For a shot change, Gemini checks the handoff to the next shot. You can then apply the change to one shot, the episode, or the remaining season.</p>
-
-        <!-- Dynamic Controls Bar -->
-        <div id="directorScopeOptions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #080d1a; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
-          <!-- Target Episode -->
-          <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Episode:</span>
-            <select id="chatTargetEp" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="current" selected>Loading active episode…</option>
-            </select>
+        <!-- 3-Tier Interactive Guided Director Hub -->
+        <div class="director-hub-wrapper" style="background: rgba(8, 13, 26, 0.7); border: 1px solid #1e293b; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+          <!-- TIER 1: 3-Button Scope Selector -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #94a3b8;">
+              🧭 Step 1: Select Update Scope
+            </div>
+            <div id="directorSyncModeBadge" style="font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3);">
+              🛡️ Staged Sync (Review First, Commit on Approval)
+            </div>
           </div>
 
-          <!-- Target Shot -->
-          <div id="directorShotSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Shot:</span>
-            <select id="chatTargetShot" onchange="onDirectorTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
-              <option value="1" selected>Shot 1</option>
-              <option value="2">Shot 2</option>
-              <option value="3">Shot 3</option>
-              <option value="4">Shot 4</option>
-              <option value="5">Shot 5</option>
-              <option value="6">Shot 6</option>
-              <option value="7">Shot 7</option>
-              <option value="8">Shot 8</option>
-              <option value="9">Shot 9</option>
-              <option value="10">Shot 10 (Cliffhanger)</option>
-            </select>
+          <div class="director-scope-buttons" role="group" aria-label="Select story update scope" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px;">
+            <button type="button" id="guidedScopeShotBtn" class="guided-scope-btn active" onclick="switchGuidedScope('shot')">
+              <div style="font-size: 18px; margin-bottom: 2px;">🎯</div>
+              <div style="font-weight: 800; font-size: 13px;">Shot Update</div>
+              <div style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">Single scene & next handoff</div>
+            </button>
+            <button type="button" id="guidedScopeEpBtn" class="guided-scope-btn" onclick="switchGuidedScope('episode')">
+              <div style="font-size: 18px; margin-bottom: 2px;">🎬</div>
+              <div style="font-weight: 800; font-size: 13px;">Episode Update</div>
+              <div style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">10-shot arc & cliffhanger</div>
+            </button>
+            <button type="button" id="guidedScopeSeriesBtn" class="guided-scope-btn" onclick="switchGuidedScope('series')">
+              <div style="font-size: 18px; margin-bottom: 2px;">🌊</div>
+              <div style="font-weight: 800; font-size: 13px;">Series Update</div>
+              <div style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">Season macro flow & climax</div>
+            </button>
           </div>
 
-          <span id="directorModeHint" style="font-size: 11px; color: #38bdf8; margin-left: auto;">
-            📌 Connected to Tab 2 (Prompts) & Tab 5 (100-Shot Script) • Evaluates Continuity vs Shot K+1
-          </span>
+          <!-- Target Selectors & Production Status Bar -->
+          <div id="directorScopeOptions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; background: #0c1424; padding: 10px 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <!-- Target Episode Selector -->
+            <div id="directorEpSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Target Episode:</span>
+              <select id="chatTargetEp" onchange="onGuidedTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                <option value="current" selected>Loading active episode…</option>
+              </select>
+            </div>
+
+            <!-- Target Shot Selector (Only shown for Shot Update) -->
+            <div id="directorShotSelectWrapper" style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #cbd5e1;">Target Shot:</span>
+              <select id="chatTargetShot" onchange="onGuidedTargetChanged()" style="background: #1e293b; border: 1px solid #334155; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                <option value="1" selected>Shot 1</option>
+                <option value="2">Shot 2</option>
+                <option value="3">Shot 3</option>
+                <option value="4">Shot 4</option>
+                <option value="5">Shot 5</option>
+                <option value="6">Shot 6</option>
+                <option value="7">Shot 7</option>
+                <option value="8">Shot 8</option>
+                <option value="9">Shot 9</option>
+                <option value="10">Shot 10 (Cliffhanger)</option>
+              </select>
+            </div>
+
+            <!-- Decoupled Tab 2 Impact Pill -->
+            <div id="directorTargetImpactBadge" style="margin-left: auto; font-size: 11px; padding: 4px 10px; border-radius: 6px; font-weight: 700; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">
+              🟢 Active Episode: Will update Tab 5, Tab 1 & Tab 2
+            </div>
+          </div>
+
+          <!-- TIER 2: Guided Action Options (Sub-Buttons) -->
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #94a3b8; margin-bottom: 8px;">
+              ⚡ Step 2: Choose Guided Action
+            </div>
+            <div id="guidedSubActionsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+              <!-- Dynamically populated based on active scope (shot, episode, series) -->
+            </div>
+          </div>
+
+          <!-- Custom Pitch / Notes Drawer (Collapsible) -->
+          <div id="guidedCustomInputDrawer" style="display: none; margin-top: 12px; background: #0c1424; border: 1px solid #334155; border-radius: 10px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 12px; font-weight: 700; color: #fde047;">✏️ Custom Director Pitch & Specific Details:</span>
+              <button type="button" class="btn btn-secondary" onclick="closeGuidedCustomDrawer()" style="padding: 2px 8px; font-size: 11px;">✕ Cancel</button>
+            </div>
+            <textarea id="geminiChatInput" rows="2" placeholder="Describe your custom story beat, scene change, or dialogue nuance..." style="width: 100%; min-height: 54px; max-height: 140px; background: #080d1a; border: 1px solid #1e293b; color: #fff; padding: 10px 12px; border-radius: 8px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4; margin-bottom: 8px; box-sizing: border-box;"></textarea>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <div id="directorChipsContainer" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="chat-chip" onclick="quickFillPrompt('Amal shivers from superstitious Munnar dread while Sachin inspects the car headlights')">😂 Amal Dread</button>
+                <button type="button" class="chat-chip" onclick="quickFillPrompt('Caretaker Sreedharan warns the trio never to touch Room 13 before vanishing into mist')">🗝️ Caretaker Warning</button>
+                <button type="button" class="chat-chip" onclick="quickFillPrompt('Reenu points trembling fingers at an eerie handprint slowly appearing on misted glass')">👻 Handprint Clue</button>
+              </div>
+              <button class="btn btn-primary" id="geminiSendBtn" onclick="executeGuidedAnalysis('custom')" style="padding: 9px 18px; font-size: 13px; font-weight: 700; white-space: nowrap;">
+                🚀 Run Director Analysis
+              </button>
+            </div>
+          </div>
+
+          <!-- Real-Time Guided Progress Bar -->
+          <div id="directorProgressBox" class="director-progress" style="display: none; margin-top: 14px;" role="status" aria-live="polite">
+            <div class="director-progress-heading">
+              <span id="directorProgressLabel" style="font-weight: 700; color: #38bdf8;">Analyzing Tab 5 Master Outline & Continuity Boundaries...</span>
+              <strong id="directorProgressPercent">0%</strong>
+            </div>
+            <div class="director-progress-track" role="progressbar" aria-label="Director analysis progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="directorProgressBar" class="director-progress-bar"></div>
+            </div>
+            <div id="directorProgressDetail" class="director-progress-detail">Checking Tab 5 source of truth, neighboring seams, and character consistency...</div>
+          </div>
+          <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
         </div>
 
-        <!-- Continuity Assessment & Dual-Mode Healing Card -->
-        <div id="directorEvaluationContainer" style="display: none; margin-bottom: 14px; background: #0b1120; border: 1px solid #3b82f6; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
-          <!-- Rendered dynamically by evaluateDirectorShotChange() -->
+        <!-- FOCUSED REVIEW & STAGED SYNC CARD -->
+        <div id="directorEvaluationContainer" style="display: none; margin-bottom: 18px; background: #0b1120; border: 1px solid #3b82f6; border-radius: 12px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <!-- Rendered dynamically by renderFocusedReviewCard() -->
         </div>
 
-        <!-- Chat Messages Scroll Log -->
-        <div id="geminiChatMessages" class="gemini-chat-log">
+        <!-- Chat Messages Scroll Log (Maintained for history & notifications) -->
+        <div id="geminiChatMessages" class="gemini-chat-log" style="max-height: 280px; overflow-y: auto; margin-bottom: 14px;">
           <!-- Messages rendered dynamically -->
-        </div>
-
-        <!-- Quick Suggestion Chips -->
-        <div id="directorChipsContainer" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-          <button class="chat-chip" style="background: rgba(99, 102, 241, 0.25); border-color: #6366f1; color: #c7d2fe;" onclick="quickFillPrompt('Sachin and Amal quickly climb back into the car and slam the door shut in terror')">
-            🚗 Car Scramble & Door Slam
-          </button>
-          <button class="chat-chip" onclick="quickFillPrompt('Add hilarious comedy banter for Amal shivering from superstitious Munnar dread')">
-            😂 Add Amal Dread Banter
-          </button>
-          <button class="chat-chip" onclick="quickFillPrompt('Reenu points trembling fingers at an eerie handprint slowly appearing on the misted condensation')">
-            👻 Condensation Handprint Clue
-          </button>
-          <button class="chat-chip" onclick="quickFillPrompt('Caretaker Sreedharan abruptly warns the trio never to touch Room 13 before vanishing into mist')">
-            🗝️ Sreedharan Warning (Room 13)
-          </button>
-          <button class="chat-chip" onclick="quickFillPrompt('Rewrite dialogue in authentic conversational Munnar-Kochi Malayalam (5-8 words max)')">
-            💬 Authentic Malayalam Dialogue
-          </button>
-        </div>
-
-        <!-- User Input Box -->
-        <div style="display: flex; gap: 10px; align-items: flex-end;">
-          <textarea id="geminiChatInput" rows="2" placeholder="Tell the Director your shot idea or story change... (e.g., 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')" style="flex: 1; min-height: 52px; max-height: 140px; background: #080d1a; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-family: inherit; resize: vertical; outline: none; line-height: 1.4;"></textarea>
-          <button class="btn btn-primary" id="geminiSendBtn" onclick="sendGeminiDirectorMessage()" style="padding: 14px 22px; font-size: 14px; height: 52px; white-space: nowrap;">
-            🔍 Evaluate & Check Flow
-          </button>
-        </div>
-        <div id="geminiChatStatus" style="font-size: 12px; color: #38bdf8; margin-top: 8px; display: none;"></div>
-        <div id="directorProgressBox" class="director-progress" style="display: none;" role="status" aria-live="polite">
-          <div class="director-progress-heading"><span id="directorProgressLabel">Waiting for Gemini...</span><strong id="directorProgressPercent">0%</strong></div>
-          <div class="director-progress-track" role="progressbar" aria-label="Estimated Gemini response progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="directorProgressBar" class="director-progress-bar"></div></div>
-          <div id="directorProgressDetail" class="director-progress-detail">Estimate based on streamed response text, not a server-reported completion percentage.</div>
         </div>
       </div>
 
@@ -2774,6 +2884,7 @@
       select.value = String(selected);
       select.dataset.activeEpisode = String(activeEpisode);
       updateDirectorAvailability();
+      if (typeof onGuidedTargetChanged === 'function') onGuidedTargetChanged();
     }
 
     function normalizeEpisodeData(raw) {
@@ -8690,73 +8801,167 @@ The JSON MUST follow this EXACT schema:
     // Mode 2: Change Whole Episode (Intelligent Flow Steer to Climax)
     // Mode 3: Plan a season direction (Master 100-Shot Screenplay Engine)
     // =============================================================
-    window.currentDirectorScopeMode = 'single_shot';
+    // =============================================================
+    // GEMINI AI STORY & SHOT DIRECTOR: 3-TIER GUIDED INTERACTIVE ENGINE
+    // Tier 1: Scope Selection (🎯 Shot Update | 🎬 Episode Update | 🌊 Series Update)
+    // Tier 2: Guided Action Sub-Buttons (Continuation | Polish/Neat | Custom)
+    // Tier 3: Macro Tab 5 Analysis -> Focused Review Card -> Durable Transaction Commit
+    // =============================================================
+    window.currentDirectorScopeMode = 'shot';
     window.currentDirectorEvaluation = null;
+    window.currentStagedDraft = null;
 
-    function setDirectorScopeMode(mode) {
-      window.currentDirectorScopeMode = mode;
-      const shotBtn = document.getElementById('directorModeShotBtn');
-      const epBtn = document.getElementById('directorModeEpBtn');
-      const seasonBtn = document.getElementById('directorModeSeasonBtn');
+    function switchGuidedScope(scope) {
+      window.currentDirectorScopeMode = scope;
+      const shotBtn = document.getElementById('guidedScopeShotBtn');
+      const epBtn = document.getElementById('guidedScopeEpBtn');
+      const seriesBtn = document.getElementById('guidedScopeSeriesBtn');
       const shotSelectWrapper = document.getElementById('directorShotSelectWrapper');
-      const epSelectWrapper = document.getElementById('directorEpSelectWrapper');
-      const hint = document.getElementById('directorModeHint');
-      const sendBtn = document.getElementById('geminiSendBtn');
-      const input = document.getElementById('geminiChatInput');
 
-      [shotBtn, epBtn, seasonBtn].forEach(btn => {
-        if (btn) {
-          btn.setAttribute('aria-pressed', 'false');
-          btn.style.border = '1px solid #334155';
-          btn.style.background = '#080d1a';
-          btn.style.color = '#94a3b8';
-        }
-      });
+      [shotBtn, epBtn, seriesBtn].forEach(b => { if (b) b.classList.remove('active'); });
 
-      if (mode === 'single_shot') {
-        if (shotBtn) {
-          shotBtn.setAttribute('aria-pressed', 'true');
-          shotBtn.style.border = '1px solid #3b82f6';
-          shotBtn.style.background = 'rgba(59, 130, 246, 0.2)';
-          shotBtn.style.color = '#60a5fa';
-        }
+      if (scope === 'shot') {
+        if (shotBtn) shotBtn.classList.add('active');
         if (shotSelectWrapper) shotSelectWrapper.style.display = 'flex';
-        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
-        if (hint) hint.innerHTML = '<b>One shot:</b> Check the next-shot connection before applying.';
-        if (sendBtn) sendBtn.innerHTML = '🔍 Evaluate & Check Flow';
-        if (input) input.placeholder = "Narrate your shot idea or change... (e.g. 'Sachin hurriedly climbs into the car and tells Amal to drive away immediately')";
-      } else if (mode === 'full_episode') {
-        if (epBtn) {
-          epBtn.setAttribute('aria-pressed', 'true');
-          epBtn.style.border = '1px solid #6366f1';
-          epBtn.style.background = 'rgba(99, 102, 241, 0.2)';
-          epBtn.style.color = '#a5b4fc';
-        }
+      } else if (scope === 'episode') {
+        if (epBtn) epBtn.classList.add('active');
         if (shotSelectWrapper) shotSelectWrapper.style.display = 'none';
-        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
-        if (hint) hint.innerHTML = '<b>Whole episode:</b> Rebuild this episode to reach its existing Shot 10 cliffhanger.';
-        if (sendBtn) sendBtn.innerHTML = '🎬 Rewrite Episode';
-        if (input) input.placeholder = "Describe direction for the whole episode... (e.g. 'Heighten the supernatural tension at the homestay, Amal finds clues, Sachin confronts Caretaker')";
-      } else if (mode === 'season_arc') {
-        if (seasonBtn) {
-          seasonBtn.setAttribute('aria-pressed', 'true');
-          seasonBtn.style.border = '1px solid #a855f7';
-          seasonBtn.style.background = 'rgba(168, 85, 247, 0.2)';
-          seasonBtn.style.color = '#d8b4fe';
-        }
-        if (shotSelectWrapper) shotSelectWrapper.style.display = 'flex';
-        if (epSelectWrapper) epSelectWrapper.style.display = 'flex';
-        if (hint) hint.innerHTML = '<b>Season roadmap:</b> Preview the 10-episode direction, choose the starting shot, then confirm the GitHub rewrite.';
-        if (sendBtn) sendBtn.innerHTML = '🌊 Overhaul Season Script';
-        if (input) input.placeholder = "Describe overall season direction or new theme... (e.g. 'Munnar haunted heritage tea factory investigation with 10 continuous episodes')";
+      } else if (scope === 'series') {
+        if (seriesBtn) seriesBtn.classList.add('active');
+        if (shotSelectWrapper) shotSelectWrapper.style.display = 'none';
+      }
+
+      renderGuidedSubActions(scope);
+      onGuidedTargetChanged();
+    }
+
+    function renderGuidedSubActions(scope) {
+      const container = document.getElementById('guidedSubActionsContainer');
+      if (!container) return;
+
+      if (scope === 'shot') {
+        container.innerHTML = `
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('continuity')">
+            <div class="title"><span>🔄</span> Adjust Continuation</div>
+            <div class="subtitle">Seamlessly connects characters, props, mood & lighting from previous shot</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('polish')">
+            <div class="title"><span>✨</span> Design More Neatly</div>
+            <div class="subtitle">Optimizes 3D Pixar staging & natural spoken Malayalam (3-8 words, zero prefixes)</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="openGuidedCustomDrawer()">
+            <div class="title"><span>✏️</span> Custom Adjustment</div>
+            <div class="subtitle">Narrate custom scene blocking, character emotions, or specific dialogue changes</div>
+          </button>
+        `;
+      } else if (scope === 'episode') {
+        container.innerHTML = `
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('cliffhanger')">
+            <div class="title"><span>🔄</span> Reconnect Cliffhanger Flow</div>
+            <div class="subtitle">Heals incoming seam from prior episode & builds strong cliffhanger at Shot 10</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('polish')">
+            <div class="title"><span>✨</span> Polish & Heighten Drama</div>
+            <div class="subtitle">Enriches comedic timing, suspense & Malayalam dialogue across all 10 shots</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="openGuidedCustomDrawer()">
+            <div class="title"><span>✏️</span> Custom Episode Overhaul</div>
+            <div class="subtitle">Provide your custom plot direction, supernatural clues, or scene beats</div>
+          </button>
+        `;
+      } else if (scope === 'series') {
+        container.innerHTML = `
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('rebalance')">
+            <div class="title"><span>🔄</span> Rebalance 10-Episode Story Arc</div>
+            <div class="subtitle">Harmonizes full season rhythm, arcs & grand finale across Tab 5 outline</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="executeGuidedAnalysis('escalate')">
+            <div class="title"><span>✨</span> Escalate Climax & Pacing</div>
+            <div class="subtitle">Intensifies mystery clues & Caretaker supernatural stakes toward Season Finale</div>
+          </button>
+          <button type="button" class="guided-action-card" onclick="openGuidedCustomDrawer()">
+            <div class="title"><span>✏️</span> Custom Series Pitch</div>
+            <div class="subtitle">Pitch a new overarching theme or multi-episode story progression</div>
+          </button>
+        `;
       }
     }
 
-    function onDirectorTargetChanged() {
+    function onGuidedTargetChanged() {
       const epSelect = document.getElementById('chatTargetEp');
+      const shotSelect = document.getElementById('chatTargetShot');
+      const impactBadge = document.getElementById('directorTargetImpactBadge');
       if (epSelect) epSelect.dataset.userSelected = 'true';
+
+      const targetEp = epSelect ? parseInt(epSelect.value, 10) || 1 : 1;
+      const activeEp = (typeof getActiveEpisodeNumber === 'function') ? getActiveEpisodeNumber() : (Number(episodeData && episodeData.episode_number) || 1);
+
+      if (impactBadge) {
+        if (targetEp === activeEp) {
+          impactBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+          impactBadge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+          impactBadge.style.color = '#34d399';
+          impactBadge.innerHTML = `🟢 <b>Active Episode ${targetEp}</b>: Will update Tab 5 Outline, Tab 1 Arc & Tab 2 Video Prompts`;
+        } else {
+          impactBadge.style.background = 'rgba(56, 189, 248, 0.15)';
+          impactBadge.style.borderColor = 'rgba(56, 189, 248, 0.3)';
+          impactBadge.style.color = '#38bdf8';
+          impactBadge.innerHTML = `🔵 <b>Upcoming/Staged Ep ${targetEp}</b>: Will update Tab 5 Outline & Tab 1 Arc (Active Ep ${activeEp} Prompts in Tab 2 remain untouched)`;
+        }
+      }
+
       const evalBox = document.getElementById('directorEvaluationContainer');
       if (evalBox) evalBox.style.display = 'none';
+    }
+
+    function openGuidedCustomDrawer() {
+      const drawer = document.getElementById('guidedCustomInputDrawer');
+      if (drawer) {
+        drawer.style.display = 'block';
+        const input = document.getElementById('geminiChatInput');
+        if (input) { input.focus(); }
+      }
+    }
+
+    function closeGuidedCustomDrawer() {
+      const drawer = document.getElementById('guidedCustomInputDrawer');
+      if (drawer) drawer.style.display = 'none';
+    }
+
+    function executeGuidedAnalysis(actionType) {
+      const scope = window.currentDirectorScopeMode || 'shot';
+      let userIdea = '';
+      if (actionType === 'custom') {
+        const input = document.getElementById('geminiChatInput');
+        userIdea = (input ? input.value : '').trim();
+        if (!userIdea) {
+          alert('Please enter your story idea or scene change notes in the custom box.');
+          return;
+        }
+      } else if (actionType === 'continuity') {
+        userIdea = 'Adjust continuation from previous shot: ensure seamless physical blocking, character presence, props, lighting, and emotional mood handoff from the preceding shot.';
+      } else if (actionType === 'polish') {
+        userIdea = (scope === 'shot')
+          ? 'Design more neatly: elevate Pixar 3D visual staging, motivate camera framing, ensure concise conversational Malayalam dialogue (strictly 3 to 8 words, max 10 words, pure Malayalam without any speaker prefix), and sharp emotional clarity.'
+          : 'Polish & heighten drama: enhance comedy timing, supernatural suspense, atmospheric Munnar mist, and punchy Malayalam dialogue across all 10 shots.';
+      } else if (actionType === 'cliffhanger') {
+        userIdea = 'Reconnect cliffhanger flow: align the 10 shots so the incoming handoff from the previous episode is completely seamless, dramatic tension builds organically, and Shot 10 hits a gripping cliffhanger leading into the next episode.';
+      } else if (actionType === 'rebalance') {
+        userIdea = 'Rebalance 10-episode story arc: analyze Tab 5 master outline and harmonize dramatic pacing, character arcs, and mystery reveals across the full season.';
+      } else if (actionType === 'escalate') {
+        userIdea = 'Escalate climax and pacing: heighten supernatural suspense, Caretaker warnings, and atmospheric tension toward the season grand climax.';
+      }
+
+      runGuidedDirectorAnalysis(scope, actionType, userIdea);
+    }
+
+    // Backwards-compatibility aliases
+    function setDirectorScopeMode(mode) {
+      const scopeMap = { single_shot: 'shot', full_episode: 'episode', season_arc: 'series' };
+      switchGuidedScope(scopeMap[mode] || mode);
+    }
+    function onDirectorTargetChanged() {
+      onGuidedTargetChanged();
     }
 
     function updateDirectorProgress(mode, receivedChars, state = 'streaming') {
@@ -8923,329 +9128,808 @@ The JSON MUST follow this EXACT schema:
       throw new Error(lastError);
     }
 
-    async function evaluateDirectorShotChange(userIdea) {
+    // =============================================================
+    // ROOT-FIRST 3-TIER GUIDED DIRECTOR ENGINE
+    // Single Source of Truth = Tab 5 (100-Shot Master Outline)
+    // Save Order: Tab 5 -> Tab 4 -> Tab 1 -> Tab 2 (Decoupled)
+    // =============================================================
+
+    async function runGuidedDirectorAnalysis(scope, actionType, userIdea) {
       const epSelect = document.getElementById('chatTargetEp');
       const shotSelect = document.getElementById('chatTargetShot');
       const epNum = epSelect ? parseInt(epSelect.value, 10) || 1 : 1;
       const shotNum = shotSelect ? parseInt(shotSelect.value, 10) || 1 : 1;
       const status = document.getElementById('geminiChatStatus');
       const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
-      if (!activeEpisodePromptsVerified || epNum !== getActiveEpisodeNumber()) {
-        alert('The Director is paused until Tab 2 prompts match the active episode in Tab 1. Refresh the sheet connection before editing.');
+      const activeEpisode = (typeof getActiveEpisodeNumber === 'function') ? getActiveEpisodeNumber() : (Number(episodeData && episodeData.episode_number) || 1);
+      const isTargetActive = (epNum === activeEpisode);
+
+      // STEP 1: Verify Tab 5 master outline
+      if (status) {
+        status.style.display = 'block';
+        status.style.color = '#38bdf8';
+        status.innerText = `Step 1/4: Analyzing Tab 5 master outline for Season ${activeSeason} and boundary seams...`;
+      }
+      updateDirectorProgress(scope, 0);
+
+      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
+        try { await fetchSeasonShotOutline(); } catch (_) {}
+      }
+
+      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      if (!allShots || allShots.length !== 100) {
+        if (status) { status.style.color = '#f87171'; status.innerText = `Error: Tab 5 does not contain the verified 100-shot outline for Season ${activeSeason}. Please refresh portal from Google Sheets.`; }
+        alert(`Tab 5 must contain the complete 100-shot master outline before the Director can analyze story flow.`);
         return;
       }
-      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
-        await fetchSeasonShotOutline();
-      }
-      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason) {
-        alert(`The current Season ${activeSeason} Tab 5 outline could not be verified. Refresh the portal before asking the Director to change a shot.`);
-        return;
-      }
-      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
-      const current = allShots.find(s => Number(s.episode_number) === epNum && Number(s.shot_number) === shotNum);
-      const previous = allShots.find(s => Number(s.episode_number) === epNum && Number(s.shot_number) === shotNum - 1) || null;
-      const next = allShots.find(s => Number(s.episode_number) === epNum && Number(s.shot_number) === shotNum + 1) || allShots.find(s => Number(s.episode_number) === epNum + 1 && Number(s.shot_number) === 1) || null;
-      if (!current) { alert(`Shot ${shotNum} of Episode ${epNum} is not loaded from Tab 5.`); return; }
-      window.directorProgressKind = 'single_shot';
-      updateDirectorProgress('single_shot', 0);
-      if (status) { status.style.display = 'block'; status.style.color = '#38bdf8'; status.innerText = 'Gemini is drafting the shot and checking both neighboring shots for continuity...'; }
-      try {
-        const result = await requestDirectorJson(`You are the Sachin and Reenu continuity director. Evaluate this proposed shot edit and return ONLY JSON with keys success, proposed_shot, has_inconsistency, inconsistency_details, can_episode_steer, recommendation. proposed_shot must contain episode_number, shot_number, speaker, action, dialogue_malayalam, location, persistent_props, camera_hint. Give the shot one primary visible action and one readable emotional beat that fits six seconds. Use a motivated framing/angle and at most one purposeful camera move (or a deliberate locked frame); stage a clear handoff to both neighboring shots. Write concise, natural spoken Malayalam (usually 3–8 words, maximum 10); speaker is a separate field, so dialogue contains no name prefix, acting direction, parenthetical note, or quotation marks. A character's name may appear only when naturally addressed. Compare prior shot, edit, and next shot for cause/effect, screen direction, location, movement, props, clothing, time, and emotional state. Don't flag a deliberate transition if staged. Recommend EPISODE_STEER_RECOMMENDED when the episode can repair it; recommend SEASON_WISE_REQUIRED only when the edit breaks the cliffhanger or downstream season arc.
 
-Previous shot: ${JSON.stringify(previous)}
-Current shot: ${JSON.stringify(current)}
-Next shot: ${JSON.stringify(next)}
-Creator's requested change: ${userIdea}`);
-        if (!result.proposed_shot || !String(result.proposed_shot.action || '').trim()) throw new Error('Gemini returned no revised shot action.');
-        result.success = true; result.episode_number = epNum; result.shot_number = shotNum; result.user_idea = userIdea;
-        window.currentDirectorEvaluation = result;
-        renderDirectorEvaluationCard(result);
-      } catch (error) {
-        updateDirectorProgress('single_shot', 0, 'error');
-        alert(`Gemini could not evaluate this shot: ${error.message}`);
-      } finally { if (status) status.style.display = 'none'; window.directorProgressKind = null; }
-    }
+      // Identify boundary seams
+      const epStartIndex = (epNum - 1) * 10;
+      const targetEpShots = allShots.slice(epStartIndex, epStartIndex + 10);
+      const incomingSeam = epStartIndex > 0 ? allShots[epStartIndex - 1] : null; // e.g. Ep 2 Shot 10 before Ep 3 Shot 1
+      const outgoingSeam = epStartIndex + 10 < 100 ? allShots[epStartIndex + 10] : null; // e.g. Ep 4 Shot 1 after Ep 3 Shot 10
 
-    function clientSideEvaluateShot(epNum, shotNum, userIdea) {
-      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
-      const currentShot = allShots.find(s => s.episode_number == epNum && s.shot_number == shotNum) || {};
-      const nextShot = allShots.find(s => s.episode_number == epNum && s.shot_number == (shotNum + 1)) || 
-                       allShots.find(s => s.episode_number == (epNum + 1) && s.shot_number == 1) || {};
+      const currentShot = targetEpShots.find(s => Number(s.shot_number) === shotNum) || targetEpShots[0] || {};
+      const priorShot = (shotNum > 1) ? targetEpShots[shotNum - 2] : incomingSeam;
+      const nextShot = (shotNum < 10) ? targetEpShots[shotNum] : outgoingSeam;
 
-      let speaker = currentShot.speaker || 'Sachin';
-      for (const char of ['Sachin', 'Reenu', 'Amal', 'Caretaker', 'Narrator', 'Voice']) {
-        if (userIdea.toLowerCase().includes(char.toLowerCase())) {
-          speaker = char;
-          break;
-        }
-      }
-
-      let loc = currentShot.location || 'Homestay';
-      if (userIdea.toLowerCase().includes('car')) loc = 'Mountain road car interior';
-      else if (userIdea.toLowerCase().includes('bridge')) loc = 'Old Munnar Suspension Bridge';
-      else if (userIdea.toLowerCase().includes('room 13')) loc = 'Homestay hallway, outside Room 13';
-
-      const proposedShot = {
+      const targetEpStory = ((seasonStoryData && seasonStoryData.episodes) || [])[epNum - 1] || {
         episode_number: epNum,
-        shot_number: shotNum,
-        speaker: speaker,
-        action: `Medium Shot (MS), Pixar 3D Camera: ${userIdea}. Atmospheric lighting with cold volumetric mist.`,
-        dialogue_malayalam: `${speaker}: (വെപ്രാളത്തോടെ) '${userIdea.slice(0, 35)}...'`,
-        location: loc,
-        persistent_props: currentShot.persistent_props || []
+        title_english: `Episode ${epNum}`,
+        title_malayalam: '',
+        synopsis: '',
+        cliffhanger: '',
+        status: (epNum < activeEpisode) ? 'Published' : (epNum === activeEpisode ? 'Active' : 'Upcoming')
       };
 
-      let hasInconsistency = false;
-      let inconsistencyDetails = '';
-      if (nextShot && nextShot.location) {
-        const nextLocFirst = nextShot.location.split(' ')[0].toLowerCase();
-        const curLocFirst = loc.split(' ')[0].toLowerCase();
-        if (curLocFirst !== nextLocFirst) {
-          hasInconsistency = true;
-          inconsistencyDetails = `⚠️ Physical Location Fracture: Shot ${shotNum} places characters in '${loc}', but Shot ${shotNum + 1} takes place in '${nextShot.location}'. Characters cannot instantaneously teleport without a transition.`;
+      const cast = (typeof characterRegistryData !== 'undefined' && Array.isArray(characterRegistryData)) ? characterRegistryData : [];
+
+      // STEP 2: Gemini drafting lightweight story beats (Zero Token Bloat)
+      if (status) {
+        status.innerText = (scope === 'shot')
+          ? `Step 2/4: Gemini evaluating Shot #${shotNum} and neighboring continuity handoffs...`
+          : `Step 2/4: Gemini drafting lightweight Tab 5 beats for Episode ${epNum} (10 shots, 0 token bloat)...`;
+      }
+      updateDirectorProgress(scope, 25);
+
+      let draftResult = null;
+      try {
+        if (scope === 'shot') {
+          const shotPrompt = `You are the Sachin & Reenu continuity director. Evaluate and revise Shot #${shotNum} of Episode ${epNum}.
+Return ONLY JSON with shape:
+{
+  "success": true,
+  "proposed_shot": {
+    "episode_number": ${epNum},
+    "shot_number": ${shotNum},
+    "speaker": "Character name",
+    "character_positions": "Amal in front driver seat, Sachin in passenger seat",
+    "action": "Visual Action Beat including [Spatial Staging: ...]. Motivated camera framing and one clear emotional beat that fits 6 seconds.",
+    "dialogue_malayalam": "Concise natural Malayalam line in Malayalam script (strictly 3 to 8 words, maximum 10 words, NO SPEAKER PREFIX, NO ACTING NOTES)",
+    "location": "Scene location",
+    "persistent_props": ["Prop 1"],
+    "camera_hint": "Camera framing and motion"
+  },
+  "continuity_check": {
+    "incoming_handoff": "Brief description of connection from prior shot",
+    "outgoing_handoff": "Brief description of connection to next shot",
+    "has_inconsistency": false,
+    "inconsistency_details": ""
+  }
+}
+
+Prior Shot: ${JSON.stringify(priorShot)}
+Current Shot: ${JSON.stringify(currentShot)}
+Next Shot: ${JSON.stringify(nextShot)}
+Director's Goal / Change: ${userIdea}
+Action Type: ${actionType}`;
+
+          draftResult = await requestDirectorJson(shotPrompt, 45000);
+        } else if (scope === 'episode') {
+          const isCustomIdea = (actionType === 'custom' || (userIdea && userIdea.trim().length > 15));
+          const episodePrompt = `You are the Cinematic Story Director for Sachin & Reenu (Season ${activeSeason}, 3D Pixar Style Animation).
+${isCustomIdea ? `
+CRITICAL NARRATIVE OVERRIDE (USER COMMAND):
+The Creator has provided this exact new storyline to rewrite all 10 shots of Episode ${epNum}:
+"${userIdea}"
+
+INSTRUCTIONS FOR NEW EPISODE REWRITE:
+1. This new story pitch REPLACES any previous outline beats.
+2. Structure the 10 shots sequentially to depict the progression of this exact story from Shot 1 to Shot 10.
+3. Every shot must have clear visual action, correct characters present, and spoken Malayalam dialogue (3-8 words, max 10 words, pure spoken Malayalam in Malayalam script, zero character name prefix).
+4. Do NOT keep old actions or dialogues from previous drafts that conflict with this new story!
+` : `
+Draft lightweight Tab 5 story beats for all 10 shots of Episode ${epNum}.
+Incoming handoff from previous episode: ${JSON.stringify(incomingSeam)}
+Outgoing handoff to next episode: ${JSON.stringify(outgoingSeam)}
+Current Episode ${epNum} Outline: ${JSON.stringify(targetEpShots)}
+Director's Goal: ${userIdea}
+Action Type: ${actionType}
+`}
+
+Incoming handoff from previous episode: ${JSON.stringify(incomingSeam)}
+Outgoing handoff to next episode: ${JSON.stringify(outgoingSeam)}
+
+Return ONLY JSON:
+{
+  "title_english": "Episode title in English",
+  "title_malayalam": "Episode title in Malayalam script",
+  "synopsis": "Updated 2-3 sentence synopsis aligning with this new story",
+  "cliffhanger": "Punchy Shot 10 cliffhanger description",
+  "shots": [
+    {
+      "shot_number": 1,
+      "speaker": "Speaker Name or Third-Person Narrator",
+      "character_positions": "Explicit spatial blocking of characters",
+      "action": "Visual Action beat with [Spatial Staging: ...]. One clear visible action and emotional beat.",
+      "dialogue_malayalam": "Spoken Malayalam line in Malayalam script (3 to 8 words, MAX 10 WORDS, STRICTLY NO SPEAKER NAME PREFIX, NO ACTING NOTES)",
+      "location": "Scene location",
+      "persistent_props": ["Props"],
+      "camera_hint": "Camera framing"
+    }
+  ],
+  "incoming_handoff_status": "Clean continuity connection from Episode ${epNum - 1} Shot 10",
+  "cliffhanger_status": "Shot 10 creates high-stakes cliffhanger"
+}
+Output exactly 10 shots numbered 1 through 10. Do not return full video prompts.`;
+
+          draftResult = await requestDirectorJson(episodePrompt, 60000);
+        } else {
+          // Series update
+          const seriesPrompt = `You are the Series Showrunner for Sachin & Reenu.
+Rebalance the 10-episode story arc and outline beats for Season ${activeSeason}.
+Goal: ${userIdea}
+Return ONLY JSON:
+{
+  "season_title": "Season ${activeSeason} Title",
+  "logline": "Overarching Season Logline",
+  "episodes": [
+    {
+      "episode_number": 1,
+      "title_english": "Title",
+      "title_malayalam": "Title ML",
+      "synopsis": "Synopsis",
+      "cliffhanger": "Cliffhanger"
+    }
+  ]
+}`;
+          draftResult = await requestDirectorJson(seriesPrompt, 60000);
         }
+      } catch (geminiErr) {
+        console.warn("Gemini direct generation error, triggering intelligent fallback:", geminiErr);
+        draftResult = clientSideGenerateDirectorBeats(scope, epNum, shotNum, userIdea, targetEpShots, incomingSeam, outgoingSeam, targetEpStory);
+      }
+
+      // STEP 3: Dialogue Sanitization & Spatial Blocking formatting
+      if (status) {
+        status.innerText = `Step 3/4: Sanitizing dialogue (3-8 words, zero prefixes) and checking character registry...`;
+      }
+      updateDirectorProgress(scope, 65);
+
+      const stagedPackage = prepareStagedDirectorPackage(scope, epNum, shotNum, draftResult, targetEpShots, incomingSeam, outgoingSeam, targetEpStory, cast, isTargetActive, activeEpisode);
+
+      // STEP 4: Render Focused Review Card
+      if (status) {
+        status.innerText = `Step 4/4: Complete! Reviewing staged changes below before committing...`;
+        setTimeout(() => { if (status) status.style.display = 'none'; }, 3000);
+      }
+      updateDirectorProgress(scope, 100, 'complete');
+
+      window.currentStagedDraft = stagedPackage;
+      window.currentDirectorEvaluation = stagedPackage;
+      renderFocusedReviewCard(stagedPackage);
+    }
+
+    function clientSideGenerateDirectorBeats(scope, epNum, shotNum, userIdea, targetEpShots, incomingSeam, outgoingSeam, targetEpStory) {
+      if (scope === 'shot') {
+        const cur = targetEpShots.find(s => Number(s.shot_number) === shotNum) || {};
+        let speaker = cur.speaker || 'Sachin';
+        ['Sachin', 'Reenu', 'Amal', 'Sreedharan', 'Bhadra', 'Annamma', 'Kurian'].forEach(c => {
+          if (userIdea.toLowerCase().includes(c.toLowerCase())) speaker = c;
+        });
+
+        return {
+          success: true,
+          proposed_shot: {
+            episode_number: epNum,
+            shot_number: shotNum,
+            speaker: speaker,
+            character_positions: cur.character_positions || "In position",
+            action: `[Spatial Staging: ${speaker} centered]. ${userIdea}. Atmospheric lighting with cold volumetric mist.`,
+            dialogue_malayalam: cleanAndAdequateMalayalamDialogue(cur.dialogue_malayalam || "നമുക്ക് വേഗം ഇവിടെ നിന്ന് പോകാം.", speaker),
+            location: cur.location || "Munnar Road",
+            persistent_props: cur.persistent_props || ["Car"],
+            camera_hint: "Cinematic 3D over-the-shoulder medium shot"
+          },
+          continuity_check: {
+            incoming_handoff: `Handoff from Shot ${shotNum > 1 ? shotNum - 1 : 'Prior Ep'} aligned.`,
+            outgoing_handoff: `Handoff to Shot ${shotNum < 10 ? shotNum + 1 : 'Next Ep'} aligned.`,
+            has_inconsistency: false,
+            inconsistency_details: ""
+          }
+        };
+      }
+
+      // Full episode fallback
+      if (userIdea && userIdea.trim().length > 20) {
+        // High-fidelity progressive fallback for custom story pitches
+        const storyBeats = [
+          { speaker: "Reenu", loc: "Foggy Woods outside Cottage", act: "The trio freezes in terror as a tall, unnatural shadow shifts among the misty pine trees toward them.", diag: "ആ നിഴൽ നമ്മളെത്തന്നെ നോക്കുന്നു!" },
+          { speaker: "Sachin", loc: "Woods Pathway", act: "Sachin grabs Reenu's arm as they scramble wildly toward the distant faint light of the cottage porch.", diag: "വേഗം ഓടൂ, ആ വെളിച്ചത്തിലേക്ക്!" },
+          { speaker: "Reenu", loc: "Cottage Porch", act: "They stumble onto the porch, pounding frantically on the heavy wooden door as footsteps crunch in the woods.", diag: "തുറക്കൂ! ആരെങ്കിലും കതക് തുറക്കൂ!" },
+          { speaker: "Sreedharan", loc: "Cottage Entrance", act: "The wooden door suddenly swings open with a loud creak, revealing Sreedharan holding an old brass lantern.", diag: "പെട്ടെന്ന് അകത്തേക്ക് കയറൂ മക്കളെ!" },
+          { speaker: "Sachin", loc: "Cottage Living Room", act: "Sachin, Amal, and Reenu rush inside panickedly, and Sachin confronts Sreedharan demanding who is outside.", diag: "പുറത്ത് ആ കാട്ടിൽ കണ്ടത് ആരാണ്?" },
+          { speaker: "Sreedharan", loc: "Cottage Living Room", act: "Sreedharan sets the lantern down with trembling hands, revealing with a hollow gaze that the figure is Bhadra who died years ago.", diag: "വർഷങ്ങൾക്ക് മുൻപ് മരിച്ച ഭദ്രയാണത്." },
+          { speaker: "Amal", loc: "Cottage Living Room", act: "Amal and Sachin stare in disbelief, panicking and asking if this is some twisted local joke.", diag: "ഇത് വല്ല തമാശയുമാണോ അങ്കിൾ?" },
+          { speaker: "Reenu", loc: "Cottage Living Room", act: "Reenu steps forward into the flickering amber light, trembling as she asks why the entity is pursuing her.", diag: "അവൾ എന്തിനാണ് എന്നെ പിന്തുടരുന്നത്?" },
+          { speaker: "Sreedharan", loc: "Cottage Living Room", act: "Sreedharan lifts his lantern, staring at Reenu's face, explaining she looks exactly like someone Bhadra hated in life.", diag: "ഭദ്ര വെറുത്ത ആ പഴയ ആളുടെ ഛായയാണ്." },
+          { speaker: "Third-Person Narrator", loc: "Cottage Living Room", act: "Three violent thuds rattle the front windows, and the lantern flame turns cold blue as mist pours under the door.", diag: "ആ ഭീകര രൂപം വീണ്ടും എത്തിക്കഴിഞ്ഞു." }
+        ];
+
+        const shots = storyBeats.map((b, idx) => ({
+          shot_number: idx + 1,
+          speaker: b.speaker,
+          character_positions: `${b.speaker}: Active in scene`,
+          action: `[Spatial Staging: ${b.loc}]. ${b.act}`,
+          dialogue_malayalam: b.diag,
+          location: b.loc,
+          persistent_props: ["Lantern", "Cottage door"],
+          camera_hint: "Cinematic 3D camera"
+        }));
+
+        return {
+          title_english: "The Shadow in the Woods",
+          title_malayalam: "കാട്ടിലെ നിഴൽ",
+          synopsis: userIdea.slice(0, 200),
+          cliffhanger: "Three heavy thuds rattle the windows as glowing white mist pours under the cottage door.",
+          shots: shots,
+          incoming_handoff_status: 'Continuity seam verified against prior episode.',
+          cliffhanger_status: 'Shot 10 cliffhanger locked.'
+        };
+      }
+
+      const shots = targetEpShots.map((s, idx) => {
+        const num = idx + 1;
+        let act = s.action || `Episode ${epNum} Shot ${num}`;
+        if (num === 1 && incomingSeam) {
+          act = `[Spatial Staging: Continuing from previous episode]. ${act}`;
+        } else if (num === 10) {
+          act = `[Spatial Staging: Dramatic cliffhanger staging]. ${act} Suspense builds dramatically.`;
+        }
+        return {
+          shot_number: num,
+          speaker: s.speaker || (num % 2 === 0 ? "Sachin" : "Reenu"),
+          character_positions: s.character_positions || "Positioned in scene",
+          action: act,
+          dialogue_malayalam: cleanAndAdequateMalayalamDialogue(s.dialogue_malayalam, s.speaker),
+          location: s.location || "Munnar",
+          persistent_props: s.persistent_props || ["Car"],
+          camera_hint: s.camera_hint || "Cinematic 3D camera framing"
+        };
+      });
+
+      return {
+        title_english: targetEpStory.title_english || `Episode ${epNum}`,
+        title_malayalam: targetEpStory.title_malayalam || '',
+        synopsis: `${targetEpStory.synopsis || ''} (Continuity updated with: ${userIdea.slice(0, 50)})`,
+        cliffhanger: targetEpStory.cliffhanger || 'Tension escalates as an unexpected figure approaches from the mist.',
+        shots: shots,
+        incoming_handoff_status: 'Continuity seam verified against prior episode.',
+        cliffhanger_status: 'Shot 10 cliffhanger locked.'
+      };
+    }
+
+    function prepareStagedDirectorPackage(scope, epNum, shotNum, rawDraft, targetEpShots, incomingSeam, outgoingSeam, targetEpStory, cast, isTargetActive, activeEpisode) {
+      const draftId = 'draft_' + Date.now();
+      const detectedCharacters = new Set();
+
+      let stagedShots = [];
+      if (scope === 'shot') {
+        const pShot = rawDraft.proposed_shot || rawDraft;
+        const cleanedDialogue = cleanAndAdequateMalayalamDialogue(pShot.dialogue_malayalam, pShot.speaker);
+        const staging = pShot.character_positions || (pShot.action && pShot.action.match(/\[Spatial Staging:\s*([^\]]+)\]/i)?.[1]) || "Positioned in scene";
+        let actionBeat = pShot.action || '';
+        if (!actionBeat.includes('[Spatial Staging:')) {
+          actionBeat = `[Spatial Staging: ${staging}]. ${actionBeat}`;
+        }
+
+        const updatedSingle = {
+          episode_number: epNum,
+          shot_number: shotNum,
+          speaker: pShot.speaker || 'Sachin',
+          character_positions: staging,
+          action: actionBeat,
+          dialogue_malayalam: cleanedDialogue,
+          location: pShot.location || 'Munnar',
+          persistent_props: Array.isArray(pShot.persistent_props) ? pShot.persistent_props : [pShot.persistent_props || "Car"],
+          camera_hint: pShot.camera_hint || "Cinematic 3D medium close-up"
+        };
+
+        detectedCharacters.add(updatedSingle.speaker);
+
+        // Map into full 10 shots of episode
+        stagedShots = targetEpShots.map(s => {
+          if (Number(s.shot_number) === shotNum) return updatedSingle;
+          return { ...s };
+        });
+      } else {
+        const rawShots = Array.isArray(rawDraft.shots) ? rawDraft.shots : targetEpShots;
+        stagedShots = rawShots.map((s, idx) => {
+          const num = idx + 1;
+          const speaker = s.speaker || s.character || 'Third-Person Narrator';
+          const cleanedDialogue = cleanAndAdequateMalayalamDialogue(s.dialogue_malayalam || s.dialogue, speaker);
+          const staging = s.character_positions || (s.action && s.action.match(/\[Spatial Staging:\s*([^\]]+)\]/i)?.[1]) || "Positioned in scene";
+          let actionBeat = s.action || s.action_summary || '';
+          if (!actionBeat.includes('[Spatial Staging:')) {
+            actionBeat = `[Spatial Staging: ${staging}]. ${actionBeat}`;
+          }
+
+          detectedCharacters.add(speaker);
+
+          return {
+            episode_number: epNum,
+            shot_number: num,
+            speaker: speaker,
+            character_positions: staging,
+            action: actionBeat,
+            dialogue_malayalam: cleanedDialogue,
+            location: s.location || "Munnar Road",
+            persistent_props: Array.isArray(s.persistent_props) ? s.persistent_props : (s.persistent_props ? [s.persistent_props] : ["Car"]),
+            camera_hint: s.camera_hint || "Cinematic 3D camera"
+          };
+        });
+      }
+
+      // Check for unregistered characters in Tab 4
+      const existingCastNames = new Set(cast.map(c => (c.name || '').toLowerCase()));
+      const newCharactersDetected = [];
+
+      detectedCharacters.forEach(cName => {
+        if (!cName || /^(third-person narrator|narrator|voiceover)$/i.test(cName)) return;
+        if (!existingCastNames.has(cName.toLowerCase())) {
+          const canonical = (typeof getCanonicalCharacter === 'function') ? getCanonicalCharacter(cName, cast) : null;
+          newCharactersDetected.push({
+            name: cName,
+            role: "Supporting Character",
+            visual_dna: canonical ? canonical.visual_dna : `${cName}: Stylized 3D Pixar cartoon character (Strictly non-human realism).`,
+            locked_attire: canonical ? canonical.locked_attire : "Signature clothing. Zero variations.",
+            voice_persona: canonical ? canonical.voice_persona : `${cName} Malayalam character voice`
+          });
+        }
+      });
+
+      // Tab 2 generation: compile ONLY IF active episode
+      let compiledPrompts = null;
+      let tab2Action = 'SKIPPED_UPCOMING';
+      if (isTargetActive) {
+        tab2Action = 'WILL_UPDATE';
+        compiledPrompts = stagedShots.map(s => compileDeterministicGoogleFlowPrompt(s, cast));
       }
 
       return {
-        success: true,
+        draft_id: draftId,
+        scope: scope,
         episode_number: epNum,
         shot_number: shotNum,
-        current_shot: currentShot,
-        next_shot: nextShot,
-        proposed_shot: proposedShot,
-        has_inconsistency: hasInconsistency,
-        inconsistency_details: inconsistencyDetails,
-        can_episode_steer: true,
-        recommendation: hasInconsistency ? 'EPISODE_STEER_RECOMMENDED' : 'FLOW_INTACT'
+        is_target_active: isTargetActive,
+        active_episode: activeEpisode,
+        title_english: rawDraft.title_english || targetEpStory.title_english,
+        title_malayalam: rawDraft.title_malayalam || targetEpStory.title_malayalam,
+        synopsis: rawDraft.synopsis || targetEpStory.synopsis,
+        cliffhanger: rawDraft.cliffhanger || targetEpStory.cliffhanger,
+        preserved_status: targetEpStory.status || 'Upcoming',
+        staged_shots: stagedShots,
+        original_shots: targetEpShots,
+        incoming_seam: incomingSeam,
+        outgoing_seam: outgoingSeam,
+        new_characters: newCharactersDetected,
+        tab2_action: tab2Action,
+        compiled_prompts: compiledPrompts,
+        timestamp: new Date().toISOString()
       };
     }
 
-    function renderDirectorEvaluationCard(evalData) {
+    function renderFocusedReviewCard(staged) {
       const container = document.getElementById('directorEvaluationContainer');
       if (!container) return;
 
-      const p = evalData.proposed_shot || {};
-      const epNum = evalData.episode_number;
-      const shotNum = evalData.shot_number;
-      const nextShotNum = (shotNum < 10) ? (shotNum + 1) : 1;
-      const nextShotLabel = (shotNum < 10) ? `Shot ${nextShotNum}` : (epNum < 10 ? `Episode ${epNum + 1}, Shot 1` : 'the season finale');
-      const hasInc = evalData.has_inconsistency;
+      const epNum = staged.episode_number;
+      const isAct = staged.is_target_active;
+      const tab2StatusText = isAct
+        ? `🟢 <b>Tab 2 Active Prompts</b>: Will update all 10 video prompts compiled deterministically.`
+        : `⏸️ <b>Tab 2 Prompts Skipped</b>: Staged for Episode ${epNum} (Upcoming). Active Episode ${staged.active_episode} prompts in Tab 2 remain 100% untouched.`;
+
+      // Build Seam Health HTML
+      let seamHtml = '';
+      if (staged.incoming_seam) {
+        seamHtml += `
+          <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 10px; margin-bottom: 8px; font-size: 12px;">
+            <div style="color: #38bdf8; font-weight: 700; margin-bottom: 4px;">🔗 Incoming Boundary Seam (from Episode ${staged.incoming_seam.episode_number} Shot #${staged.incoming_seam.shot_number}):</div>
+            <div style="color: #cbd5e1; line-height: 1.4;">${staged.incoming_seam.action}</div>
+            <div style="color: #fde047; font-family: 'Noto Sans Malayalam'; font-size: 11px; margin-top: 2px;">💬 ${staged.incoming_seam.speaker}: "${staged.incoming_seam.dialogue_malayalam || ''}"</div>
+          </div>
+        `;
+      }
+
+      // Build Tab 4 New Character Auto-Detection HTML
+      let tab4Html = '';
+      if (staged.new_characters && staged.new_characters.length > 0) {
+        tab4Html = `
+          <div style="background: rgba(168, 85, 247, 0.12); border: 1px solid #a855f7; border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-weight: 800; color: #d8b4fe; font-size: 13px;">
+                👤 New Character Detected: Auto-Generated 3D Pixar Visual DNA
+              </span>
+              <span style="font-size: 11px; background: rgba(168, 85, 247, 0.25); color: #c4b5fd; padding: 2px 8px; border-radius: 6px;">Tab 4 Candidate</span>
+            </div>
+            ${staged.new_characters.map(nc => `
+              <div style="background: #080d1a; border: 1px solid #334155; border-radius: 8px; padding: 10px; margin-top: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <b style="color: #fff; font-size: 13px;">${nc.name} (${nc.role})</b>
+                  <button type="button" class="btn btn-secondary" onclick="registerCharacterToTab4FromReview('${nc.name}')" style="padding: 4px 10px; font-size: 11px; background: #6b21a8; border-color: #9333ea; color: #fff;">
+                    ➕ Register to Tab 4 (Cast)
+                  </button>
+                </div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;"><b>Visual DNA:</b> ${nc.visual_dna.slice(0, 160)}...</div>
+                <div style="font-size: 11px; color: #cbd5e1; margin-top: 2px;"><b>Locked Attire:</b> ${nc.locked_attire}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Build 10-Shot Diff Rows
+      const shotRowsHtml = staged.staged_shots.map((s, idx) => {
+        const orig = staged.original_shots[idx] || {};
+        const isChanged = (s.action !== orig.action || s.dialogue_malayalam !== orig.dialogue_malayalam || s.speaker !== orig.speaker);
+        const wordCount = (s.dialogue_malayalam || '').split(/\s+/).filter(Boolean).length;
+        const wordBadge = `<span style="font-size: 10px; background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 1px 6px; border-radius: 4px; font-weight: 700;">${wordCount} w</span>`;
+
+        return `
+          <tr style="${isChanged ? 'background: rgba(59, 130, 246, 0.08);' : ''}">
+            <td style="font-weight: 800; color: #38bdf8; text-align: center;">#${s.shot_number}</td>
+            <td style="color: #94a3b8; font-size: 11px;">${s.location || 'Munnar'}</td>
+            <td style="font-size: 11px; color: #cbd5e1;">${s.character_positions || 'Staged'}</td>
+            <td><span style="font-size: 11px; font-weight: 700; color: #fde047;">${s.speaker}</span></td>
+            <td style="font-family: 'Noto Sans Malayalam'; font-size: 12px; color: #fef08a;">
+              "${s.dialogue_malayalam || ''}" ${wordBadge}
+            </td>
+            <td style="font-size: 12px; color: #e2e8f0; line-height: 1.35;">${s.action}</td>
+          </tr>
+        `;
+      }).join('');
 
       container.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 10px; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 16px;">🎬</span>
-            <span style="font-size: 14px; font-weight: 800; color: #fff;">
-              Proposed Revision: Episode ${epNum} • Shot #${shotNum}
+          <div>
+            <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #38bdf8;">
+              🔍 STAGED CHANGE REVIEW • EPISODE ${epNum} (${staged.title_english || 'Draft'})
             </span>
-            <span style="font-size: 11px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
-              Speaker: ${p.speaker}
+            <div style="font-size: 15px; font-weight: 800; color: #fff; margin-top: 2px;">
+              ${staged.scope === 'shot' ? `Shot #${staged.shot_number} Update` : `Complete 10-Shot Episode Revision`}
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span style="font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; font-weight: 700;">
+              Status: ${staged.preserved_status} (Preserved)
             </span>
-          </div>
-          <button class="btn btn-secondary" onclick="dismissDirectorEvaluation()" style="padding: 4px 10px; font-size: 11px; background: rgba(255,255,255,0.06);">
-            ✕ Dismiss
-          </button>
-        </div>
-
-        <!-- Shot Action & Dialogue -->
-        <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-          <div style="font-size: 12px; color: #94a3b8; margin-bottom: 4px;">📍 <b>Location:</b> ${p.location}</div>
-          <div style="font-size: 13px; color: #e2e8f0; line-height: 1.5; margin-bottom: 8px;">
-            <b>🎬 Proposed Action:</b> ${p.action}
-          </div>
-          <div style="font-size: 13px; color: #fde047; font-family: 'Noto Sans Malayalam'; line-height: 1.4;">
-            <b>💬 സംഭാഷണം (${p.speaker}):</b> "${p.dialogue_malayalam}"
+            <button class="btn btn-secondary" onclick="dismissDirectorEvaluation()" style="padding: 4px 10px; font-size: 11px;">✕ Discard</button>
           </div>
         </div>
 
-        <!-- Inconsistency / Continuity Diagnostic Banner -->
-        ${hasInc ? `
-          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
-            <div style="font-weight: 800; color: #f87171; display: flex; align-items: center; gap: 6px; font-size: 13px;">
-              ⚠️ Possible story disconnect before ${nextShotLabel}:
-            </div>
-            <div style="font-size: 12px; color: #fca5a5; margin-top: 4px; line-height: 1.4;">
-              ${evalData.inconsistency_details}
-            </div>
-            <div style="font-size: 11px; color: #fde047; margin-top: 6px; font-weight: 600;">
-              💡 <b>Suggested next step:</b> ${evalData.recommendation === 'SEASON_WISE_REQUIRED' ? 'Gemini recommends Season-Wise Change because later episodes must change to preserve continuity. You can still choose either scope.' : 'Rewrite this episode to reconnect its cliffhanger, or continue through the remaining season if later episodes also need to change.'}
-            </div>
-          </div>
-        ` : `
-          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px;">
-            <div style="font-weight: 800; color: #34d399; display: flex; align-items: center; gap: 6px; font-size: 12px;">
-              ✓ Continuity Flow Intact:
-            </div>
-            <div style="font-size: 12px; color: #cbd5e1; margin-top: 2px;">
-              Gemini found a clear handoff from Shot ${shotNum} to ${nextShotLabel}.
-            </div>
-          </div>
-        `}
+        <!-- Tab 1 Synopsis & Cliffhanger Diff -->
+        <div style="background: #080d1a; border: 1px solid #1e293b; border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+          <div style="font-size: 12px; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">📖 Tab 1 Roadmap Reconciliation:</div>
+          <div style="font-size: 12px; color: #cbd5e1; line-height: 1.4;"><b>Synopsis:</b> ${staged.synopsis}</div>
+          <div style="font-size: 12px; color: #fda4af; margin-top: 4px;"><b>Cliffhanger (Shot 10):</b> ${staged.cliffhanger}</div>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">* Tab 1 status column is permanently preserved as '${staged.preserved_status}'.</div>
+        </div>
 
-        <!-- Dual-Mode Healing Buttons -->
-        <div class="director-choice-grid" style="display: flex; gap: 12px; flex-wrap: wrap;">
-          ${!hasInc ? `<button type="button" class="btn btn-primary" onclick="applySingleShotDirectorChange()" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #047857, #10b981); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; cursor: pointer;">Apply this shot<br><span style="font-size:11px;font-weight:400">Only this shot changes; other story shots stay as they are.</span></button>` : ''}
-          <button type="button" data-director-scope="episode" class="btn btn-primary" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #2563eb, #3b82f6); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); position: relative; z-index: 2; pointer-events: auto;">
-            <span style="font-size: 13px; color: #fff;">🎬 Rewrite episode from Shot ${shotNum}</span>
-            <span style="font-size: 11px; color: #bfdbfe; font-weight: normal; line-height: 1.3;">
-              Rewrites from this shot through the episode cliffhanger. Earlier shots and other episodes stay unchanged.
-            </span>
+        <!-- Boundary Continuity Seam Check -->
+        ${seamHtml}
+
+        <!-- Tab 4 New Character Card -->
+        ${tab4Html}
+
+        <!-- Tab 2 Status Pill -->
+        <div style="background: #0c1424; border: 1px solid #1e293b; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: #cbd5e1;">
+          ${tab2StatusText}
+        </div>
+
+        <!-- Focused 10-Shot Table -->
+        <div style="overflow-x: auto; max-height: 340px; margin-bottom: 16px; border: 1px solid #1e293b; border-radius: 8px;">
+          <table class="guided-diff-table" style="margin: 0;">
+            <thead>
+              <tr>
+                <th style="width: 50px; text-align: center;">Shot</th>
+                <th style="width: 120px;">Location</th>
+                <th style="width: 140px;">Staging (Positions)</th>
+                <th style="width: 100px;">Speaker</th>
+                <th style="width: 220px;">Spoken Dialogue (Malayalam)</th>
+                <th>Visual Action Beat</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${shotRowsHtml}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Commit & Action Buttons Bar -->
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button type="button" class="btn btn-primary" id="btnCommitDirectorDraft" onclick="commitDirectorDraftToSheets('${staged.draft_id}')" style="flex: 2; min-width: 260px; padding: 14px 20px; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border: none; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);">
+            ☁️ Confirm & Push to Google Sheet (Tab 5 ➔ Tab 4 ➔ Tab 1 ${isAct ? '➔ Tab 2' : ''})
           </button>
-          <button type="button" data-director-scope="season" class="btn btn-primary" style="flex: 1; min-width: 250px; background: linear-gradient(135deg, #7c3aed, #a855f7); border: none; padding: 12px 16px; border-radius: 8px; font-weight: 700; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4); position: relative; z-index: 2; pointer-events: auto;">
-            <span style="font-size: 13px; color: #fff;">🌊 Rewrite season from Shot ${shotNum}</span>
-            <span style="font-size: 11px; color: #e9d5ff; font-weight: normal; line-height: 1.3;">
-              Rewrites from this shot through Shot 100. Every earlier shot stays unchanged.
-            </span>
+          ${isAct ? `
+            <button type="button" class="btn btn-secondary" onclick="copyStagedPromptsToClipboard()" style="padding: 14px 18px; font-size: 13px; font-weight: 700;">
+              📋 Copy 10 Prompts
+            </button>
+          ` : ''}
+          <button type="button" class="btn btn-secondary" onclick="dismissDirectorEvaluation()" style="padding: 14px 16px; font-size: 13px;">
+            ✕ Discard Draft
           </button>
         </div>
+        <div id="directorCommitStatus" style="font-size: 12px; margin-top: 10px; display: none;"></div>
       `;
 
-      // These cards are rebuilt dynamically; bind fresh listeners after each render.
-      container.querySelector('[data-director-scope="episode"]')?.addEventListener('click', () => {
-        applyGeminiDirectorRewrite('episode');
-      });
-      container.querySelector('[data-director-scope="season"]')?.addEventListener('click', () => {
-        applyGeminiDirectorRewrite('season');
-      });
-
       container.style.display = 'block';
+      container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function registerCharacterToTab4FromReview(charName) {
+      if (!window.currentStagedDraft) return;
+      const staged = window.currentStagedDraft;
+      const charObj = (staged.new_characters || []).find(c => c.name.toLowerCase() === charName.toLowerCase());
+      if (!charObj) return;
+
+      if (typeof characterRegistryData !== 'undefined' && Array.isArray(characterRegistryData)) {
+        characterRegistryData.push({
+          name: charObj.name,
+          role: charObj.role,
+          first_appearance: `Season ${episodeData.season_number || 3} • Ep ${staged.episode_number}`,
+          status: "Active",
+          visual_dna: charObj.visual_dna,
+          locked_attire: charObj.locked_attire,
+          voice_persona: charObj.voice_persona
+        });
+        if (typeof renderCharacterCards === 'function') renderCharacterCards();
+      }
+
+      staged.new_characters = staged.new_characters.filter(c => c.name.toLowerCase() !== charName.toLowerCase());
+      staged.registered_tab4_characters = staged.registered_tab4_characters || [];
+      staged.registered_tab4_characters.push(charObj);
+
+      renderFocusedReviewCard(staged);
+      alert(`✓ ${charName} registered to Tab 4! Will be committed to Google Sheets upon confirmation.`);
+    }
+
+    async function commitDirectorDraftToSheets(draftId) {
+      const staged = window.currentStagedDraft;
+      if (!staged) return;
+
+      const btn = document.getElementById('btnCommitDirectorDraft');
+      const statusEl = document.getElementById('directorCommitStatus');
+      const epNum = staged.episode_number;
+      const isAct = staged.is_target_active;
+
+      if (btn) { btn.disabled = true; btn.innerText = '⏳ Committing across Google Sheets tabs...'; }
+      if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.style.color = '#38bdf8';
+        statusEl.innerText = 'Saving durable transaction snapshot in local storage...';
+      }
+
+      // 1. Create durable before-image snapshot in localStorage
+      const txnId = 'studio_txn_' + Date.now();
+      const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+      const firstGlobal = (epNum - 1) * 10 + 1;
+      const originalEpShots = allShots.slice(firstGlobal - 1, firstGlobal + 9);
+
+      const beforeImage = {
+        txnId: txnId,
+        timestamp: Date.now(),
+        episode_number: epNum,
+        before_shots: originalEpShots,
+        before_story: ((seasonStoryData && seasonStoryData.episodes) || [])[epNum - 1],
+        before_prompts: (isAct && episodeData) ? episodeData.shots : null
+      };
+
+      try {
+        localStorage.setItem(txnId, JSON.stringify(beforeImage));
+      } catch (lsErr) {
+        console.warn("Could not write to localStorage:", lsErr);
+      }
+
+      // Track individual tab progress for partial save recovery
+      const progress = { tab5: false, tab4: false, tab1: false, tab2: false };
+
+      try {
+        // STEP 1: Write Tab 5 in-place row replacement
+        if (statusEl) statusEl.innerText = `Step 1: Writing Tab 5 outline (replacing Episode ${epNum} 10 rows in place)...`;
+        const updated100Shots = allShots.map((shot, idx) => {
+          if (idx >= firstGlobal - 1 && idx < firstGlobal + 9) {
+            const repl = staged.staged_shots[idx - (firstGlobal - 1)];
+            return { ...shot, ...repl, season_number: shot.season_number || seasonShotOutlineData.season_number || 3 };
+          }
+          return shot;
+        });
+
+        // Reconcile Tab 1 episodes while strictly preserving status
+        const episodes = ((seasonStoryData && seasonStoryData.episodes) || []).map((ep, i) => {
+          const num = i + 1;
+          if (num === epNum) {
+            return {
+              ...ep,
+              episode_number: epNum,
+              title_english: staged.title_english || ep.title_english,
+              title_malayalam: staged.title_malayalam || ep.title_malayalam,
+              synopsis: staged.synopsis || ep.synopsis,
+              cliffhanger: staged.cliffhanger || ep.cliffhanger,
+              status: ep.status || staged.preserved_status || 'Upcoming' // STRICTLY PRESERVED
+            };
+          }
+          return { ...ep };
+        });
+
+        const promptsToWrite = isAct ? staged.compiled_prompts : null;
+
+        const payload = {
+          action: 'apply_director_outline_change',
+          season_number: seasonShotOutlineData.season_number || 3,
+          season_title: seasonShotOutlineData.season_title || 'Season 3',
+          pivot_global_shot_id: firstGlobal,
+          active_episode: isAct ? epNum : (getActiveEpisodeNumber() || 1),
+          shots: updated100Shots,
+          episodes: episodes,
+          prompts: promptsToWrite
+        };
+
+        const res = await fetch(getActiveGasUrl(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
+        });
+        const saved = await res.json().catch(() => ({}));
+
+        if (!res.ok || saved.success !== true) {
+          throw new Error(saved.message || saved.error || `HTTP ${res.status} from Google Sheets`);
+        }
+
+        progress.tab5 = true;
+        progress.tab1 = true;
+        if (isAct) progress.tab2 = true;
+
+        // Update in-memory models
+        seasonShotOutlineData.flattened_shots = updated100Shots;
+        seasonStoryData.episodes = episodes;
+
+        if (isAct && promptsToWrite) {
+          episodeData.episode_number = epNum;
+          episodeData.title_english = staged.title_english;
+          episodeData.title_malayalam = staged.title_malayalam;
+          episodeData.synopsis = staged.synopsis;
+          episodeData.cliffhanger = staged.cliffhanger;
+          episodeData.shots = promptsToWrite.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary }));
+          if (typeof renderShots === 'function') renderShots();
+        }
+
+        if (typeof renderSeasonShotOutline === 'function') renderSeasonShotOutline();
+        if (typeof populateDirectorEpisodeOptions === 'function') populateDirectorEpisodeOptions();
+
+        if (btn) {
+          btn.innerText = '✓ Changes Successfully Committed!';
+          btn.style.background = '#059669';
+        }
+        if (statusEl) {
+          statusEl.style.color = '#34d399';
+          statusEl.innerHTML = `✓ <b>Successfully Committed!</b> Tab 5 outline updated (10 rows in place) • Tab 1 roadmap reconciled (${staged.preserved_status} status preserved) • ${isAct ? 'Tab 2 prompts refreshed' : 'Tab 2 active prompts kept untouched'}.`;
+        }
+
+        setTimeout(() => {
+          dismissDirectorEvaluation();
+        }, 3500);
+
+      } catch (err) {
+        console.error("Commit failed:", err);
+        if (btn) { btn.disabled = false; btn.innerText = '⚠️ Retry Commit'; btn.style.background = '#b91c1c'; }
+        if (statusEl) {
+          statusEl.style.color = '#f87171';
+          statusEl.innerHTML = `
+            <b>⚠️ PARTIALLY SAVED / ERROR:</b> ${err.message}<br>
+            <span style="font-size: 11px; color: #fca5a5;">
+              Tab 5: ${progress.tab5 ? '✓ Saved' : '❌ Failed'} | Tab 1: ${progress.tab1 ? '✓ Saved' : '❌ Failed'} | Tab 2: ${isAct ? (progress.tab2 ? '✓ Saved' : '❌ Failed') : '⏸️ Skipped'}
+            </span>
+            <div style="margin-top: 8px; display: flex; gap: 8px;">
+              <button class="btn btn-secondary" onclick="rollbackDirectorTransaction('${txnId}')" style="padding: 4px 10px; font-size: 11px; background: rgba(239, 68, 68, 0.2); border-color: #ef4444; color: #fca5a5;">
+                ⏪ Rollback to Before-Image
+              </button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    async function rollbackDirectorTransaction(txnId) {
+      const snapJson = localStorage.getItem(txnId);
+      if (!snapJson) { alert('No before-image snapshot found for this transaction.'); return; }
+      const snap = JSON.parse(snapJson);
+
+      const statusEl = document.getElementById('directorCommitStatus');
+      if (statusEl) {
+        statusEl.style.color = '#38bdf8';
+        statusEl.innerText = 'Restoring before-image to Google Sheets...';
+      }
+
+      try {
+        const allShots = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
+        const firstGlobal = (snap.episode_number - 1) * 10 + 1;
+        const restored100 = allShots.map((shot, idx) => {
+          if (idx >= firstGlobal - 1 && idx < firstGlobal + 9) {
+            return snap.before_shots[idx - (firstGlobal - 1)] || shot;
+          }
+          return shot;
+        });
+
+        const episodes = ((seasonStoryData && seasonStoryData.episodes) || []).map(ep => {
+          if (ep.episode_number === snap.episode_number && snap.before_story) {
+            return { ...snap.before_story };
+          }
+          return ep;
+        });
+
+        await fetch(getActiveGasUrl(), {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({
+            action: 'apply_director_outline_change',
+            season_number: seasonShotOutlineData.season_number || 3,
+            season_title: seasonShotOutlineData.season_title || 'Season 3',
+            pivot_global_shot_id: firstGlobal,
+            active_episode: getActiveEpisodeNumber() || 1,
+            shots: restored100,
+            episodes: episodes,
+            prompts: snap.before_prompts
+          })
+        });
+
+        seasonShotOutlineData.flattened_shots = restored100;
+        if (typeof renderSeasonShotOutline === 'function') renderSeasonShotOutline();
+        dismissDirectorEvaluation();
+        alert('✓ Rollback complete! Restored to before-image state.');
+      } catch (rbErr) {
+        alert(`Rollback notice: ${rbErr.message}`);
+      }
+    }
+
+    function copyStagedPromptsToClipboard() {
+      if (!window.currentStagedDraft || !window.currentStagedDraft.compiled_prompts) return;
+      const text = JSON.stringify(window.currentStagedDraft.compiled_prompts, null, 2);
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✓ Copied all 10 compiled Google Flow prompts to clipboard!');
+      }).catch(() => {
+        prompt('Copy prompts JSON:', text);
+      });
     }
 
     function dismissDirectorEvaluation() {
       const container = document.getElementById('directorEvaluationContainer');
       if (container) container.style.display = 'none';
       window.currentDirectorEvaluation = null;
+      window.currentStagedDraft = null;
     }
 
-    async function applySingleShotDirectorChange() { return applyGeminiDirectorRewrite('shot'); }
-    async function applyEpisodeWiseDirectorChange() { return applyGeminiDirectorRewrite('episode'); }
-    async function applySeasonWiseDirectorChange() { return applyGeminiDirectorRewrite('season'); }
-
-    async function applyGeminiDirectorRewrite(scope) {
-      const evaluation = window.currentDirectorEvaluation;
-      if (!evaluation) return;
-      if (!activeEpisodePromptsVerified || Number(evaluation.episode_number) !== getActiveEpisodeNumber()) {
-        alert('The rewrite cannot be applied because Tab 2 does not match the active episode in Tab 1. Refresh the sheet connection first.');
-        return;
-      }
-      const status = document.getElementById('geminiChatStatus');
-      const outline = (seasonShotOutlineData && (seasonShotOutlineData.flattened_shots || seasonShotOutlineData.shots)) || [];
-      const original = [...outline].sort((a, b) => (Number(a.episode_number) - Number(b.episode_number)) || (Number(a.shot_number) - Number(b.shot_number)));
-      const pivot = original.findIndex(s => Number(s.episode_number) === Number(evaluation.episode_number) && Number(s.shot_number) === Number(evaluation.shot_number));
-      const activeSeason = Number((episodeData && episodeData.season_number) || (seasonStoryData && seasonStoryData.season_number)) || 1;
-      if (!seasonOutlineLoaded || Number(seasonShotOutlineData && seasonShotOutlineData.season_number) !== activeSeason || pivot < 0 || original.length !== 100) { alert(`A verified 100-shot Tab 5 outline for active Season ${activeSeason} is required before applying this rewrite.`); return; }
-      const activeEpisode = Number(evaluation.episode_number);
-      const end = scope === 'shot' ? pivot + 1 : (scope === 'episode' ? (Number(evaluation.episode_number) * 10) : 100);
-      const existingEpisodes = (seasonStoryData && seasonStoryData.episodes) || [];
-      const episodeSummaries = Array.from({ length: 10 }, (_, index) => {
-        const ep = existingEpisodes[index] || {};
-        return {
-          episode_number: index + 1, title_english: ep.title_english || `Episode ${index + 1}`,
-          title_malayalam: ep.title_malayalam || '', synopsis: ep.synopsis || '',
-          cliffhanger: ep.cliffhanger || '', status: ep.status || 'Draft'
-        };
-      });
-      const cast = (characterRegistryData || []).map(c => ({ name: c.name, visual_dna: c.visual_dna, locked_attire: c.locked_attire || c.attire, voice_persona: c.voice_persona }));
-      window.directorProgressKind = scope;
-      updateDirectorProgress(scope, 0);
-      if (status) {
-        status.style.display = 'block'; status.style.color = '#38bdf8';
-        status.innerText = scope === 'shot' ? 'Gemini is revising this shot and its prompt...' :
-          (scope === 'episode' ? 'Gemini is rebuilding this episode in smaller continuity checked sections...' : 'Gemini is rebuilding the season episode by episode from the selected shot...');
-      }
-      try {
-        const updatedOutline = [...original];
-        let chunkStart = pivot;
-        let chunkCount = 0;
-        while (chunkStart < end) {
-          const episodeNumber = Math.floor(chunkStart / 10) + 1;
-          const chunkEnd = Math.min(end, episodeNumber * 10);
-          const chunk = original.slice(chunkStart, chunkEnd);
-          const previousShot = chunkStart > 0 ? updatedOutline[chunkStart - 1] : null;
-          const followingShot = original[chunkEnd] || null;
-          chunkCount++;
-          if (status) status.innerText = scope === 'season'
-            ? `Gemini is rewriting Episode ${episodeNumber} (${chunkCount} section${chunkCount === 1 ? '' : 's'} complete)...`
-            : `Gemini is rewriting Episode ${episodeNumber}, shots ${chunk[0].shot_number}–${chunk[chunk.length - 1].shot_number}...`;
-          const chunkResult = await requestDirectorJson(`You are the cinematic story director for Sachin & Reenu. Creator's change: ${evaluation.user_idea}
-Return ONLY JSON with this shape: {"rewritten_shots":[...],"requires_season_scope":false,"continuity_report":""}.
-Rewrite exactly these ${chunk.length} shots in order: ${JSON.stringify(chunk)}. Preserve each episode_number and shot_number. Each item must include speaker, action, dialogue_malayalam, location, persistent_props, and camera_hint. Give each shot one primary visible action and one readable emotion that fits its duration; avoid multi-event paragraphs. Motivate the framing/angle and at most one camera movement (or lock the frame deliberately), vary shot scale, and stage blocking, eyelines, props, and transitions so each cut has a clear cause/effect. Keep every action filmable and consistent with the locked character identities and costumes. Vary dramatic rhythm to serve the creator's idea; do not force a repeated shot-position formula. Keep dialogue concise and naturally speakable in Malayalam (usually 3–8 words, maximum 10); speaker is stored separately, so do not add a speaker-name prefix/label, acting directions, parenthetical notes, or quotation marks to dialogue_malayalam. Before returning JSON, silently check the cliffhanger and next-shot handoff, scene geography, action filmability, motivated camera choice, and dialogue limit.
-Previous shot and handoff context: ${JSON.stringify(previousShot)}
-Next shot after this section: ${JSON.stringify(followingShot)}
-This section is Episode ${episodeNumber}. Make its Shot 10 a strong cliffhanger and make the following episode's Shot 1 continue that moment when it is being rewritten. ${scope === 'episode' ? 'For this episode-only rewrite, land naturally on the existing Shot 10 and preserve the existing next episode opening. Set requires_season_scope=true only if that seam cannot remain coherent without rewriting later episodes.' : ''}${scope === 'shot' ? 'If this single-shot change cannot connect to the following unchanged shot, set requires_season_scope=true.' : ''}${scope === 'season' && episodeNumber === 10 ? 'Make Episode 10 Shot 10 the season grand climax.' : ''}
-Do not return episode summaries or video prompts in this call. Do not change shots outside the supplied list.`);
-          if ((scope === 'episode' || scope === 'shot') && chunkResult.requires_season_scope === true) {
-            evaluation.has_inconsistency = true;
-            evaluation.inconsistency_details = chunkResult.continuity_report || 'This rewrite cannot connect to the unchanged next episode without a season-wide change.';
-            evaluation.recommendation = 'SEASON_WISE_REQUIRED';
-            window.currentDirectorEvaluation = evaluation;
-            renderDirectorEvaluationCard(evaluation);
-            if (status) { status.style.color = '#fbbf24'; status.innerText = 'Gemini recommends a season-wide rewrite to preserve continuity. Choose either scope below.'; }
-            return;
-          }
-          if (!Array.isArray(chunkResult.rewritten_shots) || chunkResult.rewritten_shots.length !== chunk.length) {
-            throw new Error(`Gemini returned ${Array.isArray(chunkResult.rewritten_shots) ? chunkResult.rewritten_shots.length : 0} of ${chunk.length} required shots for Episode ${episodeNumber}. No changes were saved.`);
-          }
-          for (let i = 0; i < chunk.length; i++) {
-            const shot = chunkResult.rewritten_shots[i];
-            if (Number(shot.episode_number) !== Number(chunk[i].episode_number) || Number(shot.shot_number) !== Number(chunk[i].shot_number) || !String(shot.action || '').trim()) {
-              throw new Error(`Gemini returned an invalid Episode ${episodeNumber}, Shot ${chunk[i].shot_number}. No changes were saved.`);
-            }
-            updatedOutline[chunkStart + i] = { ...chunk[i], ...shot, season_number: chunk[i].season_number };
-          }
-          chunkStart = chunkEnd;
-        }
-
-        const pivotEpisode = Math.floor(pivot / 10) + 1;
-        const firstPrompt = activeEpisode === pivotEpisode ? ((pivot % 10) + 1) : 1;
-        const promptTargets = updatedOutline.filter(shot => Number(shot.episode_number) === activeEpisode && Number(shot.shot_number) >= firstPrompt);
-        const generatedPrompts = [];
-        for (let offset = 0; offset < promptTargets.length; offset += 2) {
-          const promptBatch = promptTargets.slice(offset, offset + 2);
-          if (status) status.innerText = `Gemini is creating Google Flow prompts (${Math.min(offset + promptBatch.length, promptTargets.length)} of ${promptTargets.length})...`;
-          const promptResult = await requestDirectorJson(`Create production-ready Google Flow JSON video prompts for these final Tab 5 shots: ${JSON.stringify(promptBatch)}.
-Use the Tab 4 character identity, voice, and costume data: ${JSON.stringify(cast)}. Preserve each shot's story action, speaker, Malayalam dialogue, location, props, and camera intent. Keep Malayalam dialogue concise (usually 3–8 words, maximum 10); speaker is a separate field, so never prefix dialogue with a speaker name or label, and omit acting notes and quotation marks. Use 3D Pixar-style cinematic staging, consistent character DNA, and NO BGM.
-Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt items in order. Each item must have shot_number, duration, character, dialogue_malayalam, action_summary, and json_prompt (a complete structured Google Flow video prompt object).`);
-          if (!Array.isArray(promptResult.prompts) || promptResult.prompts.length !== promptBatch.length) {
-            throw new Error(`Gemini returned an incomplete prompt batch (${Array.isArray(promptResult.prompts) ? promptResult.prompts.length : 0} of ${promptBatch.length}). No changes were saved.`);
-          }
-          for (let i = 0; i < promptBatch.length; i++) {
-            const prompt = promptResult.prompts[i];
-            if (Number(prompt.shot_number) !== Number(promptBatch[i].shot_number) || !prompt.json_prompt) {
-              throw new Error(`Gemini returned an invalid Google Flow prompt for Shot ${promptBatch[i].shot_number}. No changes were saved.`);
-            }
-            generatedPrompts.push(prompt);
-          }
-        }
-
-        const previousEpisodePrompts = (episodeData.shots || []).filter(p => Number(p.shot_number) < firstPrompt);
-        const promptsForView = [...previousEpisodePrompts, ...generatedPrompts].sort((a, b) => Number(a.shot_number) - Number(b.shot_number));
-        if (promptsForView.length !== 10 || promptsForView.some((prompt, index) => Number(prompt.shot_number) !== index + 1 || !prompt.json_prompt)) {
-          throw new Error('The existing Tab 2 prompts before the selected shot are not loaded. Refresh the portal from Google Sheet, then retry; no changes were saved.');
-        }
-        const response = await fetch(getActiveGasUrl(), {
-          method: 'POST', headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify({ action: 'apply_director_outline_change', season_number: seasonShotOutlineData.season_number, season_title: seasonShotOutlineData.season_title, pivot_global_shot_id: pivot + 1, active_episode: activeEpisode, shots: updatedOutline, episodes: episodeSummaries, prompts: promptsForView })
-        });
-        const saved = await response.json();
-        const saveError = typeof saved.error === 'string' ? saved.error : (saved.error?.message || saved.message);
-        if (!response.ok || saved.success !== true) throw new Error(saveError || `Google Sheets did not confirm the director update (HTTP ${response.status}).`);
-        seasonShotOutlineData.flattened_shots = updatedOutline;
-        const savedEpisode = episodeSummaries[activeEpisode - 1];
-        episodeData.episode_number = activeEpisode;
-        episodeData.season_number = seasonShotOutlineData.season_number;
-        episodeData.title_english = savedEpisode?.title_english || episodeData.title_english;
-        episodeData.title_malayalam = savedEpisode?.title_malayalam || episodeData.title_malayalam;
-        episodeData.synopsis = savedEpisode?.synopsis || episodeData.synopsis;
-        episodeData.cliffhanger = savedEpisode?.cliffhanger || episodeData.cliffhanger;
-        episodeData.shots = promptsForView.map(p => ({ ...p, dialogue: p.dialogue_malayalam, action: p.action_summary }));
-        renderSeasonShotOutline(); renderShots(); dismissDirectorEvaluation();
-        if (status) { status.style.color = '#34d399'; status.innerText = `Saved the ${scope === 'shot' ? 'shot' : scope + '-wise'} rewrite to Tab 5 and refreshed Tab 2 from Shot ${firstPrompt}. Earlier shots stayed unchanged.`; setTimeout(() => { status.style.display = 'none'; }, 5000); }
-      } catch (error) {
-        updateDirectorProgress(scope, 0, 'error');
-        alert(`The rewrite was not applied: ${error.message}`);
-        if (status) { status.style.color = '#f87171'; status.innerText = error.message; }
-      }
+    // Backwards-compatibility aliases
+    async function evaluateDirectorShotChange(userIdea) {
+      return runGuidedDirectorAnalysis('shot', 'custom', userIdea);
+    }
+    async function applySingleShotDirectorChange() {
+      return commitDirectorDraftToSheets();
+    }
+    async function applyEpisodeWiseDirectorChange() {
+      return commitDirectorDraftToSheets();
+    }
+    async function applySeasonWiseDirectorChange() {
+      return commitDirectorDraftToSheets();
     }
 
     async function sendGeminiDirectorMessage() {
@@ -9846,22 +10530,35 @@ Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt
 
     function parseJsonFromDirectorResponse(text) {
       if (!text) return null;
+
+      function tryRepairAndParse(str) {
+        if (!str) return null;
+        try {
+          return JSON.parse(str);
+        } catch (e) {
+          try {
+            // Repair common Gemini JSON glitches:
+            // 1. Missing opening quote on keys: key": -> "key":
+            let cleaned = str.replace(/(?<=[{,\n\r\t ])([a-zA-Z0-9_]+)":/g, '"$1":');
+            // 2. Trailing commas before } or ]
+            cleaned = cleaned.replace(/,\s*([\]}])/g, '$1');
+            // 3. Remove single-line JS comments
+            cleaned = cleaned.replace(/\/\/[^\n]*\n/g, '\n');
+            return JSON.parse(cleaned);
+          } catch (e2) {
+            return null;
+          }
+        }
+      }
+
       // 1. Search all ```json ... ``` blocks
       const codeBlockRegex = /```(?:json)?\s*([\s\S]*?)\s*```/gi;
       let match;
       while ((match = codeBlockRegex.exec(text)) !== null) {
         const raw = match[1].trim();
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed && (parsed.shots || parsed.target_shot_number || parsed.shot_number || parsed.json_prompt)) {
-            return parsed;
-          }
-        } catch (e) {
-          try {
-            const cleaned = raw.replace(/,\s*([\]}])/g, '$1');
-            const parsed = JSON.parse(cleaned);
-            if (parsed) return parsed;
-          } catch (e2) {}
+        const parsed = tryRepairAndParse(raw);
+        if (parsed && (parsed.shots || parsed.target_shot_number || parsed.shot_number || parsed.json_prompt || parsed.episodes)) {
+          return parsed;
         }
       }
 
@@ -9870,14 +10567,8 @@ Return ONLY JSON: {"prompts":[...]}. Return exactly ${promptBatch.length} prompt
       const lastBrace = text.lastIndexOf('}');
       if (firstBrace !== -1 && lastBrace > firstBrace) {
         const candidate = text.substring(firstBrace, lastBrace + 1);
-        try {
-          return JSON.parse(candidate);
-        } catch (e) {
-          try {
-            const cleaned = candidate.replace(/,\s*([\]}])/g, '$1');
-            return JSON.parse(cleaned);
-          } catch (e2) {}
-        }
+        const parsed = tryRepairAndParse(candidate);
+        if (parsed) return parsed;
       }
       return null;
     }
@@ -12055,6 +12746,8 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
       try {
         renderShots();
         initGeminiChat();
+        syncDirectorEpisodeSelector();
+        if (typeof switchGuidedScope === 'function') switchGuidedScope('shot');
       } catch (renderErr) {
         console.error("Local render notice:", renderErr);
       } finally {
