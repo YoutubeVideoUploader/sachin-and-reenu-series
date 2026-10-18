@@ -2993,8 +2993,65 @@
   ]
 };
 
-    // Tracks current state of Google Drive: shotNum -> { present: bool, filename: string, id: string }
-    let driveStatus = {};
+    // Tracks current state of Google Drive & Sheet: shotNum -> { present: bool, filename: string, id: string }
+    let driveStatus = {
+  "1": {
+    "present": true,
+    "filename": "shot_01.mp4",
+    "id": "12ZGv0ePIJWkOk7d4JncDDsduGct3kQ51"
+  },
+  "2": {
+    "present": true,
+    "filename": "shot_02.mp4",
+    "id": "1WSI2UO9QXpcr5ckp5I68MMjQb8CqZOkP"
+  },
+  "3": {
+    "present": true,
+    "filename": "shot_03.mp4",
+    "id": "1kAELwGYfGHF8G-ljeMLGHQ0JgG_yy6Lj"
+  },
+  "4": {
+    "present": true,
+    "filename": "shot_04.mp4",
+    "id": "13QiPlCKoqehFaxtx37W5MMBHtZmZCCF7"
+  },
+  "5": {
+    "present": true,
+    "filename": "shot_05.mp4",
+    "id": "1lgle8VxZuxJkTw0vhw7hKwv_JnMbwrz6"
+  },
+  "6": {
+    "present": true,
+    "filename": "shot_06.mp4",
+    "id": "1WxX2vI--J8WvIrGBPhiGM-ocHCiM7mBN"
+  },
+  "7": {
+    "present": true,
+    "filename": "shot_07.mp4",
+    "id": "1WUW93kAJrxbWhAIlrkTGK6ID35A3Os9o"
+  },
+  "8": {
+    "present": true,
+    "filename": "shot_08.mp4",
+    "id": "1ctyMV7jw7MRZ0Qi0jcbEZ6WhpNWw8zy-"
+  },
+  "9": {
+    "present": true,
+    "filename": "shot_09.mp4",
+    "id": "18WevqhXG8i9EXsEcw8dfpkHQAVIjjXrr"
+  },
+  "10": {
+    "present": true,
+    "filename": "shot_10.mp4",
+    "id": "11SH7w3uZLAB_AdmuDe2mVT-O8a4JN49N"
+  }
+};
+    try {
+      const cachedDrive = localStorage.getItem(`studio_drive_status_ep${(typeof episodeData !== 'undefined' && episodeData.episode_number) || 4}`);
+      if (cachedDrive) {
+        driveStatus = { ...driveStatus, ...JSON.parse(cachedDrive) };
+      }
+    } catch (_) {}
     let activeEpisodeFromTab1 = null;
     let activeEpisodePromptsVerified = false;
     let activeEpisodeStatusKnown = false;
@@ -3229,6 +3286,12 @@
 
       episodeData.shots.forEach((shot) => {
         const durClass = shot.duration === '4s' ? 'dur-4s' : (shot.duration === '8s' ? 'dur-8s' : 'dur-6s');
+        const sNum = Number(shot.shot_number);
+        const curStatus = driveStatus[sNum];
+        const isPres = Boolean(curStatus && curStatus.present);
+        const isStg = Boolean(stagedFiles[sNum] && stagedFiles[sNum].file && !stagedFiles[sNum].uploaded);
+        const initPillClass = isStg ? 'status-pill status-staged' : (isPres ? 'status-pill status-ready' : 'status-pill status-pending');
+        const initPillText = isStg ? `📁 Staged (${stagedFiles[sNum].file.name})` : (isPres ? `✓ In Drive (${curStatus.filename || `shot_${sNum < 10 ? '0' + sNum : sNum}.mp4`})` : '⏳ Awaiting Video');
         const dialogueHtml = shot.dialogue_malayalam ? `
           <div class="dialogue-box">
             <b>💬 സംഭാഷണം (Malayalam Dialogue):</b> "${shot.dialogue_malayalam}"
@@ -3253,7 +3316,7 @@
               <span style="font-size: 12px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
                 🔇 NO BGM
               </span>
-              <span id="directorDriveBadge_${shot.shot_number}" style="display: none; font-size: 11px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
+              <span id="directorDriveBadge_${shot.shot_number}" style="${isPres ? 'display: inline-flex;' : 'display: none;'} font-size: 11px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">
                 ✓ Drive Synced
               </span>
             </div>
@@ -3303,11 +3366,11 @@
                 Loading...
               </button>
             </div>
-            <span class="status-pill status-pending" id="statusPill_${shot.shot_number}">⏳ Awaiting Video</span>
+            <span class="${initPillClass}" id="statusPill_${shot.shot_number}">${initPillText}</span>
             <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="selectSingleShotFile(${shot.shot_number})">
               📁 Choose File
             </button>
-            <button class="btn btn-preview" id="previewBtn_${shot.shot_number}" style="padding: 6px 14px; font-size: 12px; display: inline-flex;" onclick="openDriveVideoPreview(${shot.shot_number})">
+            <button class="btn btn-preview" id="previewBtn_${shot.shot_number}" style="padding: 6px 14px; font-size: 12px; display: ${(isPres || isStg) ? 'inline-flex' : 'none'};" onclick="openDriveVideoPreview(${shot.shot_number})">
               👁️ Preview Video
             </button>
             <button class="btn btn-primary" id="uploadBtn_${shot.shot_number}" style="display: none; padding: 6px 14px; font-size: 12px;" onclick="uploadSingleShot(${shot.shot_number})">
@@ -3321,6 +3384,10 @@
       // Initialize Shot Music Toggles based on Drive tracks & saved state
       if (typeof initShotMusicMap === 'function') {
         initShotMusicMap();
+      }
+
+      if (typeof applyDriveStatusToDom === 'function') {
+        applyDriveStatusToDom();
       }
     }
 
@@ -3516,12 +3583,70 @@
       return false;
     }
 
+    function applyDriveStatusToDom() {
+      const shots = (episodeData && episodeData.shots) || [];
+      const totalShots = shots.length || 10;
+      let presentCount = 0;
+
+      for (let s = 1; s <= totalShots; s++) {
+        const status = driveStatus[s];
+        const isPresent = Boolean(status && status.present);
+        const isStaged = Boolean(stagedFiles[s] && stagedFiles[s].file && !stagedFiles[s].uploaded);
+
+        if (isPresent) presentCount++;
+
+        // 1. Tab 3 Upload Item Status Pill
+        const pill = document.getElementById(`statusPill_${s}`);
+        if (pill) {
+          if (isStaged) {
+            pill.className = 'status-pill status-staged';
+            pill.innerText = `📁 Staged (${stagedFiles[s].file.name})`;
+          } else if (isPresent) {
+            const fname = status.filename || `shot_${s < 10 ? '0' + s : s}.mp4`;
+            pill.className = 'status-pill status-ready';
+            pill.innerText = `✓ In Drive (${fname})`;
+          } else {
+            pill.className = 'status-pill status-pending';
+            pill.innerText = '⏳ Awaiting Video';
+          }
+        }
+
+        // 2. Tab 3 Upload Buttons
+        const upBtn = document.getElementById(`uploadBtn_${s}`);
+        if (upBtn) {
+          upBtn.style.display = isStaged ? 'inline-flex' : 'none';
+        }
+        const prevBtn = document.getElementById(`previewBtn_${s}`);
+        if (prevBtn) {
+          prevBtn.style.display = (isPresent || isStaged) ? 'inline-flex' : 'none';
+        }
+
+        // 3. Tab 2 Shot Card Director Badges
+        const dirBadge = document.getElementById(`directorDriveBadge_${s}`);
+        if (dirBadge) {
+          dirBadge.style.display = isPresent ? 'inline-flex' : 'none';
+        }
+        const dirPrevBtn = document.getElementById(`directorPreviewBtn_${s}`);
+        if (dirPrevBtn) {
+          dirPrevBtn.style.display = (isPresent || isStaged) ? 'inline-flex' : 'none';
+        }
+      }
+
+      // Summary element at top of Tab 3
+      const summaryEl = document.getElementById('driveSyncSummary');
+      if (summaryEl) {
+        summaryEl.innerHTML = `<b style="color: #34d399;">✓ ${presentCount} of ${totalShots} shots Present</b> in Google Drive & Sheet`;
+      }
+    }
+
     async function syncDriveStatus() {
       const summaryEl = document.getElementById('driveSyncSummary');
-      if (summaryEl) summaryEl.innerText = "Checking Google Drive & Sheet status...";
+      if (summaryEl && (!driveStatus || Object.keys(driveStatus).length === 0)) {
+        summaryEl.innerText = "Checking Google Drive & Sheet status...";
+      }
 
       try {
-        const ep = episodeData.episode_number || 1;
+        const ep = (episodeData && episodeData.episode_number) || activeEpisodeFromTab1 || 4;
         const res = await fetch(getActiveGasUrl() + "?action=check_status&episode=" + ep);
         if (!res.ok) throw new Error("HTTP " + res.status);
         const text = await res.text();
@@ -3531,8 +3656,7 @@
         if (json.success && json.data) {
           const info = json.data;
           const files = info.files || [];
-          const totalShots = (episodeData.shots && episodeData.shots.length) ? episodeData.shots.length : (info.total_shots || 22);
-          let presentCount = 0;
+          const totalShots = (episodeData.shots && episodeData.shots.length) ? episodeData.shots.length : (info.total_shots || 10);
 
           for (let s = 1; s <= totalShots; s++) {
             const patterns = [
@@ -3545,63 +3669,33 @@
             ];
 
             const match = files.find(f => {
-              if (f.shot_number === s) return true;
+              if (Number(f.shot_number) === Number(s)) return true;
               const fname = (f.filename || f.name || "").toLowerCase();
               return patterns.some(p => fname.includes(p));
             });
 
             if (match) {
               const fname = match.filename || match.name || `shot_${s < 10 ? '0' + s : s}.mp4`;
-              driveStatus[s] = { present: true, filename: fname, id: match.file_id || match.id };
-              presentCount++;
-
-              // Update UI pill if not currently staged with a fresh file
-              if (!stagedFiles[s] || stagedFiles[s].uploaded) {
-                const pill = document.getElementById(`statusPill_${s}`);
-                if (pill) {
-                  pill.className = 'status-pill status-ready';
-                  pill.innerText = `✓ In Drive (${fname})`;
-                }
-                const upBtn = document.getElementById(`uploadBtn_${s}`);
-                if (upBtn) upBtn.style.display = 'none';
-              }
-
-              // Show Preview buttons on both tabs
-              const prevBtn = document.getElementById(`previewBtn_${s}`);
-              if (prevBtn) prevBtn.style.display = 'inline-flex';
-              const dirBadge = document.getElementById(`directorDriveBadge_${s}`);
-              if (dirBadge) dirBadge.style.display = 'inline-flex';
-              const dirPrevBtn = document.getElementById(`directorPreviewBtn_${s}`);
-              if (dirPrevBtn) dirPrevBtn.style.display = 'inline-flex';
-
+              driveStatus[s] = { present: true, filename: fname, id: match.file_id || match.id, download_url: match.download_url };
             } else {
               driveStatus[s] = { present: false };
-              if (!stagedFiles[s] || stagedFiles[s].uploaded) {
-                const pill = document.getElementById(`statusPill_${s}`);
-                if (pill) {
-                  pill.className = 'status-pill status-pending';
-                  pill.innerText = '⏳ Awaiting Video';
-                }
-                const prevBtn = document.getElementById(`previewBtn_${s}`);
-                if (prevBtn) prevBtn.style.display = 'none';
-                const dirBadge = document.getElementById(`directorDriveBadge_${s}`);
-                if (dirBadge) dirBadge.style.display = 'none';
-                const dirPrevBtn = document.getElementById(`directorPreviewBtn_${s}`);
-                if (dirPrevBtn) dirPrevBtn.style.display = 'none';
-              }
             }
           }
 
-          if (summaryEl) {
-            summaryEl.innerHTML = `<b style="color: #34d399;">✓ ${presentCount} of ${totalShots} shots Present</b> in Google Drive & Sheet`;
-          }
+          try {
+            localStorage.setItem(`studio_drive_status_ep${ep}`, JSON.stringify(driveStatus));
+          } catch (_) {}
+
+          applyDriveStatusToDom();
           updateDropzoneSummary();
         } else {
           if (summaryEl) summaryEl.innerText = "Checklist check: no files data";
         }
       } catch (e) {
         console.warn("Drive status check error:", e);
-        if (summaryEl) summaryEl.innerText = "Drive status sync offline";
+        if (summaryEl && Object.keys(driveStatus).length === 0) {
+          summaryEl.innerText = "Drive status sync offline";
+        }
       }
     }
 
@@ -8368,6 +8462,7 @@
           };
           syncDirectorEpisodeSelector();
           renderShots();
+          applyDriveStatusToDom();
           if (promptsLoaded || matchingShots.length) {
             updateEpisodeSyncWarning();
           }
@@ -13092,7 +13187,8 @@ Return ONLY a valid JSON array inside \`\`\`json ... \`\`\` with 3 objects. Sche
         await Promise.allSettled([
           fetchCharacterData(),
           fetchPastEpisodesPrompts(true),
-          fetchEpisodeMusicList(false)
+          fetchEpisodeMusicList(false),
+          syncDriveStatus()
         ]);
       } catch (syncErr) {
         console.warn("Background sync notice:", syncErr);
