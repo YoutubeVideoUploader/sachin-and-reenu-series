@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 3,
+  "total_episodes_produced": 4,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "As the elderly woman panics and barricades the back door, Sachin tries to demand answers about who is outside. The old woman reveals a dark local tragedy from decades ago involving a tea picker wronged by the estate owners. Amal panics and tries to sneak out the front window to find help.",
+  "current_arc": "Driven back inside by the freezing, unnatural fog, Amal joins Sachin and Reenu as they inspect the cottage's interior. Reenu notices an old, dust-covered oil painting on the wall that depicts the exact woman standing outside in the mist. The old woman confesses a chilling truth: the spirit is looking for a descendant of the estate owners, and she believes Reenu holds her face.",
   "history": [
     {
       "episode": 1,
@@ -195,24 +195,51 @@
         "Third-Person Narrator",
         "Sachin"
       ]
+    },
+    {
+      "episode": 3,
+      "title": "ഇരുട്ടിലെ മന്ത്രിപ്പുകൾ (Whispers in the Dark)",
+      "summary": "As the elderly woman panics and barricades the back door, Sachin tries to demand answers about who is outside. The old woman reveals a dark local tragedy from decades ago involving a tea picker wronged by the estate owners. Amal panics and tries to sneak out the front window to find help.",
+      "cliffhanger": "Amal opens the front window, only to find the cottage surrounded by an impenetrable wall of glowing white mist and echoing footsteps.",
+      "characters_present": [
+        "Reenu",
+        "Amal",
+        "Sreedharan",
+        "Sachin"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "ചിത്രത്തിലെ രഹസ്യം (The Portrait's Secret)",
+      "summary": "Driven back inside by the freezing, unnatural fog, Amal joins Sachin and Reenu as they inspect the cottage's interior. Reenu notices an old, dust-covered oil painting on the wall that depicts the exact woman standing outside in the mist. The old woman confesses a chilling truth: the spirit is looking for a descendant of the estate owners, and she believes Reenu holds her face.",
+      "cliffhanger": "The painting's eyes in the portrait suddenly shift to look directly at Sachin, and the room's temperature drops to freezing.",
+      "characters_present": [
+        "Reenu",
+        "Amal",
+        "Sreedharan",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 3,
+  "episode_number": 4,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_OUTDOOR_COTTAGE_FRONT_PARLOR",
+    "scene_id": "SCENE_DOMESTIC_COTTAGE_LIVING_ROOM",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
     "spatial_blocking": {
-      "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
-      "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-      "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
+      "Sachin": "Screen-Center in room interior, standing alert near wooden doorway",
+      "Reenu": "Screen-Left in room, clutching travel bag, observing cautiously",
+      "Amal": "Screen-Right in room, huddled nervously behind Sachin",
+      "Caretaker": "Standing in doorway on Screen-Center, holding old brass key and lantern"
     },
-    "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+    "eyeline_direction": "Characters looking attentively toward Third-Person Narrator",
     "persistent_props": [
+      "Brass door key",
+      "Old lantern",
+      "Travel suitcase",
       "Sachin's cross-bag",
-      "Reenu's silver wristwatch",
-      "Foggy mountain road"
+      "Reenu's wristwatch"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
@@ -3366,7 +3393,7 @@
       }
     ]
   },
-  "cliffhanger": "Amal opens the front window, only to find the cottage surrounded by an impenetrable wall of glowing white mist and echoing footsteps.",
+  "cliffhanger": "The painting's eyes in the portrait suddenly shift to look directly at Sachin, and the room's temperature drops to freezing.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
