@@ -145,9 +145,12 @@ def generate_thumbnail(season_num=None, episode_num=None, output_file=None, sync
     font_candidates = [
         "C:/Windows/Fonts/comicbd.ttf",
         "C:/Windows/Fonts/comic.ttf",
+        "/usr/share/fonts/truetype/comic-neue/ComicNeue-Bold.ttf",
+        "/usr/share/fonts/truetype/comic-neue/ComicNeue-Regular.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
         "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf",
         "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "assets/fonts/Manjari-Bold.ttf",
         "C:/Windows/Fonts/segoeprb.ttf",
         "C:/Windows/Fonts/arialbd.ttf"
     ]
