@@ -1,12 +1,12 @@
 {
-  "episode_number": 6,
+  "episode_number": 7,
   "season_number": 3,
   "is_new_season": false,
   "season_title": "The Mist of Munnar (മൂന്നാറിലെ മഞ്ഞ്)",
-  "title_english": "The Estate Ruins",
-  "title_malayalam": "എസ്റ്റേറ്റ് അവശിഷ്ടങ്ങൾ",
-  "synopsis": "The old woman tells them the only way to appease the spirit before dawn is to find her locket buried at the nearby abandoned tea factory ruins. Sachin, Reenu, and Amal brave the terrifying fog-filled path outside, holding a single flickering lantern. Every shadow looks like a moving figure as whispers call out their names from the tea bushes.",
-  "cliffhanger": "Amal steps into a hidden ditch, and when Sachin and Reenu turn around to pull him up, Amal has completely vanished.",
+  "title_english": "Voices in the Tea Bushes",
+  "title_malayalam": "തേയിലച്ചെടികൾക്കിടയിലെ ശബ്ദങ്ങൾ",
+  "synopsis": "Left with only each other, Sachin and Reenu frantically search the misty plantation for Amal. Reenu hears Amal's voice calling for help deeper into the maze of tea plants, but Sachin urges her not to follow the trap. Guided by her intuition, Reenu breaks away, forcing Sachin to chase after her into the heart of the ruins.",
+  "cliffhanger": "They find Amal sitting inside the decaying factory office, staring blankly at a wall with a spectral hand resting on his shoulder.",
   "total_shots": 10,
   "calculated_total_seconds": 60,
   "calculated_runtime_display": "1m 00s",
@@ -15,13 +15,468 @@
       "shot_number": 1,
       "duration": "6s",
       "duration_seconds": 6,
-      "character": "Sreedharan",
-      "dialogue_malayalam": "പഴയ ഫാക്ടറിയിൽ അവളുടെ മാലയുണ്ട്.",
-      "action_summary": "Sreedharan points a trembling arm toward the dark plantation outside, his voice crackling with grave urgency.",
+      "character": "Sachin",
+      "dialogue_malayalam": "അമൽ! ഒന്നു മിണ്ടെടാ എവിടെയാ നീ?",
+      "action_summary": "Sachin drops to his knees at the edge of the pit, sweeping the lantern beam frantically over the wet mud.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
-        "perspective": "Character Dialogue (Sreedharan Speaking)",
+        "perspective": "Character Dialogue (Sachin Speaking)",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Grounds",
+        "camera": "Low-angle close-up tilting up on Sachin's terrified, sweat-streaked face.",
+        "action": "Sachin drops to his knees at the edge of the pit, sweeping the lantern beam frantically over the wet mud. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+          "language": "Malayalam",
+          "script": "അമൽ! ഒന്നു മിണ്ടെടാ എവിടെയാ നീ?",
+          "line": "അമൽ! ഒന്നു മിണ്ടെടാ എവിടെയാ നീ?"
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 2,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "അമൽ! ഞങ്ങൾ ഇവിടെയുണ്ട്!",
+      "action_summary": "Reenu cups her hands to her mouth, shouting out into the dense plantation while scanning the shadowy bushes.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Reenu Speaking)",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Grounds",
+        "camera": "Medium shot tracking Reenu as she turns full circle calling out.",
+        "action": "Reenu cups her hands to her mouth, shouting out into the dense plantation while scanning the shadowy bushes. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+          "language": "Malayalam",
+          "script": "അമൽ! ഞങ്ങൾ ഇവിടെയുണ്ട്!",
+          "line": "അമൽ! ഞങ്ങൾ ഇവിടെയുണ്ട്!"
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 3,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Amal",
+      "dialogue_malayalam": "റീനു... എന്നെ ഇങ്ങോട്ട് കൊണ്ടുപോയി...",
+      "action_summary": "A faint, muffled voice mimicking Amal's desperate cry echoes from deep inside the rusted factory structure.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Amal Speaking)",
+        "characters_present": [
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_RUINS",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Ruins",
+        "camera": "Slow push-in toward the gaping dark doorway of the ruined factory.",
+        "action": "A faint, muffled voice mimicking Amal's desperate cry echoes from deep inside the rusted factory structure. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Amal",
+          "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
+          "language": "Malayalam",
+          "script": "റീനു... എന്നെ ഇങ്ങോട്ട് കൊണ്ടുപോയി...",
+          "line": "റീനു... എന്നെ ഇങ്ങോട്ട് കൊണ്ടുപോയി..."
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 4,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "അത് അമലിന്റെ ശബ്ദമാണ്, അവൻ അവിടുണ്ട്!",
+      "action_summary": "Reenu's eyes light up with urgent recognition, and she immediately starts sprinting toward the crumbling brick entrance.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Reenu Speaking)",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_RUINS_ENTRANCE",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Ruins Entrance",
+        "camera": "Medium wide tracking shot following Reenu running through the weeds.",
+        "action": "Reenu's eyes light up with urgent recognition, and she immediately starts sprinting toward the crumbling brick entrance. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+          "language": "Malayalam",
+          "script": "അത് അമലിന്റെ ശബ്ദമാണ്, അവൻ അവിടുണ്ട്!",
+          "line": "അത് അമലിന്റെ ശബ്ദമാണ്, അവൻ അവിടുണ്ട്!"
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 5,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "റീനു നിൽക്ക്, അതൊരു കെണിയാവാം!",
+      "action_summary": "Sachin sprints after Reenu, grabbing her wrist to halt her before she crosses the rotting factory threshold.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Sachin Speaking)",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_RUINS_ENTRANCE",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Ruins Entrance",
+        "camera": "Two-shot medium angle as Sachin pulls Reenu back from the threshold.",
+        "action": "Sachin sprints after Reenu, grabbing her wrist to halt her before she crosses the rotting factory threshold. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+          "language": "Malayalam",
+          "script": "റീനു നിൽക്ക്, അതൊരു കെണിയാവാം!",
+          "line": "റീനു നിൽക്ക്, അതൊരു കെണിയാവാം!"
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 6,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "അവനെ അവിടെ തനിച്ചാക്കാൻ കഴിയില്ല!",
+      "action_summary": "Reenu breaks free from Sachin's grasp with resolute determination, stepping inside the rusted corridor.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Reenu Speaking)",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_INTERIOR",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Interior",
+        "camera": "Medium close-up pushing past Sachin to follow Reenu inside.",
+        "action": "Reenu breaks free from Sachin's grasp with resolute determination, stepping inside the rusted corridor. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+          "language": "Malayalam",
+          "script": "അവനെ അവിടെ തനിച്ചാക്കാൻ കഴിയില്ല!",
+          "line": "അവനെ അവിടെ തനിച്ചാക്കാൻ കഴിയില്ല!"
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 7,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "ഞാനും കൂടെയുണ്ട്, തനിച്ചു പോകരുത്.",
+      "action_summary": "Sachin follows closely behind, raising the lantern as giant rusted gears and hanging chains emerge from darkness.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Sachin Speaking)",
+        "characters_present": [
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_OUTDOOR_FACTORY_INTERIOR",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
+            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
+            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+          },
+          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+          "persistent_props": [
+            "Sachin's cross-bag",
+            "Reenu's silver wristwatch",
+            "Foggy mountain road"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Interior",
+        "camera": "Wide tracking shot moving through the towering rusted industrial machinery.",
+        "action": "Sachin follows closely behind, raising the lantern as giant rusted gears and hanging chains emerge from darkness. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Sachin",
+          "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
+          "language": "Malayalam",
+          "script": "ഞാനും കൂടെയുണ്ട്, തനിച്ചു പോകരുത്.",
+          "line": "ഞാനും കൂടെയുണ്ട്, തനിച്ചു പോകരുത്."
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 8,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Reenu",
+      "dialogue_malayalam": "ആ മുറിക്കുള്ളിൽ ആരോ ഇരിക്കുന്നുണ്ട്.",
+      "action_summary": "Reenu spots a dim amber shaft of light glowing beneath a decayed wooden office door at the end of the aisle.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Reenu Speaking)",
+        "characters_present": [
+          {
+            "name": "Reenu",
+            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Sachin",
+            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Amal",
+            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
+          },
+          {
+            "name": "Caretaker",
+            "visual_dna": "Sreedharan (The Caretaker): Stylized 3D Pixar-style cartoon animation character, 55-60 year old mysterious high-range estate caretaker. Tall lean frame, hollow weathered cheeks, piercing observant dark eyes, dark shawl draped over khaki shirt, lantern bearer."
+          }
+        ],
+        "sequence_continuity": {
+          "scene_id": "SCENE_DOMESTIC_FACTORY_INTERIOR",
+          "time_of_day": "Late Evening High-Range Monsoon Fog",
+          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
+          "weather": "Heavy mountain fog with cool condensation on glass",
+          "spatial_blocking": {
+            "Reenu": "Screen-Left in room, clutching travel bag, observing cautiously",
+            "Sachin": "Screen-Center in room interior, standing alert near wooden doorway",
+            "Amal": "Screen-Right in room, huddled nervously behind Sachin",
+            "Caretaker": "Standing in doorway on Screen-Center, holding old brass key and lantern"
+          },
+          "eyeline_direction": "Characters looking attentively toward Reenu",
+          "persistent_props": [
+            "Brass door key",
+            "Old lantern",
+            "Travel suitcase",
+            "Sachin's cross-bag",
+            "Reenu's wristwatch"
+          ],
+          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
+        },
+        "location": "Factory Interior",
+        "camera": "Low-angle medium shot peering down the narrow corridor toward the door.",
+        "action": "Reenu spots a dim amber shaft of light glowing beneath a decayed wooden office door at the end of the aisle. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "dialogue": {
+          "speaker": "Reenu",
+          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
+          "language": "Malayalam",
+          "script": "ആ മുറിക്കുള്ളിൽ ആരോ ഇരിക്കുന്നുണ്ട്.",
+          "line": "ആ മുറിക്കുള്ളിൽ ആരോ ഇരിക്കുന്നുണ്ട്."
+        },
+        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
+      }
+    },
+    {
+      "shot_number": 9,
+      "duration": "6s",
+      "duration_seconds": 6,
+      "character": "Sachin",
+      "dialogue_malayalam": "അമൽ... നീ ഇവിടെയാണോ?",
+      "action_summary": "Sachin slowly pushes the creaking office door inward, his knuckles white around the lantern handle.",
+      "json_prompt": {
+        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
+        "duration": "6s",
+        "perspective": "Character Dialogue (Sachin Speaking)",
         "characters_present": [
           {
             "name": "Sachin",
@@ -41,7 +496,7 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_DOMESTIC_COTTAGE_LIVING_ROOM",
+          "scene_id": "SCENE_DOMESTIC_DECAYING_FACTORY_OFFICE",
           "time_of_day": "Late Evening High-Range Monsoon Fog",
           "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
           "weather": "Heavy mountain fog with cool condensation on glass",
@@ -51,7 +506,7 @@
             "Amal": "Screen-Right in room, huddled nervously behind Sachin",
             "Caretaker": "Standing in doorway on Screen-Center, holding old brass key and lantern"
           },
-          "eyeline_direction": "Characters looking attentively toward Sreedharan",
+          "eyeline_direction": "Characters looking attentively toward Sachin",
           "persistent_props": [
             "Brass door key",
             "Old lantern",
@@ -61,201 +516,26 @@
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Cottage Living Room",
-        "camera": "Medium shot framing Sreedharan speaking intently over the ruined furniture.",
-        "action": "Sreedharan points a trembling arm toward the dark plantation outside, his voice crackling with grave urgency. Sreedharan actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Sreedharan",
-          "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "പഴയ ഫാക്ടറിയിൽ അവളുടെ മാലയുണ്ട്.",
-          "line": "പഴയ ഫാക്ടറിയിൽ അവളുടെ മാലയുണ്ട്."
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SREEDHARAN ON SCREEN. Sreedharan speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 2,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "പുലർച്ചയ്ക്ക് മുൻപ് അത് കണ്ടെത്തണം.",
-      "action_summary": "Sachin picks up an antique iron hurricane lantern from the table, checking its sputtering golden flame.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Sachin Speaking)",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Shopkeeper",
-            "visual_dna": "Tea Shopkeeper: Stylized 3D Pixar-style cartoon animation character, 45-50 year old rustic Malayali high-range tea vendor. Weathered warm brown skin, expressive kind eyes with cautionary look, clean grey-streaked hair, traditional blue check lungi and cream cotton shirt."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_DINING_COTTAGE_LIVING_ROOM",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Sachin": "Seated at wooden tea stall bench on Screen-Left, holding warm tea glass",
-            "Reenu": "Seated beside Sachin on Screen-Left, observing foggy high-range road",
-            "Amal": "Standing by rustic wooden tea stall counter on Screen-Right, comedic animated posture",
-            "Shopkeeper": "Behind tea stall kettle and glass display on Screen-Center, cautionary rustic presence"
-          },
-          "eyeline_direction": "Characters looking toward Sachin at tea stall counter",
-          "persistent_props": [
-            "Steaming tea glass",
-            "Rustic kettle",
-            "Wooden bench",
-            "Sachin's cross-bag",
-            "Reenu's wristwatch"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Cottage Living Room",
-        "camera": "Close-up on the lantern flame reflecting in Sachin's determined eyes.",
-        "action": "Sachin picks up an antique iron hurricane lantern from the table, checking its sputtering golden flame. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
+        "location": "Decaying Factory Office",
+        "camera": "Over-the-shoulder shot framing the dark room opening up.",
+        "action": "Sachin slowly pushes the creaking office door inward, his knuckles white around the lantern handle. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
         "dialogue": {
           "speaker": "Sachin",
           "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
-          "script": "പുലർച്ചയ്ക്ക് മുൻപ് അത് കണ്ടെത്തണം.",
-          "line": "പുലർച്ചയ്ക്ക് മുൻപ് അത് കണ്ടെത്തണം."
+          "script": "അമൽ... നീ ഇവിടെയാണോ?",
+          "line": "അമൽ... നീ ഇവിടെയാണോ?"
         },
         "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
       }
     },
     {
-      "shot_number": 3,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "നമുക്ക് വേറെ വഴിയില്ല അല്ലേ?",
-      "action_summary": "Amal tightly zips up his jacket, pulling a heavy wooden walking stick up against his chest defensively.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Amal Speaking)",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_COTTAGE_PORCH",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Cottage Porch",
-        "camera": "Medium shot of Amal shivering on the porch looking into the darkness.",
-        "action": "Amal tightly zips up his jacket, pulling a heavy wooden walking stick up against his chest defensively. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "നമുക്ക് വേറെ വഴിയില്ല അല്ലേ?",
-          "line": "നമുക്ക് വേറെ വഴിയില്ല അല്ലേ?"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 4,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "നമ്മൾ ഒരുമിച്ച് നിന്നാൽ മതി.",
-      "action_summary": "Reenu steps off the porch into the ankle-deep mist, tightly holding Sachin's free hand.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Reenu Speaking)",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_PLANTATION_PATH",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Plantation Path",
-        "camera": "Low-angle tracking shot moving backward ahead of their boots walking into the mist.",
-        "action": "Reenu steps off the porch into the ankle-deep mist, tightly holding Sachin's free hand. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
-          "language": "Malayalam",
-          "script": "നമ്മൾ ഒരുമിച്ച് നിന്നാൽ മതി.",
-          "line": "നമ്മൾ ഒരുമിച്ച് നിന്നാൽ മതി."
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 5,
+      "shot_number": 10,
       "duration": "6s",
       "duration_seconds": 6,
       "character": "Third-Person Narrator",
-      "dialogue_malayalam": "തേയിലത്തോട്ടത്തിൽ നിന്ന് വിചിത്രശബ്ദങ്ങൾ ഉയർന്നു.",
-      "action_summary": "The dense tea bushes rustle eerily as faint, layered whispers echo out their names from every direction in the fog.",
+      "dialogue_malayalam": "അമലിന്റെ തോളിൽ ഒരു പ്രേതക്കൈ അമർന്നു.",
+      "action_summary": "Amal sits rigidly on an antique wooden chair staring blankly at the wall as a pale, translucent hand rests gently on his shoulder.",
       "json_prompt": {
         "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
         "duration": "6s",
@@ -275,7 +555,7 @@
           }
         ],
         "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_PLANTATION_PATH",
+          "scene_id": "SCENE_OUTDOOR_DECAYING_FACTORY_OFFICE",
           "time_of_day": "Late Evening High-Range Monsoon Fog",
           "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
           "weather": "Heavy mountain fog with cool condensation on glass",
@@ -292,297 +572,17 @@
           ],
           "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
         },
-        "location": "Plantation Path",
-        "camera": "Slow 360-degree pan around the three friends as shadows swirl in the tea bushes.",
-        "action": "The dense tea bushes rustle eerily as faint, layered whispers echo out their names from every direction in the fog. PURE VISUAL STORYTELLING. All characters on screen maintain strictly closed lips with zero talking or mouth animation.",
+        "location": "Decaying Factory Office",
+        "camera": "Slow push-in medium shot ending on the ghostly hand glowing cold blue on Amal's shoulder.",
+        "action": "Amal sits rigidly on an antique wooden chair staring blankly at the wall as a pale, translucent hand rests gently on his shoulder. PURE VISUAL STORYTELLING. All characters on screen maintain strictly closed lips with zero talking or mouth animation.",
         "dialogue": {
           "speaker": "Off-Screen Third-Person Narrator",
           "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
           "language": "Malayalam",
-          "script": "തേയിലത്തോട്ടത്തിൽ നിന്ന് വിചിത്രശബ്ദങ്ങൾ ഉയർന്നു.",
-          "line": "തേയിലത്തോട്ടത്തിൽ നിന്ന് വിചിത്രശബ്ദങ്ങൾ ഉയർന്നു."
+          "script": "അമലിന്റെ തോളിൽ ഒരു പ്രേതക്കൈ അമർന്നു.",
+          "line": "അമലിന്റെ തോളിൽ ഒരു പ്രേതക്കൈ അമർന്നു."
         },
         "audio_directive": "OFF-SCREEN MALE STORYTELLER VOICEOVER ONLY. NO CHARACTER SPEAKS ON SCREEN. All characters maintain strictly closed lips with zero talking or mouth animation. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean voiceover audio and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 6,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "ആരോ എന്നെ പേരെടുത്തു വിളിക്കുന്നു!",
-      "action_summary": "Amal swings his wooden stick erratically at a dark bush, his teeth chattering from dread.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Amal Speaking)",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_PLANTATION_PATH",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Plantation Path",
-        "camera": "Medium shot tracking Amal frantically turning behind the group.",
-        "action": "Amal swings his wooden stick erratically at a dark bush, his teeth chattering from dread. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "ആരോ എന്നെ പേരെടുത്തു വിളിക്കുന്നു!",
-          "line": "ആരോ എന്നെ പേരെടുത്തു വിളിക്കുന്നു!"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 7,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "ആ അവശിഷ്ടങ്ങൾ കാണാം, വേഗം നടക്കൂ!",
-      "action_summary": "Sachin holds the lantern high, illuminating the crumbling stone archway of the abandoned tea factory ruins ahead.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Sachin Speaking)",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Factory Grounds",
-        "camera": "Wide establishing shot revealing the looming skeletal ruins of the factory.",
-        "action": "Sachin holds the lantern high, illuminating the crumbling stone archway of the abandoned tea factory ruins ahead. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "ആ അവശിഷ്ടങ്ങൾ കാണാം, വേഗം നടക്കൂ!",
-          "line": "ആ അവശിഷ്ടങ്ങൾ കാണാം, വേഗം നടക്കൂ!"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 8,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Reenu",
-      "dialogue_malayalam": "അമൽ, പുറകിൽ നിൽക്കാതെ വേഗം വാ!",
-      "action_summary": "Reenu glances over her shoulder to check on Amal, noticing his steps slowing down in the dense fog.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Reenu Speaking)",
-        "characters_present": [
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Factory Grounds",
-        "camera": "Medium shot framing Reenu looking back into the swirling whiteout.",
-        "action": "Reenu glances over her shoulder to check on Amal, noticing his steps slowing down in the dense fog. Reenu actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Reenu",
-          "voice_persona": "Reenu: 18-19yo sweet expressive South Indian Malayali teenage girl voice, lively warm bubbly Malayalam tone (Gemini Voice 'Kore' / Edge-TTS 'ml-IN-SobhanaNeural')",
-          "language": "Malayalam",
-          "script": "അമൽ, പുറകിൽ നിൽക്കാതെ വേഗം വാ!",
-          "line": "അമൽ, പുറകിൽ നിൽക്കാതെ വേഗം വാ!"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY REENU ON SCREEN. Reenu speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 9,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Amal",
-      "dialogue_malayalam": "സച്ചിൻ, എന്നെ പിടിക്കെടാ!",
-      "action_summary": "Amal takes a hurried step backward into an overgrown drainage trench, crying out as the ground collapses underfoot.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Amal Speaking)",
-        "characters_present": [
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture",
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Factory Grounds",
-        "camera": "Low-angle shot catching Amal suddenly sliding downward into the darkness.",
-        "action": "Amal takes a hurried step backward into an overgrown drainage trench, crying out as the ground collapses underfoot. Amal actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Amal",
-          "voice_persona": "Amal: 18-19yo witty relatable Malayali teenage friend voice, energetic comedic youthful Malayalam tone (Gemini Voice 'Puck' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "സച്ചിൻ, എന്നെ പിടിക്കെടാ!",
-          "line": "സച്ചിൻ, എന്നെ പിടിക്കെടാ!"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY AMAL ON SCREEN. Amal speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
-      }
-    },
-    {
-      "shot_number": 10,
-      "duration": "6s",
-      "duration_seconds": 6,
-      "character": "Sachin",
-      "dialogue_malayalam": "അമൽ എവിടെ പോയി മറഞ്ഞു?",
-      "action_summary": "Sachin and Reenu spin around in panic, lowering their lantern into the ditch only to find empty mud and swirling fog.",
-      "json_prompt": {
-        "style": "High-end Disney Pixar 3D animated cartoon movie, stylized 3D cartoon character render, cute expressive animated features, soft smooth 3D cartoon shaders, vertical 9:16 format, Octane 3D render 4k 60fps",
-        "duration": "6s",
-        "perspective": "Character Dialogue (Sachin Speaking)",
-        "characters_present": [
-          {
-            "name": "Sachin",
-            "visual_dna": "Sachin: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Youthful boyish facial features, soft clean jawline, completely clean-shaven smooth caramel-tan South Indian skin with velvety cartoon subsurface scattering shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO FACIAL HAIR, ZERO STUBBLE, ZERO MATURE LINES). Big bright expressive warm dark-brown cartoon eyes filled with lively excitement, natural youthful eyebrows, playful contagious boyish grin showing clean straight white upper teeth. Messy voluminous wavy jet-black teen cartoon hair with casual bouncy textured locks falling slightly over his forehead. Lanky, slender athletic teenage build (height 5'9\", youthful 1:6.5 head-to-body proportion, narrow athletic teen shoulders, flat waistline, natural teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Navy Blue solid crewneck T-shirt, charcoal-black denim jeans, brown leather travel cross-bag, clean white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Reenu",
-            "visual_dna": "Reenu: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage girl. Adorable Pixar teen heroine face, soft youthful rounded cheeks with fresh natural peach-pink blush, smooth warm golden-fair skin with soft velvety cartoon shaders (STRICTLY TEENAGER / YOUTHFUL TEEN GIRL, NO MATURE AGING). Big sparkling expressive hazel-brown doe eyes with lush soft eyelashes, youthful naturally arched eyebrows, cute small button nose, radiant sweet bubbly teenage smile showing clean white teeth. Shoulder-length voluminous dark-brown wavy hair with bouncy youthful curls and soft curtain bangs framing her temples. Slender, petite teenage girl proportions (height 5'3\", youthful 1:6.2 head-to-body proportion, narrow waist, lively teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/STOCKY BUILD, PROHIBIT DOUBLE CHIN). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Pastel Lavender T-shirt with white cloud and daisy floral prints, light-wash denim skirt, silver wristwatch, white sneakers. Absolutely zero costume variations."
-          },
-          {
-            "name": "Amal",
-            "visual_dna": "Amal: Stylized 3D Pixar-style cartoon animation character, 18-19 year old South Indian Malayali teenage boy. Clean-shaven youthful teenage face, cheerful energetic jawline, warm dusky South Indian skin tone with smooth cartoon shaders, lively witty dark-brown animated eyes, expressive comedic eyebrows, cheerful mischievous teenage grin (STRICTLY TEENAGER / YOUTHFUL TEEN GUY, ZERO BEARD, ZERO STUBBLE, ZERO MATURE WRINKLES). Messy stylish short curly dark teen cartoon hair with textured volume. Slender athletic teenage build (height 5'8\", youthful 1:6.5 head-to-body proportion, lean flat waistline, narrow athletic frame, relaxed teen posture, strictly non-chibi) (PROHIBIT CHILD/TODDLER/BABY/CHIBI ANATOMY, PROHIBIT REALISTIC HUMAN SKIN PORES, PROHIBIT UNCANNY REALISM, PROHIBIT OVERWEIGHT, PROHIBIT CHUBBY, PROHIBIT FAT BODY, PROHIBIT BULKY/HEAVY/STOCKY BUILD, PROHIBIT DOUBLE CHIN, ZERO BEARD, ZERO STUBBLE). STRICTLY LOCKED ATTIRE (IDENTICAL IN EVERY SHOT): Plain Terracotta Rust-Orange solid T-shirt, faded blue denim jeans, black slip-on sneakers. Absolutely zero costume variations."
-          }
-        ],
-        "sequence_continuity": {
-          "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
-          "time_of_day": "Late Evening High-Range Monsoon Fog",
-          "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
-          "weather": "Heavy mountain fog with cool condensation on glass",
-          "spatial_blocking": {
-            "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-            "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
-            "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
-          },
-          "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
-          "persistent_props": [
-            "Sachin's cross-bag",
-            "Reenu's silver wristwatch",
-            "Foggy mountain road"
-          ],
-          "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
-        },
-        "location": "Factory Grounds",
-        "camera": "High-angle dramatic crane down looking into the completely vacant foggy pit.",
-        "action": "Sachin and Reenu spin around in panic, lowering their lantern into the ditch only to find empty mud and swirling fog. Sachin actively speaks dialogue on screen with natural animated lip movement, expressive facial emotion, and speech sync. Other character lips remain strictly closed.",
-        "dialogue": {
-          "speaker": "Sachin",
-          "voice_persona": "Sachin: 18-19yo enthusiastic South Indian Malayali teenage boy voice, warm playful Kochi cadence, youthful eager tone (Gemini Voice 'Fenrir' / Edge-TTS 'ml-IN-MidhunNeural')",
-          "language": "Malayalam",
-          "script": "അമൽ എവിടെ പോയി മറഞ്ഞു?",
-          "line": "അമൽ എവിടെ പോയി മറഞ്ഞു?"
-        },
-        "audio_directive": "CHARACTER DIALOGUE SPOKEN BY SACHIN ON SCREEN. Sachin speaks directly with clear character voice and synchronized animated lip movement. CRITICAL: ABSOLUTELY NO BACKGROUND MUSIC. NO INSTRUMENTAL BGM. NO MUSIC SCORE. Clean character voice dialogue and natural ambient foley sound effects only."
       }
     }
   ]

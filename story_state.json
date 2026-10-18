@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 6,
+  "total_episodes_produced": 7,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "The old woman tells them the only way to appease the spirit before dawn is to find her locket buried at the nearby abandoned tea factory ruins. Sachin, Reenu, and Amal brave the terrifying fog-filled path outside, holding a single flickering lantern. Every shadow looks like a moving figure as whispers call out their names from the tea bushes.",
+  "current_arc": "Left with only each other, Sachin and Reenu frantically search the misty plantation for Amal. Reenu hears Amal's voice calling for help deeper into the maze of tea plants, but Sachin urges her not to follow the trap. Guided by her intuition, Reenu breaks away, forcing Sachin to chase after her into the heart of the ruins.",
   "history": [
     {
       "episode": 1,
@@ -242,11 +242,22 @@
         "Sreedharan",
         "Sachin"
       ]
+    },
+    {
+      "episode": 7,
+      "title": "തേയിലച്ചെടികൾക്കിടയിലെ ശബ്ദങ്ങൾ (Voices in the Tea Bushes)",
+      "summary": "Left with only each other, Sachin and Reenu frantically search the misty plantation for Amal. Reenu hears Amal's voice calling for help deeper into the maze of tea plants, but Sachin urges her not to follow the trap. Guided by her intuition, Reenu breaks away, forcing Sachin to chase after her into the heart of the ruins.",
+      "cliffhanger": "They find Amal sitting inside the decaying factory office, staring blankly at a wall with a spectral hand resting on his shoulder.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 6,
+  "episode_number": 7,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_OUTDOOR_FACTORY_GROUNDS",
+    "scene_id": "SCENE_OUTDOOR_DECAYING_FACTORY_OFFICE",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
@@ -3413,7 +3424,7 @@
       }
     ]
   },
-  "cliffhanger": "Amal steps into a hidden ditch, and when Sachin and Reenu turn around to pull him up, Amal has completely vanished.",
+  "cliffhanger": "They find Amal sitting inside the decaying factory office, staring blankly at a wall with a spectral hand resting on his shoulder.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
