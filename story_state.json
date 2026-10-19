@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 9,
+  "total_episodes_produced": 10,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Holding the locket, Reenu looks past the ghost's anger and speaks with deep empathy, recognizing the pain of the injustice she suffered. The spirit's form softens as the first rays of dawn break over the Munnar hills, burning away the supernatural mist. The curse is broken, and the spirit finally fades away in peace.",
+  "current_arc": "Relieved and exhausted, Sachin, Reenu, and Amal drive back down toward Kochi, processing the unbelievable events of the night. Sachin admits that some things in life defy logic, pulling Reenu close as they cross the mountain pass. The central dramatic question is resolved as their bond is forged stronger through terror and survival, leaving the mist behind them forever.",
   "history": [
     {
       "episode": 1,
@@ -277,11 +277,22 @@
         "Sachin",
         "Reenu"
       ]
+    },
+    {
+      "episode": 10,
+      "title": "കൊച്ചിയിലേക്കുള്ള മടക്കയാത്ര (The Road Back to Kochi)",
+      "summary": "Relieved and exhausted, Sachin, Reenu, and Amal drive back down toward Kochi, processing the unbelievable events of the night. Sachin admits that some things in life defy logic, pulling Reenu close as they cross the mountain pass. The central dramatic question is resolved as their bond is forged stronger through terror and survival, leaving the mist behind them forever.",
+      "cliffhanger": "As they check the car's glove compartment for toll money, they find the rusted silver locket resting quietly inside.",
+      "characters_present": [
+        "Amal",
+        "Reenu",
+        "Sachin"
+      ]
     }
   ],
-  "episode_number": 9,
+  "episode_number": 10,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_VEHICLE_MUNNAR_MOUNTAIN_ROAD",
+    "scene_id": "SCENE_VEHICLE_CAR_INTERIOR",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
@@ -3450,7 +3461,7 @@
       }
     ]
   },
-  "cliffhanger": "The three friends collapse onto the grass as the sun fully rises, revealing their car parked safely on a normal, clear road with fixed tires.",
+  "cliffhanger": "As they check the car's glove compartment for toll money, they find the rusted silver locket resting quietly inside.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
