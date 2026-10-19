@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 7,
+  "total_episodes_produced": 8,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Left with only each other, Sachin and Reenu frantically search the misty plantation for Amal. Reenu hears Amal's voice calling for help deeper into the maze of tea plants, but Sachin urges her not to follow the trap. Guided by her intuition, Reenu breaks away, forcing Sachin to chase after her into the heart of the ruins.",
+  "current_arc": "Sachin snaps Amal out of his trance, and together they discover the rusted silver locket buried beneath the factory floorboards. The phantom woman manifests before them, blocking the exit with a furious wall of wind and swirling mist. Sachin steps in front of Reenu, abandoning his skepticism to plead for her safety.",
   "history": [
     {
       "episode": 1,
@@ -253,9 +253,21 @@
         "Amal",
         "Reenu"
       ]
+    },
+    {
+      "episode": 8,
+      "title": "മാലയുടെ ശാപം (The Locket's Curse)",
+      "summary": "Sachin snaps Amal out of his trance, and together they discover the rusted silver locket buried beneath the factory floorboards. The phantom woman manifests before them, blocking the exit with a furious wall of wind and swirling mist. Sachin steps in front of Reenu, abandoning his skepticism to plead for her safety.",
+      "cliffhanger": "The spirit reaches out a cold hand, ignoring Sachin entirely and grabbing Reenu's wrist with terrifying force.",
+      "characters_present": [
+        "Sachin",
+        "Amal",
+        "Bhadra",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 7,
+  "episode_number": 8,
   "cliffhanger_scene_state": {
     "scene_id": "SCENE_OUTDOOR_DECAYING_FACTORY_OFFICE",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
@@ -3424,7 +3436,7 @@
       }
     ]
   },
-  "cliffhanger": "They find Amal sitting inside the decaying factory office, staring blankly at a wall with a spectral hand resting on his shoulder.",
+  "cliffhanger": "The spirit reaches out a cold hand, ignoring Sachin entirely and grabbing Reenu's wrist with terrifying force.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
