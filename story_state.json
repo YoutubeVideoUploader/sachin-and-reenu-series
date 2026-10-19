@@ -2,7 +2,7 @@
   "series_title": "SACHIN & REENU (സച്ചിൻ & റീനു)",
   "language": "Malayalam",
   "aspect_ratio": "9:16 Vertical Full HD (1080x1920)",
-  "total_episodes_produced": 8,
+  "total_episodes_produced": 9,
   "characters": {
     "Sachin": {
       "name": "Sachin",
@@ -170,7 +170,7 @@
       "visual_dna": "Broker Shaji: Stylized 3D Pixar-style cartoon animation character, 45-year-old middle-aged South Indian Malayali broker. Energetic round cartoon face, thin animated mustache, slicked-back dark cartoon hair glistening with raindrops, expressive comedic eyebrows, slightly plump cartoon build (STRICTLY 3D ANIMATION CHARACTER, PROHIBIT REALISTIC HUMAN FEATURES)."
     }
   },
-  "current_arc": "Sachin snaps Amal out of his trance, and together they discover the rusted silver locket buried beneath the factory floorboards. The phantom woman manifests before them, blocking the exit with a furious wall of wind and swirling mist. Sachin steps in front of Reenu, abandoning his skepticism to plead for her safety.",
+  "current_arc": "Holding the locket, Reenu looks past the ghost's anger and speaks with deep empathy, recognizing the pain of the injustice she suffered. The spirit's form softens as the first rays of dawn break over the Munnar hills, burning away the supernatural mist. The curse is broken, and the spirit finally fades away in peace.",
   "history": [
     {
       "episode": 1,
@@ -265,24 +265,38 @@
         "Bhadra",
         "Reenu"
       ]
+    },
+    {
+      "episode": 9,
+      "title": "പുലർച്ചെയുടെ വെളിച്ചം (Dawn's Breaking Light)",
+      "summary": "Holding the locket, Reenu looks past the ghost's anger and speaks with deep empathy, recognizing the pain of the injustice she suffered. The spirit's form softens as the first rays of dawn break over the Munnar hills, burning away the supernatural mist. The curse is broken, and the spirit finally fades away in peace.",
+      "cliffhanger": "The three friends collapse onto the grass as the sun fully rises, revealing their car parked safely on a normal, clear road with fixed tires.",
+      "characters_present": [
+        "Amal",
+        "Bhadra",
+        "Sachin",
+        "Reenu"
+      ]
     }
   ],
-  "episode_number": 8,
+  "episode_number": 9,
   "cliffhanger_scene_state": {
-    "scene_id": "SCENE_OUTDOOR_DECAYING_FACTORY_OFFICE",
+    "scene_id": "SCENE_VEHICLE_MUNNAR_MOUNTAIN_ROAD",
     "time_of_day": "Late Evening High-Range Monsoon Fog",
     "lighting_palette": "Eerie blue moonlight filtered through thick mountain fog with warm amber interior glow",
     "weather": "Heavy mountain fog with cool condensation on glass",
     "spatial_blocking": {
-      "Sachin": "Screen-Left on misty mountain path, walking forward alertly",
-      "Reenu": "Screen-Center beside Sachin, scanning dense white fog",
-      "Amal": "Screen-Right, trailing slightly behind, comedic cautious posture"
+      "Sachin": "Front passenger seat (left side), seated looking toward driver and foggy side window",
+      "Reenu": "Rear passenger seat directly behind front seats, watching dense mist outside",
+      "Amal": "Driver seat (right side), hands gripping steering wheel, facing misty road"
     },
-    "eyeline_direction": "Characters gazing into high-range mist toward scene focal action",
+    "eyeline_direction": "Characters maintain focused eyelines inside misty vehicle interior",
     "persistent_props": [
-      "Sachin's cross-bag",
-      "Reenu's silver wristwatch",
-      "Foggy mountain road"
+      "Car steering wheel",
+      "Rearview mirror",
+      "Illuminated dashboard dials",
+      "Car ignition key",
+      "Sachin's cross-bag"
     ],
     "camera_lens": "Cinematic prime lens, shallow depth of field, soft circular bokeh"
   },
@@ -3436,7 +3450,7 @@
       }
     ]
   },
-  "cliffhanger": "The spirit reaches out a cold hand, ignoring Sachin entirely and grabbing Reenu's wrist with terrifying force.",
+  "cliffhanger": "The three friends collapse onto the grass as the sun fully rises, revealing their car parked safely on a normal, clear road with fixed tires.",
   "current_episode": {
     "episode_number": 2,
     "season_number": 3,
